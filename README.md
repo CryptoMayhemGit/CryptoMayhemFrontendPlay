@@ -40,19 +40,22 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Generate shared module:
 
-`ng g m shared`
+`ng g m shared --module app`
 
 ## Generate standard (non-shared) module:
 
 `ng g m modules/<module-name> --module app --routing`
 
-## Generate standard (non-shared) module-component:
+## Generate standard (non-shared) module + main module component:
 
-`ng g m modules/<module-name> --module app --routing && ng g c modules/<module-name> --skip-tests`
+`ng g m modules/<module-name> --module app --routing && ng g c modules/components/<module-name> --skip-tests`
 
-## Generate standard (non-shared) component:
+## Generate standard (non-shared) component in module:
 
 `ng g c modules/<module-name>/components/<component-name> --skip-tests`
+
+## Generate standard (non-shared) component:
+`ng g c components/<component-name> --skip-tests`
 
 ## Generate shared component:
 
@@ -65,6 +68,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Generate shared service:
 
 `ng g s shared/services/<service-name> --skip-tests`
+
+## Generate shared interceptor:
+
+`ng g interceptor shared/interceptors/<interceptor-name> --skip-tests`
 
 ## Generate shared directive:
 
