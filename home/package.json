@@ -1,0 +1,21 @@
+{
+  "name": "crypt0mayhem.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://gitlab.com/MateuszKrawczyk/crypt0mayhem.io.git",
+  "author": "GreenCodeStudio",
+  "license": "AllRightsReserved",
+  "scripts": {
+    "build": "webpack ./js/index.js --mode=development",
+    "buildWatch": "webpack ./js/index.js --watch --mode=development"
+  },
+  "dependencies": {
+    "css-loader": "^6.6.0",
+    "node-sass": "^7.0.1",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
+    "prototype-extensions": "^1.8.0"
+  }
+}

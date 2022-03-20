@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  rpc:
+    build: ./docker/rpc/Dockerfile
+    depends_on: nginx
+  nginx:
+    build: ./docker/nginx/Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"

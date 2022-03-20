@@ -1,9 +1,0 @@
-<div id="notifications">
-    <div class="notification" *ngFor="let notification of notifications" [ngClass]="{
-            'success': notification.type === NotificationType.Success,
-            'info': notification.type === NotificationType.Info,
-            'warning': notification.type === NotificationType.Warning,
-            'error': notification.type === NotificationType.Error}">
-            <p>{{ notification.message }}</p>
-    </div>
-</div>

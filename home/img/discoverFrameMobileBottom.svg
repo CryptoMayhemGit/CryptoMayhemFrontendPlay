@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="354"
+   height="50"
+   viewBox="0 1615 354 50"
+   version="1.1"
+   id="svg164"
+   sodipodi:docname="discoverFrameMobileTop.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs168" />
+  <sodipodi:namedview
+     id="namedview166"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="2"
+     inkscape:cx="297"
+     inkscape:cy="393.75"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg164" />
+  <path
+     d="M 0.5,0.5 H 326.401 L 354,41.375854 V 1661.5 H 22.013947 L 0.5,1640.3136 Z"
+     stroke="none"
+     fill="#c83a1a"
+     id="path4" vector-effect="non-scaling-stroke"
+     style="opacity:1;fill:none;stroke:#c83a1a;stroke-opacity:1"
+     sodipodi:nodetypes="ccccccc" />
+</svg>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="SVGDoc"
+   width="19.5"
+   height="19.5"
+   version="1.1"
+   viewBox="0 0 19.5 19.5"
+   sodipodi:docname="Medium.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview67"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     fit-margin-top="1"
+     fit-margin-left="1"
+     fit-margin-right="1"
+     fit-margin-bottom="1"
+     lock-margins="true"
+     inkscape:zoom="22.44"
+     inkscape:cx="10.472371"
+     inkscape:cy="12.143494"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="SVGDoc" />
+  <defs
+     id="defs2" />
+  <desc
+     id="desc4">Generated with Avocode.</desc>
+  <text
+     dominant-baseline="text-before-edge"
+     style="font-weight:normal;font-size:13px;line-height:18px;font-family:Montserrat, Montserrat-Regular;letter-spacing:0.39px;opacity:0;fill:#f2f2f2;fill-opacity:1"
+     id="text12"
+     x="-56.25"
+     y="-726.25"><tspan
+       id="tspan10">Medium</tspan></text>
+  <g
+     id="g22"
+     transform="translate(-2.25,-2.25)">
+    <title
+       id="title20">Path 11856</title>
+  </g>
+  <path
+     id="path402"
+     style="color:#000000;fill:#f2f2f2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:20;-inkscape-stroke:none"
+     d="M 3.75,1 C 2.2401018,1 1,2.2401018 1,3.75 v 12 c 0,1.509898 1.2401018,2.75 2.75,2.75 h 12 c 1.509898,0 2.75,-1.240102 2.75,-2.75 v -12 C 18.5,2.2401018 17.259898,1 15.75,1 Z m 0,1.5 h 12 C 16.44924,2.5 17,3.0507604 17,3.75 v 12 C 17,16.44924 16.44924,17 15.75,17 h -12 C 3.0507604,17 2.5,16.44924 2.5,15.75 v -12 C 2.5,3.0507604 3.0507604,2.5 3.75,2.5 Z m 2,3.5 A 0.75,0.75 0 0 0 5,6.75 0.75,0.75 0 0 0 5.75,7.5 H 6 V 12 H 5.75 A 0.75,0.75 0 0 0 5,12.75 0.75,0.75 0 0 0 5.75,13.5 h 2 A 0.75,0.75 0 0 0 8.5,12.75 0.75,0.75 0 0 0 7.75,12 H 7.5 V 8.560547 l 1.71875,1.720703 a 0.750075,0.750075 0 0 0 1.0625,0 L 12,8.560547 V 12 H 11.75 A 0.75,0.75 0 0 0 11,12.75 0.75,0.75 0 0 0 11.75,13.5 h 1 1 A 0.75,0.75 0 0 0 14.5,12.75 0.75,0.75 0 0 0 13.75,12 H 13.5 V 7.5 h 0.25 A 0.75,0.75 0 0 0 14.5,6.75 0.75,0.75 0 0 0 13.75,6 h -1 A 0.750075,0.750075 0 0 0 12.375,6.0996094 0.75,0.75 0 0 0 12.21875,6.21875 L 9.75,8.6875 7.3046875,6.2441406 A 0.75,0.75 0 0 0 7.1386719,6.109375 0.750075,0.750075 0 0 0 7.1113281,6.09375 0.75,0.75 0 0 0 6.9550781,6.0292969 0.750075,0.750075 0 0 0 6.9296875,6.0234375 0.75,0.75 0 0 0 6.75,6 Z" />
+</svg>

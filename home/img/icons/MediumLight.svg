@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="16.860838mm"
+   height="16.860838mm"
+   viewBox="0 0 16.860838 16.860838"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="MediumLight.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="6.2217172"
+     inkscape:cx="-14.786915"
+     inkscape:cy="18.564007"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Group_3680" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Warstwa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-18.105664,-40.559272)">
+    <g
+       id="Group_3678"
+       data-name="Group 3678"
+       transform="matrix(0.26458333,0,0,0.26458333,18.105664,40.559272)">
+      <g
+         id="Group_3676"
+         data-name="Group 3676">
+        <g
+           id="Group_3693"
+           data-name="Group 3693">
+          <g
+             id="Group_3679"
+             data-name="Group 3679">
+            <g
+               id="Group_3680"
+               data-name="Group 3680">
+              <path
+                 id="Rectangle_2460"
+                 style="color:#000000;fill:#f2f2f2;stroke-linecap:round;stroke-linejoin:round;-inkscape-stroke:none"
+                 d="m 12.703125,9.8535156 c -1.510526,0 -2.75,1.2394744 -2.75,2.7500004 v 38.417968 c 0,1.510525 1.239474,2.75 2.75,2.75 h 38.417969 c 1.510525,0 2.75,-1.239475 2.75,-2.75 V 12.603516 c 0,-1.510526 -1.239475,-2.7500004 -2.75,-2.7500004 z m 0,1.5000004 h 38.417969 c 0.705472,0 1.25,0.544527 1.25,1.25 v 38.417968 c 0,0.705472 -0.544528,1.25 -1.25,1.25 H 12.703125 c -0.705472,0 -1.25,-0.544528 -1.25,-1.25 V 12.603516 c 0,-0.705473 0.544528,-1.25 1.25,-1.25 z m 8.539063,11.792968 a 0.74999999,0.74999999 0 0 0 -0.75,0.75 0.74999999,0.74999999 0 0 0 0.75,0.75 h 2.34375 l 0.002,0.002 v 13.990234 h -2.279297 a 0.74999999,0.74999999 0 0 0 -0.75,0.75 0.74999999,0.74999999 0 0 0 0.75,0.75 h 4.544922 a 0.74999999,0.74999999 0 0 0 0.75,-0.75 0.74999999,0.74999999 0 0 0 -0.75,-0.75 h -0.765672 v -12.49028 l 6.24414,6.24414 a 0.75007499,0.75007499 0 0 0 1.060547,0 l 6.34375,-6.341797 v 12.587891 h -2.279297 a 0.74999999,0.74999999 0 0 0 -0.75,0.75 0.74999999,0.74999999 0 0 0 0.75,0.75 h 4.544922 a 0.74999999,0.74999999 0 0 0 0.75,-0.75 0.74999999,0.74999999 0 0 0 -0.75,-0.75 H 40.236328 V 24.646484 h 2.248047 a 0.74999999,0.74999999 0 0 0 0.75,-0.75 0.74999999,0.74999999 0 0 0 -0.75,-0.75 h -2.654297 a 0.75007499,0.75007499 0 0 0 -0.53125,0.21875 l -0.341797,0.34375 -7.09375,7.091797 -6.824219,-6.824219 a 0.74999999,0.74999999 0 0 0 -0.4375,-0.4375 l -0.173828,-0.173828 a 0.75007499,0.75007499 0 0 0 -0.53125,-0.21875 z" />
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

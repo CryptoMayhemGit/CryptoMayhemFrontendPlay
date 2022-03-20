@@ -1,0 +1,39 @@
+* {
+    color: #e2e4e6;
+    font-size: 16px;
+    font-weight: 300;
+    font-family: 'Lato';
+}
+
+#notifications {
+    left: 0;
+    bottom: 0;
+    margin: 20px;
+    position: fixed;
+}
+
+.notification {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: solid 1px;
+}
+
+.success {
+    border-color: #2de364;
+    background-color: #2de36410;
+}
+
+.info {
+    border-color: #5de2fa;
+    background-color: #5de2fa10;
+}
+
+.warning {
+    border-color: #e7df68;
+    background-color: #e7df6810;
+}
+
+.error {
+    border-color: #fa5d64;
+    background-color: #fa5d6410;
+}

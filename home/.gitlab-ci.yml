@@ -1,0 +1,12 @@
+stages:
+  - build
+build:
+  image: node:16
+  stage: build
+  script:
+    - yarn
+    - yarn build
+    - rm -r node_modules
+  artifacts:
+    paths: [ '*' ]
+

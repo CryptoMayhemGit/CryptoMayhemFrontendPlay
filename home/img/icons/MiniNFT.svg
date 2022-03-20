@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="SVGDoc"
+   width="96"
+   height="97"
+   version="1.1"
+   viewBox="0 0 96 97"
+   sodipodi:docname="MiniNFT.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview172"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="9"
+     inkscape:cx="48"
+     inkscape:cy="48.5"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="SVGDoc" />
+  <defs
+     id="defs5">
+    <clipPath
+       id="clip-5952675b-0e2c-46d5-a868-3e0c130ac14d">
+      <path
+         d="M0,96.94531v0v-96v0h96v0v96v0z"
+         id="path2" />
+    </clipPath>
+  </defs>
+  <desc
+     id="desc7">Generated with Avocode.</desc>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g21">
+    <title
+       id="title17">Path 12057</title>
+    <path
+       d="m 48.024,15.04531 c -8.34528,0 -15.19105,6.42288 -15.86256,14.59488 -0.036,0.43584 -0.05424,18.85968 -0.05424,19.30512 0,8.79024 7.12608,15.9168 15.9168,15.9168 8.79072,0 15.9168,-7.12656 15.9168,-15.9168 0,-0.35088 -0.01152,-18.6816 -0.0336,-19.02672 -0.5376,-8.304 -7.44336,-14.87328 -15.8832,-14.87328 m 0,1.92 c 7.34784,0 13.476,5.72832 13.96511,13.04784 0.01968,0.96432 0.03169,18.08976 0.03169,18.93216 0,7.71744 -6.27888,13.9968 -13.9968,13.9968 -7.71792,0 -13.9968,-6.27936 -13.9968,-13.9968 0,-0.84528 0.0192,-18.10513 0.0504,-19.18224 0.29424,-3.47472 1.87104,-6.69648 4.44144,-9.07584 2.59344,-2.4 5.9688,-3.72192 9.50497,-3.72192"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path19" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g27">
+    <title
+       id="title23">Path 12058</title>
+    <path
+       d="M 24.024,82.84483 H 14.12448 V 65.79379 c 0,-2.78304 2.25648,-5.03952 5.03952,-5.03952 h 4.86 z m -4.86,-20.17054 c -1.71984,0 -3.11952,1.3992 -3.11952,3.11951 V 80.92484 H 22.104 V 62.67429 Z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path25" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g33">
+    <title
+       id="title29">Path 12059</title>
+    <path
+       d="m 76.88928,62.67429 c 1.71695,0 3.11423,1.39679 3.11423,3.11423 v 15.13632 0 H 73.944 v 0 -18.25055 0 z m 0,-1.92002 v 0 H 72.024 v 0 22.09056 0 h 9.89952 v 0 -17.05632 c 0,-2.78064 -2.25409,-5.03424 -5.03424,-5.03424"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path31" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g39">
+    <title
+       id="title35">Path 12060</title>
+    <path
+       d="m 64.32719,26.86531 c 5.62177,0 10.19568,4.6128 10.19568,10.28304 v 9.87696 0 H 64.08575 v 0 -20.16 0 z m 0,-1.92 v 0 h -2.16144 v 0 24 0 h 14.27713 v 0 -11.79696 c 0,-6.73968 -5.42448,-12.20304 -12.11569,-12.20304"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path37" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g45">
+    <title
+       id="title41">Path 12061</title>
+    <path
+       d="m 31.45167,66.87542 v 0 h -8.02224 v 0 -1.92 0 h 7.22736 v 0 l 6.54,-6.53999 v 0 l 1.35744,1.35744 v 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path43" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g51">
+    <title
+       id="title47">Path 12062</title>
+    <path
+       d="m 31.45167,72.94949 v 0 h -8.02224 v 0 -1.92 0 h 7.22736 v 0 l 9.89664,-9.89664 v 0 l 1.35744,1.35744 v 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path49" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g57">
+    <title
+       id="title53">Path 12063</title>
+    <path
+       d="m 72.19354,72.94949 v 0 h -8.02225 v 0 L 53.93145,62.70918 v 0 l 1.35744,-1.35745 v 0 l 9.67728,9.67776 v 0 h 7.22737 v 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path55" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g63">
+    <title
+       id="title59">Path 12064</title>
+    <path
+       d="m 72.58263,66.87542 v 0 h -8.02225 v 0 l -7.0992,-7.0992 v 0 l 1.35744,-1.35744 v 0 l 6.53664,6.53664 v 0 h 7.22737 v 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path61" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g69">
+    <title
+       id="title65">Rectangle 2489</title>
+    <path
+       d="m 63.94128,36.73363 v 0 -1.92 0 h 5.47728 v 0 1.92 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path67" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g75">
+    <title
+       id="title71">Rectangle 2490</title>
+    <path
+       d="m 63.94128,43.08835 v 0 -1.92 0 h 5.47728 v 0 1.92 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path73" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g81">
+    <title
+       id="title77">Rectangle 2491</title>
+    <path
+       d="m 45.2856,57.14371 v 0 -1.92 0 h 5.47728 v 0 1.92 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path79" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g87">
+    <title
+       id="title83">Path 12065</title>
+    <path
+       d="M 34.03056,48.94531 H 19.75296 V 37.14835 c 0,-6.73968 5.42448,-12.20304 12.11616,-12.20304 h 2.16144 z m -2.16144,-22.08 c -5.62224,0 -10.19616,4.6128 -10.19616,10.28304 v 9.87696 h 10.4376 v -20.16 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path85" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g93">
+    <title
+       id="title89">Rectangle 2492</title>
+    <path
+       d="m 26.77728,36.73363 v 0 -1.92 0 h 5.47728 v 0 1.92 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path91" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g99">
+    <title
+       id="title95">Rectangle 2493</title>
+    <path
+       d="m 26.77728,43.08835 v 0 -1.92 0 h 5.47728 v 0 1.92 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path97" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g105">
+    <title
+       id="title101">Rectangle 2494</title>
+    <path
+       d="m 15.9096,74.86819 v 0 -1.92 0 h 6.5112 v 0 1.92 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path103" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g111">
+    <title
+       id="title107">Rectangle 2495</title>
+    <path
+       d="m 15.9096,79.06819 v 0 -1.92 0 h 6.5112 v 0 1.92 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path109" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g117">
+    <title
+       id="title113">Rectangle 2496</title>
+    <path
+       d="m 73.7184,74.86819 v 0 -1.92 0 h 6.51072 v 0 1.92 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path115" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g123">
+    <title
+       id="title119">Rectangle 2497</title>
+    <path
+       d="m 73.7184,79.06819 v 0 -1.92 0 h 6.51072 v 0 1.92 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path121" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g129">
+    <title
+       id="title125">Path 12066</title>
+    <path
+       d="M 44.20128,64.50837 48,64.89332 l 3.83136,-0.38593 -1.31568,6.52225 h -4.9992 z m 10.02625,-2.17201 -6.22656,0.62737 -6.1968,-0.62833 2.14127,10.61424 h 8.14128 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path127" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g135">
+    <title
+       id="title131">Path 12067</title>
+    <path
+       d="m 60.30912,34.30051 v 0 l -0.58944,0.11137 c 0.11616,0.3936 0.1152,0.84816 -0.05616,1.35455 -0.264,0.78 -0.70704,1.38625 -1.26048,1.87056 0.01105,2.91888 0.02448,7.308 0.02448,11.30832 0,5.73648 -4.66704,10.40352 -10.40351,10.40352 -5.73649,0 -10.40353,-4.66704 -10.40353,-10.40352 V 36.66547 c -0.71472,-0.67583 -0.7584,-1.63631 -0.38688,-2.44895 -0.93504,-0.25729 -1.53313,-0.42817 -1.53313,-0.42817 v 0 15.15696 c 0,6.80592 5.51761,12.32352 12.32353,12.32352 6.8064,0 12.32352,-5.5176 12.32352,-12.32352 0,-6.8064 -0.03841,-14.6448 -0.03841,-14.6448 v 0"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path133" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g141">
+    <title
+       id="title137">Path 12068</title>
+    <path
+       d="m 47.99905,24.22243 c -0.86304,0 -1.72608,0.1488 -2.55072,0.44688 l -4.79712,1.73424 c -2.97121,1.07424 -4.95073,3.8952 -4.95073,7.05504 v 0.09408 c 0,1.96704 0.7728,3.85536 2.15137,5.25793 l 4.80816,4.89264 c 1.46976,1.49567 3.40992,2.24303 5.35056,2.24303 1.93536,0 3.8712,-0.744 5.34,-2.23248 l 4.83552,-4.90128 c 1.3848,-1.40352 2.16145,-3.29664 2.16145,-5.26848 0,-3.12576 -1.93825,-5.92416 -4.86481,-7.02288 l -4.84656,-1.82016 c -0.85008,-0.31872 -1.74336,-0.47856 -2.63712,-0.47856 m 0,1.92001 c 0.67248,0 1.33247,0.12 1.96223,0.35616 l 4.84656,1.82016 c 2.16528,0.81264 3.61968,2.91264 3.61968,5.22528 0,1.47648 -0.57121,2.86896 -1.60848,3.92016 l -4.83551,4.9008 c -1.05696,1.07136 -2.46817,1.66128 -3.97296,1.66128 -1.50961,0 -2.9232,-0.59232 -3.98112,-1.66896 l -4.80816,-4.89216 c -1.03248,-1.05072 -1.6008,-2.43984 -1.6008,-3.91248 V 33.4586 c 0,-2.34336 1.48032,-4.45248 3.68353,-5.24928 l 4.79712,-1.73424 c 0.61056,-0.2208 1.24896,-0.33264 1.89792,-0.33264"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path139" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g147">
+    <title
+       id="title143">Path 12069</title>
+    <path
+       d="M 72.024,20.00803 H 62.09808 V 15.04531 H 72.024 Z m -1.92,-3.04224 h -6.08592 v 1.12272 H 70.104 Z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path145" />
+  </g>
+  <g
+     transform="rotate(-45.000155,62.085,20.02)"
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g153">
+    <title
+       id="title149">Rectangle 2498</title>
+    <path
+       d="m 59.46374,20.98281 v 0 -1.91988 0 h 5.24577 v 0 1.91988 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path151" />
+  </g>
+  <g
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g159">
+    <title
+       id="title155">Path 12070</title>
+    <path
+       d="M 33.94992,20.00803 H 24.024 v -4.96272 h 9.92592 z m -1.92,-3.04224 H 25.944 v 1.12272 h 6.08592 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path157" />
+  </g>
+  <g
+     transform="rotate(-45.000029,33.96,20.025)"
+     clip-path="url(#clip-5952675b-0e2c-46d5-a868-3e0c130ac14d)"
+     id="g165">
+    <title
+       id="title161">Rectangle 2499</title>
+    <path
+       d="m 33.00162,22.64575 v 0 -5.24577 0 h 1.91988 v 0 5.24577 0 z"
+       fill="#c83a1a"
+       fill-opacity="1"
+       id="path163" />
+  </g>
+</svg>

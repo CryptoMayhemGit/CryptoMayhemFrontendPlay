@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="SVGDoc"
+   width="1662"
+   height="968"
+   version="1.1"
+   viewBox="0 0 1662 968"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="frame2mask.svg">
+  <metadata
+     id="metadata4167">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     id="namedview4165"
+     showgrid="false"
+     inkscape:zoom="0.61265569"
+     inkscape:cx="890.11882"
+     inkscape:cy="722.2301"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="SVGDoc" />
+  <defs
+     id="defs4153" />
+  <desc
+     id="desc4155">Generated with Avocode.</desc>
+  <path
+     style="fill:#000000;fill-opacity:1"
+     d="M 34.078125 10.421875 L 10.201172 35.636719 L 10.201172 882.67578 L 80.751953 957.17578 L 839.93359 957.17578 L 860.17383 935.80469 L 917.84766 935.80469 L 938.08594 957.17578 L 989.47461 957.17578 L 1009.7168 935.80469 L 1072.4141 935.80469 L 1092.6562 957.17578 L 1140.2715 957.17578 L 1160.5137 935.80469 L 1219.4395 935.80469 L 1239.6816 957.17578 L 1591.5488 957.17578 L 1621.3281 925.73047 L 1621.3281 836.23438 L 1651.7988 804.06445 L 1651.7988 68.808594 L 1577.7266 10.421875 L 580.84375 10.421875 L 560.3457 31.816406 L 277.14258 31.816406 L 256.87891 10.421875 L 34.078125 10.421875 z "
+     id="path4163" />
+</svg>
