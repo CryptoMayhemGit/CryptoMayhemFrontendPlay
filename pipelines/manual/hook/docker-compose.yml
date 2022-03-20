@@ -1,10 +1,15 @@
 version: "3.9"
 services:
   rpc:
-    build: ./docker/rpc/Dockerfile
-    depends_on: nginx
+    build: 
+      context: ./docker/rpc/
+    depends_on: 
+      - nginx
   nginx:
-    build: ./docker/nginx/Dockerfile
+    build: 
+      context: ../../..
+      dockerfile: ./pipelines/manual/hook/docker/nginx/Dockerfile
     ports:
       - "80:80"
       - "443:443"
+      

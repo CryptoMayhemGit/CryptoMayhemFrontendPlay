@@ -1,5 +1,6 @@
 FROM node:16.14.0-alpine
 WORKDIR /app
-RUN npm i -g hardhat
-CMD hardhat node
+RUN npm i hardhat
+RUN touch hardhat.config.js
+CMD npx hardhat node
 EXPOSE 8545
