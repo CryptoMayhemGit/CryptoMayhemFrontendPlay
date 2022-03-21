@@ -15,8 +15,6 @@ RUN npm run build
 
 FROM nginx:1.20.2-alpine
 
-RUN apk add certbot certbot-nginx
-
 COPY ./pipelines/manual/hook/config/home/cert/ /etc/nginx/certs/test.cryptomayhem.io/
 COPY ./pipelines/manual/hook/config/app/cert/ /etc/nginx/certs/app.test.cryptomayhem.io/
 COPY ./pipelines/manual/hook/config/rpc/cert/ /etc/nginx/certs/rpc.test.cryptomayhem.io/
