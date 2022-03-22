@@ -23,7 +23,7 @@ export class NotificationService {
 
   constructor(private ngZone: NgZone) { }
 
-  private add(type: NotificationType, message: string): void {
+  private add(type: NotificationType, message: string): number {
 
     if (this.notifications.length === LIMIT) {
       this.notifications.shift();
@@ -37,15 +37,18 @@ export class NotificationService {
       message: message
     });
 
-    this.ngZone.runOutsideAngular(() => 
-      setTimeout(() => 
-        this.ngZone.run(() => 
-          this.close(id)
-        ), TIMEOUT)
-    );
+    if (type != NotificationType.Process) {
+      this.ngZone.runOutsideAngular(() => 
+        setTimeout(() => 
+          this.ngZone.run(() => 
+            this.close(id)
+          ), TIMEOUT)
+      );
+    }
 
     this.ngZone.run(() => this.notificationsSubject.next(this.notifications));
 
+    return id;
   }
 
   close(id: number): void {
@@ -74,6 +77,10 @@ export class NotificationService {
 
   error(message: string): void {
     this.add(NotificationType.Error, message);
+  }
+
+  process(message: string): number {
+    return this.add(NotificationType.Process, message);
   }
 
 }

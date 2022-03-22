@@ -7,6 +7,8 @@ import { NotificationService } from '../../services/notification.service';
 import { Notification } from '../../models/notification/notification.model';
 import { NotificationType } from '../../models/notification/notification-type.model';
 
+import { TIMEOUT } from '../../config/notification/notification.config';
+
 
 @Component({
   selector: 'app-notification',
@@ -20,6 +22,8 @@ export class NotificationComponent implements OnInit, OnDestroy {
   NotificationType = NotificationType;
 
   notifications: Notification[] = [];
+  
+  TIMEOUT = `${(TIMEOUT / 1000)}s`;
 
   constructor(private notificationService: NotificationService) { }
 
@@ -31,6 +35,10 @@ export class NotificationComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription?.unsubscribe();
+  }
+
+  close(id: number): void {
+    this.notificationService.close(id);
   }
 
 }

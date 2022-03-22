@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 import { RegisterRequest } from '../models/auth/register/register-request.model';
 import { RegisterResponse } from '../models/auth/register/register-response.model';
@@ -13,6 +13,11 @@ import { TOKEN_KEY } from '../config/auth.config';
 
 import { environment } from '../../../environments/environment';
 
+import { 
+  REGISTER_ERROR ,
+  LOGIN_ERROR
+} from '../config/notification/auth.config';
+
 
 @Injectable({
   providedIn: 'root'
@@ -21,12 +26,15 @@ export class AuthService {
 
   private authenticationSubject = new BehaviorSubject<boolean>(false);
   private userIdSubject = new BehaviorSubject<number>(- 1);
+  private accountSubject = new BehaviorSubject<string>('');
 
   private authentication = false;
   private userId = - 1;
+  private account = '';
 
   authentication$ = this.authenticationSubject.asObservable();
   userId$ = this.authenticationSubject.asObservable();
+  account$ = this.accountSubject.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -40,6 +48,11 @@ export class AuthService {
     this.userIdSubject.next(userId);
   }
 
+  private updateAccount(account: string): void {
+    this.account = account;
+    this.accountSubject.next(account);
+  }
+
   getAuthentication(): boolean {
     return this.authentication;
   }
@@ -48,19 +61,21 @@ export class AuthService {
     return this.userId;
   }
 
+  getAccount(): string {
+    return this.account;
+  }
+
   register(registerRequest: RegisterRequest): Observable<boolean> {
     return new Observable(observer => {
 
       this.http.post<RegisterResponse>(`${environment.baseUrl}api/Account/Register`, registerRequest)
-        .subscribe(response => {
-          
-          const success = response.success;
+        .subscribe({
 
-          if (success) {
-            this.userId = response.userId;
-          }
+            next: (response) => {
+              observer.next(response.success);
+            },
 
-          observer.next(success);
+            error: () => observer.error(new Error(REGISTER_ERROR))
 
         });
 
@@ -75,11 +90,12 @@ export class AuthService {
 
             next: (response) => {
               sessionStorage.setItem(TOKEN_KEY, response.token);
+              this.updateAccount(loginRequest.wallet);
               this.updateAuthentication(true);
               observer.next(true);
             },
 
-            error: () => observer.next(false)
+            error: () => observer.error(new Error(LOGIN_ERROR))
 
         });
 
@@ -88,6 +104,7 @@ export class AuthService {
 
   logout(): Observable<boolean> {
     this.updateAuthentication(false);
+    this.updateAccount('');
     this.updateUserId(- 1);
     sessionStorage.removeItem(TOKEN_KEY);
     return of(true);

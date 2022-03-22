@@ -2,15 +2,14 @@ import { Observable, Subject, from, of } from "rxjs";
 
 import { WalletConnector } from "../../models/wallet/wallet-connector.model";
 
+import { WalletError } from "../../classes/wallet/wallet-error.class";
+
 import { MetamaskWindow } from "../../models/wallet/metamask/metamask-window.model";
 import { MetamaskProvider } from "../../models/wallet/metamask/metamask-provider.model";
 import { MetamaskError } from "../../models/wallet/metamask/metamask-error.model";
 import { MetamaskAsset } from "../../models/wallet/metamask/metamask-asset.model";
-import { MetamaskChainBase } from "../../models/wallet/metamask/metamask-chain-base.model";
-import { MetamaskChain } from "../../models/wallet/metamask/metamask-chain.model";
 
 import {
-    BNB_CHAIN,
     CONNECT_LISTENER, 
     DISCONNECT_LISTENER, 
     CHAIN_LISTENER, 
@@ -18,20 +17,29 @@ import {
     CONNECT_REQUEST, 
     CHAIN_ID_REQUEST, 
     ACCOUNTS_REQUEST, 
+    SWITCH_CHAIN_REQUEST,
     ADD_ASSET_REQUEST,
     ADD_CHAIN_REQUEST,
-    SWITCH_CHAIN_REQUEST,
-    UNRECOGNIZED_CHAIN_ERROR_CODE
+    UNRECOGNIZED_CHAIN_ERROR_CODE,
+    USER_REJECTED_ERROR_CODE,
+    CHAIN_IDS,
+    CHAINS
 } from "../../config/wallet/metamask.config";
 
 import { 
     CONNECTED, 
     DISCONNECTED, 
     EMPTY_ACCOUNT, 
-    EMPTY_PROVIDER 
+    EMPTY_PROVIDER,
 } from "../../config/wallet/wallet.config";
 
-import { PROVIDER_NOT_FOUND, UNKNOWN_ERROR } from "../../config/notification/metamask.config";
+import { 
+    PROVIDER_NOT_FOUND,  
+    UNKNOWN_ERROR,
+    UNSUPPORTED_CHAIN, 
+    UNRECOGNIZED_CHAIN, 
+    USER_REJECTED_CHAIN 
+} from "../../config/notification/metamask.config";
 
 
 export class MetamaskWallet implements WalletConnector {
@@ -57,7 +65,7 @@ export class MetamaskWallet implements WalletConnector {
         const provider = (window as MetamaskWindow).ethereum;
 
         if (!provider) {
-            throw new Error(PROVIDER_NOT_FOUND);
+            throw new WalletError(PROVIDER_NOT_FOUND);
         }
 
         return provider;
@@ -100,29 +108,41 @@ export class MetamaskWallet implements WalletConnector {
     }
 
     connect(): Observable<boolean> {
-        const provider = this.retrieveProvider();
+        return new Observable(observer => {
 
-        provider.on(CONNECT_LISTENER, this.onConnect);
-        provider.on(DISCONNECT_LISTENER, this.onDisonnect);
-        provider.on(CHAIN_LISTENER, this.onChainIdChanged);
-        provider.on(ACCOUNTS_LISTENER, this.onAccountChanged);
+            try {
 
-        return from(
+            const provider = this.retrieveProvider();
+
+            provider.on(CONNECT_LISTENER, this.onConnect);
+            provider.on(DISCONNECT_LISTENER, this.onDisonnect);
+            provider.on(CHAIN_LISTENER, this.onChainIdChanged);
+            provider.on(ACCOUNTS_LISTENER, this.onAccountChanged);
+    
             provider
                 .request(CONNECT_REQUEST)
-                .then(() => true)
-        );
+                .then(() => observer.next(true));
+
+            } catch (error) {
+                return observer.error(error);
+            }
+
+        });
     }
 
     disconnect(): Observable<boolean> {
-        const provider = this.retrieveProvider();
+        return new Observable(observer => {
 
-        provider.removeListener(CONNECT_LISTENER, this.onConnect);
-        provider.removeListener(DISCONNECT_LISTENER, this.onDisonnect);
-        provider.removeListener(CHAIN_LISTENER, this.onChainIdChanged);
-        provider.removeListener(ACCOUNTS_LISTENER, this.onAccountChanged);
+            const provider = this.retrieveProvider();
 
-        return of(true);
+            provider.removeListener(CONNECT_LISTENER, this.onConnect);
+            provider.removeListener(DISCONNECT_LISTENER, this.onDisonnect);
+            provider.removeListener(CHAIN_LISTENER, this.onChainIdChanged);
+            provider.removeListener(ACCOUNTS_LISTENER, this.onAccountChanged);
+    
+            observer.next(true);
+
+        });
     }
 
     getChainId(): Observable<string> {
@@ -145,49 +165,63 @@ export class MetamaskWallet implements WalletConnector {
         return of(this.retrieveProvider());
     }
 
-    addChain(chain: MetamaskChain): Observable<boolean> {
-        const addChainRequest = Object.assign({ params: chain }, ADD_CHAIN_REQUEST);
+    switchChain(chainId: string): Observable<boolean> {
+        return new Observable(observer => {
 
-        return from(
-            this.retrieveProvider()
-                .request(addChainRequest)
-                .then((success) => {
+            const chainIdObject = CHAIN_IDS.get(chainId);
 
-                    if (!success) {
-                        throw new Error(UNKNOWN_ERROR);
-                    }
+            if (!chainIdObject) {
+                return observer.error(new Error(UNSUPPORTED_CHAIN));
+            }
 
-                    return true;
-
-                })
-        );
-    }
-
-    switchChain(chainBase: MetamaskChainBase): Observable<boolean> {
-        const switchChainRequest = Object.assign({ params: chainBase }, SWITCH_CHAIN_REQUEST);
-
-        return from(
+            const switchChainRequest = Object.assign({ params: [chainIdObject] }, SWITCH_CHAIN_REQUEST);
+            
             this.retrieveProvider()
                 .request(switchChainRequest)
-                .then((success) => {
-
-                    if (!success) {
-                        throw new Error(UNKNOWN_ERROR);
-                    }
-
-                    return true;
-
-                })
+                .then((success) => observer.next(success))
                 .catch((error: MetamaskError) => {
 
                     if (error.code === UNRECOGNIZED_CHAIN_ERROR_CODE) {
-                        this.addChain(BNB_CHAIN)
+                        return observer.error(new WalletError(UNRECOGNIZED_CHAIN, UNRECOGNIZED_CHAIN_ERROR_CODE));
                     }
-                    
-                    return false;
 
-                })
-        );
+                    if (error.code === USER_REJECTED_ERROR_CODE) {
+                        return observer.error(new WalletError(USER_REJECTED_CHAIN));
+                    }
+
+                    return observer.error(error);
+
+                });
+
+        });
+    }
+
+    addChain(chainId: string): Observable<boolean> {
+        return new Observable(observer => {
+
+            const chainObject = CHAINS.get(chainId);
+
+            if (!chainObject) {
+                return observer.error(new Error(UNSUPPORTED_CHAIN));
+            }
+
+            const addChainRequest = Object.assign({ params: [chainObject] }, ADD_CHAIN_REQUEST);
+            console.log(addChainRequest)
+
+            this.retrieveProvider()
+                .request(addChainRequest)
+                .then((success) => observer.next(success))
+                .catch((error: MetamaskError) => {
+
+                    if (error.code === USER_REJECTED_ERROR_CODE) {
+                        return observer.error(new WalletError(USER_REJECTED_CHAIN));
+                    }
+
+                    return observer.error(error);
+
+                });
+
+        });
     }
 
     addAsset(asset: MetamaskAsset): Observable<boolean> {

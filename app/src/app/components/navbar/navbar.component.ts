@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { first } from 'rxjs';
+import { first, Observable, Observer } from 'rxjs';
 
 import { AuthService } from '../../shared/services/auth.service';
 import { WalletService } from '../../shared/services/wallet.service';
@@ -16,15 +16,24 @@ import { LoginRequest } from '../../shared/models/auth/login/login-request.model
 import { generateRegisterMessageDeprecated, generateLoginMessageDeprecated } from '../../shared/util/auth.util';
 
 import { 
-  CONNECTION_FAILED,
-  CONNECTION_SUCCESS,
-  DISCONNECTION_SUCCESS,
+  CONNECT_SUCCESS,
+  CONNECT_PROCESS,
+  DISCONNECT_SUCCESS,
+  DISCONNECT_PROCESS,
+  REGISTER_SUCCESS,
+  REGISTER_PROCESS,
   LOGIN_SUCCESS,
+  LOGIN_PROCESS,
   LOGOUT_SUCCESS,
-  REGISTRATION_FAILED,
-  REGISTRATION_REQUIRED,
-  REGISTRATION_SUCCESS
+  LOGOUT_PROCESS,
+  SWITCH_CHAIN_SUCCESS,
+  SWITCH_CHAIN_PROCESS,
+  SWITCH_CHAIN_ADD,
+  ADD_CHAIN_SUCCESS,
+  ADD_CHAIN_PROCESS
 } from 'src/app/shared/config/notification/navbar.config';
+
+import { SUPPORTED_CHAIN_ID, UNRECOGNIZED_CHAIN_ERROR_CODE } from 'src/app/shared/config/wallet/wallet.config';
 
 
 @Component({
@@ -45,6 +54,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   registered = true;
   authenticated = false;
 
+  supportedChain = false;
+  unrecognizedChain = false;
+
   chainId = '';
   account = '';
 
@@ -61,158 +73,293 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.authSubscriptionRegister.clear();
   }
 
-  private wrap(process: () => any) {
-    try {
-      this.processing = true;
-      process();
-    } finally {
-      this.processing = false;
-    }
+  private startProcessing(message: string): number {
+    this.processing = true;
+    return this.notificationService.process(message);
+  }
+
+  private stopProcessing(id: number): void {
+    this.processing = false;
+    this.notificationService.close(id);
+  }
+
+  private completeWithError(error: Error, observer: Observer<void>): void {
+    this.notificationService.error(error.message);
+    observer.next();
+  }
+
+  private wrap(message: string, process: () => Observable<any>) {
+    const id = this.startProcessing(message);
+    process()
+      .pipe(first())
+      .subscribe(() => this.stopProcessing(id));
   }
 
   connect(): void {
-    this.wrap(() =>
-      this.walletService
-        .connect(this.walletType)
-        .pipe(first())
-        .subscribe(success => {
+    this.wrap(CONNECT_PROCESS, () =>
+      new Observable(observer => 
+        this.walletService
+          .connect(this.walletType)
+          .pipe(first())
+          .subscribe({
 
-          if (!success) {
-            this.notificationService.error(CONNECTION_FAILED);
-            return;
-          }
+            next: () => {
 
-          this.notificationService.success(CONNECTION_SUCCESS);
+              observer.next();
 
-          this.walletSubscriptionRegister.add(
-            this.walletService.connection$.subscribe(connection => 
-              this.connected = connection
-            )
-          );
-      
+              this.notificationService.success(CONNECT_SUCCESS);
 
-          this.walletSubscriptionRegister.add(
-            this.walletService.chainId$.subscribe(chainId => 
-              this.chainId = chainId
-            )
-          );
-      
-          this.walletSubscriptionRegister.add(
-            this.walletService.account$.subscribe(account => 
-              this.account = account
-            )
-          );
+              this.walletSubscriptionRegister.add(
+                this.walletService.connection$.subscribe(connection => {
 
-        })
+                  this.connected = connection;
+
+                  if (this.authenticated && !connection) {
+                    this.logout();
+                  }
+
+                })
+              );
+
+              this.walletSubscriptionRegister.add(
+                this.walletService.chainId$.subscribe(chainId => {
+
+                  this.supportedChain = chainId === SUPPORTED_CHAIN_ID;
+                  this.chainId = chainId;
+
+                  if (this.authenticated && !this.supportedChain) {
+                    this.logout();
+                  }
+
+                })
+              );
+          
+              this.walletSubscriptionRegister.add(
+                this.walletService.account$.subscribe(account => {
+                  
+                  this.account = account;
+
+                  if (this.authenticated) {
+                    const authenticatedAccount = this.authService.getAccount();
+
+                    if (account != authenticatedAccount) {
+                      this.logout();
+                    }
+                  }
+
+                })
+              );
+
+            },
+
+            error: (error) => this.completeWithError(error, observer)
+
+          })
+      )
     );
   }
 
   disconnect(): void {
-    this.wrap(() =>
-      this.walletService
-        .disconnect()
-        .pipe(first())
-        .subscribe(success => {
+    this.wrap(DISCONNECT_PROCESS, () =>
+      new Observable(observer => 
+        this.walletService
+          .disconnect()
+          .pipe(first())
+          .subscribe({
 
-          if (success) {
-            this.walletSubscriptionRegister.clear();
-            this.notificationService.success(DISCONNECTION_SUCCESS);
-          }
-          
-        })
+            next: () => {
+
+              observer.next();
+
+              this.walletSubscriptionRegister.clear();
+              this.notificationService.success(DISCONNECT_SUCCESS);
+
+            },
+
+            error: (error) => this.completeWithError(error, observer)
+              
+          })
+      )
     );
   }
 
   register(): void {
-    this.wrap(() => {
+    this.wrap(REGISTER_PROCESS, () => 
+      new Observable(observer => {
 
-      const registerMessage = generateRegisterMessageDeprecated();
+        const registerMessage = generateRegisterMessageDeprecated();
 
-      this.walletService
-        .signMessage(`${registerMessage.message} ${registerMessage.nonce}`)
-        .pipe(first())
-        .subscribe(signedRegisterMessage => {
+        this.walletService
+          .signMessage(`${registerMessage.message} ${registerMessage.nonce}`)
+          .pipe(first())
+          .subscribe({
 
-          const registerRequest: RegisterRequest = {
-            wallet: this.walletService.getAccount(),
-            signedMessage: signedRegisterMessage,
-            messageToSign: registerMessage
-          };
+            next: (signedRegisterMessage) => {
 
-          this.authService
-            .register(registerRequest)
-            .pipe(first())
-            .subscribe(success => {
+              const registerRequest: RegisterRequest = {
+                wallet: this.walletService.getAccount(),
+                signedMessage: signedRegisterMessage,
+                messageToSign: registerMessage
+              };
 
-              if (success) {
-                this.registered = true;
-                this.notificationService.success(REGISTRATION_SUCCESS);
-              } else {
-                this.notificationService.error(REGISTRATION_FAILED);
-              }
+              this.authService
+                .register(registerRequest)
+                .pipe(first())
+                .subscribe({
 
-            });
+                  next: () => {
 
-        });
+                    observer.next();
 
-    });
+                    this.registered = true;
+                    this.notificationService.success(REGISTER_SUCCESS);
+
+                  },
+
+                  error: (error) => this.completeWithError(error, observer)
+
+                });
+
+            },
+
+            error: (error) => this.completeWithError(error, observer)
+
+          });
+
+      })
+    );
   }
 
   login(): void {
-    this.wrap(() => {
+    this.wrap(LOGIN_PROCESS, () =>
+      new Observable(observer => {
 
-      const loginMessage = generateLoginMessageDeprecated();
+        const loginMessage = generateLoginMessageDeprecated();
 
-      this.walletService
-        .signMessage(`${loginMessage.message} ${loginMessage.nonce}`)
-        .pipe(first())
-        .subscribe(signedLoginMessage => {
+        this.walletService
+          .signMessage(`${loginMessage.message} ${loginMessage.nonce}`)
+          .pipe(first())
+          .subscribe({
 
-          const loginRequest: LoginRequest = {
-            wallet: this.walletService.getAccount(),
-            signedMessage: signedLoginMessage,
-            messageToSign: loginMessage
-          };
+            next: (signedLoginMessage) => {
 
-          this.authService
-            .login(loginRequest)
-            .pipe(first())
-            .subscribe(success => {
+              const loginRequest: LoginRequest = {
+                wallet: this.walletService.getAccount(),
+                signedMessage: signedLoginMessage,
+                messageToSign: loginMessage
+              };
 
-              if (!success) {
-                this.registered = false;
-                this.notificationService.info(REGISTRATION_REQUIRED);
-                return;
-              }
+              this.authService
+                .login(loginRequest)
+                .pipe(first())
+                .subscribe({
 
-              this.notificationService.success(LOGIN_SUCCESS);
-    
-              this.authSubscriptionRegister.add(
-                this.authService.authentication$.subscribe(authentication => 
-                  this.authenticated = authentication
-                )
-              );
+                  next: () => {
 
-            });
+                    observer.next();
 
-        });
+                    this.notificationService.success(LOGIN_SUCCESS);
+          
+                    this.authSubscriptionRegister.add(
+                      this.authService.authentication$.subscribe(authentication => 
+                        this.authenticated = authentication
+                      )
+                    );
 
-    });
+                  },
+
+                  error: (error) => {
+                    this.registered = false;
+                    this.completeWithError(error, observer);
+                  }
+
+                });
+
+              },
+
+              error: (error) => this.completeWithError(error, observer)
+
+          });
+
+      })
+    );
   }
 
   logout(): void {
-    this.wrap(() =>
-    this.authService
-      .logout()
-      .pipe(first())
-      .subscribe(success => {
+    this.wrap(LOGOUT_PROCESS, () =>
+      new Observable(observer => 
+        this.authService
+          .logout()
+          .pipe(first())
+          .subscribe({
 
-        if (success) {
-          this.authSubscriptionRegister.clear();
-          this.notificationService.success(LOGOUT_SUCCESS);
-        }
+            next: () => {
 
-      })
+              observer.next();
+
+              this.authSubscriptionRegister.clear();
+              this.notificationService.success(LOGOUT_SUCCESS);
+
+            }
+
+          })
+      )
+    );
+  }
+
+  switchChain(): void {
+    this.wrap(SWITCH_CHAIN_PROCESS, () =>
+      new Observable(observer => 
+        this.walletService
+          .switchChain(SUPPORTED_CHAIN_ID)
+          .pipe(first())
+          .subscribe({
+
+            next: () => {
+
+              observer.next();
+
+              this.notificationService.success(SWITCH_CHAIN_SUCCESS);
+
+            },
+
+            error: (error) => {
+
+              if (error.name === 'WalletError' && error.code === UNRECOGNIZED_CHAIN_ERROR_CODE) {
+                this.notificationService.info(SWITCH_CHAIN_ADD);
+                this.unrecognizedChain = true;
+              }
+              
+              this.completeWithError(error, observer);
+            
+            }
+
+          })
+      )
+    );
+  }
+
+  addChain(): void {
+    this.wrap(ADD_CHAIN_PROCESS, () =>
+      new Observable(observer => 
+        this.walletService
+          .addChain(SUPPORTED_CHAIN_ID)
+          .pipe(first())
+          .subscribe({
+
+            next: () => {
+
+              observer.next();
+
+              this.unrecognizedChain = false;
+              this.notificationService.success(ADD_CHAIN_SUCCESS);
+
+            },
+
+            error: (error) => this.completeWithError(error, observer)
+
+          })
+      )
     );
   }
 

@@ -1,12 +1,14 @@
 <div id="info">
     <p *ngIf="connected"> Account: {{ account }} </p>
-    <button *ngIf="connected" class="green"> Chain ID: {{ chainId }} </button>
+    <button *ngIf="connected && !supportedChain && !unrecognizedChain" (click)="switchChain()" [disabled]="processing" class="green"> Change chain </button>
+    <button *ngIf="connected && !supportedChain && unrecognizedChain" (click)="addChain()" [disabled]="processing" class="green"> Add chain </button>
+    <button *ngIf="connected && supportedChain && !unrecognizedChain" [disabled]="true" class="green"> Chain ID: {{ chainId }} </button>
 </div>
 
-<div id="auth">
-    <button *ngIf="connected && authenticated && registered" (click)="logout()" [disabled]="processing" class="purple"> Logout </button>
-    <button *ngIf="connected && !authenticated && registered" (click)="login()" [disabled]="processing" class="blue"> Login </button>
-    <button *ngIf="connected && !authenticated && !registered" (click)="register()" [disabled]="processing" class="blue"> Register </button>
+<div *ngIf="connected && supportedChain" id="auth">
+    <button *ngIf="connected && supportedChain && authenticated && registered" (click)="logout()" [disabled]="processing" class="purple"> Logout </button>
+    <button *ngIf="connected && supportedChain && !authenticated && registered" (click)="login()" [disabled]="processing" class="blue"> Login </button>
+    <button *ngIf="connected && supportedChain && !authenticated && !registered" (click)="register()" [disabled]="processing" class="blue"> Register </button>
 </div>
 
 <div id="wallet">

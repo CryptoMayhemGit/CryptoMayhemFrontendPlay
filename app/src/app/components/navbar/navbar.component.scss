@@ -65,3 +65,8 @@ button {
 .purple:hover {
     background-color: #de6eff20;
 }
+
+button:disabled:hover {
+    cursor: default;
+    background-color: unset;
+}

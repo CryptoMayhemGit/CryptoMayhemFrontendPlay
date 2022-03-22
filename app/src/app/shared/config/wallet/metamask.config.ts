@@ -15,6 +15,7 @@ export const ADRIA_ASSET: MetamaskAsset = {
 };
 
 export const BNB_CHAIN_ID: MetamaskChainBase = { chainId: "0x38" };
+export const TEST_CHAIN_ID: MetamaskChainBase = { chainId: "0x7a69" };
 
 export const BNB_CHAIN: MetamaskChain = {
     ...BNB_CHAIN_ID,
@@ -32,6 +33,29 @@ export const BNB_CHAIN: MetamaskChain = {
     ],
     iconUrls: []
 };
+
+export const TEST_CHAIN: MetamaskChain = {
+    ...TEST_CHAIN_ID,
+    chainName: "Crypto Mayhem Test Chain",
+    nativeCurrency: {
+        name: "BNB",
+        symbol: "bnb",
+        decimals: 18
+    },
+    rpcUrls: [
+        "https://rpc.test.cryptomayhem.io/"
+    ]
+};
+
+export const CHAIN_IDS = new Map([
+    ["0x38", BNB_CHAIN_ID],
+    ["0x7a69", TEST_CHAIN_ID]
+]);
+
+export const CHAINS = new Map([
+    ["0x38", BNB_CHAIN],
+    ["0x7a69", TEST_CHAIN]
+]);
 
 export const ADD_ASSET_REQUEST: MetamaskRequest = { method: "wallet_watchAsset" };
 export const ADD_CHAIN_REQUEST: MetamaskRequest = { method: "wallet_addEthereumChain" };

@@ -15,6 +15,9 @@ export interface WalletConnector {
     accountChanged$: Observable<string>;
     providerChanged$: Observable<any>;
 
+    switchChain(chainId: string): Observable<boolean>;
+    addChain(chainId: string): Observable<boolean>;
+
 }
 
 // error x2
