@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  debug: true,
   production: false,
   baseUrl: "https://mayhemwebapi.azurewebsites.net/"
 };

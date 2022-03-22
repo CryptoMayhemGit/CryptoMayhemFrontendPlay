@@ -206,7 +206,6 @@ export class MetamaskWallet implements WalletConnector {
             }
 
             const addChainRequest = Object.assign({ params: [chainObject] }, ADD_CHAIN_REQUEST);
-            console.log(addChainRequest)
 
             this.retrieveProvider()
                 .request(addChainRequest)

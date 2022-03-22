@@ -68,11 +68,21 @@ export class AuthService {
   register(registerRequest: RegisterRequest): Observable<boolean> {
     return new Observable(observer => {
 
+      if (environment.debug) {
+        console.log('Register request: ', registerRequest);
+      }
+
       this.http.post<RegisterResponse>(`${environment.baseUrl}api/Account/Register`, registerRequest)
         .subscribe({
 
             next: (response) => {
+
               observer.next(response.success);
+
+              if (environment.debug) {
+                console.log('Register response: ', response);
+              }
+
             },
 
             error: () => observer.error(new Error(REGISTER_ERROR))
@@ -85,14 +95,24 @@ export class AuthService {
   login(loginRequest: LoginRequest): Observable<boolean> {
     return new Observable(observer => {
 
+      if (environment.debug) {
+        console.log('Login request: ', loginRequest);
+      }
+
       this.http.post<LoginResponse>(`${environment.baseUrl}api/Account/Login`, loginRequest)
         .subscribe({
 
             next: (response) => {
+
               sessionStorage.setItem(TOKEN_KEY, response.token);
               this.updateAccount(loginRequest.wallet);
               this.updateAuthentication(true);
               observer.next(true);
+
+              if (environment.debug) {
+                console.log('Login response: ', response);
+              }
+
             },
 
             error: () => observer.error(new Error(LOGIN_ERROR))
