@@ -1,5 +1,6 @@
 export const CONNECT_SUCCESS = "Successfully connected!";
 export const CONNECT_PROCESS = "Connecting...";
+export const CONNECT_ACCEPT= "Accept connection!";
 
 export const DISCONNECT_SUCCESS = "Successfully disconnected!";
 export const DISCONNECT_PROCESS = "Disconnecting...";

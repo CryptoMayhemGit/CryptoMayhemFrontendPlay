@@ -2,7 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 
 import { Web3Provider } from '@ethersproject/providers';
 
-import { BehaviorSubject, Observable, forkJoin, first } from 'rxjs';
+import { BehaviorSubject, Observable, first, zip } from 'rxjs';
 
 import { WalletConnector } from '../models/wallet/wallet-connector.model'
 import { WalletType } from '../models/wallet/wallet-type.model';
@@ -137,14 +137,14 @@ export class WalletService {
               )  
             );
 
-            forkJoin({
-              chainId: this.wallet.getChainId(),
-              account: this.wallet.getAccount(),
-              provider: this.wallet.getProvider()
-            })
+            zip(
+              this.wallet.getChainId(),
+              this.wallet.getAccount(),
+              this.wallet.getProvider()
+            )
             .subscribe({
               
-              next: ({ chainId, account, provider }) => {
+              next: ([chainId, account, provider]) => {
 
                 this.updateChainId(chainId);
                 this.updateAccount(account);
@@ -168,7 +168,7 @@ export class WalletService {
               return observer.error(error);
             }
 
-            return observer.error(new Error(CONNECT_ERROR));
+            observer.error(new Error(CONNECT_ERROR));
 
           }
         
@@ -261,7 +261,7 @@ export class WalletService {
               return observer.error(error);
             }
 
-            return observer.error(new Error(SWITCH_CHAIN_ERROR));
+            observer.error(new Error(SWITCH_CHAIN_ERROR));
 
           }
 
@@ -289,7 +289,7 @@ export class WalletService {
               return observer.error(error);
             }
 
-            return observer.error(new Error(ADD_CHAIN_ERROR));
+            observer.error(new Error(ADD_CHAIN_ERROR));
 
           }
 

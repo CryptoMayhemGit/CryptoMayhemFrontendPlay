@@ -18,6 +18,7 @@ import { generateRegisterMessageDeprecated, generateLoginMessageDeprecated } fro
 import { 
   CONNECT_SUCCESS,
   CONNECT_PROCESS,
+  CONNECT_ACCEPT,
   DISCONNECT_SUCCESS,
   DISCONNECT_PROCESS,
   REGISTER_SUCCESS,
@@ -33,7 +34,11 @@ import {
   ADD_CHAIN_PROCESS
 } from 'src/app/shared/config/notification/navbar.config';
 
-import { SUPPORTED_CHAIN_ID, UNRECOGNIZED_CHAIN_ERROR_CODE } from 'src/app/shared/config/wallet/wallet.config';
+import { 
+  SUPPORTED_CHAIN_ID, 
+  UNRECOGNIZED_CHAIN_ERROR_CODE, 
+  PENDING_REQUEST_CODE 
+} from 'src/app/shared/config/wallet/wallet.config';
 
 
 @Component({
@@ -152,7 +157,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
             },
 
-            error: (error) => this.completeWithError(error, observer)
+            error: (error) => {
+
+              if (error.name === 'WalletError' && error.code === PENDING_REQUEST_CODE) {
+                this.notificationService.info(CONNECT_ACCEPT);
+              }
+
+              this.completeWithError(error, observer);
+
+            }
 
           })
       )

@@ -6,3 +6,4 @@ export const EMPTY_PROVIDER = undefined;
 
 export const SUPPORTED_CHAIN_ID = "0x7a69";
 export const UNRECOGNIZED_CHAIN_ERROR_CODE = 4902;
+export const PENDING_REQUEST_CODE = -32002;

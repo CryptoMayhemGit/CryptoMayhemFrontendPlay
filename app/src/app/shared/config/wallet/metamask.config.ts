@@ -72,3 +72,4 @@ export const ACCOUNTS_LISTENER = "accountsChanged";
 
 export const USER_REJECTED_ERROR_CODE = 4001;
 export const UNRECOGNIZED_CHAIN_ERROR_CODE = 4902;
+export const PENDING_REQUEST_CODE = -32002;
