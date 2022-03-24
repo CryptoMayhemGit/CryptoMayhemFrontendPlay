@@ -3,12 +3,17 @@ services:
   rpc:
     build: 
       context: ./docker/rpc/
-    depends_on: 
-      - nginx
+  proxy:
+    build:
+      context: ./docker/proxy
+    depends_on:
+      - rpc
   nginx:
     build: 
       context: ../../..
       dockerfile: ./pipelines/manual/hook/docker/nginx/Dockerfile
+    depends_on:
+      - proxy
     ports:
       - "80:80"
       - "443:443"
