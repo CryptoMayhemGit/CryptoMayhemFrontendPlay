@@ -1,5 +1,0 @@
-export const environment = {
-  debug: false,
-  production: true,
-  baseUrl: "https://mayhemwebapi.azurewebsites.net/"
-};

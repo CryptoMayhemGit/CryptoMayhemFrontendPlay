@@ -1,3 +1,5 @@
+import { environment } from "src/environments/environment";
+
 import { MetamaskAsset } from "../../models/wallet/metamask/metamask-asset.model";
 import { MetamaskChain } from "../../models/wallet/metamask/metamask-chain.model";
 import { MetamaskChainBase } from "../../models/wallet/metamask/metamask-chain-base.model";
@@ -22,7 +24,7 @@ export const BNB_CHAIN: MetamaskChain = {
     chainName: "Binance Smart Chain Mainnet",
     nativeCurrency: {
         name: "BNB",
-        symbol: "bnb",
+        symbol: "BNB",
         decimals: 18
     },
     rpcUrls: [
@@ -39,11 +41,11 @@ export const TEST_CHAIN: MetamaskChain = {
     chainName: "Crypto Mayhem Test Chain",
     nativeCurrency: {
         name: "BNB",
-        symbol: "bnb",
+        symbol: "BNB",
         decimals: 18
     },
     rpcUrls: [
-        "https://rpc.test.cryptomayhem.io/"
+        `https://rpc.test.cryptomayhem.io/${environment.rpcToken}`
     ]
 };
 
