@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
     const token = query.token
 
     proxy.web(req, res, { 
-        target: 'https://nginx:8545/', 
+        target: 'http://nginx:8545/', 
         headers: { 
             'Authorization': `Basic ${token}`
         }
