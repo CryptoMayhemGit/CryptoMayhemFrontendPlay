@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../dist/main.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<main>
+    <div class="headerBg"></div>
+    <header class="isFloating">
+        <h1><img src="../img/logo.svg" alt="Crypt0 Mayhem"></h1>
+        <nav class="mainMenu mainMenu-few">
+            <ul>
+                <li>
+                    <a href="/">Play</a>
+                </li>
+                <li>
+                    <a href="/">Marketplace</a>
+                </li>
+                <li>
+                    <a href="/">Staking</a>
+                </li>
+                <li>
+                    <a href="/">Vesting</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="header-rest">
+            <ul class="langSelection">
+                <li class="isActive">
+                    <a href="tmp">EN</a>
+                </li>
+                <li>
+                    <a href="tmp">PL</a>
+                </li>
+            </ul>
+            <span class="icon-profile"></span>
+        </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+    <section class="staking">
+        <h2>Staking</h2>
+        <div class="card staking-stake">
+            <div class="small">APY: <strong>62%</strong></div>
+            <span class="icon icon-dollar">            </span>
+            <h3>Adria staked</h3>
+            <div class="amount">$42</div>
+            <div class="amount2">385 <span class="icon-adria-token"></span></div>
+            <div class="buttons">
+                <cut-button>STAKE</cut-button>
+                <cut-button data-disabled>UNLOCK</cut-button>
+            </div>
+        </div>
+        <div class="card staking-withdraw">
+            <span class="icon icon-wallet">            </span>
+            <h3>Ready to withdraw</h3>
+            <div class="amount">0/42$</div>
+            <div class="amount2">0/385 <span class="icon-adria-token"></span></div>
+            <div class="buttons">
+                <cut-button data-disabled>WITHDRAW ALL</cut-button>
+            </div>
+        </div>
+        <div class="card staking-reward">
+            <span class="icon icon-gift">            </span>
+            <h3>Rewards earned</h3>
+            <div class="amount">$42</div>
+            <div class="amount2">385 <span class="icon-adria-token"></span></div>
+            <div class="buttons">
+                <cut-button data-disabled>CLAIM ALL</cut-button>
+            </div>
+        </div>
+    </section>
+    <section class="farm">
+        <h2>Farm</h2>
+        <div class="card">
+            <h3>Adria-ETH SLP</h3>
+            <form class="group group-balance">
+                <div class="title">Balance</div>
+                <div class="input-wrapper">
+                    <input type="number">
+                    <span class="max">MAX</span>
+                </div>
+                <div class="buttons">
+                    <cut-button>DEPOSIT</cut-button>
+                </div>
+            </form>
+            <form class="group group-staked">
+                <div class="title">Staked</div>
+                <div class="input-wrapper">
+                    <input type="number">
+                    <span class="max">MAX</span>
+                </div>
+                <div class="small">APY: <strong>62%</strong></div>
+                <div class="buttons">
+                    <cut-button>WITHDRAW</cut-button>
+                </div>
+            </form>
+            <form class="group">
+                <div class="title">$Adria earned</div>
+                <div class="amount">$42</div>
+                <div class="buttons">
+                    <cut-button>CLAIM</cut-button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,469 @@
+
+section.nft {
+    //max-width: 1200px;
+    margin: auto;
+    height: calc(100vh + 3 * 923px);
+
+    > div {
+        overflow: hidden;
+        position: sticky;
+        top: 0;
+        bottom: 0;
+
+        > div.horizontalScroll {
+            overflow-x: scroll;
+            padding-bottom: 150px;
+            margin-bottom: -100px;
+            // padding-right: calc(100vw + 1625px * 4);
+            > div {
+                display: flex;
+                margin: 0 calc((100vw - 1625px) / 2);
+                width: 1625px*4;
+            }
+        }
+    }
+
+    .ntf-introduction {
+        display: grid;
+        flex: 1625px 0 0;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr min-content min-content 1fr;
+
+        h2 {
+            display: grid;
+            align-items: center;
+            grid-column: 1;
+            grid-row: 2/4;
+
+            img {
+                display: block;
+                margin-right: 14px;
+                margin-left: -14px;
+                width: 817px;
+            }
+        }
+
+        .content {
+            grid-column: 2;
+            grid-row: 2;
+            font-size: 21px;
+            width: 524px;
+            letter-spacing: 0.2px;
+            line-height: 1.32;
+            align-self: start;
+        }
+
+        p {
+
+            margin: 8px 0;
+        }
+
+        .endTitles {
+            font-family: NulShock;
+            margin-top: 40px;
+            font-size: 31px;
+            max-width: 466px;
+            grid-column: 2;
+            grid-row: 3;
+            align-self: end;
+        }
+    }
+
+    .nft-page {
+        flex: 1625px 0 0;
+        height: 600px;
+        display: grid;
+        align-self: center;
+        align-items: center;
+        min-height: 100vh;
+        position: relative;
+
+        .text {
+            width: calc(100% - 96px);
+            will-change: transform;
+        }
+
+        .image {
+            position: absolute;
+            will-change: transform;
+
+            &.image-mech {
+                width: 1000px;
+                left: 0;
+                top: calc(50% - 315px);
+                transform: translateX(calc(20% * var(--scroll)));
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            &.image-dron {
+                width: 504px;
+                left: -166px;
+                top: calc(50% - 315px);
+                transform: translateX(calc(150% * var(--scroll))) translateY(calc(50% * var(--scroll)));
+
+                img {
+                    width: 100%;
+                }
+            }
+            &.image-dron3{
+                display: none;
+            }
+
+            &.image-avatar {
+                width: 490px;
+                left: 0;
+                top: calc(50% - 400px);
+                transform: translateX(calc(100% * var(--scroll)));
+
+                img {
+                    width: 100%;
+                }
+
+            }
+        }
+
+    }
+
+    .counters {
+        > * {
+            position: absolute;
+            bottom: 100px;
+            left: calc((100vw - 1625px) / 2);
+            right: calc((100vw - 1625px) / 2);
+            opacity: 0;
+            will-change: opacity;
+        }
+
+        .introduction-arrow {
+
+            hr {
+                flex-grow: 1;
+                border: none;
+                border-bottom: 1px solid;
+                margin: 18px 0;
+                align-self: center;
+                height: 0;
+
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    border-right: 1px solid;
+                    border-top: 1px solid;
+                    transform: rotate(45deg);
+                    transform-origin: 100% 0;
+                    position: absolute;
+                    right: -1px;
+                    top: 18.5px;
+                }
+            }
+        }
+
+        .counter {
+            grid-row: 2;
+            display: flex;
+            font-size: 24px;
+            font-family: NulShock;
+            color: #16b338;
+
+            hr {
+                flex-grow: 1;
+                border: none;
+                border-bottom: 1px solid;
+                margin: 0 24px;
+                align-self: center;
+            }
+        }
+    }
+
+    @media (max-width: 1750px) {
+        > div {
+
+            div.horizontalScroll {
+                > div {
+                    width: 400vw;
+                    margin: 0;
+                }
+            }
+        }
+        .ntf-introduction {
+            width: 100vw;
+            flex-basis: 100vw;
+            padding: 0 48px;
+            box-sizing: border-box;
+
+            h2 {
+                margin: 0;
+                padding: 0;
+
+                img {
+                    width: calc((100vw - 48px) * 0.5346);
+                    margin: 0 24px 0 0;
+                }
+            }
+        }
+        .nft-page {
+            flex-basis: 100vw;
+
+            .text {
+                width: calc(100vw - 48px);
+            }
+
+            .image {
+                position: absolute;
+
+                &.image-mech {
+                    width: 60vw;
+                    left: 0;
+                    top: calc(50% - 20vw);
+
+                }
+
+                &.image-dron {
+                    width: 30vw;
+                    left: -10vw;
+                    top: calc(50% - 20vw);
+
+                }
+
+                &.image-avatar {
+                    width: 30vw;
+                    left: 0;
+                    top: calc(50% - 25vw);
+
+                }
+            }
+        }
+        .counters {
+            > * {
+                left: 48px;
+                right: 48px;
+            }
+        }
+    }
+    @media (max-aspect-ratio: 3/4) and (max-width: 1750px), (max-width: 1200px) {
+        .nft-page {
+            grid-template-rows: 46vw 1fr;
+            align-self: start;
+
+            .image {
+                position: static;
+                grid-row: 2;
+                align-self: center;
+                justify-self: center;
+                max-height: 80%;
+                object-fit: contain;
+
+                &.image-mech {
+                    width: 60vw;
+                    transform: none;
+                }
+
+                &.image-dron {
+                    width: 60vw;
+                    transform: none;
+
+                }
+
+                &.image-avatar {
+                    width: 45vw;
+                    transform: none;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1200px) {
+
+
+        .ntf-introduction {
+            grid-template-columns: 1fr;
+            padding: 0 48px;
+            justify-items: center;
+            align-content: center;
+            box-sizing: border-box;
+            grid-template-rows: 256px 1fr max-content;
+
+            h2 {
+                text-align: left;
+                width: 524px;
+                grid-column: 1;
+                grid-row: 1;
+
+                img {
+                    width: 200px;
+                    margin-right: auto;
+                    display: block;
+                }
+            }
+
+            .content {
+                grid-column: 1;
+                grid-row: 2;
+            }
+
+            .endTitles {
+                grid-column: 1;
+                grid-row: 3;
+                width: 524px;
+                max-width: none;
+                padding-right: 64px;
+                box-sizing: border-box;
+                margin-bottom: 80px;
+
+            }
+        }
+        .nft-page {
+            min-height: 0;
+            height: calc(100vh - 50px);
+            overflow: hidden;
+            position: relative;
+            display: block;
+            align-self: end;
+
+            .image:not(.dummyClass) {
+                position: absolute;
+                bottom: 64px;
+                left: 12.5%;
+                right: auto;
+                top: auto;
+                width: 75%;
+                height: 75%;
+
+                img {
+                    object-fit: contain;
+                    object-position: 50% 100%;
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    margin: auto;
+                }
+
+                &.image-avatar {
+                    img {
+                        width: 50%;
+                    }
+                }
+
+                &.image-dron {
+
+                    img {
+                        width: 60%;
+                    }
+                }
+
+                &.image-mech {
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    @media (max-width: 800px) {
+        .ntf-introduction {
+
+            .content {
+                font-size: 17px;
+            }
+
+            .endTitles {
+                font-size: 20px;
+                padding-right: 217px;
+            }
+        }
+    }
+    @media (max-width: 650px) {
+        .ntf-introduction {
+
+            h2 {
+                width: calc(100vw - 96px);
+                justify-self: start;
+
+                img {
+                    margin: 0 auto 0 0;
+                }
+            }
+
+            .content {
+                grid-column: 1;
+                grid-row: 2;
+                width: calc(100vw - 96px);
+                justify-self: start;
+            }
+        }
+    }
+    @media (max-width: 500px) {
+        .ntf-introduction {
+            padding: 0 36px;
+
+            .endTitles {
+                padding: 0;
+                width: auto;
+                max-width: 307px;
+                margin-right: auto;
+            }
+        }
+
+        .nft-page {
+
+            .image:not(.dummyClass) {
+
+
+                &.image-avatar {
+                    img {
+                        width: 50%;
+                    }
+                }
+
+                &.image-dron {
+                    position: absolute;
+                    bottom: 64px;
+                    left: 7.5%;
+                    width: 75%;
+                    height: 73%;
+                    img {    width: 80%;
+                        object-position: 50% 50%;
+                    }
+                }
+                &.image-dron3{
+                    display: block;
+                    left: 5%;
+                    width: 38%;
+                    height: 48%;
+
+                    img{
+                        width: 100%;
+                        object-position: 50% 50%;
+                    }
+                }
+
+                &.image-mech {
+                    left: 0;
+                    width: 100%;
+                    overflow: hidden;
+                    img {
+                        width: 120%;
+                        margin-left: -10%;
+                        object-position: 50% 50%;
+                    }
+                }
+
+                &.image-avatar {
+                    left: 0;
+                    width: 84%;
+                    overflow: hidden;
+                    img {
+                        width: 100%;
+                        object-position: 50% 100%;
+                    }
+                }
+            }
+        }
+    }
+}

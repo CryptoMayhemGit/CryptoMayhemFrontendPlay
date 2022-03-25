@@ -27,9 +27,24 @@ addEventListener('DOMContentLoaded', () => {
                         e.preventDefault();
                 }
 
-                teamList.scroll({left: scrollPos, behavior: "auto"})
+                //teamList.scroll({left: scrollPos, behavior: "auto"})
             }
         })
+
+        function updateTeamListScroll() {
+            let ratio = (new Date() - scrollDate) / 400;
+            if (ratio <= 1.25) {
+                if (ratio > 1) ratio = 1;
+                teamList.scroll({
+                    left: teamList.scrollLeft + (scrollPos - teamList.scrollLeft) * ratio,
+                    behavior: "auto"
+                })
+            }
+
+            requestAnimationFrame(updateTeamListScroll)
+        }
+
+        updateTeamListScroll();
     }
     updateAsideSections()
 
@@ -44,8 +59,12 @@ addEventListener('DOMContentLoaded', () => {
         horizontalScroll.addEventListener('scroll', refreshScrollByHorizontal)
 
         function refreshScrollByVertical() {
-            if (new Date() - horizontalLast > 1000 && window.innerWidth > 1200) {
+            if (new Date() - horizontalLast > 1000) {
                 let fraction = -nft.getBoundingClientRect().top / (nft.getBoundingClientRect().height - innerHeight)
+                if (innerHeight < 1200) {
+                    nft.firstElementChild.style.top = (-document.querySelector('.ntf-introduction').clientHeight + innerHeight) + 'px'
+                    fraction = (-nft.getBoundingClientRect().bottom + innerHeight) / (nft.getBoundingClientRect().height - document.querySelector('.ntf-introduction').clientHeight) + 1
+                }
                 let fraction2 = fractionTransform(fraction);
                 console.log('fraction', fraction, fraction2)
                 horizontalScroll.scrollLeft = fraction2 * (horizontalScroll.scrollWidth - nft.clientWidth);
@@ -56,13 +75,19 @@ addEventListener('DOMContentLoaded', () => {
         }
 
         function refreshScrollByHorizontal() {
-            if (new Date() - verticalLast > 1000 && window.innerWidth > 1200) {
+            if (new Date() - verticalLast > 1000) {
                 if (nft.getBoundingClientRect().top > innerHeight / 3 || nft.getBoundingClientRect().top + nft.getBoundingClientRect().height < innerHeight / 3) return false;
                 let fraction2 = horizontalScroll.scrollLeft / (horizontalScroll.scrollWidth - nft.clientWidth);
+
                 let fraction = fractionTransformReverse(fraction2);
                 console.log('fraction', fraction, fraction2)
-                const newTop = -fraction * (nft.getBoundingClientRect().height - innerHeight);
-                const delta = newTop - nft.getBoundingClientRect().top;
+                let newTop = -fraction * (nft.getBoundingClientRect().height - innerHeight);
+                let delta = newTop - nft.getBoundingClientRect().top;
+                if (innerHeight < 1200) {
+
+                    let newBottom = -((fraction - 1) * (nft.getBoundingClientRect().height - document.querySelector('.ntf-introduction').clientHeight) - innerHeight);
+                    delta = newBottom - nft.getBoundingClientRect().bottom;
+                }
                 if (delta > 1 || delta < -1) {
                     document.documentElement.scrollTop -= delta;
                 }
@@ -73,7 +98,7 @@ addEventListener('DOMContentLoaded', () => {
         }
 
         function fractionTransform(fraction) {
-            fraction = (fraction + 0.1) / 1.2
+            fraction = (fraction) / 1.1
             if (fraction < 0) return 0;
             if (fraction > 1) return 1;
             return (1 - Math.cos(fraction * Math.PI)) / 2
@@ -83,7 +108,7 @@ addEventListener('DOMContentLoaded', () => {
             if (fraction < 0) return 0;
             if (fraction > 1) return 1;
             let ret = Math.acos(-(fraction * 2 - 1)) / Math.PI
-            return (ret * 1.2) - 0.1
+            return (ret * 1.1)
         }
 
         function refreshScrollCounters() {
@@ -142,27 +167,25 @@ addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('aside.sections a[href^="#"], header nav a[href^="#"]').forEach(x => {
         x.onclick = e => {
-            const topMargin = x.attributes.href.value == '#nft' ? 0 : 48
+            let topMargin;
+            if ((x.attributes.href.value == '#nft' || x.attributes.href.value == '#tokenomic'))
+                topMargin = 0;
+            else if (x.attributes.href.value == '#papers')
+                topMargin = 96;
+            else
+                topMargin = 48;
             window.scroll({
                 top: document.querySelector(x.attributes.href.value).getBoundingClientRect().top + window.scrollY - topMargin,
                 behavior: "smooth"
             })
             history.pushState(null, null, x.attributes.href.value)
             e.preventDefault();
+
+            document.body.classList.remove('isHamburgerOpen');
         }
     });
 });
 
-function updateBg() {
-    if (!document.location.search.includes('noNoise'))//for better debuging
-    {
-        document.documentElement.style.backgroundPosition = `${Math.round(Math.random() * 1000)}px ${Math.round(Math.random() * 1000)}px`
-        document.documentElement.style.setProperty('--noisePosition', `${Math.round(Math.random() * 1000)}px ${Math.round(Math.random() * 1000)}px`)
-    }
-    requestAnimationFrame(updateBg)
-}
-
-updateBg()
 
 function updateAsideSections() {
     const sections = document.querySelector('aside.sections');
@@ -213,6 +236,7 @@ let lastMouseEvent = null;
 addEventListener('scroll', () => {
     updateAsideSections();
     updateAsideSocials();
+    updateSupplyGraph();
     if (lastMouseEvent) {
         refreshMouseReactive(lastMouseEvent);
     }
@@ -230,5 +254,15 @@ function refreshMouseReactive(e) {
         const rect = element.getBoundingClientRect();
         element.style.setProperty('--mouseX', Math.atan((e.clientX - rect.left - rect.width / 2) / 300));
         element.style.setProperty('--mouseY', Math.atan((e.clientY - rect.top - rect.height / 2) / 300));
+    }
+}
+
+function updateSupplyGraph() {
+    let div = document.querySelector('.supply > div');
+    if (div) {
+        let value = -div.getBoundingClientRect().top / 96;
+        if (value > 1) value = 1;
+        else if (value < 0) value = 0;
+        div.style.setProperty('--scroll', value)
     }
 }

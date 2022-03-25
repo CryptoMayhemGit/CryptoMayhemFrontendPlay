@@ -46,6 +46,11 @@ cut-button {
     font-weight: 600;
 
 
+    &::part(main) {
+        color: inherit;
+        text-decoration: inherit;
+    }
+
     &::part(svg1) {
         position: absolute;
         z-index: -1;
@@ -76,6 +81,11 @@ cut-button {
             opacity: 1;
             transform: translate(10px, -10px);
         }
+    }
+
+    &[data-disabled] {
+        pointer-events: none;
+        filter: grayscale(1);
     }
 }
 
@@ -132,7 +142,106 @@ drag-slider {
         width: calc(4% + var(--value) * 96%);
     }
 }
-.mouseReactive{
-    --mouseX:1;
-    --mouseY:0;
+
+.mouseReactive {
+    --mouseX: 1;
+    --mouseY: 0;
+}
+
+@mixin status {
+    display: inline-block;
+    background-color: #e1e1e1;
+    color: #010101;
+    text-transform: uppercase;
+    justify-self: start;
+    border-radius: 2px;
+    padding: 1px 8px;
+    font-size: 13px;
+    margin: 18px 0;
+    font-weight: 500;
+
+}
+
+@mixin card {
+    background-image: url("../img/frame8-1.svg"), url("../img/frame8-2.svg"), url("../img/frame8-3.svg"), url("../img/frame8-4.svg"), url("../img/frame8-5.svg"), url("../img/frame8-6.svg"), url("../img/frame8-7.svg"), url("../img/frame8-8.svg"), url("../img/frame8-9.svg");
+    background-repeat: no-repeat;
+    background-position: 0 0, 100px 0, 100% 0, 0 100px, 100px 100px, 100% 100px, 0 100%, 100px 100%, 100% 100%;
+    background-size: 100px 100px, calc(100% - 200px) 100px, 100px 100px, 100px calc(100% - 200px), calc(100% - 200px) calc(100% - 200px), 100px calc(100% - 200px), 100px 100px, calc(100% - 200px) 100px, 100px 100px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+input[type=range] {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #16B338 calc(var(--value) * 100%), #525357 calc(var(--value) * 100%));
+    outline: none; /* Remove outline */
+
+    @mixin slider-thumb {
+        width: 16px;
+        height: 16px;
+        background: #16B338;
+        cursor: pointer;
+        border-radius: 50%;
+        border: 1px solid #0E0F0F;
+        box-sizing: border-box;
+
+    }
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        @include slider-thumb;
+    }
+
+    & &::-moz-range-thumb {
+        @include slider-thumb;
+    }
+}
+
+
+.input-wrapper {
+    border: 1px solid;
+    display: flex;
+
+
+    input {
+        width: 100%;
+        border: none;
+        background: transparent;
+        flex: 1 1 auto;
+        font-family: Montserrat;
+        font-size: 17px;
+        padding: 14px 4px;
+    }
+
+    .max {
+        @include status;
+        flex: 0 0 auto;
+        margin: 0 8px;
+        align-self: center;
+        background: #16B338;
+    }
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+    transition: all 200ms;
+
+    &:hover {
+        color: #9fa2a9;
+    }
 }

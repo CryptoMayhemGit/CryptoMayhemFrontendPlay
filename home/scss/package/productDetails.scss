@@ -1,0 +1,174 @@
+section.productDetails {
+    margin: 267px auto 48px;
+    width: 1665px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    > picture {
+        background: url("../img/frame5.svg") 50% 50% no-repeat;
+        background-size: 100% 100%;
+        align-self: center;
+
+        img {
+            mask-image: url("../img/frame5Mask.svg");
+            -webkit-mask-image: url("../img/frame5Mask.svg");
+            mask-size: contain;
+            -webkit-mask-size: contain;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            width: calc(100% - 48px);
+            margin: 24px;
+            aspect-ratio: 776/701;
+            object-fit: cover;
+        }
+    }
+
+    > .content {
+        margin-left: 152px;
+
+        h2 {
+
+            font-size: 34px;
+        }
+
+        .numbers {
+            display: flex;
+            margin: 48px 0;
+            justify-content: space-between;
+
+            > div {
+                border-right: 1px solid;
+                flex: 2 2 auto;
+                display: grid;
+                grid-template-columns: 1fr max-content 1fr;
+                justify-self: center;
+
+                &:first-child {
+                    grid-template-columns: max-content 1fr;
+                    flex-grow: 1;
+                }
+
+                &:last-child {
+                    border-right: none;
+                    grid-template-columns: 1fr max-content;
+                    flex-grow: 1;
+                }
+
+
+                span {
+                    display: block;
+                    font-size: 13px;
+                    font-weight: 100;
+                    letter-spacing: 0.6px;
+                    grid-column: 2;
+                }
+
+                strong {
+                    display: block;
+                    font-size: 30px;
+                    font-family: NulShock;
+                    letter-spacing: -1.4px;
+                    grid-column: 2;
+                }
+            }
+        }
+
+        p {
+
+            line-height: 1.6;
+            letter-spacing: 0.6px;
+            margin: 48px 0;
+        }
+
+        cut-button {
+            margin: 58px 0;
+            padding: 16px;
+            --border: #16b338;
+            display: block;
+            text-align: center;
+            width: 292px;
+        }
+
+        h3 {
+            font-family: Montserrat;
+            font-size: 21px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 12px;
+            font-weight: 400;
+            margin: 0 0;
+        }
+
+        dl {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            font-size: 13px;
+            letter-spacing: 0.6px;
+            grid-auto-rows: 28px;
+            margin: 14px 0;
+
+            dt {
+                justify-self: start;
+            }
+
+            dd {
+                justify-self: end;
+            }
+        }
+    }
+
+    @media (max-width: 1750px) {
+        width: auto;
+        margin-left: 48px;
+        margin-right: 48px;
+    }
+    @media (max-width: 1650px) {
+        > .content {
+            margin-left: 36px;
+        }
+    }
+    @media (max-width: 1300px) {
+        grid-template-columns: 1fr;
+        picture {
+            max-width: 800px;
+            justify-self: center;
+        }
+        > .content {
+            margin-left: 0;
+            margin-top: 48px;
+        }
+    }
+    @media (max-width: 1200px) {
+        margin-top: 108px;
+    }
+    @media (max-width: 700px) {
+        .content .numbers {
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 16px;
+
+            > div:not(.dumymClass) {
+                border: none;
+                grid-template-columns: max-content max-content max-content;
+                flex: 0 0 auto;
+
+                &:nth-child(2) {
+                    order: 3;
+                    flex: 0 0 100%
+                }
+            }
+        }
+    }
+    @media (max-width: 500px) {
+        margin-left: 36px;
+        margin-right: 36px;
+        .content {
+            h2 {
+                font-size: calc(0.085 * (100vw - 72px))
+            }
+
+            cut-button {
+                width: auto;
+            }
+        }
+    }
+}

@@ -10,7 +10,7 @@ aside.socialLinks {
     }
 
     ul {
-        margin: 0;
+        margin: 0 0 0 -10px;
         padding: 0;
         display: flex;
         height: 306px;
@@ -43,7 +43,7 @@ aside.socialLinks {
 
             span {
                 opacity: 0;
-                transition: 300ms ease;
+                transition: 300ms ease opacity;
                 margin-left: 24px;
                 display: none;
             }
@@ -77,8 +77,8 @@ aside.socialLinks {
         }
     }
 
-    @media (max-width: 1900px) {
-        left: 25px;
+    @media (max-width: 1800px) {
+        left: 16px;
     }
     @media (max-width: 1200px) {
         display: none;
@@ -93,6 +93,7 @@ aside.socialLinks {
             height: auto;
             justify-content: stretch;
             width: 100%;
+            margin: 0;
 
             &::before {
                 left: 0;
@@ -136,14 +137,14 @@ aside.socialLinks {
 aside.sections {
     position: fixed;
     right: 24px;
-    top: calc(50% - 414px / 2);
+    top: calc(50% - 516px / 2);
     z-index: 100;
 
     ul {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        height: 414px;
+        height: 482px;
 
         &::before {
             display: block;
@@ -252,8 +253,8 @@ aside.sections {
         }
     }
 
-    @media (max-width: 1900px) {
-        right: 25px;
+    @media (max-width: 1800px) {
+        right: 14px;
     }
     @media (max-width: 1200px) {
         display: none;

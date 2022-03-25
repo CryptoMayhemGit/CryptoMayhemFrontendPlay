@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   version="1.1"
+   id="svg14"
+   sodipodi:docname="Adria-token.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview16"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="36.375"
+     inkscape:cx="11.986254"
+     inkscape:cy="12"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg14" />
+  <defs
+     id="defs4">
+    <clipPath
+       id="clip-path">
+      <rect
+         id="Rectangle_2810"
+         data-name="Rectangle 2810"
+         width="24"
+         height="24"
+         transform="translate(-0.423 -0.423)"
+         fill="#16b338"
+         stroke="#16b338"
+         stroke-width="0.2" />
+    </clipPath>
+  </defs>
+  <path
+     id="Path_12438"
+     data-name="Path 12438"
+     d="m 12.197,7.637 v 0 c 0,-0.367 0,-0.773 0,-1.031 A 0.257,0.257 0 0 0 11.932,6.349 l -0.278,0.008 a 0.256,0.256 0 0 0 -0.25,0.256 c 0,0.447 0,2.108 0,2.522 a 0.133,0.133 0 0 0 0.088,0.125 l 0.593,0.213 a 0.082,0.082 0 0 0 0.11,-0.077 z"
+     fill="#16b338"
+     stroke="#16b338"
+     stroke-width="0.2"
+     style="display:inline" />
+  <path
+     id="Path_12439"
+     data-name="Path 12439"
+     d="m 13.688,7.638 v 0 c 0,-0.367 0,-0.429 0,-0.687 A 0.257,0.257 0 0 0 13.423,6.694 l -0.278,0.008 a 0.256,0.256 0 0 0 -0.25,0.256 c 0,0.448 0,2.318 0,2.731 a 0.133,0.133 0 0 0 0.088,0.125 l 0.593,0.213 a 0.082,0.082 0 0 0 0.11,-0.077 z"
+     fill="#16b338"
+     stroke="#16b338"
+     stroke-width="0.2"
+     style="display:inline" />
+  <path
+     id="Path_12440"
+     data-name="Path 12440"
+     d="m 12.2,16.396 v 0 -1.759 A 0.082,0.082 0 0 0 12.09,14.56 l -0.593,0.213 a 0.133,0.133 0 0 0 -0.088,0.125 c 0,0.413 0,2.074 0,2.522 a 0.256,0.256 0 0 0 0.25,0.256 l 0.278,0.008 a 0.257,0.257 0 0 0 0.265,-0.257 c 0,-0.258 0,-0.665 0,-1.031"
+     fill="#16b338"
+     stroke="#16b338"
+     stroke-width="0.2"
+     style="display:inline" />
+  <path
+     id="Path_12441"
+     data-name="Path 12441"
+     d="m 13.688,16.395 v 0 -2.312 a 0.082,0.082 0 0 0 -0.11,-0.077 l -0.593,0.213 a 0.133,0.133 0 0 0 -0.088,0.125 c 0,0.413 0,2.283 0,2.731 a 0.256,0.256 0 0 0 0.25,0.256 l 0.278,0.008 a 0.257,0.257 0 0 0 0.265,-0.257 c 0,-0.258 0,-0.32 0,-0.687"
+     fill="#16b338"
+     stroke="#16b338"
+     stroke-width="0.2"
+     style="display:inline" />
+  <path
+     id="Path_12442"
+     data-name="Path 12442"
+     d="m 12.013,4.097 a 7.9,7.9 0 1 1 -7.9,7.9 7.911,7.911 0 0 1 7.9,-7.9 m 0,-0.688 A 8.591,8.591 0 1 0 20.604,12 8.591,8.591 0 0 0 12.013,3.409"
+     fill="#16b338"
+     stroke="#16b338"
+     stroke-width="0.2"
+     style="display:inline" />
+  <path
+     id="Path_12443"
+     data-name="Path 12443"
+     d="M 8.487,14.891 V 9.047 A 0.13,0.13 0 0 1 8.663,8.925 l 7.86,2.945 a 0.13,0.13 0 0 1 0,0.243 l -0.836,0.325 a 0.13,0.13 0 0 1 -0.094,0 L 9.517,10.162 a 0.13,0.13 0 0 0 -0.176,0.122 v 3.4 a 0.13,0.13 0 0 0 0.173,0.123 l 2.09,-0.717 a 0.13,0.13 0 0 0 0,-0.245 l -1.262,-0.484 a 0.13,0.13 0 0 1 -0.084,-0.123 l 0.006,-0.64 a 0.13,0.13 0 0 1 0.177,-0.121 l 3.683,1.413 a 0.13,0.13 0 0 1 0,0.245 L 8.652,15.012 A 0.13,0.13 0 0 1 8.479,14.889"
+     fill="#16b338"
+     stroke="#16b338"
+     stroke-width="0.2"
+     style="display:inline" />
+</svg>

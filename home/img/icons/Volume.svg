@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Group_4368"
+   data-name="Group 4368"
+   width="25.893"
+   height="27.063"
+   viewBox="0 0 25.893 27.063"
+   version="1.1"
+   sodipodi:docname="Volume.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview18"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="32.258065"
+     inkscape:cx="12.958"
+     inkscape:cy="13.5315"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Group_4368" />
+  <defs
+     id="defs6">
+    <clipPath
+       id="clip-path">
+      <rect
+         id="Rectangle_2812"
+         data-name="Rectangle 2812"
+         width="25.893"
+         height="27.062"
+         transform="translate(0 0)"
+         fill="none" />
+    </clipPath>
+    <clipPath
+       id="clip-path-2">
+      <rect
+         id="Rectangle_2813"
+         data-name="Rectangle 2813"
+         width="25.893"
+         height="27.063"
+         transform="translate(0 0)"
+         fill="none" />
+    </clipPath>
+  </defs>
+  <path
+     id="Path_12445"
+     d="M 13.457031 1.953125 L 5.3300781 8.9414062 L 2.5878906 8.9414062 A 2.535 2.535 0 0 0 0.71484375 9.4824219 L 0.5390625 9.6816406 A 3.41 3.41 0 0 0 0.052734375 11.650391 L 0.052734375 17.900391 A 2.575 2.575 0 0 0 0.58984375 19.443359 L 0.71875 19.570312 A 2.783 2.783 0 0 0 2.3183594 20.162109 L 5.3378906 20.087891 L 13.457031 27.0625 L 13.457031 10.494141 L 13.457031 9.6171875 L 13.457031 1.9570312 L 11.957031 5.2246094 L 11.957031 8.0996094 L 11.957031 8.9804688 L 11.957031 23.800781 L 5.8789062 18.576172 L 2.3496094 18.669922 A 1.271 1.271 0 0 1 1.7226562 18.453125 A 1.057 1.057 0 0 1 1.5527344 17.896484 L 1.5527344 11.599609 A 1.976 1.976 0 0 1 1.7597656 10.578125 A 1.04 1.04 0 0 1 2.4433594 10.433594 L 5.8886719 10.439453 L 11.957031 5.2207031 L 13.457031 1.953125 z M 18.037109 3.4511719 L 17.099609 4.6210938 A 11.84 11.84 0 0 1 17.066406 23.136719 L 18 24.310547 A 13.341 13.341 0 0 0 18.037109 3.4511719 z M 16.662109 7.734375 L 15.724609 8.90625 A 6.418 6.418 0 0 1 15.705078 18.943359 L 16.640625 20.117188 A 7.919 7.919 0 0 0 16.662109 7.734375 z " />
+</svg>
