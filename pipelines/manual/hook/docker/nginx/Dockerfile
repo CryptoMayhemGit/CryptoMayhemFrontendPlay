@@ -33,8 +33,8 @@ RUN mkdir /var/log/nginx/rpc.test.cryptomayhem.io
 
 RUN chmod 600 /etc/nginx/certs -R
 
+COPY --from=BUILD /build/home/views/ /var/www/test.cryptomayhem.io/html
 COPY --from=BUILD /build/home/img /var/www/test.cryptomayhem.io/html/img
-COPY --from=BUILD /build/home/views /var/www/test.cryptomayhem.io/html/views
 COPY --from=BUILD /build/home/dist /var/www/test.cryptomayhem.io/html/dist
 
 COPY --from=BUILD /build/app/dist/crypto-mayhem-frontend/ /var/www/app.test.cryptomayhem.io/html/
