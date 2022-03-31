@@ -1,4 +1,4 @@
-version: "3.9"
+version: '3.9'
 services:
   rpc_chain:
     build: 
@@ -8,10 +8,15 @@ services:
     env_file: ./config/rpc/db.env
     depends_on:
       - rpc_chain
+    networks:
+      default:
+        aliases:
+          - host.docker.internal
+          - database
   rpc_scan:
     image: blockscout/blockscout:latest
     env_file: ./config/rpc/scan.env
-    command: 'mix do ecto.create, ecto.migrate, phx.server'
+    command: mix do ecto.create, ecto.migrate, phx.server
     restart: always
     depends_on:
       - rpc_db
