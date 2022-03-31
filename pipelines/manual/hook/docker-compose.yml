@@ -1,13 +1,25 @@
 version: "3.9"
 services:
-  rpc:
+  rpc_chain:
     build: 
-      context: ./docker/rpc/
+      context: ./docker/rpc
+  rpc_db:
+    image: postgres:13.6-alpine
+    env_file: ./config/rpc/db.env
+    depends_on:
+      - rpc_chain
+  rpc_scan:
+    image: blockscout/blockscout:latest
+    env_file: ./config/rpc/scan.env
+    command: 'mix do ecto.create, ecto.migrate, phx.server'
+    restart: always
+    depends_on:
+      - rpc_db
   proxy:
     build:
       context: ./docker/proxy
     depends_on:
-      - rpc
+      - rpc_scan
   nginx:
     build: 
       context: ../../..
@@ -15,6 +27,4 @@ services:
     depends_on:
       - proxy
     ports:
-      - "80:80"
-      - "443:443"
-      
+      - 443:443

@@ -13,11 +13,23 @@ const server = http.createServer((req, res) => {
     const query = parsedUrl.query
     const token = query.token
 
+    if (token) {
+
+        console.log('proxied to chain!')
+
+        return proxy.web(req, res, { 
+            target: 'http://nginx:8545/', 
+            headers: { 
+                'Authorization': `Basic ${token}`
+            }
+        })
+
+    }
+
+    console.log('proxied to scan!')
+
     proxy.web(req, res, { 
-        target: 'http://nginx:8545/', 
-        headers: { 
-            'Authorization': `Basic ${token}`
-        }
+        target: 'http://nginx:4000/'
     })
 
 })

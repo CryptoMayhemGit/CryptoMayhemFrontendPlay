@@ -45,7 +45,7 @@ export const TEST_CHAIN: MetamaskChain = {
         decimals: 18
     },
     rpcUrls: [
-        `https://rpc.test.cryptomayhem.io/${environment.rpcToken}`
+        environment.rpcUrl
     ]
 };
 
