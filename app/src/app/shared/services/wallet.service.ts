@@ -298,4 +298,14 @@ export class WalletService {
     });
   } 
 
+  addAsset(asset: string): void {
+
+      if (!this.wallet) {
+        throw new Error();
+      }
+  
+      this.wallet.addAsset(asset);
+
+  } 
+
 }

@@ -17,6 +17,7 @@ export interface WalletConnector {
 
     switchChain(chainId: string): Observable<boolean>;
     addChain(chainId: string): Observable<boolean>;
+    addAsset(symbol: string): void;
 
 }
 

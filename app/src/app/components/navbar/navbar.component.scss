@@ -11,15 +11,6 @@
     font-family: 'Lato';
 }
 
-div {
-    margin: 20px;
-    display: flex;
-    justify-content: flex-end;
-    align-content: center;
-    align-items: center;
-    gap: 20px 20px;
-}
-
 p {
     margin: 0;
 }
@@ -31,6 +22,24 @@ button {
     border-style: solid;
     cursor: pointer;
     transition: 0.4s ease-in-out;
+}
+
+div {
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
+    gap: 20px 20px;
+}
+
+#info {
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    align-items: center;
+    gap: 40px 40px;
 }
 
 .green {
@@ -64,6 +73,15 @@ button {
 
 .purple:hover {
     background-color: #de6eff20;
+}
+
+.orange {
+    border-color: #fa9c5d;
+    
+}
+
+.orange:hover {
+    background-color: #fbac7d20;
 }
 
 button:disabled:hover {

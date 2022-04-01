@@ -43,3 +43,6 @@ Thumbs.db
 
 # Env
 environments
+
+# Contracts metadata
+contracts-metadata.json

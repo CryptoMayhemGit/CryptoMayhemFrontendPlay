@@ -1,4 +1,4 @@
-import { Observable, Subject, from } from "rxjs";
+import { Observable, Subject } from "rxjs";
 
 import { WalletConnector } from "../../models/wallet/wallet-connector.model";
 
@@ -7,7 +7,6 @@ import { WalletError } from "../../classes/wallet/wallet-error.class";
 import { MetamaskWindow } from "../../models/wallet/metamask/metamask-window.model";
 import { MetamaskProvider } from "../../models/wallet/metamask/metamask-provider.model";
 import { MetamaskError } from "../../models/wallet/metamask/metamask-error.model";
-import { MetamaskAsset } from "../../models/wallet/metamask/metamask-asset.model";
 
 import {
     CONNECT_LISTENER, 
@@ -24,7 +23,8 @@ import {
     USER_REJECTED_ERROR_CODE,
     PENDING_REQUEST_CODE,
     CHAIN_IDS,
-    CHAINS
+    CHAINS,
+    ASSETS
 } from "../../config/wallet/metamask.config";
 
 import { 
@@ -35,7 +35,6 @@ import {
 } from "../../config/wallet/wallet.config";
 
 import { 
-    UNKNOWN_ERROR,
     PROVIDER_NOT_FOUND,  
     USER_REJECTED_CONNECTION,
     PENDING_CONNECTION,
@@ -299,22 +298,19 @@ export class MetamaskWallet implements WalletConnector {
         });
     }
 
-    addAsset(asset: MetamaskAsset): Observable<boolean> {
-        const addAssetRequest = Object.assign({ params: asset }, ADD_ASSET_REQUEST);
+    addAsset(symbol: string): void {
 
-        return from(
-            this.retrieveProvider()
-                .request(addAssetRequest)
-                .then((success) => {
+        const assetObject = ASSETS.get(symbol);
 
-                    if (!success) {
-                        throw new Error(UNKNOWN_ERROR);
-                    }
+        if (!assetObject) {
+            throw new Error();
+        } 
 
-                    return true;
+        const addAssetRequest = Object.assign({ params: assetObject }, ADD_ASSET_REQUEST);
 
-                })
-        );
+        this.retrieveProvider()
+            .request(addAssetRequest);
+        
     }
 
 }

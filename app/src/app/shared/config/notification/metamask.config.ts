@@ -1,4 +1,3 @@
-export const UNKNOWN_ERROR = "Unknown error!";
 export const PROVIDER_NOT_FOUND = "Metamask not found!";
 export const USER_REJECTED_CONNECTION = "Connection request rejected by user!";
 export const PENDING_CONNECTION = "Connection request is pending!";

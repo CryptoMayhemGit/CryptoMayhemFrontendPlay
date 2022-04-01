@@ -37,7 +37,8 @@ import {
 import { 
   SUPPORTED_CHAIN_ID, 
   UNRECOGNIZED_CHAIN_ERROR_CODE, 
-  PENDING_REQUEST_CODE 
+  PENDING_REQUEST_CODE, 
+  DEFAULT_ASSET
 } from 'src/app/shared/config/wallet/wallet.config';
 
 
@@ -52,6 +53,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   private walletSubscriptionRegister = new SubscriptionRegister();
   private authSubscriptionRegister = new SubscriptionRegister();
+
+  DEFAULT_ASSET = DEFAULT_ASSET
 
   processing = false;
 
@@ -374,6 +377,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
           })
       )
     );
+  }
+
+  addAsset(): void {
+      this.walletService.addAsset(DEFAULT_ASSET);
   }
 
 }
