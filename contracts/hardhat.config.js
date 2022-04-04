@@ -23,10 +23,10 @@ module.exports = {
       url: 'http://localhost:8545'
     },
     stage: {
-      url: 'http://127.0.0.1:8545',
+      url: 'http://rpc_chain:8545',
       verify: {
         etherscan: {
-          apiUrl: 'http://127.0.0.1:4000',
+          apiUrl: 'http://rpc_scan:4000',
           apiKey: 'undefined'
         }
       }

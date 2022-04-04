@@ -1,13 +1,5 @@
 import { Observable, Subject } from "rxjs";
 
-import { WalletConnector } from "../../models/wallet/wallet-connector.model";
-
-import { WalletError } from "../../classes/wallet/wallet-error.class";
-
-import { MetamaskWindow } from "../../models/wallet/metamask/metamask-window.model";
-import { MetamaskProvider } from "../../models/wallet/metamask/metamask-provider.model";
-import { MetamaskError } from "../../models/wallet/metamask/metamask-error.model";
-
 import {
     CONNECT_LISTENER, 
     DISCONNECT_LISTENER, 
@@ -23,8 +15,7 @@ import {
     USER_REJECTED_ERROR_CODE,
     PENDING_REQUEST_CODE,
     CHAIN_IDS,
-    CHAINS,
-    ASSETS
+    CHAINS
 } from "../../config/wallet/metamask.config";
 
 import { 
@@ -43,8 +34,23 @@ import {
     USER_REJECTED_CHAIN
 } from "../../config/notification/metamask.config";
 
+import { WalletError } from "../../classes/wallet/wallet-error.class";
+
+import { WalletConnector } from "../../models/wallet/wallet-connector.model";
+
+import { MetamaskWindow } from "../../models/wallet/metamask/metamask-window.model";
+import { MetamaskProvider } from "../../models/wallet/metamask/metamask-provider.model";
+import { MetamaskError } from "../../models/wallet/metamask/metamask-error.model";
+import { MetamaskAsset } from "../../models/wallet/metamask/metamask-asset.model";
+
+import { ContractsMetadata } from "../../models/contracts/contracts-metadata.model";
+
+import { prepareMetamaskAssets } from "../../util/config.utils";
+
 
 export class MetamaskWallet implements WalletConnector {
+
+    private assets: Map<string, MetamaskAsset>;
 
     private connectionChanged = new Subject<boolean>();
     private chainIdChanged = new Subject<string>();
@@ -56,7 +62,9 @@ export class MetamaskWallet implements WalletConnector {
     accountChanged$ = this.accountChanged.asObservable();
     providerChanged$ = this.providerChanged.asObservable();
 
-    constructor() {
+    constructor(contractsMetadata: ContractsMetadata) {
+        this.assets = prepareMetamaskAssets(contractsMetadata);
+        
         this.onConnect = this.onConnect.bind(this);
         this.onDisonnect = this.onDisonnect.bind(this);
         this.onChainIdChanged = this.onChainIdChanged.bind(this);
@@ -300,7 +308,7 @@ export class MetamaskWallet implements WalletConnector {
 
     addAsset(symbol: string): void {
 
-        const assetObject = ASSETS.get(symbol);
+        const assetObject = this.assets.get(symbol);
 
         if (!assetObject) {
             throw new Error();

@@ -4,12 +4,6 @@ import { Web3Provider } from '@ethersproject/providers';
 
 import { BehaviorSubject, Observable, first, zip } from 'rxjs';
 
-import { WalletConnector } from '../models/wallet/wallet-connector.model'
-import { WalletType } from '../models/wallet/wallet-type.model';
-
-import { SubscriptionRegister } from '../classes/subscription-register.class';
-import { MetamaskWallet } from '../classes/wallet/metamask-wallet.class';
-
 import {
   CONNECTED,
   DISCONNECTED,
@@ -26,6 +20,14 @@ import {
   SWITCH_CHAIN_ERROR,
   ADD_CHAIN_ERROR
 } from '../config/notification/wallet.config';
+
+import { ConfigService } from './config.service';
+
+import { SubscriptionRegister } from '../classes/subscription-register.class';
+import { MetamaskWallet } from '../classes/wallet/metamask-wallet.class';
+
+import { WalletConnector } from '../models/wallet/wallet-connector.model'
+import { WalletType } from '../models/wallet/wallet-type.model';
 
 
 @Injectable({
@@ -55,7 +57,10 @@ export class WalletService {
   provider$ = this.providerSubject.asObservable();
   web3Provider$ = this.web3ProviderSubject.asObservable();
 
-  constructor(private ngZone: NgZone) { }
+  constructor(
+    private ngZone: NgZone,
+    private configService: ConfigService  
+  ) { }
 
   private updateConnection(connection: boolean): void {
     this.connection = connection;
@@ -82,96 +87,102 @@ export class WalletService {
   connect(walletType: WalletType): Observable<boolean> {
     return new Observable(observer => {
 
-      switch (walletType) {
-
-        case WalletType.Metamask: {
-          this.wallet = new MetamaskWallet();
-          break;
-        }
-  
-      }
-
-      if (!this.wallet) {
-        return observer.error(new Error(CONNECT_ERROR));
-      }
-
-      this.wallet.connect()
+      this.configService.getContractsMetadata()
         .pipe(first())
-        .subscribe({
+        .subscribe(contractsMetadata => {
 
-          next: (connected) => {
+          switch (walletType) {
 
-            if (!this.wallet || !connected) {
-              return observer.error(new Error(CONNECT_ERROR));
+            case WalletType.Metamask: {
+              this.wallet = new MetamaskWallet(contractsMetadata);
+              break;
             }
       
-            this.subscriptionRegister.add(
-              this.wallet.connectionChanged$.subscribe(connection => 
-                this.ngZone.run(
-                  () => this.updateConnection(connection)
-                )
-              )  
-            );
-    
-            this.subscriptionRegister.add(
-              this.wallet.chainIdChanged$.subscribe(chainId => 
-                this.ngZone.run(
-                  () => this.updateChainId(chainId)
-                )
-              )  
-            );
-    
-            this.subscriptionRegister.add(
-              this.wallet.accountChanged$.subscribe(account => 
-                this.ngZone.run(
-                  () => this.updateAccount(account)
-                )
-              )  
-            );
-    
-            this.subscriptionRegister.add(
-              this.wallet.providerChanged$.subscribe(provider => 
-                this.ngZone.run(
-                  () => this.updateProviders(provider)
-                )
-              )  
-            );
-
-            zip(
-              this.wallet.getChainId(),
-              this.wallet.getAccount(),
-              this.wallet.getProvider()
-            )
-            .subscribe({
-              
-              next: ([chainId, account, provider]) => {
-
-                this.updateChainId(chainId);
-                this.updateAccount(account);
-                this.updateProviders(provider)
-                this.updateConnection(CONNECTED);
-
-                observer.next(CONNECTED);
-
-              },
-
-              error: () => observer.error(new Error(CONNECT_ERROR))
-
-
-            });
-  
-          },
-      
-          error: (error) => {
-            
-            if (error.name === 'WalletError') {
-              return observer.error(error);
-            }
-
-            observer.error(new Error(CONNECT_ERROR));
-
           }
+    
+          if (!this.wallet) {
+            return observer.error(new Error(CONNECT_ERROR));
+          }
+    
+          this.wallet.connect()
+            .pipe(first())
+            .subscribe({
+    
+              next: (connected) => {
+    
+                if (!this.wallet || !connected) {
+                  return observer.error(new Error(CONNECT_ERROR));
+                }
+          
+                this.subscriptionRegister.add(
+                  this.wallet.connectionChanged$.subscribe(connection => 
+                    this.ngZone.run(
+                      () => this.updateConnection(connection)
+                    )
+                  )  
+                );
         
+                this.subscriptionRegister.add(
+                  this.wallet.chainIdChanged$.subscribe(chainId => 
+                    this.ngZone.run(
+                      () => this.updateChainId(chainId)
+                    )
+                  )  
+                );
+        
+                this.subscriptionRegister.add(
+                  this.wallet.accountChanged$.subscribe(account => 
+                    this.ngZone.run(
+                      () => this.updateAccount(account)
+                    )
+                  )  
+                );
+        
+                this.subscriptionRegister.add(
+                  this.wallet.providerChanged$.subscribe(provider => 
+                    this.ngZone.run(
+                      () => this.updateProviders(provider)
+                    )
+                  )  
+                );
+    
+                zip(
+                  this.wallet.getChainId(),
+                  this.wallet.getAccount(),
+                  this.wallet.getProvider()
+                )
+                .subscribe({
+                  
+                  next: ([chainId, account, provider]) => {
+    
+                    this.updateChainId(chainId);
+                    this.updateAccount(account);
+                    this.updateProviders(provider)
+                    this.updateConnection(CONNECTED);
+    
+                    observer.next(CONNECTED);
+    
+                  },
+    
+                  error: () => observer.error(new Error(CONNECT_ERROR))
+    
+    
+                });
+      
+              },
+          
+              error: (error) => {
+                
+                if (error.name === 'WalletError') {
+                  return observer.error(error);
+                }
+    
+                observer.error(new Error(CONNECT_ERROR));
+    
+              }
+            
+            });
+
         });
 
       });

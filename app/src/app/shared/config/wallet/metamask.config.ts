@@ -1,22 +1,9 @@
 import { environment } from "src/environments/environment";
 
-import { MetamaskAsset } from "../../models/wallet/metamask/metamask-asset.model";
 import { MetamaskChain } from "../../models/wallet/metamask/metamask-chain.model";
 import { MetamaskChainBase } from "../../models/wallet/metamask/metamask-chain-base.model";
 import { MetamaskRequest } from "../../models/wallet/metamask/metamask-request.model";
 
-import { CONTRACTS_METADATA } from "./wallet.config";
-
-
-export const ADRIA_TEST_ASSET: MetamaskAsset = {
-    type: "ERC20",
-    options: {
-        address: CONTRACTS_METADATA.contracts['AdriaTest'].address,
-        symbol: "ADRIAT",
-        decimals: 18,
-        image: `${environment.externalUrl}assets/token.png`
-    }
-};
 
 export const BNB_CHAIN_ID: MetamaskChainBase = { chainId: "0x38" };
 export const TEST_CHAIN_ID: MetamaskChainBase = { chainId: "0x7a69" };
@@ -61,9 +48,6 @@ export const CHAINS = new Map([
     ["0x7a69", TEST_CHAIN]
 ]);
 
-export const ASSETS = new Map([
-    ["ADRIAT", ADRIA_TEST_ASSET]
-]);
 
 export const ADD_ASSET_REQUEST: MetamaskRequest = { method: "wallet_watchAsset" };
 export const ADD_CHAIN_REQUEST: MetamaskRequest = { method: "wallet_addEthereumChain" };

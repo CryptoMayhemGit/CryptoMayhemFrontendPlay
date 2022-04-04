@@ -29,7 +29,20 @@ services:
     build: 
       context: ../../..
       dockerfile: ./pipelines/manual/hook/docker/nginx/Dockerfile
+    volumes:
+      - assets-contracts:/var/www/app.test.cryptomayhem.io/html/assets/contracts/
     depends_on:
       - proxy
     ports:
       - 443:443
+  deploy:
+    build:
+      context: ../../../contracts
+      dockerfile: ../pipelines/manual/hook/docker/deploy/Dockerfile
+    volumes:
+      - assets-contracts:/export/
+    depends_on:
+      - nginx
+
+volumes:
+  assets-contracts:

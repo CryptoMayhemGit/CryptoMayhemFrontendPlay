@@ -3,22 +3,14 @@ FROM node:16.14.0-alpine AS BUILD
 WORKDIR /build
 COPY ./app ./app
 COPY ./home ./home
-COPY ./contracts ./contracts
 
 WORKDIR /build/home
 RUN npm i
 RUN npm run build
 
-WORKDIR /build/contracts
-RUN npm i
-RUN npm run deployStage
-RUN npm run verifyStage
-RUN npm run exportStage
-
 WORKDIR /build/app
-COPY /build/contracts/export/contracts-metadata.json ./src/app/shared/config/
 RUN npm i
-RUN npm run build
+RUN npm run buildStage
 
 
 FROM nginx:1.20.2-alpine
