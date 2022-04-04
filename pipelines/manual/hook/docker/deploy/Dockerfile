@@ -6,6 +6,10 @@ COPY . .
 
 RUN npm i
 
-CMD npm run deplyStage &&
-    npm run verifyStage &&
-    npm run exportStage
+RUN npm run compile
+
+CMD sleep 60 && \
+    npm run deployStage && \
+    npm run exportStage && \
+    npm run verifyStage && \
+    while true; do sleep infinity; done 

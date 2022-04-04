@@ -1,9 +1,11 @@
 version: '3.9'
 services:
   rpc_chain:
+    container_name: 'rpc_chain'
     build: 
       context: ./docker/rpc
   rpc_db:
+    container_name: 'rpc_db'
     image: postgres:13.6-alpine
     env_file: ./config/rpc/db.env
     depends_on:
@@ -14,6 +16,7 @@ services:
           - host.docker.internal
           - database
   rpc_scan:
+    container_name: 'rpc_scan'
     image: blockscout/blockscout:latest
     env_file: ./config/rpc/scan.env
     command: mix do ecto.create, ecto.migrate, phx.server
@@ -21,11 +24,13 @@ services:
     depends_on:
       - rpc_db
   proxy:
+    container_name: 'proxy'
     build:
       context: ./docker/proxy
     depends_on:
       - rpc_scan
   nginx:
+    container_name: 'nginx'
     build: 
       context: ../../..
       dockerfile: ./pipelines/manual/hook/docker/nginx/Dockerfile
@@ -36,11 +41,12 @@ services:
     ports:
       - 443:443
   deploy:
+    container_name: 'deploy'
     build:
       context: ../../../contracts
       dockerfile: ../pipelines/manual/hook/docker/deploy/Dockerfile
     volumes:
-      - assets-contracts:/export/
+      - assets-contracts:/contracts/export/
     depends_on:
       - nginx
 

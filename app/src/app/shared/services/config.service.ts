@@ -18,7 +18,9 @@ export class ConfigService {
   private contractsMetadata?: ContractsMetadata;
   
   constructor(private http: HttpClient) { 
-    this.contractsMetadata = CONTRACTS_METADATA;
+    if (!environment.debug) {
+      this.contractsMetadata = CONTRACTS_METADATA;
+    } 
   }
 
   getContractsMetadata(): Observable<ContractsMetadata> {
@@ -27,11 +29,20 @@ export class ConfigService {
       if (!this.contractsMetadata) {
 
         this.fetchContractsMetadata()
-          .subscribe((contractsMetadata) => this.contractsMetadata = contractsMetadata);
-        
+          .subscribe({
+
+            next: (contractsMetadata) => {
+
+              this.contractsMetadata = contractsMetadata;
+              observer.next(this.contractsMetadata);
+
+            },
+
+            error: () => observer.error(new Error("Contracts are still deploying! Please be patient!"))
+
+        });
+
       }
-      
-      observer.next(this.contractsMetadata);
 
     });
   }
