@@ -2,7 +2,7 @@
     <p> Account: {{ account }} </p>
     <button *ngIf="!supportedChain && !unrecognizedChain" (click)="switchChain()" [disabled]="processing" class="green"> Change chain </button>
     <button *ngIf="!supportedChain && unrecognizedChain" (click)="addChain()" [disabled]="processing" class="green"> Add chain </button>
-    <button *ngIf="supportedChain && !unrecognizedChain" (click)="addAsset()" [disabled]="processing" class="orange"> Add {{ DEFAULT_ASSET }} </button>
+    <button *ngIf="supportedChain && !unrecognizedChain" (click)="addAsset()" class="orange"> Add {{ DEFAULT_ASSET }} </button>
     <button *ngIf="supportedChain && !unrecognizedChain" [disabled]="true" class="green"> Chain ID: {{ chainId }} </button>
 </div>
 
