@@ -26,7 +26,7 @@ It also exports contracts info to `app/src/assets/contracts/contracts-metadata.j
 
 #### To run:
    1. Go to `pipelines/manual/hook`
-   2. Run `docker-compose -f docker-compose-local up --build`
+   2. Run `docker-compose -f docker-compose-local.yml up --build`
    3. Go to `app`
    4. Run `ng serve`
    5. Go to `home`
@@ -51,7 +51,7 @@ In order to login credentials are required. (*ask tester*)
       - `app.test.cryptomayhem.io`
       - `rpc.test.cryptomayhem.io`
    2. Go to `pipelines/manual/hook`
-   3. Run `docker-compose -f docker-compose-stage up --build`
+   3. Run `docker-compose -f docker-compose-stage.yml up --build`
    4. (optional) To renew certs - every 3 months - run script `pipelines/manual/hook/scripts/certs.sh`
    5. (optional) Copy generated files from server to config folders:
    
