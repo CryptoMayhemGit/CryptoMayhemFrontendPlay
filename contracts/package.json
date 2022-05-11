@@ -8,10 +8,11 @@
     "clean": "npx hardhat clean",
     "test": "npx hardhat test",
     "node": "npx hardhat node",
-    "deployLocal": "npx hardhat --network localhost deploy",
+    "deployLocal": "npx hardhat --network local deploy",
+    "verifyLocal": "npx hardhat --network local etherscan-verify",
+    "exportLocal": "npx hardhat --network local export --export export/contracts-metadata.json",
     "deployStage": "npx hardhat --network stage deploy",
     "verifyStage": "npx hardhat --network stage etherscan-verify",
-    "exportLocal": "npx hardhat --network localhost export --export export/contracts-metadata.json",
     "exportStage": "npx hardhat --network stage export --export export/contracts-metadata.json"
   },
   "keywords": [],

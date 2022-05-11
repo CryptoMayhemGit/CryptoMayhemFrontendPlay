@@ -1,0 +1,183 @@
+
+section.metaverse {
+    overflow: hidden;
+
+    > div {
+        min-height: 600px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .description {
+        z-index: 1;
+		
+		.gif-container {
+			align-items: center; 
+			display: flex;
+		}
+		
+        .video-wrapper {
+            position: relative;
+            width: 160px;
+            height: 160px;
+			margin: 0px 0px 0px 40px;
+
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 100%;
+                background: url("../img/frame9.svg") no-repeat 50% 50%;
+                background-size: contain;
+            }
+        }
+
+        video {
+            width: 160px;
+            height: 160px;
+            mask-image: url("../img/frame9Mask.svg");
+            mask-repeat: no-repeat;
+            mask-position: 50% 50%;
+            mask-size: contain;
+            -webkit-mask-image: url("../img/frame9Mask.svg");
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: 50% 50%;
+            -webkit-mask-size: contain;
+        }
+    }
+
+    h2 {
+        margin: 56px 0;
+
+        .subTitle {
+            display: block;
+            font-size: 72px;
+            color: transparent;
+            -webkit-text-stroke: .5px white;
+            text-transform: uppercase;
+            font-family: "Nulshock";
+            @media (max-width: 800px) {
+                font-size: 9vw;
+            }
+        }
+
+        .mainTitle {
+            display: block;
+            text-align: left;
+            font-size: 72px;
+            text-transform: uppercase;
+            font-family: "Nulshock";
+            max-width: 900px;
+            letter-spacing: -1.5px;
+            line-height: 0.95;
+            @media (max-width: 800px) {
+                font-size: 9vw;
+            }
+        }
+    }
+
+    p {
+        font-size: 17px;
+        letter-spacing: 0.6px;
+        max-width: 640px;
+        margin: 28px 0;
+    }
+
+    @include imageWithDescription(true, $mask: url(../img/frame2Bmask.svg), $bg: url(../img/frame2B.svg));
+
+    .image {
+        img {
+
+            object-position: 0%;
+        }
+
+        img, &::after {
+            //width: 1954px;
+            //height: 832px;
+        }
+    }
+
+    @media(max-width: 1700px) {
+        > div {
+            overflow: hidden;
+            width: auto;
+            grid-template-columns: 1fr 830px;
+        }
+        .image {
+            img, &::after {
+                width: 1954/1700*100vw;
+                height: 1099/1700*100vw;
+            }
+        }
+
+    }
+    @media(max-width: 1600px) {
+        .image {
+            img {
+                object-position: -150px;
+            }
+        }
+    }
+    @media(max-width: 1300px) {
+        > div {
+            grid-template-columns: 1fr;
+        }
+        .description {
+            grid-column: 1;
+            grid-row: 2;
+            padding: 0 48px;
+        }
+        .image-wrapper {
+            grid-column: 1;
+            grid-row: 1;
+            margin-bottom: -20vw;
+        }
+        .image {
+            margin: 0;
+            overflow: hidden;
+            justify-self: center;
+            mask-image: linear-gradient(0deg, transparent 0, black 50%);
+            -webkit-mask-image: linear-gradient(0deg, transparent 0, black 50%);
+
+            img, &::after {
+                width: 1954/1700*130vw;
+                height: 1099/1700*130vw;
+                //max-width: 1954/1700*900px;
+                //max-height: 1099/1700*900px;
+            }
+        }
+    }
+    @media(max-width: 700px) {
+
+		.description {
+			.gif-container {
+				align-items: center; 
+				display: block;
+			}
+			
+				
+			.video-wrapper {
+				margin: 40px 0px 0px 40px;
+			}
+		}
+
+        .image {
+            img, &::after {
+                width: 1954px * .5;
+                height: 1099px * .5;
+            }
+        }
+
+    }
+    @media(max-width: 500px) {
+        .description {
+            padding: 0 36px;
+        }
+    }
+}

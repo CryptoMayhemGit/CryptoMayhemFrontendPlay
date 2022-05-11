@@ -1,0 +1,130 @@
+
+section.getAdria {
+    overflow: hidden;
+    margin-top: -200px;
+    padding-top: 200px;
+    margin-bottom: -200px;
+    padding-bottom: 200px;
+
+    > div {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 600px;
+        width: 1625px;
+        margin: auto;
+        justify-items: stretch;
+        align-items: center;
+        position: relative;
+    }
+
+    .content {
+        // width: 600px;
+    }
+
+    > div > picture {
+        position: absolute;
+        right: calc(50% - 1256px);
+        margin-top: 48px;
+
+        img {
+            width: 100%;
+        }
+
+    }
+
+    h2 {
+        grid-column: 1;
+        margin: 48px 0;
+        width: 600px;
+        @media (max-width: 800px) {
+            width: 600/800 * 100vw;
+        }
+    }
+
+    p {
+        grid-column: 1;
+        font-size: 21px;
+        line-height: 29px;
+    }
+
+    cut-button {
+        --border: #767676;//#16b338;//TODO Disable Button
+        text-transform: uppercase;
+    }
+
+    .button-wrapper {
+        margin: 64px 0;
+    }
+
+    div.sub {
+        border-top: 1px solid #707070;
+        padding: 32px 0;
+        grid-column: 1;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-size: 13px;
+        color: #9fa2a9;
+        font-weight: 400;
+
+        > * {
+            min-height: 48px;
+        }
+
+        .exchangeMiniLogo {
+            vertical-align: middle;
+            margin-left: 16px;
+        }
+
+        .address {
+            text-decoration: underline;
+        }
+
+        .icon-binance {
+            font-size: 27px;
+            vertical-align: middle;
+        }
+        .icon-copy{
+            font-size: 1.5em;
+            vertical-align: middle;
+            display: inline-block;
+        }
+    }
+
+    @media (max-width: 1700px) {
+        > div {
+            width: auto;
+            margin-left: 72px;
+            margin-right: 72px;
+            grid-template-columns: 810px 1fr;
+        }
+        > div > picture {
+            right: calc(25% - 1256px + 1700px / 4);
+        }
+    }
+    @media (max-width: 1150px) {
+        > div {
+            grid-template-columns: 1fr;
+        }
+        > div > picture {
+            position: static;
+            width: calc(25vw + 169px);
+            grid-row: 1;
+            justify-self: center;
+            margin-top: 0;
+        }
+        p {
+            font-size: 17px;
+            line-height: 24px;
+        }
+    }
+    @media (max-width: 500px) {
+        > div {
+            margin-left: 36px;
+            margin-right: 36px;
+        }
+        .button-wrapper {
+            margin: 48px 0;
+        }
+    }
+}

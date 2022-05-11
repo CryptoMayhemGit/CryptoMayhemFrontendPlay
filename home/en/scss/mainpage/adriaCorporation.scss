@@ -1,0 +1,95 @@
+
+.adriaCorporation {
+
+    width: 1625px;
+    margin: 146px auto;
+	text-align:center;
+	
+	.center-topic {
+		text-align:center;
+	}
+	
+	.center-img {
+		text-align:center;
+	}
+
+    h2 {
+        margin: 0px 25px 60px 25px;
+    }
+
+    .list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 48px 85px;
+		margin: 0px 50px;
+
+        > * {
+            display: flex;
+            flex-direction: column;
+
+            img {
+                width: 96px;
+                height: 96px;
+            }
+
+            h3 {
+                order: 2;
+                font-family: Montserrat;
+                font-size: 24px;
+                font-weight: 600;
+                margin: 13px 0;
+                letter-spacing: 0.6px;
+            }
+
+            p {
+                order: 3;
+                font-size: 17px;
+
+                letter-spacing: 0.6px;
+            }
+        }
+    }
+
+    @media (max-width: 1750px) {
+        width: auto;
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+    @media (max-width: 1400px) {
+
+        .list {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    @media (max-width: 1200px) {
+        h2 {
+            font-size: 32px;
+            max-width: 450px;
+        }
+    }
+    @media (max-width: 950px) {
+
+        max-width: 500px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 96px;
+        margin-bottom: 48px;
+        h2 {
+            margin-bottom: 48px;
+        }
+        .list {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 550px) {
+        margin-left: 24px;
+        margin-right: 24px;
+
+    }
+    @media(max-width: 380px) {
+        h2 {
+            font-size: 28px;
+        }
+    }
+}

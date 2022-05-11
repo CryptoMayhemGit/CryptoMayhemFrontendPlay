@@ -7,6 +7,7 @@ import { MetamaskRequest } from "../../models/wallet/metamask/metamask-request.m
 
 export const BNB_CHAIN_ID: MetamaskChainBase = { chainId: "0x38" };
 export const TEST_CHAIN_ID: MetamaskChainBase = { chainId: "0x7a69" };
+export const LOCAL_CHAIN_ID: MetamaskChainBase = { chainId: "0x539" };
 
 export const BNB_CHAIN: MetamaskChain = {
     ...BNB_CHAIN_ID,
@@ -29,8 +30,21 @@ export const TEST_CHAIN: MetamaskChain = {
     ...TEST_CHAIN_ID,
     chainName: "Crypto Mayhem Test Chain",
     nativeCurrency: {
-        name: "BNB",
-        symbol: "BNB",
+        name: "ETH",
+        symbol: "ETH",
+        decimals: 18
+    },
+    rpcUrls: [
+        environment.rpcUrl
+    ]
+};
+
+export const LOCAL_CHAIN: MetamaskChain = {
+    ...LOCAL_CHAIN_ID,
+    chainName: "Crypto Mayhem Local Chain",
+    nativeCurrency: {
+        name: "ETH",
+        symbol: "ETH",
         decimals: 18
     },
     rpcUrls: [
@@ -40,12 +54,14 @@ export const TEST_CHAIN: MetamaskChain = {
 
 export const CHAIN_IDS = new Map([
     ["0x38", BNB_CHAIN_ID],
-    ["0x7a69", TEST_CHAIN_ID]
+    ["0x7a69", TEST_CHAIN_ID],
+    ["0x539", LOCAL_CHAIN_ID]
 ]);
 
 export const CHAINS = new Map([
     ["0x38", BNB_CHAIN],
-    ["0x7a69", TEST_CHAIN]
+    ["0x7a69", TEST_CHAIN],
+    ["0x539", LOCAL_CHAIN]
 ]);
 
 

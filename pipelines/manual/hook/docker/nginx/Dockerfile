@@ -4,7 +4,7 @@ WORKDIR /build
 COPY ./app ./app
 COPY ./home ./home
 
-WORKDIR /build/home
+WORKDIR /build/home/en
 RUN npm i
 RUN npm run build
 
@@ -15,9 +15,7 @@ RUN npm run buildStage
 
 FROM nginx:1.20.2-alpine
 
-COPY ./pipelines/manual/hook/config/home/cert/ /etc/nginx/certs/test.cryptomayhem.io/
-COPY ./pipelines/manual/hook/config/app/cert/ /etc/nginx/certs/app.test.cryptomayhem.io/
-COPY ./pipelines/manual/hook/config/rpc/cert/ /etc/nginx/certs/rpc.test.cryptomayhem.io/
+COPY ./pipelines/manual/hook/config/cert/ /etc/nginx/certs/test.cryptomayhem.io/
 
 COPY ./pipelines/manual/hook/config/home/.htpasswd /var/www/test.cryptomayhem.io/
 COPY ./pipelines/manual/hook/config/app/.htpasswd /var/www/app.test.cryptomayhem.io/
@@ -33,10 +31,13 @@ RUN mkdir /var/log/nginx/rpc.test.cryptomayhem.io
 
 RUN chmod 600 /etc/nginx/certs -R
 
-COPY --from=BUILD /build/home/views/ /var/www/test.cryptomayhem.io/html
-COPY --from=BUILD /build/home/img /var/www/test.cryptomayhem.io/html/img
-COPY --from=BUILD /build/home/dist /var/www/test.cryptomayhem.io/html/dist
+COPY --from=BUILD /build/home/en/index.html /var/www/test.cryptomayhem.io/html/en/
+COPY --from=BUILD /build/home/en/views /var/www/test.cryptomayhem.io/html/en/views
+COPY --from=BUILD /build/home/en/img /var/www/test.cryptomayhem.io/html/en/img
+COPY --from=BUILD /build/home/en/dist /var/www/test.cryptomayhem.io/html/en/dist
+
+COPY --from=BUILD /build/home/pl/index.html /var/www/test.cryptomayhem.io/html/pl/
 
 COPY --from=BUILD /build/app/dist/crypto-mayhem-frontend/ /var/www/app.test.cryptomayhem.io/html/
 
-EXPOSE 80 443
+EXPOSE 443

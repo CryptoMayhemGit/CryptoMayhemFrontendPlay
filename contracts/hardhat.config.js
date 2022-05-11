@@ -19,10 +19,18 @@ module.exports = {
     }
   },
   networks: {
-    localhost: {
-      url: 'http://localhost:8545'
+    local: {
+      chainId: 1337,
+      url: 'http://rpc_chain:8545',
+      verify: {
+        etherscan: {
+          apiUrl: 'http://rpc_scan:4000',
+          apiKey: 'undefined'
+        }
+      }
     },
     stage: {
+      chainId: 31337,
       url: 'http://rpc_chain:8545',
       verify: {
         etherscan: {
