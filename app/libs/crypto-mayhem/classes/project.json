@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/crypto-mayhem/classes/src",
+  "prefix": "crypto-mayhem-frontend",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/crypto-mayhem/classes"],
+      "options": {
+        "jestConfig": "libs/crypto-mayhem/classes/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/crypto-mayhem/classes/**/*.ts",
+          "libs/crypto-mayhem/classes/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:utils"]
+}

@@ -13,7 +13,7 @@
 
 ## Environments:
 In both cases docker deploys blockchain, blockexplorer, contracts to network.
-It also exports contracts info to `app/src/assets/contracts/contracts-metadata.json`.
+It also exports contracts info to `app/libs/crypto-mayhem/assets/contracts/contracts-metadata.json`.
 
 ------
 ### `local`:

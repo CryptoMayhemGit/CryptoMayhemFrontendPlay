@@ -34,6 +34,6 @@ services:
       context: ../../../contracts
       dockerfile: ../pipelines/manual/hook/docker/deploy/local/Dockerfile
     volumes:
-      - ../../../app/src/assets/contracts/:/contracts/export/
+      - ../../../app/libs/crypto-mayhem/assets/contracts/:/contracts/export/
     depends_on:
       - rpc_scan
