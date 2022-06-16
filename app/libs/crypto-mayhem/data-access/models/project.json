@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/crypto-mayhem/data-access/models/src",
+  "prefix": "crypto-mayhem-frontend",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/crypto-mayhem/data-access/models"],
+      "options": {
+        "jestConfig": "libs/crypto-mayhem/data-access/models/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/crypto-mayhem/data-access/models/**/*.ts",
+          "libs/crypto-mayhem/data-access/models/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["type:data-access"]
+}
