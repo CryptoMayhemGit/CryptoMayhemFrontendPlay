@@ -9,7 +9,5 @@ export interface RegisterResponse {
 }
 
 export interface RegisterRequest {
-    wallet: string;
-    signedMessage: string;
-    messageToSign: RegisterMessage;
+    activationNotificationToken: string
 }

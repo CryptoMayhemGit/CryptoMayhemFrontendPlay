@@ -1,5 +1,5 @@
 import { ErrorHandler, Injectable } from '@angular/core';
-import { UNKNOWN_ERROR } from '@crypto-mayhem-frontend/crypto-mayhem/config';
+import { TranslocoService } from '@ngneat/transloco';
 import { NotificationService } from '../notification/notification.service';
 
 
@@ -8,10 +8,10 @@ import { NotificationService } from '../notification/notification.service';
 })
 export class ErrorService implements ErrorHandler {
 
-  constructor(private notificationService: NotificationService) { }
+  constructor(private notificationService: NotificationService, private translocoService: TranslocoService) { }
 
   handleError(): void {
-    this.notificationService.error(UNKNOWN_ERROR);
+    this.notificationService.error(this.translocoService.translate("NOTIFICATION.ERROR.UNKNOWN_ERROR"));
   }
 
 }

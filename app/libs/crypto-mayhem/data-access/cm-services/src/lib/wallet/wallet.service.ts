@@ -2,12 +2,13 @@ import { Inject, Injectable, NgZone } from '@angular/core';
 
 import { Web3Provider } from '@ethersproject/providers';
 
-import { BehaviorSubject, Observable, first, zip } from 'rxjs';
+import { BehaviorSubject, Observable, first, zip, map } from 'rxjs';
 
 import { WalletConnector, WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/models';
-import { ADD_CHAIN_ERROR, AppConfig, APP_CONFIG, CONNECTED, CONNECT_ERROR, DENIED_BY_USER, DISCONNECTED, DISCONNECT_ERROR, EMPTY_ACCOUNT, EMPTY_CHAIN_ID, EMPTY_PROVIDER, SING_MESSAGE_ERROR, SWITCH_CHAIN_ERROR } from '@crypto-mayhem-frontend/crypto-mayhem/config';
+import { AppConfig, APP_CONFIG, CONNECTED, DISCONNECTED, EMPTY_ACCOUNT, EMPTY_CHAIN_ID, EMPTY_PROVIDER, } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import { ConfigService } from '../config/config.service';
 import { MetamaskWallet, SubscriptionRegister } from '@crypto-mayhem-frontend/crypto-mayhem/classes';
+import { TranslocoService } from '@ngneat/transloco';
 
 
 
@@ -41,7 +42,8 @@ export class WalletService {
   constructor(
     private ngZone: NgZone,
     private configService: ConfigService,
-    @Inject(APP_CONFIG) private config: AppConfig
+    @Inject(APP_CONFIG) private config: AppConfig,
+    private translocoservice: TranslocoService
   ) { }
 
   private updateConnection(connection: boolean): void {
@@ -70,108 +72,106 @@ export class WalletService {
     return new Observable(observer => {
 
       this.configService.getContractsMetadata()
-        .pipe(first())
-        .subscribe({
+        .pipe(
+          first(),
+          map(
+            (contractsMetadata) => {
+              switch (walletType) {
+
+                case WalletType.Metamask: {
+                  this.wallet = new MetamaskWallet(contractsMetadata, this.config.rpcUrl, this.config.externalUrl, this.translocoservice);
+                  break;
+                }
           
-          next: (contractsMetadata) => {
-
-            switch (walletType) {
-
-              case WalletType.Metamask: {
-                this.wallet = new MetamaskWallet(contractsMetadata, this.config.rpcUrl, this.config.externalUrl);
-                break;
               }
         
-            }
-      
-            if (!this.wallet) {
-              return observer.error(new Error(CONNECT_ERROR));
-            }
-      
-            this.wallet.connect()
-              .pipe(first())
-              .subscribe({
-      
-                next: (connected) => {
-      
-                  if (!this.wallet || !connected) {
-                    return observer.error(new Error(CONNECT_ERROR));
-                  }
-            
-                  this.subscriptionRegister.add(
-                    this.wallet.connectionChanged$.subscribe(connection => 
-                      this.ngZone.run(
-                        () => this.updateConnection(connection)
-                      )
-                    )  
-                  );
-          
-                  this.subscriptionRegister.add(
-                    this.wallet.chainIdChanged$.subscribe(chainId => 
-                      this.ngZone.run(
-                        () => this.updateChainId(chainId)
-                      )
-                    )  
-                  );
-          
-                  this.subscriptionRegister.add(
-                    this.wallet.accountChanged$.subscribe(account => 
-                      this.ngZone.run(
-                        () => this.updateAccount(account)
-                      )
-                    )  
-                  );
-          
-                  this.subscriptionRegister.add(
-                    this.wallet.providerChanged$.subscribe(provider => 
-                      this.ngZone.run(
-                        () => this.updateProviders(provider)
-                      )
-                    )  
-                  );
-      
-                  zip(
-                    this.wallet.getChainId(),
-                    this.wallet.getAccount(),
-                    this.wallet.getProvider()
-                  )
-                  .subscribe({
-                    
-                    next: ([chainId, account, provider]) => {
-      
-                      this.updateChainId(chainId);
-                      this.updateAccount(account);
-                      this.updateProviders(provider)
-                      this.updateConnection(CONNECTED);
-      
-                      observer.next(CONNECTED);
-      
-                    },
-      
-                    error: () => observer.error(new Error(CONNECT_ERROR))
-      
-      
-                  });
+              if (!this.wallet) {
+                return observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.CONNECT_ERROR")));
+              }
         
-                },
-            
-                error: (error) => {
-                  
-                  if (error.name === 'WalletError') {
-                    return observer.error(error);
-                  }
-      
-                  observer.error(new Error(CONNECT_ERROR));
-      
-                }
+              this.wallet.connect()
+                .subscribe({
+        
+                  next: (connected) => {
+        
+                    if (!this.wallet || !connected) {
+                      return observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.CONNECT_ERROR")));
+                    }
               
-              });
-
-            },
-
+                    this.subscriptionRegister.add(
+                      this.wallet.connectionChanged$.subscribe(connection => 
+                        this.ngZone.run(
+                          () => this.updateConnection(connection)
+                        )
+                      )  
+                    );
+            
+                    this.subscriptionRegister.add(
+                      this.wallet.chainIdChanged$.subscribe(chainId => 
+                        this.ngZone.run(
+                          () => this.updateChainId(chainId)
+                        )
+                      )  
+                    );
+            
+                    this.subscriptionRegister.add(
+                      this.wallet.accountChanged$.subscribe(account => 
+                        this.ngZone.run(
+                          () => this.updateAccount(account)
+                        )
+                      )  
+                    );
+            
+                    this.subscriptionRegister.add(
+                      this.wallet.providerChanged$.subscribe(provider => 
+                        this.ngZone.run(
+                          () => this.updateProviders(provider)
+                        )
+                      )  
+                    );
+        
+                    zip(
+                      this.wallet.getChainId(),
+                      this.wallet.getAccount(),
+                      this.wallet.getProvider()
+                    )
+                    .subscribe({
+                      
+                      next: ([chainId, account, provider]) => {
+        
+                        this.updateChainId(chainId);
+                        this.updateAccount(account);
+                        this.updateProviders(provider)
+                        this.updateConnection(CONNECTED);
+        
+                        observer.next(CONNECTED);
+        
+                      },
+        
+                      error: () => observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.CONNECT_ERROR")))
+        
+        
+                    });
+          
+                  },
+              
+                  error: (error) => {
+                    
+                    if (error.name === 'WalletError') {
+                      return observer.error(error);
+                    }
+        
+                    observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.CONNECT_ERROR")));
+        
+                  }
+                
+                });
+            }
+          )
+        )
+        .subscribe({
             error: (error) => observer.error(error)
-
-          });
+        });
 
       });
 
@@ -196,7 +196,7 @@ export class WalletService {
             observer.next(success);
           },
 
-          error: () => observer.error(new Error(DISCONNECT_ERROR))
+          error: () => observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.DISCONNECT_ERROR")))
 
         });
 
@@ -228,14 +228,14 @@ export class WalletService {
     return new Observable(observer => {
 
       if (!this.web3Provider) {
-        return observer.error(new Error(SING_MESSAGE_ERROR));
+        return observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.SIGN_MESSAGE_ERROR")));
       }
   
       this.web3Provider
         .getSigner()
         .signMessage(message)
         .then(signature => observer.next(signature))
-        .catch(_ => observer.error(new Error(DENIED_BY_USER)));
+        .catch(_ => observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.DENIED_BY_USER"))));
 
     });
 
@@ -245,7 +245,7 @@ export class WalletService {
     return new Observable(observer => {
 
       if (!this.wallet) {
-        return observer.error(new Error(SWITCH_CHAIN_ERROR));
+        return observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.SWITCH_CHAIN_ERROR")));
       }
   
       this.wallet.switchChain(chainId)
@@ -260,7 +260,7 @@ export class WalletService {
               return observer.error(error);
             }
 
-            observer.error(new Error(SWITCH_CHAIN_ERROR));
+            observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.SWITCH_CHAIN_ERROR")));
 
           }
 
@@ -273,7 +273,7 @@ export class WalletService {
     return new Observable(observer => {
 
       if (!this.wallet) {
-        return observer.error(new Error(ADD_CHAIN_ERROR));
+        return observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.ADD_CHAIN_ERROR")));
       }
   
       this.wallet.addChain(chainId)
@@ -288,7 +288,7 @@ export class WalletService {
               return observer.error(error);
             }
 
-            observer.error(new Error(ADD_CHAIN_ERROR));
+            observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.ADD_CHAIN_ERROR")));
 
           }
 
