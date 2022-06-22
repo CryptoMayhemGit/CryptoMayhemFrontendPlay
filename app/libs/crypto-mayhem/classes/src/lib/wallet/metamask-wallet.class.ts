@@ -3,8 +3,9 @@ import { Observable, Subject } from "rxjs";
 import { WalletError } from "./wallet-error.class";
 
 import { ContractsMetadata, MetamaskAsset, MetamaskError, MetamaskProvider, MetamaskWindow, WalletConnector } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/models";
-import { ACCOUNTS_LISTENER, ACCOUNTS_REQUEST, ADD_ASSET_REQUEST, ADD_CHAIN_REQUEST, CHAINS, CHAIN_IDS, CHAIN_ID_REQUEST, CHAIN_LISTENER, CONNECTED, CONNECT_LISTENER, CONNECT_REQUEST, DISCONNECTED, DISCONNECT_LISTENER, EMPTY_ACCOUNT, EMPTY_PROVIDER, PENDING_CONNECTION, PENDING_REQUEST_CODE, PROVIDER_NOT_FOUND, SWITCH_CHAIN_REQUEST, UNRECOGNIZED_CHAIN, UNRECOGNIZED_CHAIN_ERROR_CODE, UNSUPPORTED_CHAIN, USER_REJECTED_CHAIN, USER_REJECTED_CONNECTION, USER_REJECTED_ERROR_CODE } from "@crypto-mayhem-frontend/crypto-mayhem/config";
+import { ACCOUNTS_LISTENER, ACCOUNTS_REQUEST, ADD_ASSET_REQUEST, ADD_CHAIN_REQUEST, CHAINS, CHAIN_IDS, CHAIN_ID_REQUEST, CHAIN_LISTENER, CONNECTED, CONNECT_LISTENER, CONNECT_REQUEST, DISCONNECTED, DISCONNECT_LISTENER, EMPTY_ACCOUNT, EMPTY_PROVIDER, PENDING_REQUEST_CODE, SWITCH_CHAIN_REQUEST, UNRECOGNIZED_CHAIN_ERROR_CODE, USER_REJECTED_ERROR_CODE } from "@crypto-mayhem-frontend/crypto-mayhem/config";
 import { prepareMetamaskAssets } from "@crypto-mayhem-frontend/utils";
+import { TranslocoService } from "@ngneat/transloco";
 
 
 export class MetamaskWallet implements WalletConnector {
@@ -15,16 +16,19 @@ export class MetamaskWallet implements WalletConnector {
     private chainIdChanged = new Subject<string>();
     private accountChanged = new Subject<string>();
     private providerChanged = new Subject<any>();
+
     private url: string;
+    private transloco: TranslocoService;
   
     connectionChanged$ = this.connectionChanged.asObservable();
     chainIdChanged$ = this.chainIdChanged.asObservable();
     accountChanged$ = this.accountChanged.asObservable();
     providerChanged$ = this.providerChanged.asObservable();
 
-    constructor(contractsMetadata: ContractsMetadata, rpcUrl?: string, externalUrl?: string) {
+    constructor(contractsMetadata: ContractsMetadata, rpcUrl?: string, externalUrl?: string, translocoService?: TranslocoService) {
         this.assets = prepareMetamaskAssets(contractsMetadata, externalUrl as string);
         this.url = rpcUrl as string;
+        this.transloco = translocoService as TranslocoService;
         
         this.onConnect = this.onConnect.bind(this);
         this.onDisonnect = this.onDisonnect.bind(this);
@@ -37,7 +41,7 @@ export class MetamaskWallet implements WalletConnector {
         const provider = (window as MetamaskWindow).ethereum;
 
         if (!provider) {
-            throw new WalletError(PROVIDER_NOT_FOUND);
+            throw new WalletError(this.transloco.translate("NOTIFICATION.METAMASK.PROVIDER_NOT_FOUND"));
         }
 
         return provider;
@@ -97,11 +101,11 @@ export class MetamaskWallet implements WalletConnector {
                     .catch((error: MetamaskError) => {
 
                         if (error.code === USER_REJECTED_ERROR_CODE) {
-                            return observer.error(new WalletError(USER_REJECTED_CONNECTION));
+                            return observer.error(new WalletError(this.transloco.translate("NOTIFICATION.METAMASK.USER_REJECTED_CONNECTION")));
                         }
 
                         if (error.code === PENDING_REQUEST_CODE) {
-                            return observer.error(new WalletError(PENDING_CONNECTION, PENDING_REQUEST_CODE));
+                            return observer.error(new WalletError(this.transloco.translate("NOTIFICATION.METAMASK.PENDING_CONNECTION"), PENDING_REQUEST_CODE));
                         }
 
                         observer.error(error);
@@ -202,7 +206,7 @@ export class MetamaskWallet implements WalletConnector {
                 const chainIdObject = CHAIN_IDS.get(chainId);
 
                 if (!chainIdObject) {
-                    return observer.error(new Error(UNSUPPORTED_CHAIN));
+                    return observer.error(new Error(this.transloco.translate("NOTIFICATION.METAMASK.UNSUPPORTED_CHAIN")));
                 }
 
                 const switchChainRequest = Object.assign({ params: [chainIdObject] }, SWITCH_CHAIN_REQUEST);
@@ -213,11 +217,11 @@ export class MetamaskWallet implements WalletConnector {
                     .catch((error: MetamaskError) => {
 
                         if (error.code === UNRECOGNIZED_CHAIN_ERROR_CODE) {
-                            return observer.error(new WalletError(UNRECOGNIZED_CHAIN, UNRECOGNIZED_CHAIN_ERROR_CODE));
+                            return observer.error(new WalletError(this.transloco.translate("NOTIFICATION.METAMASK.UNRECOGNIZED_CHAIN"), UNRECOGNIZED_CHAIN_ERROR_CODE));
                         }
 
                         if (error.code === USER_REJECTED_ERROR_CODE) {
-                            return observer.error(new WalletError(USER_REJECTED_CHAIN));
+                            return observer.error(new WalletError(this.transloco.translate("NOTIFICATION.METAMASK.USER_REJECTED_CHAIN")));
                         }
 
                         observer.error(error);
@@ -248,7 +252,7 @@ export class MetamaskWallet implements WalletConnector {
                 }
 
                 if (!chainObject) {
-                    return observer.error(new Error(UNSUPPORTED_CHAIN));
+                    return observer.error(new Error(this.transloco.translate("NOTIFICATION.METAMASK.UNSUPPORTED_CHAIN")));
                 }
 
                 const addChainRequest = Object.assign({ params: [chainObject] }, ADD_CHAIN_REQUEST);
@@ -259,7 +263,7 @@ export class MetamaskWallet implements WalletConnector {
                     .catch((error: MetamaskError) => {
 
                         if (error.code === USER_REJECTED_ERROR_CODE) {
-                            return observer.error(new WalletError(USER_REJECTED_CHAIN));
+                            return observer.error(new WalletError(this.transloco.translate("NOTIFICATION.METAMASK.USER_REJECTED_CHAIN")));
                         }
 
                         observer.error(error);

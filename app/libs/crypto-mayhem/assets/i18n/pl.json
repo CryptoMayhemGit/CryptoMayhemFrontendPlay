@@ -2,7 +2,63 @@
     "CM": {
         "NAVBAR": {
             "CONNECT": "Połącz",
-            "DISCONNECT": "Wyloguj"
+            "DISCONNECT": "Rozłącz"
         }
+    },
+    "AUTH": {
+        "LOGIN_MESSAGE": "Login attempt",
+        "REGISTER_MESSAGE": "Register attempt"
+    },
+    "NOTIFICATION": {
+        "AUTH": {
+            "REGISTER_ERROR": "Registration failed!",
+            "LOGIN_ERROR": "Unable to login! Maybe unregistered?"   
+        },
+        "ERROR": {
+            "UNKNOWN_ERROR": "Unknown error!"  
+        },
+        "METAMASK": {
+            "PROVIDER_NOT_FOUND": "Metamask not found!",
+
+            "USER_REJECTED_CONNECTION": "Connection request rejected by user!",
+            "PENDING_CONNECTION": "Connection request is pending!",
+
+            "UNSUPPORTED_CHAIN": "Unsupported chain!",
+            "UNRECOGNIZED_CHAIN": "Unrecognized chain!",
+            "USER_REJECTED_CHAIN": "Chain request rejected by user!"
+        },
+        "NAVBAR": {
+            "CONNECT_SUCCESS": "Successfully connected!",
+            "CONNECT_PROCESS": "Connecting...",
+            "CONNECT_ACCEPT": "Accept connection!",
+
+            "DISCONNECT_SUCCESS": "Successfully disconnected!",
+            "DISCONNECT_PROCESS": "Disconnecting...",
+
+            "REGISTER_SUCCESS": "Registration successfull!",
+            "REGISTER_PROCESS": "Registering...",
+
+            "LOGIN_SUCCESS": "Successfully logged in!",
+            "LOGIN_PROCESS": "Logging in...",
+
+            "LOGOUT_SUCCESS": "Successfully logged out!",
+            "LOGOUT_PROCESS": "Logging out...",
+
+            "SWITCH_CHAIN_SUCCESS": "Successfully switched chain!",
+            "SWITCH_CHAIN_PROCESS": "Switching chain...",
+            "SWITCH_CHAIN_ADD": "Add chain!",
+
+            "ADD_CHAIN_SUCCESS": "Successfully added chain!",
+            "ADD_CHAIN_PROCESS": "Adding chain..."
+        },
+        "WALLET": {
+            "CONNECT_ERROR": "Unable to connect!",
+            "DISCONNECT_ERROR": "Unable to disconnect!",
+            "SIGN_MESSAGE_ERROR": "Unable to sign message!",
+            "DENIED_BY_USER": "User denied message signature!",
+            "SWITCH_CHAIN_ERROR": "Unable to switch chain!",
+            "ADD_CHAIN_ERROR": "Unable to add chain!"
+        }
+
     }
 }

@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 
 import { LoginRequest, LoginResponse, RegisterRequest, RegisterResponse } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/models';
-import { AppConfig, APP_CONFIG, LOGIN_ERROR, REGISTER_ERROR, TOKEN_KEY } from '@crypto-mayhem-frontend/crypto-mayhem/config';
+import { AppConfig, APP_CONFIG, TOKEN_KEY } from '@crypto-mayhem-frontend/crypto-mayhem/config';
+import { TranslocoService } from '@ngneat/transloco';
 
 
 @Injectable({
@@ -24,7 +25,11 @@ export class AuthService {
   userId$ = this.authenticationSubject.asObservable();
   account$ = this.accountSubject.asObservable();
 
-  constructor(private http: HttpClient, @Inject(APP_CONFIG) private config: AppConfig) {}
+  constructor(
+    private http: HttpClient,
+    @Inject(APP_CONFIG) private config: AppConfig,
+    private translocoService: TranslocoService
+  ) {}
 
   private updateAuthentication(authentication: boolean): void {
     this.authentication = authentication;
@@ -53,31 +58,8 @@ export class AuthService {
     return this.account;
   }
 
-  register(registerRequest: RegisterRequest): Observable<boolean> {
-    return new Observable(observer => {
-
-      if (this.config.debug) {
-        console.log('Register request: ', registerRequest);
-      }
-
-      this.http.post<RegisterResponse>(`${this.config.baseUrl}api/Account/Register`, registerRequest)
-        .subscribe({
-
-            next: (response) => {
-
-              observer.next(response.success);
-
-              if (this.config.debug) {
-                console.log('Register response: ', response);
-              }
-
-            },
-
-            error: () => observer.error(new Error(REGISTER_ERROR))
-
-        });
-
-    });
+  register(registerRequest: RegisterRequest): Observable<RegisterResponse> {
+     return this.http.post<RegisterResponse>(`${this.config.baseUrl}api/Account/Register`, registerRequest);
   }
 
   login(loginRequest: LoginRequest): Observable<boolean> {
@@ -103,7 +85,7 @@ export class AuthService {
 
             },
 
-            error: () => observer.error(new Error(LOGIN_ERROR))
+            error: () => observer.error(new Error(this.translocoService.translate("NOTIFICATION.AUTH.LOGIN_ERROR")))
 
         });
 
