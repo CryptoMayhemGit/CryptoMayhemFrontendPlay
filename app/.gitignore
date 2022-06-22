@@ -45,6 +45,6 @@ Thumbs.db
 environments
 
 # Contracts metadata
-contracts
+libs/crypto-mayhem/assets/contracts
 
 .angular
