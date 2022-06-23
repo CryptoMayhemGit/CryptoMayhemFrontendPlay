@@ -1,22 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-$primary-font-size:          20px;
-$primary-font-weight:        300;
-
-$primary-font-family:        'Lato';
-$secondary-font-family:      'Courier New';
-
-$primary-font-color:       #E2E4E6;
-$primary-background-color: #121314;
-
 html {
-    color: $primary-font-color;
-    font-size: $primary-font-size;
-    font-weight: $primary-font-weight;
-    font-family: $primary-font-family, $secondary-font-family;
-    background-color: $primary-background-color;
+  font-size: 10px;
 }
 
 body {
-    margin: 0;
+  font-size: 14px;
+  font-size: 1.4rem;
+  margin: 0;
 }

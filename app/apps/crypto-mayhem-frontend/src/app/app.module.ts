@@ -1,43 +1,44 @@
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule,  } from '@angular/common/http';
-
-import { AppRoutingModule } from './app-routing.module';
-
-import { AppComponent } from './components/root/app.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { TranslocoRootModule } from './transloco-root.module';
 import { environment } from '../environments/environment';
-import { getAppConfigProvider } from '../../../../libs/crypto-mayhem/config/src';
-import { ErrorService } from '../../../../libs/crypto-mayhem/data-access/cm-services/src';
-import { NavbarModule, NotificationModule } from '../../../../libs/ui/src';
-import { AuthInterceptor } from '../../../../libs/crypto-mayhem/data-access/interceptors/src';
 
+import { AppComponent } from './app.component';
+import {
+  NavbarModule,
+  NavigationHeaderModule,
+  NotificationModule,
+} from '@crypto-mayhem-frontend/ui';
+import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
+import { ErrorService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services';
+import { getAppConfigProvider } from '@crypto-mayhem-frontend/crypto-mayhem/config';
+import { ShellModule } from '@crypto-mayhem-frontend/crypto-mayhem/shell';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
+    ShellModule,
     TranslocoRootModule,
     NotificationModule,
-    NavbarModule
+    NavbarModule,
+    NavigationHeaderModule,
   ],
   providers: [
     {
       provide: ErrorHandler,
-      useClass: ErrorService
+      useClass: ErrorService,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     },
     getAppConfigProvider(environment),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

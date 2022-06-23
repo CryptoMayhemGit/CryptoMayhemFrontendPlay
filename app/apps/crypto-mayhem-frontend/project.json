@@ -102,13 +102,23 @@
         "browserTarget": "crypto-mayhem-frontend:build"
       }
     },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/crypto-mayhem-frontend/src/**/*.ts",
+          "apps/crypto-mayhem-frontend/src/**/*.html"
+        ]
+      }
+    },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/prommt-forms"],
+      "outputs": ["coverage/apps/crypto-mayhem-frontend"],
       "options": {
-        "jestConfig": "apps/prommt-forms/jest.config.js",
+        "jestConfig": "apps/crypto-mayhem-frontend/jest.config.js",
         "passWithNoTests": true
       }
     }
-  }
+  },
+  "tags": ["type:app"]
 }
