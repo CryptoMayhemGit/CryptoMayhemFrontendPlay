@@ -1,6 +1,6 @@
-import { Routes } from '@angular/router';
+import { Route } from '@angular/router';
 import { LandingPageComponent } from '@crypto-mayhem-frontend/ui';
 
-const routes: Routes = [
+export const cryptoMayhemShellRoutes: Route[] = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
 ];
