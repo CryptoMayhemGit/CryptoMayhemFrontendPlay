@@ -5,5 +5,6 @@ import { MainButtonComponent } from './main-button.component';
 @NgModule({
   declarations: [MainButtonComponent],
   imports: [CommonModule],
+  exports: [MainButtonComponent],
 })
 export class MainButtonModule {}

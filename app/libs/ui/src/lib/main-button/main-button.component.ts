@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'ui-main-button',
@@ -6,8 +6,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./main-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MainButtonComponent implements OnInit {
+export class MainButtonComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }

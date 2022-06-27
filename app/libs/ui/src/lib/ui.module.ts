@@ -13,6 +13,7 @@ import { MainButtonModule } from './main-button/main-button.module';
     NavbarModule,
     LandingPageModule,
     NavigationHeaderModule,
+    MainButtonModule,
   ],
   declarations: [],
 })

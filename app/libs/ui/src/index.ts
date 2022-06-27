@@ -7,3 +7,5 @@ export * from './lib/landing-page/landing-page.module';
 export * from './lib/landing-page/landing-page.component';
 export * from './lib/navigation-header/navigation-header.module';
 export * from './lib/navigation-header/navigation-header.component';
+export * from './lib/main-button/main-button.module';
+export * from './lib/main-button/main-button.component';
