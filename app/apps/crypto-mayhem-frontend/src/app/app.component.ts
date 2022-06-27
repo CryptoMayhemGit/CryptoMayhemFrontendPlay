@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'crypto-mayhem',
+  selector: 'crypto-mayhem-app',
   template: `
     <ui-nav></ui-nav>
     <router-outlet></router-outlet>
-    <cm-notification></cm-notification>
+    <ui-notification></ui-notification>
   `,
 })
 export class AppComponent {}

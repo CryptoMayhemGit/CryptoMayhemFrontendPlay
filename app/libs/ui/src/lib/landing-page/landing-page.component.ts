@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'cm-landing-page',
-  templateUrl: './landing-page.component.html',
+  selector: 'ui-landing-page',
+  template: ``,
 })
-export class LandingPageComponent implements OnInit {
+export class LandingPageComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'ui-nav',
@@ -6,8 +6,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavigationHeaderComponent implements OnInit {
+export class NavigationHeaderComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }
