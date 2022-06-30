@@ -1,9 +1,18 @@
 <div id="nav">
     <div>
-        <a id="logo" href="#"><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
+        <a id="logo" href="/"><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
         <img id="burger" src="./assets/images/burger.svg">
+        <nav>
+            <a href="#">{{'NAVBAR.NAV.GAMES' | transloco}}</a>
+            <a href="#">{{'NAVBAR.NAV.NFT' | transloco}}</a>
+            <a href="#">{{'NAVBAR.NAV.STAKING' | transloco}}</a>
+            <a href="#">{{'NAVBAR.NAV.VESTING' | transloco}}</a>
+            <a href="#">{{'NAVBAR.NAV.NEWS' | transloco}}</a>
+            <a href="#">{{'NAVBAR.NAV.PRESALE' | transloco}}</a>
+        </nav>
     </div>
     <div>
-        <ui-main-button>{{'CM.NAVBAR.CONNECT' | transloco}}</ui-main-button>
+        <ui-main-button>{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
+        <ui-lang-switch></ui-lang-switch>
     </div>
 </div>

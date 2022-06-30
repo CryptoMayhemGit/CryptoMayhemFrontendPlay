@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "nx",
-    "start": "npm run lint:styles && npx nx serve",
+    "start": "npm run fix:styles && npx nx serve",
     "test": "npx nx test",
     "lint": "ng lint && npm run lint:styles",
     "lint:styles": "npx stylelint **/*.scss",

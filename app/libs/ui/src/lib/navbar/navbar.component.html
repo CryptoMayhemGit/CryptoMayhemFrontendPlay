@@ -13,6 +13,6 @@
 </div>
 
 <div id="wallet">
-    <button *ngIf="connected" (click)="disconnect()" [disabled]="processing" class="red"> {{'CM.NAVBAR.DISCONNECT' | transloco}} </button>
-    <button *ngIf="!connected" (click)="connect()" [disabled]="processing" class="green"> {{'CM.NAVBAR.CONNECT' | transloco}} </button>
+    <button *ngIf="connected" (click)="disconnect()" [disabled]="processing" class="red"> {{'NAVBAR.DISCONNECT' | transloco}} </button>
+    <button *ngIf="!connected" (click)="connect()" [disabled]="processing" class="green"> {{'NAVBAR.CONNECT' | transloco}} </button>
 </div>

@@ -1,8 +1,18 @@
 {
-    "CM": {
-        "NAVBAR": {
-            "CONNECT": "Połącz portfel",
-            "DISCONNECT": "Rozłącz"
+    "POLISH": "Polski",
+    "ENGLISH": "English",
+    
+    "NAVBAR": {
+        "CONNECT": "Połącz portfel",
+        "DISCONNECT": "Rozłącz",
+        
+        "NAV": {
+            "GAMES": "Gry",
+            "NFT": "Handel NFT",
+            "STAKING": "Staking",
+            "VESTING": "Vesting",
+            "NEWS": "Aktualności",
+            "PRESALE": "Przedsprzedaż"
         }
     },
     "AUTH": {

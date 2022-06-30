@@ -30,9 +30,36 @@
   margin: 1rem auto;
   padding: 0 3.2rem;
 
+  #logo {
+    padding-right: 1.6rem;
+  }
+
   #burger {
     cursor: pointer;
-    padding: 2.7rem 3.2rem;
+    padding: 2.7rem 3.2rem 2.7rem 1.6rem;
+  }
+
+  nav {
+    display: none;
+    padding: 2.7rem 0;
+    position: relative;
+
+    a {
+      background-image: linear-gradient(90deg, #f2f2f2 50%, transparent 100%);
+      background-position: bottom left;
+      background-repeat: no-repeat;
+      background-size: 0% 1px;
+      color: #f2f2f2;
+      font-size: 1.4rem;
+      margin: 0 1.6rem;
+      padding: 0.8rem;
+      text-decoration: none;
+      transition: all 250ms ease-in-out;
+
+      &:hover {
+        background-size: 100% 1px;
+      }
+    }
   }
 
   div {
@@ -41,25 +68,47 @@
     z-index: 10;
   }
 
-  @media screen and (min-width: 768px) {
-    @include clip-path;
+  ui-main-button {
+    margin: 0 3.2rem;
+  }
 
-    background: #fff;
-    height: 7.25rem;
-    margin: 1rem 1rem 0;
+  @media screen and (min-width: 768px) {
+    background: transparent;
 
     &::before {
+      @include clip-path;
+
+      background: #fff;
+      content: "";
+      height: 7.25rem;
+      left: 0;
+      margin: 0 0.9rem;
+      position: absolute;
+      width: calc(100% - 1.8rem);
+    }
+
+    &::after {
       @include clip-path;
 
       background: #282828;
       content: "";
       display: block;
-      height: 7.2rem;
+      height: 7.3rem;
       left: 0;
       margin: auto;
       max-width: calc(100% - 2.2rem);
       position: absolute;
       right: 0;
+    }
+  }
+
+  @media screen and (min-width: 1240px) {
+    #burger {
+      display: none;
+    }
+
+    nav {
+      display: inline-block;
     }
   }
 

@@ -1,0 +1,91 @@
+:host {
+  position: relative;
+}
+
+#lang-switch {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+
+  & > img {
+    margin-right: 0.9rem;
+  }
+}
+
+#lang-select {
+  background: #282828;
+  padding: 1.2rem 0;
+  position: absolute;
+  right: 0;
+  top: 6rem;
+  width: auto;
+  z-index: 100;
+
+  // This approach won't scale automatically for more than 2 languages.
+  &::before {
+    background: url("/assets/images/left_border.svg") no-repeat top left;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 17px;
+  }
+
+  &::after {
+    background: url("/assets/images/right_border.svg") no-repeat top right;
+    content: "";
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 17px;
+  }
+
+  /* END */
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul li {
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    list-style-type: none;
+    padding: 1rem 2.4rem;
+
+    p {
+      margin: 0;
+    }
+
+    img {
+      margin-right: 1.6rem;
+    }
+
+    &:hover {
+      background: #ffffff20;
+    }
+  }
+}
+
+.arrow-up {
+  border-bottom: 5px solid #fff;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  height: 0;
+  width: 0;
+}
+
+.arrow-down {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #fff;
+  height: 0;
+  width: 0;
+}
