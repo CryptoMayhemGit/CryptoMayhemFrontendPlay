@@ -5,6 +5,7 @@
     "NAVBAR": {
         "CONNECT": "Połącz portfel",
         "DISCONNECT": "Rozłącz",
+        "CONNECT_MOBILE": "Połącz",
         
         "NAV": {
             "GAMES": "Gry",

@@ -7,5 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationHeaderComponent {
+  mobileVisible = false;
+
   constructor() {}
 }

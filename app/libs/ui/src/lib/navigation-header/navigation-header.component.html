@@ -1,18 +1,36 @@
 <div id="nav">
     <div>
         <a id="logo" href="/"><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
-        <img id="burger" src="./assets/images/burger.svg">
-        <nav>
-            <a href="#">{{'NAVBAR.NAV.GAMES' | transloco}}</a>
-            <a href="#">{{'NAVBAR.NAV.NFT' | transloco}}</a>
-            <a href="#">{{'NAVBAR.NAV.STAKING' | transloco}}</a>
-            <a href="#">{{'NAVBAR.NAV.VESTING' | transloco}}</a>
-            <a href="#">{{'NAVBAR.NAV.NEWS' | transloco}}</a>
-            <a href="#">{{'NAVBAR.NAV.PRESALE' | transloco}}</a>
-        </nav>
+        <img id="burger" (click)="mobileVisible = !mobileVisible" src="./assets/images/burger.svg">
+         <ng-template [ngTemplateOutlet]="links"></ng-template>
     </div>
-    <div>
+    <div id="connect-pc">
         <ui-main-button>{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
         <ui-lang-switch></ui-lang-switch>
     </div>
+    <div id="connect-mobile">
+        <img src="./assets/images/connect.svg">
+        <p>{{'NAVBAR.CONNECT_MOBILE' | transloco}}</p>
+    </div>
 </div>
+<div id="mobile-nav" *ngIf="mobileVisible">
+    <div>
+        <ng-template [ngTemplateOutlet]="links"></ng-template>
+    </div>
+    <div id="tablet-marketing">
+                <ui-lang-switch></ui-lang-switch>
+        <img src="./assets/images/banner_tablet.png" />
+    </div>
+
+</div>
+
+<ng-template #links >
+    <nav>
+        <a href="#" class="arrow">{{'NAVBAR.NAV.GAMES' | transloco}}</a>
+        <a href="#">{{'NAVBAR.NAV.NFT' | transloco}}</a>
+        <a href="#">{{'NAVBAR.NAV.STAKING' | transloco}}</a>
+        <a href="#">{{'NAVBAR.NAV.VESTING' | transloco}}</a>
+        <a href="#">{{'NAVBAR.NAV.NEWS' | transloco}}</a>
+        <a href="#">{{'NAVBAR.NAV.PRESALE' | transloco}}</a>
+    </nav>
+</ng-template>

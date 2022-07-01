@@ -5,6 +5,7 @@
     "NAVBAR": {
         "CONNECT": "Connect Wallet",
         "DISCONNECT": "Disconnect",
+        "CONNECT_MOBILE": "Connect",
         
         "NAV": {
             "GAMES": "Games",

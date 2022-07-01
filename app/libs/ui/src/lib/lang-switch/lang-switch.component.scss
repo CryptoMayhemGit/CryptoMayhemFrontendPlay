@@ -13,36 +13,44 @@
 }
 
 #lang-select {
-  background: #282828;
-  padding: 1.2rem 0;
-  position: absolute;
   right: 0;
   top: 6rem;
   width: auto;
   z-index: 100;
 
-  // This approach won't scale automatically for more than 2 languages.
-  &::before {
-    background: url("/assets/images/left_border.svg") no-repeat top left;
-    content: "";
-    height: 100%;
-    left: 0;
+  @media screen and (min-width: 1240px) {
+    background: rgb(40 40 40 / 60%);
+    box-shadow: 0 4px 24px rgb(40 40 40 / 60%);
+    padding: 1.2rem 0;
     position: absolute;
-    top: 0;
-    width: 17px;
+
+    // This approach won't scale automatically for more than 2 languages.
+    &::before {
+      background: url("/assets/images/left_border.svg") no-repeat top left;
+      content: "";
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 17px;
+    }
+
+    &::after {
+      background: url("/assets/images/right_border.svg") no-repeat top right;
+      content: "";
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 17px;
+    }
+
+    /* END */
   }
 
-  &::after {
-    background: url("/assets/images/right_border.svg") no-repeat top right;
-    content: "";
-    height: 100%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 17px;
+  @media screen and (min-width: 1240px) {
+    padding: 1.2rem 2.45rem;
   }
-
-  /* END */
 
   ul,
   li {
@@ -50,15 +58,28 @@
     padding: 0;
   }
 
+  ul {
+    padding: 1rem 0;
+
+    @media screen and (min-width: 1240px) {
+      padding: 0;
+    }
+  }
+
   ul li {
     align-items: center;
-    color: white;
+    color: #f2f2f2;
     cursor: pointer;
     display: flex;
+    min-width: 9rem;
     font-size: 1.4rem;
     line-height: 1.6rem;
     list-style-type: none;
-    padding: 1rem 2.4rem;
+    padding: 2rem 0 1rem;
+
+    @media screen and (min-width: 1240px) {
+      padding: 1rem 2.4rem;
+    }
 
     p {
       margin: 0;
@@ -72,20 +93,4 @@
       background: #ffffff20;
     }
   }
-}
-
-.arrow-up {
-  border-bottom: 5px solid #fff;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  height: 0;
-  width: 0;
-}
-
-.arrow-down {
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #fff;
-  height: 0;
-  width: 0;
 }
