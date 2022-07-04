@@ -7,8 +7,22 @@
   cursor: pointer;
   display: flex;
 
+  &.opacity {
+    opacity: 0.3;
+  }
+
   & > img {
     margin-right: 0.9rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    justify-content: flex-end;
+  }
+
+  @media screen and (min-width: 1240px) {
+    &.opacity {
+      opacity: 1;
+    }
   }
 }
 
