@@ -138,9 +138,17 @@
     padding-right: 1.6rem;
   }
 
-  #burger {
+  #burger-menu {
     cursor: pointer;
     padding: 2.7rem 3.2rem 2.7rem 1.6rem;
+
+    &.closed {
+      background: url("/assets/images/burger.svg") no-repeat center center;
+    }
+
+    &.open {
+      background: url("/assets/images/cross.svg") no-repeat center center;
+    }
   }
 
   nav {
@@ -217,7 +225,7 @@
   }
 
   @media screen and (min-width: 1240px) {
-    #burger {
+    #burger-menu {
       display: none;
     }
 
