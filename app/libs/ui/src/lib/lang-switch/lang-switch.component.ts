@@ -1,0 +1,63 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import { LanguageService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services';
+import { Language } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/models';
+import { TranslocoService } from '@ngneat/transloco';
+import { Subscription } from 'rxjs';
+
+@Component({
+  selector: 'ui-lang-switch',
+  templateUrl: './lang-switch.component.html',
+  styleUrls: ['./lang-switch.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class LangSwitchComponent implements OnInit, OnDestroy {
+  languages!: Array<Language>;
+  activeLanguage!: Language;
+  isVisible = false;
+
+  private subscription: Subscription = new Subscription();
+
+  constructor(
+    private translocoService: TranslocoService,
+    private languageService: LanguageService
+  ) {
+    const subs = translocoService.langChanges$.subscribe({
+      next: (_) => {
+        this.setActiveLanguage();
+      },
+    });
+
+    this.subscription.add(subs);
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickout() {
+    this.isVisible = false;
+  }
+
+  ngOnInit(): void {
+    this.setActiveLanguage();
+    this.languages = this.languageService.getAll();
+  }
+
+  setLang(languageSymbol: string): void {
+    this.translocoService.setActiveLang(languageSymbol);
+    this.isVisible = false;
+  }
+
+  setActiveLanguage(): void {
+    this.activeLanguage = this.languageService.getLanguage(
+      this.translocoService.getActiveLang()
+    ) as Language;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+}

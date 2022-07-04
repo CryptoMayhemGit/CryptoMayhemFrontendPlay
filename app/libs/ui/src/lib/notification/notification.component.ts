@@ -1,31 +1,32 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TIMEOUT } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import { NotificationService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services';
-import { Notification, NotificationType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/models';
+import {
+  Notification,
+  NotificationType,
+} from '@crypto-mayhem-frontend/crypto-mayhem/data-access/models';
 
 import { Subscription } from 'rxjs';
 
-
 @Component({
-  selector: 'cm-notification',
+  selector: 'ui-notification',
   templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.scss']
+  styleUrls: ['./notification.component.scss'],
 })
 export class NotificationComponent implements OnInit, OnDestroy {
-
   private subscription?: Subscription;
 
-  NotificationType = NotificationType;
+  notificationType = NotificationType;
 
   notifications: Notification[] = [];
-  
-  TIMEOUT = `${(TIMEOUT / 1000)}s`;
 
-  constructor(private notificationService: NotificationService) { }
+  timeout = `${TIMEOUT / 1000}s`;
+
+  constructor(private notificationService: NotificationService) {}
 
   ngOnInit(): void {
-    this.subscription = this.notificationService.notifications$.subscribe(notifications => 
-      this.notifications = notifications as Notification[]
+    this.subscription = this.notificationService.notifications$.subscribe(
+      (notifications) => (this.notifications = notifications as Notification[])
     );
   }
 
@@ -36,5 +37,4 @@ export class NotificationComponent implements OnInit, OnDestroy {
   close(id: number): void {
     this.notificationService.close(id);
   }
-
 }

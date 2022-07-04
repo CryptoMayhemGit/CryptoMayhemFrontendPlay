@@ -8,6 +8,7 @@
     "crypto-mayhem-data-access-models": "libs/crypto-mayhem/data-access/models",
     "crypto-mayhem-frontend": "apps/crypto-mayhem-frontend",
     "crypto-mayhem-frontend-e2e": "apps/crypto-mayhem-frontend-e2e",
+    "crypto-mayhem-shell": "libs/crypto-mayhem/shell",
     "ui": "libs/ui",
     "utils": "libs/utils"
   }

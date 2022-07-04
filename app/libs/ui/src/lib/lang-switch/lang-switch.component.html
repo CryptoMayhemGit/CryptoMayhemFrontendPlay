@@ -1,0 +1,13 @@
+<div id="lang-switch" [ngClass]="{'opacity': !isVisible}" (mouseenter)="isVisible = true">
+  <img [src]="activeLanguage.flag" alt="language flag" />
+  <div [ngClass]="{'arrow-up': isVisible, 'arrow-down': !isVisible}"></div>
+</div>
+
+<div id="lang-select" *ngIf="isVisible">
+  <ul role="button">
+    <li *ngFor="let language of languages; index as i" (click)="setLang(language.symbol)">
+      <img [src]="language.flag" [alt]="language.name" />
+      <p>{{language.name | transloco}}</p>
+    </li>
+  </ul>
+</div>

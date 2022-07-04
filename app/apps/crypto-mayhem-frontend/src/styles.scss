@@ -1,22 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
-
-$primary-font-size:          20px;
-$primary-font-weight:        300;
-
-$primary-font-family:        'Lato';
-$secondary-font-family:      'Courier New';
-
-$primary-font-color:       #E2E4E6;
-$primary-background-color: #121314;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
 
 html {
-    color: $primary-font-color;
-    font-size: $primary-font-size;
-    font-weight: $primary-font-weight;
-    font-family: $primary-font-family, $secondary-font-family;
-    background-color: $primary-background-color;
+  background: #000 url("/assets/images/bg.jpg") no-repeat center center;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 body {
-    margin: 0;
+  font-size: 14px;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+.arrow-up {
+  border-bottom: 5px solid #f2f2f2;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  height: 0;
+  width: 0;
+}
+
+.arrow-down {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #f2f2f2;
+  height: 0;
+  width: 0;
 }

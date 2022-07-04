@@ -4,3 +4,4 @@ export * from './lib/contracts/contracts.model';
 export * from './lib/notification/notification.model';
 export * from './lib/wallet/wallet.model';
 export * from './lib/wallet/metamask/metamask.model';
+export * from './lib/language/language.model';

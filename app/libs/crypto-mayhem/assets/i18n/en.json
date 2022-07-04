@@ -1,8 +1,19 @@
 {
-    "CM": {
-        "NAVBAR": {
-            "CONNECT": "Connect",
-            "DISCONNECT": "Disconnect"
+    "POLISH": "Polski",
+    "ENGLISH": "English",
+    
+    "NAVBAR": {
+        "CONNECT": "Connect Wallet",
+        "DISCONNECT": "Disconnect",
+        "CONNECT_MOBILE": "Connect",
+        
+        "NAV": {
+            "GAMES": "Games",
+            "NFT": "NFT market",
+            "STAKING": "Staking",
+            "VESTING": "Vesting",
+            "NEWS": "News",
+            "PRESALE": "Presale"
         }
     },
     "NOTIFICATION": {

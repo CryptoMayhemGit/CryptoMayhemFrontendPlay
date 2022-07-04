@@ -1,0 +1,110 @@
+:host {
+  position: relative;
+}
+
+#lang-switch {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  opacity: 1;
+
+  &.opacity {
+    opacity: 0.3;
+  }
+
+  & > img {
+    margin-right: 0.9rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    justify-content: flex-end;
+  }
+}
+
+#lang-select {
+  right: 0;
+  top: 6rem;
+  width: auto;
+  z-index: 100;
+
+  @media screen and (min-width: 1240px) {
+    background: rgb(40 40 40 / 60%);
+    box-shadow: 0 4px 24px rgb(40 40 40 / 60%);
+    padding: 1.2rem 0;
+    position: absolute;
+
+    // This approach won't scale automatically for more than 2 languages.
+    &::before {
+      background: url("/assets/images/left_border.svg") no-repeat top left;
+      content: "";
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 17px;
+    }
+
+    &::after {
+      background: url("/assets/images/right_border.svg") no-repeat top right;
+      content: "";
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 17px;
+    }
+
+    /* END */
+  }
+
+  @media screen and (min-width: 1240px) {
+    padding: 1.2rem 2.45rem;
+  }
+
+  ul,
+  li {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    padding: 1rem 0;
+
+    @media screen and (min-width: 1240px) {
+      padding: 0;
+    }
+  }
+
+  ul li {
+    align-items: center;
+    color: #f2f2f2;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    list-style-type: none;
+    min-width: 9rem;
+    padding: 2rem 0 1rem;
+
+    &:hover {
+      opacity: 0.3;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    img {
+      margin-right: 1.6rem;
+    }
+
+    @media screen and (min-width: 1240px) {
+      padding: 1rem 2.4rem;
+
+      &:hover {
+        background: #ffffff20;
+        opacity: 1;
+      }
+    }
+  }
+}
