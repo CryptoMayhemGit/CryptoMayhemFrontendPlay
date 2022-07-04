@@ -1,4 +1,4 @@
-<div id="lang-switch" [ngClass]="{'opacity': !isVisible}" (click)="isVisible = !isVisible">
+<div id="lang-switch" [ngClass]="{'opacity': !isVisible}" (mouseenter)="isVisible = true">
   <img [src]="activeLanguage.flag" alt="language flag" />
   <div [ngClass]="{'arrow-up': isVisible, 'arrow-down': !isVisible}"></div>
 </div>

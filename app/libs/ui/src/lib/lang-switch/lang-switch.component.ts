@@ -16,7 +16,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./lang-switch.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-@HostListener('document:mousedown', ['$event'])
 export class LangSwitchComponent implements OnInit, OnDestroy {
   languages!: Array<Language>;
   activeLanguage!: Language;
@@ -37,6 +36,11 @@ export class LangSwitchComponent implements OnInit, OnDestroy {
     this.subscription.add(subs);
   }
 
+  @HostListener('document:click', ['$event'])
+  clickout() {
+    this.isVisible = false;
+  }
+
   ngOnInit(): void {
     this.setActiveLanguage();
     this.languages = this.languageService.getAll();
@@ -44,6 +48,7 @@ export class LangSwitchComponent implements OnInit, OnDestroy {
 
   setLang(languageSymbol: string): void {
     this.translocoService.setActiveLang(languageSymbol);
+    this.isVisible = false;
   }
 
   setActiveLanguage(): void {
