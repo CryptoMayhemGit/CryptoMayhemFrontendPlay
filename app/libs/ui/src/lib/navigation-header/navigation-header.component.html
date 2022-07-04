@@ -1,8 +1,8 @@
 <div id="nav">
     <div>
         <a id="logo" href="/"><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
-        <img id="burger" (click)="mobileVisible = !mobileVisible" src="./assets/images/burger.svg">
-         <ng-template [ngTemplateOutlet]="links"></ng-template>
+        <div id="burger-menu" [ngClass]="{'closed': !mobileVisible, 'open': mobileVisible}" (click)="mobileVisible = !mobileVisible"></div>
+        <ng-template [ngTemplateOutlet]="links"></ng-template>
     </div>
     <div id="connect-pc">
         <ui-main-button>{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
