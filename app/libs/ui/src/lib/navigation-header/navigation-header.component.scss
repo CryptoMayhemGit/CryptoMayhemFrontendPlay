@@ -41,6 +41,12 @@
       line-height: 1.6rem;
       padding: 1.4rem 0;
       text-decoration: none;
+
+      &:hover,
+      &:hover::after {
+        border-top-color: #f2f2f230;
+        color: #f2f2f230;
+      }
     }
   }
 
