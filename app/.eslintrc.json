@@ -46,7 +46,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "app",
+            "prefix": false,
             "style": "camelCase"
           }
         ],
@@ -140,10 +140,20 @@
         "unused-imports/no-unused-imports": "error",
         "unused-imports/no-unused-vars": [
           "warn",
-          { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+          {
+            "vars": "all",
+            "varsIgnorePattern": "^_",
+            "args": "after-used",
+            "argsIgnorePattern": "^_"
+          }
         ]
       },
-      "plugins": ["eslint-plugin-import", "@angular-eslint/eslint-plugin", "@typescript-eslint", "unused-imports"]
+      "plugins": [
+        "eslint-plugin-import",
+        "@angular-eslint/eslint-plugin",
+        "@typescript-eslint",
+        "unused-imports"
+      ]
     },
     {
       "files": ["*.html"],
@@ -154,6 +164,5 @@
       },
       "plugins": ["@angular-eslint/eslint-plugin-template"]
     }
-    
   ]
 }
