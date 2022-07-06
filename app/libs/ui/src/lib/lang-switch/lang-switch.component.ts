@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  HostListener,
   OnDestroy,
   OnInit,
 } from '@angular/core';
@@ -34,11 +33,6 @@ export class LangSwitchComponent implements OnInit, OnDestroy {
     });
 
     this.subscription.add(subs);
-  }
-
-  @HostListener('document:click', ['$event'])
-  clickout() {
-    this.isVisible = false;
   }
 
   ngOnInit(): void {
