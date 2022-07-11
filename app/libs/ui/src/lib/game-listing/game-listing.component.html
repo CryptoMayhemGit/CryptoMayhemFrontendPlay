@@ -1,0 +1,11 @@
+<div class="game-listing" [ngStyle]="{ 'background': gradient }" [@inOutAnimation]>
+  <picture class="image">
+    <source type="image/webp" [srcset]="'./assets/images/' + img + '.webp'">
+    <source type="image/png" [srcset]="'./assets/images/' + img + '.jpg'">
+    <img [alt]="title" role="presentation" [src]="'./assets/images/' + img + '.jpg'" />
+  </picture>
+  <div class="content">
+    <h1>{{title}}</h1>
+    <ng-content></ng-content>
+  </div>
+</div>

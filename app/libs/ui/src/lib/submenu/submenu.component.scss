@@ -1,0 +1,36 @@
+:host {
+  @media screen and (min-width: 1240px) {
+    backdrop-filter: blur(4rem);
+    background: rgb(40 40 40 / 60%);
+    box-shadow: 0 0.4rem 2.4rem rgba(0 0 0 / 60%);
+    display: flex;
+    flex-direction: row;
+    left: -15px;
+    margin-top: 3.5rem;
+    max-height: 20.4rem;
+    position: absolute;
+    width: 70rem;
+
+    &::before {
+      background: url("/assets/images/menu_games_pc_left.svg") no-repeat top
+        left;
+      content: "";
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 17px;
+    }
+
+    &::after {
+      background: url("/assets/images/menu_games_pc_right.svg") no-repeat top
+        right;
+      content: "";
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 17px;
+    }
+  }
+}

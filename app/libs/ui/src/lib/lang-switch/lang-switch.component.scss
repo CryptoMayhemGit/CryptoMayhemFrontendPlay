@@ -28,9 +28,13 @@
   z-index: 100;
 
   @media screen and (min-width: 1240px) {
+    backdrop-filter: blur(40px);
     background: rgb(40 40 40 / 60%);
     box-shadow: 0 4px 24px rgb(40 40 40 / 60%);
     padding: 1.2rem 0;
+
+    /* END */
+    padding: 1.2rem 2.45rem;
     position: absolute;
 
     // This approach won't scale automatically for more than 2 languages.
@@ -53,12 +57,6 @@
       top: 0;
       width: 17px;
     }
-
-    /* END */
-  }
-
-  @media screen and (min-width: 1240px) {
-    padding: 1.2rem 2.45rem;
   }
 
   ul,

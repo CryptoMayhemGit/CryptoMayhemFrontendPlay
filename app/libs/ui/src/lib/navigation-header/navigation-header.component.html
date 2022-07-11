@@ -1,7 +1,7 @@
 <div id="nav">
     <div>
         <a id="logo" href="/"><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
-        <div id="burger-menu" [ngClass]="{'closed': !mobileVisible, 'open': mobileVisible}" (click)="mobileVisible = !mobileVisible"></div>
+        <div id="burger-menu" [ngClass]="{'closed': !mobileVisible, 'open': mobileVisible}" (click)="mobileVisible = !mobileVisible; tdsVisible = false; gsVisible = false;"></div>
         <ng-template [ngTemplateOutlet]="links"></ng-template>
     </div>
     <div id="connect-pc">
@@ -18,19 +18,46 @@
         <ng-template [ngTemplateOutlet]="links"></ng-template>
     </div>
     <div id="tablet-marketing">
-                <ui-lang-switch></ui-lang-switch>
-        <img src="./assets/images/banner_tablet.png" />
+        <ui-lang-switch></ui-lang-switch>
+        <img *ngIf="!gamesVisible" src="./assets/images/banner_tablet.png" />
+        <div id="mobile-submenu" *ngIf="gamesVisible">
+            <ui-submenu>
+                <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
+            </ui-submenu>
+        </div>
     </div>
-
 </div>
 
 <ng-template #links >
     <nav>
-        <a href="#" class="arrow">{{'NAVBAR.NAV.GAMES' | transloco}}</a>
+        <a href="#" class="arrow" (click)="showGames()" (mouseenter)="showGames()" >{{'NAVBAR.NAV.GAMES' | transloco}}</a>
+        <ui-submenu *ngIf="gamesVisible" (mouseenter)="showGames()" (mouseleave)="gamesVisible = false" [@inOutAnimation]>
+            <div id="games-list">
+                <h2>{{'NAVBAR.GAMES_COLLECTION' | transloco}}</h2>
+                <a href="#" (mouseenter)="gsVisible = true; tdsVisible = false" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.GS.TITLE' | transloco}}</a>
+                <a href="#" (mouseenter)="gsVisible = false; tdsVisible = true" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.TDS.TITLE' | transloco}}</a>
+            </div>
+            <div id="games">
+                <img src="./assets/images/banner_tablet.png" *ngIf="!tdsVisible && !gsVisible && !isSmallerScreen()" />
+                <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
+            </div>
+        </ui-submenu>
         <a href="#">{{'NAVBAR.NAV.NFT' | transloco}}</a>
         <a href="#">{{'NAVBAR.NAV.STAKING' | transloco}}</a>
         <a href="#">{{'NAVBAR.NAV.VESTING' | transloco}}</a>
         <a href="#">{{'NAVBAR.NAV.NEWS' | transloco}}</a>
         <a href="#">{{'NAVBAR.NAV.PRESALE' | transloco}}</a>
     </nav>
+</ng-template>
+
+<ng-template #gamesMenu>
+    <ui-game-listing  *ngIf="tdsVisible" title="Top-down shooter" img="BOSS_CM_SM" color="#309F8B">
+        <p>{{'GAMES.TDS.DESCRIPTION' | transloco}}</p>
+        <p>{{'GAMES.TDS.CTA' | transloco}}</p>
+    </ui-game-listing>
+
+    <ui-game-listing *ngIf="gsVisible" title="Grand Strategy" img="planeta" color="#0B3F90">
+        <p>{{'GAMES.GS.DESCRIPTION' | transloco}}</p>
+        <p>{{'GAMES.GS.CTA' | transloco}}</p>
+    </ui-game-listing>
 </ng-template>

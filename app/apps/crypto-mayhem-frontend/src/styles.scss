@@ -1,4 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+
+@font-face {
+  font-display: swap;
+  font-family: Nulshock;
+  font-style: normal;
+  font-weight: bold;
+  src: url("/assets/fonts/NulshockRg-Bold.eot");
+  src: url("/assets/fonts/NulshockRg-Bold.eot?#iefix")
+    format("embedded-opentype"),
+    url("/assets/fonts/NulshockRg-Bold.woff2") format("woff2"),
+    url("/assets/fonts/NulshockRg-Bold.woff") format("woff"),
+    url("/assets/fonts/NulshockRg-Bold.ttf") format("truetype");
+}
 
 html {
   background: #000 url("/assets/images/bg.jpg") no-repeat center center;
