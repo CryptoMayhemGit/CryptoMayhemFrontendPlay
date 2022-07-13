@@ -1,11 +1,25 @@
 {
     "POLISH": "Polski",
     "ENGLISH": "English",
+
+    "GAMES": {
+        "GS": {
+            "TITLE": "Grand Strategy",
+            "DESCRIPTION": "Odkrywaj, eksploruj, zdobywaj surowce oraz buduj obiekty na obcych planetach.",
+            "CTA": "Zacznij rozwijać swoją kolonię!"
+        },
+        "TDS": {
+            "TITLE": "Top-Down Shooter",
+            "DESCRIPTION": "Twórz własne Mechy i walcz o przetrwanie niszcząc hordy obcych.",
+            "CTA": "Czy zdołasz obronić planetę?"
+        }
+    },
     
     "NAVBAR": {
         "CONNECT": "Connect Wallet",
         "DISCONNECT": "Disconnect",
         "CONNECT_MOBILE": "Connect",
+        "GAMES_COLLECTION": "Games Collection",
         
         "NAV": {
             "GAMES": "Games",

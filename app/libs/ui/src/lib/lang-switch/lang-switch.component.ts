@@ -1,3 +1,4 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -14,6 +15,18 @@ import { Subscription } from 'rxjs';
   templateUrl: './lang-switch.component.html',
   styleUrls: ['./lang-switch.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('inOutAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('.5s ease-out', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        style({ opacity: 1 }),
+        animate('.5s ease-in', style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 export class LangSwitchComponent implements OnInit, OnDestroy {
   languages!: Array<Language>;

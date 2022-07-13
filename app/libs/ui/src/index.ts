@@ -9,3 +9,7 @@ export * from './lib/navigation-header/navigation-header.module';
 export * from './lib/navigation-header/navigation-header.component';
 export * from './lib/main-button/main-button.module';
 export * from './lib/main-button/main-button.component';
+export * from './lib/submenu/submenu.module';
+export * from './lib/submenu/submenu.component';
+export * from './lib/game-listing/game-listing.module';
+export * from './lib/game-listing/game-listing.component';
