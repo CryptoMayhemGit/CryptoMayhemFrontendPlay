@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/crypto-mayhem/data-access/wallet/src",
+  "prefix": "crypto-mayhem-frontend",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/crypto-mayhem/data-access/wallet"],
+      "options": {
+        "jestConfig": "libs/crypto-mayhem/data-access/wallet/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/crypto-mayhem/data-access/wallet/**/*.ts",
+          "libs/crypto-mayhem/data-access/wallet/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
