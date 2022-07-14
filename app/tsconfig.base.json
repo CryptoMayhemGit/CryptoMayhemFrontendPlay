@@ -35,6 +35,12 @@
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/models": [
         "libs/crypto-mayhem/data-access/models/src/index.ts"
       ],
+      "@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet": [
+        "libs/crypto-mayhem/data-access/wallet/src/index.ts"
+      ],
+      "@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model": [
+        "libs/crypto-mayhem/data-access/wallet-model/src/index.ts"
+      ],
       "@crypto-mayhem-frontend/crypto-mayhem/shell": [
         "libs/crypto-mayhem/shell/src/index.ts"
       ],
