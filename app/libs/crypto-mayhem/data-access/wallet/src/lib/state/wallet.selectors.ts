@@ -8,3 +8,8 @@ export const getWalletAddress = createSelector(
     selectWallet,
     state => state.walletAddress
 );
+
+export const getSpinnerState = createSelector(
+    selectWallet,
+    state => state.spinner
+);

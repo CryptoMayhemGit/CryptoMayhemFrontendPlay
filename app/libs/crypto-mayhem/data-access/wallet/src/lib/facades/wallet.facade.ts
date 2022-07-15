@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
+import { getWalletInstance, MetaMaskWallet, WalletType } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model";
 import { Store } from "@ngrx/store";
-import { setWalletAddress } from "../state/wallet.actions";
+import { hideSpinner, setWalletAddress, showSpinner } from "../state/wallet.actions";
 
 import * as WalletSelectors from '../state/wallet.selectors';
 
@@ -8,12 +9,31 @@ import * as WalletSelectors from '../state/wallet.selectors';
 export class WalletFacade {
 
     readonly wallet$ = this.store.select(WalletSelectors.getWalletAddress);
+    readonly spinner$ = this.store.select(WalletSelectors.getSpinnerState);
 
     constructor(
         private readonly store: Store,
     ) {}
 
-    setWalletAddress(walletAddress: string) {
+    public setWalletAddress(walletAddress: string): void {
         this.store.dispatch(setWalletAddress({walletAddress}));
+    }
+
+    public showSpinner(): void {
+        this.store.dispatch(showSpinner());
+    }
+
+    public hideSpinner(): void {
+        this.store.dispatch(hideSpinner());
+    }
+
+    public connectWalletAccount(walletType: WalletType): void {
+        getWalletInstance(WalletType.metamask)
+        ?.connect()
+        .then(() => console.log('success'))
+        .catch(() => console.log('error'));
+    }
+
+    public disconnectWalletAccount(walletType: WalletType) {
     }
 }
