@@ -1,5 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MetaMaskWallet } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
+import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
 
 @Component({
   selector: 'ui-nav',
@@ -26,7 +28,9 @@ export class NavigationHeaderComponent implements OnInit {
   gsVisible = false;
   isMobile = false;
 
-  constructor() {}
+  constructor(
+    private readonly walletFacade: WalletFacade
+  ) {}
 
   ngOnInit(): void {}
 
@@ -44,5 +48,11 @@ export class NavigationHeaderComponent implements OnInit {
       this.tdsVisible = false;
       this.gsVisible = false;
     }
+  }
+
+  connect() {
+    const wallet = new MetaMaskWallet();
+    wallet.connect()
+    .then(() => this.walletFacade.setWalletAddress(wallet.walletAddress ?? ''));
   }
 }
