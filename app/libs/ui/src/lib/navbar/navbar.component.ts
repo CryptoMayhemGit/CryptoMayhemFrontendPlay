@@ -82,79 +82,83 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }*/
 
   connect(): void {
-    this.wrap(this.translocoService.translate("NOTIFICATION.NAVBAR.CONNECT_PROCESS"), () =>
-      new Observable(observer => {
-        console.log(observer);
-        this.walletService
-          .connect(this.walletType)
-          .pipe(
-            first(),
-            map(
-              () => {
-                observer.next();
-
-                this.notificationService.success(this.translocoService.translate("NOTIFICATION.NAVBAR.CONNECT_SUCCESS"));
-  
-                this.walletSubscriptionRegister.add(
-                  this.walletService.connection$.subscribe(connection => {
-  
-                    this.connected = connection;
-  
-                    if (this.authenticated && !connection) {
-                      this.logout();
-                    }
-  
-                  })
-                );
-  
-                this.walletSubscriptionRegister.add(
-                  this.walletService.chainId$.subscribe(chainId => {
-  
-                    this.supportedChain = chainId === this.config.rpcChainId;
-                    this.chainId = chainId;
-  
-                    if (this.authenticated && !this.supportedChain) {
-                      this.logout();
-                    }
-  
-                  })
-                );
-  
-                this.walletSubscriptionRegister.add(
-                  this.walletService.account$.subscribe(account => {
-  
-                    this.account = account;
-  
-                    if (this.authenticated) {
-                      const authenticatedAccount = this.authService.getAccount();
-  
-                      if (account != authenticatedAccount) {
-                        this.logout();
-                      }
-                    }
-  
-                  })
-                );
-              }
-            )
-          )
-          .subscribe(
-            {
-              error: (error) => {
-  
-                if (error.name === 'WalletError' && error.code === PENDING_REQUEST_CODE) {
-                  this.notificationService.info(this.translocoService.translate("NOTIFICATION.NAVBAR.CONNECT_ACCEPT"));
-                }
-  
-                this.completeWithError(error, observer);
-  
-              }
-            }
-          )
-      }
-      )
-    );
+    console.log('working');
   }
+
+  // connect(): void {
+  //   this.wrap(this.translocoService.translate("NOTIFICATION.NAVBAR.CONNECT_PROCESS"), () =>
+  //     new Observable(observer => {
+  //       console.log(observer);
+  //       this.walletService
+  //         .connect(this.walletType)
+  //         .pipe(
+  //           first(),
+  //           map(
+  //             () => {
+  //               observer.next();
+
+  //               this.notificationService.success(this.translocoService.translate("NOTIFICATION.NAVBAR.CONNECT_SUCCESS"));
+  
+  //               this.walletSubscriptionRegister.add(
+  //                 this.walletService.connection$.subscribe(connection => {
+  
+  //                   this.connected = connection;
+  
+  //                   if (this.authenticated && !connection) {
+  //                     this.logout();
+  //                   }
+  
+  //                 })
+  //               );
+  
+  //               this.walletSubscriptionRegister.add(
+  //                 this.walletService.chainId$.subscribe(chainId => {
+  
+  //                   this.supportedChain = chainId === this.config.rpcChainId;
+  //                   this.chainId = chainId;
+  
+  //                   if (this.authenticated && !this.supportedChain) {
+  //                     this.logout();
+  //                   }
+  
+  //                 })
+  //               );
+  
+  //               this.walletSubscriptionRegister.add(
+  //                 this.walletService.account$.subscribe(account => {
+  
+  //                   this.account = account;
+  
+  //                   if (this.authenticated) {
+  //                     const authenticatedAccount = this.authService.getAccount();
+  
+  //                     if (account != authenticatedAccount) {
+  //                       this.logout();
+  //                     }
+  //                   }
+  
+  //                 })
+  //               );
+  //             }
+  //           )
+  //         )
+  //         .subscribe(
+  //           {
+  //             error: (error) => {
+  
+  //               if (error.name === 'WalletError' && error.code === PENDING_REQUEST_CODE) {
+  //                 this.notificationService.info(this.translocoService.translate("NOTIFICATION.NAVBAR.CONNECT_ACCEPT"));
+  //               }
+  
+  //               this.completeWithError(error, observer);
+  
+  //             }
+  //           }
+  //         )
+  //     }
+  //     )
+  //   );
+  // }
 
   disconnect(): void {
     this.wrap(this.translocoService.translate("NOTIFICATION.NAVBAR.DISCONNECT_PROCESS"), () =>

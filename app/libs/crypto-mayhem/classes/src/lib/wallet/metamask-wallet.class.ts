@@ -38,7 +38,8 @@ export class MetamaskWallet implements WalletConnector {
 
 
     private retrieveProvider(): MetamaskProvider {
-        const provider = (window as MetamaskWindow).ethereum;
+        //const provider = (window as MetamaskWindow).ethereum;
+        const provider = null;
 
         if (!provider) {
             throw new WalletError(this.transloco.translate("NOTIFICATION.METAMASK.PROVIDER_NOT_FOUND"));

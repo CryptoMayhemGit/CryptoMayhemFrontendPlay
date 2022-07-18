@@ -3,12 +3,13 @@ import { WalletType } from "./wallet.enum";
 import { IWeb3Wallet } from "./wallet.interface";
 import { WalletConnectWallet } from "./walletconnect-wallet.class";
 
+
 export function getWalletInstance(walletType: WalletType): IWeb3Wallet | undefined {
     switch(walletType) {
         case WalletType.metamask: {
-            return new MetaMaskWallet();
+            return MetaMaskWallet.getInstance();
         }
-        case WalletType.wallectConnect: {
+        case WalletType.walletConnect: {
             return new WalletConnectWallet();
         }
         default: {

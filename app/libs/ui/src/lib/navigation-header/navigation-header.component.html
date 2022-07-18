@@ -1,3 +1,4 @@
+<div *ngIf="spinner | async"> TESTOWY SPINNER</div>
 <div id="nav">
     <div>
         <a id="logo" href="/"><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
@@ -5,7 +6,7 @@
         <ng-template [ngTemplateOutlet]="links"></ng-template>
     </div>
     <div id="connect-pc">
-        <ui-main-button>{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
+        <ui-main-button (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
         <ui-lang-switch></ui-lang-switch>
     </div>
     <div id="connect-mobile">

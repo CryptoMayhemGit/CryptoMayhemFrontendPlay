@@ -1,4 +1,4 @@
 export enum WalletType {
     metamask = 'Metamask',
-    wallectConnect = 'WalletConnect'
+    walletConnect = 'WalletConnect'
 }

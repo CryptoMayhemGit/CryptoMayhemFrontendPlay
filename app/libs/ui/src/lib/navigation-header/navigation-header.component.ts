@@ -1,5 +1,8 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MetaMaskWallet, WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
+import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'ui-nav',
@@ -26,9 +29,15 @@ export class NavigationHeaderComponent implements OnInit {
   gsVisible = false;
   isMobile = false;
 
-  constructor() {}
+  spinner: Observable<boolean> = of(false);
 
-  ngOnInit(): void {}
+  constructor(
+    private readonly walletFacade: WalletFacade
+  ) {}
+
+  ngOnInit(): void {
+    this.spinner = this.walletFacade.spinner$;
+  }
 
   isSmallerScreen(): boolean {
     return window.innerWidth <= 1240;
@@ -44,5 +53,10 @@ export class NavigationHeaderComponent implements OnInit {
       this.tdsVisible = false;
       this.gsVisible = false;
     }
+  }
+
+  connect() {
+    this.walletFacade.showSpinner();
+    this.walletFacade.connectWalletAccount(WalletType.metamask);
   }
 }

@@ -15,6 +15,9 @@ import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-acce
 import { ErrorService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services';
 import { getAppConfigProvider } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import { ShellModule } from '@crypto-mayhem-frontend/crypto-mayhem/shell';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CryptoMayhemDataAccessWalletModule } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +29,13 @@ import { ShellModule } from '@crypto-mayhem-frontend/crypto-mayhem/shell';
     NotificationModule,
     NavbarModule,
     NavigationHeaderModule,
+    StoreModule.forRoot([]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
+    CryptoMayhemDataAccessWalletModule
   ],
   providers: [
     {
