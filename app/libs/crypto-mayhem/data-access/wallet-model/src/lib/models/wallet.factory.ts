@@ -5,7 +5,7 @@ import { WalletConnectWallet } from './walletconnect-wallet.class';
 
 export function getWalletInstance(
   walletType: WalletType
-): IWeb3Wallet | undefined {
+): IWeb3Wallet {
   switch (walletType) {
     case WalletType.metamask: {
       return MetaMaskWallet.getInstance();
@@ -14,7 +14,7 @@ export function getWalletInstance(
       return WalletConnectWallet.getInstance();
     }
     default: {
-      return;
+      return WalletConnectWallet.getInstance();
     }
   }
 }

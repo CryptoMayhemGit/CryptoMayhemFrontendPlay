@@ -13,3 +13,4 @@ export * from './lib/submenu/submenu.module';
 export * from './lib/submenu/submenu.component';
 export * from './lib/game-listing/game-listing.module';
 export * from './lib/game-listing/game-listing.component';
+export * from './lib/wallet-choice/wallet-choice.module';

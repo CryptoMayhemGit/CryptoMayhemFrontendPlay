@@ -8,12 +8,14 @@ export const walletKey = 'wallets';
 export interface WalletState {
     walletAddress: string,
     spinner: boolean,
+    showWallets: boolean,
     walletType: WalletType
 }
 
 export const initialState: WalletState = {
     walletAddress: '',
     spinner: false,
+    showWallets: false,
     walletType: WalletType.none
 }
 
@@ -23,7 +25,9 @@ export const walletReducer = createReducer(
     on(WalletActions.setWalletAddress,
         (state, {walletAddress}) => ({...state, walletAddress: walletAddress})),
     on(WalletActions.showSpinner, state => ({...state, spinner: true})),
-    on(WalletActions.hideSpinner, state => ({...state, spinner: false}))
+    on(WalletActions.hideSpinner, state => ({...state, spinner: false})),
+    on(WalletActions.showWallets, state => ({...state, showWallets: true})),
+    on(WalletActions.hideWallets, state => ({...state, showWallets: false}))
 );
 
 export function reducer(state: WalletState | undefined, action: Action) {

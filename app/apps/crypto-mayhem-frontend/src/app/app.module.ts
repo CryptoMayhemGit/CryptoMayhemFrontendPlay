@@ -10,6 +10,7 @@ import {
   NavbarModule,
   NavigationHeaderModule,
   NotificationModule,
+  WalletChoiceModue,
 } from '@crypto-mayhem-frontend/ui';
 import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
 import { ErrorService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services';
@@ -29,6 +30,7 @@ import { CryptoMayhemDataAccessWalletModule } from '@crypto-mayhem-frontend/cryp
     NotificationModule,
     NavbarModule,
     NavigationHeaderModule,
+    WalletChoiceModue,
     StoreModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
@@ -38,10 +40,10 @@ import { CryptoMayhemDataAccessWalletModule } from '@crypto-mayhem-frontend/cryp
     CryptoMayhemDataAccessWalletModule
   ],
   providers: [
-    {
-      provide: ErrorHandler,
-      useClass: ErrorService,
-    },
+    // {
+    //   provide: ErrorHandler,
+    //   useClass: ErrorService,
+    // },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

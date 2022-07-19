@@ -26,12 +26,15 @@ export class MetaMaskWallet implements IWeb3Wallet {
         MetaMaskWallet._instance._provider = new ethers.providers.Web3Provider(
           window.ethereum
         );
+        MetaMaskWallet._instance._provider.on('chainChanged', () => console.log('ok'));
+        MetaMaskWallet._instance._provider.on('accountsChanged', () => console.log('ok'));
         const walletAccount = async () => {
           return await MetaMaskWallet._instance._provider.send(
             'eth_requestAccounts',
             []
           );
         };
+        this._signer = this._provider.getSigner();
 
         return new Observable((subscriber) => {
           walletAccount()
@@ -40,13 +43,10 @@ export class MetaMaskWallet implements IWeb3Wallet {
               subscriber.complete();
             })
             .catch((error) => {
+              MetaMaskWallet._instance._provider = undefined;
               subscriber.error(error);
             });
         });
-        /*if (walletAccount && walletAccount.length > 0) {
-                    this.setWalletAccount(walletAccount[0]);
-                }*/
-        this._signer = this._provider.getSigner();
       } else {
         //TODO: handle message/exception that we are already connected or do nothing?
       }
@@ -56,11 +56,29 @@ export class MetaMaskWallet implements IWeb3Wallet {
     return of(false);
   }
 
+  private accountChanged() {
+    MetaMaskWallet._instance._provider.on('accountsChanged', async () => {
+      console.log('change');
+    })
+  }
+
   public disconnect(): Observable<boolean> {
-    this._provider = undefined;
-    this._signer = undefined;
-    this.walletAddress = undefined;
-    return of(true);
+    MetaMaskWallet._instance._provider = undefined;
+    MetaMaskWallet._instance._signer = undefined;
+    MetaMaskWallet._instance.walletAddress = undefined;
+    return this.onDisconnect();
+  }
+
+  onDisconnect(): Observable<any> {
+    return new Observable((subscriber) => {
+      MetaMaskWallet._instance._provider.on('disconnect', (error: any) => {
+        if (error) {
+          subscriber.error(error);
+        }
+
+        subscriber.complete();
+      });
+    });
   }
 
   private setWalletAccount(walletAddress: string): void {

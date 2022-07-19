@@ -22,3 +22,11 @@ export const showSpinner = createAction(
 export const hideSpinner = createAction(
     '[Wallet] Hide spinner'
 );
+
+export const showWallets = createAction(
+    '[Wallet] Show available wallets'
+);
+
+export const hideWallets = createAction(
+    '[Wallet] Hide available wallets'
+);
