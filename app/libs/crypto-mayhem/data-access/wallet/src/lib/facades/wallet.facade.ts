@@ -5,7 +5,7 @@ import {
   WalletType,
 } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { Store } from '@ngrx/store';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import {
   connectWallet,
   hideSpinner,
@@ -35,10 +35,19 @@ export class WalletFacade {
   }
 
   public connectWalletAccount(walletType: WalletType): void {
-    this.store.dispatch(connectWallet({walletType}));
-      // .then((data) => console.log('data', data))
-      // .catch(() => console.log('error'));
+    getWalletInstance(walletType)
+      ?.connect()
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+      });
+    //this.store.dispatch(connectWallet({walletType}));
+    // .then((data) => console.log('data', data))
+    // .catch(() => console.log('error'));
   }
 
   public disconnectWalletAccount(walletType: WalletType) {}
+
+  public onConnectWallet() {}
 }
