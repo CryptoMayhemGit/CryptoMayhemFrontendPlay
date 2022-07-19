@@ -1,7 +1,9 @@
+import { WalletType } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model";
 import { createAction, props } from "@ngrx/store";
 
 export const connectWallet = createAction(
-    '[Wallet] Connect wallet'
+    '[Wallet] Connect wallet',
+    props<{walletType: WalletType}>()
 );
 
 export const connectWalletSuccess = createAction(
