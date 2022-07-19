@@ -24,7 +24,7 @@ export class WalletConnectWallet implements IWeb3Wallet {
     return WalletConnectWallet._instance;
   }
 
-  connect(): void {
+  connect(): Observable<any> {
     /*let chainData = {
       chainId: 56,
       networkId: 42,
@@ -35,42 +35,49 @@ export class WalletConnectWallet implements IWeb3Wallet {
       },
     };*/
 
-    // if (!WalletConnectWallet._instance.wallet.connected) {
-    //   WalletConnectWallet._instance.wallet.createSession({ chainId: 56 });
-    //   return await this.getConnected();
-    // }
+    if (!WalletConnectWallet._instance.wallet.connected) {
+      WalletConnectWallet._instance.wallet.createSession({ chainId: 56 });
+      return this.onConnect();
+    } else {
+      return of(false);
+    }
   }
 
-  getConnected(): Observable<any> {
-    WalletConnectWallet._instance.wallet.on(
-      'connect',
-      (error: any, payload: any) => {
-        if (error) {
-          throw error;
+  onConnect(): Observable<any> {
+    return new Observable((subscriber) => {
+      WalletConnectWallet._instance.wallet.on(
+        'connect',
+        (error: any, payload: any) => {
+          if (error) {
+            subscriber.error(error);
+          }
+
+          // Get provided accounts and chainId
+          subscriber.next(payload.params[0]);
+          subscriber.complete();
         }
-
-        // Get provided accounts and chainId
-        console.log('pl', payload.params[0]);
-        return of(payload.params[0]);
-      }
-    );
-
-    return of(false);
+      );
+    });
   }
 
-  disconnect(): Observable<boolean> {
+  disconnect(): Observable<any> {
     if (WalletConnectWallet._instance.wallet.connected) {
       WalletConnectWallet._instance.wallet.killSession();
+      return this.onDisconnect();
+    } else {
+      return of(false);
     }
+  }
 
-    WalletConnectWallet._instance.wallet.on('disconnect', (error: any) => {
-      if (error) {
-        throw error;
-      }
+  onDisconnect(): Observable<any> {
+    return new Observable((subscriber) => {
+      WalletConnectWallet._instance.wallet.on('disconnect', (error: any) => {
+        if (error) {
+          subscriber.error(error);
+        }
 
-      return of(true);
+        subscriber.complete();
+      });
     });
-
-    return of(false);
   }
 }
