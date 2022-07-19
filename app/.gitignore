@@ -41,9 +41,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Env
-environments
-
 # Contracts metadata
 libs/crypto-mayhem/assets/contracts
 
