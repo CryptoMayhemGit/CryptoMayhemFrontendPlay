@@ -24,7 +24,7 @@ export class WalletConnectWallet implements IWeb3Wallet {
     return WalletConnectWallet._instance;
   }
 
-  async connect(): Promise<any> {
+  connect(): void {
     /*let chainData = {
       chainId: 56,
       networkId: 42,
@@ -35,10 +35,10 @@ export class WalletConnectWallet implements IWeb3Wallet {
       },
     };*/
 
-    if (!WalletConnectWallet._instance.wallet.connected) {
-      WalletConnectWallet._instance.wallet.createSession({ chainId: 56 });
-      return await this.getConnected();
-    }
+    // if (!WalletConnectWallet._instance.wallet.connected) {
+    //   WalletConnectWallet._instance.wallet.createSession({ chainId: 56 });
+    //   return await this.getConnected();
+    // }
   }
 
   getConnected(): Observable<any> {

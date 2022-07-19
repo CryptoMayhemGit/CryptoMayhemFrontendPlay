@@ -1,6 +1,6 @@
 import detectEthereumProvider from "@metamask/detect-provider";
 import { ethers } from "ethers";
-import { Observable, of } from "rxjs";
+import { from, Observable, of } from "rxjs";
 import { IWeb3Wallet } from "./wallet.interface";
 
 
@@ -22,17 +22,21 @@ export class MetaMaskWallet implements IWeb3Wallet {
         return MetaMaskWallet._instance;
     }
 
-    public async connect(): Promise<any> {
+    public connect(): void {
         if (typeof window.ethereum !== 'undefined') {
             if (MetaMaskWallet._instance._provider === undefined) {
 
                 MetaMaskWallet._instance._provider = new ethers.providers.Web3Provider(window.ethereum);
-                const walletAccount = await MetaMaskWallet._instance._provider.send("eth_requestAccounts", []);
+                const walletAccount = from(MetaMaskWallet._instance._provider.send("eth_requestAccounts", []))
+                .subscribe((data) => {
+                    console.log(data);
+                    this._signer = this._provider.getSigner()
+                },
+                (err) => MetaMaskWallet._instance._provider = undefined)
 
-                if (walletAccount && walletAccount.length > 0) {
-                    this.setWalletAccount(walletAccount[0]);
-                }
-                this._signer = this._provider.getSigner();
+                // if (walletAccount && walletAccount.length > 0) {
+                //     this.setWalletAccount(walletAccount[0]);
+                // }
             } else {
                 //TODO: handle message/exception that we are already connected or do nothing?
             }
