@@ -35,13 +35,18 @@ export class WalletFacade {
   }
 
   public connectWalletAccount(walletType: WalletType): void {
-    getWalletInstance(walletType)
+    getWalletInstance(WalletType.metamask)
       ?.connect()
       .subscribe({
         next: (data) => {
           console.log(data);
         },
+        error: (err) => {
+          console.log(err);
+        },
       });
+
+    console.log('test123');
     //this.store.dispatch(connectWallet({walletType}));
     // .then((data) => console.log('data', data))
     // .catch(() => console.log('error'));
