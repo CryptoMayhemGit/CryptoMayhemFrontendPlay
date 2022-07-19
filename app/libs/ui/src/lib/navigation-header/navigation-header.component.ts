@@ -1,6 +1,9 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { MetaMaskWallet, WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
+import {
+  MetaMaskWallet,
+  WalletType,
+} from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
 import { Observable, of } from 'rxjs';
 
@@ -31,9 +34,7 @@ export class NavigationHeaderComponent implements OnInit {
 
   spinner: Observable<boolean> = of(false);
 
-  constructor(
-    private readonly walletFacade: WalletFacade
-  ) {}
+  constructor(private readonly walletFacade: WalletFacade) {}
 
   ngOnInit(): void {
     this.spinner = this.walletFacade.spinner$;
@@ -57,6 +58,6 @@ export class NavigationHeaderComponent implements OnInit {
 
   connect() {
     this.walletFacade.showSpinner();
-    this.walletFacade.connectWalletAccount(WalletType.metamask);
+    this.walletFacade.connectWalletAccount(WalletType.walletConnect);
   }
 }
