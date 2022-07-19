@@ -1,6 +1,6 @@
 import detectEthereumProvider from '@metamask/detect-provider';
 import { ethers } from 'ethers';
-import { from, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { IWeb3Wallet } from './wallet.interface';
 
 export class MetaMaskWallet implements IWeb3Wallet {
@@ -26,26 +26,34 @@ export class MetaMaskWallet implements IWeb3Wallet {
         MetaMaskWallet._instance._provider = new ethers.providers.Web3Provider(
           window.ethereum
         );
-        const walletAccount = from(
-          MetaMaskWallet._instance._provider.send('eth_requestAccounts', [])
-        ).subscribe(
-          (data) => {
-            console.log(data);
-            this._signer = this._provider.getSigner();
-          },
-          (err) => (MetaMaskWallet._instance._provider = undefined)
-        );
+        const walletAccount = async () => {
+          return await MetaMaskWallet._instance._provider.send(
+            'eth_requestAccounts',
+            []
+          );
+        };
 
-        // if (walletAccount && walletAccount.length > 0) {
-        //     this.setWalletAccount(walletAccount[0]);
-        // }
+        return new Observable((subscriber) => {
+          walletAccount()
+            .then((walletAddress) => {
+              subscriber.next(walletAddress);
+              subscriber.complete();
+            })
+            .catch((error) => {
+              subscriber.error(error);
+            });
+        });
+        /*if (walletAccount && walletAccount.length > 0) {
+                    this.setWalletAccount(walletAccount[0]);
+                }*/
+        this._signer = this._provider.getSigner();
       } else {
         //TODO: handle message/exception that we are already connected or do nothing?
       }
     } else {
       //TODO: handle message to user when they don't have metamask
     }
-    return of(true);
+    return of(false);
   }
 
   public disconnect(): Observable<boolean> {
