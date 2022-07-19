@@ -1,8 +1,8 @@
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
 export interface IWeb3Wallet {
-    walletAddress: string | undefined;
+  walletAddress: string | undefined;
 
-    connect(): Promise<void>;
-    disconnect(): Observable<boolean>;
+  connect(): Promise<void>;
+  disconnect(): Observable<boolean>;
 }
