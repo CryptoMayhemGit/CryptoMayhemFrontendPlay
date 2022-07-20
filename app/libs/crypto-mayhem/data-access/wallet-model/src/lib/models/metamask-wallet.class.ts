@@ -60,12 +60,6 @@ export class MetaMaskWallet implements IWeb3Wallet {
     return of(false);
   }
 
-  private accountChanged() {
-    MetaMaskWallet._instance._provider.on('accountsChanged', async () => {
-      console.log('change');
-    });
-  }
-
   public disconnect(): Observable<boolean> {
     MetaMaskWallet._instance._provider = undefined;
     MetaMaskWallet._instance._signer = undefined;

@@ -4,6 +4,7 @@ import {
   WalletType,
 } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { Store } from '@ngrx/store';
+import { WalletService } from '../services/wallet.service';
 import {
   hideSpinner,
   hideWallets,
@@ -16,11 +17,16 @@ import * as WalletSelectors from '../state/wallet.selectors';
 
 @Injectable({ providedIn: 'root' })
 export class WalletFacade {
-  readonly wallet$ = this.store.select(WalletSelectors.getWalletAddress);
   readonly spinner$ = this.store.select(WalletSelectors.getSpinnerState);
   readonly showWallets$ = this.store.select(WalletSelectors.getShowWallets);
 
-  constructor(private readonly store: Store) {}
+  readonly account$ = this.store.select(WalletSelectors.getAccount);
+  readonly chainId$ = this.store.select(WalletSelectors.getChainId);
+  readonly connected$ = this.store.select(WalletSelectors.getWalletConnected);
+
+  constructor(
+    private readonly store: Store,
+    private readonly walletService: WalletService) {}
 
   public setWalletAddress(walletAddress: string): void {
     this.store.dispatch(setWalletAddress({ walletAddress }));
@@ -35,33 +41,11 @@ export class WalletFacade {
   }
 
   public connectWalletAccount(walletType: WalletType): void {
-    this.showSpinner();
-    getWalletInstance(walletType)
-      ?.connect()
-      .subscribe({
-        next: (data) => {
-          console.log(data);
-        },
-        error: (err) => {
-          console.log(err);
-        },
-        complete: () => {
-          this.hideSpinner();
-        },
-      });
+    this.walletService.connectWallet(walletType);
   }
 
   public disconnectWalletAccount(walletType: WalletType) {
-    getWalletInstance(walletType)
-      ?.disconnect()
-      .subscribe({
-        next: (data) => {
-          console.log('disconnected');
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+    this.walletService.disconnectWallet();
   }
 
   public onDisconnectWallet(walletType: WalletType) {

@@ -33,11 +33,13 @@ export class NavigationHeaderComponent implements OnInit {
   isMobile = false;
 
   spinner: Observable<boolean> = of(false);
+  connected$: Observable<boolean> = of(false);
 
-  constructor(private readonly walletFacade: WalletFacade) {}
+  constructor(public readonly walletFacade: WalletFacade) {}
 
   ngOnInit(): void {
     this.spinner = this.walletFacade.spinner$;
+    this.connected$ = this.walletFacade.connected$;
     this.walletFacade.onDisconnectWallet(WalletType.walletConnect);
   }
 
