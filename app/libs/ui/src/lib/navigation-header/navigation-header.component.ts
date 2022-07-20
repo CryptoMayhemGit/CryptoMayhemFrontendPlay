@@ -44,7 +44,7 @@ export class NavigationHeaderComponent implements OnInit {
     return window.innerWidth <= 1240;
   }
 
-  showGames() {
+  showGames(): void {
     if (this.isSmallerScreen()) {
       this.gamesVisible = !this.gamesVisible;
       this.tdsVisible = true;
@@ -56,8 +56,11 @@ export class NavigationHeaderComponent implements OnInit {
     }
   }
 
-  connect() {
-    this.walletFacade.showSpinner();
-    this.walletFacade.connectWalletAccount(WalletType.walletConnect);
+  connect(): void {
+    this.walletFacade.showWallets();
+  }
+
+  disconnect(): void {
+    this.walletFacade.disconnectWalletAccount(WalletType.metamask);
   }
 }

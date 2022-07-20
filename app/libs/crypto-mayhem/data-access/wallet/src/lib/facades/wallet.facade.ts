@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import {
   getWalletInstance,
-  MetaMaskWallet,
   WalletType,
 } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { Store } from '@ngrx/store';
-import { from, Observable } from 'rxjs';
 import {
-  connectWallet,
   hideSpinner,
+  hideWallets,
   setWalletAddress,
   showSpinner,
+  showWallets,
 } from '../state/wallet.actions';
 
 import * as WalletSelectors from '../state/wallet.selectors';
@@ -19,6 +18,7 @@ import * as WalletSelectors from '../state/wallet.selectors';
 export class WalletFacade {
   readonly wallet$ = this.store.select(WalletSelectors.getWalletAddress);
   readonly spinner$ = this.store.select(WalletSelectors.getSpinnerState);
+  readonly showWallets$ = this.store.select(WalletSelectors.getShowWallets);
 
   constructor(private readonly store: Store) {}
 
@@ -35,7 +35,8 @@ export class WalletFacade {
   }
 
   public connectWalletAccount(walletType: WalletType): void {
-    getWalletInstance(WalletType.metamask)
+    this.showSpinner();
+    getWalletInstance(walletType)
       ?.connect()
       .subscribe({
         next: (data) => {
@@ -44,15 +45,24 @@ export class WalletFacade {
         error: (err) => {
           console.log(err);
         },
+        complete: () => {
+          this.hideSpinner();
+        }
       });
-
-    console.log('test123');
-    //this.store.dispatch(connectWallet({walletType}));
-    // .then((data) => console.log('data', data))
-    // .catch(() => console.log('error'));
   }
 
-  public disconnectWalletAccount(walletType: WalletType) {}
+  public disconnectWalletAccount(walletType: WalletType) {
+    getWalletInstance(walletType).disconnect()
+    .subscribe(() => console.log('ok'));
+  }
 
   public onConnectWallet() {}
+
+  public showWallets() {
+    this.store.dispatch(showWallets());
+  }
+
+  public hideWallets() {
+    this.store.dispatch(hideWallets());
+  }
 }

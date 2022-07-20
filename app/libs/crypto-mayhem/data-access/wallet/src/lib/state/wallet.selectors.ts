@@ -13,3 +13,8 @@ export const getSpinnerState = createSelector(
     selectWallet,
     state => state.spinner
 );
+
+export const getShowWallets = createSelector(
+    selectWallet,
+    state => state.showWallets
+);
