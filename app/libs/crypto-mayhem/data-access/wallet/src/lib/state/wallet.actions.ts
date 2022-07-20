@@ -4,7 +4,7 @@ import { createAction, props } from "@ngrx/store";
 
 export const accountsChanged = createAction(
     '[Wallet] Account changed',
-    props<{account: string, chainId: string}>()
+    props<{account: string, chainId: number | undefined}>()
 );
 
 export const accountsChangedSuccess = createAction(
@@ -13,7 +13,7 @@ export const accountsChangedSuccess = createAction(
 
 export const chainChanged = createAction(
     '[Wallet] Chain changed',
-    props<{chainId: string}>()
+    props<{chainId: number | undefined}>()
 );
 
 export const disconnectWallet = createAction(

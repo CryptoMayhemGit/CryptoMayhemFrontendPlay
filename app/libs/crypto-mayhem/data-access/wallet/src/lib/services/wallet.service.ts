@@ -17,7 +17,7 @@ import * as WalletActions from '../state/wallet.actions';
 export class WalletService {
 
     private provider: Web3Provider | undefined = undefined;
-    private connector: any;
+    private connector: WalletConnect | undefined = undefined;
 
     constructor(
         private readonly httpClient: HttpClient,
@@ -29,14 +29,14 @@ export class WalletService {
             if (accounts.length === 0) {
                 this.disconnectWallet();
             } else {
-                this.store.dispatch(WalletActions.accountsChanged({account: accounts[0], chainId: ''}));
+                this.store.dispatch(WalletActions.accountsChanged({account: accounts[0], chainId: undefined}));
                 this.getAccountBalance(accounts[0]);
             }
         });
 
         // Subscribe to chainId change
         provider.provider.on("chainChanged", (chainId: number) => {
-            this.store.dispatch(WalletActions.chainChanged({chainId: chainId.toString()}))
+            this.store.dispatch(WalletActions.chainChanged({chainId: chainId}))
             console.log(chainId);
         });
 
@@ -85,29 +85,35 @@ export class WalletService {
         switch(walletType) {
             case WalletType.metamask: {
                 if (typeof window.ethereum !== 'undefined') {
+                    const account: string | undefined = undefined;
                     this.provider = new providers.Web3Provider(window.ethereum, 'any');
                     this.createMetamaskProviderHooks(this.provider);
-                    // Subscribe to accounts change
                     await this.provider.send(
                         'eth_requestAccounts',
                         []
                     )
-                    .then(() => this.store.dispatch(WalletActions.connectWallet()))
+                    .then((account) => {
+                        this.store.dispatch(WalletActions.connectWallet())
+                        this.store.dispatch(WalletActions.accountsChanged({account: account, chainId: undefined}))
+                    })
                     .catch((error: any) => console.log(error))
+                    console.log(this.provider);
+                    const chainId = this.getAccountChain(WalletType.metamask);
+                    this.store.dispatch(WalletActions.chainChanged({chainId}));
                 } else {
                     //TODO: user not have a wallet
                 }
                 break;
             }
             case WalletType.walletConnect: {
-                const connector = new WalletConnect({
+                this.connector = new WalletConnect({
                     bridge: "https://bridge.walletconnect.org", // Required
                     qrcodeModal: QRCodeModal,
                 });
-                if (!connector.connected) {
+                if (!this.connector.connected) {
                     // create new session
-                    connector.createSession();
-                    this.createWalletConnectProviderHooks(connector);
+                    this.connector.createSession();
+                    this.createWalletConnectProviderHooks(this.connector);
                 } else {
                     //TODO: what when not connected?
                 }
@@ -121,9 +127,14 @@ export class WalletService {
         this.store.dispatch(WalletActions.disconnectWallet());
     }
 
-    public async getAccountBalance(walletAddress: string) {
+    private async getAccountBalance(walletAddress: string) {
         await this.provider?.getBalance(walletAddress)
         .then((balance) => console.log(balance))
         .catch(() => console.log('errorbalance'));
+    }
+
+    private getAccountChain(walletType: string) {
+        console.log(this.provider);
+        return this.provider?._network?.chainId;
     }
 }

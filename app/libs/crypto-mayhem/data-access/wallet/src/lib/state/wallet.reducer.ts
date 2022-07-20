@@ -7,7 +7,7 @@ export const walletKey = 'wallets';
 
 export interface WalletState {
     account: string,
-    chainId: string,
+    chainId: number | undefined,
     connected: boolean,
     spinner: boolean,
     showWallets: boolean,
@@ -16,7 +16,7 @@ export interface WalletState {
 
 export const initialState: WalletState = {
     account: '',
-    chainId: '',
+    chainId: undefined,
     connected: false,
     spinner: false,
     showWallets: false,
