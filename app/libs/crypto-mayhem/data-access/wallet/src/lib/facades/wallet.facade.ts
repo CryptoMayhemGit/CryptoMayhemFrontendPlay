@@ -47,13 +47,47 @@ export class WalletFacade {
         },
         complete: () => {
           this.hideSpinner();
-        }
+        },
       });
   }
 
   public disconnectWalletAccount(walletType: WalletType) {
-    getWalletInstance(walletType).disconnect()
-    .subscribe(() => console.log('ok'));
+    getWalletInstance(walletType)
+      ?.disconnect()
+      .subscribe({
+        next: (data) => {
+          console.log('disconnected');
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
+
+  public onDisconnectWallet(walletType: WalletType) {
+    getWalletInstance(walletType)
+      ?.onDisconnect()
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
+
+  public onUpdateWalletAccount(walletType: WalletType) {
+    getWalletInstance(WalletType.walletConnect)
+      ?.onChange()
+      .subscribe({
+        next: (data) => {
+          console.log('change', data);
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 
   public onConnectWallet() {}

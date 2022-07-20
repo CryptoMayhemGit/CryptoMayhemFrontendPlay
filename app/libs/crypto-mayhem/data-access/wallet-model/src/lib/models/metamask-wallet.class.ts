@@ -26,8 +26,12 @@ export class MetaMaskWallet implements IWeb3Wallet {
         MetaMaskWallet._instance._provider = new ethers.providers.Web3Provider(
           window.ethereum
         );
-        MetaMaskWallet._instance._provider.on('chainChanged', () => console.log('ok'));
-        MetaMaskWallet._instance._provider.on('accountsChanged', () => console.log('ok'));
+        MetaMaskWallet._instance._provider.on('chainChanged', () =>
+          console.log('ok')
+        );
+        MetaMaskWallet._instance._provider.on('accountsChanged', () =>
+          console.log('ok')
+        );
         const walletAccount = async () => {
           return await MetaMaskWallet._instance._provider.send(
             'eth_requestAccounts',
@@ -59,7 +63,7 @@ export class MetaMaskWallet implements IWeb3Wallet {
   private accountChanged() {
     MetaMaskWallet._instance._provider.on('accountsChanged', async () => {
       console.log('change');
-    })
+    });
   }
 
   public disconnect(): Observable<boolean> {
@@ -79,6 +83,10 @@ export class MetaMaskWallet implements IWeb3Wallet {
         subscriber.complete();
       });
     });
+  }
+
+  public onChange(): Observable<any> {
+    return of(false);
   }
 
   private setWalletAccount(walletAddress: string): void {

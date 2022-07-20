@@ -5,4 +5,6 @@ export interface IWeb3Wallet {
 
   connect(): Observable<any>;
   disconnect(): Observable<boolean>;
+  onChange(): Observable<any>;
+  onDisconnect(): Observable<any>;
 }

@@ -17,7 +17,7 @@ export class WalletConnectWallet implements IWeb3Wallet {
   }
 
   public static getInstance(): WalletConnectWallet {
-    if (!WalletConnectWallet._instance) {
+    if (!WalletConnectWallet._instance?.wallet?.connected) {
       this._instance = new WalletConnectWallet();
     }
 
@@ -39,7 +39,7 @@ export class WalletConnectWallet implements IWeb3Wallet {
       WalletConnectWallet._instance.wallet.createSession({ chainId: 56 });
       return this.onConnect();
     } else {
-      return of(false);
+      return of('already connected');
     }
   }
 
@@ -75,9 +75,25 @@ export class WalletConnectWallet implements IWeb3Wallet {
         if (error) {
           subscriber.error(error);
         }
-
+        subscriber.next(true);
         subscriber.complete();
       });
+    });
+  }
+
+  onChange(): Observable<any> {
+    return new Observable((subscriber) => {
+      WalletConnectWallet._instance.wallet.on(
+        'session_update',
+        (error: any, payload: any) => {
+          if (error) {
+            subscriber.error(error);
+          }
+
+          subscriber.next(payload);
+          subscriber.complete();
+        }
+      );
     });
   }
 }
