@@ -40,7 +40,8 @@ export class WalletFacade {
       ?.connect()
       .subscribe({
         next: (data) => {
-          console.log(data);
+          this.onUpdateWalletAccount(walletType);
+          this.onDisconnectWallet(walletType);
         },
         error: (err) => {
           console.log(err);
@@ -78,7 +79,7 @@ export class WalletFacade {
   }
 
   public onUpdateWalletAccount(walletType: WalletType) {
-    getWalletInstance(WalletType.walletConnect)
+    getWalletInstance(walletType)
       ?.onChange()
       .subscribe({
         next: (data) => {

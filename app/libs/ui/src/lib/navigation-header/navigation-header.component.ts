@@ -38,7 +38,6 @@ export class NavigationHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.spinner = this.walletFacade.spinner$;
-    this.walletFacade.onDisconnectWallet(WalletType.walletConnect);
   }
 
   isSmallerScreen(): boolean {
