@@ -3,7 +3,7 @@ import { WalletType } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/wa
 import { WalletFacade } from "libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade";
 
 @Component({
-    selector: 'iu-wallet-choice',
+    selector: 'ui-wallet-choice',
     templateUrl: './wallet-choice.component.html',
     styleUrls: ['./wallet-choice.component.scss']
 })

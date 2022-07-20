@@ -11,4 +11,4 @@ import { WalletChoiceComponent } from "./wallet-choice.component";
     ],
     exports: [WalletChoiceComponent]
 })
-export class WalletChoiceModue {}
+export class WalletChoiceModule {}

@@ -10,10 +10,9 @@ import {
   NavbarModule,
   NavigationHeaderModule,
   NotificationModule,
-  WalletChoiceModue,
+  WalletChoiceModule,
 } from '@crypto-mayhem-frontend/ui';
 import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
-import { ErrorService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services';
 import { getAppConfigProvider } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import { ShellModule } from '@crypto-mayhem-frontend/crypto-mayhem/shell';
 import { StoreModule } from '@ngrx/store';
@@ -30,7 +29,7 @@ import { CryptoMayhemDataAccessWalletModule } from '@crypto-mayhem-frontend/cryp
     NotificationModule,
     NavbarModule,
     NavigationHeaderModule,
-    WalletChoiceModue,
+    WalletChoiceModule,
     StoreModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
