@@ -37,7 +37,6 @@ export class WalletService {
         // Subscribe to chainId change
         provider.provider.on("chainChanged", (chainId: number) => {
             this.store.dispatch(WalletActions.chainChanged({chainId: chainId}))
-            console.log(chainId);
         });
 
         // Subscribe to session disconnection
@@ -97,7 +96,6 @@ export class WalletService {
                         this.store.dispatch(WalletActions.accountsChanged({account: account, chainId: undefined}))
                     })
                     .catch((error: any) => console.log(error))
-                    console.log(this.provider);
                     const chainId = this.getAccountChain(WalletType.metamask);
                     this.store.dispatch(WalletActions.chainChanged({chainId}));
                 } else {
@@ -134,7 +132,6 @@ export class WalletService {
     }
 
     private getAccountChain(walletType: string) {
-        console.log(this.provider);
         return this.provider?._network?.chainId;
     }
 }

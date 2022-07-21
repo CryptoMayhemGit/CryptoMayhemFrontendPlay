@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {
-  getWalletInstance,
   WalletType,
 } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { Store } from '@ngrx/store';
@@ -47,34 +46,6 @@ export class WalletFacade {
   public disconnectWalletAccount(walletType: WalletType) {
     this.walletService.disconnectWallet();
   }
-
-  public onDisconnectWallet(walletType: WalletType) {
-    getWalletInstance(walletType)
-      ?.onDisconnect()
-      .subscribe({
-        next: (data) => {
-          console.log(data);
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
-  }
-
-  public onUpdateWalletAccount(walletType: WalletType) {
-    getWalletInstance(walletType)
-      ?.onChange()
-      .subscribe({
-        next: (data) => {
-          console.log('change', data);
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
-  }
-
-  public onConnectWallet() {}
 
   public showWallets() {
     this.store.dispatch(showWallets());

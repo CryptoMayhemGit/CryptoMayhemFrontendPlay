@@ -1,7 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
-  MetaMaskWallet,
   WalletType,
 } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
@@ -40,7 +39,6 @@ export class NavigationHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.spinner = this.walletFacade.spinner$;
     this.connected$ = this.walletFacade.connected$;
-    this.walletFacade.onDisconnectWallet(WalletType.walletConnect);
   }
 
   isSmallerScreen(): boolean {
