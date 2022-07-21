@@ -1,22 +1,16 @@
-<div id="modal" class="modal">
-    <div id="modal-close" class="modal-close">
-        <button (click)="hideWallets()">&times;</button>
-    </div>
-    <div id="modal-body" class="modal-body">
-        <div id="body-header" class="body-header">Wybierz portfel</div>
-        <div id="body-wallets" class="body-wallets">
-            <div (click)="choiceWallet(walletType.metamask)" type="button" role="button" class="body-wallets_wallet">
-                <img src="./assets/images/metamask_icon.svg" />
-                <span>Metamask</span>
-            </div>
-            <div (click)="choiceWallet(walletType.walletConnect)" type="button" role="button" class="body-wallets_wallet">
-                <img src="./assets/images/wallet_connect_icon.svg" />
-                <span>WalletConnect</span>
-            </div>
+<ui-modal-base>
+    <div id="body-header" class="body-header">Wybierz portfel</div>
+    <div id="body-wallets" class="body-wallets">
+        <div (click)="choiceWallet(walletType.metamask)" type="button" role="button" class="body-wallets_wallet">
+            <img src="./assets/images/metamask_icon.svg" />
+            <span>Metamask</span>
         </div>
-        <hr>
-        <div class="body-info">Nie posiadasz jeszcze swojego portfela dla kryptowalut i nie wiesz jak go założyć?</div>
-        <div class="body-link">obejrzyj video</div>
+        <div (click)="choiceWallet(walletType.walletConnect)" type="button" role="button" class="body-wallets_wallet">
+            <img src="./assets/images/wallet_connect_icon.svg" />
+            <span>WalletConnect</span>
+        </div>
     </div>
-</div>
-<div id="modal-overlay" class="modal-overlay"></div>
+    <hr>
+    <div class="body-info">Nie posiadasz jeszcze swojego portfela dla kryptowalut i nie wiesz jak go założyć?</div>
+    <div class="body-link"><a href="#">obejrzyj video <fa-icon [icon]="caretRight"></fa-icon></a></div>
+</ui-modal-base>

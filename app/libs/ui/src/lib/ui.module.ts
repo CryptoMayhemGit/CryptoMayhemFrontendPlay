@@ -6,6 +6,7 @@ import { NavigationHeaderModule } from './navigation-header/navigation-header.mo
 import { LandingPageModule } from './landing-page/landing-page.module';
 import { MainButtonModule } from './main-button/main-button.module';
 import { GameListingModule } from './game-listing/game-listing.module';
+import { ModalBaseModule } from './modal-base/modal-base.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -16,6 +17,7 @@ import { GameListingModule } from './game-listing/game-listing.module';
     NavigationHeaderModule,
     MainButtonModule,
     GameListingModule,
+    ModalBaseModule,
   ],
 })
 export class UiModule {}
