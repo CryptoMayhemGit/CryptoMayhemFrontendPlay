@@ -6,14 +6,18 @@ import * as WalletActions from './wallet.actions';
 export const walletKey = 'wallets';
 
 export interface WalletState {
-    walletAddress: string,
+    account: string,
+    chainId: number | undefined,
+    connected: boolean,
     spinner: boolean,
     showWallets: boolean,
     walletType: WalletType
 }
 
 export const initialState: WalletState = {
-    walletAddress: '',
+    account: '',
+    chainId: undefined,
+    connected: false,
     spinner: false,
     showWallets: false,
     walletType: WalletType.none
@@ -21,7 +25,10 @@ export const initialState: WalletState = {
 
 export const walletReducer = createReducer(
     initialState,
-    on(WalletActions.connectWallet, (state, {walletType}) => ({...state, spinner: true, walletType: walletType})),
+    on(WalletActions.connectWallet, state => ({...state, spinner: true, connected: true})),
+    on(WalletActions.disconnectWallet, state => ({...state, connected: false})),
+    on(WalletActions.accountsChanged, (state, {account, chainId}) => ({...state, account, chainId})),
+    on(WalletActions.chainChanged, (state, {chainId}) => ({...state, chainId})),
     on(WalletActions.setWalletAddress,
         (state, {walletAddress}) => ({...state, walletAddress: walletAddress})),
     on(WalletActions.showSpinner, state => ({...state, spinner: true})),
