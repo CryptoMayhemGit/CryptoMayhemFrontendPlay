@@ -62,7 +62,7 @@ export class WalletFacade {
   }
 
   public onUpdateWalletAccount(walletType: WalletType) {
-    getWalletInstance(WalletType.walletConnect)
+    getWalletInstance(walletType)
       ?.onChange()
       .subscribe({
         next: (data) => {
