@@ -1,0 +1,28 @@
+  <ui-modal-base>
+    <picture class="drone" *ngIf="type === 'error'">
+      <source type="image/webp" srcset="./assets/images/drone_error.webp">
+      <source type="image/png" srcset="./assets/images/drone_error.png">
+      <img alt="drone" role="presentation" src="./assets/images/drone_error.png" />
+    </picture>
+
+    <picture class="drone" *ngIf="type === 'success'">
+      <source type="image/webp" srcset="./assets/images/drone_success.webp">
+      <source type="image/png" srcset="./assets/images/drone_success.png">
+      <img alt="drone" role="presentation" src="./assets/images/drone_success.png" />
+    </picture>
+
+    <div class="modal">
+      <div class="modal-header" *ngIf="title">
+        <h1 [ngClass]="type">{{title}}</h1>
+      </div>
+      <div class="modal-content">
+        <p [innerHtml]="content"></p>
+        <ng-content></ng-content>
+      </div>
+      <div class="modal-actions" *ngIf="primaryButtonText || secondaryButtonText">
+        <ui-main-button *ngIf="secondaryButtonText" (click)="onButtonClick('secondary')" type="secondary">{{secondaryButtonText}}</ui-main-button>
+        <ui-main-button *ngIf="primaryButtonText" (click)="onButtonClick('primary')" type="primary">{{primaryButtonText}}</ui-main-button>
+      </div>
+    </div>
+
+  </ui-modal-base>

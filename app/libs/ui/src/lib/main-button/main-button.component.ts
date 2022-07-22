@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'ui-main-button',
@@ -7,8 +13,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainButtonComponent {
-
   @Output() btnClick = new EventEmitter();
+  @Input() type: 'primary' | 'secondary' | 'fancy' = 'primary';
 
   constructor() {}
 
