@@ -1,13 +1,35 @@
 import { WalletType } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model";
 import { createAction, props } from "@ngrx/store";
 
+
+export const accountsChanged = createAction(
+    '[Wallet] Account changed',
+    props<{account: string, chainId: number | undefined}>()
+);
+
+export const accountsChangedSuccess = createAction(
+    '[Wallet] Account changed success',
+);
+
+export const chainChanged = createAction(
+    '[Wallet] Chain changed',
+    props<{chainId: number | undefined}>()
+);
+
+export const disconnectWallet = createAction(
+    '[Wallet] Disconnect wallet'
+);
+
 export const connectWallet = createAction(
-    '[Wallet] Connect wallet',
-    props<{walletType: WalletType}>()
+    '[Wallet] Connect wallet'
 );
 
 export const connectWalletSuccess = createAction(
     '[Wallet] Connect wallet success'
+);
+
+export const connectWalletError = createAction(
+    '[Wallet] Connect wallet action',
 );
 
 export const setWalletAddress = createAction(

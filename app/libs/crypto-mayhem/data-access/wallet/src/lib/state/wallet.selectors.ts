@@ -4,11 +4,6 @@ import * as fromWallets from './wallet.reducer';
 
 export const selectWallet = createFeatureSelector<fromWallets.WalletState>(fromWallets.walletKey);
 
-export const getWalletAddress = createSelector(
-    selectWallet,
-    state => state.walletAddress
-);
-
 export const getSpinnerState = createSelector(
     selectWallet,
     state => state.spinner
@@ -17,4 +12,19 @@ export const getSpinnerState = createSelector(
 export const getShowWallets = createSelector(
     selectWallet,
     state => state.showWallets
+);
+
+export const getAccount = createSelector(
+    selectWallet,
+    state => state.account
+);
+
+export const getChainId = createSelector(
+    selectWallet,
+    state => state.chainId
+);
+
+export const getWalletConnected = createSelector(
+    selectWallet,
+    state => state.connected
 );
