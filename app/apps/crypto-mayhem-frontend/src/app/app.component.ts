@@ -10,11 +10,11 @@ import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/faca
     <ui-nav></ui-nav>
     <router-outlet></router-outlet>
     <ui-notification></ui-notification>
-    <ui-wallet-choice *ngIf="walletFacade.showWallets$ | async"></ui-wallet-choice>
+    <ui-wallet-choice
+      *ngIf="walletFacade.showWallets$ | async"
+    ></ui-wallet-choice>
   `,
 })
 export class AppComponent {
-  constructor(
-    public walletFacade: WalletFacade
-  ) {}
+  constructor(public walletFacade: WalletFacade) {}
 }
