@@ -14,8 +14,4 @@ import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/faca
 })
 export class AppComponent {
   constructor(public walletFacade: WalletFacade) {}
-
-  testClick() {
-    console.log('testClick');
-  }
 }
