@@ -1,3 +1,5 @@
-<div (click)="onClick()" id="button" role="button">
-  <span><ng-content></ng-content></span>
+<div [ngClass]="type" id="wrapper">
+  <div (click)="onClick()" id="button" role="button">
+    <span><ng-content></ng-content></span>
+  </div> 
 </div>

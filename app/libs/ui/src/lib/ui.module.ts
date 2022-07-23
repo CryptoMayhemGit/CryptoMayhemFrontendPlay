@@ -7,6 +7,7 @@ import { LandingPageModule } from './landing-page/landing-page.module';
 import { MainButtonModule } from './main-button/main-button.module';
 import { GameListingModule } from './game-listing/game-listing.module';
 import { ModalBaseModule } from './modal-base/modal-base.module';
+import { ModalDroneModule } from './modal-drone/modal-drone.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -18,6 +19,8 @@ import { ModalBaseModule } from './modal-base/modal-base.module';
     MainButtonModule,
     GameListingModule,
     ModalBaseModule,
+    ModalDroneModule,
   ],
+  declarations: [],
 })
 export class UiModule {}

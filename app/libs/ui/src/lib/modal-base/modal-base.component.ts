@@ -7,14 +7,14 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./modal-base.component.scss'],
 })
 export class ModalBaseComponent implements OnInit {
-  @Output() closeChange = new EventEmitter<boolean>();
+  @Output() close = new EventEmitter<boolean>();
   faxmark = faXmark;
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  close() {
-    this.closeChange.emit(true);
+  closeModal() {
+    this.close.emit(true);
   }
 }

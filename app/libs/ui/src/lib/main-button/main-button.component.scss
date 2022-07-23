@@ -1,19 +1,55 @@
 :host {
-  color: #fff;
+  display: block;
+}
+
+#wrapper {
+  &.primary {
+    --background-color: #c23b1d;
+    --border-color: #c23b1d;
+    --hover-color: var(--background-color);
+    --text-color: #fff;
+    --text-hover-color: #fff;
+
+    clip-path: polygon(-100% -100%, 300% 0, 100% 400%, 7% 95%, 1% 74%);
+  }
+
+  &.secondary {
+    --background-color: transparent;
+    --border-color: #fff;
+    --hover-color: var(--border-color);
+    --text-color: var(--border-color);
+    --text-hover-color: #000;
+  }
+
+  &.fancy {
+    --background-color: transparent;
+    --border-color: #00d62e;
+    --hover-color: #1c1b1b;
+    --text-color: #fff;
+    --text-hover-color: #fff;
+
+    &:hover {
+      & > div {
+        box-shadow: 4px -10px 20px rgb(0 214 46 / 20%);
+      }
+    }
+  }
+
+  color: var(--text-color);
   cursor: pointer;
   display: block;
   line-height: 1.2rem;
   position: relative;
 
   &:hover {
-    & > div {
-      background-color: #1c1b1b;
-      box-shadow: 4px -10px 20px rgb(0 214 46 / 20%);
-      clip-path: polygon(-100% -100%, 300% 0, 0% 400%, 8% 100%, 0 75%);
+    #button {
+      background-color: var(--hover-color);
+      clip-path: polygon(-100% -100%, 300% 0, 100% 400%, 7% 95%, 1% 74%);
+      color: var(--text-hover-color);
     }
 
     &::before {
-      border: 1px solid #00d62e;
+      border: 1px solid var(--border-color);
       content: " ";
       display: block;
       height: 3rem;
@@ -23,45 +59,49 @@
       width: 100%;
     }
   }
-}
 
-span {
-  font-size: 1rem;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-#button {
-  border-right: 1px solid #00d62e;
-  overflow: hidden;
-  padding: 1rem 1.8rem;
-  position: relative;
-
-  &::after,
-  &::before {
-    content: "";
-    left: 0;
-    position: absolute;
+  span {
+    display: flex;
+    font-size: 1rem;
+    font-weight: 500;
+    justify-content: center;
+    text-transform: uppercase;
     width: 100%;
-    z-index: -1;
   }
 
-  &::before {
-    border: 1px solid #00d62e;
-    border-width: 0 0 1px 2px;
-    bottom: 0;
-    height: 30%;
-    left: -2px;
-    transform: skew(50deg);
-    transform-origin: left top;
-    z-index: 100;
-  }
+  #button {
+    background-color: var(--background-color);
+    border-right: 1px solid var(--border-color);
+    overflow: hidden;
+    padding: 1rem 1.8rem;
+    position: relative;
 
-  &::after {
-    border: 2px solid #00d62e;
-    border-width: 1px 0 0 1px;
-    height: calc(80% - 4px);
-    top: 0;
-    z-index: 100;
+    &::after,
+    &::before {
+      content: "";
+      left: 0;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+    }
+
+    &::before {
+      border: 1px solid var(--border-color);
+      border-width: 0 0 1px 2px;
+      bottom: 0;
+      height: 30%;
+      left: -2px;
+      transform: skew(60deg);
+      transform-origin: left top;
+      z-index: 100;
+    }
+
+    &::after {
+      border: 2px solid var(--border-color);
+      border-width: 1px 0 0 1px;
+      height: calc(80% - 4px);
+      top: 0;
+      z-index: 100;
+    }
   }
 }
