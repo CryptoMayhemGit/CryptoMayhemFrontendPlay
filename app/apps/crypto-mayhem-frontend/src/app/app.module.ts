@@ -11,6 +11,7 @@ import {
   NavbarModule,
   NavigationHeaderModule,
   NotificationModule,
+  PreSaleModule,
   WalletChoiceModule,
 } from '@crypto-mayhem-frontend/ui';
 import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
@@ -19,6 +20,7 @@ import { ShellModule } from '@crypto-mayhem-frontend/crypto-mayhem/shell';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CryptoMayhemDataAccessWalletModule } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +33,9 @@ import { CryptoMayhemDataAccessWalletModule } from '@crypto-mayhem-frontend/cryp
     NavbarModule,
     NavigationHeaderModule,
     WalletChoiceModule,
+    PreSaleModule,
     StoreModule.forRoot([]),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

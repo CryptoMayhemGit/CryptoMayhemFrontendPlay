@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 94px;
+  margin-top: 2em;
+
+  &-form {
+    background: linear-gradient(179.9deg, rgb(40 40 40 / 0%) 16.9%, #701400 120.77%);
+    background-color: black;
+    height: 80vh;
+    margin-left: auto;
+    width: 20vw;
+  }
+
+  &-info {
+    background-color: gray;
+    margin-right: auto;
+  }
+
+  .form {
+    &-header p {
+      text-align: center;
+    }
+  }
+}
+
+.connected {
+  color: #00D62E;
+}
+
+.disconnected {
+  color: #FF4246;
+}

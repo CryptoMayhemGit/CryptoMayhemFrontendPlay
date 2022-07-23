@@ -52,3 +52,13 @@ export const showWallets = createAction(
 export const hideWallets = createAction(
     '[Wallet] Hide available wallets'
 );
+
+export const postBuyPreSaleTokens = createAction(
+    '[Wallet] Pre-sale buy',
+    props<{amount: number}>()
+);
+
+export const postBuyPreSaleTokensSuccess = createAction(
+    '[Wallet] Pre-sale buy success',
+    props<{sign: any}>()
+);

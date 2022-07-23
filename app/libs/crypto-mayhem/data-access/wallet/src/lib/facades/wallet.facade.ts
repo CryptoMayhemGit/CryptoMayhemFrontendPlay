@@ -4,9 +4,11 @@ import {
 } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { Store } from '@ngrx/store';
 import { WalletService } from '../services/wallet.service';
+
 import {
   hideSpinner,
   hideWallets,
+  postBuyPreSaleTokens,
   setWalletAddress,
   showSpinner,
   showWallets,
@@ -53,5 +55,9 @@ export class WalletFacade {
 
   public hideWallets() {
     this.store.dispatch(hideWallets());
+  }
+
+  public buyPreSaleTokens(amount: number) {
+    this.store.dispatch(postBuyPreSaleTokens({amount}))
   }
 }
