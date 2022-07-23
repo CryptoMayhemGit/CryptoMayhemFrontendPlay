@@ -16,6 +16,8 @@ export * from './lib/game-listing/game-listing.component';
 export * from './lib/wallet-choice/wallet-choice.module';
 export * from './lib/wallet-choice/wallet-choice.component';
 export * from './lib/modal-base/modal-base.module';
+export * from './lib/pre-sale/pre-sale.module';
+export * from './lib/pre-sale/pre-sale.component';
 export * from './lib/modal-base/modal-base.component';
 export * from './lib/modal-drone/modal-drone.module';
 export * from './lib/modal-drone/modal-drone.component';

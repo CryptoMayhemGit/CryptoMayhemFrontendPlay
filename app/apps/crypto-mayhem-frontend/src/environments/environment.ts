@@ -9,7 +9,10 @@ export const environment = {
   baseUrl: "https://mayhemwebapi.azurewebsites.net/",
   rpcUrl: "http://localhost:8545/",
   rpcChainId: "0x539",
-  defaultAsset: "ADRIAT"
+  defaultAsset: "ADRIAT",
+
+  binanceRpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545/",
+  chainId: "97"
 };
 
 /*
