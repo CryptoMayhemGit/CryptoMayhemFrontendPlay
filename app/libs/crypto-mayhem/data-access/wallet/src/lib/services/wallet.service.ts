@@ -22,9 +22,7 @@ interface SignedWalletWithAmount {
 
 import * as WalletActions from '../state/wallet.actions';
 import { Observable } from "rxjs";
-
-
-export const SALE_TOKEN = `http://salestokenapiwebapp.azurewebsites.net/api/SaleToken/ticket`;
+import { SALE_TOKEN } from "./wallet.endpoints";
 
 @Injectable({ providedIn: 'root' })
 export class WalletService {
@@ -42,6 +40,7 @@ export class WalletService {
             if (accounts.length === 0) {
                 this.disconnectWallet();
             } else {
+                console.log('createMetamask', accounts[0]);
                 this.store.dispatch(WalletActions.accountsChanged({account: accounts[0], chainId: undefined}));
             }
         });
@@ -116,10 +115,9 @@ export class WalletService {
                     )
                     .then((account) => {
                         this.store.dispatch(WalletActions.connectWalletSuccess());
-                        this.store.dispatch(WalletActions.accountsChanged({account: account, chainId: undefined}));
+                        this.store.dispatch(WalletActions.accountsChanged({account: account[0], chainId: undefined}));
                     })
                     .catch((error: any) => {
-                        console.log('User reject login');
                         this.store.dispatch(WalletActions.connectWalletError());
                     });
 
@@ -191,8 +189,7 @@ export class WalletService {
         return this.provider?._network?.chainId;
     }
 
-    public postBuyPreSaleTokens(usdcTokenAmount: number, wallet1: string): Observable<SignedWalletWithAmount> {
-        const wallet = '0x5E4E7f4D98eC366FbAFAaFAa533939b0b0e3f8Aa';
+    public postBuyPreSaleTokens(usdcTokenAmount: number, wallet: string): Observable<SignedWalletWithAmount> {
         return this.httpClient.post<SignedWalletWithAmount>(SALE_TOKEN, {wallet, usdcTokenAmount});
     }
 
@@ -683,8 +680,8 @@ export class WalletService {
         ];
 
         try {
-            const USDCContract = new ethers.Contract("0x05aaC9e42a6a5df698B9F57315BFB129F791d746", ContractAbi, this.provider?.getSigner());
-            USDCContract['mint']('0x5E4E7f4D98eC366FbAFAaFAa533939b0b0e3f8Aa',10000000000).then((lol: any) => console.log(lol)).catch((err: any) => console.log(err));
+            //const USDCContract = new ethers.Contract("0x05aaC9e42a6a5df698B9F57315BFB129F791d746", ContractAbi, this.provider?.getSigner());
+            //USDCContract['mint']('0x5E4E7f4D98eC366FbAFAaFAa533939b0b0e3f8Aa',10000000000).then((lol: any) => console.log(lol)).catch((err: any) => console.log(err));
 
         } catch (err: any) {
             console.log(err);
