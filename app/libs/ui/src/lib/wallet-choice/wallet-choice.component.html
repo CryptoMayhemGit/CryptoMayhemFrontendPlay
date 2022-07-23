@@ -1,4 +1,4 @@
-<ui-modal-base (click)="hideWallets()">
+<ui-modal-base (close)="hideWallets()">
     <div id="body-header" class="body-header">Wybierz portfel</div>
     <div id="body-wallets" class="body-wallets">
         <div (click)="choiceWallet(walletType.metamask)" type="button" role="button" class="body-wallets_wallet">

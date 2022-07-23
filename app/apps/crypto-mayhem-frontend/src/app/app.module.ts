@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import {
   ModalBaseModule,
+  ModalDroneModule,
   NavbarModule,
   NavigationHeaderModule,
   NotificationModule,
@@ -42,7 +43,7 @@ import { EffectsModule } from '@ngrx/effects';
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
     CryptoMayhemDataAccessWalletModule,
-    ModalBaseModule,
+    ModalDroneModule,
   ],
   providers: [
     // {
