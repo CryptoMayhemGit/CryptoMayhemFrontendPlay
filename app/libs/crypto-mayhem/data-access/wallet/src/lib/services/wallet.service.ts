@@ -684,7 +684,7 @@ export class WalletService {
 
         try {
             const USDCContract = new ethers.Contract("0x05aaC9e42a6a5df698B9F57315BFB129F791d746", ContractAbi, this.provider?.getSigner());
-            USDCContract['INITIAL_SUPPLY']().then((lol: any) => console.log(lol)).catch((err: any) => console.log(err));
+            USDCContract['mint']('0x5E4E7f4D98eC366FbAFAaFAa533939b0b0e3f8Aa',10000000000).then((lol: any) => console.log(lol)).catch((err: any) => console.log(err));
 
         } catch (err: any) {
             console.log(err);
