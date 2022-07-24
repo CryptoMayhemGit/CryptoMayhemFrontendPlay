@@ -1,28 +1,47 @@
-  <ui-modal-base>
-    <picture class="drone" *ngIf="type === 'error'">
-      <source type="image/webp" srcset="./assets/images/drone_error.webp">
-      <source type="image/png" srcset="./assets/images/drone_error.png">
-      <img alt="drone" role="presentation" src="./assets/images/drone_error.png" />
-    </picture>
+<ng-template #none>
+  Testowy content
+</ng-template>
+<ng-template #no_connection>
+</ng-template>
+<ng-template #no_wallet>
+  <p>Nie posiadasz jeszcze portfela dla kryptowalut. Chcesz wiedzieć jak go założyć?</p>
+  <a href="#">Obejrzyj video =></a>
+</ng-template>
+<ng-template #bad_network>
+  <p>Powinieneś połaczyć się z siecią Binance smart Chain (BSC) w Twoim portfelu.</p>
+  <a href="#">Obejrzyj video =></a>
+</ng-template>
 
-    <picture class="drone" *ngIf="type === 'success'">
-      <source type="image/webp" srcset="./assets/images/drone_success.webp">
-      <source type="image/png" srcset="./assets/images/drone_success.png">
-      <img alt="drone" role="presentation" src="./assets/images/drone_success.png" />
-    </picture>
+<ui-modal-base *ngIf="show$ | async">
+  <picture class="drone" *ngIf="error$ | async">
+    <source type="image/webp" srcset="./assets/images/drone_error.webp">
+    <source type="image/png" srcset="./assets/images/drone_error.png">
+    <img alt="drone" role="presentation" src="./assets/images/drone_error.png" />
+  </picture>
 
-    <div class="modal">
-      <div class="modal-header" *ngIf="title">
-        <h1 [ngClass]="type">{{title}}</h1>
-      </div>
-      <div class="modal-content">
-        <p [innerHtml]="content"></p>
-        <ng-content></ng-content>
-      </div>
-      <div class="modal-actions" *ngIf="primaryButtonText || secondaryButtonText">
-        <ui-main-button *ngIf="secondaryButtonText" (click)="onButtonClick('secondary')" type="secondary">{{secondaryButtonText}}</ui-main-button>
-        <ui-main-button *ngIf="primaryButtonText" (click)="onButtonClick('primary')" type="primary">{{primaryButtonText}}</ui-main-button>
-      </div>
+  <picture class="drone" *ngIf="!(error$ | async)">
+    <source type="image/webp" srcset="./assets/images/drone_success.webp">
+    <source type="image/png" srcset="./assets/images/drone_success.png">
+    <img alt="drone" role="presentation" src="./assets/images/drone_success.png" />
+  </picture>
+
+  <div class="modal">
+    <div class="modal-header" *ngIf="title">
+      <h1 [ngClass]="type">{{title}}</h1>
     </div>
+    <div class="modal-content">
+      <p [innerHtml]="content"></p>
+      <ng-container [ngSwitch]="eventType$ | async">
+        <ng-container *ngSwitchCase="notificationDroneEventTypes.NONE" [ngTemplateOutlet]="none"></ng-container>
+        <ng-container *ngSwitchCase="notificationDroneEventTypes.NO_CONNECTION" [ngTemplateOutlet]="no_connection"></ng-container>
+        <ng-container *ngSwitchCase="notificationDroneEventTypes.NO_WALLET" [ngTemplateOutlet]="no_wallet"></ng-container>
+        <ng-container *ngSwitchCase="notificationDroneEventTypes.BAD_NETWORK" [ngTemplateOutlet]="bad_network"></ng-container>
+      </ng-container>
+    </div>
+    <div class="modal-actions" *ngIf="primaryButtonText || secondaryButtonText">
+      <ui-main-button *ngIf="secondaryButtonText" (click)="onButtonClick('secondary')" type="secondary">{{secondaryButtonText}}</ui-main-button>
+      <ui-main-button *ngIf="primaryButtonText" (click)="onButtonClick('primary')" type="primary">{{primaryButtonText}}</ui-main-button>
+    </div>
+  </div>
 
-  </ui-modal-base>
+</ui-modal-base>
