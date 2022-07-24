@@ -7,6 +7,7 @@
     "crypto-mayhem-data-access-contract-model": "libs/crypto-mayhem/data-access/contract-model",
     "crypto-mayhem-data-access-interceptors": "libs/crypto-mayhem/data-access/interceptors",
     "crypto-mayhem-data-access-models": "libs/crypto-mayhem/data-access/models",
+    "crypto-mayhem-data-access-notification-drone": "libs/crypto-mayhem/data-access/notification-drone",
     "crypto-mayhem-data-access-wallet": "libs/crypto-mayhem/data-access/wallet",
     "crypto-mayhem-data-access-wallet-model": "libs/crypto-mayhem/data-access/wallet-model",
     "crypto-mayhem-frontend": "apps/crypto-mayhem-frontend",

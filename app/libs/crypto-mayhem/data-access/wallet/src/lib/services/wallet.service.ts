@@ -26,6 +26,7 @@ import { SALE_TOKEN } from "./wallet.endpoints";
 import { APP_CONFIG } from "@crypto-mayhem-frontend/crypto-mayhem/config";
 import { UsdcTokenContractFactory } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model";
 import { FormatTypes } from "ethers/lib/utils";
+import { NotificationDroneEventTypes, NotificationDroneService } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone";
 
 @Injectable({ providedIn: 'root' })
 export class WalletService {
@@ -36,6 +37,7 @@ export class WalletService {
     constructor(
         private readonly httpClient: HttpClient,
         private readonly store: Store,
+        private readonly notificationDroneService: NotificationDroneService,
         @Inject(APP_CONFIG) private readonly appConfig: any
     ) {}
 
@@ -51,7 +53,8 @@ export class WalletService {
 
         // Subscribe to chainId change
         provider.provider.on("chainChanged", (chainId: number) => {
-            this.store.dispatch(WalletActions.chainChanged({chainId: chainId}))
+            this.store.dispatch(WalletActions.chainChanged({chainId: chainId}));
+            this.notificationDroneService.error(NotificationDroneEventTypes.BAD_NETWORK);
         });
 
         // Subscribe to session disconnection

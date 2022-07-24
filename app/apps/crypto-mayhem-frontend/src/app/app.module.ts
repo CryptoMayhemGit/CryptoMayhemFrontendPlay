@@ -23,6 +23,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CryptoMayhemDataAccessWalletModule } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
+import { CryptoMayhemDataAccessNotificationDroneModule } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +37,7 @@ import { RouterModule } from '@angular/router';
     NavigationHeaderModule,
     WalletChoiceModule,
     PreSaleModule,
+    CryptoMayhemDataAccessNotificationDroneModule,
     RouterModule,
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),

@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/crypto-mayhem/data-access/notification-drone/src",
+  "prefix": "crypto-mayhem-frontend",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/crypto-mayhem/data-access/notification-drone"],
+      "options": {
+        "jestConfig": "libs/crypto-mayhem/data-access/notification-drone/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/crypto-mayhem/data-access/notification-drone/**/*.ts",
+          "libs/crypto-mayhem/data-access/notification-drone/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

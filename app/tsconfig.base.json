@@ -39,6 +39,9 @@
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/models": [
         "libs/crypto-mayhem/data-access/models/src/index.ts"
       ],
+      "@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone": [
+        "libs/crypto-mayhem/data-access/notification-drone/src/index.ts"
+      ],
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet": [
         "libs/crypto-mayhem/data-access/wallet/src/index.ts"
       ],
