@@ -20,6 +20,7 @@
     "downlevelIteration": true,
     "assumeChangesOnlyAffectDirectDependencies": true,
     "paths": {
+      "@crypto-mayhem-frontend/app-config": ["libs/app-config/index.ts"],
       "@crypto-mayhem-frontend/crypto-mayhem/classes": [
         "libs/crypto-mayhem/classes/src/index.ts"
       ],
@@ -28,6 +29,9 @@
       ],
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services": [
         "libs/crypto-mayhem/data-access/cm-services/src/index.ts"
+      ],
+      "@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model": [
+        "libs/crypto-mayhem/data-access/contract-model/src/index.ts"
       ],
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors": [
         "libs/crypto-mayhem/data-access/interceptors/src/index.ts"

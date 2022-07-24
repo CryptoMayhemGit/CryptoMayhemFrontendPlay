@@ -4,6 +4,7 @@
     "crypto-mayhem-classes": "libs/crypto-mayhem/classes",
     "crypto-mayhem-config": "libs/crypto-mayhem/config",
     "crypto-mayhem-data-access-cm-services": "libs/crypto-mayhem/data-access/cm-services",
+    "crypto-mayhem-data-access-contract-model": "libs/crypto-mayhem/data-access/contract-model",
     "crypto-mayhem-data-access-interceptors": "libs/crypto-mayhem/data-access/interceptors",
     "crypto-mayhem-data-access-models": "libs/crypto-mayhem/data-access/models",
     "crypto-mayhem-data-access-wallet": "libs/crypto-mayhem/data-access/wallet",

@@ -16,12 +16,13 @@ import {
   WalletChoiceModule,
 } from '@crypto-mayhem-frontend/ui';
 import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
-import { getAppConfigProvider } from '@crypto-mayhem-frontend/crypto-mayhem/config';
+import { APP_CONFIG, getAppConfigProvider } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import { ShellModule } from '@crypto-mayhem-frontend/crypto-mayhem/shell';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CryptoMayhemDataAccessWalletModule } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
 import { EffectsModule } from '@ngrx/effects';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -35,6 +36,7 @@ import { EffectsModule } from '@ngrx/effects';
     NavigationHeaderModule,
     WalletChoiceModule,
     PreSaleModule,
+    RouterModule,
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
@@ -54,6 +56,10 @@ import { EffectsModule } from '@ngrx/effects';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
+    },
+    {
+      provide: APP_CONFIG,
+      useValue: environment
     },
     getAppConfigProvider(environment),
   ],
