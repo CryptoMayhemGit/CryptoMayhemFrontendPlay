@@ -56,10 +56,6 @@ import { RouterModule } from '@angular/router';
       useClass: AuthInterceptor,
       multi: true,
     },
-    {
-      provide: APP_CONFIG,
-      useValue: environment
-    },
     getAppConfigProvider(environment),
   ],
   bootstrap: [AppComponent],

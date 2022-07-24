@@ -4,7 +4,7 @@ import { createAction, props } from "@ngrx/store";
 
 export const accountsChanged = createAction(
     '[Wallet] Account changed',
-    props<{account: string, chainId: number | undefined}>()
+    props<{account: string, chainId: string | undefined}>()
 );
 
 export const accountsChangedSuccess = createAction(
@@ -13,7 +13,7 @@ export const accountsChangedSuccess = createAction(
 
 export const chainChanged = createAction(
     '[Wallet] Chain changed',
-    props<{chainId: number | undefined}>()
+    props<{chainId: string}>()
 );
 
 export const disconnectWallet = createAction(
@@ -53,12 +53,12 @@ export const hideWallets = createAction(
     '[Wallet] Hide available wallets'
 );
 
-export const postBuyPreSaleTokens = createAction(
+export const postSignWalletBeforeBuy = createAction(
     '[Wallet] Pre-sale buy',
     props<{amount: number}>()
 );
 
-export const postBuyPreSaleTokensSuccess = createAction(
+export const postSignWalletBeforeBuySuccess = createAction(
     '[Wallet] Pre-sale buy success',
     props<{sign: any}>()
 );
