@@ -3,10 +3,16 @@ import { CommonModule } from '@angular/common';
 import { ModalDroneComponent } from './modal-drone.component';
 import { ModalBaseModule } from '../modal-base/modal-base.module';
 import { MainButtonModule } from '../main-button/main-button.module';
+import { CryptoMayhemDataAccessNotificationDroneModule } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 
 @NgModule({
   declarations: [ModalDroneComponent],
-  imports: [CommonModule, ModalBaseModule, MainButtonModule],
+  imports: [
+    CommonModule,
+    ModalBaseModule,
+    MainButtonModule,
+    CryptoMayhemDataAccessNotificationDroneModule
+  ],
   exports: [ModalDroneComponent],
 })
 export class ModalDroneModule {}
