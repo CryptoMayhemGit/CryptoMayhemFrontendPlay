@@ -1,11 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromNotificationDrone from './notification-drone.reducer';
 
-export const selectNotificationDrone = createFeatureSelector<fromNotificationDrone.NotificationDroneState>(fromNotificationDrone.notificationDroneKey);
+export const selectNotificationDrone = createFeatureSelector<fromNotificationDrone.NotificationDroneState>('notificationDrone');
 
 export const getShow = createSelector(
     selectNotificationDrone,
-    state => state?.show
+    state => state.show
 );
 
 export const getError = createSelector(

@@ -46,7 +46,6 @@ export class WalletService {
             if (accounts.length === 0) {
                 this.disconnectWallet();
             } else {
-                console.log('createMetamask', accounts[0]);
                 this.store.dispatch(WalletActions.accountsChanged({account: accounts[0], chainId: undefined}));
             }
         });
@@ -54,7 +53,11 @@ export class WalletService {
         // Subscribe to chainId change
         provider.provider.on("chainChanged", (chainId: number) => {
             this.store.dispatch(WalletActions.chainChanged({chainId: chainId}));
-            this.notificationDroneService.error(NotificationDroneEventTypes.BAD_NETWORK);
+
+            if (chainId !== this.appConfig.chainIdHex)
+                this.notificationDroneService.error(NotificationDroneEventTypes.BAD_NETWORK);
+            else
+                this.notificationDroneService.hide();
         });
 
         // Subscribe to session disconnection

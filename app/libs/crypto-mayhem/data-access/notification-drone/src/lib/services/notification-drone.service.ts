@@ -14,9 +14,7 @@ export class NotificationDroneService {
 
     constructor(
         private readonly store: Store
-    ) {
-        this.error$.pipe(tap((result) => console.log(result))).subscribe();
-    }
+    ) {}
 
     public error(eventType: NotificationDroneEventTypes): void {
         this.store.dispatch(error({eventType}));

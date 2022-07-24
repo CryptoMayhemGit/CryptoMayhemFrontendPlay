@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 
 import * as fromNotificationService from './state/notification-drone.reducer';
+import { NotificationDroneService } from './services/notification-drone.service';
 
 @NgModule({
   imports: [
@@ -12,5 +13,6 @@ import * as fromNotificationService from './state/notification-drone.reducer';
       fromNotificationService.reducer
     )
   ],
+  providers: [ NotificationDroneService ]
 })
 export class CryptoMayhemDataAccessNotificationDroneModule {}

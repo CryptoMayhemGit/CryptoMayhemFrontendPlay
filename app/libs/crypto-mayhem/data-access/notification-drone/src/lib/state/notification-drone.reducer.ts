@@ -1,5 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { NotificationDroneEventTypes } from '../services/notification-drone.service';
+
 import * as NotificationDroneActions from './notification-drone.actions';
 
 export const notificationDroneKey = 'notificationDrone';
@@ -13,7 +14,7 @@ export interface NotificationDroneState {
 export const initialState: NotificationDroneState = {
     show: false,
     error: false,
-    eventType: 0
+    eventType: NotificationDroneEventTypes.NONE
 }
 
 export const notificationDroneReducer = createReducer(

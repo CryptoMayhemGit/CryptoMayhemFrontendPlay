@@ -23,7 +23,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CryptoMayhemDataAccessWalletModule } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
-import { CryptoMayhemDataAccessNotificationDroneModule } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,13 +31,6 @@ import { CryptoMayhemDataAccessNotificationDroneModule } from '@crypto-mayhem-fr
     HttpClientModule,
     ShellModule,
     TranslocoRootModule,
-    NotificationModule,
-    NavbarModule,
-    NavigationHeaderModule,
-    WalletChoiceModule,
-    PreSaleModule,
-    CryptoMayhemDataAccessNotificationDroneModule,
-    RouterModule,
     StoreModule.forRoot([]),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
@@ -46,8 +38,13 @@ import { CryptoMayhemDataAccessNotificationDroneModule } from '@crypto-mayhem-fr
       logOnly: environment.production, // Restrict extension to log-only mode
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
-    CryptoMayhemDataAccessWalletModule,
     ModalDroneModule,
+    WalletChoiceModule,
+    NavigationHeaderModule,
+    NotificationModule,
+    NavbarModule,
+    PreSaleModule,
+    RouterModule,
   ],
   providers: [
     // {

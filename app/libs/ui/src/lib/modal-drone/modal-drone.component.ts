@@ -16,7 +16,7 @@ import { Observable, of } from 'rxjs';
 })
 export class ModalDroneComponent implements OnInit {
 
-  public eventType$: Observable<NotificationDroneEventTypes> = of(0);
+  public eventType$: Observable<NotificationDroneEventTypes> = of(NotificationDroneEventTypes.NONE);
   public show$: Observable<boolean> = of(false);
   public error$: Observable<boolean> = of(false);
 
@@ -37,7 +37,6 @@ export class ModalDroneComponent implements OnInit {
     this.eventType$ = this.notificationDroneService.eventType$;
     this.show$ = this.notificationDroneService.show$;
     this.error$ = this.notificationDroneService.error$;
-    this.eventType$.subscribe((value) => console.log(value));
   }
 
   onButtonClick(type: string): void {
