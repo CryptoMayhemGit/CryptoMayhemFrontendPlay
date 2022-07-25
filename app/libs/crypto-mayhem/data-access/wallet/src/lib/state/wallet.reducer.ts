@@ -26,9 +26,9 @@ export const initialState: WalletState = {
 export const walletReducer = createReducer(
     initialState,
     on(WalletActions.connectWallet, state => ({...state, spinner: true})),
-    on(WalletActions.connectWalletSuccess, state => ({...state, spinner: false, connected: true})),
+    on(WalletActions.connectWalletSuccess, (state, {walletType}) => ({...state, spinner: false, connected: true, walletType})),
     on(WalletActions.connectWalletError, state => ({...state, spinner: false, connected: false})),
-    on(WalletActions.disconnectWallet, state => ({...state, connected: false})),
+    on(WalletActions.disconnectWallet, state => ({...state, connected: false, account: '', chainId: undefined, walletType: WalletType.none})),
     on(WalletActions.accountsChanged, (state, {account, chainId}) => ({...state, account, chainId})),
     on(WalletActions.chainChanged, (state, {chainId}) => ({...state, chainId})),
     on(WalletActions.setWalletAddress,

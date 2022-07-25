@@ -496,7 +496,7 @@ export class UsdcTokenContractFactory {
 }
 
 export class UsdcTokenContract extends BaseContract {
-    private _contract: Contract
+    private _contract: Contract;
     constructor(address: string, abi: ethers.ContractInterface, signerOrProvider: Provider | Signer | undefined) {
         super(address, abi, signerOrProvider);
         this._contract = new Contract(address, abi, signerOrProvider);
