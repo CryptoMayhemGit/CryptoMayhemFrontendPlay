@@ -32,8 +32,6 @@
 
 #vesting {
   backdrop-filter: blur(40px);
-
-  // background: linear-gradient(179.9deg, rgb(40 40 40) 16.9%, #701400 120.77%);
   background-color: rgb(40 40 40 / 60%);
   margin-bottom: 3.2rem;
 
@@ -41,6 +39,24 @@
     color: #f2f2f260;
     margin: 0 0 0.8rem;
     text-align: center;
+  }
+
+  .invest {
+    display: flex;
+    justify-content: space-between;
+
+    &:last-of-type {
+      margin-bottom: 0;
+      margin-top: 0.8rem;
+    }
+
+    p:first-child {
+      color: #f2f2f266;
+    }
+  }
+
+  hr {
+    margin: 0;
   }
 
   #vesting-wallet {
@@ -68,24 +84,6 @@
       color: #f2f2f2;
       margin-bottom: 1.6rem;
       text-align: left;
-    }
-
-    .invest {
-      display: flex;
-      justify-content: space-between;
-
-      &:last-of-type {
-        margin-bottom: 0;
-        margin-top: 0.8rem;
-      }
-
-      p:first-child {
-        color: #f2f2f266;
-      }
-    }
-
-    hr {
-      margin: 0;
     }
   }
 
@@ -135,9 +133,54 @@
     }
   }
 
+  #vesting-want-buy {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    & > div {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin-top: 3.5rem;
+
+      p {
+        color: #fff;
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+        margin-bottom: 3.2rem;
+      }
+
+      ui-main-button {
+        display: flex;
+        width: 60%;
+      }
+    }
+  }
+
+  #vesting-success {
+    & > p {
+      color: #f2f2f2;
+      margin-bottom: 3.2rem;
+    }
+
+    & > p:first-of-type {
+      font-size: 1.8rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .invest {
+      & > p:last-of-type {
+        color: #f2f2f2;
+      }
+    }
+  }
+
   @media screen and (min-width: 1240px) {
     margin-bottom: 0;
+    max-width: 40.3rem;
     padding: 3.2rem 7.2rem;
+    width: 40.3rem;
   }
 }
 
@@ -178,6 +221,16 @@
 
   p {
     padding-right: 2.5rem;
+
+    a {
+      color: #f2f2f2;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 

@@ -117,7 +117,14 @@
             "AMOUNT_TO_BUY": "Za ile chcesz kupić token ADRIA?"
         },
         "GET": "Otrzymasz",
-        "BUY_ADRIA": "Kup ADRIA"
+        "BUY_ADRIA": "Kup ADRIA",
+        "WANT_BUY": {
+            "MESSAGE": "Chcesz kupić token ADRIA?"
+        },
+        "SUCCESS": {
+            "HEADER": "Gratulacje!",
+            "MESSAGE": "Zostałeś właścicielem tokena ADRIA. Dziękujemy za twój wkład w rozwój projektu Crypto Mayhem."
+        }
     },
     "WALLET": {
         "CONNECTED": "Portfel podłączony",

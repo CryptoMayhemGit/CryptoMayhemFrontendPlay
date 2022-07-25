@@ -10,6 +10,7 @@
         <p>{{ 'PRESALE.PROGRESS' | transloco}}</p>
         <ui-progress-bar [currentValue]="500000" [maxValue]="1000000"></ui-progress-bar>
     </div>
+    <!-- HIDE WHEN SUCCESS -->
     <div id="vesting-info">
         <p>{{ 'PRESALE.INVEST' | transloco }}</p>
         <div class="invest">
@@ -22,6 +23,7 @@
             <p>$1000</p>
         </div>
     </div>
+    <!-- SHOW WHEN CONNECTED HIDE WHEN SUCCESS -->
     <div id="vesting-form" *ngIf="walletConnected$ | async">
         <form [formGroup]="formGroup">
             <label for="amount">{{ 'PRESALE.AMOUNT.AMOUNT_TO_BUY' | transloco }}</label>
@@ -35,6 +37,32 @@
             <ui-main-button (click)="onBuy()" [disabled]="!formGroup.valid">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
         </form>
     </div>
+    <!-- SHOW WHEN DISCONNECTED -->
+    <div id="vesting-want-buy" *ngIf="!(walletConnected$ | async)">
+        <picture>
+            <source srcset="./assets/images/friendly_drone.webp">
+            <source srcset="./assets/images/presale/friendly_drone.png">
+            <img alt="friendly drone" role="presentation" src="./assets/images/presale/friendly_drone.png">
+        </picture>
+        <div>
+            <p>{{ 'PRESALE.WANT_BUY.MESSAGE' | transloco }}</p>
+            <ui-main-button (click)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
+        </div>
+    </div>
+    <!-- SHOW WHEN SUCCESS -->
+    <!--<div id="vesting-success">
+        <p>{{ 'PRESALE.SUCCESS.HEADER' | transloco }}</p>
+        <p>{{ 'PRESALE.SUCCESS.MESSAGE' | transloco }}</p>
+        <div class="invest">
+            <p>{{ 'PRESALE.AMOUNT.MIN' | transloco }}</p>
+            <p>$1</p>
+        </div>
+        <hr>
+        <div class="invest">
+            <p>{{ 'PRESALE.AMOUNT.MAX' | transloco }}</p>
+            <p>$1000</p>
+        </div>
+    </div>-->
 </div>
 
 <div id="info">
@@ -49,5 +77,9 @@
     <h2>{{ 'PRESALE.INFO.ADRIA_TOKEN.HEADER' | transloco }}</h2>
     <p>{{ 'PRESALE.INFO.ADRIA_TOKEN.ADDRESS_MESSAGE' | transloco }}</p>
     <p class="address">0xdfe10ff0534fbb4407c4f4ac2ebcdae1e3638a61</p>
-    <p>{{ 'PRESALE.INFO.ADRIA_TOKEN.USABILITY' | transloco }} <a href="">{{ 'PRESALE.INFO.ADRIA_TOKEN.HERE' | transloco }}</a></p>
+    <p>{{ 'PRESALE.INFO.ADRIA_TOKEN.USABILITY' | transloco }}
+        <br>
+        <a href="">{{ 'PRESALE.INFO.ADRIA_TOKEN.HERE' | transloco }}
+        <fa-icon [icon]="caretRight"></fa-icon></a>
+    </p>
 </div>
