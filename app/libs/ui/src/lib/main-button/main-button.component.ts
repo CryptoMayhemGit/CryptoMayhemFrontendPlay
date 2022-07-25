@@ -15,6 +15,7 @@ import {
 export class MainButtonComponent {
   @Output() btnClick = new EventEmitter();
   @Input() type: 'primary' | 'secondary' | 'fancy' = 'primary';
+  @Input() disabled: boolean = false;
 
   constructor() {}
 
