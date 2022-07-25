@@ -21,3 +21,5 @@ export * from './lib/pre-sale/pre-sale.component';
 export * from './lib/modal-base/modal-base.component';
 export * from './lib/modal-drone/modal-drone.module';
 export * from './lib/modal-drone/modal-drone.component';
+export * from './lib/progress-bar/progress-bar.module';
+export * from './lib/progress-bar/progress-bar.component';

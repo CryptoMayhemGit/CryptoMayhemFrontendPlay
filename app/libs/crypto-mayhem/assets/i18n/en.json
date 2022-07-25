@@ -84,5 +84,43 @@
     "AUTH": {
         "REGISTER_MESSAGE": "Register attempt",
         "LOGIN_MESSAGE": "Login attempt"
+    },
+    "PRESALE": {
+        "PROGRESS": "Ilość sprzedanego tokena ADRIA",
+        "INFO": {
+            "DETAILS": {
+                "HEADER": "Szczegóły oficjalnej przedsprzedaży tokena ADRIA",
+                "1": "Wyprzedaż potrwa 48 godzin.",
+                "2": "Gwarantowana alokacja dla wszystkich adresów umieszczonych na whitelist.",
+                "3": "Możesz zainwestować w token tylko raz w myśl zasady jedna inwestycja dla jednego adresu portfela.",
+                "4": "Cena w przedsprzedaży 0,002 $.",
+                "5": "Maksymalny zakup to 10 BNB (500.000 tokenów ADRIA).",
+                "6": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy.",
+                "7": "Niesprzedane tokeny z przedsprzedaży ulegną spaleniu!"
+            },
+            "CLAIM": {
+                "HEADER": "Jak odebrać zakupione tokeny?",
+                "MESSAGE": "Możesz przenosić zakupione tokeny ADRIA do swojego portfela w zakładce Vesting, która wkrótce będzie dostępna."
+            },
+            "ADRIA_TOKEN": {
+                "HEADER": "Token Adria",
+                "ADDRESS_MESSAGE": "Oficjalny adres inteligentnej umowy dla tokena ADRIA:",
+                "USABILITY": "Możesz przeczytać pełną użyteczność tokena ADRIA",
+                "HERE": "tutaj"
+            }
+        },
+        "TIME_LEFT": "Koniec przedsprzedaży za",
+        "INVEST": "Ile możesz zainwestować w token ADRIA?",
+        "AMOUNT": {
+            "MIN": "Minimalna kwota",
+            "MAX": "Maksymalna kwota",
+            "AMOUNT_TO_BUY": "Za ile chcesz kupić token ADRIA?"
+        },
+        "GET": "Otrzymasz",
+        "BUY_ADRIA": "Kup ADRIA"
+    },
+    "WALLET": {
+        "CONNECTED": "Portfel podłączony",
+        "DISCONNECTED": "Portfel rozłączony"
     }
 }

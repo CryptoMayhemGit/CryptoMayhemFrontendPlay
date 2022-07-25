@@ -1,4 +1,4 @@
-<div [ngClass]="type" id="wrapper">
+<div [ngClass]="{'disabled': disabled}" [class]="type" id="wrapper">
   <div (click)="onClick()" id="button" role="button">
     <span><ng-content></ng-content></span>
   </div> 

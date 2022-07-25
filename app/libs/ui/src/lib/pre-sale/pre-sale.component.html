@@ -1,4 +1,4 @@
-<div class="container">
+<!--<div class="container">
     <div class="container-form">
         <div class="form-header">
             <p class="connected" *ngIf="walletConnected$ | async">Portfel podłączony</p>
@@ -34,4 +34,58 @@
         <h2>Jak odebrać zakupione tokeny?</h2>
         <p>BLABLABLABLABLABLALABLALBALBLALBLALB</p>
     </div>
+</div>-->
+
+<div id="vesting">
+    <div id="vesting-wallet">
+        <p class="connected" *ngIf="walletConnected$ | async">{{ 'WALLET.CONNECTED' | transloco }}</p>
+        <p class="disconnected" *ngIf="!(walletConnected$ | async)">{{ 'WALLET.DISCONNECTED' | transloco }}</p>
+    </div>
+    <div id="vesting-timer">
+        <p>{{ 'PRESALE.TIME_LEFT' | transloco }}</p>
+    </div>
+    <div id="vesting-sold">
+        <p>{{ 'PRESALE.PROGRESS' | transloco}}</p>
+        <ui-progress-bar [currentValue]="500000" [maxValue]="1000000"></ui-progress-bar>
+    </div>
+    <div id="vesting-info">
+        <p>{{ 'PRESALE.INVEST' | transloco }}</p>
+        <div class="invest">
+            <p>{{ 'PRESALE.AMOUNT.MIN' | transloco }}</p>
+            <p>$1</p>
+        </div>
+        <hr>
+        <div class="invest">
+            <p>{{ 'PRESALE.AMOUNT.MAX' | transloco }}</p>
+            <p>$1000</p>
+        </div>
+    </div>
+    <div id="vesting-form" *ngIf="walletConnected$ | async">
+        <form [formGroup]="formGroup">
+            <label for="amount">{{ 'PRESALE.AMOUNT.AMOUNT_TO_BUY' | transloco }}</label>
+            <input
+            name="amount"
+            type="number"
+            min="1"
+            max="1000"
+            formControlName="amount">
+            <p>{{ 'PRESALE.GET' | transloco }}: {{formGroup.controls['amount'].value / 0.002}} ADRIA</p>
+            <ui-main-button (click)="onBuy()" [disabled]="!formGroup.valid">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
+        </form>
+    </div>
+</div>
+
+<div id="info">
+    <h2>{{ 'PRESALE.INFO.DETAILS.HEADER' | transloco }}</h2>
+    <ul>
+        <li *ngFor="let detail of details; index as i">{{ detail | transloco }}</li>
+    </ul>
+    <hr>
+    <h2>{{ 'PRESALE.INFO.CLAIM.HEADER' | transloco }}</h2>
+    <p>{{ 'PRESALE.INFO.CLAIM.MESSAGE' | transloco }}</p>
+    <hr>
+    <h2>{{ 'PRESALE.INFO.ADRIA_TOKEN.HEADER' | transloco }}</h2>
+    <p>{{ 'PRESALE.INFO.ADRIA_TOKEN.ADDRESS_MESSAGE' | transloco }}</p>
+    <p class="address">0xdfe10ff0534fbb4407c4f4ac2ebcdae1e3638a61</p>
+    <p>{{ 'PRESALE.INFO.ADRIA_TOKEN.USABILITY' | transloco }} <a href="">{{ 'PRESALE.INFO.ADRIA_TOKEN.HERE' | transloco }}</a></p>
 </div>
