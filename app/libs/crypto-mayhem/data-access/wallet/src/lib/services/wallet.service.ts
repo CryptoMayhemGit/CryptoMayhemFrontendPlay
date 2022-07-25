@@ -9,7 +9,10 @@ import QRCodeModal from '@walletconnect/qrcode-modal';
 import { Store } from "@ngrx/store";
 
 interface SignedWalletWithAmount {
-    signedMessage: string;
+    s: string;
+    r: string;
+    v: string;
+    stage: number;
     ustcTokenAmount: number;
     maxUsdcTokenAmount: number;
 }
@@ -142,7 +145,7 @@ export class WalletService {
                         []
                     )
                     .then((account) => {
-                        this.store.dispatch(WalletActions.connectWalletSuccess());
+                        this.store.dispatch(WalletActions.connectWalletSuccess({walletType: WalletType.metamask}));
                         this.store.dispatch(WalletActions.accountsChanged({account: account[0], chainId: undefined}));
                     })
                     .catch((error: any) => {

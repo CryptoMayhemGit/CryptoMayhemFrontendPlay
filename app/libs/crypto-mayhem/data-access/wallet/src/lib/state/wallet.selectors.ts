@@ -28,3 +28,8 @@ export const getWalletConnected = createSelector(
     selectWallet,
     state => state.connected
 );
+
+export const getWalletType = createSelector(
+    selectWallet,
+    state => state.walletType
+);

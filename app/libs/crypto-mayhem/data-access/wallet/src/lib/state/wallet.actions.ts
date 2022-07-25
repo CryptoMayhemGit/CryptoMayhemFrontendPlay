@@ -25,7 +25,8 @@ export const connectWallet = createAction(
 );
 
 export const connectWalletSuccess = createAction(
-    '[Wallet] Connect wallet success'
+    '[Wallet] Connect wallet success',
+    props<{walletType: WalletType}>()
 );
 
 export const connectWalletError = createAction(
