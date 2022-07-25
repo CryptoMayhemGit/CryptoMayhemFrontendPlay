@@ -1,4 +1,4 @@
-import { Inject, Injectable } from "@angular/core";
+import { Inject, Injectable, OnDestroy } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Web3Provider } from '@ethersproject/providers';
 import { providers } from 'ethers';
@@ -6,7 +6,9 @@ import detectEthereumProvider from "@metamask/detect-provider";
 import { WalletType } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model";
 import WalletConnect from "@walletconnect/client";
 import QRCodeModal from '@walletconnect/qrcode-modal';
-import { Store } from "@ngrx/store";
+import { select, State, Store } from "@ngrx/store";
+
+import * as WalletSelectors from '../state/wallet.selectors';
 
 interface SignedWalletWithAmount {
     s: string;
@@ -18,11 +20,14 @@ interface SignedWalletWithAmount {
 }
 
 import * as WalletActions from '../state/wallet.actions';
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { SALE_TOKEN } from "./wallet.endpoints";
 import { AppConfig, APP_CONFIG } from "@crypto-mayhem-frontend/crypto-mayhem/config";
-import { UsdcTokenContractFactory } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model";
+import { AdriaTokenContractFactory, AdriaVestingContractFactory, UsdcTokenContractFactory } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model";
 import { NotificationDroneEventTypes, NotificationDroneService } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone";
+import { WalletEffects } from "../state/wallet.effects";
+import { WalletState } from "../state/wallet.reducer";
+import { FormatTypes } from "ethers/lib/utils";
 
 const ACCOUNTS_CHANGED = 'accountsChanged';
 const CHAIN_CHANGED = 'chainChanged';
@@ -35,13 +40,18 @@ export class WalletService {
 
     private provider: Web3Provider | undefined = undefined;
     private connector: WalletConnect | undefined = undefined;
+    private walletType: WalletType = WalletType.none;
 
     constructor(
         private readonly httpClient: HttpClient,
         private store: Store,
         private readonly notificationDroneService: NotificationDroneService,
         @Inject(APP_CONFIG) private readonly appConfig: AppConfig
-    ) {}
+    ) {
+        this.store.pipe(
+            select(WalletSelectors.getWalletType)
+            ).subscribe((walletType: WalletType) => this.walletType = walletType);
+    }
 
     private loggingInDevelopMode(where: string, message: any): void {
         !this.appConfig.production && console.log(where, message);
@@ -203,10 +213,14 @@ export class WalletService {
     }
 
     public disconnectWallet(): void {
-        this.provider?.removeAllListeners();
-        this.removeMetamaskProviderHooks(this.provider);
-        this.provider = undefined;
-        this.store.dispatch(WalletActions.disconnectWallet());
+        if (this.walletType === WalletType.metamask) {
+            this.provider?.removeAllListeners();
+            this.removeMetamaskProviderHooks(this.provider);
+            this.provider = undefined;
+            this.store.dispatch(WalletActions.disconnectWallet());
+        } else if (this.walletType === WalletType.walletConnect) {
+            //TODO: Disconnect wallet connect
+        }
     }
 
     public postSignWalletBeforeBuy(usdcTokenAmount: number, wallet: string): Observable<SignedWalletWithAmount> {
@@ -216,10 +230,8 @@ export class WalletService {
     public async signWalletTransaction(signedWalletWithAmount: SignedWalletWithAmount): Promise<void>{
         if (this.provider) {
             try {
-                const UsdcContract = UsdcTokenContractFactory.connect(this.provider?.getSigner());
-                UsdcContract.balanceOf('0x5E4E7f4D98eC366FbAFAaFAa533939b0b0e3f8Aa')
-                .then((result) => console.log(result))
-                .catch((err) => console.log(err));
+                const usdcContract = AdriaVestingContractFactory.connect(this.provider?.getSigner());
+                console.log(usdcContract.interface.format(FormatTypes['full']));
 
             } catch (err: any) {
                 console.log(err);
