@@ -3,6 +3,11 @@
 }
 
 #wrapper {
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   &.primary {
     --background-color: #c23b1d;
     --border-color: #c23b1d;
@@ -10,7 +15,8 @@
     --text-color: #fff;
     --text-hover-color: #fff;
 
-    clip-path: polygon(-100% -100%, 300% 0, 100% 400%, 7% 95%, 1% 74%);
+    // clip-path: polygon(-100% -100%, 300% 0, 100% 400%, 7% 95%, 1% 74%);
+    clip-path: polygon(-100% -100%, 300% 0, 100% 400%, 1.5rem 100%, 0 66%);
   }
 
   &.secondary {
@@ -41,10 +47,11 @@
   line-height: 1.2rem;
   position: relative;
 
-  &:hover {
+  &:hover:not(.disabled) {
     #button {
       background-color: var(--hover-color);
-      clip-path: polygon(-100% -100%, 300% 0, 100% 400%, 7% 95%, 1% 74%);
+      //clip-path: polygon(-100% -100%, 300% 0, 100% 400%, 7% 95%, 1% 74%);
+      clip-path: polygon(-100% -100%, 300% 0, 100% 400%, 1.5rem 100%, 0 66%);
       color: var(--text-hover-color);
     }
 
@@ -89,9 +96,9 @@
       border: 1px solid var(--border-color);
       border-width: 0 0 1px 2px;
       bottom: 0;
-      height: 30%;
+      height: 35%;
       left: -2px;
-      transform: skew(60deg);
+      transform: skew(55deg);
       transform-origin: left top;
       z-index: 100;
     }
@@ -99,7 +106,7 @@
     &::after {
       border: 2px solid var(--border-color);
       border-width: 1px 0 0 1px;
-      height: calc(80% - 4px);
+      height: calc(80% - 6px);
       top: 0;
       z-index: 100;
     }
