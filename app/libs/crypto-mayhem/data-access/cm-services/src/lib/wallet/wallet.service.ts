@@ -12,9 +12,6 @@ import { TranslocoService } from '@ngneat/transloco';
 
 
 
-@Injectable({
-  providedIn: 'root'
-})
 export class WalletService {
 
   private wallet?: WalletConnector;
@@ -79,25 +76,25 @@ export class WalletService {
               switch (walletType) {
 
                 case WalletType.Metamask: {
-                  this.wallet = new MetamaskWallet(contractsMetadata, this.config.rpcUrl, this.config.externalUrl, this.translocoservice);
+                  //this.wallet = new MetamaskWallet(contractsMetadata, this.config.rpcUrl, this.config.externalUrl, this.translocoservice);
                   break;
                 }
-          
+
               }
-        
+
               if (!this.wallet) {
                 return observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.CONNECT_ERROR")));
               }
-        
+
               this.wallet.connect()
                 .subscribe({
-        
+
                   next: (connected) => {
-        
+
                     if (!this.wallet || !connected) {
                       return observer.error(new Error(this.translocoservice.translate("NOTIFICATION.WALLET.CONNECT_ERROR")));
                     }
-              
+
                     this.subscriptionRegister.add(
                       this.wallet.connectionChanged$.subscribe(connection => 
                         this.ngZone.run(

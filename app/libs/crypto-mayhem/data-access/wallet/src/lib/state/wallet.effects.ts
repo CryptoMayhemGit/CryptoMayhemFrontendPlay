@@ -17,14 +17,14 @@ export class WalletEffects {
 
     buyPresaleTokens$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(WalletActions.postBuyPreSaleTokens),
+            ofType(WalletActions.postSignWalletBeforeBuy),
             concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
             mergeMap(([{amount}, account],) =>
-            this.walletService.postBuyPreSaleTokens(amount, account)
+            this.walletService.postSignWalletBeforeBuy(amount, account)
             .pipe(
                 map((result: any) => {
                     this.walletService.signWalletTransaction(result);
-                    return WalletActions.postBuyPreSaleTokensSuccess({sign: result});
+                    return WalletActions.postSignWalletBeforeBuySuccess({sign: result});
                 })
             ))
     ));

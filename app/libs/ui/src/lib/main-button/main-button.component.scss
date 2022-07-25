@@ -4,8 +4,8 @@
 
 #wrapper {
   &.disabled {
-    opacity: 0.5;
     cursor: not-allowed;
+    opacity: 0.5;
   }
 
   &.primary {
@@ -50,7 +50,8 @@
   &:hover:not(.disabled) {
     #button {
       background-color: var(--hover-color);
-      //clip-path: polygon(-100% -100%, 300% 0, 100% 400%, 7% 95%, 1% 74%);
+
+      // clip-path: polygon(-100% -100%, 300% 0, 100% 400%, 7% 95%, 1% 74%);
       clip-path: polygon(-100% -100%, 300% 0, 100% 400%, 1.5rem 100%, 0 66%);
       color: var(--text-hover-color);
     }

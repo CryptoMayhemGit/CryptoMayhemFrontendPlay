@@ -8,7 +8,7 @@ import { WalletService } from '../services/wallet.service';
 import {
   hideSpinner,
   hideWallets,
-  postBuyPreSaleTokens,
+  postSignWalletBeforeBuy,
   setWalletAddress,
   showSpinner,
   showWallets,
@@ -58,6 +58,6 @@ export class WalletFacade {
   }
 
   public buyPreSaleTokens(amount: number) {
-    this.store.dispatch(postBuyPreSaleTokens({amount}))
+    this.store.dispatch(postSignWalletBeforeBuy({amount}))
   }
 }
