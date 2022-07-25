@@ -12,6 +12,7 @@ import { Observable, of } from 'rxjs';
 export class PreSaleComponent implements OnInit {
   formGroup: FormGroup;
   walletConnected$: Observable<boolean> = of(false);
+  presaleStartTime = new Date('JUL 30, 2022, 00:16').getTime();
   caretRight = faCaretRight;
   details = [
     'PRESALE.INFO.DETAILS.1',

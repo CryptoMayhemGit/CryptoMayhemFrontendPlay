@@ -5,6 +5,7 @@
     </div>
     <div id="vesting-timer">
         <p>{{ 'PRESALE.TIME_LEFT' | transloco }}</p>
+        <ui-timer [startTime]="presaleStartTime"></ui-timer>
     </div>
     <div id="vesting-sold">
         <p>{{ 'PRESALE.PROGRESS' | transloco}}</p>

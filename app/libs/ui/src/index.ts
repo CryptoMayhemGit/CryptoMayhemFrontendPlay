@@ -1,8 +1,6 @@
 export * from './lib/ui.module';
 export * from './lib/notification/notification.module';
 export * from './lib/notification/notification.component';
-export * from './lib/navbar/navbar.module';
-export * from './lib/navbar/navbar.component';
 export * from './lib/landing-page/landing-page.module';
 export * from './lib/landing-page/landing-page.component';
 export * from './lib/navigation-header/navigation-header.module';
@@ -23,3 +21,5 @@ export * from './lib/modal-drone/modal-drone.module';
 export * from './lib/modal-drone/modal-drone.component';
 export * from './lib/progress-bar/progress-bar.module';
 export * from './lib/progress-bar/progress-bar.component';
+export * from './lib/timer/timer.module';
+export * from './lib/timer/timer.component';

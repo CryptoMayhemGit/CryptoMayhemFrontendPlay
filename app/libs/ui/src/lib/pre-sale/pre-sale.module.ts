@@ -8,6 +8,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { EffectsModule } from '@ngrx/effects';
 import { MainButtonModule } from '../main-button/main-button.module';
 import { ProgressBarModule } from '../progress-bar/progress-bar.module';
+import { TimerModule } from '../timer/timer.module';
 import { PreSaleComponent } from './pre-sale.component';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { PreSaleComponent } from './pre-sale.component';
     MainButtonModule,
     ProgressBarModule,
     FontAwesomeModule,
+    TimerModule,
   ],
   exports: [PreSaleComponent],
 })
