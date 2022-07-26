@@ -38,7 +38,7 @@ export class PreSaleComponent implements OnInit {
   createFormGroup(): FormGroup {
     return this.formBuilder.group({
       amount: [
-        0,
+        '',
         [Validators.required, Validators.min(1), Validators.max(1000)],
       ],
     });

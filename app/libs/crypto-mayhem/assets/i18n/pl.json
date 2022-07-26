@@ -124,10 +124,18 @@
         "SUCCESS": {
             "HEADER": "Gratulacje!",
             "MESSAGE": "Zostałeś właścicielem tokena ADRIA. Dziękujemy za twój wkład w rozwój projektu Crypto Mayhem."
+        },
+        "INPUT": {
+            "WRITE_AMOUNT": "Wpisz kwotę"
         }
     },
     "WALLET": {
         "CONNECTED": "Portfel podłączony",
-        "DISCONNECTED": "Portfel rozłączony"
+        "DISCONNECTED": "Portfel rozłączony",
+        "POPUP": {
+            "HEADER": "Wybierz portfel",
+            "NO_ACCOUNT": "Nie posiadasz jeszcze swojego portfela dla kryptowalut i nie wiesz jak go założyć?",
+            "WATCH": "Obejrzyj wideo"
+        }
     }
 }

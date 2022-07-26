@@ -86,48 +86,56 @@
         "LOGIN_MESSAGE": "Login attempt"
     },
     "PRESALE": {
-        "PROGRESS": "Ilość sprzedanego tokena ADRIA",
+        "PROGRESS": "Amount of ADRIA token sold",
         "INFO": {
             "DETAILS": {
-                "HEADER": "Szczegóły oficjalnej przedsprzedaży tokena ADRIA",
-                "1": "Wyprzedaż potrwa 48 godzin.",
-                "2": "Gwarantowana alokacja dla wszystkich adresów umieszczonych na whitelist.",
-                "3": "Możesz zainwestować w token tylko raz w myśl zasady jedna inwestycja dla jednego adresu portfela.",
-                "4": "Cena w przedsprzedaży 0,002 $.",
-                "5": "Maksymalny zakup to 10 BNB (500.000 tokenów ADRIA).",
-                "6": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy.",
-                "7": "Niesprzedane tokeny z przedsprzedaży ulegną spaleniu!"
+                "HEADER": "Official presale of ADRIA token details",
+                "1": "Sale will last for 48 hours.",
+                "2": "Guaranteed allocation for all whitelisted address.",
+                "3": "You can only invest in a token once according to the principle of one investment for one wallet address.",
+                "4": "Price in sale 0,002 $.",
+                "5": "The maximum purchase is 10 BNB (500,000 ADRIA tokens).",
+                "6": "10% at TGE, rest unblocked every block for 9 months.",
+                "7": "Unsold tokens from presale will be burned!"
             },
             "CLAIM": {
-                "HEADER": "Jak odebrać zakupione tokeny?",
-                "MESSAGE": "Możesz przenosić zakupione tokeny ADRIA do swojego portfela w zakładce Vesting, która wkrótce będzie dostępna."
+                "HEADER": "How to claim bought tokens?",
+                "MESSAGE": "You can transfer the bought ADRIA tokens to your wallet in the Vesting tab, which will be available soon."
             },
             "ADRIA_TOKEN": {
-                "HEADER": "Token Adria",
-                "ADDRESS_MESSAGE": "Oficjalny adres inteligentnej umowy dla tokena ADRIA:",
-                "USABILITY": "Możesz przeczytać pełną użyteczność tokena ADRIA",
-                "HERE": "tutaj"
+                "HEADER": "Adria token",
+                "ADDRESS_MESSAGE": "Offical smart contract address for ADRIA token:",
+                "USABILITY": "You can read the full utility of the ADRIA token",
+                "HERE": "here"
             }
         },
-        "TIME_LEFT": "Koniec przedsprzedaży za",
-        "INVEST": "Ile możesz zainwestować w token ADRIA?",
+        "TIME_LEFT": "End of presale in",
+        "INVEST": "How much can you invest in an ADRIA token?",
         "AMOUNT": {
-            "MIN": "Minimalna kwota",
-            "MAX": "Maksymalna kwota",
-            "AMOUNT_TO_BUY": "Za ile chcesz kupić token ADRIA?"
+            "MIN": "Minimum buy",
+            "MAX": "Maximum buy",
+            "AMOUNT_TO_BUY": "How much do you want to buy the ADRIA token?"
         },
-        "GET": "Otrzymasz",
-        "BUY_ADRIA": "Kup ADRIA",
+        "GET": "You will get",
+        "BUY_ADRIA": "Buy ADRIA",
         "WANT_BUY": {
-            "MESSAGE": "Chcesz kupić token ADRIA?"
+            "MESSAGE": "Do you want to buy ADRIA?"
         },
         "SUCCESS": {
-            "HEADER": "Gratulacje!",
-            "MESSAGE": "Zostałeś właścicielem tokena ADRIA. Dziękujemy za twój wkład w rozwój projektu Crypto Mayhem."
+            "HEADER": "Congratulations!",
+            "MESSAGE": "You have the ADRIA token. Thank you for your contribution to the development of the Crypto Mayhem project."
+        },
+        "INPUT": {
+            "WRITE_AMOUNT": "Enter the amount"
         }
     },
     "WALLET": {
-        "CONNECTED": "Portfel podłączony",
-        "DISCONNECTED": "Portfel rozłączony"
+        "CONNECTED": "Wallet Connected",
+        "DISCONNECTED": "Wallet Disconnected",
+        "POPUP": {
+            "HEADER": "Choose wallet",
+            "NO_ACCOUNT": "Haven’t got a crypto wallet yet and don’t know how to set it up?",
+            "WATCH": "Watch the video"
+        }
     }
 }

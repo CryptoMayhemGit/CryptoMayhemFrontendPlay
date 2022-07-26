@@ -33,6 +33,7 @@
             type="number"
             min="1"
             max="1000"
+            [placeholder]="'PRESALE.INPUT.WRITE_AMOUNT' | transloco"
             formControlName="amount">
             <p>{{ 'PRESALE.GET' | transloco }}: {{formGroup.controls['amount'].value / 0.002}} ADRIA</p>
             <ui-main-button (click)="onBuy()" [disabled]="!formGroup.valid">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
