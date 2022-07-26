@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
 import { Observable, of } from 'rxjs';
 
@@ -11,6 +12,8 @@ import { Observable, of } from 'rxjs';
 export class PreSaleComponent implements OnInit {
   formGroup: FormGroup;
   walletConnected$: Observable<boolean> = of(false);
+  presaleStartTime = new Date('JUL 30, 2022, 00:16').getTime();
+  caretRight = faCaretRight;
   details = [
     'PRESALE.INFO.DETAILS.1',
     'PRESALE.INFO.DETAILS.2',
@@ -35,7 +38,7 @@ export class PreSaleComponent implements OnInit {
   createFormGroup(): FormGroup {
     return this.formBuilder.group({
       amount: [
-        0,
+        '',
         [Validators.required, Validators.min(1), Validators.max(1000)],
       ],
     });
@@ -48,5 +51,9 @@ export class PreSaleComponent implements OnInit {
     } else {
       this.formGroup.markAllAsTouched();
     }
+  }
+
+  connect(): void {
+    this.walletFacade.showWallets();
   }
 }

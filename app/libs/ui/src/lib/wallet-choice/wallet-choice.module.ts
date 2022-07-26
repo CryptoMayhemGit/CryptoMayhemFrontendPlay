@@ -13,7 +13,8 @@ import { WalletChoiceComponent } from './wallet-choice.component';
     TranslocoModule,
     ModalBaseModule,
     FontAwesomeModule,
-    CryptoMayhemDataAccessWalletModule
+    CryptoMayhemDataAccessWalletModule,
+    TranslocoModule,
   ],
   exports: [WalletChoiceComponent],
 })

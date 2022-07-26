@@ -1,5 +1,5 @@
 <ui-modal-base (close)="hideWallets()">
-    <div id="body-header" class="body-header">Wybierz portfel</div>
+    <div id="body-header" class="body-header">{{ 'WALLET.POPUP.HEADER' | transloco }}</div>
     <div id="body-wallets" class="body-wallets">
         <div (click)="choiceWallet(walletType.metamask)" type="button" role="button" class="body-wallets_wallet">
             <img src="./assets/images/metamask_icon.svg" />
@@ -11,6 +11,6 @@
         </div>
     </div>
     <hr>
-    <div class="body-info">Nie posiadasz jeszcze swojego portfela dla kryptowalut i nie wiesz jak go założyć?</div>
-    <div class="body-link"><a href="#">obejrzyj video <fa-icon [icon]="caretRight"></fa-icon></a></div>
+    <div class="body-info">{{ 'WALLET.POPUP.NO_ACCOUNT' | transloco }}</div>
+    <div class="body-link"><a href="#">{{ 'WALLET.POPUP.WATCH' | transloco }} <fa-icon [icon]="caretRight"></fa-icon></a></div>
 </ui-modal-base>

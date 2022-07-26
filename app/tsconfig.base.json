@@ -52,7 +52,9 @@
         "libs/crypto-mayhem/shell/src/index.ts"
       ],
       "@crypto-mayhem-frontend/ui": ["libs/ui/src/index.ts"],
-      "@crypto-mayhem-frontend/utils": ["libs/utils/src/index.ts"]
+      "@crypto-mayhem-frontend/utility/pipes": [
+        "libs/utility/pipes/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
