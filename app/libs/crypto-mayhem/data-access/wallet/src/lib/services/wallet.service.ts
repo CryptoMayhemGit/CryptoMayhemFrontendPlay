@@ -1,7 +1,7 @@
 import { Inject, Injectable, OnDestroy } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Web3Provider } from '@ethersproject/providers';
-import { providers } from 'ethers';
+import { BigNumber, providers, utils } from 'ethers';
 import detectEthereumProvider from "@metamask/detect-provider";
 import { WalletType } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model";
 import WalletConnect from "@walletconnect/client";
@@ -23,11 +23,11 @@ import * as WalletActions from '../state/wallet.actions';
 import { Observable, of } from "rxjs";
 import { SALE_TOKEN } from "./wallet.endpoints";
 import { AppConfig, APP_CONFIG } from "@crypto-mayhem-frontend/crypto-mayhem/config";
-import { AdriaTokenContractFactory, AdriaVestingContractFactory, UsdcTokenContractFactory } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model";
+import { AdriaTokenContractFactory, AdriaVestingContract, AdriaVestingContractFactory, UsdcTokenContractFactory } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model";
 import { NotificationDroneEventTypes, NotificationDroneService } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone";
 import { WalletEffects } from "../state/wallet.effects";
 import { WalletState } from "../state/wallet.reducer";
-import { FormatTypes } from "ethers/lib/utils";
+import { formatBytes32String, FormatTypes, parseBytes32String } from "ethers/lib/utils";
 
 const ACCOUNTS_CHANGED = 'accountsChanged';
 const CHAIN_CHANGED = 'chainChanged';
@@ -230,8 +230,22 @@ export class WalletService {
     public async signWalletTransaction(signedWalletWithAmount: SignedWalletWithAmount): Promise<void>{
         if (this.provider) {
             try {
-                const usdcContract = AdriaVestingContractFactory.connect(this.provider?.getSigner());
-                console.log(usdcContract.interface.format(FormatTypes['full']));
+                //const adriaTokenContract = AdriaTokenContractFactory.connect(this.provider.getSigner());
+                //adriaTokenContract.mint("0x6a72d0119924675A67F0D808C0702db0c7E88480", BigNumber.from("1000000000000000000000000"));
+                 const adriaVestingContract = AdriaVestingContractFactory.connect(this.provider.getSigner());
+                //  adriaVestingContract.createVestingSchedule("0xe28B9AE23542A7e36D7a26C17A9B550dAB69f3F5", BigNumber.from("1658771909929"), BigNumber.from("0"), BigNumber.from("1000000000000000000000"), BigNumber.from("1721945499000"), BigNumber.from("1000000000000000000000000"))
+                //  .then((result) => console.log(result))
+                //  .catch((error) => console.log(error));
+                //alert(utils.randomBytes(32));
+                // const adriaVestingContract = AdriaVestingContractFactory.connect(this.provider.getSigner());
+                
+                await adriaVestingContract.buy(BigNumber.from("10000000000000000000"), BigNumber.from("150"), BigNumber.from("1"), "27", "0xD6A60255E99BA3CEC2B56AD3478E49800FD12429744D404F7E93C0D8EF2A5F1C", "0x11B7BA97FC2A5890484254B10F97E30753CBA793F27931A6A30DA8D98522D17A", this.provider);
+                /*const vesting = AdriaVestingContractFactory.connect(this.provider.getSigner());
+                vesting.calculateAdriaTokensForStage(BigNumber.from("100"), BigNumber.from("1")).then((result) => console.log(result))
+                .catch((error) => console.log(error));*/
+                /*adriaVestingContract.changeStage(BigNumber.from("1"), BigNumber.from("500"), BigNumber.from("1658410064"), true)
+                .then((result) => console.log(result))
+                .catch((error) => console.log(error));*/
 
             } catch (err: any) {
                 console.log(err);

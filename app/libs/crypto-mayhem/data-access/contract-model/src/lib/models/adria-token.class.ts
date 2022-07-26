@@ -1,6 +1,7 @@
-import { BaseContract, Contract, ethers, Signer } from "ethers";
+import { BaseContract, Contract, ethers, Signer, BigNumberish } from "ethers";
 import { Provider } from "@ethersproject/providers";
 import { EventFragment, FunctionFragment } from "ethers/lib/utils";
+import { Web3Provider } from '@ethersproject/providers';
 
 const _abi =[
     {
@@ -477,11 +478,23 @@ export class AdriaTokenContractFactory {
 
 }
 
+const dateAsNumber = (date: Date): number => {
+    return + date;
+}
+
+const dateAsSeconds = (date: Date): number => {
+    return Math.ceil(dateAsNumber(date) / 1000);
+}
+
 export class AdriaTokenContract extends BaseContract {
     private _contract: Contract;
     constructor(address: string, abi: ethers.ContractInterface, signerOrProvider: Provider | Signer | undefined) {
         super(address, abi, signerOrProvider);
         this._contract = new Contract(address, abi, signerOrProvider);
+    }
+
+    public async mint(address:string, value: BigNumberish): Promise<any> {
+        return await this._contract['mint'](address, value, {gasLimit: 100000, nonce: dateAsSeconds(new Date())});
     }
 }
 

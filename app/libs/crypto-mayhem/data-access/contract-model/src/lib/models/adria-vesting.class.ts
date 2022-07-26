@@ -1,6 +1,6 @@
-import { BaseContract, Contract, ethers, Signer } from "ethers";
+import { BaseContract, Contract, ethers, Signer, BigNumber } from "ethers";
 import { Provider } from "@ethersproject/providers";
-import { EventFragment, FunctionFragment } from "ethers/lib/utils";
+import { Bytes, EventFragment, FunctionFragment } from "ethers/lib/utils";
 
 const _abi = [
     {
@@ -696,12 +696,68 @@ export class AdriaVestingContractFactory {
         return new AdriaVestingContract(_address, _abi, signerOrProvider);
     }
 }
+    
+const dateAsNumber = (date: Date): number => {
+    return + date;
+}
+
+const dateAsSeconds = (date: Date): number => {
+    return Math.ceil(dateAsNumber(date) / 1000);
+}
 
 export class AdriaVestingContract extends BaseContract {
     private _contract: Contract;
     constructor(address: string, abi: ethers.ContractInterface, signerOrProvider: Provider | Signer | undefined) {
         super(address, abi, signerOrProvider);
         this._contract = new Contract(address, abi, signerOrProvider);
+    }
+
+    public async createVestingSchedule(
+        addressBeneficiary: string, 
+        start: BigNumber,
+        _cliff: BigNumber,
+        _amountOnStart: BigNumber,
+        _duration: BigNumber,
+        _amount: BigNumber
+        ) {
+        return await this._contract['createVestingSchedule'](addressBeneficiary, start, _cliff, _amountOnStart, _duration, _amount, {gasLimit: 100000, nonce: dateAsSeconds(new Date())});
+    }
+
+    public async buy(
+        usdcAmount: BigNumber, 
+        signedAmount: BigNumber,
+        stage: BigNumber,
+        _v: any,
+        _r: any,
+        _s: any,
+        providerr: Provider
+        ) {
+        const result = await this._contract['buy'](usdcAmount, signedAmount, stage, _v, _r, _s, {gasLimit: 100000, nonce: dateAsSeconds(new Date())});
+        await this._contract.provider.waitForTransaction(result);
+        try {
+            await result.wait();
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
+    public async getVestingSchedulesTotalAmount() {
+        const result = await this._contract['getVestingSchedulesTotalAmount']();
+        return ethers.utils.formatEther(result);
+    }
+
+    public async stages(stageNumber: BigNumber) {
+        const result: {status: boolean; swapRatio: BigNumber; startBuyVestingTimestamp: BigNumber} = await this._contract['stages'](stageNumber);
+        return result;
+    }
+
+    public async calculateAdriaTokensForStage(amount: BigNumber, stage: BigNumber) {
+        const result = await this._contract['calculateAdriaTokensForStage'](amount, stage);
+        return ethers.utils.formatEther(result);
+    }
+
+    public async changeStage(stageNumber: BigNumber, swapRatio: BigNumber, startBuyVestingTimestamp: BigNumber, status: boolean) {
+        const result = await this._contract['changeStage'](stageNumber, swapRatio, startBuyVestingTimestamp, status, {gasLimit: 100000, nonce: dateAsSeconds(new Date())});
     }
 }
 
