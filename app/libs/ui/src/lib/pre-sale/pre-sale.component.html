@@ -3,10 +3,21 @@
         <p class="connected" *ngIf="walletConnected$ | async">{{ 'WALLET.CONNECTED' | transloco }}</p>
         <p class="disconnected" *ngIf="!(walletConnected$ | async)">{{ 'WALLET.DISCONNECTED' | transloco }}</p>
     </div>
-    <div id="vesting-timer">
+    <!-- HIDE WHEN PRESALE HAS ENDED -->
+    <div id="vesting-timer" *ngIf="presale">
         <p>{{ 'PRESALE.TIME_LEFT' | transloco }}</p>
-        <ui-timer [startTime]="presaleStartTime"></ui-timer>
+        <ui-timer [startTime]="presaleStartTime" (complete)="presale = false"></ui-timer>
     </div>
+    <!-- SHOW WHEN PRESALE HAS ENDED OR HAS SOLD OUT-->
+    <!--<div id="vesting-header"> -->
+        <!-- SHOW WHEN PRESALE HAS ENDED -->
+        <!-- <p>{{ 'PRESALE.END.HEADER' | transloco }}</p> -->
+        <!-- === -->
+
+        <!-- SHOW WHEN TOKEN HAS SOLD OUT -->
+        <!-- <p>{{ 'PRESALE.SOLD.HEADER' | transloco }}</p> -->
+        <!-- === -->
+    <!-- </div> -->
     <div id="vesting-sold">
         <p>{{ 'PRESALE.PROGRESS' | transloco}}</p>
         <ui-progress-bar [currentValue]="500000" [maxValue]="1000000"></ui-progress-bar>
@@ -36,7 +47,7 @@
             [placeholder]="'PRESALE.INPUT.WRITE_AMOUNT' | transloco"
             formControlName="amount">
             <p>{{ 'PRESALE.GET' | transloco }}: {{formGroup.controls['amount'].value / 0.002}} ADRIA</p>
-            <ui-main-button (click)="onBuy()" [disabled]="!formGroup.valid">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
+            <ui-main-button (click)="onBuy()" [disabled]="!formGroup.valid || !!(walletFacade.showWallets$ | async)">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
         </form>
     </div>
     <!-- SHOW WHEN DISCONNECTED -->
@@ -64,6 +75,11 @@
             <p>{{ 'PRESALE.AMOUNT.MAX' | transloco }}</p>
             <p>$1000</p>
         </div>
+    </div>-->
+    <!-- SHOW WHEN PRESALE HAS ENDED OR HAS SOLD OUT-->
+    <!--<div id="vesting-end">
+        <p>{{ 'PRESALE.END.MESSAGE' | transloco }}</p>
+        <ui-main-button (click)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
     </div>-->
 </div>
 

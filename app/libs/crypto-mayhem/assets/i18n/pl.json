@@ -127,6 +127,13 @@
         },
         "INPUT": {
             "WRITE_AMOUNT": "Wpisz kwotę"
+        },
+        "END": {
+            "HEADER": "Przedsprzedaż zakończona!",
+            "MESSAGE": "Jeżeli kupiłeś token, możesz zobaczyć swoją inwestycję po połaczeniu portfela."
+        },
+        "SOLD": {
+            "HEADER": "Token został wyprzedany!"
         }
     },
     "WALLET": {

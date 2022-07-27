@@ -66,6 +66,14 @@
     margin-bottom: 1.6rem;
   }
 
+  #vesting-header {
+    p {
+      color: #f2f2f2;
+      font-size: 1.8rem;
+      line-height: 2.1rem;
+    }
+  }
+
   #vesting-wallet {
     margin-bottom: 3.2rem;
     text-align: center;
@@ -180,6 +188,18 @@
       & > p:last-of-type {
         color: #f2f2f2;
       }
+    }
+  }
+
+  #vesting-end {
+    p {
+      color: #f2f2f2;
+      margin-bottom: 3.2rem;
+    }
+
+    ui-main-button {
+      display: flex;
+      justify-content: center;
     }
   }
 

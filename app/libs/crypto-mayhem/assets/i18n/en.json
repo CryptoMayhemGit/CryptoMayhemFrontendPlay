@@ -127,7 +127,15 @@
         },
         "INPUT": {
             "WRITE_AMOUNT": "Enter the amount"
+        },
+        "END": {
+            "HEADER": "Presale finished!",
+            "MESSAGE": "If you bought a token, you can see your investment after connecting your wallet."
+        },
+        "SOLD": {
+            "HEADER": "Token sold out!"
         }
+
     },
     "WALLET": {
         "CONNECTED": "Wallet Connected",
