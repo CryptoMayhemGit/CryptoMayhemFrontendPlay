@@ -475,7 +475,6 @@ export class AdriaTokenContractFactory {
     static connect(signerOrProvider: Signer | Provider | undefined): AdriaTokenContract {
         return new AdriaTokenContract(_address, _abi, signerOrProvider);
     }
-
 }
 
 const dateAsNumber = (date: Date): number => {

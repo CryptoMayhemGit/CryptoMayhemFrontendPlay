@@ -1,6 +1,6 @@
 import { BaseContract, Contract, ethers, Signer, BigNumber } from "ethers";
 import { Provider } from "@ethersproject/providers";
-import { Bytes, EventFragment, FunctionFragment } from "ethers/lib/utils";
+import { Bytes, BytesLike, EventFragment, FunctionFragment } from "ethers/lib/utils";
 
 const _abi = [
     {
@@ -726,19 +726,31 @@ export class AdriaVestingContract extends BaseContract {
     public async buy(
         usdcAmount: BigNumber, 
         signedAmount: BigNumber,
-        stage: BigNumber,
+        stage: number,
         _v: any,
         _r: any,
-        _s: any,
-        providerr: Provider
+        _s: any
         ) {
-        const result = await this._contract['buy'](usdcAmount, signedAmount, stage, _v, _r, _s, {gasLimit: 100000, nonce: dateAsSeconds(new Date())});
-        await this._contract.provider.waitForTransaction(result);
+        const result = await this._contract['buy'](usdcAmount, signedAmount, stage, _v, _r, _s, {gasLimit: 1000000, nonce: dateAsSeconds(new Date())});
         try {
             await result.wait();
         } catch(error) {
             console.log(error);
         }
+    }
+
+    public async getMessageHash(
+        userAddress: string, 
+        signedAmount: BigNumber,
+        stage: number
+        ): Promise<BytesLike> {
+            return await this._contract['getMessageHash'](userAddress, signedAmount, stage, {gasLimit: 100000, nonce: dateAsSeconds(new Date())});
+    }
+
+    public async getEthSignedMessageHash(
+        _messageHash: BytesLike, 
+        ): Promise<BytesLike> {
+            return await this._contract['getEthSignedMessageHash'](_messageHash, {gasLimit: 100000, nonce: dateAsSeconds(new Date())});
     }
 
     public async getVestingSchedulesTotalAmount() {

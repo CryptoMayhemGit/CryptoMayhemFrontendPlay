@@ -1,7 +1,7 @@
 import { Inject, Injectable, OnDestroy } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Web3Provider } from '@ethersproject/providers';
-import { BigNumber, providers, utils } from 'ethers';
+import { BigNumber, ethers, providers, utils } from 'ethers';
 import detectEthereumProvider from "@metamask/detect-provider";
 import { WalletType } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model";
 import WalletConnect from "@walletconnect/client";
@@ -233,19 +233,84 @@ export class WalletService {
                 //const adriaTokenContract = AdriaTokenContractFactory.connect(this.provider.getSigner());
                 //adriaTokenContract.mint("0x6a72d0119924675A67F0D808C0702db0c7E88480", BigNumber.from("1000000000000000000000000"));
                  const adriaVestingContract = AdriaVestingContractFactory.connect(this.provider.getSigner());
+                 const usdcTokenContractFactory = UsdcTokenContractFactory.connect(this.provider.getSigner());
                 //  adriaVestingContract.createVestingSchedule("0xe28B9AE23542A7e36D7a26C17A9B550dAB69f3F5", BigNumber.from("1658771909929"), BigNumber.from("0"), BigNumber.from("1000000000000000000000"), BigNumber.from("1721945499000"), BigNumber.from("1000000000000000000000000"))
                 //  .then((result) => console.log(result))
                 //  .catch((error) => console.log(error));
                 //alert(utils.randomBytes(32));
                 // const adriaVestingContract = AdriaVestingContractFactory.connect(this.provider.getSigner());
+
+
+                //hashedETH === "0xBDCDA2D37F3F2E7B269BA0CE4FE821400A2F7FFF4593C364A2D0C396464A93CE"
+                //hashedETH sign === "0x02dc0bbf9a070250993e60ddf82407f7b061103bf95c8682803914de1683499a3821bb91870e66e4c7a1630ac9c6bb80490feccb72219eb28aa90852a165b3821b"
+                //                    0x06452b01450e09cc10970c4c4d9cd68e176681fed5107023392ddc0f392398190e596ee3c699d034ee7374eb3418f3d23d3105ec1b5cda6d2a1fd33781a629c31c
+                //hashed ===    "0xA2D147C2D7F1A91620CB67A289D47DF44DB23A716CA9FDAD4D076A44B1026D63"
+                //hashed sign ===    "0x853083dc1d8ae653c4fea564b364befe2286372258574fecb6ffd94ae08f62db2e8c9515ce590f2a6c0d58a63ad3a620685034e23b2fad653a9187cc2036fd321c"
+                ///                   0x07fd646befd7f8cb403aedb903817681cfb30e76480a606d3e37cf3f4cc26e166093b6b7269ec10c1ed43f0f6382216f43150f37d532b8de2d555c06dde48d961b
                 
-                await adriaVestingContract.buy(BigNumber.from("10000000000000000000"), BigNumber.from("150"), BigNumber.from("1"), "27", "0xD6A60255E99BA3CEC2B56AD3478E49800FD12429744D404F7E93C0D8EF2A5F1C", "0x11B7BA97FC2A5890484254B10F97E30753CBA793F27931A6A30DA8D98522D17A", this.provider);
+                const usdcAmountWithDecimals = BigNumber.from(100).mul(BigNumber.from(10).pow(await usdcTokenContractFactory.decimals()))
+                console.log("usdcAmountWithDecimals => " + usdcAmountWithDecimals);
+                const userAdress = await (await this.provider.getSigner().getAddress()).toString();
+                console.log("user Adress => " + userAdress);
+                let messageHash = await adriaVestingContract.getMessageHash(userAdress, usdcAmountWithDecimals, 1);
+                console.log(messageHash.toString());
+                //let messageEthHashSigned = await adriaVestingContract.getEthSignedMessageHash(messageHash);
+                //console.log("messageEthHashSigned => " + messageEthHashSigned.toString());
+
+                let wallet = new ethers.Wallet("0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80");
+
+                debugger;
+                let hashedSignEth = await wallet.signMessage(ethers.utils.arrayify(messageHash));
+                //let messageHashBytes = ethers.utils.arrayify(messageHash)
+                const sig = ethers.utils.splitSignature(hashedSignEth);
+                console.log("ethers.utils.arrayify(messageHash) => " + ethers.utils.arrayify(messageHash));
+
+                usdcTokenContractFactory.approve("0x6a72d0119924675A67F0D808C0702db0c7E88480", usdcAmountWithDecimals)
+                .then((response) => { 
+                    if (response)
+                        adriaVestingContract.buy(usdcAmountWithDecimals, usdcAmountWithDecimals, 1, sig.v, sig.r, sig.s);
+                 })
+                 .catch((error) => console.log(error));
+                
+                //let hashedSignEth = await wallet.signMessage("0xBDCDA2D37F3F2E7B269BA0CE4FE821400A2F7FFF4593C364A2D0C396464A93CE");
+                //console.log("hashedSign = " + hashedSign )
+                //console.log("hashedSignEth = " + hashedSignEth)
+                //const sig = ethers.utils.splitSignature("0x853083dc1d8ae653c4fea564b364befe2286372258574fecb6ffd94ae08f62db2e8c9515ce590f2a6c0d58a63ad3a620685034e23b2fad653a9187cc2036fd321c");
+                //const sig = ethers.utils.splitSignature("0x853083dc1d8ae653c4fea564b364befe2286372258574fecb6ffd94ae08f62db2e8c9515ce590f2a6c0d58a63ad3a620685034e23b2fad653a9187cc2036fd321c");
+                //const sig = ethers.utils.splitSignature("0x02dc0bbf9a070250993e60ddf82407f7b061103bf95c8682803914de1683499a3821bb91870e66e4c7a1630ac9c6bb80490feccb72219eb28aa90852a165b3821b");
+                //const sig = ethers.utils.splitSignature(hashedSignEth);
+
+                //adriaVestingContract.buy(BigNumber.from("1000000000000000000000"), BigNumber.from("1000000000000000000000"), BigNumber.from("0"), sig.v, sig.r, sig.s);
                 /*const vesting = AdriaVestingContractFactory.connect(this.provider.getSigner());
                 vesting.calculateAdriaTokensForStage(BigNumber.from("100"), BigNumber.from("1")).then((result) => console.log(result))
                 .catch((error) => console.log(error));*/
-                /*adriaVestingContract.changeStage(BigNumber.from("1"), BigNumber.from("500"), BigNumber.from("1658410064"), true)
-                .then((result) => console.log(result))
+                //adriaVestingContract.changeStage(BigNumber.from("0"), BigNumber.from("500"), BigNumber.from("1658410064"), true)
+                //.then((result) => console.log(result))
+                //.catch((error) => console.log(error));  
+
+
+
+
+
+
+                //let wallet = new ethers.Wallet("0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80");
+                
+                //let hashedSign = await wallet.signMessage("0xA2D147C2D7F1A91620CB67A289D47DF44DB23A716CA9FDAD4D076A44B1026D63");
+                
+                //let hashedSignEth = await wallet.signMessage("0xBDCDA2D37F3F2E7B269BA0CE4FE821400A2F7FFF4593C364A2D0C396464A93CE");
+                //console.log("hashedSign = " + hashedSign )
+                //console.log("hashedSignEth = " + hashedSignEth)
+                //const sig = ethers.utils.splitSignature("0x853083dc1d8ae653c4fea564b364befe2286372258574fecb6ffd94ae08f62db2e8c9515ce590f2a6c0d58a63ad3a620685034e23b2fad653a9187cc2036fd321c");
+                //const sig = ethers.utils.splitSignature("0x853083dc1d8ae653c4fea564b364befe2286372258574fecb6ffd94ae08f62db2e8c9515ce590f2a6c0d58a63ad3a620685034e23b2fad653a9187cc2036fd321c");
+                //const sig = ethers.utils.splitSignature("0x02dc0bbf9a070250993e60ddf82407f7b061103bf95c8682803914de1683499a3821bb91870e66e4c7a1630ac9c6bb80490feccb72219eb28aa90852a165b3821b");
+                //const sig = ethers.utils.splitSignature(hashedSignEth);
+
+                /*const vesting = AdriaVestingContractFactory.connect(this.provider.getSigner());
+                vesting.calculateAdriaTokensForStage(BigNumber.from("100"), BigNumber.from("1")).then((result) => console.log(result))
                 .catch((error) => console.log(error));*/
+                //adriaVestingContract.changeStage(BigNumber.from("0"), BigNumber.from("500"), BigNumber.from("1658410064"), true)
+                //.then((result) => console.log(result))
+                //.catch((error) => console.log(error));  
 
             } catch (err: any) {
                 console.log(err);
