@@ -225,7 +225,7 @@ export class WalletService {
         return this.httpClient.post<SignedWalletWithAmount>(SALE_TOKEN, {wallet, usdcTokenAmount});
     }
 
-    public async signWalletTransaction(signedWalletWithAmount: SignedWalletWithAmount): Promise<void>{
+    public async signWalletTransaction(signedWalletWithAmount: SignedWalletWithAmount): Promise<void> {
         if (this.provider) {
             try {
                 const usdcContract = UsdcTokenContractFactory.connect(this.provider?.getSigner());
@@ -243,6 +243,7 @@ export class WalletService {
                         sig.r,
                         sig.s);
                 })
+                .catch((error) => console.log(error));
 
             } catch (err: any) {
                 console.log(err);
