@@ -24,7 +24,6 @@ steps:
     npm install -g nx
     npm install
     npm run build:$(profile)
-    echo $[replace(variables['Build.SourceBranchName']
     echo $(profile)
     tree -L4 dist/
   displayName: 'npm install and build'
