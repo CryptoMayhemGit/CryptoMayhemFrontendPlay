@@ -5,7 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FormatTimePipe implements PipeTransform {
   transform(value: number | null): string {
-    console.log('value', value);
     if (value === null) return '';
 
     return `${this.getDays(value)} D | ${this.getHours(

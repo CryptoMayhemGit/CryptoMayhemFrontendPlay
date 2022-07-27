@@ -1,7 +1,7 @@
 import { Inject, Injectable, OnDestroy } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Web3Provider } from '@ethersproject/providers';
-import { providers } from 'ethers';
+import { providers, ethers } from 'ethers';
 import detectEthereumProvider from "@metamask/detect-provider";
 import { WalletType } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model";
 import WalletConnect from "@walletconnect/client";
@@ -11,11 +11,9 @@ import { select, State, Store } from "@ngrx/store";
 import * as WalletSelectors from '../state/wallet.selectors';
 
 interface SignedWalletWithAmount {
-    s: string;
-    r: string;
-    v: string;
+    signature: string;
     stage: number;
-    ustcTokenAmount: number;
+    usdcTokenAmount: number;
     maxUsdcTokenAmount: number;
 }
 
@@ -230,8 +228,21 @@ export class WalletService {
     public async signWalletTransaction(signedWalletWithAmount: SignedWalletWithAmount): Promise<void>{
         if (this.provider) {
             try {
-                const usdcContract = AdriaVestingContractFactory.connect(this.provider?.getSigner());
-                console.log(usdcContract.interface.format(FormatTypes['full']));
+                const usdcContract = UsdcTokenContractFactory.connect(this.provider?.getSigner());
+                const adriaVesting = AdriaVestingContractFactory.connect(this.provider.getSigner());
+                const sig = ethers.utils.splitSignature(signedWalletWithAmount.signature);
+
+                usdcContract.approve(signedWalletWithAmount.usdcTokenAmount)
+                .then((result) => {
+                    if (result)
+                    adriaVesting.buy(
+                        signedWalletWithAmount.usdcTokenAmount,
+                        signedWalletWithAmount.maxUsdcTokenAmount,
+                        signedWalletWithAmount.stage,
+                        sig.v,
+                        sig.r,
+                        sig.s);
+                })
 
             } catch (err: any) {
                 console.log(err);

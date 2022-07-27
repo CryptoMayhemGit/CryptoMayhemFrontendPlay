@@ -8,7 +8,6 @@ import { GameListingModule } from './game-listing/game-listing.module';
 import { ModalBaseModule } from './modal-base/modal-base.module';
 import { ModalDroneModule } from './modal-drone/modal-drone.module';
 import { ProgressBarModule } from './progress-bar/progress-bar.module';
-import { InputModule } from './input/input.module';
 import { TimerModule } from './timer/timer.module';
 
 @NgModule({
