@@ -1,7 +1,7 @@
 <div *ngIf="spinner | async"> TESTOWY SPINNER</div>
 <div id="nav">
     <div>
-        <a id="logo" href="/"><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
+        <a id="logo" routerLink=""><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
         <div id="burger-menu" [ngClass]="{'closed': !mobileVisible, 'open': mobileVisible}" (click)="mobileVisible = !mobileVisible; tdsVisible = false; gsVisible = false;"></div>
         <ng-template [ngTemplateOutlet]="links"></ng-template>
     </div>
