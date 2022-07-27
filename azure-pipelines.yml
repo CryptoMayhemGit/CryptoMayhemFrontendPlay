@@ -32,8 +32,5 @@ steps:
 - task: AzureStaticWebApp@0
   inputs:
     app_location: 'app/dist/apps/crypto-mayhem-frontend'
-    skip_app_build: true
-    skip_api_build: true
-    is_static_export: true
     azure_static_web_apps_api_token: $(deployment_token)
     production_branch: 'main'
