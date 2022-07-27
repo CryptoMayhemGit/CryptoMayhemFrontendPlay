@@ -60,9 +60,8 @@ import { env } from 'process';
     },
     {
       provide: APP_CONFIG,
-      useValue: env
-    },
-    //getAppConfigProvider(environment),
+      useValue: environment
+    }
   ],
   bootstrap: [AppComponent],
 })
