@@ -24,7 +24,7 @@ steps:
     npm install -g nx
     npm install
     npm run build:$(profile)
-    tree -L dist/
+    tree -L4 dist/
   displayName: 'npm install and build'
   workingDirectory: app
 
