@@ -7,6 +7,7 @@ import { LangSwitchModule } from '../lang-switch/lang-switch.module';
 import { SubmenuModule } from '../submenu/submenu.module';
 import { GameListingModule } from '../game-listing/game-listing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [NavigationHeaderComponent],
@@ -18,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SubmenuModule,
     GameListingModule,
     BrowserAnimationsModule,
+    RouterModule,
   ],
   exports: [NavigationHeaderComponent],
 })
