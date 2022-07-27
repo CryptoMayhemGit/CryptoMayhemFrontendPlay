@@ -1,1 +1,1 @@
-export const SALE_TOKEN = `http://salestokenapiwebapp.azurewebsites.net/api/SaleToken/ticket`;
+export const SALE_TOKEN = `https://salestokenapiwebapp.azurewebsites.net/api/SaleToken/ticket`;
