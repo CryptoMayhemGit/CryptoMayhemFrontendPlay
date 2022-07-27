@@ -1,9 +1,14 @@
 export const environment = {
   debug: true,
   production: true,
-  externalUrl: "https://app.test.cryptomayhem.io/",
+  externalUrl: "http://localhost:4200/",
   baseUrl: "https://mayhemwebapi.azurewebsites.net/",
-  rpcUrl: "https://rpc.test.cryptomayhem.io/?token=YWRyaWFfdXNlcjphWVhTZlRWTXZMR2RVeU84MzlNMVZYYjluS213em4xZkNrdlZYZDNQUmFLWHI1M1A=",
-  rpcChainId: "0x7a69",
-  defaultAsset: "ADRIAT"
+  //rpcUrl: "http://localhost:8545/",
+  rpcChainId: "0x539",
+  defaultAsset: "ADRIAT",
+
+  rpcUrlBinance: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+  chainIdNumberBinance: 97, //Binance Smart Chain
+  chainIdHexBinance: '0x61', //Binance Smart Chain
+  networkId: '' //Binance Smart Chain
 };
