@@ -25,7 +25,7 @@ steps:
     npm install
     npm run build:$(profile)
     echo $(profile)
-    tree -L4 dist/
+    tree -L 4 dist/
   displayName: 'npm install and build'
   workingDirectory: app
 
