@@ -1,4 +1,4 @@
-import { BaseContract, Contract, ethers, Signer } from "ethers";
+import { BaseContract, BigNumber, BigNumberish, Contract, ethers, Signer } from "ethers";
 import { Provider } from "@ethersproject/providers";
 import { EventFragment, FunctionFragment } from "ethers/lib/utils";
 
@@ -697,11 +697,40 @@ export class AdriaVestingContractFactory {
     }
 }
 
+//TODO: move to utils
+const dateAsNumber = (date: Date): number => {
+    return + date;
+}
+
+const dateAsSeconds = (date: Date): number => {
+    return Math.ceil(dateAsNumber(date) / 1000);
+}
+
 export class AdriaVestingContract extends BaseContract {
     private _contract: Contract;
     constructor(address: string, abi: ethers.ContractInterface, signerOrProvider: Provider | Signer | undefined) {
         super(address, abi, signerOrProvider);
         this._contract = new Contract(address, abi, signerOrProvider);
+    }
+
+    public async buy(
+        usdcAmount: BigNumberish,
+        signedAmount: BigNumberish,
+        stage: BigNumberish,
+        _v: any,
+        _r: any,
+        _s: any
+    ) {
+        const usdcAmountBigNumber = BigNumber.from(usdcAmount);
+        const signedAmountBigNumber = BigNumber.from(signedAmount);
+        const stageBigNumber = BigNumber.from(stage);
+        const result = await this._contract['buy'](usdcAmountBigNumber, signedAmountBigNumber, stageBigNumber, _v, _r, _s, {gasLimit: 1000000, nonce: dateAsSeconds(new Date())});
+        try {
+            await result.wait();
+        } catch(error) {
+            console.log(error);
+        }
+
     }
 }
 

@@ -1,4 +1,4 @@
-import { BaseContract, Contract, ethers, Signer } from "ethers";
+import { BaseContract, BigNumber, BigNumberish, Contract, ethers, Signer } from "ethers";
 import { Provider } from "@ethersproject/providers";
 import { EventFragment, FunctionFragment } from "ethers/lib/utils";
 
@@ -485,6 +485,7 @@ const _abi = [
 ]
 
 const _address = "0x05aaC9e42a6a5df698B9F57315BFB129F791d746";
+const _adriaVestingContractAddress  = "0x6a72d0119924675A67F0D808C0702db0c7E88480";
 
 export class UsdcTokenContractFactory {
     static readonly abi = _abi;
@@ -518,6 +519,12 @@ export class UsdcTokenContract extends BaseContract {
     public async balanceOf(address: string): Promise<string> {
         const result =await this._contract['balanceOf'](address)
         return ethers.utils.formatEther(result);
+    }
+
+    public async approve(_value: BigNumberish, _spender: string = _adriaVestingContractAddress): Promise<boolean> {
+        const valueBigNumber = BigNumber.from(_value);
+        const result: boolean = await this._contract['approve'](_spender, valueBigNumber);
+        return result;
     }
 }
 

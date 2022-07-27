@@ -24,14 +24,16 @@ steps:
     npm install -g nx
     npm install
     npm run build:$(profile)
+    echo $(profile)
+    tree -L 4 dist/
   displayName: 'npm install and build'
   workingDirectory: app
 
 - task: AzureStaticWebApp@0
   inputs:
     app_location: 'app/dist/apps/crypto-mayhem-frontend'
+    azure_static_web_apps_api_token: $(deployment_token)
     skip_app_build: true
     skip_api_build: true
     is_static_export: true
-    azure_static_web_apps_api_token: $(deployment_token)
     production_branch: 'main'

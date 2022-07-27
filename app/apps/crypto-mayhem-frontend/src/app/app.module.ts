@@ -25,6 +25,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CryptoMayhemDataAccessWalletModule } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
+import { env } from 'process';
 
 @NgModule({
   declarations: [AppComponent],
@@ -57,7 +58,11 @@ import { RouterModule } from '@angular/router';
       useClass: AuthInterceptor,
       multi: true,
     },
-    getAppConfigProvider(environment),
+    {
+      provide: APP_CONFIG,
+      useValue: env
+    },
+    //getAppConfigProvider(environment),
   ],
   bootstrap: [AppComponent],
 })

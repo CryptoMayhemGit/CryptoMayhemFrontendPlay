@@ -1,7 +1,7 @@
 <div *ngIf="spinner | async"> TESTOWY SPINNER</div>
 <div id="nav">
     <div>
-        <a id="logo" href="/"><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
+        <a id="logo" routerLink=""><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
         <div id="burger-menu" [ngClass]="{'closed': !mobileVisible, 'open': mobileVisible}" (click)="mobileVisible = !mobileVisible; tdsVisible = false; gsVisible = false;"></div>
         <ng-template [ngTemplateOutlet]="links"></ng-template>
     </div>
@@ -48,7 +48,7 @@
         <a href="#">{{'NAVBAR.NAV.STAKING' | transloco}}</a>
         <a href="#">{{'NAVBAR.NAV.VESTING' | transloco}}</a>
         <a href="#">{{'NAVBAR.NAV.NEWS' | transloco}}</a>
-        <a routerLink="/pre-sale" routerLinkActive="active">{{'NAVBAR.NAV.PRESALE' | transloco}}</a>
+        <a  routerLink="presale" routerLinkActive="active">{{'NAVBAR.NAV.PRESALE' | transloco}}</a>
     </nav>
 </ng-template>
 
