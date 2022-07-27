@@ -14,6 +14,7 @@ export class PreSaleComponent implements OnInit {
   walletConnected$: Observable<boolean> = of(false);
   presaleStartTime = new Date('JUL 30, 2022, 00:16').getTime();
   caretRight = faCaretRight;
+  presale = true;
   details = [
     'PRESALE.INFO.DETAILS.1',
     'PRESALE.INFO.DETAILS.2',
@@ -26,7 +27,7 @@ export class PreSaleComponent implements OnInit {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly walletFacade: WalletFacade
+    public readonly walletFacade: WalletFacade
   ) {
     this.formGroup = this.createFormGroup();
   }
