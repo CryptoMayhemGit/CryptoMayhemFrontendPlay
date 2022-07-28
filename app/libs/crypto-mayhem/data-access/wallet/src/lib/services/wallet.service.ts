@@ -208,6 +208,14 @@ export class WalletService {
                 }
             }
         }
+      case WalletType.walletConnect: {
+        let provider = new WalletConnectProvider({
+          infuraId: '27e484dcd9e3efcfd25a83a78777cdf1',
+        });
+
+        await provider.enable();
+        this.provider = new providers.Web3Provider(provider, 'any');
+      }
     }
 
     public disconnectWallet(): void {
