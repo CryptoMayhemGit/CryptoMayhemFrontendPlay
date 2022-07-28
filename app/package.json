@@ -38,6 +38,7 @@
     "@ngrx/store-devtools": "^13.2.0",
     "@nrwl/angular": "^14.2.4",
     "@walletconnect/environment": "^1.0.0",
+    "@walletconnect/qrcode-modal": "^1.7.8",
     "@walletconnect/web3-provider": "^1.7.8",
     "assert": "2.0.0",
     "buffer": "^6.0.3",

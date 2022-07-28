@@ -7,6 +7,8 @@ import { WalletType } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/wa
 import WalletConnect from "@walletconnect/client";
 import QRCodeModal from '@walletconnect/qrcode-modal';
 import { select, State, Store } from "@ngrx/store";
+import WalletConnectProvider from "@walletconnect/web3-provider"
+import WalletConnectQRCodeModal from "@walletconnect/qrcode-modal";
 
 import * as WalletSelectors from '../state/wallet.selectors';
 
@@ -196,26 +198,26 @@ export class WalletService {
                 break;
             }
             case WalletType.walletConnect: {
-                this.connector = new WalletConnect({
-                    bridge: "https://bridge.walletconnect.org",
-                    qrcodeModal: QRCodeModal,
+                let provider = new WalletConnectProvider({
+                    qrcode: true,
+                    bridge: 'https://polygon.bridge.walletconnect.org',
+                    chainId: 97,
+                    rpc: {
+                        56: 'https://bsc-dataseed.binance.org/',
+                        97: 'https://data-seed-prebsc-1-s1.binance.org:8545/'
+                    }
                 });
-                if (!this.connector.connected) {
-                    await this.connector.createSession({chainId: Number(this.appConfig.chainIdNumberBinance)});
-                    this.createWalletConnectProviderHooks(this.connector);
-                } else {
-                    //TODO: what when not connected?
+
+                try {
+                    await provider.enable().then((response) => console.log(response)).catch((err) => console.log(err));
+                } catch(error) {
+                    console.log(error);
                 }
+
+                this.provider = new providers.Web3Provider(provider, 'any');
+                console.log(this.provider);
             }
         }
-      case WalletType.walletConnect: {
-        let provider = new WalletConnectProvider({
-          infuraId: '27e484dcd9e3efcfd25a83a78777cdf1',
-        });
-
-        await provider.enable();
-        this.provider = new providers.Web3Provider(provider, 'any');
-      }
     }
 
     public disconnectWallet(): void {
