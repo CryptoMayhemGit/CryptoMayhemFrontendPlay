@@ -87,6 +87,7 @@ export class WalletService {
             throw error;
         }
 
+        console.log('connect',payload);
         const { accounts, chainId } = payload.params[0];
 
         //TODO: move config to env
@@ -97,8 +98,9 @@ export class WalletService {
             accounts: accounts
         };
 
-        if (chainId !== 56)
-            this.connector?.updateSession(sessionConfig);
+        if (chainId !== 56){
+            //this.connector?.updateSession(sessionConfig);
+            }
         else {
             this.store.dispatch(WalletActions.accountsChanged({account: accounts[0], chainId: chainId}));
         }
@@ -201,21 +203,23 @@ export class WalletService {
                 let provider = new WalletConnectProvider({
                     qrcode: true,
                     bridge: 'https://polygon.bridge.walletconnect.org',
-                    chainId: 97,
+                    chainId: 56,
                     rpc: {
                         56: 'https://bsc-dataseed.binance.org/',
                         97: 'https://data-seed-prebsc-1-s1.binance.org:8545/'
                     }
-                });
-
+                })
+                provider.connector.killSession();
+                this.createWalletConnectProviderHooks(provider);
+                await provider.enable().then(() => console.log('test'));
+                console.log('test2');
                 try {
-                    await provider.enable().then((response) => console.log(response)).catch((err) => console.log(err));
+                    //WalletConnectQRCodeModal.open(provider.connector.uri, (response: any) => { console.log(response)});
+                    //await provider.enable().then((response) => console.log(response)).catch((err) => console.log(err));
+                    //await provider.connector.createSession({chainId: 56});
                 } catch(error) {
                     console.log(error);
                 }
-
-                this.provider = new providers.Web3Provider(provider, 'any');
-                console.log(this.provider);
             }
         }
     }
