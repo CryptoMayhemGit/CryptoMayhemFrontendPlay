@@ -19,6 +19,11 @@
             "output": "./"
           },
           {
+            "glob": "staticwebapp.config.json",
+            "input": "",
+            "output": "./"
+          },
+          {
             "glob": "**/*",
             "input": "libs/crypto-mayhem/assets/",
             "output": "assets"
