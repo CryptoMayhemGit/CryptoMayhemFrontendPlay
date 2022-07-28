@@ -1,4 +1,4 @@
-import { ErrorHandler, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
@@ -7,7 +7,6 @@ import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import {
-  ModalBaseModule,
   ModalDroneModule,
   NavigationHeaderModule,
   NotificationModule,
@@ -16,15 +15,13 @@ import {
 } from '@crypto-mayhem-frontend/ui';
 import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
 import {
-  APP_CONFIG,
-  getAppConfigProvider,
+  APP_CONFIG
 } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import { ShellModule } from '@crypto-mayhem-frontend/crypto-mayhem/shell';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -60,10 +57,6 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     {
       provide: APP_CONFIG,
       useValue: environment
-    },
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy
     }
   ],
   bootstrap: [AppComponent],
