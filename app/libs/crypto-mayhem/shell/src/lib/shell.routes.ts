@@ -7,4 +7,5 @@ import {
 export const cryptoMayhemShellRoutes: Routes = [
   { path: '', component: LandingPageComponent, pathMatch: 'full' },
   { path: 'presale', component: PreSaleComponent, pathMatch: 'full' },
+  { path: '**', component: LandingPageComponent}
 ];
