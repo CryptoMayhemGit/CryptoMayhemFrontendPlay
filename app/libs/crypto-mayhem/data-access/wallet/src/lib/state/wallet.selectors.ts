@@ -33,3 +33,8 @@ export const getWalletType = createSelector(
     selectWallet,
     state => state.walletType
 );
+
+export const getUsdcPerStage = createSelector(
+    selectWallet,
+    state => state.usdcPerStage
+);

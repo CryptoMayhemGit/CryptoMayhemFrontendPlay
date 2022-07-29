@@ -484,23 +484,30 @@ const _abi = [
     }
 ]
 
-const _address = "0x05aaC9e42a6a5df698B9F57315BFB129F791d746";
-const _adriaVestingContractAddress  = "0x6a72d0119924675A67F0D808C0702db0c7E88480";
-
 export class UsdcTokenContractFactory {
-    static readonly abi = _abi;
-    static readonly address = _address;
 
-    static connect(signerOrProvider: Signer | Provider | undefined) {
-        return new UsdcTokenContract(_address, _abi, signerOrProvider);
+    static connect(
+        signerOrProvider: Signer | Provider | undefined,
+        usdcAddress: string,
+        adriaVestingAddress: string,
+        ) {
+        return new UsdcTokenContract(usdcAddress, adriaVestingAddress, _abi, signerOrProvider);
     }
 }
 
 export class UsdcTokenContract extends BaseContract {
     private _contract: Contract;
-    constructor(address: string, abi: ethers.ContractInterface, signerOrProvider: Provider | Signer | undefined) {
-        super(address, abi, signerOrProvider);
-        this._contract = new Contract(address, abi, signerOrProvider);
+    private _adriaVestingContractAddress: string;
+    constructor(
+        usdcAddress: string,
+        adriaVestingAddress: string,
+        abi: ethers.ContractInterface,
+        signerOrProvider: Provider | Signer | undefined,
+
+        ) {
+        super(usdcAddress, abi, signerOrProvider);
+        this._contract = new Contract(usdcAddress, abi, signerOrProvider);
+        this._adriaVestingContractAddress = adriaVestingAddress;
     }
 
     public async initial_supply(): Promise<string> {
@@ -521,7 +528,7 @@ export class UsdcTokenContract extends BaseContract {
         return ethers.utils.formatEther(result);
     }
 
-    public async approve(_value: BigNumberish, _spender: string = _adriaVestingContractAddress): Promise<boolean> {
+    public async approve(_value: BigNumberish, _spender: string = this._adriaVestingContractAddress): Promise<boolean> {
         const valueBigNumber = BigNumber.from(_value);
         const result: boolean = await this._contract['approve'](_spender, valueBigNumber);
         return result;

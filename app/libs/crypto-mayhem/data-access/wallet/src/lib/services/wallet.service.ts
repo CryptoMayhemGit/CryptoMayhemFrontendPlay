@@ -4,11 +4,8 @@ import { Web3Provider } from '@ethersproject/providers';
 import { providers, ethers } from 'ethers';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
-import WalletConnect from '@walletconnect/client';
-import QRCodeModal from '@walletconnect/qrcode-modal';
-import { select, State, Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import WalletConnectProvider from '@walletconnect/web3-provider';
-import WalletConnectQRCodeModal from '@walletconnect/qrcode-modal';
 
 import * as WalletSelectors from '../state/wallet.selectors';
 
@@ -27,37 +24,27 @@ import {
   APP_CONFIG,
 } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import {
-  AdriaTokenContractFactory,
   AdriaVestingContractFactory,
   UsdcTokenContractFactory,
 } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model';
 import { NotificationDroneService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
-import { WalletEffects } from '../state/wallet.effects';
-import { WalletState } from '../state/wallet.reducer';
-import { FormatTypes } from 'ethers/lib/utils';
 
 const ACCOUNTS_CHANGED = 'accountsChanged';
 const CHAIN_CHANGED = 'chainChanged';
 const DISCONNECT = 'disconnect';
-const CONNECT = 'connect';
-const UPDATE_SESSION = 'session_update';
+
 
 @Injectable({ providedIn: 'root' })
 export class WalletService {
   private provider: Web3Provider | undefined = undefined;
-  private connector: WalletConnect | undefined = undefined;
-  private walletType: WalletType = WalletType.none;
+
 
   constructor(
     private readonly httpClient: HttpClient,
     private store: Store,
     private readonly notificationDroneService: NotificationDroneService,
     @Inject(APP_CONFIG) private readonly appConfig: AppConfig
-  ) {
-    this.store
-      .pipe(select(WalletSelectors.getWalletType))
-      .subscribe((walletType: WalletType) => (this.walletType = walletType));
-  }
+  ) {}
 
   private loggingInDevelopMode(where: string, message: any): void {
     !this.appConfig.production && console.log(where, message);
@@ -114,8 +101,6 @@ export class WalletService {
   };
 
   handleDisconnectWalletConnect = (code: number, reason: string): void => {
-    console.log('disconnect', code, reason);
-
     this.store.dispatch(WalletActions.disconnectWallet());
   };
 
@@ -179,7 +164,6 @@ export class WalletService {
               params: [{ chainId: this.appConfig.chainIdHexBinance }],
             });
           } catch (error: any) {
-            console.log('error', error);
             if (error.code === 4902) {
               try {
                 await this.provider.provider.request?.({
@@ -215,28 +199,25 @@ export class WalletService {
         let provider = new WalletConnectProvider({
           qrcode: true,
           bridge: 'https://polygon.bridge.walletconnect.org',
-          chainId: 56,
+          chainId: 97,
           rpc: {
             56: 'https://bsc-dataseed.binance.org/',
             97: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
           },
         });
+        this.provider = new providers.Web3Provider(provider, 'any');
 
         this.createProviderHooks(provider);
-        await provider.enable().then(() => console.log('test'));
+        await (this.provider.provider as any).enable().then(() => console.log('test'));
       }
     }
   }
 
   public disconnectWallet(): void {
-    if (this.walletType === WalletType.metamask) {
       this.provider?.removeAllListeners();
       this.removeMetamaskProviderHooks(this.provider);
       this.provider = undefined;
       this.store.dispatch(WalletActions.disconnectWallet());
-    } else if (this.walletType === WalletType.walletConnect) {
-      //TODO: Disconnect wallet connect
-    }
   }
 
   public postSignWalletBeforeBuy(
@@ -255,10 +236,13 @@ export class WalletService {
     if (this.provider) {
       try {
         const usdcContract = UsdcTokenContractFactory.connect(
-          this.provider?.getSigner()
+          this.provider?.getSigner(),
+          this.appConfig.usdcContractAddress,
+          this.appConfig.adriaContractAddress
         );
         const adriaVesting = AdriaVestingContractFactory.connect(
-          this.provider.getSigner()
+          this.provider.getSigner(),
+          this.appConfig.adriaContractAddress
         );
         const sig = ethers.utils.splitSignature(
           signedWalletWithAmount.signature
@@ -297,5 +281,19 @@ export class WalletService {
         console.log(err);
       }
     }
+  }
+
+  public async getNumberOfUsdcPerStageByUser(account: string) {
+    if (this.provider) {
+      const adriaVesting = AdriaVestingContractFactory.connect(
+        this.provider.getSigner(),
+        this.appConfig.adriaVestingContractAddress
+      );
+
+      const result = await adriaVesting.investors(account, this.appConfig.stage);
+      console.log(result);
+      return result;
+    }
+    return '0.0';
   }
 }

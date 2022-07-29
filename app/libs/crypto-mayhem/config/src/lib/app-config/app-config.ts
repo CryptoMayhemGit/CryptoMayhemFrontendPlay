@@ -9,4 +9,9 @@ export interface AppConfig {
   chainIdNumberBinance: number;
   chainIdHexBinance: string;
   networkId: string;
+  stage: number;
+  maxNumberOfUsdcPerStage: number;
+  usdcContractAddress: string;
+  adriaContractAddress: string;
+  adriaVestingContractAddress: string;
 }

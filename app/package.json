@@ -12,8 +12,8 @@
     "e2e": "npx nx e2e crypto-mayhem-frontend-e2e",
     "format:fix": "pretty-quick --staged",
     "precommit": "run-s format:fix lint",
-    "build:production": "npx nx build",
-    "build:develop": "npx nx build",
+    "build:production": "npx nx build --configuration prod",
+    "build:develop": "npx nx build --configuration dev",
     "build:stage": "npx nx build --configuration stage",
     "watch": "npx nx build --watch --configuration development",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main"
