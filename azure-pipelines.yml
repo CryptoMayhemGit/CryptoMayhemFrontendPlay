@@ -12,7 +12,7 @@ pool:
 variables:
 - group: Frontend
 - name: profile
-  value: $[replace(variables['Build.SourceBranchName'], 'develop', 'development')]
+  value: $[replace(variables['Build.SourceBranchName'], 'main-test', 'production')]
 
 steps:
 - task: NodeTool@0
