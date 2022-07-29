@@ -1,4 +1,4 @@
-import { ErrorHandler, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
@@ -7,7 +7,6 @@ import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import {
-  ModalBaseModule,
   ModalDroneModule,
   NavigationHeaderModule,
   NotificationModule,
@@ -17,15 +16,12 @@ import {
 import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
 import {
   APP_CONFIG,
-  getAppConfigProvider,
 } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import { ShellModule } from '@crypto-mayhem-frontend/crypto-mayhem/shell';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { CryptoMayhemDataAccessWalletModule } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
-import { env } from 'process';
 
 @NgModule({
   declarations: [AppComponent],
