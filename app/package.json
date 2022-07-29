@@ -13,7 +13,7 @@
     "format:fix": "pretty-quick --staged",
     "precommit": "run-s format:fix lint",
     "build:production": "npx nx build --configuration prod",
-    "build:develop": "npx nx build --configuration dev",
+    "build:development": "npx nx build --configuration=development",
     "build:stage": "npx nx build --configuration stage",
     "watch": "npx nx build --watch --configuration development",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main"
