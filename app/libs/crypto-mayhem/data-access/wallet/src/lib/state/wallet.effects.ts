@@ -30,33 +30,29 @@ export class WalletEffects {
                 }),
             )),
             catchError((error) => {
-                switch (error.code) {
-                    case ResponseErrorCodes.TOKEN_ZERO_AMOUNT:
-                        this.notificationDroneService.error('')
-                        break;
+                switch (error.error.code) {
                     case ResponseErrorCodes.TOKENS_GREATER_THAN_MAX:
-                        this.notificationDroneService.error('')
+                        this.notificationDroneService.error('POLISH')
                         break;
                     case ResponseErrorCodes.WALLET_WRONG_STRUCTURE:
-                        this.notificationDroneService.error('')
+                        this.notificationDroneService.error('POLISH')
                         break;
                     case ResponseErrorCodes.ALL_TOKENS_PURCHASED:
-                        this.notificationDroneService.error('')
+                        this.notificationDroneService.error('POLISH')
                         break;
                     case ResponseErrorCodes.NOT_ENOUGH_TOKENS_LEFT:
-                        this.notificationDroneService.error('')
+                        this.notificationDroneService.error('POLISH')
                         break;
                     case ResponseErrorCodes.CANT_COMMUNICATE_WITH_SMART_CONTRACT:
-                        this.notificationDroneService.error('')
+                        this.notificationDroneService.error('POLISH')
                         break;
                     case ResponseErrorCodes.WALLET_NOT_AUTHORIZED:
-                        this.notificationDroneService.error('')
+                        this.notificationDroneService.error('POLISH')
                         break;
                     default:
                         break;
                 }
-                this.store.dispatch(WalletActions.connectWalletError());
-                return of()
+                return of();
             })
     ));
 
