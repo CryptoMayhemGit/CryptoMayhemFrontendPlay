@@ -127,6 +127,14 @@
         padding: 1.2rem;
         transition: all 0.3s ease-out;
 
+        &.ng-invalid.ng-touched {
+          border-color: #ff4246;
+
+          &:focus {
+            border-color: #ff4246;
+          }
+        }
+
         &:focus,
         &:hover {
           border: 1px solid #f2f2f2;
@@ -262,6 +270,17 @@
         text-decoration: underline;
       }
     }
+  }
+}
+
+.input-error {
+  color: #ff4246 !important;
+  font-size: 1.2rem;
+  margin-bottom: 1.6rem;
+  margin-top: 0.8rem;
+
+  fa-icon {
+    margin-right: 1rem;
   }
 }
 

@@ -1,7 +1,21 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AppConfig, APP_CONFIG } from '@crypto-mayhem-frontend/crypto-mayhem/config';
-import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
+import {
+  AppConfig,
+  APP_CONFIG,
+} from '@crypto-mayhem-frontend/crypto-mayhem/config';
+import {
+  faCaretRight,
+  faCircleExclamation,
+} from '@fortawesome/free-solid-svg-icons';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
 import { map, Observable, of } from 'rxjs';
 
@@ -11,11 +25,14 @@ import { map, Observable, of } from 'rxjs';
   styleUrls: ['./pre-sale.component.scss'],
 })
 export class PreSaleComponent implements OnInit {
-  formGroup: FormGroup;
+  formGroup: FormGroup = new FormGroup({
+    amount: new FormControl(''),
+  });
   walletConnected$: Observable<boolean> = of(false);
   usdcPerStage$: Observable<string> = of('0.0');
-  presaleStartTime = new Date('JUL 30, 2022, 00:16').getTime();
+  presaleStartTime = new Date('AUG 06, 2022, 16:00').getTime();
   caretRight = faCaretRight;
+  circleExclamation = faCircleExclamation;
   presale = true;
   details = [
     'PRESALE.INFO.DETAILS.1',
@@ -33,7 +50,6 @@ export class PreSaleComponent implements OnInit {
     public readonly walletFacade: WalletFacade,
     @Inject(APP_CONFIG) private readonly appConfig: AppConfig
   ) {
-    this.formGroup = this.createFormGroup();
     this.walletConnected$ = this.walletFacade.connected$;
     this.maxUsdcToBuy = this.appConfig.maxNumberOfUsdcPerStage;
     this.usdcPerStage$ = this.walletFacade.usdcPerStage$;
@@ -47,7 +63,11 @@ export class PreSaleComponent implements OnInit {
     return this.formBuilder.group({
       amount: [
         '',
-        [Validators.required, Validators.min(1), Validators.max(1000)],
+        [
+          Validators.required,
+          Validators.min(1),
+          Validators.max(this.maxUsdcToBuy),
+        ],
       ],
     });
   }
@@ -66,10 +86,15 @@ export class PreSaleComponent implements OnInit {
   }
 
   calcMaxNumberOfAdria() {
-    this.usdcPerStage$.pipe(
-      map((numberOfUsdc) => {
-        return this.appConfig.maxNumberOfUsdcPerStage - Number(numberOfUsdc);
-      })
-    ).subscribe((result) => this.maxUsdcToBuy = result);
+    this.usdcPerStage$
+      .pipe(
+        map((numberOfUsdc) => {
+          return this.appConfig.maxNumberOfUsdcPerStage - Number(numberOfUsdc);
+        })
+      )
+      .subscribe((result) => {
+        this.maxUsdcToBuy = result;
+        this.formGroup = this.createFormGroup();
+      });
   }
 }
