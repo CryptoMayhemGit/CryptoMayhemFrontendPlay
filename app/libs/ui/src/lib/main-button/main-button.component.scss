@@ -2,10 +2,15 @@
   display: block;
 }
 
+fa-icon {
+  margin-right: 0.5rem;
+}
+
 #wrapper {
   &.disabled {
     cursor: not-allowed;
     opacity: 0.5;
+    pointer-events: none;
   }
 
   &.primary {
