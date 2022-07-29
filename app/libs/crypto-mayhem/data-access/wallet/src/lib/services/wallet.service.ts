@@ -154,6 +154,20 @@ export class WalletService {
           this.store.dispatch(WalletActions.connectWallet());
           await this.provider
             .send('eth_requestAccounts', [])
+            .then((accounts: string[]) => {
+              this.store.dispatch(
+                WalletActions.accountsChanged({
+                  account: accounts[0],
+                  chainId: undefined,
+                })
+              );
+
+              this.store.dispatch(
+                WalletActions.connectWalletSuccess({
+                  walletType: WalletType.metamask,
+                })
+              );
+            })
             .catch((error: any) => {
               this.loggingInDevelopMode('eth_requestAccounts', error);
               this.store.dispatch(WalletActions.connectWalletError());
