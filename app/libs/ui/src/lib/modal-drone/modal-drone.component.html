@@ -1,18 +1,4 @@
-<ng-template #none>
-  Testowy content
-</ng-template>
-<ng-template #no_connection>
-</ng-template>
-<ng-template #no_wallet>
-  <p>Nie posiadasz jeszcze portfela dla kryptowalut. Chcesz wiedzieć jak go założyć?</p>
-  <a href="#">Obejrzyj video =></a>
-</ng-template>
-<ng-template #bad_network>
-  <p>Powinieneś połaczyć się z siecią Binance smart Chain (BSC) w Twoim portfelu.</p>
-  <a href="#">Obejrzyj video =></a>
-</ng-template>
-
-<ui-modal-base *ngIf="show$ | async">
+<ui-modal-base *ngIf="show$ | async" (close)="close();">
   <picture class="drone" *ngIf="error$ | async">
     <source type="image/webp" srcset="./assets/images/drone_error.webp">
     <source type="image/png" srcset="./assets/images/drone_error.png">
@@ -26,21 +12,15 @@
   </picture>
 
   <div class="modal">
-    <div class="modal-header" *ngIf="title">
-      <h1 [ngClass]="type">{{title}}</h1>
+    <div class="modal-header" *ngIf="title$ | async">
+      <h1 [ngClass]="{'error': error$ | async, 'success': !(error$ | async)}">{{title$ | async | transloco}}</h1>
     </div>
-    <div class="modal-content">
-      <p [innerHtml]="content"></p>
-      <ng-container [ngSwitch]="eventType$ | async">
-        <ng-container *ngSwitchCase="notificationDroneEventTypes.NONE" [ngTemplateOutlet]="none"></ng-container>
-        <ng-container *ngSwitchCase="notificationDroneEventTypes.NO_CONNECTION" [ngTemplateOutlet]="no_connection"></ng-container>
-        <ng-container *ngSwitchCase="notificationDroneEventTypes.NO_WALLET" [ngTemplateOutlet]="no_wallet"></ng-container>
-        <ng-container *ngSwitchCase="notificationDroneEventTypes.BAD_NETWORK" [ngTemplateOutlet]="bad_network"></ng-container>
-      </ng-container>
+    <div class="modal-content" *ngIf="message$ | async">
+      <p [innerHtml]="message$ | async | transloco"></p>
     </div>
-    <div class="modal-actions" *ngIf="primaryButtonText || secondaryButtonText">
-      <ui-main-button *ngIf="secondaryButtonText" (click)="onButtonClick('secondary')" type="secondary">{{secondaryButtonText}}</ui-main-button>
-      <ui-main-button *ngIf="primaryButtonText" (click)="onButtonClick('primary')" type="primary">{{primaryButtonText}}</ui-main-button>
+    <div class="modal-actions" *ngIf="btnText$ | async">
+      <ui-main-button (click)="close()" type="secondary">{{btnText$ | async | transloco}}</ui-main-button>
+      <!--<ui-main-button *ngIf="primaryButtonText" (click)="onButtonClick('primary')" type="primary">{{primaryButtonText}}</ui-main-button>-->
     </div>
   </div>
 

@@ -144,5 +144,21 @@
             "NO_ACCOUNT": "Nie posiadasz jeszcze swojego portfela dla kryptowalut i nie wiesz jak go założyć?",
             "WATCH": "Obejrzyj wideo"
         }
+    },
+    "NOTIFICATIONS": {
+        "TRANSACTION_SUCCESS": "Transakcja powiodła się",
+        "TRANSACTION_ACCEPTED": "Transakcja zaakceptowana",
+        "TRANSACTION_ERROR": "Transakcja nie powiodła się",
+        "WALLET_NOT_CONNECTED": "Połączenie z portfelem nie powiodło się",
+        "NO_WALLET": "Nie wykryto portfela",
+        "BAD_NETWORK": "Połączyłeś się ze złą siecią",
+        "TRANSACTION_CANCELLED": "Transakcja anulowana",
+        "CANNOT BUY": "Nie możesz kupić tokenu",
+        "THANK_YOU": "Dziękujemy, że wspierasz projekt Crypto Mayhem.",
+        "NO_WALLET_MESSAGE": "Nie posiadasz jeszcze portfela dla kryptowalut.",
+        "BAD_NETWORK_MESSAGE": "Powinieneś połączyć się z siecią <strong>Binance Smart Chain (BSC)</strong> w twoim portfelu.",
+        "CANNOT_BUY_MESSAGE": "Token w przedsprzedaży mogą kupić tylko osoby, które zapisały się wcześniej na whitelist.",
+        "CLOSE": "Zamknij",
+        "TRY_AGAIN": "Ponów"
     }
 }

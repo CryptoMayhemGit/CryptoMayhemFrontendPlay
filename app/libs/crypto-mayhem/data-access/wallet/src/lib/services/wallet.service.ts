@@ -106,7 +106,9 @@ export class WalletService {
 
     chainIdHex !== this.appConfig.chainIdHexBinance
       ? this.notificationDroneService.error(
-          'NotificationDroneEventTypes.BAD_NETWORK'
+          'NOTIFICATIONS.BAD_NETWORK',
+          'NOTIFICATIONS.BAD_NETWORK_MESSAGE',
+          'NOTIFICATIONS.CLOSE'
         )
       : this.notificationDroneService.hide();
   };
@@ -152,6 +154,20 @@ export class WalletService {
           this.store.dispatch(WalletActions.connectWallet());
           await this.provider
             .send('eth_requestAccounts', [])
+            .then((accounts: string[]) => {
+              this.store.dispatch(
+                WalletActions.accountsChanged({
+                  account: accounts[0],
+                  chainId: undefined,
+                })
+              );
+
+              this.store.dispatch(
+                WalletActions.connectWalletSuccess({
+                  walletType: WalletType.metamask,
+                })
+              );
+            })
             .catch((error: any) => {
               this.loggingInDevelopMode('eth_requestAccounts', error);
               this.store.dispatch(WalletActions.connectWalletError());
@@ -188,7 +204,9 @@ export class WalletService {
           this.setChainId();
         } else {
           this.notificationDroneService.error(
-            'NotificationDroneEventTypes.NO_WALLET'
+            'NOTIFICATIONS.NO_WALLET',
+            'NOTIFICATIONS.NO_WALLET_MESSAGE',
+            'NOTIFICATIONS.CLOSE'
           );
         }
         break;
@@ -250,14 +268,29 @@ export class WalletService {
           .approve(signedWalletWithAmount.usdcTokenAmount)
           .then((result) => {
             if (result)
-              adriaVesting.buy(
-                signedWalletWithAmount.usdcTokenAmount,
-                signedWalletWithAmount.maxUsdcTokenAmount,
-                signedWalletWithAmount.stage,
-                sig.v,
-                sig.r,
-                sig.s
-              );
+              adriaVesting
+                .buy(
+                  signedWalletWithAmount.usdcTokenAmount,
+                  signedWalletWithAmount.maxUsdcTokenAmount,
+                  signedWalletWithAmount.stage,
+                  sig.v,
+                  sig.r,
+                  sig.s
+                )
+                .then(() => {
+                  this.notificationDroneService.success(
+                    'NOTIFICATIONS.TRANSACTION_SUCCESS',
+                    'NOTIFICATIONS.THANK_YOU',
+                    'NOTIFICATIONS.CLOSE'
+                  );
+                })
+                .catch(() => {
+                  this.notificationDroneService.error(
+                    'NOTIFICATIONS.TRANSACTION_ERROR',
+                    '',
+                    'NOTIFICATIONS.TRY_AGAIN'
+                  );
+                });
           })
           .catch((error) => console.log(error));
       } catch (err: any) {
