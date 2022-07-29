@@ -12,7 +12,7 @@
     "e2e": "npx nx e2e crypto-mayhem-frontend-e2e",
     "format:fix": "pretty-quick --staged",
     "precommit": "run-s format:fix lint",
-    "build:production": "npx nx build --configuration prod",
+    "build:production": "npx nx build --configuration=production",
     "build:development": "npx nx build --configuration=development",
     "build:stage": "npx nx build --configuration stage",
     "watch": "npx nx build --watch --configuration development",
