@@ -90,14 +90,14 @@
         "INFO": {
             "DETAILS": {
                 "HEADER": "Szczegóły oficjalnej przedsprzedaży tokena ADRIA",
-                "1": "Wyprzedaż potrwa 48 godzin.",
-                "2": "Gwarantowana alokacja dla wszystkich adresów umieszczonych na whitelist.",
-                "3": "Możesz zainwestować w token tylko raz w myśl zasady jedna inwestycja dla jednego adresu portfela.",
-                "4": "Cena w przedsprzedaży 0,002 USDC.",
-                "5": "Maksymalny zakup to 10 BNB (500.000 tokenów ADRIA).",
-                "6": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy.",
-                "7": "Niesprzedane tokeny z przedsprzedaży ulegną spaleniu!"
+                "1": "Prywatna sprzedaż trwa przez 6 dni do 06.08.2022 16:00 CET",
+                "2": "Gwarantowana alokacja dla wszystkich adresów umieszczonych na whitelist",
+                "3": "Cena w przedsprzedaży 0,0016 USDC",
+                "4": "Maksymalny zakup to 150 USDC (bep-20)",
+                "5": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy",
+                "6": "Niesprzedane tokeny z przedsprzedaży ulegną spaleniu! (W ostatniej rundzie wyprzedaży ogłosimy ile tokenów zostanie spalonych)"
             },
+            "REMEMBER": "Pamiętaj, że musisz mieć BNB (bep-20) w portfelu, aby pokryć opłaty sieciowe za każdym razem kiedy inwestujesz USDC lub odbierasz swoje tokeny ADRIA.",
             "CLAIM": {
                 "HEADER": "Jak odebrać zakupione tokeny?",
                 "MESSAGE": "Możesz przenosić zakupione tokeny ADRIA do swojego portfela w zakładce Vesting, która wkrótce będzie dostępna."
