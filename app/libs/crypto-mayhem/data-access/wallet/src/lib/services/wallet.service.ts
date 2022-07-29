@@ -238,11 +238,11 @@ export class WalletService {
         const usdcContract = UsdcTokenContractFactory.connect(
           this.provider?.getSigner(),
           this.appConfig.usdcContractAddress,
-          this.appConfig.adriaContractAddress
+          this.appConfig.adriaVestingContractAddress
         );
         const adriaVesting = AdriaVestingContractFactory.connect(
           this.provider.getSigner(),
-          this.appConfig.adriaContractAddress
+          this.appConfig.adriaVestingContractAddress
         );
         const sig = ethers.utils.splitSignature(
           signedWalletWithAmount.signature

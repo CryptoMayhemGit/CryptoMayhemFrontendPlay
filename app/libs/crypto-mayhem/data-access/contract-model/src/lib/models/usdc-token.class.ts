@@ -528,9 +528,9 @@ export class UsdcTokenContract extends BaseContract {
         return ethers.utils.formatEther(result);
     }
 
-    public async approve(_value: BigNumberish, _spender: string = this._adriaVestingContractAddress): Promise<boolean> {
+    public async approve(_value: BigNumberish): Promise<boolean> {
         const valueBigNumber = BigNumber.from(_value);
-        const result: boolean = await this._contract['approve'](_spender, valueBigNumber);
+        const result: boolean = await this._contract['approve'](this._adriaVestingContractAddress, valueBigNumber);
         return result;
     }
 }
