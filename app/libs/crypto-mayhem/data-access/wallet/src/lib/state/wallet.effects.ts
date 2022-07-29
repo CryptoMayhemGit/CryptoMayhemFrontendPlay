@@ -32,7 +32,7 @@ export class WalletEffects {
         )
       ),
       catchError((error) => {
-        switch (error.code) {
+        switch (error.error.code) {
           case ResponseErrorCodes.TOKEN_ZERO_AMOUNT:
             this.notificationDroneService.error(
               'NOTIFICATIONS.ERROR_OCCURRED',

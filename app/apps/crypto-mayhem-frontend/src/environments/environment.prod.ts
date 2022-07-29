@@ -15,6 +15,6 @@ export const environment = {
   stage: 0, //Binance Smart Chain
   maxNumberOfUsdcPerStage: 1000,
   usdcContractAddress: '',
-    adriaContractAddress: '',
-    adriaVestingContractAddress: ''
+  adriaContractAddress: '',
+  adriaVestingContractAddress: ''
 };
