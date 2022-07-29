@@ -298,14 +298,29 @@ export class WalletService {
           .approve(signedWalletWithAmount.usdcTokenAmount)
           .then((result) => {
             if (result)
-              adriaVesting.buy(
-                signedWalletWithAmount.usdcTokenAmount,
-                signedWalletWithAmount.maxUsdcTokenAmount,
-                signedWalletWithAmount.stage,
-                sig.v,
-                sig.r,
-                sig.s
-              );
+              adriaVesting
+                .buy(
+                  signedWalletWithAmount.usdcTokenAmount,
+                  signedWalletWithAmount.maxUsdcTokenAmount,
+                  signedWalletWithAmount.stage,
+                  sig.v,
+                  sig.r,
+                  sig.s
+                )
+                .then(() => {
+                  this.notificationDroneService.success(
+                    'NOTIFICATIONS.TRANSACTION_SUCCESS',
+                    'NOTIFICATIONS.THANK_YOU',
+                    'NOTIFICATIONS.CLOSE'
+                  );
+                })
+                .catch(() => {
+                  this.notificationDroneService.error(
+                    'NOTIFICATIONS.TRANSACTION_ERROR',
+                    '',
+                    'NOTIFICATIONS.TRY_AGAIN'
+                  );
+                });
           })
           .catch((error) => console.log(error));
       } catch (err: any) {
