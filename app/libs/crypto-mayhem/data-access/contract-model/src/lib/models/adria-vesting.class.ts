@@ -696,13 +696,12 @@ const _abi = [
 const _address = '0x6a72d0119924675A67F0D808C0702db0c7E88480';
 
 export class AdriaVestingContractFactory {
-  static readonly abi = _abi;
-  static readonly address = _address;
 
   static connect(
-    signerOrProvider: Signer | Provider | undefined
+    signerOrProvider: Signer | Provider | undefined,
+    address: string
   ): AdriaVestingContract {
-    return new AdriaVestingContract(_address, _abi, signerOrProvider);
+    return new AdriaVestingContract(address, _abi, signerOrProvider);
   }
 }
 
@@ -734,6 +733,7 @@ export class AdriaVestingContract extends BaseContract {
     _r: any,
     _s: any
   ) {
+    const estimateGas = await this.provider.getGasPrice();
     const usdcAmountBigNumber = BigNumber.from(usdcAmount);
     const signedAmountBigNumber = BigNumber.from(signedAmount);
     const stageBigNumber = BigNumber.from(stage);
@@ -747,6 +747,12 @@ export class AdriaVestingContract extends BaseContract {
       { gasLimit: 1000000, nonce: dateAsSeconds(new Date()) }
     );
     return result.wait();
+  }
+
+  public async investors(address: string, stageNumber: BigNumberish) {
+    const stageNumberBigNumber = BigNumber.from(stageNumber);
+    const result = await this._contract['investors'](address, stageNumberBigNumber);
+    return ethers.utils.formatEther(result);
   }
 }
 

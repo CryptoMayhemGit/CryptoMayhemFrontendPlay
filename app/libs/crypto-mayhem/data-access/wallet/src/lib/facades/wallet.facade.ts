@@ -24,6 +24,7 @@ export class WalletFacade {
   readonly account$ = this.store.select(WalletSelectors.getAccount);
   readonly chainId$ = this.store.select(WalletSelectors.getChainId);
   readonly connected$ = this.store.select(WalletSelectors.getWalletConnected);
+  readonly usdcPerStage$ = this.store.select(WalletSelectors.getUsdcPerStage)
 
   constructor(
     private readonly store: Store,

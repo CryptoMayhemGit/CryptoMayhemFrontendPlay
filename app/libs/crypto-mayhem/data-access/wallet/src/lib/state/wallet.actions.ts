@@ -63,3 +63,8 @@ export const postSignWalletBeforeBuySuccess = createAction(
     '[Wallet] Pre-sale buy success',
     props<{sign: any}>()
 );
+
+export const usdcPerStageByUser = createAction(
+    '[Wallet] Get number of usdc per stage on logged user',
+    props<{numberOfUsdc: string}>()
+);

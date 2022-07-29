@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppConfig, APP_CONFIG } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'ui-pre-sale',
@@ -12,6 +13,7 @@ import { Observable, of } from 'rxjs';
 export class PreSaleComponent implements OnInit {
   formGroup: FormGroup;
   walletConnected$: Observable<boolean> = of(false);
+  usdcPerStage$: Observable<string> = of('0.0');
   presaleStartTime = new Date('JUL 30, 2022, 00:16').getTime();
   caretRight = faCaretRight;
   presale = true;
@@ -24,16 +26,21 @@ export class PreSaleComponent implements OnInit {
     'PRESALE.INFO.DETAILS.6',
     'PRESALE.INFO.DETAILS.7',
   ];
+  maxUsdcToBuy: number;
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    public readonly walletFacade: WalletFacade
+    public readonly walletFacade: WalletFacade,
+    @Inject(APP_CONFIG) private readonly appConfig: AppConfig
   ) {
     this.formGroup = this.createFormGroup();
+    this.walletConnected$ = this.walletFacade.connected$;
+    this.maxUsdcToBuy = this.appConfig.maxNumberOfUsdcPerStage;
+    this.usdcPerStage$ = this.walletFacade.usdcPerStage$;
   }
 
   ngOnInit(): void {
-    this.walletConnected$ = this.walletFacade.connected$;
+    this.calcMaxNumberOfAdria();
   }
 
   createFormGroup(): FormGroup {
@@ -56,5 +63,13 @@ export class PreSaleComponent implements OnInit {
 
   connect(): void {
     this.walletFacade.showWallets();
+  }
+
+  calcMaxNumberOfAdria() {
+    this.usdcPerStage$.pipe(
+      map((numberOfUsdc) => {
+        return this.appConfig.maxNumberOfUsdcPerStage - Number(numberOfUsdc);
+      })
+    ).subscribe((result) => this.maxUsdcToBuy = result);
   }
 }

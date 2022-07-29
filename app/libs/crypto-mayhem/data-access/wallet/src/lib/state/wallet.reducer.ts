@@ -12,6 +12,7 @@ export interface WalletState {
     spinner: boolean,
     showWallets: boolean,
     walletType: WalletType
+    usdcPerStage: string
 }
 
 export const initialState: WalletState = {
@@ -20,7 +21,8 @@ export const initialState: WalletState = {
     connected: false,
     spinner: false,
     showWallets: false,
-    walletType: WalletType.none
+    walletType: WalletType.none,
+    usdcPerStage: '0.0'
 }
 
 export const walletReducer = createReducer(
@@ -33,6 +35,7 @@ export const walletReducer = createReducer(
     on(WalletActions.chainChanged, (state, {chainId}) => ({...state, chainId})),
     on(WalletActions.setWalletAddress,
         (state, {walletAddress}) => ({...state, walletAddress: walletAddress})),
+    on(WalletActions.usdcPerStageByUser, (state, {numberOfUsdc}) => ({...state, usdcPerStage: numberOfUsdc})),
     on(WalletActions.showSpinner, state => ({...state, spinner: true})),
     on(WalletActions.hideSpinner, state => ({...state, spinner: false})),
     on(WalletActions.showWallets, state => ({...state, showWallets: true})),

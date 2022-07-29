@@ -4,9 +4,6 @@ import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/faca
 @Component({
   selector: 'crypto-mayhem-app',
   template: `
-    <div style="z-index:20;height:100%; width:100%;position:fixed;background:black;" *ngIf="walletFacade.spinner$ | async">
-      <img style="display: block; margin-left:auto; margin-right:auto;margin-top:20em;" src="https://c.tenor.com/n8DB4bmpduIAAAAM/yeah-bwoi-grin.gif" alt="" srcset="">
-    </div>
     <ui-modal-drone></ui-modal-drone>
     <ui-nav></ui-nav>
     <router-outlet></router-outlet>
