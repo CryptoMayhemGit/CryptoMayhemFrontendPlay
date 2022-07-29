@@ -8,17 +8,19 @@
   font-weight: bold;
   src: url("/assets/fonts/NulshockRg-Bold.eot");
   src: url("/assets/fonts/NulshockRg-Bold.eot?#iefix")
-    format("embedded-opentype"),
+      format("embedded-opentype"),
     url("/assets/fonts/NulshockRg-Bold.woff2") format("woff2"),
     url("/assets/fonts/NulshockRg-Bold.woff") format("woff"),
     url("/assets/fonts/NulshockRg-Bold.ttf") format("truetype");
 }
 
 html {
-  background: #000 url("/assets/images/bg.jpg") no-repeat center center;
+  background: #000 url("/assets/images/kosmos.jpg") no-repeat center center;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   font-size: 10px;
-  height: 100%;
+  background-size: cover;
+  height: auto;
+  min-height: 100%;
   margin: 0;
   padding: 0;
   width: 100%;
