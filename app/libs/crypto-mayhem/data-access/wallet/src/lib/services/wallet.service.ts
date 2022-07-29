@@ -66,11 +66,16 @@ export class WalletService {
   //Metamask handlers
   handleAccountsChangedMetamask = (accounts: string[]): void => {
     if (!Array.isArray(accounts)) {
-      console.log(accounts);
       this.store.dispatch(
         WalletActions.accountsChanged({
           account: accounts[0],
           chainId: undefined,
+        })
+      );
+
+      this.store.dispatch(
+        WalletActions.connectWalletSuccess({
+          walletType: WalletType.metamask,
         })
       );
     }
@@ -83,6 +88,12 @@ export class WalletService {
         WalletActions.accountsChanged({
           account: accounts[0],
           chainId: undefined,
+        })
+      );
+
+      this.store.dispatch(
+        WalletActions.connectWalletSuccess({
+          walletType: WalletType.metamask,
         })
       );
     }
@@ -100,47 +111,9 @@ export class WalletService {
       : this.notificationDroneService.hide();
   };
 
-  //WalletConnect handlers
-  handleConnectWalletConnect = (payload: any): void => {
-    //const { accounts, chainId } = payload?.params[0];
-    console.log('connect', payload);
-
-    //TODO: move config to env
-    /*let sessionConfig = {
-      chainId: 56,
-      networkId: 42,
-      rpcUrl: 'https://bsc-dataseed.binance.org/',
-      accounts: accounts,
-    };*/
-
-    /*if (chainId !== 56) {
-      //this.connector?.updateSession(sessionConfig);
-    } else {
-      this.store.dispatch(
-        WalletActions.accountsChanged({
-          account: accounts[0],
-          chainId: chainId,
-        })
-      );
-    }*/
-  };
-
-  handleUpdateSessionWalletConnect = (error: any, payload: any) => {
-    if (error) {
-      throw error;
-    }
-
-    const { accounts, chainId } = payload?.params[0];
-    console.log('update', payload);
-    this.store.dispatch(
-      WalletActions.accountsChanged({ account: accounts[0], chainId: chainId })
-    );
-  };
-
   handleDisconnectWalletConnect = (code: number, reason: string): void => {
     console.log('disconnect', code, reason);
 
-    this.connector = undefined;
     this.store.dispatch(WalletActions.disconnectWallet());
   };
 
@@ -179,19 +152,6 @@ export class WalletService {
           this.store.dispatch(WalletActions.connectWallet());
           await this.provider
             .send('eth_requestAccounts', [])
-            .then((account) => {
-              this.store.dispatch(
-                WalletActions.connectWalletSuccess({
-                  walletType: WalletType.metamask,
-                })
-              );
-              this.store.dispatch(
-                WalletActions.accountsChanged({
-                  account: account[0],
-                  chainId: undefined,
-                })
-              );
-            })
             .catch((error: any) => {
               this.loggingInDevelopMode('eth_requestAccounts', error);
               this.store.dispatch(WalletActions.connectWalletError());
@@ -244,19 +204,8 @@ export class WalletService {
           },
         });
 
-        //provider.connector.killSession();
-
         this.createProviderHooks(provider);
         await provider.enable().then(() => console.log('test'));
-        const web3Provider = new providers.Web3Provider(provider);
-
-        try {
-          //WalletConnectQRCodeModal.open(provider.connector.uri, (response: any) => { console.log(response)});
-          //await provider.enable().then((response) => console.log(response)).catch((err) => console.log(err));
-          //await provider.connector.createSession({chainId: 56});
-        } catch (error) {
-          console.log(error);
-        }
       }
     }
   }
