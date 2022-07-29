@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
 import { error, hide, success } from '../state/notification-drone.actions';
 
 import * as NotificationDroneSelectors from '../state/notification-drone.selectors';
