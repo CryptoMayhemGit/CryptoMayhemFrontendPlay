@@ -18,10 +18,10 @@
         <!-- <p>{{ 'PRESALE.SOLD.HEADER' | transloco }}</p> -->
         <!-- === -->
     <!-- </div> -->
-    <div id="vesting-sold">
+    <!--<div id="vesting-sold">
         <p>{{ 'PRESALE.PROGRESS' | transloco}}</p>
         <ui-progress-bar [currentValue]="500000" [maxValue]="1000000"></ui-progress-bar>
-    </div>
+    </div>-->
     <!-- HIDE WHEN SUCCESS -->
     <div id="vesting-info">
         <p>{{ 'PRESALE.INVEST' | transloco }}</p>
@@ -55,11 +55,6 @@
                 <fa-icon [icon]="circleExclamation"></fa-icon>
                 <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MAX' | transloco: {maxAmount: maxUsdcToBuy + ' USDC'} }}</span>
             </p>
-
-            <!--<p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors['wrongAmount']">
-                <fa-icon [icon]="circleExclamation"></fa-icon>
-                <span>{{ 'VALIDATIONS.VESTING_TOKENS_LEFT' | transloco: {tokensLeft: this.maxUsdcToBuy / 0.002} }}</span>
-            </p>-->
             <p>{{ 'PRESALE.GET' | transloco }}: {{formGroup.controls['amount'].value / 0.002}} ADRIA</p>
             <ui-main-button (click)="onBuy()" [disabled]="!formGroup.valid || !!(walletFacade.showWallets$ | async)">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
         </form>
@@ -107,6 +102,12 @@
     <p>{{ 'PRESALE.INFO.CLAIM.MESSAGE' | transloco }}</p>
     <hr>
     <h2>{{ 'PRESALE.INFO.ADRIA_TOKEN.HEADER' | transloco }}</h2>
+    <p>{{ 'PRESALE.INFO.ADRIA_TOKEN.WHITELIST' | transloco }}
+        <br>
+        <a href="https://docs.google.com/spreadsheets/d/1pONo6L2B9a78W9SZ58ISZyxKJNOlaemG/edit#gid=554524121">{{ 'PRESALE.INFO.ADRIA_TOKEN.HERE' | transloco }}
+        <fa-icon [icon]="caretRight"></fa-icon></a>
+    </p>
+
     <p>{{ 'PRESALE.INFO.ADRIA_TOKEN.USABILITY' | transloco }}
         <br>
         <a href="https://medium.com/@crypto_mayhem/adria-token-what-is-it-all-about-c721099ba99e">{{ 'PRESALE.INFO.ADRIA_TOKEN.HERE' | transloco }}

@@ -30,7 +30,7 @@ export class PreSaleComponent implements OnInit {
   });
   walletConnected$: Observable<boolean> = of(false);
   usdcPerStage$: Observable<string> = of('0.0');
-  presaleStartTime = new Date('JUL 30, 2022, 00:16').getTime();
+  presaleStartTime = new Date('AUG 06, 2022, 16:00').getTime();
   caretRight = faCaretRight;
   circleExclamation = faCircleExclamation;
   presale = true;
@@ -67,18 +67,9 @@ export class PreSaleComponent implements OnInit {
           Validators.required,
           Validators.min(1),
           Validators.max(this.maxUsdcToBuy),
-          //this.buyTokenAmountValidator(this.maxUsdcToBuy),
         ],
       ],
     });
-  }
-
-  buyTokenAmountValidator(usdcLeft: number): ValidatorFn {
-    console.log(usdcLeft);
-    return (control: AbstractControl): ValidationErrors | null => {
-      console.log(control.value, usdcLeft);
-      return control.value <= usdcLeft ? null : { wrongAmount: control.value };
-    };
   }
 
   onBuy(): void {

@@ -90,10 +90,10 @@
         "INFO": {
             "DETAILS": {
                 "HEADER": "Official presale of ADRIA token details",
-                "1": "Sale will last for 48 hours.",
+                "1": "Sale will last for 72 hours",
                 "2": "Guaranteed allocation for all whitelisted address.",
                 "3": "You can only invest in a token once according to the principle of one investment for one wallet address.",
-                "4": "Price in sale 0,002 $.",
+                "4": "Price in sale 0,002 USDC.",
                 "5": "The maximum purchase is 10 BNB (500,000 ADRIA tokens).",
                 "6": "10% at TGE, rest unblocked every block for 9 months.",
                 "7": "Unsold tokens from presale will be burned!"
@@ -106,6 +106,7 @@
                 "HEADER": "Adria token",
                 "ADDRESS_MESSAGE": "Offical smart contract address for ADRIA token:",
                 "USABILITY": "You can read the full utility of the ADRIA token",
+                "WHITELIST": "Link to the whitelist",
                 "HERE": "here"
             }
         },
@@ -160,6 +161,26 @@
         "BAD_NETWORK_MESSAGE": "You should connect to the <strong>Binance Smart Chain (BSC)</strong> network in your wallet.",
         "CANNOT_BUY_MESSAGE": "Only people who signed up for whitelist before can buy the token in presale.",
         "CLOSE": "Close",
-        "TRY_AGAIN": "Try again"
-    }
+        "TRY_AGAIN": "Try again",
+        "ERROR_OCCURED": "There was an error",
+        "TOKEN_ZERO_AMOUNT": "Błędna kwota inwestycji",
+        "TOKENS_GREATER_THAN_MAX": "Kwota inwestycji jest większa niż maksymalna",
+        "WALLET_WRONG_STRUCTURE": "Błędna struktura portfela",
+        "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
+        "NOT_ENOUGH_TOKENS_LEFT": "Błędna kwoty inwestycji",
+        "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji ze Smart Contractem",
+        "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście"
+    },
+    "VALIDATIONS": {
+        "VESTING_AMOUNT_MAX": "Możesz zainwestować maks. {{ maxAmount }}",
+        "VESTING_AMOUNT_MIN": "Możesz zainwestować min. {{ minAmount }}",
+        "VESTING_TOKENS_LEFT": "W sprzedaży pozostało tylko {{ tokensLeft }} tokenów."
+    },
+    "TOKEN_ZERO_AMOUNT": "Incorrect investment amount",
+    "TOKENS_GREATER_THAN_MAX": "The investment amount is greater than the maximum amount",
+    "WALLET_WRONG_STRUCTURE": "Incorrect wallet structure",
+    "ALL_TOKENS_PURCHASED": "The maximum amount of tokens from this address was purchased",
+    "NOT_ENOUGH_TOKENS_LEFT": "Incorrect investment amount",
+    "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Lack of communication with Smart Contract",
+    "WALLET_NOT_AUTHORIZED": "No wallet on whitelist"
 }

@@ -93,7 +93,7 @@
                 "1": "Wyprzedaż potrwa 48 godzin.",
                 "2": "Gwarantowana alokacja dla wszystkich adresów umieszczonych na whitelist.",
                 "3": "Możesz zainwestować w token tylko raz w myśl zasady jedna inwestycja dla jednego adresu portfela.",
-                "4": "Cena w przedsprzedaży 0,002 $.",
+                "4": "Cena w przedsprzedaży 0,002 USDC.",
                 "5": "Maksymalny zakup to 10 BNB (500.000 tokenów ADRIA).",
                 "6": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy.",
                 "7": "Niesprzedane tokeny z przedsprzedaży ulegną spaleniu!"
@@ -106,6 +106,7 @@
                 "HEADER": "Token Adria",
                 "ADDRESS_MESSAGE": "Oficjalny adres inteligentnej umowy dla tokena ADRIA:",
                 "USABILITY": "Możesz przeczytać pełną użyteczność tokena ADRIA",
+                "WHITELIST": "Odnośnik do whitelist",
                 "HERE": "tutaj"
             }
         },
@@ -159,6 +160,19 @@
         "BAD_NETWORK_MESSAGE": "Powinieneś połączyć się z siecią <strong>Binance Smart Chain (BSC)</strong> w twoim portfelu.",
         "CANNOT_BUY_MESSAGE": "Token w przedsprzedaży mogą kupić tylko osoby, które zapisały się wcześniej na whitelist.",
         "CLOSE": "Zamknij",
-        "TRY_AGAIN": "Ponów"
+        "TRY_AGAIN": "Ponów",
+        "ERROR_OCCURED": "Wystąpił błąd",
+        "TOKEN_ZERO_AMOUNT": "Błędna kwota inwestycji",
+        "TOKENS_GREATER_THAN_MAX": "Kwota inwestycji jest większa niż maksymalna",
+        "WALLET_WRONG_STRUCTURE": "Błędna struktura portfela",
+        "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
+        "NOT_ENOUGH_TOKENS_LEFT": "Błędna kwoty inwestycji",
+        "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji ze Smart Contractem",
+        "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście"
+    },
+    "VALIDATIONS": {
+        "VESTING_AMOUNT_MAX": "Możesz zainwestować maks.",
+        "VESTING_AMOUNT_MIN": "Możesz zainwestować min.",
+        "VESTING_TOKENS_LEFT": "W sprzedaży pozostało tylko {{ tokensLeft }} tokenów."
     }
 }
