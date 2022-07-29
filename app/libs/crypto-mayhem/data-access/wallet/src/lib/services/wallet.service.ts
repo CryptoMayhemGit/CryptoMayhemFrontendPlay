@@ -7,6 +7,8 @@ import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wa
 import WalletConnect from '@walletconnect/client';
 import QRCodeModal from '@walletconnect/qrcode-modal';
 import { select, State, Store } from '@ngrx/store';
+import WalletConnectProvider from '@walletconnect/web3-provider';
+import WalletConnectQRCodeModal from '@walletconnect/qrcode-modal';
 
 import * as WalletSelectors from '../state/wallet.selectors';
 
@@ -63,13 +65,20 @@ export class WalletService {
 
   //Metamask handlers
   handleAccountsChangedMetamask = (accounts: string[]): void => {
-    if (!Array.isArray(accounts))
+    if (!Array.isArray(accounts)) {
       this.store.dispatch(
         WalletActions.accountsChanged({
           account: accounts[0],
           chainId: undefined,
         })
       );
+
+      this.store.dispatch(
+        WalletActions.connectWalletSuccess({
+          walletType: WalletType.metamask,
+        })
+      );
+    }
 
     if (accounts.length === 0) {
       this.disconnectWallet();
@@ -79,6 +88,12 @@ export class WalletService {
         WalletActions.accountsChanged({
           account: accounts[0],
           chainId: undefined,
+        })
+      );
+
+      this.store.dispatch(
+        WalletActions.connectWalletSuccess({
+          walletType: WalletType.metamask,
         })
       );
     }
@@ -98,61 +113,15 @@ export class WalletService {
       : this.notificationDroneService.hide();
   };
 
-  //WalletConnect handlers
-  handleConnectWalletConnect = (error: any, payload: any): void => {
-    if (error) {
-      throw error;
-    }
+  handleDisconnectWalletConnect = (code: number, reason: string): void => {
+    console.log('disconnect', code, reason);
 
-    const { accounts, chainId } = payload.params[0];
-
-    //TODO: move config to env
-    let sessionConfig = {
-      chainId: 56,
-      networkId: 42,
-      rpcUrl: 'https://bsc-dataseed.binance.org/',
-      accounts: accounts,
-    };
-
-    if (chainId !== 56) this.connector?.updateSession(sessionConfig);
-    else {
-      this.store.dispatch(
-        WalletActions.accountsChanged({
-          account: accounts[0],
-          chainId: chainId,
-        })
-      );
-    }
-  };
-
-  handleUpdateSessionWalletConnect = (error: any, payload: any) => {
-    if (error) {
-      throw error;
-    }
-
-    const { accounts, chainId } = payload.params[0];
-    this.store.dispatch(
-      WalletActions.accountsChanged({ account: accounts[0], chainId: chainId })
-    );
-  };
-
-  handleDisconnectWalletConnect = (error: any, payload: any): void => {
-    if (error) {
-      throw error;
-    }
-
-    this.connector = undefined;
     this.store.dispatch(WalletActions.disconnectWallet());
   };
 
-  private createMetamaskProviderHooks(provider: any): void {
-    provider.provider.on(ACCOUNTS_CHANGED, this.handleAccountsChangedMetamask);
-    provider.provider.on(CHAIN_CHANGED, this.handleChainChangedMetamask);
-  }
-
-  private createWalletConnectProviderHooks(provider: any): void {
-    provider.on(CONNECT, this.handleConnectWalletConnect);
-    provider.on(UPDATE_SESSION, this.handleUpdateSessionWalletConnect);
+  private createProviderHooks(provider: any): void {
+    provider.on(ACCOUNTS_CHANGED, this.handleAccountsChangedMetamask);
+    provider.on(CHAIN_CHANGED, this.handleChainChangedMetamask);
     provider.on(DISCONNECT, this.handleDisconnectWalletConnect);
   }
 
@@ -181,23 +150,10 @@ export class WalletService {
       case WalletType.metamask: {
         if (typeof window.ethereum !== 'undefined') {
           this.provider = new providers.Web3Provider(window.ethereum, 'any');
-          this.createMetamaskProviderHooks(this.provider);
+          this.createProviderHooks(this.provider.provider);
           this.store.dispatch(WalletActions.connectWallet());
           await this.provider
             .send('eth_requestAccounts', [])
-            .then((account) => {
-              this.store.dispatch(
-                WalletActions.connectWalletSuccess({
-                  walletType: WalletType.metamask,
-                })
-              );
-              this.store.dispatch(
-                WalletActions.accountsChanged({
-                  account: account[0],
-                  chainId: undefined,
-                })
-              );
-            })
             .catch((error: any) => {
               this.loggingInDevelopMode('eth_requestAccounts', error);
               this.store.dispatch(WalletActions.connectWalletError());
@@ -242,18 +198,18 @@ export class WalletService {
         break;
       }
       case WalletType.walletConnect: {
-        this.connector = new WalletConnect({
-          bridge: 'https://bridge.walletconnect.org',
-          qrcodeModal: QRCodeModal,
+        let provider = new WalletConnectProvider({
+          qrcode: true,
+          bridge: 'https://polygon.bridge.walletconnect.org',
+          chainId: 56,
+          rpc: {
+            56: 'https://bsc-dataseed.binance.org/',
+            97: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+          },
         });
-        if (!this.connector.connected) {
-          await this.connector.createSession({
-            chainId: Number(this.appConfig.chainIdNumberBinance),
-          });
-          this.createWalletConnectProviderHooks(this.connector);
-        } else {
-          //TODO: what when not connected?
-        }
+
+        this.createProviderHooks(provider);
+        await provider.enable().then(() => console.log('test'));
       }
     }
   }
