@@ -27,12 +27,12 @@
         <p>{{ 'PRESALE.INVEST' | transloco }}</p>
         <div class="invest">
             <p>{{ 'PRESALE.AMOUNT.MIN' | transloco }}</p>
-            <p>$1</p>
+            <p>1 USDC</p>
         </div>
         <hr>
         <div class="invest">
             <p>{{ 'PRESALE.AMOUNT.MAX' | transloco }}</p>
-            <p>${{maxUsdcToBuy}}</p>
+            <p>{{maxUsdcToBuy}} USDC</p>
         </div>
     </div>
     <!-- SHOW WHEN CONNECTED HIDE WHEN SUCCESS -->
@@ -46,6 +46,20 @@
             max="1000"
             [placeholder]="'PRESALE.INPUT.WRITE_AMOUNT' | transloco"
             formControlName="amount">
+            <p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors['min']">
+                <fa-icon [icon]="circleExclamation"></fa-icon>
+                <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MIN' | transloco: {minAmount: '1 USDC'} }}</span>
+            </p>
+
+            <p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors['max']">
+                <fa-icon [icon]="circleExclamation"></fa-icon>
+                <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MAX' | transloco: {maxAmount: maxUsdcToBuy + ' USDC'} }}</span>
+            </p>
+
+            <!--<p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors['wrongAmount']">
+                <fa-icon [icon]="circleExclamation"></fa-icon>
+                <span>{{ 'VALIDATIONS.VESTING_TOKENS_LEFT' | transloco: {tokensLeft: this.maxUsdcToBuy / 0.002} }}</span>
+            </p>-->
             <p>{{ 'PRESALE.GET' | transloco }}: {{formGroup.controls['amount'].value / 0.002}} ADRIA</p>
             <ui-main-button (click)="onBuy()" [disabled]="!formGroup.valid || !!(walletFacade.showWallets$ | async)">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
         </form>
@@ -68,7 +82,7 @@
         <p>{{ 'PRESALE.SUCCESS.MESSAGE' | transloco }}</p>
         <div class="invest">
             <p>{{ 'PRESALE.AMOUNT.MIN' | transloco }}</p>
-            <p>$1</p>
+            <p>1 USDC</p>
         </div>
         <hr>
         <div class="invest">
