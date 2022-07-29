@@ -55,7 +55,7 @@
                 <fa-icon [icon]="circleExclamation"></fa-icon>
                 <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MAX' | transloco: {maxAmount: maxUsdcToBuy + ' USDC'} }}</span>
             </p>
-            <p>{{ 'PRESALE.GET' | transloco }}: {{formGroup.controls['amount'].value / 0.002}} ADRIA</p>
+            <p>{{ 'PRESALE.GET' | transloco }}: {{formGroup.controls['amount'].value / 0.0016}} ADRIA</p>
             <ui-main-button (click)="onBuy()" [disabled]="!formGroup.valid || !!(walletFacade.showWallets$ | async)">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
         </form>
     </div>
@@ -97,6 +97,7 @@
     <ul>
         <li *ngFor="let detail of details; index as i">{{ detail | transloco }}</li>
     </ul>
+    <p>{{ 'PRESALE.INFO.REMEMBER' | transloco }}</p>
     <hr>
     <h2>{{ 'PRESALE.INFO.CLAIM.HEADER' | transloco }}</h2>
     <p>{{ 'PRESALE.INFO.CLAIM.MESSAGE' | transloco }}</p>

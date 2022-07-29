@@ -1,11 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {
-  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
-  ValidationErrors,
-  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import {
@@ -41,7 +38,6 @@ export class PreSaleComponent implements OnInit {
     'PRESALE.INFO.DETAILS.4',
     'PRESALE.INFO.DETAILS.5',
     'PRESALE.INFO.DETAILS.6',
-    'PRESALE.INFO.DETAILS.7',
   ];
   maxUsdcToBuy: number;
 
