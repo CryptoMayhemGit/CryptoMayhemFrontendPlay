@@ -21,6 +21,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    set -e
     npm install -g nx
     npm install
     npm run build:$(profile)
