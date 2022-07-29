@@ -145,5 +145,21 @@
             "NO_ACCOUNT": "Haven’t got a crypto wallet yet and don’t know how to set it up?",
             "WATCH": "Watch the video"
         }
+    },
+    "NOTIFICATIONS": {
+        "TRANSACTION_SUCCESS": "Transaction success",
+        "TRANSACTION_ACCEPTED": "Transaction accepted",
+        "TRANSACTION_ERROR": "Transaction has failed",
+        "WALLET_NOT_CONNECTED": "Connection to the wallet has failed",
+        "NO_WALLET": "Wallet not detected",
+        "BAD_NETWORK": "You’re connected to the wrong network",
+        "TRANSACTION_CANCELLED": "Transaction cancelled",
+        "CANNOT BUY": "You cannot buy a token",
+        "THANK_YOU": "Thank you for supporting the Crypto Mayhem project.",
+        "NO_WALLET_MESSAGE": "Haven’t got a crypto wallet yet.",
+        "BAD_NETWORK_MESSAGE": "You should connect to the <strong>Binance Smart Chain (BSC)</strong> network in your wallet.",
+        "CANNOT_BUY_MESSAGE": "Only people who signed up for whitelist before can buy the token in presale.",
+        "CLOSE": "Close",
+        "TRY_AGAIN": "Try again"
     }
 }

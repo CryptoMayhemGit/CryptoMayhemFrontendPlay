@@ -1,29 +1,55 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { NotificationDroneEventTypes } from '../services/notification-drone.service';
 
 import * as NotificationDroneActions from './notification-drone.actions';
 
 export const notificationDroneKey = 'notificationDrone';
 
 export interface NotificationDroneState {
-    show: boolean,
-    error: boolean,
-    eventType: number
+  show: boolean;
+  error: boolean;
+  title: string;
+  message?: string | undefined;
+  btnText?: string | undefined;
 }
 
 export const initialState: NotificationDroneState = {
-    show: false,
-    error: false,
-    eventType: NotificationDroneEventTypes.NONE
-}
+  show: false,
+  error: false,
+  title: '',
+  message: undefined,
+  btnText: undefined,
+};
 
 export const notificationDroneReducer = createReducer(
-    initialState,
-    on(NotificationDroneActions.success, (state, {eventType}) => ({...state, error: false, eventType, show: true})),
-    on(NotificationDroneActions.error, (state, {eventType}) => ({...state, error: true, eventType, show: true})),
-    on(NotificationDroneActions.hide, state => ({...state, show: false, eventType: NotificationDroneEventTypes.NONE.valueOf()}))
+  initialState,
+  on(
+    NotificationDroneActions.success,
+    (state, { title, message, btnText }) => ({
+      ...state,
+      error: false,
+      show: true,
+      title: title,
+      message: message,
+      btnText: btnText,
+    })
+  ),
+  on(NotificationDroneActions.error, (state, { title, message, btnText }) => ({
+    ...state,
+    error: true,
+    show: true,
+    title: title,
+    message: message,
+    btnText: btnText,
+  })),
+  on(NotificationDroneActions.hide, (state) => ({
+    ...state,
+    show: false,
+  }))
 );
 
-export function reducer(state: NotificationDroneState | undefined, action: Action) {
-    return notificationDroneReducer(state, action);
+export function reducer(
+  state: NotificationDroneState | undefined,
+  action: Action
+) {
+  return notificationDroneReducer(state, action);
 }
