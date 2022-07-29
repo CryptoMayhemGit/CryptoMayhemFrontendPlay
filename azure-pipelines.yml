@@ -22,7 +22,6 @@ steps:
 
 - script: |
     set -e
-    false
     npm install -g nx
     npm install
     npm run build:$(profile)
