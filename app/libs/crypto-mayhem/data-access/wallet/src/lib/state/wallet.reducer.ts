@@ -10,12 +10,12 @@ export interface WalletState {
     chainId: string | undefined,
     connected: boolean,
     spinner: boolean,
-    showWallets: boolean,
     walletType: WalletType
     usdcPerStage: string,
-    canBuy: boolean,
-    transactionSuccess: boolean,
-    numberOfAdria: number
+    adriaPerStage: number,
+    canBuyMore:boolean,
+    showWallets: boolean,
+    showSummary: boolean,
 }
 
 export const initialState: WalletState = {
@@ -23,12 +23,12 @@ export const initialState: WalletState = {
     chainId: undefined,
     connected: false,
     spinner: false,
-    showWallets: false,
     walletType: WalletType.none,
     usdcPerStage: '0.0',
-    canBuy: false,
-    transactionSuccess: false,
-    numberOfAdria: 0.0
+    adriaPerStage: 0.0,
+    canBuyMore: true,
+    showWallets: false,
+    showSummary: false,
 }
 
 export const walletReducer = createReducer(
@@ -41,11 +41,12 @@ export const walletReducer = createReducer(
     on(WalletActions.chainChanged, (state, {chainId}) => ({...state, chainId})),
     on(WalletActions.setWalletAddress,
         (state, {walletAddress}) => ({...state, walletAddress: walletAddress})),
-    on(WalletActions.usdcPerStageByUser, (state, {numberOfUsdc, canBuy}) => ({...state, usdcPerStage: numberOfUsdc, canBuy, })),
+    on(WalletActions.usdcPerStageByUser, (state, {numberOfUsdc, numberOfAdria, showSummary, canBuyMore}) => ({...state, usdcPerStage: numberOfUsdc, adriaPerStage: numberOfAdria, showSummary, canBuyMore })),
     on(WalletActions.showSpinner, state => ({...state, spinner: true})),
     on(WalletActions.hideSpinner, state => ({...state, spinner: false})),
     on(WalletActions.showWallets, state => ({...state, showWallets: true})),
-    on(WalletActions.hideWallets, state => ({...state, showWallets: false}))
+    on(WalletActions.hideWallets, state => ({...state, showWallets: false})),
+    on(WalletActions.hideSummary, state => ({...state, showSummary: false, usdcPerStage: '0.0', adriaPerStage: 0.0, canBuyMore: true}))
 );
 
 export function reducer(state: WalletState | undefined, action: Action) {

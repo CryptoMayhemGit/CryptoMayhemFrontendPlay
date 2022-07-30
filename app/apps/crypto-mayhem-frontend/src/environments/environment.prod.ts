@@ -8,13 +8,14 @@ export const environment = {
   rpcChainId: "0x539",
   defaultAsset: "ADRIAT",
 
-  rpcUrlBinance: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
-  chainIdNumberBinance: 97, //Binance Smart Chain
-  chainIdHexBinance: '0x61', //Binance Smart Chain
+  rpcUrlBinance: 'https://bsc-dataseed.binance.org/',
+  chainIdNumberBinance: 56, //Binance Smart Chain
+  chainIdHexBinance: '0x38', //Binance Smart Chain
   networkId: '',
   stage: 0, //Binance Smart Chain
-  maxNumberOfUsdcPerStage: 1000,
-  usdcContractAddress: '',
-  adriaContractAddress: '',
-  adriaVestingContractAddress: ''
+  maxNumberOfUsdcPerStage: 150,
+  usdcContractAddress: '0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d',
+  adriaContractAddress: '0x2Ae411D012fEeA14d2d1305550a99Fcf82FB8594',
+  adriaVestingContractAddress: '0x73d18c8675cCafA22865Ac9D5A02cFCf3a8e679c',
+  adriaPrice: 0.0016
 };

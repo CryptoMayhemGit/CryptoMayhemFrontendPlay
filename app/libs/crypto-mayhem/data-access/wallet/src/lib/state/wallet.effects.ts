@@ -94,29 +94,29 @@ export class WalletEffects {
 
   getUsdcNumberPerStage$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(WalletActions.connectWalletSuccess),
+      ofType(WalletActions.connectWalletSuccess, WalletActions.buyAdriaSuccess),
       concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
       mergeMap(([, account]) =>
         from(this.walletService.getNumberOfUsdcPerStageByUser(account)).pipe(
-          map((result: any) => {
-            let canBuy = this.appConfig.maxNumberOfUsdcPerStage - result === 0 ? false : true;
-            return WalletActions.usdcPerStageByUser({ numberOfUsdc: result, canBuy: canBuy, numberOfAdria: 0});
+          map((numberOfUsdc: any) => {
+            const showSummary = this.appConfig.maxNumberOfUsdcPerStage - numberOfUsdc === this.appConfig.maxNumberOfUsdcPerStage ? false : true;
+            const numberOfAdria = numberOfUsdc / this.appConfig.adriaPrice;
+            const canBuyMore = this.appConfig.maxNumberOfUsdcPerStage <= numberOfUsdc ? false : true;
+            return WalletActions.usdcPerStageByUser({ numberOfUsdc, numberOfAdria, showSummary, canBuyMore });
           })
         )
       )
     )
   );
 
-  canBuyAdria$ = createEffect(() =>
+  hidePresaleSummary$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(WalletActions.buyAdriaSuccess),
+      ofType(WalletActions.disconnectWallet),
       concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
-      mergeMap(([{numberOfAdria}, account]) =>
-        from(this.walletService.getNumberOfUsdcPerStageByUser(account)).pipe(
-          map((result: any) => {
-            return WalletActions.usdcPerStageByUser({ numberOfUsdc: result, canBuy: true, numberOfAdria});
-          })
-        )
+      map(() =>
+        {
+          return WalletActions.hideSummary()
+        }
       )
     )
   );
