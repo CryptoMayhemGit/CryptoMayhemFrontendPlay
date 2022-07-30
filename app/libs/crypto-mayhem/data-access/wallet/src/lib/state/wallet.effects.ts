@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+import { AppConfig, APP_CONFIG } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import { NotificationDroneService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
@@ -14,7 +15,8 @@ export class WalletEffects {
     private readonly actions$: Actions,
     private readonly store: Store,
     private readonly walletService: WalletService,
-    private readonly notificationDroneService: NotificationDroneService
+    private readonly notificationDroneService: NotificationDroneService,
+    @Inject(APP_CONFIG) private readonly appConfig: AppConfig
   ) {}
 
   buyPresaleTokens$ = createEffect(() =>
@@ -85,7 +87,6 @@ export class WalletEffects {
           default:
             break;
         }
-        this.store.dispatch(WalletActions.connectWalletError());
         return of();
       })
     )
@@ -98,7 +99,22 @@ export class WalletEffects {
       mergeMap(([, account]) =>
         from(this.walletService.getNumberOfUsdcPerStageByUser(account)).pipe(
           map((result: any) => {
-            return WalletActions.usdcPerStageByUser({ numberOfUsdc: result });
+            let canBuy = this.appConfig.maxNumberOfUsdcPerStage - result === 0 ? false : true;
+            return WalletActions.usdcPerStageByUser({ numberOfUsdc: result, canBuy: canBuy, numberOfAdria: 0});
+          })
+        )
+      )
+    )
+  );
+
+  canBuyAdria$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(WalletActions.buyAdriaSuccess),
+      concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
+      mergeMap(([{numberOfAdria}, account]) =>
+        from(this.walletService.getNumberOfUsdcPerStageByUser(account)).pipe(
+          map((result: any) => {
+            return WalletActions.usdcPerStageByUser({ numberOfUsdc: result, canBuy: true, numberOfAdria});
           })
         )
       )

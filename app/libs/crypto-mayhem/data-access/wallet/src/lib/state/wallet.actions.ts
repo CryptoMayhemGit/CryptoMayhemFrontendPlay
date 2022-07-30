@@ -66,5 +66,15 @@ export const postSignWalletBeforeBuySuccess = createAction(
 
 export const usdcPerStageByUser = createAction(
     '[Wallet] Get number of usdc per stage on logged user',
-    props<{numberOfUsdc: string}>()
+    props<{numberOfUsdc: string, canBuy: boolean, numberOfAdria: number}>()
+);
+
+export const buyAdriaSuccess = createAction(
+    '[Wallet] Success buy Adria',
+    props<{numberOfAdria: number}>()
+);
+
+export const setUserCanBuy = createAction(
+    '[Wallet] Set if user can buy presale',
+    props<{canBuy: boolean}>()
 );

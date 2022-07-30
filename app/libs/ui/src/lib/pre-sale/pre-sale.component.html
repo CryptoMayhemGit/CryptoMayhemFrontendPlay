@@ -36,7 +36,7 @@
         </div>
     </div>
     <!-- SHOW WHEN CONNECTED HIDE WHEN SUCCESS -->
-    <div id="vesting-form" *ngIf="walletConnected$ | async">
+    <div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuy$ | async)">
         <form [formGroup]="formGroup">
             <label for="amount">{{ 'PRESALE.AMOUNT.AMOUNT_TO_BUY' | transloco }}</label>
             <input
@@ -72,7 +72,7 @@
         </div>
     </div>
     <!-- SHOW WHEN SUCCESS -->
-    <!--<div id="vesting-success">
+    <div *ngIf="!(canBuy$ | async)" id="vesting-success">
         <p>{{ 'PRESALE.SUCCESS.HEADER' | transloco }}</p>
         <p>{{ 'PRESALE.SUCCESS.MESSAGE' | transloco }}</p>
         <div class="invest">
@@ -84,7 +84,7 @@
             <p>{{ 'PRESALE.AMOUNT.MAX' | transloco }}</p>
             <p>ADRIA</p>
         </div>
-    </div>-->
+    </div>
     <!-- SHOW WHEN PRESALE HAS ENDED OR HAS SOLD OUT-->
     <!--<div id="vesting-end">
         <p>{{ 'PRESALE.END.MESSAGE' | transloco }}</p>
