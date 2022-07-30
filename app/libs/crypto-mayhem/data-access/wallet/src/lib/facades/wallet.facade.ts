@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  WalletType,
-} from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
+import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { Store } from '@ngrx/store';
 import { WalletService } from '../services/wallet.service';
 
@@ -30,7 +28,8 @@ export class WalletFacade {
 
   constructor(
     private readonly store: Store,
-    private readonly walletService: WalletService) {}
+    private readonly walletService: WalletService
+  ) {}
 
   public setWalletAddress(walletAddress: string): void {
     this.store.dispatch(setWalletAddress({ walletAddress }));
@@ -45,6 +44,10 @@ export class WalletFacade {
   }
 
   public connectWalletAccount(walletType: WalletType): void {
+    if (walletType === WalletType.metamask && this.isMobile()) {
+      window.location.href =
+        'https://metamask.app.link/dapp/black-mushroom-0ae7fe803-develop.westeurope.1.azurestaticapps.net/presale';
+    }
     this.walletService.connectWallet(walletType);
   }
 
@@ -61,6 +64,12 @@ export class WalletFacade {
   }
 
   public buyPreSaleTokens(amount: number) {
-    this.store.dispatch(postSignWalletBeforeBuy({amount}))
+    this.store.dispatch(postSignWalletBeforeBuy({ amount }));
+  }
+
+  private isMobile(): boolean {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
   }
 }

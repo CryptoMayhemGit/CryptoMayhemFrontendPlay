@@ -199,22 +199,24 @@ export class WalletService {
           rpc: {
             56: 'https://bsc-dataseed.binance.org/',
             97: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
-          }
+          },
         });
 
         this.provider = new providers.Web3Provider(provider, 'any');
 
         this.createProviderHooks(provider);
-        await (this.provider.provider as any).enable().then(() => console.log('test'));
+        await (this.provider.provider as any)
+          .enable()
+          .then(() => console.log('test'));
       }
     }
   }
 
   public disconnectWallet(): void {
-      this.provider?.removeAllListeners();
-      this.removeMetamaskProviderHooks(this.provider);
-      this.provider = undefined;
-      this.store.dispatch(WalletActions.disconnectWallet());
+    this.provider?.removeAllListeners();
+    this.removeMetamaskProviderHooks(this.provider);
+    this.provider = undefined;
+    this.store.dispatch(WalletActions.disconnectWallet());
   }
 
   public postSignWalletBeforeBuy(
@@ -264,8 +266,12 @@ export class WalletService {
                     'NOTIFICATIONS.THANK_YOU',
                     'NOTIFICATIONS.CLOSE'
                   );
-                  const numberOfAdria = signedWalletWithAmount.usdcTokenAmount / this.appConfig.adriaPrice;
-                  this.store.dispatch(WalletActions.buyAdriaSuccess({numberOfAdria}));
+                  const numberOfAdria =
+                    signedWalletWithAmount.usdcTokenAmount /
+                    this.appConfig.adriaPrice;
+                  this.store.dispatch(
+                    WalletActions.buyAdriaSuccess({ numberOfAdria })
+                  );
                 })
                 .catch(() => {
                   this.notificationDroneService.error(
@@ -289,13 +295,12 @@ export class WalletService {
         this.appConfig.adriaVestingContractAddress
       );
 
-      const result = await adriaVesting.investors(account, this.appConfig.stage);
+      const result = await adriaVesting.investors(
+        account,
+        this.appConfig.stage
+      );
       return result;
     }
     return '0.0';
   }
-}
-
-export function isMobile(): boolean {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
