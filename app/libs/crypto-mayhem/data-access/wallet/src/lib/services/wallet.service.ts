@@ -97,6 +97,7 @@ export class WalletService {
   };
 
   handleDisconnectWalletConnect = (code: number, reason: string): void => {
+    this.store.dispatch(WalletActions.hideSummary());
     this.store.dispatch(WalletActions.disconnectWallet());
   };
 
@@ -275,12 +276,7 @@ export class WalletService {
                     'NOTIFICATIONS.THANK_YOU',
                     'NOTIFICATIONS.CLOSE'
                   );
-                  const numberOfAdria =
-                    signedWalletWithAmount.usdcTokenAmount /
-                    this.appConfig.adriaPrice;
-                  this.store.dispatch(
-                    WalletActions.buyAdriaSuccess({ numberOfAdria })
-                  );
+                  this.store.dispatch(WalletActions.buyAdriaSuccess());
                 })
                 .catch(() => {
                   this.notificationDroneService.error(
