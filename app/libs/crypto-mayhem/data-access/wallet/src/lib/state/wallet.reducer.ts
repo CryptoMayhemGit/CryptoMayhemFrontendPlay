@@ -37,7 +37,7 @@ export const walletReducer = createReducer(
     on(WalletActions.connectWalletSuccess, (state, {walletType}) => ({...state, spinner: false, connected: true, walletType})),
     on(WalletActions.connectWalletError, state => ({...state, spinner: false, connected: false})),
     on(WalletActions.disconnectWallet, state => ({...state, connected: false, account: '', chainId: undefined, walletType: WalletType.none})),
-    on(WalletActions.accountsChanged, (state, {account, chainId}) => ({...state, account, chainId})),
+    on(WalletActions.accountsChanged, (state, {account}) => ({...state, account})),
     on(WalletActions.chainChanged, (state, {chainId}) => ({...state, chainId})),
     on(WalletActions.setWalletAddress,
         (state, {walletAddress}) => ({...state, walletAddress: walletAddress})),

@@ -51,8 +51,7 @@ export class WalletService {
     if (!Array.isArray(accounts)) {
       this.store.dispatch(
         WalletActions.accountsChanged({
-          account: accounts[0],
-          chainId: undefined,
+          account: accounts[0]
         })
       );
 
@@ -69,8 +68,7 @@ export class WalletService {
       this.loggingInDevelopMode('handleAccountChanged', accounts);
       this.store.dispatch(
         WalletActions.accountsChanged({
-          account: accounts[0],
-          chainId: undefined,
+          account: accounts[0]
         })
       );
 
@@ -85,20 +83,21 @@ export class WalletService {
   handleChainChangedMetamask = (chainIdHex: string): void => {
     if (typeof chainIdHex === 'undefined') return;
 
-    this.store.dispatch(WalletActions.chainChanged({ chainId: chainIdHex }));
-
-    chainIdHex !== this.appConfig.chainIdHexBinance
-      ? this.notificationDroneService.error(
-          'NOTIFICATIONS.BAD_NETWORK',
-          'NOTIFICATIONS.BAD_NETWORK_MESSAGE',
-          'NOTIFICATIONS.CLOSE'
-        )
-      : this.notificationDroneService.hide();
+    if(chainIdHex != this.appConfig.chainIdHexBinance){
+      this.notificationDroneService.error(
+        'NOTIFICATIONS.BAD_NETWORK',
+        'NOTIFICATIONS.BAD_NETWORK_MESSAGE',
+        'NOTIFICATIONS.CLOSE'
+        );
+        this.disconnectWallet();
+      } else {
+        this.store.dispatch(WalletActions.chainChanged({ chainId: chainIdHex }));
+        this.notificationDroneService.hide();
+    }
   };
 
   handleDisconnectWalletConnect = (code: number, reason: string): void => {
-    this.store.dispatch(WalletActions.hideSummary());
-    this.store.dispatch(WalletActions.disconnectWallet());
+    this.disconnectWallet();
   };
 
   private createProviderHooks(provider: any): void {
@@ -116,15 +115,10 @@ export class WalletService {
       CHAIN_CHANGED,
       this.handleChainChangedMetamask
     );
-  }
-
-  private setChainId() {
-    if (this.provider?._network.chainId)
-      this.store.dispatch(
-        WalletActions.chainChanged({
-          chainId: this.provider?._network.chainId.toString(),
-        })
-      );
+    (this.provider?.provider as any).removeListener(
+      DISCONNECT,
+      this.handleDisconnectWalletConnect
+    );
   }
 
   private isMobile(): boolean {
@@ -148,14 +142,7 @@ export class WalletService {
             .then((accounts: string[]) => {
               this.store.dispatch(
                 WalletActions.accountsChanged({
-                  account: accounts[0],
-                  chainId: undefined,
-                })
-              );
-
-              this.store.dispatch(
-                WalletActions.connectWalletSuccess({
-                  walletType: WalletType.metamask,
+                  account: accounts[0]
                 })
               );
             })
@@ -168,7 +155,11 @@ export class WalletService {
             await this.provider.provider.request?.({
               method: 'wallet_switchEthereumChain',
               params: [{ chainId: this.appConfig.chainIdHexBinance }],
-            });
+            }).then(() => this.store.dispatch(
+              WalletActions.connectWalletSuccess({
+                walletType: WalletType.metamask,
+              })
+            ));
           } catch (error: any) {
             if (error.code === 4902) {
               try {
@@ -180,7 +171,11 @@ export class WalletService {
                       rpcUrl: this.appConfig.rpcUrlBinance,
                     },
                   ],
-                });
+                }).then(() => this.store.dispatch(
+                  WalletActions.connectWalletSuccess({
+                    walletType: WalletType.metamask,
+                  })
+                ));
               } catch (addError) {
                 console.error('not this chain');
                 return;
@@ -191,7 +186,6 @@ export class WalletService {
               return;
             }
           }
-          this.setChainId();
         } else {
           this.notificationDroneService.error(
             'NOTIFICATIONS.NO_WALLET',
@@ -223,10 +217,12 @@ export class WalletService {
   }
 
   public disconnectWallet(): void {
-    this.provider?.removeAllListeners();
-    this.removeMetamaskProviderHooks(this.provider);
-    this.provider = undefined;
-    this.store.dispatch(WalletActions.disconnectWallet());
+    if (this.provider) {
+      this.provider?.removeAllListeners();
+      this.removeMetamaskProviderHooks(this.provider);
+      this.provider = undefined;
+      this.store.dispatch(WalletActions.disconnectWallet());
+    }
   }
 
   public postSignWalletBeforeBuy(
