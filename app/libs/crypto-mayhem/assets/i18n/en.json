@@ -162,14 +162,14 @@
         "CANNOT_BUY_MESSAGE": "Only people who signed up for whitelist before can buy the token in presale.",
         "CLOSE": "Close",
         "TRY_AGAIN": "Try again",
-        "ERROR_OCCURED": "There was an error",
-        "TOKEN_ZERO_AMOUNT": "Błędna kwota inwestycji",
-        "TOKENS_GREATER_THAN_MAX": "Kwota inwestycji jest większa niż maksymalna",
-        "WALLET_WRONG_STRUCTURE": "Błędna struktura portfela",
-        "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
-        "NOT_ENOUGH_TOKENS_LEFT": "Błędna kwoty inwestycji",
-        "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji ze Smart Contractem",
-        "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście"
+        "ERROR_OCCURRED": "There was an error",
+        "TOKEN_ZERO_AMOUNT": "Incorrect investment amount",
+        "TOKENS_GREATER_THAN_MAX": "The investment amount is greater than the maximum amount.",
+        "WALLET_WRONG_STRUCTURE": "Incorrect wallet structure.",
+        "ALL_TOKENS_PURCHASED": "The maximum amount of tokens from this address was purchased.",
+        "NOT_ENOUGH_TOKENS_LEFT": "Incorrect investment amount.",
+        "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Lack of communication with smart contract.",
+        "WALLET_NOT_AUTHORIZED": "No wallet on whitelist."
     },
     "VALIDATIONS": {
         "VESTING_AMOUNT_MAX": "Możesz zainwestować maks. {{ maxAmount }}",

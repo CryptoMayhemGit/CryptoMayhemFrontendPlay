@@ -4,10 +4,8 @@ import { Web3Provider } from '@ethersproject/providers';
 import { providers, ethers } from 'ethers';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
-import { select, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import WalletConnectProvider from '@walletconnect/web3-provider';
-
-import * as WalletSelectors from '../state/wallet.selectors';
 
 interface SignedWalletWithAmount {
   signature: string;
@@ -17,7 +15,7 @@ interface SignedWalletWithAmount {
 }
 
 import * as WalletActions from '../state/wallet.actions';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SALE_TOKEN } from './wallet.endpoints';
 import {
   AppConfig,
@@ -267,6 +265,8 @@ export class WalletService {
                     'NOTIFICATIONS.THANK_YOU',
                     'NOTIFICATIONS.CLOSE'
                   );
+                  const numberOfAdria = signedWalletWithAmount.usdcTokenAmount / this.appConfig.adriaPrice;
+                  this.store.dispatch(WalletActions.buyAdriaSuccess({numberOfAdria}));
                 })
                 .catch(() => {
                   this.notificationDroneService.error(
@@ -291,7 +291,6 @@ export class WalletService {
       );
 
       const result = await adriaVesting.investors(account, this.appConfig.stage);
-      console.log(result);
       return result;
     }
     return '0.0';

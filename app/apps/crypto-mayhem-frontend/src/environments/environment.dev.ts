@@ -3,7 +3,6 @@ export const environment = {
     production: false,
     externalUrl: "http://localhost:4200/",
     baseUrl: "https://mayhemwebapi.azurewebsites.net/",
-    //rpcUrl: "http://localhost:8545/",
     rpcChainId: "0x539",
     defaultAsset: "ADRIAT",
 

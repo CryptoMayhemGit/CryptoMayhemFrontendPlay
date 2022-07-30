@@ -161,7 +161,7 @@
         "CANNOT_BUY_MESSAGE": "Token w przedsprzedaży mogą kupić tylko osoby, które zapisały się wcześniej na whitelist.",
         "CLOSE": "Zamknij",
         "TRY_AGAIN": "Ponów",
-        "ERROR_OCCURED": "Wystąpił błąd",
+        "ERROR_OCCURRED": "Wystąpił błąd",
         "TOKEN_ZERO_AMOUNT": "Błędna kwota inwestycji",
         "TOKENS_GREATER_THAN_MAX": "Kwota inwestycji jest większa niż maksymalna",
         "WALLET_WRONG_STRUCTURE": "Błędna struktura portfela",

@@ -29,6 +29,7 @@ export class PreSaleComponent implements OnInit {
     amount: new FormControl(''),
   });
   walletConnected$: Observable<boolean> = of(false);
+  canBuy$: Observable<boolean> = of(false);
   usdcPerStage$: Observable<string> = of('0.0');
   presaleStartTime = new Date('AUG 06, 2022, 16:00').getTime();
   caretRight = faCaretRight;
@@ -53,6 +54,7 @@ export class PreSaleComponent implements OnInit {
     this.walletConnected$ = this.walletFacade.connected$;
     this.maxUsdcToBuy = this.appConfig.maxNumberOfUsdcPerStage;
     this.usdcPerStage$ = this.walletFacade.usdcPerStage$;
+    this.canBuy$ = this.walletFacade.canBuy$;
   }
 
   ngOnInit(): void {

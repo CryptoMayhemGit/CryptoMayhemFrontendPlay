@@ -38,3 +38,13 @@ export const getUsdcPerStage = createSelector(
     selectWallet,
     state => state.usdcPerStage
 );
+
+export const getCanBuy = createSelector(
+    selectWallet,
+    state => state.canBuy
+);
+
+export const getNumberOfAdria = createSelector(
+    selectWallet,
+    state => state.numberOfAdria
+);

@@ -14,4 +14,5 @@ export interface AppConfig {
   usdcContractAddress: string;
   adriaContractAddress: string;
   adriaVestingContractAddress: string;
+  adriaPrice: number;
 }
