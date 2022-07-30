@@ -1,6 +1,6 @@
 import { Inject, Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Web3Provider } from '@ethersproject/providers';
+import { Web3Provider, ExternalProvider } from '@ethersproject/providers';
 import { providers, ethers } from 'ethers';
 import detectEthereumProvider from '@metamask/detect-provider';
 import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
@@ -31,11 +31,9 @@ const ACCOUNTS_CHANGED = 'accountsChanged';
 const CHAIN_CHANGED = 'chainChanged';
 const DISCONNECT = 'disconnect';
 
-
 @Injectable({ providedIn: 'root' })
 export class WalletService {
   private provider: Web3Provider | undefined = undefined;
-
 
   constructor(
     private readonly httpClient: HttpClient,
@@ -131,6 +129,65 @@ export class WalletService {
   public async connectWallet(walletType: WalletType): Promise<void> {
     switch (walletType) {
       case WalletType.metamask: {
+        if (isMobile()) {
+          let provider = await detectEthereumProvider({
+            mustBeMetaMask: true
+          });
+
+          this.provider = new providers.Web3Provider(provider as ExternalProvider, 'any');
+          this.createProviderHooks(this.provider.provider);
+          this.store.dispatch(WalletActions.connectWallet());
+          await this.provider
+            .send('eth_requestAccounts', [])
+            .then((accounts: string[]) => {
+              this.store.dispatch(
+                WalletActions.accountsChanged({
+                  account: accounts[0],
+                  chainId: undefined,
+                })
+              );
+
+              this.store.dispatch(
+                WalletActions.connectWalletSuccess({
+                  walletType: WalletType.metamask,
+                })
+              );
+            })
+            .catch((error: any) => {
+              this.loggingInDevelopMode('eth_requestAccounts', error);
+              this.store.dispatch(WalletActions.connectWalletError());
+            });
+
+          try {
+            await this.provider.provider.request?.({
+              method: 'wallet_switchEthereumChain',
+              params: [{ chainId: this.appConfig.chainIdHexBinance }],
+            });
+          } catch (error: any) {
+            if (error.code === 4902) {
+              try {
+                await this.provider.provider.request?.({
+                  method: 'wallet_addEthereumChain',
+                  params: [
+                    {
+                      chainId: this.appConfig.chainIdHexBinance,
+                      rpcUrl: this.appConfig.rpcUrlBinance,
+                    },
+                  ],
+                });
+              } catch (addError) {
+                console.error('not this chain');
+                return;
+              }
+            } else if (error.code === 4001) {
+              //User reject network change
+              this.loggingInDevelopMode('error.code 4001', error);
+              return;
+            }
+          }
+          this.setChainId();
+        }
+
         if (typeof window.ethereum !== 'undefined') {
           this.provider = new providers.Web3Provider(window.ethereum, 'any');
           this.createProviderHooks(this.provider.provider);
@@ -202,7 +259,14 @@ export class WalletService {
             56: 'https://bsc-dataseed.binance.org/',
             97: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
           },
+          qrcodeModalOptions: {
+            desktopLinks: [
+              'zapper'
+            ],
+            mobileLinks: [],
+          }
         });
+
         this.provider = new providers.Web3Provider(provider, 'any');
 
         this.createProviderHooks(provider);
@@ -295,4 +359,8 @@ export class WalletService {
     }
     return '0.0';
   }
+}
+
+export function isMobile(): boolean {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
