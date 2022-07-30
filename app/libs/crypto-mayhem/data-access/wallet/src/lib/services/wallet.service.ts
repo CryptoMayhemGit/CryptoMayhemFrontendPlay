@@ -126,10 +126,19 @@ export class WalletService {
       );
   }
 
+  private isMobile(): boolean {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+  }
+
   public async connectWallet(walletType: WalletType): Promise<void> {
     switch (walletType) {
       case WalletType.metamask: {
-        if (typeof window.ethereum !== 'undefined') {
+        if (typeof window.ethereum === 'undefined' && this.isMobile()) {
+          window.location.href =
+            'https://metamask.app.link/dapp/black-mushroom-0ae7fe803-develop.westeurope.1.azurestaticapps.net/presale';
+        } else if (typeof window.ethereum !== 'undefined') {
           this.provider = new providers.Web3Provider(window.ethereum, 'any');
           this.createProviderHooks(this.provider.provider);
           this.store.dispatch(WalletActions.connectWallet());
