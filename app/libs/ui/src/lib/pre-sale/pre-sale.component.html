@@ -23,7 +23,7 @@
         <ui-progress-bar [currentValue]="500000" [maxValue]="1000000"></ui-progress-bar>
     </div>-->
     <!-- HIDE WHEN SUCCESS -->
-    <div id="vesting-info">
+    <div *ngIf="canBuyMore$ | async" id="vesting-info">
         <p>{{ 'PRESALE.INVEST' | transloco }}</p>
         <div class="invest">
             <p>{{ 'PRESALE.AMOUNT.MIN' | transloco }}</p>
@@ -36,7 +36,7 @@
         </div>
     </div>
     <!-- SHOW WHEN CONNECTED HIDE WHEN SUCCESS -->
-    <div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuy$ | async)">
+    <div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuyMore$ | async)">
         <form [formGroup]="formGroup">
             <label for="amount">{{ 'PRESALE.AMOUNT.AMOUNT_TO_BUY' | transloco }}</label>
             <input
@@ -72,17 +72,17 @@
         </div>
     </div>
     <!-- SHOW WHEN SUCCESS -->
-    <div *ngIf="!(canBuy$ | async)" id="vesting-success">
+    <div *ngIf="showSummary$ | async" id="vesting-success">
         <p>{{ 'PRESALE.SUCCESS.HEADER' | transloco }}</p>
         <p>{{ 'PRESALE.SUCCESS.MESSAGE' | transloco }}</p>
         <div class="invest">
-            <p>{{ 'PRESALE.AMOUNT.MIN' | transloco }}</p>
-            <p>1 USDC</p>
+            <p>{{ 'PRESALE.AMOUNT.INVEST' | transloco }}</p>
+            <p>{{usdcPerStage$ | async}} USDC</p>
         </div>
         <hr>
         <div class="invest">
-            <p>{{ 'PRESALE.AMOUNT.MAX' | transloco }}</p>
-            <p>ADRIA</p>
+            <p>{{ 'PRESALE.AMOUNT.BUY' | transloco }}</p>
+            <p>{{adriaPerStage$ | async}} ADRIA</p>
         </div>
     </div>
     <!-- SHOW WHEN PRESALE HAS ENDED OR HAS SOLD OUT-->

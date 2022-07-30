@@ -115,7 +115,9 @@
         "AMOUNT": {
             "MIN": "Minimalna kwota",
             "MAX": "Maksymalna kwota",
-            "AMOUNT_TO_BUY": "Za ile chcesz kupić token ADRIA?"
+            "AMOUNT_TO_BUY": "Za ile chcesz kupić token ADRIA?",
+            "INVEST": "Zainestowałeś",
+            "BUY": "Kupiłeś"
         },
         "GET": "Otrzymasz",
         "BUY_ADRIA": "Kup ADRIA",
