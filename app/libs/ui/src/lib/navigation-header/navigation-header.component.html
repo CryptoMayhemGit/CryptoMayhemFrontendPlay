@@ -21,7 +21,7 @@
     </div>
     <div id="tablet-marketing">
         <ui-lang-switch></ui-lang-switch>
-        <img *ngIf="!gamesVisible" src="./assets/images/banner_tablet.png" />
+        <img class="marketing-banner" *ngIf="!gamesVisible" src="./assets/images/presale.png" />
         <div id="mobile-submenu" *ngIf="gamesVisible">
             <ui-submenu>
                 <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
@@ -40,7 +40,7 @@
                 <a href="#" (mouseenter)="gsVisible = false; tdsVisible = true" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.TDS.TITLE' | transloco}}</a>
             </div>
             <div id="games">
-                <img src="./assets/images/banner_tablet.png" *ngIf="!tdsVisible && !gsVisible && !isSmallerScreen()" />
+                <img src="./assets/images/presale.png" class="marketing-banner" *ngIf="!tdsVisible && !gsVisible && !isSmallerScreen()" />
                 <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
             </div>
         </ui-submenu>

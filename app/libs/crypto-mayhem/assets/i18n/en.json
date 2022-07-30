@@ -5,13 +5,13 @@
     "GAMES": {
         "GS": {
             "TITLE": "Grand Strategy",
-            "DESCRIPTION": "Odkrywaj, eksploruj, zdobywaj surowce oraz buduj obiekty na obcych planetach.",
-            "CTA": "Zacznij rozwijać swoją kolonię!"
+            "DESCRIPTION": "Discover, explore, get resources and build objects on foreign planets.",
+            "CTA": "Start growing your colony!"
         },
         "TDS": {
             "TITLE": "Top-Down Shooter",
-            "DESCRIPTION": "Twórz własne Mechy i walcz o przetrwanie niszcząc hordy obcych.",
-            "CTA": "Czy zdołasz obronić planetę?"
+            "DESCRIPTION": "Create your own Mechs and fight for survival by destroying hordes of aliens.",
+            "CTA": "Can you protect the planet?"
         }
     },
     
