@@ -44,14 +44,14 @@ export class WalletFacade {
   }
 
   public connectWalletAccount(walletType: WalletType): void {
-    this.walletService.connectWallet(walletType);
-  }
-
-  public disconnectWalletAccount(walletType: WalletType) {
     if (walletType === WalletType.metamask && this.isMobile()) {
       window.location.href =
         'https://metamask.app.link/dapp/black-mushroom-0ae7fe803-develop.westeurope.1.azurestaticapps.net/presale';
     }
+    this.walletService.connectWallet(walletType);
+  }
+
+  public disconnectWalletAccount(walletType: WalletType) {
     this.walletService.disconnectWallet();
   }
 
