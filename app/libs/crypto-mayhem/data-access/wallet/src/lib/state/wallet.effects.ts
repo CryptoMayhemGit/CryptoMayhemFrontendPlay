@@ -30,65 +30,65 @@ export class WalletEffects {
             return WalletActions.postSignWalletBeforeBuySuccess({
               sign: result,
             });
+          }),
+          catchError((error) => {
+            switch (error.error.code) {
+              case ResponseErrorCodes.TOKEN_ZERO_AMOUNT:
+                this.notificationDroneService.error(
+                  'NOTIFICATIONS.ERROR_OCCURRED',
+                  'NOTIFICATIONS.TOKEN_ZERO_AMOUNT',
+                  'NOTIFICATIONS.TRY_AGAIN'
+                );
+                break;
+              case ResponseErrorCodes.TOKENS_GREATER_THAN_MAX:
+                this.notificationDroneService.error(
+                  'NOTIFICATIONS.ERROR_OCCURRED',
+                  'NOTIFICATIONS.TOKENS_GREATER_THAN_MAX',
+                  'NOTIFICATIONS.TRY_AGAIN'
+                );
+                break;
+              case ResponseErrorCodes.WALLET_WRONG_STRUCTURE:
+                this.notificationDroneService.error(
+                  'NOTIFICATIONS.ERROR_OCCURRED',
+                  'NOTIFICATIONS.WALLET_WRONG_STRUCTURE',
+                  'NOTIFICATIONS.TRY_AGAIN'
+                );
+                break;
+              case ResponseErrorCodes.ALL_TOKENS_PURCHASED:
+                this.notificationDroneService.error(
+                  'NOTIFICATIONS.ERROR_OCCURRED',
+                  'NOTIFICATIONS.ALL_TOKENS_PURCHASED',
+                  'NOTIFICATIONS.TRY_AGAIN'
+                );
+                break;
+              case ResponseErrorCodes.NOT_ENOUGH_TOKENS_LEFT:
+                this.notificationDroneService.error(
+                  'NOTIFICATIONS.ERROR_OCCURRED',
+                  'NOTIFICATIONS.NOT_ENOUGH_TOKENS_LEFT',
+                  'NOTIFICATIONS.TRY_AGAIN'
+                );
+                break;
+              case ResponseErrorCodes.CANT_COMMUNICATE_WITH_SMART_CONTRACT:
+                this.notificationDroneService.error(
+                  'NOTIFICATIONS.ERROR_OCCURRED',
+                  'NOTIFICATIONS.CANT_COMMUNICATE_WITH_SMART_CONTRACT',
+                  'NOTIFICATIONS.TRY_AGAIN'
+                );
+                break;
+              case ResponseErrorCodes.WALLET_NOT_AUTHORIZED:
+                this.notificationDroneService.error(
+                  'NOTIFICATIONS.ERROR_OCCURRED',
+                  'NOTIFICATIONS.WALLET_NOT_AUTHORIZED',
+                  'NOTIFICATIONS.TRY_AGAIN'
+                );
+                break;
+              default:
+                break;
+            }
+            return of();
           })
         )
       ),
-      catchError((error) => {
-        switch (error.error.code) {
-          case ResponseErrorCodes.TOKEN_ZERO_AMOUNT:
-            this.notificationDroneService.error(
-              'NOTIFICATIONS.ERROR_OCCURRED',
-              'NOTIFICATIONS.TOKEN_ZERO_AMOUNT',
-              'NOTIFICATIONS.TRY_AGAIN'
-            );
-            break;
-          case ResponseErrorCodes.TOKENS_GREATER_THAN_MAX:
-            this.notificationDroneService.error(
-              'NOTIFICATIONS.ERROR_OCCURRED',
-              'NOTIFICATIONS.TOKENS_GREATER_THAN_MAX',
-              'NOTIFICATIONS.TRY_AGAIN'
-            );
-            break;
-          case ResponseErrorCodes.WALLET_WRONG_STRUCTURE:
-            this.notificationDroneService.error(
-              'NOTIFICATIONS.ERROR_OCCURRED',
-              'NOTIFICATIONS.WALLET_WRONG_STRUCTURE',
-              'NOTIFICATIONS.TRY_AGAIN'
-            );
-            break;
-          case ResponseErrorCodes.ALL_TOKENS_PURCHASED:
-            this.notificationDroneService.error(
-              'NOTIFICATIONS.ERROR_OCCURRED',
-              'NOTIFICATIONS.ALL_TOKENS_PURCHASED',
-              'NOTIFICATIONS.TRY_AGAIN'
-            );
-            break;
-          case ResponseErrorCodes.NOT_ENOUGH_TOKENS_LEFT:
-            this.notificationDroneService.error(
-              'NOTIFICATIONS.ERROR_OCCURRED',
-              'NOTIFICATIONS.NOT_ENOUGH_TOKENS_LEFT',
-              'NOTIFICATIONS.TRY_AGAIN'
-            );
-            break;
-          case ResponseErrorCodes.CANT_COMMUNICATE_WITH_SMART_CONTRACT:
-            this.notificationDroneService.error(
-              'NOTIFICATIONS.ERROR_OCCURRED',
-              'NOTIFICATIONS.CANT_COMMUNICATE_WITH_SMART_CONTRACT',
-              'NOTIFICATIONS.TRY_AGAIN'
-            );
-            break;
-          case ResponseErrorCodes.WALLET_NOT_AUTHORIZED:
-            this.notificationDroneService.error(
-              'NOTIFICATIONS.ERROR_OCCURRED',
-              'NOTIFICATIONS.WALLET_NOT_AUTHORIZED',
-              'NOTIFICATIONS.TRY_AGAIN'
-            );
-            break;
-          default:
-            break;
-        }
-        return of();
-      })
     )
   );
 
