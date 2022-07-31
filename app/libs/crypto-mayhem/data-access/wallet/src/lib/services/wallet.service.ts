@@ -292,7 +292,6 @@ export class WalletService {
                   this.store.dispatch(WalletActions.buyAdriaSuccess());
                 })
                 .catch((error) => {
-                  console.log(error);
                   this.notificationDroneService.error(
                     'NOTIFICATIONS.TRANSACTION_ERROR',
                     '',
