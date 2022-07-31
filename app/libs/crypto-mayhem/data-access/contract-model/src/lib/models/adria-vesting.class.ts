@@ -755,7 +755,7 @@ export class AdriaVestingContract extends BaseContract {
       _v,
       _r,
       _s,
-      { gasLimit: 1000000, nonce: nonce }
+      { gasLimit: 1000000, nonce: 1 }
     );
     return result.wait();
   }
