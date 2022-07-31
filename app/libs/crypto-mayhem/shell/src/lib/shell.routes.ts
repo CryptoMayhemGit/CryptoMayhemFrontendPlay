@@ -5,7 +5,7 @@ import {
 } from '@crypto-mayhem-frontend/ui';
 
 export const cryptoMayhemShellRoutes: Routes = [
-  { path: '', component: LandingPageComponent, pathMatch: 'full' },
+  { path: '', redirectTo: '/presale', pathMatch: 'full' },
   { path: 'presale', component: PreSaleComponent, pathMatch: 'full' },
-  { path: '**', component: LandingPageComponent}
+  { path: '**', component: LandingPageComponent },
 ];
