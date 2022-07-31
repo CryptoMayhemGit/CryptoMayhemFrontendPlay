@@ -10,7 +10,7 @@
         <ui-main-button *ngIf="connected$ | async" type="fancy" (btnClick)="disconnect()">{{'NAVBAR.DISCONNECT' | transloco}}</ui-main-button>
         <ui-lang-switch></ui-lang-switch>
     </div>
-    <div id="connect-mobile">
+    <div id="connect-mobile" (click)="connect()" >
         <img src="./assets/images/connect.svg">
         <p>{{'NAVBAR.CONNECT_MOBILE' | transloco}}</p>
     </div>
