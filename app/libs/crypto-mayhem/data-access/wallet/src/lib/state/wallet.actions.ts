@@ -4,7 +4,7 @@ import { createAction, props } from "@ngrx/store";
 
 export const accountsChanged = createAction(
     '[Wallet] Account changed',
-    props<{account: string, chainId: string | undefined}>()
+    props<{account: string}>()
 );
 
 export const accountsChangedSuccess = createAction(
