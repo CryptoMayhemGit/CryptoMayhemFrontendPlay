@@ -14,6 +14,12 @@ interface SignedWalletWithAmount {
   maxUsdcTokenAmount: number;
 }
 
+interface ProviderRpcError extends Error {
+  message: string;
+  code: number;
+  data?: unknown;
+}
+
 import * as WalletActions from '../state/wallet.actions';
 import { Observable } from 'rxjs';
 import { SALE_TOKEN } from './wallet.endpoints';
@@ -82,7 +88,6 @@ export class WalletService {
 
   handleChainChangedMetamask = (chainIdHex: string): void => {
     if (typeof chainIdHex === 'undefined') return;
-
     if(chainIdHex != this.appConfig.chainIdHexBinance){
       this.notificationDroneService.error(
         'NOTIFICATIONS.BAD_NETWORK',
@@ -96,14 +101,16 @@ export class WalletService {
     }
   };
 
-  handleDisconnectWalletConnect = (code: number, reason: string): void => {
-    this.disconnectWallet();
+  handleDisconnectMetamask = (reason: ProviderRpcError): void => {
+    if (reason.code !== 1013) { //MetaMask: Disconnected from chain. Attempting to connect.
+      this.disconnectWallet();
+    }
   };
 
   private createProviderHooks(provider: any): void {
     provider.on(ACCOUNTS_CHANGED, this.handleAccountsChangedMetamask);
     provider.on(CHAIN_CHANGED, this.handleChainChangedMetamask);
-    provider.on(DISCONNECT, this.handleDisconnectWalletConnect);
+    provider.on(DISCONNECT, this.handleDisconnectMetamask);
   }
 
   private removeMetamaskProviderHooks(provider: any): void {
@@ -117,7 +124,7 @@ export class WalletService {
     );
     (this.provider?.provider as any).removeListener(
       DISCONNECT,
-      this.handleDisconnectWalletConnect
+      this.handleDisconnectMetamask
     );
   }
 
@@ -133,6 +140,7 @@ export class WalletService {
         if (typeof window.ethereum === 'undefined' && this.isMobile()) {
           window.location.href =
             'https://metamask.app.link/dapp/black-mushroom-0ae7fe803-develop.westeurope.1.azurestaticapps.net/presale';
+
         } else if (typeof window.ethereum !== 'undefined') {
           this.provider = new providers.Web3Provider(window.ethereum, 'any');
           this.createProviderHooks(this.provider.provider);
@@ -155,11 +163,14 @@ export class WalletService {
             await this.provider.provider.request?.({
               method: 'wallet_switchEthereumChain',
               params: [{ chainId: this.appConfig.chainIdHexBinance }],
-            }).then(() => this.store.dispatch(
+            }).then(() => {
+              this.loggingInDevelopMode('wallet_switchEthereumChain', 'ok');
+              this.store.dispatch(
               WalletActions.connectWalletSuccess({
                 walletType: WalletType.metamask,
-              })
-            ));
+              }
+              ))
+            });
           } catch (error: any) {
             if (error.code === 4902) {
               try {
@@ -171,11 +182,13 @@ export class WalletService {
                       rpcUrl: this.appConfig.rpcUrlBinance,
                     },
                   ],
-                }).then(() => this.store.dispatch(
+                }).then(() => {
+                  this.loggingInDevelopMode('wallet_addEthereumChain', 'ok');
+                  this.store.dispatch(
                   WalletActions.connectWalletSuccess({
                     walletType: WalletType.metamask,
                   })
-                ));
+                )});
               } catch (addError) {
                 console.error('not this chain');
                 return;
@@ -199,7 +212,7 @@ export class WalletService {
         let provider = new WalletConnectProvider({
           qrcode: true,
           bridge: 'https://polygon.bridge.walletconnect.org',
-          chainId: 97,
+          chainId: this.appConfig.chainIdNumberBinance,
           rpc: {
             56: 'https://bsc-dataseed.binance.org/',
             97: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
@@ -207,11 +220,12 @@ export class WalletService {
         });
 
         this.provider = new providers.Web3Provider(provider, 'any');
-
         this.createProviderHooks(provider);
         await (this.provider.provider as any)
           .enable()
-          .then(() => console.log('test'));
+          .then(() => {
+            console.log('Done');
+          });
       }
     }
   }
