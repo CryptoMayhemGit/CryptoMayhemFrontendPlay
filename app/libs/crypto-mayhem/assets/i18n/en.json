@@ -174,9 +174,9 @@
         "WALLET_NOT_AUTHORIZED": "No wallet on whitelist."
     },
     "VALIDATIONS": {
-        "VESTING_AMOUNT_MAX": "Możesz zainwestować maks. {{ maxAmount }}",
-        "VESTING_AMOUNT_MIN": "Możesz zainwestować min. {{ minAmount }}",
-        "VESTING_TOKENS_LEFT": "W sprzedaży pozostało tylko {{ tokensLeft }} tokenów."
+        "VESTING_AMOUNT_MAX": "Max amount you can invest is {{ maxAmount }}",
+        "VESTING_AMOUNT_MIN": "Min amount you can invest is {{ minAmount }}",
+        "VESTING_TOKENS_LEFT": "There are only {{ tokensLeft }} tokens left."
     },
     "TOKEN_ZERO_AMOUNT": "Incorrect investment amount",
     "TOKENS_GREATER_THAN_MAX": "The investment amount is greater than the maximum amount",
