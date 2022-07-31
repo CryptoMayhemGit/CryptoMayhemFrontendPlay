@@ -3,7 +3,16 @@ export interface AppConfig {
   production: boolean,
   externalUrl: string,
   baseUrl: string,
-  rpcUrl: string,
   rpcChainId: string,
   defaultAsset: string
+  rpcUrlBinance: string;
+  chainIdNumberBinance: number;
+  chainIdHexBinance: string;
+  networkId: string;
+  stage: number;
+  maxNumberOfUsdcPerStage: number;
+  usdcContractAddress: string;
+  adriaContractAddress: string;
+  adriaVestingContractAddress: string;
+  adriaPrice: number;
 }

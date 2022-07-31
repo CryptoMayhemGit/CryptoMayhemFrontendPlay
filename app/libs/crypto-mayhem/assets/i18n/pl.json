@@ -30,10 +30,6 @@
             "PRESALE": "Przedsprzedaż"
         }
     },
-    "AUTH": {
-        "LOGIN_MESSAGE": "Login attempt",
-        "REGISTER_MESSAGE": "Register attempt"
-    },
     "NOTIFICATION": {
         "AUTH": {
             "REGISTER_ERROR": "Registration failed!",
@@ -84,6 +80,101 @@
             "SWITCH_CHAIN_ERROR": "Unable to switch chain!",
             "ADD_CHAIN_ERROR": "Unable to add chain!"
         }
-
+    },
+    "AUTH": {
+        "REGISTER_MESSAGE": "Register attempt",
+        "LOGIN_MESSAGE": "Login attempt"
+    },
+    "PRESALE": {
+        "PROGRESS": "Ilość sprzedanego tokena ADRIA",
+        "INFO": {
+            "DETAILS": {
+                "HEADER": "Szczegóły oficjalnej przedsprzedaży tokena ADRIA",
+                "1": "Prywatna sprzedaż trwa przez 6 dni do 06.08.2022 16:00 CET",
+                "2": "Gwarantowana alokacja dla wszystkich adresów umieszczonych na whitelist",
+                "3": "Cena w przedsprzedaży 0,0016 USDC",
+                "4": "Maksymalny zakup to 150 USDC (bep-20)",
+                "5": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy",
+                "6": "Niesprzedane tokeny z przedsprzedaży ulegną spaleniu! (W ostatniej rundzie wyprzedaży ogłosimy ile tokenów zostanie spalonych)"
+            },
+            "REMEMBER": "Pamiętaj, że musisz mieć BNB (bep-20) w portfelu, aby pokryć opłaty sieciowe za każdym razem kiedy inwestujesz USDC lub odbierasz swoje tokeny ADRIA.",
+            "CLAIM": {
+                "HEADER": "Jak odebrać zakupione tokeny?",
+                "MESSAGE": "Możesz przenosić zakupione tokeny ADRIA do swojego portfela w zakładce Vesting, która wkrótce będzie dostępna."
+            },
+            "ADRIA_TOKEN": {
+                "HEADER": "Token Adria",
+                "ADDRESS_MESSAGE": "Oficjalny adres inteligentnej umowy dla tokena ADRIA:",
+                "USABILITY": "Możesz przeczytać pełną użyteczność tokena ADRIA",
+                "WHITELIST": "Odnośnik do whitelist",
+                "HERE": "tutaj"
+            }
+        },
+        "TIME_LEFT": "Koniec przedsprzedaży za",
+        "INVEST": "Ile możesz zainwestować w token ADRIA?",
+        "AMOUNT": {
+            "MIN": "Minimalna kwota",
+            "MAX": "Maksymalna kwota",
+            "AMOUNT_TO_BUY": "Za ile chcesz kupić token ADRIA?",
+            "INVEST": "Zainwestowałeś",
+            "BUY": "Kupiłeś"
+        },
+        "GET": "Otrzymasz",
+        "BUY_ADRIA": "Kup ADRIA",
+        "WANT_BUY": {
+            "MESSAGE": "Chcesz kupić token ADRIA?"
+        },
+        "SUCCESS": {
+            "HEADER": "Gratulacje!",
+            "MESSAGE": "Zostałeś właścicielem tokena ADRIA. Dziękujemy za twój wkład w rozwój projektu Crypto Mayhem."
+        },
+        "INPUT": {
+            "WRITE_AMOUNT": "Wpisz kwotę"
+        },
+        "END": {
+            "HEADER": "Przedsprzedaż zakończona!",
+            "MESSAGE": "Jeżeli kupiłeś token, możesz zobaczyć swoją inwestycję po połaczeniu portfela."
+        },
+        "SOLD": {
+            "HEADER": "Token został wyprzedany!"
+        }
+    },
+    "WALLET": {
+        "CONNECTED": "Portfel podłączony",
+        "DISCONNECTED": "Portfel rozłączony",
+        "POPUP": {
+            "HEADER": "Wybierz portfel",
+            "NO_ACCOUNT": "Nie posiadasz jeszcze swojego portfela dla kryptowalut i nie wiesz jak go założyć?",
+            "WATCH": "Obejrzyj wideo"
+        }
+    },
+    "NOTIFICATIONS": {
+        "TRANSACTION_SUCCESS": "Transakcja powiodła się",
+        "TRANSACTION_ACCEPTED": "Transakcja zaakceptowana",
+        "TRANSACTION_ERROR": "Transakcja nie powiodła się",
+        "WALLET_NOT_CONNECTED": "Połączenie z portfelem nie powiodło się",
+        "NO_WALLET": "Nie wykryto portfela",
+        "BAD_NETWORK": "Połączyłeś się ze złą siecią",
+        "TRANSACTION_CANCELLED": "Transakcja anulowana",
+        "CANNOT BUY": "Nie możesz kupić tokenu",
+        "THANK_YOU": "Dziękujemy, że wspierasz projekt Crypto Mayhem.",
+        "NO_WALLET_MESSAGE": "Nie posiadasz jeszcze portfela dla kryptowalut.",
+        "BAD_NETWORK_MESSAGE": "Powinieneś połączyć się z siecią <strong>Binance Smart Chain (BSC)</strong> w twoim portfelu.",
+        "CANNOT_BUY_MESSAGE": "Token w przedsprzedaży mogą kupić tylko osoby, które zapisały się wcześniej na whitelist.",
+        "CLOSE": "Zamknij",
+        "TRY_AGAIN": "Ponów",
+        "ERROR_OCCURRED": "Wystąpił błąd",
+        "TOKEN_ZERO_AMOUNT": "Błędna kwota inwestycji",
+        "TOKENS_GREATER_THAN_MAX": "Kwota inwestycji jest większa niż maksymalna",
+        "WALLET_WRONG_STRUCTURE": "Błędna struktura portfela",
+        "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
+        "NOT_ENOUGH_TOKENS_LEFT": "Błędna kwoty inwestycji",
+        "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji ze Smart Contractem",
+        "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście"
+    },
+    "VALIDATIONS": {
+        "VESTING_AMOUNT_MAX": "Możesz zainwestować maks.",
+        "VESTING_AMOUNT_MIN": "Możesz zainwestować min.",
+        "VESTING_TOKENS_LEFT": "W sprzedaży pozostało tylko {{ tokensLeft }} tokenów."
     }
 }

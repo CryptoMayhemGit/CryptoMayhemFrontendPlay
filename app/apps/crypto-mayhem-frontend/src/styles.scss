@@ -15,11 +15,13 @@
 }
 
 html {
-  background: #000 url("/assets/images/bg.jpg") no-repeat center center;
+  background: #000 url("/assets/images/kosmos.jpg") no-repeat center center;
+  background-size: cover;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   font-size: 10px;
-  height: 100%;
+  height: auto;
   margin: 0;
+  min-height: 100%;
   padding: 0;
   width: 100%;
 }
@@ -27,6 +29,8 @@ html {
 body {
   font-size: 14px;
   font-size: 1.4rem;
+  letter-spacing: 0.04rem;
+  line-height: 1.68rem;
   margin: 0;
 }
 

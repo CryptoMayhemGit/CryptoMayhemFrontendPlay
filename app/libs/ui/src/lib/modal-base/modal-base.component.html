@@ -1,0 +1,8 @@
+<div id="modal" [@inOutAnimation]>
+    <div id="modal-close">
+      <fa-icon (click)="closeModal()" [icon]="faxmark"></fa-icon>
+    </div>
+    <div id="modal-body">
+      <ng-content></ng-content>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+export const SALE_TOKEN = `https://salestokenapiwebapp.azurewebsites.net/api/SaleToken/ticket`;

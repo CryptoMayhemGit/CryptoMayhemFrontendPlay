@@ -1,6 +1,11 @@
-import { Route } from '@angular/router';
-import { LandingPageComponent } from '@crypto-mayhem-frontend/ui';
+import { Routes } from '@angular/router';
+import {
+  LandingPageComponent,
+  PreSaleComponent,
+} from '@crypto-mayhem-frontend/ui';
 
-export const cryptoMayhemShellRoutes: Route[] = [
-  { path: '', component: LandingPageComponent, pathMatch: 'full' },
+export const cryptoMayhemShellRoutes: Routes = [
+  { path: '', redirectTo: '/presale', pathMatch: 'full' },
+  { path: 'presale', component: PreSaleComponent, pathMatch: 'full' },
+  { path: '**', component: LandingPageComponent },
 ];

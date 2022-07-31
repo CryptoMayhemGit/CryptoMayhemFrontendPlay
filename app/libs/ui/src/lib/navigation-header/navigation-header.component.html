@@ -1,14 +1,16 @@
+<div *ngIf="spinner | async"> TESTOWY SPINNER</div>
 <div id="nav">
     <div>
-        <a id="logo" href="/"><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
+        <a id="logo" routerLink=""><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
         <div id="burger-menu" [ngClass]="{'closed': !mobileVisible, 'open': mobileVisible}" (click)="mobileVisible = !mobileVisible; tdsVisible = false; gsVisible = false;"></div>
         <ng-template [ngTemplateOutlet]="links"></ng-template>
     </div>
     <div id="connect-pc">
-        <ui-main-button>{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
+        <ui-main-button *ngIf="!(connected$ | async)" type="fancy" (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
+        <ui-main-button *ngIf="connected$ | async" type="fancy" (btnClick)="disconnect()">{{'NAVBAR.DISCONNECT' | transloco}}</ui-main-button>
         <ui-lang-switch></ui-lang-switch>
     </div>
-    <div id="connect-mobile">
+    <div id="connect-mobile" (click)="connect()" >
         <img src="./assets/images/connect.svg">
         <p>{{'NAVBAR.CONNECT_MOBILE' | transloco}}</p>
     </div>
@@ -19,7 +21,7 @@
     </div>
     <div id="tablet-marketing">
         <ui-lang-switch></ui-lang-switch>
-        <img *ngIf="!gamesVisible" src="./assets/images/banner_tablet.png" />
+        <img class="marketing-banner" *ngIf="!gamesVisible" src="./assets/images/presale.png" />
         <div id="mobile-submenu" *ngIf="gamesVisible">
             <ui-submenu>
                 <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
@@ -38,7 +40,7 @@
                 <a href="#" (mouseenter)="gsVisible = false; tdsVisible = true" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.TDS.TITLE' | transloco}}</a>
             </div>
             <div id="games">
-                <img src="./assets/images/banner_tablet.png" *ngIf="!tdsVisible && !gsVisible && !isSmallerScreen()" />
+                <img src="./assets/images/presale.png" class="marketing-banner" *ngIf="!tdsVisible && !gsVisible && !isSmallerScreen()" />
                 <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
             </div>
         </ui-submenu>
@@ -46,7 +48,7 @@
         <a href="#">{{'NAVBAR.NAV.STAKING' | transloco}}</a>
         <a href="#">{{'NAVBAR.NAV.VESTING' | transloco}}</a>
         <a href="#">{{'NAVBAR.NAV.NEWS' | transloco}}</a>
-        <a href="#">{{'NAVBAR.NAV.PRESALE' | transloco}}</a>
+        <a  routerLink="presale" routerLinkActive="active">{{'NAVBAR.NAV.PRESALE' | transloco}}</a>
     </nav>
 </ng-template>
 
