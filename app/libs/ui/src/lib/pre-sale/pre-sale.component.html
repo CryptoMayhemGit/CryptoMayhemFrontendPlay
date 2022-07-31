@@ -56,7 +56,7 @@
                 <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MAX' | transloco: {maxAmount: maxUsdcToBuy + ' USDC'} }}</span>
             </p>
             <p>{{ 'PRESALE.GET' | transloco }}: {{formGroup.controls['amount'].value / 0.0016}} ADRIA</p>
-            <ui-main-button (click)="onBuy()" [disabled]="!formGroup.valid || !!(walletFacade.showWallets$ | async)">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
+            <ui-main-button [loading]="!!(loadingButton$ | async)" (btnClick)="onBuy()" [disabled]="!formGroup.valid || !!(walletFacade.showWallets$ | async)">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
         </form>
     </div>
     <!-- SHOW WHEN DISCONNECTED -->

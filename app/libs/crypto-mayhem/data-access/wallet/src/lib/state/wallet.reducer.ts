@@ -16,6 +16,7 @@ export interface WalletState {
     canBuyMore:boolean,
     showWallets: boolean,
     showSummary: boolean,
+    loading: boolean
 }
 
 export const initialState: WalletState = {
@@ -29,6 +30,7 @@ export const initialState: WalletState = {
     canBuyMore: true,
     showWallets: false,
     showSummary: false,
+    loading: false
 }
 
 export const walletReducer = createReducer(
@@ -46,7 +48,9 @@ export const walletReducer = createReducer(
     on(WalletActions.hideSpinner, state => ({...state, spinner: false})),
     on(WalletActions.showWallets, state => ({...state, showWallets: true})),
     on(WalletActions.hideWallets, state => ({...state, showWallets: false})),
-    on(WalletActions.hideSummary, state => ({...state, showSummary: false, usdcPerStage: '0.0', adriaPerStage: 0.0, canBuyMore: true}))
+    on(WalletActions.hideSummary, state => ({...state, showSummary: false, usdcPerStage: '0.0', adriaPerStage: 0.0, canBuyMore: true})),
+    on(WalletActions.transaction, state => ({...state, loading: true})),
+    on(WalletActions.transactionSuccess, state => ({...state, loading: false}))
 );
 
 export function reducer(state: WalletState | undefined, action: Action) {

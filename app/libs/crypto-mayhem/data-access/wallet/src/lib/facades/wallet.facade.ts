@@ -26,6 +26,7 @@ export class WalletFacade {
   readonly adriaPerStage$ = this.store.select(WalletSelectors.getAdriaPerStage);
   readonly showSummary$ = this.store.select(WalletSelectors.getShowSummary);
   readonly canBuyMore$ = this.store.select(WalletSelectors.getCanBuyMore);
+  readonly loadingButton$ = this.store.select(WalletSelectors.getLoadingButton);
 
   constructor(
     private readonly store: Store,

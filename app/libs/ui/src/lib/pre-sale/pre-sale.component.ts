@@ -43,6 +43,7 @@ export class PreSaleComponent implements OnInit {
     'PRESALE.INFO.DETAILS.6',
   ];
   maxUsdcToBuy: number;
+  loadingButton$: Observable<boolean> = of(false);
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -55,6 +56,7 @@ export class PreSaleComponent implements OnInit {
     this.adriaPerStage$ = this.walletFacade.adriaPerStage$;
     this.showSummary$ = this.walletFacade.showSummary$;
     this.canBuyMore$ = this.walletFacade.canBuyMore$;
+    this.loadingButton$ = this.walletFacade.loadingButton$;
   }
 
   ngOnInit(): void {

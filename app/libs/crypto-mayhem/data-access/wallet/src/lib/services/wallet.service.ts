@@ -270,6 +270,7 @@ export class WalletService {
           signedWalletWithAmount.signature
         );
 
+        this.store.dispatch(WalletActions.transaction());
         usdcContract
           .approve(signedWalletWithAmount.usdcTokenAmount)
           .then((result) => {
@@ -292,6 +293,7 @@ export class WalletService {
                   this.store.dispatch(WalletActions.buyAdriaSuccess());
                 })
                 .catch((error) => {
+                  this.store.dispatch(WalletActions.transactionSuccess());
                   this.notificationDroneService.error(
                     'NOTIFICATIONS.TRANSACTION_ERROR',
                     '',
@@ -299,7 +301,9 @@ export class WalletService {
                   );
                 });
           })
-          .catch((error) => console.log(error));
+          .catch((error) => {
+            this.store.dispatch(WalletActions.transactionSuccess());
+          });
       } catch (err: any) {
         console.log(err);
       }

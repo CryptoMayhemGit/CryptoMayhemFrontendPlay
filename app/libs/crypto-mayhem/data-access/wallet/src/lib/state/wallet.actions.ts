@@ -80,4 +80,12 @@ export const setUserCanBuy = createAction(
 
 export const hideSummary = createAction(
     '[Wallet] Hide summary on presale window'
-)
+);
+
+export const transaction = createAction(
+    '[Wallet] Start transaction buy Adria'
+);
+
+export const transactionSuccess = createAction(
+    '[Wallet] Start transaction buy Adria success'
+);

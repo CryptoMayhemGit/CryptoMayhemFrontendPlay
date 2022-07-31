@@ -53,3 +53,8 @@ export const getCanBuyMore = createSelector(
     selectWallet,
     state => state.canBuyMore
 );
+
+export const getLoadingButton = createSelector(
+    selectWallet,
+    state => state.loading
+);

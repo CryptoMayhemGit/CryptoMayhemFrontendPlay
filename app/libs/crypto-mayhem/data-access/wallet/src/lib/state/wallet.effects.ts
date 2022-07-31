@@ -109,6 +109,18 @@ export class WalletEffects {
     )
   );
 
+  loadingButton$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(WalletActions.buyAdriaSuccess),
+    concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
+    map(() =>
+      {
+        return WalletActions.transactionSuccess();
+      }
+    )
+  )
+);
+
   hidePresaleSummary$ = createEffect(() =>
     this.actions$.pipe(
       ofType(WalletActions.disconnectWallet),
