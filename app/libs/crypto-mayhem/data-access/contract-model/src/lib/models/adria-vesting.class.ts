@@ -5,6 +5,7 @@ import {
   Contract,
   ethers,
   Signer,
+  utils,
 } from 'ethers';
 import { Provider } from '@ethersproject/providers';
 import { EventFragment, FunctionFragment } from 'ethers/lib/utils';
@@ -696,7 +697,6 @@ const _abi = [
 const _address = '0x6a72d0119924675A67F0D808C0702db0c7E88480';
 
 export class AdriaVestingContractFactory {
-
   static connect(
     signerOrProvider: Signer | Provider | undefined,
     address: string
@@ -713,6 +713,16 @@ const dateAsNumber = (date: Date): number => {
 const dateAsSeconds = (date: Date): number => {
   return Math.ceil(dateAsNumber(date) / 1000);
 };
+
+async function getNonce(provider: any) {
+  const transactionCount = await provider.getSigner().getTransactionCount();
+  return transactionCount;
+}
+
+async function getGasPrice(provider: any) {
+  let feeData = await provider.getFeeData();
+  console.log(utils.formatUnits(feeData.gasPrice, 'gwei'));
+}
 
 export class AdriaVestingContract extends BaseContract {
   private _contract: Contract;
@@ -733,7 +743,8 @@ export class AdriaVestingContract extends BaseContract {
     _r: any,
     _s: any
   ) {
-    const estimateGas = await this.provider.getGasPrice();
+    //const estimateGas = await getGasPrice(this.provider);
+    const nonce = await getNonce(this.provider);
     const usdcAmountBigNumber = BigNumber.from(usdcAmount);
     const signedAmountBigNumber = BigNumber.from(signedAmount);
     const stageBigNumber = BigNumber.from(stage);
@@ -744,14 +755,17 @@ export class AdriaVestingContract extends BaseContract {
       _v,
       _r,
       _s,
-      { gasLimit: 1000000, nonce: dateAsSeconds(new Date()) }
+      { gasLimit: 1000000, nonce: nonce }
     );
     return result.wait();
   }
 
   public async investors(address: string, stageNumber: BigNumberish) {
     const stageNumberBigNumber = BigNumber.from(stageNumber);
-    const result = await this._contract['investors'](address, stageNumberBigNumber);
+    const result = await this._contract['investors'](
+      address,
+      stageNumberBigNumber
+    );
     return ethers.utils.formatEther(result);
   }
 }
