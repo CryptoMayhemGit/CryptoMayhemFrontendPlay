@@ -57,7 +57,7 @@ export class WalletService {
     if (!Array.isArray(accounts)) {
       this.store.dispatch(
         WalletActions.accountsChanged({
-          account: accounts[0]
+          account: accounts[0],
         })
       );
 
@@ -74,7 +74,7 @@ export class WalletService {
       this.loggingInDevelopMode('handleAccountChanged', accounts);
       this.store.dispatch(
         WalletActions.accountsChanged({
-          account: accounts[0]
+          account: accounts[0],
         })
       );
 
@@ -88,21 +88,22 @@ export class WalletService {
 
   handleChainChangedMetamask = (chainIdHex: string): void => {
     if (typeof chainIdHex === 'undefined') return;
-    if(chainIdHex != this.appConfig.chainIdHexBinance){
+    if (chainIdHex != this.appConfig.chainIdHexBinance) {
       this.notificationDroneService.error(
         'NOTIFICATIONS.BAD_NETWORK',
         'NOTIFICATIONS.BAD_NETWORK_MESSAGE',
         'NOTIFICATIONS.CLOSE'
-        );
-        this.disconnectWallet();
-      } else {
-        this.store.dispatch(WalletActions.chainChanged({ chainId: chainIdHex }));
-        this.notificationDroneService.hide();
+      );
+      this.disconnectWallet();
+    } else {
+      this.store.dispatch(WalletActions.chainChanged({ chainId: chainIdHex }));
+      this.notificationDroneService.hide();
     }
   };
 
   handleDisconnectMetamask = (reason: ProviderRpcError): void => {
-    if (reason.code !== 1013) { //MetaMask: Disconnected from chain. Attempting to connect.
+    if (reason.code !== 1013) {
+      //MetaMask: Disconnected from chain. Attempting to connect.
       this.disconnectWallet();
     }
   };
@@ -140,7 +141,6 @@ export class WalletService {
         if (typeof window.ethereum === 'undefined' && this.isMobile()) {
           window.location.href =
             'https://metamask.app.link/dapp/black-mushroom-0ae7fe803-develop.westeurope.1.azurestaticapps.net/presale';
-
         } else if (typeof window.ethereum !== 'undefined') {
           this.provider = new providers.Web3Provider(window.ethereum, 'any');
           this.createProviderHooks(this.provider.provider);
@@ -150,7 +150,7 @@ export class WalletService {
             .then((accounts: string[]) => {
               this.store.dispatch(
                 WalletActions.accountsChanged({
-                  account: accounts[0]
+                  account: accounts[0],
                 })
               );
             })
@@ -160,35 +160,40 @@ export class WalletService {
             });
 
           try {
-            await this.provider.provider.request?.({
-              method: 'wallet_switchEthereumChain',
-              params: [{ chainId: this.appConfig.chainIdHexBinance }],
-            }).then(() => {
-              this.loggingInDevelopMode('wallet_switchEthereumChain', 'ok');
-              this.store.dispatch(
-              WalletActions.connectWalletSuccess({
-                walletType: WalletType.metamask,
-              }
-              ))
-            });
-          } catch (error: any) {
-            if (error.code === 4902) {
-              try {
-                await this.provider.provider.request?.({
-                  method: 'wallet_addEthereumChain',
-                  params: [
-                    {
-                      chainId: this.appConfig.chainIdHexBinance,
-                      rpcUrl: this.appConfig.rpcUrlBinance,
-                    },
-                  ],
-                }).then(() => {
-                  this.loggingInDevelopMode('wallet_addEthereumChain', 'ok');
-                  this.store.dispatch(
+            await this.provider.provider
+              .request?.({
+                method: 'wallet_switchEthereumChain',
+                params: [{ chainId: this.appConfig.chainIdHexBinance }],
+              })
+              .then(() => {
+                this.loggingInDevelopMode('wallet_switchEthereumChain', 'ok');
+                this.store.dispatch(
                   WalletActions.connectWalletSuccess({
                     walletType: WalletType.metamask,
                   })
-                )});
+                );
+              });
+          } catch (error: any) {
+            if (error.code === 4902) {
+              try {
+                await this.provider.provider
+                  .request?.({
+                    method: 'wallet_addEthereumChain',
+                    params: [
+                      {
+                        chainId: this.appConfig.chainIdHexBinance,
+                        rpcUrl: this.appConfig.rpcUrlBinance,
+                      },
+                    ],
+                  })
+                  .then(() => {
+                    this.loggingInDevelopMode('wallet_addEthereumChain', 'ok');
+                    this.store.dispatch(
+                      WalletActions.connectWalletSuccess({
+                        walletType: WalletType.metamask,
+                      })
+                    );
+                  });
               } catch (addError) {
                 console.error('not this chain');
                 return;
@@ -221,11 +226,9 @@ export class WalletService {
 
         this.provider = new providers.Web3Provider(provider, 'any');
         this.createProviderHooks(provider);
-        await (this.provider.provider as any)
-          .enable()
-          .then(() => {
-            console.log('Done');
-          });
+        await (this.provider.provider as any).enable().then(() => {
+          console.log('Done');
+        });
       }
     }
   }
@@ -288,7 +291,8 @@ export class WalletService {
                   );
                   this.store.dispatch(WalletActions.buyAdriaSuccess());
                 })
-                .catch(() => {
+                .catch((error) => {
+                  console.log(error);
                   this.notificationDroneService.error(
                     'NOTIFICATIONS.TRANSACTION_ERROR',
                     '',
