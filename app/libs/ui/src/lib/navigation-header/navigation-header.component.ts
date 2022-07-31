@@ -1,5 +1,10 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  WalletType,
+} from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
+import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'ui-nav',
@@ -26,15 +31,21 @@ export class NavigationHeaderComponent implements OnInit {
   gsVisible = false;
   isMobile = false;
 
-  constructor() {}
+  spinner: Observable<boolean> = of(false);
+  connected$: Observable<boolean> = of(false);
 
-  ngOnInit(): void {}
+  constructor(public readonly walletFacade: WalletFacade) {}
+
+  ngOnInit(): void {
+    this.spinner = this.walletFacade.spinner$;
+    this.connected$ = this.walletFacade.connected$;
+  }
 
   isSmallerScreen(): boolean {
     return window.innerWidth <= 1240;
   }
 
-  showGames() {
+  showGames(): void {
     if (this.isSmallerScreen()) {
       this.gamesVisible = !this.gamesVisible;
       this.tdsVisible = true;
@@ -44,5 +55,13 @@ export class NavigationHeaderComponent implements OnInit {
       this.tdsVisible = false;
       this.gsVisible = false;
     }
+  }
+
+  connect(): void {
+    this.walletFacade.showWallets();
+  }
+
+  disconnect(): void {
+    this.walletFacade.disconnectWalletAccount(WalletType.metamask);
   }
 }

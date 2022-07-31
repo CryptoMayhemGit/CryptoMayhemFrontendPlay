@@ -1,0 +1,45 @@
+.drone {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: -8rem;
+  width: 100%;
+}
+
+.modal {
+  margin: 5.4rem 3.5rem 2rem;
+
+  .modal-header {
+    margin-bottom: 1.8rem;
+
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin: 0;
+      text-align: center;
+
+      &.error {
+        color: #ff4246;
+      }
+
+      &.success {
+        color: #00d62e;
+      }
+    }
+  }
+
+  .modal-content {
+    p {
+      font-size: 1.2rem;
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  .modal-actions {
+    margin-top: 4.8rem;
+  }
+}

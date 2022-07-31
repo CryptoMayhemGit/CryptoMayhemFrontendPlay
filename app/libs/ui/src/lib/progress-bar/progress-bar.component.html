@@ -1,0 +1,4 @@
+<div id="wrapper">
+  <div id="bar" [ngStyle]="{'width': (currentValue/maxValue)*100 + '%'}" [@slideIn]></div>
+</div>
+<span>{{ currentValue }}/{{ maxValue }}</span>

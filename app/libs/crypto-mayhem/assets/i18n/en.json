@@ -5,13 +5,13 @@
     "GAMES": {
         "GS": {
             "TITLE": "Grand Strategy",
-            "DESCRIPTION": "Odkrywaj, eksploruj, zdobywaj surowce oraz buduj obiekty na obcych planetach.",
-            "CTA": "Zacznij rozwijać swoją kolonię!"
+            "DESCRIPTION": "Discover, explore, get resources and build objects on foreign planets.",
+            "CTA": "Start growing your colony!"
         },
         "TDS": {
             "TITLE": "Top-Down Shooter",
-            "DESCRIPTION": "Twórz własne Mechy i walcz o przetrwanie niszcząc hordy obcych.",
-            "CTA": "Czy zdołasz obronić planetę?"
+            "DESCRIPTION": "Create your own Mechs and fight for survival by destroying hordes of aliens.",
+            "CTA": "Can you protect the planet?"
         }
     },
     
@@ -84,5 +84,105 @@
     "AUTH": {
         "REGISTER_MESSAGE": "Register attempt",
         "LOGIN_MESSAGE": "Login attempt"
-    }
+    },
+    "PRESALE": {
+        "PROGRESS": "Amount of ADRIA token sold",
+        "INFO": {
+            "DETAILS": {
+                "HEADER": "Official presale of ADRIA token details",
+                "1": "Private Sale will last for 6 days to 06.08.2022 16:00 CET",
+                "2": "Guaranteed allocation for all whitelisted address",
+                "3": "Price in sale 0,0016 USDC",
+                "4": "The maximum purchase is 150 USDC (bep-20)",
+                "5": "10% at TGE, rest unblocked every block for 9 months",
+                "6": "Unsold tokens from presale will be BURNED! (In the last sales round, we will announce how much will be burned)"
+            },
+            "REMEMBER": "Please remember that you must have BNB (bep-20) in your wallet to cover network fees each time you invest USDC or claim your ADRIA token",
+            "CLAIM": {
+                "HEADER": "How to claim bought tokens?",
+                "MESSAGE": "You can transfer the bought ADRIA tokens to your wallet in the Vesting tab, which will be available soon."
+            },
+            "ADRIA_TOKEN": {
+                "HEADER": "Adria token",
+                "ADDRESS_MESSAGE": "Offical smart contract address for ADRIA token:",
+                "USABILITY": "You can read the full utility of the ADRIA token",
+                "WHITELIST": "Link to the whitelist",
+                "HERE": "here"
+            }
+        },
+        "TIME_LEFT": "End of presale in",
+        "INVEST": "How much can you invest in an ADRIA token?",
+        "AMOUNT": {
+            "MIN": "Minimum buy",
+            "MAX": "Maximum buy",
+            "AMOUNT_TO_BUY": "How much do you want to buy the ADRIA token?",
+            "INVEST": "You invest",
+            "BUY": "You buy"
+        },
+        "GET": "You will get",
+        "BUY_ADRIA": "Buy ADRIA",
+        "WANT_BUY": {
+            "MESSAGE": "Do you want to buy ADRIA?"
+        },
+        "SUCCESS": {
+            "HEADER": "Congratulations!",
+            "MESSAGE": "You have the ADRIA token. Thank you for your contribution to the development of the Crypto Mayhem project."
+        },
+        "INPUT": {
+            "WRITE_AMOUNT": "Enter the amount"
+        },
+        "END": {
+            "HEADER": "Presale finished!",
+            "MESSAGE": "If you bought a token, you can see your investment after connecting your wallet."
+        },
+        "SOLD": {
+            "HEADER": "Token sold out!"
+        }
+
+    },
+    "WALLET": {
+        "CONNECTED": "Wallet Connected",
+        "DISCONNECTED": "Wallet Disconnected",
+        "POPUP": {
+            "HEADER": "Choose wallet",
+            "NO_ACCOUNT": "Haven’t got a crypto wallet yet and don’t know how to set it up?",
+            "WATCH": "Watch the video"
+        }
+    },
+    "NOTIFICATIONS": {
+        "TRANSACTION_SUCCESS": "Transaction success",
+        "TRANSACTION_ACCEPTED": "Transaction accepted",
+        "TRANSACTION_ERROR": "Transaction has failed",
+        "WALLET_NOT_CONNECTED": "Connection to the wallet has failed",
+        "NO_WALLET": "Wallet not detected",
+        "BAD_NETWORK": "You’re connected to the wrong network",
+        "TRANSACTION_CANCELLED": "Transaction cancelled",
+        "CANNOT BUY": "You cannot buy a token",
+        "THANK_YOU": "Thank you for supporting the Crypto Mayhem project.",
+        "NO_WALLET_MESSAGE": "Haven’t got a crypto wallet yet.",
+        "BAD_NETWORK_MESSAGE": "You should connect to the <strong>Binance Smart Chain (BSC)</strong> network in your wallet.",
+        "CANNOT_BUY_MESSAGE": "Only people who signed up for whitelist before can buy the token in presale.",
+        "CLOSE": "Close",
+        "TRY_AGAIN": "Try again",
+        "ERROR_OCCURRED": "There was an error",
+        "TOKEN_ZERO_AMOUNT": "Incorrect investment amount",
+        "TOKENS_GREATER_THAN_MAX": "The investment amount is greater than the maximum amount.",
+        "WALLET_WRONG_STRUCTURE": "Incorrect wallet structure.",
+        "ALL_TOKENS_PURCHASED": "The maximum amount of tokens from this address was purchased.",
+        "NOT_ENOUGH_TOKENS_LEFT": "Incorrect investment amount.",
+        "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Lack of communication with smart contract.",
+        "WALLET_NOT_AUTHORIZED": "No wallet on whitelist."
+    },
+    "VALIDATIONS": {
+        "VESTING_AMOUNT_MAX": "Max amount you can invest is {{ maxAmount }}",
+        "VESTING_AMOUNT_MIN": "Min amount you can invest is {{ minAmount }}",
+        "VESTING_TOKENS_LEFT": "There are only {{ tokensLeft }} tokens left."
+    },
+    "TOKEN_ZERO_AMOUNT": "Incorrect investment amount",
+    "TOKENS_GREATER_THAN_MAX": "The investment amount is greater than the maximum amount",
+    "WALLET_WRONG_STRUCTURE": "Incorrect wallet structure",
+    "ALL_TOKENS_PURCHASED": "The maximum amount of tokens from this address was purchased",
+    "NOT_ENOUGH_TOKENS_LEFT": "Incorrect investment amount",
+    "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Lack of communication with Smart Contract",
+    "WALLET_NOT_AUTHORIZED": "No wallet on whitelist"
 }
