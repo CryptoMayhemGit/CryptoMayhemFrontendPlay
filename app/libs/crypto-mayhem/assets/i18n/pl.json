@@ -173,8 +173,15 @@
         "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście"
     },
     "VALIDATIONS": {
-        "VESTING_AMOUNT_MAX": "Możesz zainwestować maks.",
-        "VESTING_AMOUNT_MIN": "Możesz zainwestować min.",
+        "VESTING_AMOUNT_MAX": "Możesz zainwestować maks. {{ maxAmount }}",
+        "VESTING_AMOUNT_MIN": "Możesz zainwestować min. {{ minAmount }}",
         "VESTING_TOKENS_LEFT": "W sprzedaży pozostało tylko {{ tokensLeft }} tokenów."
-    }
+    },
+    "TOKEN_ZERO_AMOUNT": "Błędna kwota inwestycji",
+    "TOKENS_GREATER_THAN_MAX": "Kwota inwestycji jest większa niż maksymalna",
+    "WALLET_WRONG_STRUCTURE": "Błędna struktura portfela",
+    "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
+    "NOT_ENOUGH_TOKENS_LEFT": " Błędna kwoty inwestycji",
+    "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji z Smart Contractem",
+    "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście"
 }
