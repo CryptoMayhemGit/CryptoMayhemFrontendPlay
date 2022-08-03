@@ -16,23 +16,39 @@ export class GrandStrategyComponent implements OnInit, AfterViewInit {
   @ViewChild('gameCanvas') gameCanvas!: ElementRef<HTMLCanvasElement>;
 
   gameInstance: unknown;
+  progress = 0;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    window.addEventListener('hello', (event: any) => {
+      console.log(event.detail);
+    });
+  }
 
   ngAfterViewInit(): void {
     const loader = (window as any).createUnityInstance;
 
-    this.gameInstance = loader(this.gameCanvas.nativeElement, {
-      dataUrl: 'assets/unity/Build/build.data',
-      frameworkUrl: 'assets/unity/Build/build.framework.js',
-      codeUrl: 'assets/unity/Build/build.wasm',
-      symbolsUrl: 'assets/unity/Build/build.symbols.json',
-      streamingAssetsUrl: 'assets',
-      companyName: 'DefaultCompany',
-      productName: 'My project',
-      productVersion: '0.1',
-      showBanner: true,
-    });
+    this.gameInstance = loader(
+      this.gameCanvas.nativeElement,
+      {
+        dataUrl: 'assets/unity/Build/build.data',
+        frameworkUrl: 'assets/unity/Build/build.framework.js',
+        codeUrl: 'assets/unity/Build/build.wasm',
+        symbolsUrl: 'assets/unity/Build/build.symbols.json',
+        streamingAssetsUrl: 'assets',
+        companyName: 'DefaultCompany',
+        productName: 'My project',
+        productVersion: '0.1',
+        showBanner: true,
+      },
+      (progress: any) => {
+        this.progress = progress;
+      }
+    )
+      .then((unityInstance: any) => {
+        console.log(unityInstance);
+        unityInstance.SendMessage('Camera Controller', 'ZoomOnClickPlanet');
+      })
+      .catch((error: any) => {});
   }
 }

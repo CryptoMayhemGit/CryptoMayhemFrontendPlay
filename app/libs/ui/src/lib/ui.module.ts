@@ -26,6 +26,5 @@ import { GrandStrategyComponent } from './grand-strategy/grand-strategy.componen
     TimerModule,
     GrandStrategyModule,
   ],
-  declarations: [GrandStrategyComponent],
 })
 export class UiModule {}
