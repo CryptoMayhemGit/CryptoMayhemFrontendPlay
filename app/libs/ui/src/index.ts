@@ -23,3 +23,5 @@ export * from './lib/progress-bar/progress-bar.module';
 export * from './lib/progress-bar/progress-bar.component';
 export * from './lib/timer/timer.module';
 export * from './lib/timer/timer.component';
+export * from './lib/grand-strategy/grand-strategy.module';
+export * from './lib/grand-strategy/grand-strategy.component';
