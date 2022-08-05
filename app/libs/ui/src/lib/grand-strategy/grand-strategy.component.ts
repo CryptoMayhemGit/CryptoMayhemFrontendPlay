@@ -2,9 +2,14 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Inject,
   OnInit,
   ViewChild,
 } from '@angular/core';
+import {
+  AppConfig,
+  APP_CONFIG,
+} from '@crypto-mayhem-frontend/crypto-mayhem/config';
 
 @Component({
   selector: 'ui-grand-strategy',
@@ -17,7 +22,7 @@ export class GrandStrategyComponent implements OnInit, AfterViewInit {
 
   gameInstance: unknown;
   progress = 0;
-  constructor() {}
+  constructor(@Inject(APP_CONFIG) private readonly appConfig: AppConfig) {}
 
   ngOnInit(): void {
     window.addEventListener('hello', (event: any) => {
@@ -31,10 +36,10 @@ export class GrandStrategyComponent implements OnInit, AfterViewInit {
     this.gameInstance = loader(
       this.gameCanvas.nativeElement,
       {
-        dataUrl: 'assets/unity/Build/build.data',
-        frameworkUrl: 'assets/unity/Build/build.framework.js',
-        codeUrl: 'assets/unity/Build/build.wasm',
-        symbolsUrl: 'assets/unity/Build/build.symbols.json',
+        dataUrl: `${this.appConfig.webGlLocation}Build/build.data`,
+        frameworkUrl: `${this.appConfig.webGlLocation}Build/build.framework.js`,
+        codeUrl: `${this.appConfig.webGlLocation}Build/build.wasm`,
+        symbolsUrl: `${this.appConfig.webGlLocation}Build/build.symbols.json`,
         streamingAssetsUrl: 'assets',
         companyName: 'DefaultCompany',
         productName: 'My project',
