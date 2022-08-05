@@ -25,3 +25,5 @@ export * from './lib/main-page/main-page.module';
 export * from './lib/main-page/main-page.component';
 export * from './lib/video-component/video-component.module';
 export * from './lib/video-component/video-component.component';
+export * from './lib/grand-strategy/grand-strategy.module';
+export * from './lib/grand-strategy/grand-strategy.component';
