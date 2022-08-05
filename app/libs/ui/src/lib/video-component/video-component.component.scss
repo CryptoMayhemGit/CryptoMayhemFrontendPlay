@@ -1,0 +1,12 @@
+:host {
+  backdrop-filter: blur(4rem);
+  background: rgb(40 40 40 / 60%);
+  box-shadow: 0 0.4rem 2.4rem rgba(0 0 0 / 60%);
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 45rem;
+  }
+}
