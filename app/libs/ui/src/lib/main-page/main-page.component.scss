@@ -9,19 +9,34 @@
   }
 }
 
-.greeting {
-  padding: 2rem 3.8rem;
-  color: #f2f2f2;
-  //mix-blend-mode: overlay;
-  backdrop-filter: blur(4rem);
-  background: rgb(40 40 40 / 60%);
-  box-shadow: 0 0.4rem 2.4rem rgba(0 0 0 / 60%);
-}
-
-div:first-of-type {
+.main {
   display: flex;
   justify-content: center;
   margin: 3.9rem 0 5.5rem;
+
+  .greeting {
+    backdrop-filter: blur(4rem);
+    background: rgb(40 40 40 / 60%);
+    box-shadow: 0 0.4rem 2.4rem rgba(0 0 0 / 60%);
+    color: #f2f2f2;
+    margin-left: 2rem;
+    max-width: 28rem;
+    padding: 2rem 3.8rem;
+
+    &::before {
+      backdrop-filter: blur(4rem);
+      border-bottom: 2rem solid transparent;
+      border-right: 2rem solid #1d191a;
+      border-top: 2rem solid transparent;
+      content: "";
+      height: 0;
+      left: -2rem;
+      position: absolute;
+      top: calc(50% - 2rem);
+      width: 0;
+      z-index: -1;
+    }
+  }
 }
 
 .trailers {

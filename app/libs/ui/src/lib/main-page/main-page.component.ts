@@ -1,5 +1,4 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { AbsoluteSourceSpan } from '@angular/compiler';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,10 +11,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
       transition(':enter', [
         style({
           opacity: 0,
-          transform: 'translate(-300%, 100%)',
+          transform: 'translate(-200%, 200%)',
         }),
         animate(
-          '1000ms ease-in',
+          '500ms ease-in',
           style({ opacity: 1, transform: 'translate(0)' })
         ),
       ]),
@@ -24,11 +23,23 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
       transition(':enter', [
         style({
           opacity: 0,
-          transform: 'translateY(50%)',
+          transform: 'translateY(30%)',
         }),
         animate(
-          '500ms ease-in',
+          '500ms 1000ms ease-in',
           style({ opacity: 1, transform: 'translateY(0)' })
+        ),
+      ]),
+    ]),
+    trigger('sizeUp', [
+      transition(':enter', [
+        style({
+          opacity: 0,
+          transform: 'scale(0.5) translateX(-50%)',
+        }),
+        animate(
+          '500ms 500ms ease-in',
+          style({ opacity: 1, transform: 'scale(1) translateX(0)' })
         ),
       ]),
     ]),

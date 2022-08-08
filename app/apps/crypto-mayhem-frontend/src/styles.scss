@@ -8,7 +8,7 @@
   font-weight: bold;
   src: url("/assets/fonts/NulshockRg-Bold.eot");
   src: url("/assets/fonts/NulshockRg-Bold.eot?#iefix")
-    format("embedded-opentype"),
+      format("embedded-opentype"),
     url("/assets/fonts/NulshockRg-Bold.woff2") format("woff2"),
     url("/assets/fonts/NulshockRg-Bold.woff") format("woff"),
     url("/assets/fonts/NulshockRg-Bold.ttf") format("truetype");
@@ -24,6 +24,11 @@ html {
   min-height: 100%;
   padding: 0;
   width: 100%;
+  overflow-y: scroll;
+
+  @media screen and (min-width: 1240px) {
+    overflow-y: auto;
+  }
 }
 
 body {
