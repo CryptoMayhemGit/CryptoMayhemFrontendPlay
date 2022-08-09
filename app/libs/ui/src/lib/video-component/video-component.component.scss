@@ -50,23 +50,23 @@
     margin: auto;
     position: absolute;
     right: 0;
-    top: -1.4rem;
+    top: 0.4rem;
     width: 90%;
 
     @media screen and (min-width: 590px) {
-      top: -1.2rem;
+      top: 1rem;
     }
 
     @media screen and (min-width: 768px) {
-      top: -1.8rem;
+      top: 0.4rem;
     }
 
     @media screen and (min-width: 1024px) {
-      top: -1.4rem;
+      top: 1rem;
     }
 
     @media screen and (min-width: 1240px) {
-      top: -2rem;
+      top: 0.4rem;
     }
   }
 }
@@ -75,6 +75,7 @@
   align-items: flex-end;
   display: flex;
   height: 100%;
+  margin-top: 2.4rem;
 
   ui-main-button {
     width: 13rem;
@@ -90,5 +91,5 @@ h1 {
   font-family: Nulshock, Arial, Helvetica, sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
-  margin: 3.2rem 0 2.4rem;
+  margin: 3.2rem 0 0;
 }

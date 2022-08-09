@@ -10,6 +10,7 @@
 }
 
 .main {
+  align-items: center;
   display: flex;
   justify-content: center;
   margin: 3.9rem 0 5.5rem;
@@ -20,17 +21,26 @@
     box-shadow: 0 0.4rem 2.4rem rgba(0 0 0 / 60%);
     color: #f2f2f2;
     margin-left: 2rem;
-    max-width: 28rem;
-    padding: 2rem 3.8rem;
+    max-width: 24rem;
+    padding: 2rem;
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin: 0 0 0.8rem;
+    }
+
+    p {
+      margin: 0;
+    }
 
     &::before {
-      backdrop-filter: blur(4rem);
-      border-bottom: 2rem solid transparent;
-      border-right: 2rem solid #1d191a;
-      border-top: 2rem solid transparent;
+      border-bottom: 1.5rem solid transparent;
+      border-right: 2.5rem solid #1d191a;
+      border-top: 1.5rem solid transparent;
       content: "";
       height: 0;
-      left: -2rem;
+      left: -2.5rem;
       position: absolute;
       top: calc(50% - 2rem);
       width: 0;

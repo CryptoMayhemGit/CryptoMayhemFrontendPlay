@@ -2,17 +2,25 @@
     "POLISH": "Polski",
     "ENGLISH": "English",
 
+    "WELCOME": {
+        "TITLE": "Hi! 👋",
+        "TEXT": "You can join our Galactic World soon. Meanwhile, watch the trailers.<br><br>See you later 😄"
+    },
+
     "GAMES": {
         "GS": {
             "TITLE": "Grand Strategy",
-            "DESCRIPTION": "Discover, explore, get resources and build objects on foreign planets.",
-            "CTA": "Start growing your colony!"
+            "DESCRIPTION": "Odkrywaj, eksploruj, zdobywaj surowce oraz buduj obiekty na obcych planetach.",
+            "CTA": "Zacznij rozwijać swoją kolonię!"
         },
         "TDS": {
             "TITLE": "Top-Down Shooter",
-            "DESCRIPTION": "Create your own Mechs and fight for survival by destroying hordes of aliens.",
-            "CTA": "Can you protect the planet?"
-        }
+            "DESCRIPTION": "Twórz własne Mechy i walcz o przetrwanie niszcząc hordy obcych.",
+            "CTA": "Czy zdołasz obronić planetę?"
+        },
+        "ABOUT": "Read More",
+        "PLAY_ONLINE": "Play Online",
+        "DOWNLOAD": "Download"
     },
     
     "NAVBAR": {
