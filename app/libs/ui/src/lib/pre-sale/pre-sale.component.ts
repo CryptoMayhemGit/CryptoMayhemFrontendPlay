@@ -30,7 +30,7 @@ export class PreSaleComponent implements OnInit {
   adriaPerStage$: Observable<number> = of(0.0);
   showSummary$: Observable<boolean> = of(false);
   canBuyMore$: Observable<boolean> = of(true);
-  presaleStartTime = new Date(Date.UTC(2022,7,6,14,0,0)).getTime();
+  presaleStartTime = new Date(Date.UTC(2022, 7, 6, 14, 0, 0)).getTime();
   caretRight = faCaretRight;
   circleExclamation = faCircleExclamation;
   presale = true;
@@ -40,7 +40,6 @@ export class PreSaleComponent implements OnInit {
     'PRESALE.INFO.DETAILS.3',
     'PRESALE.INFO.DETAILS.4',
     'PRESALE.INFO.DETAILS.5',
-    'PRESALE.INFO.DETAILS.6',
   ];
   maxUsdcToBuy: number;
   loadingButton$: Observable<boolean> = of(false);
