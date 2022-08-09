@@ -23,7 +23,7 @@
         <ui-progress-bar [currentValue]="500000" [maxValue]="1000000"></ui-progress-bar>
     </div>-->
     <!-- HIDE WHEN SUCCESS -->
-    <div *ngIf="canBuyMore$ | async" id="vesting-info">
+    <!--<div *ngIf="canBuyMore$ | async" id="vesting-info">
         <p>{{ 'PRESALE.INVEST' | transloco }}</p>
         <div class="invest">
             <p>{{ 'PRESALE.AMOUNT.MIN' | transloco }}</p>
@@ -34,7 +34,7 @@
             <p>{{ 'PRESALE.AMOUNT.MAX' | transloco }}</p>
             <p>{{maxUsdcToBuy}} USDC</p>
         </div>
-    </div>
+    </div>-->
     <!-- SHOW WHEN CONNECTED HIDE WHEN SUCCESS -->
     <!--<div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuyMore$ | async)">
         <form [formGroup]="formGroup">
