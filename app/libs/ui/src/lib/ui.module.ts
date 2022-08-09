@@ -11,7 +11,6 @@ import { TimerModule } from './timer/timer.module';
 import { MainPageModule } from './main-page/main-page.module';
 import { VideoComponentModule } from './video-component/video-component.module';
 import { GrandStrategyModule } from './grand-strategy/grand-strategy.module';
-import { GrandStrategyComponent } from './grand-strategy/grand-strategy.component';
 
 @NgModule({
   imports: [CommonModule],
