@@ -8,6 +8,7 @@ import { cryptoMayhemShellRoutes } from './shell.routes';
     CommonModule,
     RouterModule.forRoot(cryptoMayhemShellRoutes, {
       scrollPositionRestoration: 'enabled',
+      paramsInheritanceStrategy: 'always'
     }),
   ],
   exports: [RouterModule],
