@@ -2,6 +2,11 @@
     "POLISH": "Polski",
     "ENGLISH": "English",
 
+    "WELCOME": {
+        "TITLE": "Cześć! 👋",
+        "TEXT": "Wkrótce możesz dołaczyć do naszego Galaktycznego Świata.<br>Tymczasem obejrzyj zapowiedzi. <br><br>Do zobaczenia 😄"
+    },
+
     "GAMES": {
         "GS": {
             "TITLE": "Grand Strategy",
@@ -12,7 +17,10 @@
             "TITLE": "Top-Down Shooter",
             "DESCRIPTION": "Twórz własne Mechy i walcz o przetrwanie niszcząc hordy obcych.",
             "CTA": "Czy zdołasz obronić planetę?"
-        }
+        },
+        "ABOUT": "O grze",
+        "PLAY_ONLINE": "Graj online",
+        "DOWNLOAD": "Pobierz na PC"
     },
     
     "NAVBAR": {

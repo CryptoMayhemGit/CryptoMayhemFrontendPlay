@@ -36,7 +36,7 @@
         </div>
     </div>
     <!-- SHOW WHEN CONNECTED HIDE WHEN SUCCESS -->
-    <div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuyMore$ | async)">
+    <!--<div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuyMore$ | async)">
         <form [formGroup]="formGroup">
             <label for="amount">{{ 'PRESALE.AMOUNT.AMOUNT_TO_BUY' | transloco }}</label>
             <input
@@ -58,7 +58,7 @@
             <p>{{ 'PRESALE.GET' | transloco }}: {{formGroup.controls['amount'].value / 0.0016}} ADRIA</p>
             <ui-main-button [loading]="!!(loadingButton$ | async)" (btnClick)="onBuy()" [disabled]="!formGroup.valid || !!(walletFacade.showWallets$ | async)">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
         </form>
-    </div>
+    </div>-->
     <!-- SHOW WHEN DISCONNECTED -->
     <div id="vesting-want-buy" *ngIf="!(walletConnected$ | async)">
         <picture>
