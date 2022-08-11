@@ -9,16 +9,15 @@ import { LanguageGuard } from './guards/language.guard';
 export const cryptoMayhemShellRoutes: Routes = [
   {
     path: ':lang',
-    canActivate: [LanguageGuard], 
-    
+    canActivate: [LanguageGuard],
+
     children: [
       { path: '', redirectTo: 'presale', pathMatch: 'full' },
       { path: 'presale', component: PreSaleComponent, pathMatch: 'full' },
       { path: 'game', component: GrandStrategyComponent, pathMatch: 'full' },
-      
     ],
   },
-  { path: '**', component: LandingPageComponent }
+  { path: '**', component: LandingPageComponent },
   /*{ path: '', redirectTo: '/presale', pathMatch: 'full' },
   { path: 'presale', component: PreSaleComponent, pathMatch: 'full' },
   { path: 'game', component: GrandStrategyComponent, pathMatch: 'full' },

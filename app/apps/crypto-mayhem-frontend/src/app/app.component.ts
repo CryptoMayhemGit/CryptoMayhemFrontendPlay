@@ -21,16 +21,26 @@ export class AppComponent {
     public walletFacade: WalletFacade,
     private translocoService: TranslocoService,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router
+  ) {
     //translocoService.setActiveLang(getBrowserLang());
   }
 
   ngOnInit() {
-    this.router.events.subscribe(val => {
-      if (val instanceof RoutesRecognized && (val as RoutesRecognized)?.state?.root.firstChild.params.lang) {
-        this.translocoService.setActiveLang(val.state.root.firstChild.params.lang);      } else {
+    //this.translocoService.setActiveLang(getBrowserLang());
+
+    this.router.events.subscribe((val) => {
+      if (
+        val instanceof RoutesRecognized &&
+        (val as RoutesRecognized)?.state?.root.firstChild.params.lang
+      ) {
+        this.translocoService.setActiveLang(
+          val.state.root.firstChild.params.lang
+        );
+        console.log(val.state.root.firstChild.params.lang);
+      } else {
         this.translocoService.setActiveLang(getBrowserLang());
       }
-  });
+    });
   }
 }

@@ -1,20 +1,21 @@
-import { ComponentFactoryResolver, Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
+import { getBrowserLang } from '@ngneat/transloco';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LanguageGuard implements CanActivate {
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree 
-  {
-    if(route.params['lang'] === 'en') {
+  constructor(private router: Router) {}
 
-      return true; 
+  canActivate(route: ActivatedRouteSnapshot): boolean {
+    if (route.params['lang'] === 'en' || route.params['lang'] === 'pl') {
+      return true;
+    } else {
+      console.log('guard');
+      this.router.navigate([getBrowserLang(), 'presale']);
     }
+
     return false;
   }
-  
 }
