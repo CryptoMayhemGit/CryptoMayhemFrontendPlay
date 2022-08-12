@@ -1,10 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LanguageService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services';
 import { Language } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/models';
 import { TranslocoService } from '@ngneat/transloco';
@@ -14,7 +9,6 @@ import { Subscription } from 'rxjs';
   selector: 'ui-lang-switch',
   templateUrl: './lang-switch.component.html',
   styleUrls: ['./lang-switch.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('inOutAnimation', [
       transition(':enter', [

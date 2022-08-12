@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
-import { getBrowserLang } from '@ngneat/transloco';
+import { getBrowserLang, TranslocoService } from '@ngneat/transloco';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LanguageGuard implements CanActivate {
-  constructor(private router: Router) {}
+  availableLangs: string[] = ['en', 'pl'];
+
+  constructor(
+    private router: Router,
+    private translocoService: TranslocoService
+  ) {}
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    if (route.params['lang'] === 'en' || route.params['lang'] === 'pl') {
+    if (this.availableLangs.includes(route.params['lang'])) {
+      this.translocoService.setActiveLang(route.params['lang']);
       return true;
     } else {
-      console.log('guard');
-      this.router.navigate([getBrowserLang(), 'presale']);
+      this.router.navigate([this.translocoService.getActiveLang(), 'presale']);
     }
 
     return false;

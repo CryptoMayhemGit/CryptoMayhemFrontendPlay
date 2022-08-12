@@ -14,9 +14,7 @@ import {
   WalletChoiceModule,
 } from '@crypto-mayhem-frontend/ui';
 import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
-import {
-  APP_CONFIG,
-} from '@crypto-mayhem-frontend/crypto-mayhem/config';
+import { APP_CONFIG } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import { ShellModule } from '@crypto-mayhem-frontend/crypto-mayhem/shell';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -56,8 +54,8 @@ import { RouterModule } from '@angular/router';
     },
     {
       provide: APP_CONFIG,
-      useValue: environment
-    }
+      useValue: environment,
+    },
   ],
   bootstrap: [AppComponent],
 })
