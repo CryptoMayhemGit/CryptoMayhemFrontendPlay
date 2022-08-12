@@ -324,4 +324,17 @@ export class WalletService {
     }
     return '0.0';
   }
+
+  public async getStageDetails() {
+    if (this.provider) {
+      const adriaVesting = AdriaVestingContractFactory.connect(
+        this.provider.getSigner(),
+        this.appConfig.adriaVestingContractAddress
+      );
+
+      const result = await adriaVesting.stages(this.appConfig.stage);
+      return result;
+    }
+    return false;
+  }
 }

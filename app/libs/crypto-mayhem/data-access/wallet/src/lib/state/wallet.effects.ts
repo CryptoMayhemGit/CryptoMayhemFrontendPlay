@@ -1,8 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
-import { AppConfig, APP_CONFIG } from '@crypto-mayhem-frontend/crypto-mayhem/config';
+import {
+  AppConfig,
+  APP_CONFIG,
+} from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import { NotificationDroneService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { ethers } from 'ethers';
 import { catchError, from, map, mergeMap, of } from 'rxjs';
 import { WalletService } from '../services/wallet.service';
 
@@ -88,7 +92,7 @@ export class WalletEffects {
             return of();
           })
         )
-      ),
+      )
     )
   );
 
@@ -99,10 +103,47 @@ export class WalletEffects {
       mergeMap(([, account]) =>
         from(this.walletService.getNumberOfUsdcPerStageByUser(account)).pipe(
           map((numberOfUsdc: any) => {
-            const showSummary = this.appConfig.maxNumberOfUsdcPerStage - numberOfUsdc === this.appConfig.maxNumberOfUsdcPerStage ? false : true;
+            const showSummary =
+              this.appConfig.maxNumberOfUsdcPerStage - numberOfUsdc ===
+              this.appConfig.maxNumberOfUsdcPerStage
+                ? false
+                : true;
             const numberOfAdria = numberOfUsdc / this.appConfig.adriaPrice;
-            const canBuyMore = this.appConfig.maxNumberOfUsdcPerStage <= numberOfUsdc ? false : true;
-            return WalletActions.usdcPerStageByUser({ numberOfUsdc, numberOfAdria, showSummary, canBuyMore });
+            const canBuyMore =
+              this.appConfig.maxNumberOfUsdcPerStage <= numberOfUsdc
+                ? false
+                : true;
+            return WalletActions.usdcPerStageByUser({
+              numberOfUsdc,
+              numberOfAdria,
+              showSummary,
+              canBuyMore,
+            });
+          })
+        )
+      )
+    )
+  );
+
+  getTokensPerStage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(WalletActions.connectWalletSuccess, WalletActions.buyAdriaSuccess),
+      concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
+      mergeMap(() =>
+        from(this.walletService.getStageDetails()).pipe(
+          map((stageDetails: any) => {
+            const tokensSoldPerStage: number = +ethers.utils.formatEther(
+              stageDetails.totalAdriaTokenAmountInvested
+            );
+
+            const maxAdriaTokenAmount: number = +ethers.utils.formatEther(
+              stageDetails.maxAdriaTokenAmount
+            );
+
+            return WalletActions.tokensPerStage({
+              tokensSoldPerStage,
+              maxAdriaTokenAmount,
+            });
           })
         )
       )
@@ -110,26 +151,22 @@ export class WalletEffects {
   );
 
   loadingButton$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType(WalletActions.buyAdriaSuccess),
-    concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
-    map(() =>
-      {
+    this.actions$.pipe(
+      ofType(WalletActions.buyAdriaSuccess),
+      concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
+      map(() => {
         return WalletActions.transactionSuccess();
-      }
+      })
     )
-  )
-);
+  );
 
   hidePresaleSummary$ = createEffect(() =>
     this.actions$.pipe(
       ofType(WalletActions.disconnectWallet),
       concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
-      map(() =>
-        {
-          return WalletActions.hideSummary()
-        }
-      )
+      map(() => {
+        return WalletActions.hideSummary();
+      })
     )
   );
 }
