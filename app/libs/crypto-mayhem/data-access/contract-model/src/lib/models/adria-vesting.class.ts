@@ -814,6 +814,12 @@ export class AdriaVestingContract extends BaseContract {
     );
     return ethers.utils.formatEther(result);
   }
+
+  public async stages(stageNumber: BigNumberish) {
+    const stageNumberBigNumber = BigNumber.from(stageNumber);
+    const result = await this._contract['stages'](stageNumberBigNumber);
+    return result;
+  }
 }
 
 export interface AdriaVestingContractInterface {

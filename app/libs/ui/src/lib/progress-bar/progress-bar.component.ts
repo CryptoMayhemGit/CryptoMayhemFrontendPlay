@@ -21,8 +21,8 @@ import {
   ],
 })
 export class ProgressBarComponent implements OnInit {
-  @Input() maxValue: number = 100;
-  @Input() currentValue: number = 0;
+  @Input() maxValue: number | null = 0;
+  @Input() currentValue: number | null = 0;
 
   constructor() {}
 
