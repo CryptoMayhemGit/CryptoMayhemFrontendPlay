@@ -68,7 +68,6 @@ export class LangSwitchComponent implements OnInit, OnDestroy {
   }
   toggleMobile(): void {
     if (window.innerWidth < 1240) {
-      console.log(this.isVisible);
       this.isVisible = !this.isVisible;
     }
   }
