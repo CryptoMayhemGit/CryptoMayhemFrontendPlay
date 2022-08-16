@@ -1,5 +1,9 @@
 :host {
   position: relative;
+
+  @media screen and (min-width: 1240px) {
+    padding: 3rem 0;
+  }
 }
 
 #lang-switch {
@@ -7,6 +11,7 @@
   cursor: pointer;
   display: flex;
   opacity: 1;
+  padding: 2.4rem 0;
 
   &.opacity {
     opacity: 0.3;
@@ -18,12 +23,13 @@
 
   @media screen and (min-width: 768px) {
     justify-content: flex-end;
+    padding: 0;
   }
 }
 
 #lang-select {
   right: 0;
-  top: 6rem;
+  top: 9rem;
   width: auto;
   z-index: 100;
 

@@ -49,7 +49,6 @@ export class LangSwitchComponent implements OnInit, OnDestroy {
 
   setLang(languageSymbol: string): void {
     this.translocoService.setActiveLang(languageSymbol);
-    this.isVisible = false;
   }
 
   setActiveLanguage(): void {
@@ -60,5 +59,17 @@ export class LangSwitchComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  togglePC(): void {
+    if (window.innerWidth >= 1240) {
+      this.isVisible = !this.isVisible;
+    }
+  }
+  toggleMobile(): void {
+    if (window.innerWidth < 1240) {
+      console.log(this.isVisible);
+      this.isVisible = !this.isVisible;
+    }
   }
 }
