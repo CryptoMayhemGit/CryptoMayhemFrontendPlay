@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LanguageService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services';
 import { Language } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/models';
 import { TranslocoService } from '@ngneat/transloco';
+import { isSmallScreen } from 'libs/utility/functions/src';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -62,12 +63,12 @@ export class LangSwitchComponent implements OnInit, OnDestroy {
   }
 
   togglePC(): void {
-    if (window.innerWidth >= 1240) {
+    if (!isSmallScreen()) {
       this.isVisible = !this.isVisible;
     }
   }
   toggleMobile(): void {
-    if (window.innerWidth < 1240) {
+    if (isSmallScreen()) {
       this.isVisible = !this.isVisible;
     }
   }
