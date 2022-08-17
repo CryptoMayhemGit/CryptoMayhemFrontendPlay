@@ -37,9 +37,11 @@ h2 {
   box-shadow: 0 4px 24px rgb(40 40 40 / 60%);
   min-height: calc(100vh - 17.1rem);
   overflow: hidden;
-  padding: 13.7rem 3.4rem 3.4rem;
-  position: relative;
+  padding: 13.7rem 2rem 3.4rem;
+  position: fixed;
   top: 0;
+  width: 100%;
+  z-index: 10;
 
   nav {
     display: flex;
@@ -65,7 +67,7 @@ h2 {
     flex-direction: column;
     height: 20rem;
     justify-content: space-between;
-    padding: 1.4rem 0;
+    padding: 0 0 1.4rem;
 
     img {
       max-width: 35.5rem;
@@ -187,7 +189,7 @@ h2 {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 100;
 
   #logo {
     height: 36px;
@@ -366,6 +368,7 @@ h2 {
 ui-game-listing {
   display: block;
   margin-bottom: 3.2rem;
+  margin-right: 4rem;
   max-width: 50rem;
 
   p {
