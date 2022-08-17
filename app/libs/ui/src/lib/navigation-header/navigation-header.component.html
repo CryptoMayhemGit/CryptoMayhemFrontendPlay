@@ -39,8 +39,8 @@
 
 <ng-template #links>
     <nav>
-        <a class="arrow" (mouseenter)="showGames()" *ngIf="!isSmallerScreen()">{{'NAVBAR.NAV.GAMES' | transloco}}</a>
-        <a class="arrow" (click)="showGames()" *ngIf="isSmallerScreen()">{{'NAVBAR.NAV.GAMES' | transloco}}</a>
+        <a class="arrow" (mouseenter)="showGames()" *ngIf="!isSmallScreen()">{{'NAVBAR.NAV.GAMES' | transloco}}</a>
+        <a class="arrow" (click)="showGames()" *ngIf="isSmallScreen()">{{'NAVBAR.NAV.GAMES' | transloco}}</a>
         <ui-submenu *ngIf="gamesVisible" (mouseenter)="showGames()" (mouseleave)="gamesVisible = false" [@inOutAnimation]>
             <div id="games-list">
                 <h2>{{'NAVBAR.GAMES_COLLECTION' | transloco}}</h2>
@@ -48,7 +48,7 @@
                 <a href="#" (mouseenter)="gsVisible = false; tdsVisible = true" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.TDS.TITLE' | transloco}}</a>
             </div>
             <div id="games">
-                <img src="./assets/images/banner_tablet.png" class="marketing-banner" *ngIf="!tdsVisible && !gsVisible && !isSmallerScreen()" />
+                <img src="./assets/images/banner_tablet.png" class="marketing-banner" *ngIf="!tdsVisible && !gsVisible && !isSmallScreen()" />
                 <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
             </div>
         </ui-submenu>

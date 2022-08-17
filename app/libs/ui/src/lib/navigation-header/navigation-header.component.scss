@@ -40,7 +40,6 @@ h2 {
   padding: 13.7rem 2rem 3.4rem;
   position: fixed;
   top: 0;
-  width: 100%;
   z-index: 10;
 
   nav {
@@ -93,7 +92,6 @@ h2 {
     overflow-y: auto;
 
     @media screen and (orientation: landscape) {
-      max-height: 28.1rem;
       padding: 0 2rem;
     }
   }
@@ -223,6 +221,10 @@ h2 {
         display: none;
       }
     }
+
+    @media screen and (min-width: 1240px) {
+      display: none;
+    }
   }
 
   .burger-menu {
@@ -243,9 +245,9 @@ h2 {
   }
 
   .adria-token {
+    background: url("/assets/images/adria_symbol.svg") no-repeat center center;
     cursor: pointer;
     padding: 2.7rem 3.2rem 0 1.6rem;
-    background: url("/assets/images/adria_symbol.svg") no-repeat center center;
 
     @media screen and (min-width: 768px) {
       padding-bottom: 2.7rem;
@@ -292,8 +294,9 @@ h2 {
     }
 
     @media screen and (min-width: 1240px) {
-      padding: 2.4rem;
       min-height: 21rem;
+      padding: 2.4rem;
+      width: 100%;
 
       & > div {
         align-items: flex-start;
@@ -416,7 +419,6 @@ h2 {
 ui-game-listing {
   display: block;
   margin-bottom: 3.2rem;
-  margin-right: 4rem;
   max-width: 50rem;
 
   p {
@@ -428,12 +430,7 @@ ui-game-listing {
     }
   }
 
-  @media screen and (orientation: landscape) {
-    max-width: 40rem;
-  }
-
   @media screen and (min-width: 1240px) {
-    max-width: 43.5rem;
     margin-bottom: 0;
   }
 }
