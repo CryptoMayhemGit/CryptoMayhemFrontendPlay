@@ -2,7 +2,14 @@
 <div id="nav">
     <div>
         <a id="logo" routerLink=""><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
-        <div id="burger-menu" [ngClass]="{'closed': !mobileVisible, 'open': mobileVisible}" (click)="mobileVisible = !mobileVisible; tdsVisible = false; gsVisible = false;"></div>
+        <div class="burger-wrapper"  (click)="mobileVisible = !mobileVisible; tdsVisible = false; gsVisible = false;">
+            <div class="burger-menu" [ngClass]="{'closed': !mobileVisible, 'open': mobileVisible}"></div>
+            <p>{{ 'MENU' | transloco }}</p>
+        </div>
+        <div class="burger-wrapper">
+            <div class="adria-token"></div>
+            <p>{{ 'BUY' | transloco }}</p>
+        </div>
         <ng-template [ngTemplateOutlet]="links"></ng-template>
     </div>
     <div id="connect-pc">
@@ -44,10 +51,10 @@
                 <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
             </div>
         </ui-submenu>
-        <a href="#">{{'NAVBAR.NAV.NFT' | transloco}}</a>
-        <a href="#">{{'NAVBAR.NAV.STAKING' | transloco}}</a>
-        <a href="#">{{'NAVBAR.NAV.VESTING' | transloco}}</a>
-        <a href="#">{{'NAVBAR.NAV.NEWS' | transloco}}</a>
+        <a href="#" class="disabled">{{'NAVBAR.NAV.NFT' | transloco}}</a>
+        <a href="#" class="disabled">{{'NAVBAR.NAV.STAKING' | transloco}}</a>
+        <a href="#" class="disabled">{{'NAVBAR.NAV.VESTING' | transloco}}</a>
+        <a href="#" class="disabled">{{'NAVBAR.NAV.NEWS' | transloco}}</a>
         <a  routerLink="presale" routerLinkActive="active">{{'NAVBAR.NAV.PRESALE' | transloco}}</a>
     </nav>
 </ng-template>
