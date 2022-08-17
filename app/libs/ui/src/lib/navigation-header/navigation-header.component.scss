@@ -55,9 +55,14 @@ h2 {
       text-decoration: none;
 
       &:hover,
-      &:hover::after {
+      &:hover::after,
+      &.disabled {
         border-top-color: #f2f2f230;
         color: #f2f2f230;
+      }
+
+      &.disabled {
+        cursor: default;
       }
     }
   }
@@ -196,9 +201,33 @@ h2 {
     padding-right: 1.6rem;
   }
 
-  #burger-menu {
+  .burger-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    &:not(:first-of-type) {
+      margin-left: 3rem;
+    }
+
+    p {
+      color: #f2f2f2;
+      font-size: 1rem;
+      line-height: 1.2rem;
+      margin: 0;
+      padding: 0.5rem 0 0;
+    }
+
+    @media screen and (min-width: 768px) {
+      p,
+      &:not(:first-of-type) {
+        display: none;
+      }
+    }
+  }
+
+  .burger-menu {
     cursor: pointer;
-    padding: 2.7rem 3.2rem 2.7rem 1.6rem;
+    padding: 2.7rem 3.2rem 0 1.6rem;
 
     &.closed {
       background: url("/assets/images/burger.svg") no-repeat center center;
@@ -206,6 +235,20 @@ h2 {
 
     &.open {
       background: url("/assets/images/cross.svg") no-repeat center center;
+    }
+
+    @media screen and (min-width: 768px) {
+      padding-bottom: 2.7rem;
+    }
+  }
+
+  .adria-token {
+    cursor: pointer;
+    padding: 2.7rem 3.2rem 0 1.6rem;
+    background: url("/assets/images/adria_symbol.svg") no-repeat center center;
+
+    @media screen and (min-width: 768px) {
+      padding-bottom: 2.7rem;
     }
   }
 
@@ -231,9 +274,14 @@ h2 {
       }
 
       &:hover,
-      &:hover::after {
+      &:hover::after,
+      &.disabled {
         border-top-color: #f2f2f230;
         color: #f2f2f230;
+      }
+
+      &.disabled {
+        cursor: default;
       }
     }
   }
