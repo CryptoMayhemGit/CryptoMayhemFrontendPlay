@@ -1,9 +1,8 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import {
-  WalletType,
-} from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
+import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
+import { isSmallScreen } from 'libs/utility/functions/src';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -20,6 +19,30 @@ import { Observable, of } from 'rxjs';
       transition(':leave', [
         style({ opacity: 1 }),
         animate('.5s ease-in', style({ opacity: 0 })),
+      ]),
+    ]),
+    trigger('slideUp', [
+      transition(':enter', [
+        style({
+          opacity: 0,
+          transform: 'translateY(-100%)',
+          height: 0,
+        }),
+        animate(
+          '400ms ease-in',
+          style({ opacity: 1, transform: 'translateY(0)', height: '100%' })
+        ),
+      ]),
+      transition(':leave', [
+        style({
+          opacity: 1,
+          transform: 'translateY(0)',
+          height: '100%',
+        }),
+        animate(
+          '400ms ease-out',
+          style({ opacity: 0, transform: 'translateY(-100%)', height: 0 })
+        ),
       ]),
     ]),
   ],
@@ -41,12 +64,8 @@ export class NavigationHeaderComponent implements OnInit {
     this.connected$ = this.walletFacade.connected$;
   }
 
-  isSmallerScreen(): boolean {
-    return window.innerWidth <= 1240;
-  }
-
   showGames(): void {
-    if (this.isSmallerScreen()) {
+    if (isSmallScreen()) {
       this.gamesVisible = !this.gamesVisible;
       this.tdsVisible = true;
       this.gsVisible = true;

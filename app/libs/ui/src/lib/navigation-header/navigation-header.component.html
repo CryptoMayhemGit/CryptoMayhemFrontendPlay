@@ -22,7 +22,7 @@
         <p>{{'NAVBAR.CONNECT_MOBILE' | transloco}}</p>
     </div>
 </div>
-<div id="mobile-nav" *ngIf="mobileVisible">
+<div id="mobile-nav" *ngIf="mobileVisible"  [@slideUp]>
     <div>
         <ng-template [ngTemplateOutlet]="links"></ng-template>
     </div>
@@ -37,9 +37,10 @@
     </div>
 </div>
 
-<ng-template #links >
+<ng-template #links>
     <nav>
-        <a href="#" class="arrow" (click)="showGames()" (mouseenter)="showGames()" >{{'NAVBAR.NAV.GAMES' | transloco}}</a>
+        <a class="arrow" (mouseenter)="showGames()" *ngIf="!isSmallerScreen()">{{'NAVBAR.NAV.GAMES' | transloco}}</a>
+        <a class="arrow" (click)="showGames()" *ngIf="isSmallerScreen()">{{'NAVBAR.NAV.GAMES' | transloco}}</a>
         <ui-submenu *ngIf="gamesVisible" (mouseenter)="showGames()" (mouseleave)="gamesVisible = false" [@inOutAnimation]>
             <div id="games-list">
                 <h2>{{'NAVBAR.GAMES_COLLECTION' | transloco}}</h2>
@@ -51,11 +52,11 @@
                 <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
             </div>
         </ui-submenu>
-        <a href="#" class="disabled">{{'NAVBAR.NAV.NFT' | transloco}}</a>
-        <a href="#" class="disabled">{{'NAVBAR.NAV.STAKING' | transloco}}</a>
-        <a href="#" class="disabled">{{'NAVBAR.NAV.VESTING' | transloco}}</a>
-        <a href="#" class="disabled">{{'NAVBAR.NAV.NEWS' | transloco}}</a>
-        <a  routerLink="presale" routerLinkActive="active">{{'NAVBAR.NAV.PRESALE' | transloco}}</a>
+        <a href="#" class="disabled" (click)="mobileVisible = false">{{'NAVBAR.NAV.NFT' | transloco}}</a>
+        <a href="#" class="disabled" (click)="mobileVisible = false">{{'NAVBAR.NAV.STAKING' | transloco}}</a>
+        <a href="#" class="disabled" (click)="mobileVisible = false">{{'NAVBAR.NAV.VESTING' | transloco}}</a>
+        <a href="#" class="disabled" (click)="mobileVisible = false">{{'NAVBAR.NAV.NEWS' | transloco}}</a>
+        <a  routerLink="presale" routerLinkActive="active" (click)="mobileVisible = false">{{'NAVBAR.NAV.PRESALE' | transloco}}</a>
     </nav>
 </ng-template>
 

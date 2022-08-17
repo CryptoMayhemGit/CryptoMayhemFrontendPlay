@@ -1,13 +1,14 @@
-<div id="lang-switch" [ngClass]="{'opacity': !isVisible}" (mouseenter)="isVisible = true">
-  <img [src]="activeLanguage.flag" alt="language flag" />
-  <div [ngClass]="{'arrow-up': isVisible, 'arrow-down': !isVisible}"></div>
-</div>
+<div id="wrapper" (mouseenter)="togglePC()" (mouseleave)="togglePC()" (click)="toggleMobile()">
+  <div id="lang-switch" [ngClass]="{'opacity': !isVisible}">
+    <img [src]="activeLanguage.flag" alt="language flag" />
+    <div [ngClass]="{'arrow-up': isVisible, 'arrow-down': !isVisible}"></div>
+  </div>
 
-<div id="lang-select" *ngIf="isVisible" (mouseleave)="isVisible = false" [@inOutAnimation]>
+<ui-submenu id="lang-select" *ngIf="isVisible" (mouseleave)="isVisible = false" [@inOutAnimation]>
   <ul role="button">
     <li *ngFor="let language of languages; index as i" (click)="setLang(language.symbol)">
       <img [src]="language.flag" [alt]="language.name" />
       <p>{{language.name | transloco}}</p>
     </li>
   </ul>
-</div>
+</ui-submenu>
