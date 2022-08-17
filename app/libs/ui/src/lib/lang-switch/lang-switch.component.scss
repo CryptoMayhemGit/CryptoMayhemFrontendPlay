@@ -1,11 +1,3 @@
-:host {
-  position: relative;
-
-  @media screen and (min-width: 1240px) {
-    padding: 3rem 0;
-  }
-}
-
 #lang-switch {
   align-items: center;
   cursor: pointer;
@@ -34,35 +26,8 @@
   z-index: 100;
 
   @media screen and (min-width: 1240px) {
-    backdrop-filter: blur(40px);
-    background: rgb(40 40 40 / 60%);
-    box-shadow: 0 4px 24px rgb(40 40 40 / 60%);
-    padding: 1.2rem 0;
-
-    /* END */
     padding: 1.2rem 2.45rem;
-    position: absolute;
-
-    // This approach won't scale automatically for more than 2 languages.
-    &::before {
-      background: url("/assets/images/left_border.svg") no-repeat top left;
-      content: "";
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 17px;
-    }
-
-    &::after {
-      background: url("/assets/images/right_border.svg") no-repeat top right;
-      content: "";
-      height: 100%;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 17px;
-    }
+    right: 2rem;
   }
 
   ul,
