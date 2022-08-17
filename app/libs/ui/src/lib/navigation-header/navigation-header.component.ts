@@ -2,6 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
+import { isSmallScreen } from 'libs/utility/functions/src';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -63,12 +64,8 @@ export class NavigationHeaderComponent implements OnInit {
     this.connected$ = this.walletFacade.connected$;
   }
 
-  isSmallerScreen(): boolean {
-    return window.innerWidth <= 1240;
-  }
-
   showGames(): void {
-    if (this.isSmallerScreen()) {
+    if (isSmallScreen()) {
       this.gamesVisible = !this.gamesVisible;
       this.tdsVisible = true;
       this.gsVisible = true;
