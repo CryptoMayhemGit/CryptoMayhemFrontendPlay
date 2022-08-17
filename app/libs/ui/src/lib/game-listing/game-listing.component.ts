@@ -34,6 +34,6 @@ export class GameListingComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.gradient = `linear-gradient(172.35deg, ${this.color} 30%, #1c1b1b 78.29%`;
+    this.gradient = `linear-gradient(172.35deg, #1c1b1b 30%, ${this.color} 90%`;
   }
 }
