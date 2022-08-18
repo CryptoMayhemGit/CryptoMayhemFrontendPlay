@@ -44,8 +44,8 @@
         <ui-submenu *ngIf="gamesVisible" (mouseenter)="showGames()" (mouseleave)="gamesVisible = false" [@inOutAnimation]>
             <div id="games-list">
                 <h2>{{'NAVBAR.GAMES_COLLECTION' | transloco}}</h2>
-                <a href="#" (mouseenter)="gsVisible = true; tdsVisible = false" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.GS.TITLE' | transloco}}</a>
-                <a href="#" (mouseenter)="gsVisible = false; tdsVisible = true" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.TDS.TITLE' | transloco}}</a>
+                <a  (mouseenter)="gsVisible = true; tdsVisible = false" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.GS.TITLE' | transloco}}</a>
+                <a  (mouseenter)="gsVisible = false; tdsVisible = true" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.TDS.TITLE' | transloco}}</a>
             </div>
             <div id="games">
                 <img src="./assets/images/banner_tablet.png" class="marketing-banner" *ngIf="!tdsVisible && !gsVisible && !isSmallScreen()" />
