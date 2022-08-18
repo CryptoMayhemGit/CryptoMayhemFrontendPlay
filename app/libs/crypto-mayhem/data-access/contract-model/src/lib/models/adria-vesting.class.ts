@@ -140,6 +140,11 @@ const _abi = [
         type: 'uint256',
       },
       {
+        internalType: 'uint256',
+        name: 'maxAdriaTokensAmount',
+        type: 'uint256',
+      },
+      {
         internalType: 'bool',
         name: 'status',
         type: 'bool',
@@ -253,25 +258,6 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: 'bytes32',
-        name: '_messageHash',
-        type: 'bytes32',
-      },
-    ],
-    name: 'getEthSignedMessageHash',
-    outputs: [
-      {
-        internalType: 'bytes32',
-        name: '',
-        type: 'bytes32',
-      },
-    ],
-    stateMutability: 'pure',
-    type: 'function',
-  },
-  {
-    inputs: [
-      {
         internalType: 'address',
         name: 'holder',
         type: 'address',
@@ -303,12 +289,27 @@ const _abi = [
           },
           {
             internalType: 'uint256',
+            name: 'amountOnStartReleased',
+            type: 'uint256',
+          },
+          {
+            internalType: 'uint256',
             name: 'start',
             type: 'uint256',
           },
           {
             internalType: 'uint256',
             name: 'duration',
+            type: 'uint256',
+          },
+          {
+            internalType: 'uint256',
+            name: 'baseAmount',
+            type: 'uint256',
+          },
+          {
+            internalType: 'uint256',
+            name: 'baseAmountReleased',
             type: 'uint256',
           },
           {
@@ -425,12 +426,27 @@ const _abi = [
           },
           {
             internalType: 'uint256',
+            name: 'amountOnStartReleased',
+            type: 'uint256',
+          },
+          {
+            internalType: 'uint256',
             name: 'start',
             type: 'uint256',
           },
           {
             internalType: 'uint256',
             name: 'duration',
+            type: 'uint256',
+          },
+          {
+            internalType: 'uint256',
+            name: 'baseAmount',
+            type: 'uint256',
+          },
+          {
+            internalType: 'uint256',
+            name: 'baseAmountReleased',
             type: 'uint256',
           },
           {
@@ -491,12 +507,27 @@ const _abi = [
           },
           {
             internalType: 'uint256',
+            name: 'amountOnStartReleased',
+            type: 'uint256',
+          },
+          {
+            internalType: 'uint256',
             name: 'start',
             type: 'uint256',
           },
           {
             internalType: 'uint256',
             name: 'duration',
+            type: 'uint256',
+          },
+          {
+            internalType: 'uint256',
+            name: 'baseAmount',
+            type: 'uint256',
+          },
+          {
+            internalType: 'uint256',
+            name: 'baseAmountReleased',
             type: 'uint256',
           },
           {
@@ -658,6 +689,21 @@ const _abi = [
         name: 'startBuyVestingTimestamp',
         type: 'uint256',
       },
+      {
+        internalType: 'uint256',
+        name: 'totalUSDCAmountInvested',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'totalAdriaTokenAmountInvested',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'maxAdriaTokenAmount',
+        type: 'uint256',
+      },
     ],
     stateMutability: 'view',
     type: 'function',
@@ -767,6 +813,12 @@ export class AdriaVestingContract extends BaseContract {
       stageNumberBigNumber
     );
     return ethers.utils.formatEther(result);
+  }
+
+  public async stages(stageNumber: BigNumberish) {
+    const stageNumberBigNumber = BigNumber.from(stageNumber);
+    const result = await this._contract['stages'](stageNumberBigNumber);
+    return result;
   }
 }
 

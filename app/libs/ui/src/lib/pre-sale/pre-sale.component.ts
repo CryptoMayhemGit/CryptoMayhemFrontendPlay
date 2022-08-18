@@ -32,6 +32,8 @@ export class PreSaleComponent implements OnInit {
   canBuyMore$: Observable<boolean> = of(true);
   presaleEndTime = new Date(Date.UTC(2022, 7, 31, 2, 0, 0)).getTime();
   presaleStartTime = new Date(Date.UTC(2022, 7, 29, 2, 0, 0)).getTime();
+  tokensSoldPerStage$: Observable<number> = of(0);
+  allTokensPerStage$: Observable<number> = of(0);
   caretRight = faCaretRight;
   circleExclamation = faCircleExclamation;
   presale = false;
@@ -57,6 +59,8 @@ export class PreSaleComponent implements OnInit {
     this.showSummary$ = this.walletFacade.showSummary$;
     this.canBuyMore$ = this.walletFacade.canBuyMore$;
     this.loadingButton$ = this.walletFacade.loadingButton$;
+    this.tokensSoldPerStage$ = this.walletFacade.tokensSoldPerStage$;
+    this.allTokensPerStage$ = this.walletFacade.allTokensPerStage$;
   }
 
   ngOnInit(): void {

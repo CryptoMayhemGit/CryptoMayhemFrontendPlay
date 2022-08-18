@@ -32,6 +32,7 @@ import {
   UsdcTokenContractFactory,
 } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model';
 import { NotificationDroneService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
+import { isMobile } from 'libs/utility/functions/src';
 
 const ACCOUNTS_CHANGED = 'accountsChanged';
 const CHAIN_CHANGED = 'chainChanged';
@@ -129,18 +130,11 @@ export class WalletService {
     );
   }
 
-  private isMobile(): boolean {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent
-    );
-  }
-
   public async connectWallet(walletType: WalletType): Promise<void> {
     switch (walletType) {
       case WalletType.metamask: {
-        if (typeof window.ethereum === 'undefined' && this.isMobile()) {
-          window.location.href =
-            'https://metamask.app.link/dapp/play.cryptomayhem.io/presale';
+        if (typeof window.ethereum === 'undefined' && isMobile()) {
+          window.location.href = this.appConfig.metamaskDeepLink;
         } else if (typeof window.ethereum !== 'undefined') {
           this.provider = new providers.Web3Provider(window.ethereum, 'any');
           this.createProviderHooks(this.provider.provider);
@@ -324,5 +318,18 @@ export class WalletService {
       return result;
     }
     return '0.0';
+  }
+
+  public async getStageDetails() {
+    if (this.provider) {
+      const adriaVesting = AdriaVestingContractFactory.connect(
+        this.provider.getSigner(),
+        this.appConfig.adriaVestingContractAddress
+      );
+
+      const result = await adriaVesting.stages(this.appConfig.stage);
+      return result;
+    }
+    return false;
   }
 }

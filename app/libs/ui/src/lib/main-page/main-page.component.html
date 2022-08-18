@@ -1,0 +1,18 @@
+<div class="main">
+  <img src="./assets/images/friendly_drone_main.png" alt="Friendly drone image" role="presentation" [@droneIn]>
+  <div class="greeting" [@sizeUp]>
+    <h2>{{ 'WELCOME.TITLE' | transloco }}</h2>
+    <p [innerHtml]="'WELCOME.TEXT' | transloco"></p>
+  </div>
+</div>
+<div class="trailers" [@slideUp]>
+  <ui-video-component
+  title="Grand Strategy"
+  videoId="TPOamZBoLBk">
+  </ui-video-component>
+  
+  <ui-video-component
+  title="Top-Down Shooter"
+  videoId="TNfrTuSQM9U">
+  </ui-video-component>
+</div>

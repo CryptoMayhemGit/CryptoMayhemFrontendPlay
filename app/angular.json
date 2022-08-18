@@ -14,6 +14,7 @@
     "crypto-mayhem-frontend-e2e": "apps/crypto-mayhem-frontend-e2e",
     "crypto-mayhem-shell": "libs/crypto-mayhem/shell",
     "ui": "libs/ui",
+    "utility-functions": "libs/utility/functions",
     "utility-pipes": "libs/utility/pipes"
   }
 }

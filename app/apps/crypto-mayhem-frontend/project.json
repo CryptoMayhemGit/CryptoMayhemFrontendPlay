@@ -55,25 +55,12 @@
           "outputHashing": "all"
         },
         "development": {
-          "budgets": [
-            {
-              "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "2mb"
-            },
-            {
-              "type": "anyComponentStyle",
-              "maximumWarning": "50kb",
-              "maximumError": "100kb"
-            }
-          ],
-          "fileReplacements": [
-            {
-              "replace": "apps/crypto-mayhem-frontend/src/environments/environment.ts",
-              "with": "apps/crypto-mayhem-frontend/src/environments/environment.dev.ts"
-            }
-          ],
-          "outputHashing": "all"
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
         },
         "stage": {
           "budgets": [
@@ -95,14 +82,6 @@
             }
           ],
           "outputHashing": "all"
-        },
-        "development": {
-          "buildOptimizer": false,
-          "optimization": false,
-          "vendorChunk": true,
-          "extractLicenses": false,
-          "sourceMap": true,
-          "namedChunks": true
         }
       },
       "defaultConfiguration": "production"

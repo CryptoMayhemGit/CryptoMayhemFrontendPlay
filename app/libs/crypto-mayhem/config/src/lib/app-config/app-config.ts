@@ -1,10 +1,10 @@
 export interface AppConfig {
-  debug: boolean,
-  production: boolean,
-  externalUrl: string,
-  baseUrl: string,
-  rpcChainId: string,
-  defaultAsset: string
+  debug: boolean;
+  production: boolean;
+  externalUrl: string;
+  baseUrl: string;
+  rpcChainId: string;
+  defaultAsset: string;
   rpcUrlBinance: string;
   chainIdNumberBinance: number;
   chainIdHexBinance: string;
@@ -15,4 +15,6 @@ export interface AppConfig {
   adriaContractAddress: string;
   adriaVestingContractAddress: string;
   adriaPrice: number;
+  webGlLocation: string;
+  metamaskDeepLink: string;
 }

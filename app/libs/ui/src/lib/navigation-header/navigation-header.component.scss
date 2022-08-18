@@ -37,9 +37,10 @@ h2 {
   box-shadow: 0 4px 24px rgb(40 40 40 / 60%);
   min-height: calc(100vh - 17.1rem);
   overflow: hidden;
-  padding: 13.7rem 3.4rem 3.4rem;
-  position: relative;
+  padding: 13.7rem 2rem 3.4rem;
+  position: fixed;
   top: 0;
+  z-index: 10;
 
   nav {
     display: flex;
@@ -53,9 +54,14 @@ h2 {
       text-decoration: none;
 
       &:hover,
-      &:hover::after {
+      &:hover::after,
+      &.disabled {
         border-top-color: #f2f2f230;
         color: #f2f2f230;
+      }
+
+      &.disabled {
+        cursor: default;
       }
     }
   }
@@ -65,7 +71,7 @@ h2 {
     flex-direction: column;
     height: 20rem;
     justify-content: space-between;
-    padding: 1.4rem 0;
+    padding: 0 0 1.4rem;
 
     img {
       max-width: 35.5rem;
@@ -86,7 +92,6 @@ h2 {
     overflow-y: auto;
 
     @media screen and (orientation: landscape) {
-      max-height: 28.1rem;
       padding: 0 2rem;
     }
   }
@@ -187,16 +192,44 @@ h2 {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 100;
 
   #logo {
     height: 36px;
     padding-right: 1.6rem;
   }
 
-  #burger-menu {
+  .burger-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    &:not(:first-of-type) {
+      margin-left: 3rem;
+    }
+
+    p {
+      color: #f2f2f2;
+      font-size: 1rem;
+      line-height: 1.2rem;
+      margin: 0;
+      padding: 0.5rem 0 0;
+    }
+
+    @media screen and (min-width: 768px) {
+      p,
+      &:not(:first-of-type) {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: 1240px) {
+      display: none;
+    }
+  }
+
+  .burger-menu {
     cursor: pointer;
-    padding: 2.7rem 3.2rem 2.7rem 1.6rem;
+    padding: 2.7rem 3.2rem 0 1.6rem;
 
     &.closed {
       background: url("/assets/images/burger.svg") no-repeat center center;
@@ -204,6 +237,20 @@ h2 {
 
     &.open {
       background: url("/assets/images/cross.svg") no-repeat center center;
+    }
+
+    @media screen and (min-width: 768px) {
+      padding-bottom: 2.7rem;
+    }
+  }
+
+  .adria-token {
+    background: url("/assets/images/adria_symbol.svg") no-repeat center center;
+    cursor: pointer;
+    padding: 2.7rem 3.2rem 0 1.6rem;
+
+    @media screen and (min-width: 768px) {
+      padding-bottom: 2.7rem;
     }
   }
 
@@ -229,9 +276,14 @@ h2 {
       }
 
       &:hover,
-      &:hover::after {
+      &:hover::after,
+      &.disabled {
         border-top-color: #f2f2f230;
         color: #f2f2f230;
+      }
+
+      &.disabled {
+        cursor: default;
       }
     }
   }
@@ -242,7 +294,9 @@ h2 {
     }
 
     @media screen and (min-width: 1240px) {
+      min-height: 21rem;
       padding: 2.4rem;
+      width: 100%;
 
       & > div {
         align-items: flex-start;
@@ -376,12 +430,8 @@ ui-game-listing {
     }
   }
 
-  @media screen and (orientation: landscape) {
-    max-width: 40rem;
-  }
-
   @media screen and (min-width: 1240px) {
-    max-width: 43.5rem;
+    margin-bottom: 0;
   }
 }
 

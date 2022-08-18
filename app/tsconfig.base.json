@@ -52,14 +52,17 @@
         "libs/crypto-mayhem/shell/src/index.ts"
       ],
       "@crypto-mayhem-frontend/ui": ["libs/ui/src/index.ts"],
+      "@crypto-mayhem-frontend/utility/functions": [
+        "libs/utility/functions/src/index.ts"
+      ],
       "@crypto-mayhem-frontend/utility/pipes": [
         "libs/utility/pipes/src/index.ts"
       ],
-      "stream": ["./node_modules/stream-browserify"],
       "assert": ["./node_modules/assert"],
       "http": ["./node_modules/stream-http"],
       "https": ["./node_modules/https-browserify"],
       "os": ["./node_modules/os-browserify"],
+      "stream": ["./node_modules/stream-browserify"],
       "url": ["./node_modules/url"]
     }
   },
