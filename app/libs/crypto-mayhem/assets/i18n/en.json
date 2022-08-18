@@ -110,6 +110,7 @@
             }
         },
         "TIME_LEFT": "End of presale in",
+        "TIME_TO": "Start of presale in",
         "INVEST": "How much can you invest in an ADRIA token?",
         "AMOUNT": {
             "MIN": "Minimum buy",

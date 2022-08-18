@@ -110,6 +110,7 @@
             }
         },
         "TIME_LEFT": "Koniec przedsprzedaży za",
+        "TIME_TO": "Start przedsprzedaży za",
         "INVEST": "Ile możesz zainwestować w token ADRIA?",
         "AMOUNT": {
             "MIN": "Minimalna kwota",
