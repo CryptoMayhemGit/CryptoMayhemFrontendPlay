@@ -4,7 +4,7 @@
     <div [ngClass]="{'arrow-up': isVisible, 'arrow-down': !isVisible}"></div>
   </div>
 
-<ui-submenu id="lang-select" *ngIf="isVisible" (mouseleave)="isVisible = false" [@inOutAnimation]>
+<ui-submenu id="lang-select" *ngIf="isVisible" [@inOutAnimation]>
   <ul role="button">
     <li *ngFor="let language of languages; index as i" (click)="setLang(language.symbol)">
       <img [src]="language.flag" [alt]="language.name" />
