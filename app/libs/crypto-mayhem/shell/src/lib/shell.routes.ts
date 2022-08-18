@@ -18,8 +18,4 @@ export const cryptoMayhemShellRoutes: Routes = [
     ],
   },
   { path: '**', component: MainPageComponent },
-  /*{ path: '', redirectTo: '/presale', pathMatch: 'full' },
-  { path: 'presale', component: PreSaleComponent, pathMatch: 'full' },
-  { path: 'game', component: GrandStrategyComponent, pathMatch: 'full' },
-  { path: '**', component: LandingPageComponent },*/
 ];
