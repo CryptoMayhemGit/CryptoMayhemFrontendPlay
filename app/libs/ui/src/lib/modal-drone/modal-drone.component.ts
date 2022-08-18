@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NotificationDroneService } from 'libs/crypto-mayhem/data-access/notification-drone/src/lib/services/notification-drone.service';
 import { Observable, of } from 'rxjs';
 

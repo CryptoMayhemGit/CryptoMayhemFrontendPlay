@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { getBrowserLang, TranslocoService } from '@ngneat/transloco';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
 
 @Component({
@@ -14,5 +15,12 @@ import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/faca
   `,
 })
 export class AppComponent {
-  constructor(public walletFacade: WalletFacade) {}
+  constructor(
+    public walletFacade: WalletFacade,
+    private translocoService: TranslocoService
+  ) {}
+
+  ngOnInit() {
+    this.translocoService.setActiveLang(getBrowserLang());
+  }
 }

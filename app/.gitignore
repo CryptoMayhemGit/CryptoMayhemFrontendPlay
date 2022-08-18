@@ -44,4 +44,7 @@ Thumbs.db
 # Contracts metadata
 libs/crypto-mayhem/assets/contracts
 
+# WebGl files
+libs/crypto-mayhem/assets/unity
+
 .angular

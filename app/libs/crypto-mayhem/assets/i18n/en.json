@@ -1,6 +1,13 @@
 {
     "POLISH": "Polski",
     "ENGLISH": "English",
+    "MENU": "Menu",
+    "BUY": "Buy",
+
+    "WELCOME": {
+        "TITLE": "Hi! 👋",
+        "TEXT": "You can join our Galactic World soon. Meanwhile, watch the trailers.<br><br>See you later 😄"
+    },
 
     "GAMES": {
         "GS": {
@@ -12,7 +19,10 @@
             "TITLE": "Top-Down Shooter",
             "DESCRIPTION": "Create your own Mechs and fight for survival by destroying hordes of aliens.",
             "CTA": "Can you protect the planet?"
-        }
+        },
+        "ABOUT": "Read More",
+        "PLAY_ONLINE": "Play Online",
+        "DOWNLOAD": "Download"
     },
     
     "NAVBAR": {
@@ -90,9 +100,9 @@
         "INFO": {
             "DETAILS": {
                 "HEADER": "Official presale of ADRIA token details",
-                "1": "Private Sale will last for _ to _",
-                "2": "Price in sale _",
-                "3": "The maximum purchase is _ USDC (bep-20)",
+                "1": "Private Sale will last for 2 days to 31.08.2022 at 02:00 AM CET",
+                "2": "Price in sale 0.002 USDC",
+                "3": "The maximum purchase is 400 USDC (bep-20)",
                 "4": "10% at TGE, rest unblocked every block for 9 months",
                 "5": "Unsold tokens from presale will be BURNED! (In the last sales round, we will announce how much will be burned)"
             },
@@ -110,6 +120,7 @@
             }
         },
         "TIME_LEFT": "End of presale in",
+        "TIME_TO": "Start of presale in",
         "INVEST": "How much can you invest in an ADRIA token?",
         "AMOUNT": {
             "MIN": "Minimum buy",

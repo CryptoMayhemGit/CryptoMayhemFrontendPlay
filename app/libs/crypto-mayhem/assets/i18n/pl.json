@@ -1,6 +1,13 @@
 {
     "POLISH": "Polski",
     "ENGLISH": "English",
+    "MENU": "Menu",
+    "BUY": "Kup",
+
+    "WELCOME": {
+        "TITLE": "Cześć! 👋",
+        "TEXT": "Wkrótce możesz dołaczyć do naszego Galaktycznego Świata.<br>Tymczasem obejrzyj zapowiedzi. <br><br>Do zobaczenia 😄"
+    },
 
     "GAMES": {
         "GS": {
@@ -12,7 +19,10 @@
             "TITLE": "Top-Down Shooter",
             "DESCRIPTION": "Twórz własne Mechy i walcz o przetrwanie niszcząc hordy obcych.",
             "CTA": "Czy zdołasz obronić planetę?"
-        }
+        },
+        "ABOUT": "O grze",
+        "PLAY_ONLINE": "Graj online",
+        "DOWNLOAD": "Pobierz na PC"
     },
     
     "NAVBAR": {
@@ -90,9 +100,9 @@
         "INFO": {
             "DETAILS": {
                 "HEADER": "Szczegóły oficjalnej przedsprzedaży tokena ADRIA",
-                "1": "Prywatna sprzedaż trwa przez _ dni do _",
-                "2": "Cena w przedsprzedaży _ USDC",
-                "3": "Maksymalny zakup to _ USDC (bep-20)",
+                "1": "Prywatna sprzedaż trwa przez 2 dni do 31.08.2022 at 02:00 AM CET",
+                "2": "Cena w przedsprzedaży 0.002 USDC",
+                "3": "Maksymalny zakup to 400 USDC (bep-20)",
                 "4": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy",
                 "5": "Niesprzedane tokeny z przedsprzedaży ulegną spaleniu! (W ostatniej rundzie wyprzedaży ogłosimy ile tokenów zostanie spalonych)"
             },
@@ -110,6 +120,7 @@
             }
         },
         "TIME_LEFT": "Koniec przedsprzedaży za",
+        "TIME_TO": "Start przedsprzedaży za",
         "INVEST": "Ile możesz zainwestować w token ADRIA?",
         "AMOUNT": {
             "MIN": "Minimalna kwota",
