@@ -6,7 +6,7 @@
             <div class="burger-menu" [ngClass]="{'closed': !mobileVisible, 'open': mobileVisible}"></div>
             <p>{{ 'MENU' | transloco }}</p>
         </div>
-        <div class="burger-wrapper">
+        <div class="burger-wrapper" routerLink="presale" routerLinkActive="active">
             <div class="adria-token"></div>
             <p>{{ 'BUY' | transloco }}</p>
         </div>
