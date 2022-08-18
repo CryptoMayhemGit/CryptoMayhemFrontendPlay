@@ -100,12 +100,11 @@
         "INFO": {
             "DETAILS": {
                 "HEADER": "Official presale of ADRIA token details",
-                "1": "Private Sale will last for 6 days to 06.08.2022 16:00 CET",
-                "2": "Guaranteed allocation for all whitelisted address",
-                "3": "Price in sale 0,0016 USDC",
-                "4": "The maximum purchase is 150 USDC (bep-20)",
-                "5": "10% at TGE, rest unblocked every block for 9 months",
-                "6": "Unsold tokens from presale will be BURNED! (In the last sales round, we will announce how much will be burned)"
+                "1": "Private Sale will last for 2 days to 31.08.2022 at 02:00 AM CET",
+                "2": "Price in sale 0.002 USDC",
+                "3": "The maximum purchase is 400 USDC (bep-20)",
+                "4": "10% at TGE, rest unblocked every block for 9 months",
+                "5": "Unsold tokens from presale will be BURNED! (In the last sales round, we will announce how much will be burned)"
             },
             "REMEMBER": "Please remember that you must have BNB (bep-20) in your wallet to cover network fees each time you invest USDC or claim your ADRIA token",
             "CLAIM": {
@@ -121,6 +120,7 @@
             }
         },
         "TIME_LEFT": "End of presale in",
+        "TIME_TO": "Start of presale in",
         "INVEST": "How much can you invest in an ADRIA token?",
         "AMOUNT": {
             "MIN": "Minimum buy",
