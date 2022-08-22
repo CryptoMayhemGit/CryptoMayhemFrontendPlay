@@ -28,7 +28,7 @@
     </div>
     <div id="tablet-marketing">
         <ui-lang-switch></ui-lang-switch>
-        <img class="marketing-banner" *ngIf="!gamesVisible" src="./assets/images/banner_tablet.png" />
+        <img class="marketing-banner" *ngIf="!gamesVisible" src="./assets/images/presale.jpg" />
         <div id="mobile-submenu" *ngIf="gamesVisible">
             <ui-submenu>
                 <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
@@ -44,11 +44,11 @@
         <ui-submenu *ngIf="gamesVisible" (mouseenter)="showGames()" (mouseleave)="gamesVisible = false" [@inOutAnimation]>
             <div id="games-list">
                 <h2>{{'NAVBAR.GAMES_COLLECTION' | transloco}}</h2>
-                <a href="#" (mouseenter)="gsVisible = true; tdsVisible = false" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.GS.TITLE' | transloco}}</a>
-                <a href="#" (mouseenter)="gsVisible = false; tdsVisible = true" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.TDS.TITLE' | transloco}}</a>
+                <a  (mouseenter)="gsVisible = true; tdsVisible = false" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.GS.TITLE' | transloco}}</a>
+                <a  (mouseenter)="gsVisible = false; tdsVisible = true" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.TDS.TITLE' | transloco}}</a>
             </div>
             <div id="games">
-                <img src="./assets/images/banner_tablet.png" class="marketing-banner" *ngIf="!tdsVisible && !gsVisible && !isSmallScreen()" />
+                <img src="./assets/images/presale.jpg" class="marketing-banner" *ngIf="!tdsVisible && !gsVisible && !isSmallScreen()" />
                 <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
             </div>
         </ui-submenu>
