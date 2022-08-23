@@ -178,7 +178,7 @@
         "TOKENS_GREATER_THAN_MAX": "Kwota inwestycji jest większa niż maksymalna",
         "WALLET_WRONG_STRUCTURE": "Błędna struktura portfela",
         "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
-        "NOT_ENOUGH_TOKENS_LEFT": "Błędna kwoty inwestycji",
+        "NOT_ENOUGH_TOKENS_LEFT": "Błędna kwota inwestycji",
         "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji ze Smart Contractem",
         "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście"
     },
@@ -191,7 +191,7 @@
     "TOKENS_GREATER_THAN_MAX": "Kwota inwestycji jest większa niż maksymalna",
     "WALLET_WRONG_STRUCTURE": "Błędna struktura portfela",
     "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
-    "NOT_ENOUGH_TOKENS_LEFT": " Błędna kwoty inwestycji",
+    "NOT_ENOUGH_TOKENS_LEFT": " Błędna kwota inwestycji",
     "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji z Smart Contractem",
     "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście"
 }
