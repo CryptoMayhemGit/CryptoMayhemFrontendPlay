@@ -1,29 +1,33 @@
 <div id="vesting">
-    <!--<div id="vesting-wallet">
+    <div id="vesting-wallet">
         <p class="connected" *ngIf="walletConnected$ | async">{{ 'WALLET.CONNECTED' | transloco }}</p>
         <p class="disconnected" *ngIf="!(walletConnected$ | async)">{{ 'WALLET.DISCONNECTED' | transloco }}</p>
-    </div>-->
+    </div>
+    <div id="vesting-timer" *ngIf="!presale">
+        <p>{{ 'PRESALE.TIME_TO' | transloco }}</p>
+    <ui-timer [startTime]="presaleStartTime" (complete)="presale = true"></ui-timer>
+    </div>
     <!-- HIDE WHEN PRESALE HAS ENDED -->
-    <!--<div id="vesting-timer" *ngIf="presale">
+    <div id="vesting-timer" *ngIf="presale">
         <p>{{ 'PRESALE.TIME_LEFT' | transloco }}</p>
         <ui-timer [startTime]="presaleEndTime" (complete)="presale = false"></ui-timer>
-    </div>-->
+    </div>
     <!-- SHOW WHEN PRESALE HAS ENDED OR HAS SOLD OUT-->
-    <!--<div id="vesting-header"> -->
+    <!--<div id="vesting-header">-->
         <!-- SHOW WHEN PRESALE HAS ENDED -->
         <!-- <p>{{ 'PRESALE.END.HEADER' | transloco }}</p> -->
-        <!-- === -->
+
 
         <!-- SHOW WHEN TOKEN HAS SOLD OUT -->
         <!-- <p>{{ 'PRESALE.SOLD.HEADER' | transloco }}</p> -->
-        <!-- === -->
+
     <!-- </div> -->
-    <!--<div id="vesting-sold" *ngIf="allTokensPerStage$ | async">
+    <div id="vesting-sold" *ngIf="(allTokensPerStage$ | async) && presale">
         <p>{{ 'PRESALE.PROGRESS' | transloco}}</p>
         <ui-progress-bar [currentValue]="(tokensSoldPerStage$ | async)" [maxValue]="(allTokensPerStage$ | async)"></ui-progress-bar>
-    </div>-->
+    </div>
     <!-- HIDE WHEN SUCCESS -->
-    <!--<div *ngIf="canBuyMore$ | async" id="vesting-info">
+    <div *ngIf="(canBuyMore$ | async) && presale" id="vesting-info">
         <p>{{ 'PRESALE.INVEST' | transloco }}</p>
         <div class="invest">
             <p>{{ 'PRESALE.AMOUNT.MIN' | transloco }}</p>
@@ -34,9 +38,9 @@
             <p>{{ 'PRESALE.AMOUNT.MAX' | transloco }}</p>
             <p>{{maxUsdcToBuy}} USDC</p>
         </div>
-    </div>-->
+    </div>
     <!-- SHOW WHEN CONNECTED HIDE WHEN SUCCESS -->
-    <!--<div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuyMore$ | async)">
+    <div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuyMore$ | async) && presale">
         <form [formGroup]="formGroup">
             <label for="amount">{{ 'PRESALE.AMOUNT.AMOUNT_TO_BUY' | transloco }}</label>
             <input
@@ -58,9 +62,9 @@
             <p>{{ 'PRESALE.GET' | transloco }}: {{formGroup.controls['amount'].value / 0.0016}} ADRIA</p>
             <ui-main-button [loading]="!!(loadingButton$ | async)" (btnClick)="onBuy()" [disabled]="!formGroup.valid || !!(walletFacade.showWallets$ | async)">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
         </form>
-    </div>-->
+    </div>
     <!-- SHOW WHEN DISCONNECTED -->
-    <!--<div id="vesting-want-buy" *ngIf="!(walletConnected$ | async)">
+    <div id="vesting-want-buy" *ngIf="!(walletConnected$ | async) && presale">
         <picture>
             <source srcset="./assets/images/friendly_drone.webp">
             <source srcset="./assets/images/presale/friendly_drone.png">
@@ -70,9 +74,9 @@
             <p>{{ 'PRESALE.WANT_BUY.MESSAGE' | transloco }}</p>
             <ui-main-button (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
         </div>
-    </div>-->
+    </div>
     <!-- SHOW WHEN SUCCESS -->
-    <!--<div *ngIf="showSummary$ | async" id="vesting-success">
+    <div *ngIf="showSummary$ | async" id="vesting-success">
         <p>{{ 'PRESALE.SUCCESS.HEADER' | transloco }}</p>
         <p>{{ 'PRESALE.SUCCESS.MESSAGE' | transloco }}</p>
         <div class="invest">
@@ -84,17 +88,13 @@
             <p>{{ 'PRESALE.AMOUNT.BUY' | transloco }}</p>
             <p>{{adriaPerStage$ | async}} ADRIA</p>
         </div>
-    </div>-->
+    </div>
     <!-- SHOW WHEN PRESALE HAS ENDED OR HAS SOLD OUT-->
-    <!--<div id="vesting-end">
+    <div id="vesting-end" *ngIf="!(canBuyMore$ | async) && !presale">
         <p>{{ 'PRESALE.END.MESSAGE' | transloco }}</p>
         <ui-main-button (click)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
-    </div>-->
-
-    <div id="vesting-timer" *ngIf="!presale">
-        <p>{{ 'PRESALE.TIME_TO' | transloco }}</p>
-    <ui-timer [startTime]="presaleStartTime" (complete)="presale = true"></ui-timer>
     </div>
+
 </div>
 
 <div id="info">
