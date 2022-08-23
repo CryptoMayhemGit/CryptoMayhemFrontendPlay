@@ -18,7 +18,10 @@ export class LanguageGuard implements CanActivate {
       this.translocoService.setActiveLang(route.params['lang']);
       return true;
     } else {
-      this.router.navigate([this.translocoService.getActiveLang(), 'presale']);
+      this.router.navigate([
+        this.translocoService.getActiveLang(),
+        route.params['lang'],
+      ]);
     }
 
     return false;
