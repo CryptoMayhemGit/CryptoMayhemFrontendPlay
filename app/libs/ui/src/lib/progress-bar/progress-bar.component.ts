@@ -1,9 +1,12 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import {
+  AfterViewChecked,
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
 } from '@angular/core';
 
 @Component({
@@ -20,11 +23,18 @@ import {
     ]),
   ],
 })
-export class ProgressBarComponent implements OnInit {
+export class ProgressBarComponent implements OnInit, AfterViewChecked {
   @Input() maxValue: number | null = 0;
   @Input() currentValue: number | null = 0;
+  @Output() sold: EventEmitter<boolean> = new EventEmitter();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  ngAfterViewChecked(): void {
+    if (this.currentValue === this.maxValue) {
+      this.sold.emit(true);
+    }
+  }
 }
