@@ -6,11 +6,11 @@
 
     <div id="vesting-timer" *ngIf="!presale && (!sold || !timeUp)">
         <p>{{ 'PRESALE.TIME_TO' | transloco }}</p>
-    <ui-timer [startTime]="presaleStartTime" (complete)="presale = true"></ui-timer>
+        <ui-timer [startTime]="presaleStartTime" (complete)="presale = true"></ui-timer>
     </div>
 
     <!-- HIDE WHEN PRESALE HAS ENDED -->
-    <div id="vesting-timer" *ngIf="presale && !sold">
+    <div id="vesting-timer" *ngIf="presale && !sold && !timeUp">
         <p>{{ 'PRESALE.TIME_LEFT' | transloco }}</p>
         <ui-timer [startTime]="presaleEndTime" (complete)="presale = false; timeUp = true"></ui-timer>
     </div>
@@ -24,7 +24,7 @@
         <p>{{ 'PRESALE.SOLD.HEADER' | transloco }}</p>
 
     </div>
-    <div id="vesting-sold" *ngIf="(allTokensPerStage$ | async) && (presale || sold)">
+    <div id="vesting-sold" *ngIf="(allTokensPerStage$ | async)">
         <p>{{ 'PRESALE.PROGRESS' | transloco}}</p>
         <ui-progress-bar [currentValue]="(tokensSoldPerStage$ | async)" [maxValue]="(allTokensPerStage$ | async)" (complete)="onTokensSold()"></ui-progress-bar>
     </div>
@@ -42,7 +42,7 @@
         </div>
     </div>
     <!-- SHOW WHEN CONNECTED HIDE WHEN SUCCESS -->
-    <div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuyMore$ | async) && presale && !sold">
+    <div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuyMore$ | async) && presale && !sold && !timeUp">
         <form [formGroup]="formGroup">
             <label for="amount">{{ 'PRESALE.AMOUNT.AMOUNT_TO_BUY' | transloco }}</label>
             <input
