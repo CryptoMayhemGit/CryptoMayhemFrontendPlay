@@ -39,7 +39,9 @@ export class PreSaleComponent implements OnInit {
   adriaPrice = 0;
   caretRight = faCaretRight;
   circleExclamation = faCircleExclamation;
-  presale = false;
+  presale!: boolean;
+  sold = false;
+  timeUp = false;
   details = [
     'PRESALE.INFO.DETAILS.1',
     'PRESALE.INFO.DETAILS.2',
