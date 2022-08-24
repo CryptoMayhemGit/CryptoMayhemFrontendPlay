@@ -33,7 +33,7 @@ export class PreSaleComponent implements OnInit {
   //presaleEndTime = new Date(Date.UTC(2022, 7, 31, 0, 0, 0)).getTime();
   //presaleStartTime = new Date(Date.UTC(2022, 7, 29, 0, 0, 0)).getTime();
   presaleEndTime = new Date(Date.UTC(2022, 7, 24, 13, 0, 0)).getTime();
-  presaleStartTime = new Date(Date.UTC(2022, 7, 24, 11, 20, 0)).getTime();
+  presaleStartTime = new Date(Date.UTC(2022, 7, 24, 11, 40, 0)).getTime();
   tokensSoldPerStage$: Observable<number> = of(0);
   allTokensPerStage$: Observable<number> = of(0);
   adriaPrice = 0;
