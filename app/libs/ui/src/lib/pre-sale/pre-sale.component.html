@@ -66,7 +66,7 @@
         </form>
     </div>
     <!-- SHOW WHEN DISCONNECTED -->
-    <div id="vesting-want-buy" *ngIf="!(walletConnected$ | async) && !presale">
+    <div id="vesting-want-buy" *ngIf="!(walletConnected$ | async) && presale">
         <picture>
             <source srcset="./assets/images/friendly_drone.webp">
             <source srcset="./assets/images/presale/friendly_drone.png">
