@@ -42,7 +42,7 @@
         </div>
     </div>
     <!-- SHOW WHEN CONNECTED HIDE WHEN SUCCESS -->
-    <div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuyMore$ | async) && !sold">
+    <div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuyMore$ | async) && presale && !sold">
         <form [formGroup]="formGroup">
             <label for="amount">{{ 'PRESALE.AMOUNT.AMOUNT_TO_BUY' | transloco }}</label>
             <input
