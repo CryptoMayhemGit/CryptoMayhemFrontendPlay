@@ -95,6 +95,11 @@ export class PreSaleComponent implements OnInit {
     }
   }
 
+  onTokensSold(): void {
+    this.presale = false;
+    this.sold = true;
+  }
+
   connect(): void {
     this.walletFacade.showWallets();
   }
