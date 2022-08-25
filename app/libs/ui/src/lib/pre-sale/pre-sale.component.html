@@ -24,7 +24,7 @@
         <p>{{ 'PRESALE.SOLD.HEADER' | transloco }}</p>
 
     </div>
-    <div id="vesting-sold" *ngIf="(allTokensPerStage$ | async) && (presale || !sold)">
+    <div id="vesting-sold" *ngIf="(allTokensPerStage$ | async) && presale && !timeUp && !sold">
         <p>{{ 'PRESALE.PROGRESS' | transloco}}</p>
         <ui-progress-bar [currentValue]="(tokensSoldPerStage$ | async)" [maxValue]="(allTokensPerStage$ | async)" (complete)="onTokensSold()"></ui-progress-bar>
     </div>
