@@ -92,7 +92,7 @@
         </div>
     </div>
     <!-- SHOW WHEN PRESALE HAS ENDED OR HAS SOLD OUT-->
-    <div id="vesting-end" *ngIf="!(canBuyMore$ | async) || (sold || timeUp)">
+    <div id="vesting-end" *ngIf="!(walletConnected$ | async)  && (!(canBuyMore$ | async) || (sold || timeUp))">
         <p>{{ 'PRESALE.END.MESSAGE' | transloco }}</p>
         <ui-main-button (click)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
     </div>
