@@ -30,7 +30,9 @@
           }
         ],
         "styles": ["apps/crypto-mayhem-frontend/src/styles.scss"],
-        "scripts": []
+        "scripts": [
+          "libs/crypto-mayhem/assets/unity/Build/build.loader.js"
+        ]
       },
       "configurations": {
         "production": {

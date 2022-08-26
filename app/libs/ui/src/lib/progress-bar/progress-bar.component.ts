@@ -2,8 +2,10 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
-  OnInit,
+  OnChanges,
+  Output,
 } from '@angular/core';
 
 @Component({
@@ -20,11 +22,16 @@ import {
     ]),
   ],
 })
-export class ProgressBarComponent implements OnInit {
+export class ProgressBarComponent implements OnChanges {
   @Input() maxValue: number | null = 0;
   @Input() currentValue: number | null = 0;
+  @Output() complete: EventEmitter<boolean> = new EventEmitter();
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnChanges(): void {
+    if (this.currentValue === this.maxValue) {
+      this.complete.emit(true);
+    }
+  }
 }
