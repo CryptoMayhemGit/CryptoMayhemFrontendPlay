@@ -51,7 +51,6 @@ export class GrandStrategyComponent implements OnInit, AfterViewInit {
       }
     )
       .then((unityInstance: any) => {
-        console.log(unityInstance);
         unityInstance.SendMessage('Camera Controller', 'ZoomOnClickPlanet');
       })
       .catch((error: any) => {});
