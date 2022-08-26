@@ -14,7 +14,7 @@ export const cryptoMayhemShellRoutes: Routes = [
     children: [
       { path: '', component: MainPageComponent, pathMatch: 'full' },
       { path: 'presale', component: PreSaleComponent, pathMatch: 'full' },
-      { path: 'game', component: GrandStrategyComponent, pathMatch: 'full' },
+      //{ path: 'game', component: GrandStrategyComponent, pathMatch: 'full' },
     ],
   },
   { path: '**', component: MainPageComponent },

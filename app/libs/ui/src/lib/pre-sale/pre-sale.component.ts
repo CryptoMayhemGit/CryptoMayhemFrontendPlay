@@ -34,9 +34,12 @@ export class PreSaleComponent implements OnInit {
   presaleStartTime = new Date(Date.UTC(2022, 7, 29, 0, 0, 0)).getTime();
   tokensSoldPerStage$: Observable<number> = of(0);
   allTokensPerStage$: Observable<number> = of(0);
+  adriaPrice = 0;
   caretRight = faCaretRight;
   circleExclamation = faCircleExclamation;
-  presale = false;
+  presale!: boolean;
+  sold = false;
+  timeUp = false;
   details = [
     'PRESALE.INFO.DETAILS.1',
     'PRESALE.INFO.DETAILS.2',
@@ -54,6 +57,7 @@ export class PreSaleComponent implements OnInit {
   ) {
     this.walletConnected$ = this.walletFacade.connected$;
     this.maxUsdcToBuy = this.appConfig.maxNumberOfUsdcPerStage;
+    this.adriaPrice = this.appConfig.adriaPrice;
     this.usdcPerStage$ = this.walletFacade.usdcPerStage$;
     this.adriaPerStage$ = this.walletFacade.adriaPerStage$;
     this.showSummary$ = this.walletFacade.showSummary$;
@@ -87,6 +91,11 @@ export class PreSaleComponent implements OnInit {
     } else {
       this.formGroup.markAllAsTouched();
     }
+  }
+
+  onTokensSold(): void {
+    this.presale = false;
+    this.sold = true;
   }
 
   connect(): void {

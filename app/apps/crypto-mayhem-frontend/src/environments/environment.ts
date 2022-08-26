@@ -16,11 +16,11 @@ export const environment = {
   chainIdNumberBinance: 97, //Binance Smart Chain
   chainIdHexBinance: '0x61', //Binance Smart Chain
   networkId: '', //Binance Smart Chain
-  stage: 1,
+  stage: 7,
   maxNumberOfUsdcPerStage: 400,
-  usdcContractAddress: '0x1bf5f3dc3e45f6db312f206bed38e1225d9fe9f8',
-  adriaContractAddress: '0xe6482247cfe9a9eb23fb84ff002674f7d8cba33c',
-  adriaVestingContractAddress: '0x4dd7f9b6b5f2f2078d6bd79a1624ec89bf0374b2',
+  usdcContractAddress: '0x86b2A0AFA563cB23fFcA25EB796438A8Eb43FDcF',
+  adriaContractAddress: '0x88DF935B3B545C52EdFcb12cf3770e05AF954461',
+  adriaVestingContractAddress: '0xccC71c500754A49D1F565e04393f747408ba5B0D',
   adriaPrice: 0.002,
   webGlLocation: 'assets/unity/',
   metamaskDeepLink:
