@@ -3,13 +3,13 @@
 }
 
 #wrapper {
-  border: 1px solid #f2f2f266;
+  border: 1px solid var(--text-primary) 66;
   overflow: hidden;
   padding: 0.5rem;
 }
 
 #bar {
-  background-color: #f2f2f2;
+  background-color: var(--text-primary);
   height: 0.7rem;
 }
 

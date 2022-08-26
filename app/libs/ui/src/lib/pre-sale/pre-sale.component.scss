@@ -13,7 +13,7 @@
 #vesting,
 #info {
   background-color: #282828;
-  color: #f2f2f2;
+  color: var(--text-primary);
   height: auto;
   max-width: 100%;
   padding: 3.2rem;
@@ -36,7 +36,7 @@
   margin-bottom: 3.2rem;
 
   p {
-    color: #f2f2f260;
+    color: var(--text-primary) 60;
     margin: 0 0 0.8rem;
     text-align: center;
   }
@@ -51,7 +51,7 @@
     }
 
     p:first-child {
-      color: #f2f2f266;
+      color: var(--text-primary) 66;
     }
   }
 
@@ -68,7 +68,7 @@
 
   #vesting-header {
     p {
-      color: #f2f2f2;
+      color: var(--text-primary);
       font-size: 1.8rem;
       line-height: 2.1rem;
       margin-bottom: 2.6rem;
@@ -97,7 +97,7 @@
     margin-bottom: 4.3rem;
 
     p {
-      color: #f2f2f2;
+      color: var(--text-primary);
       margin-bottom: 1.6rem;
       text-align: left;
     }
@@ -122,8 +122,8 @@
 
       input {
         background: transparent;
-        border: 1px solid #f2f2f266;
-        color: #f2f2f2;
+        border: 1px solid var(--text-primary) 66;
+        color: var(--text-primary);
         margin-bottom: 1.8rem;
         padding: 1.2rem;
         transition: all 0.3s ease-out;
@@ -138,7 +138,7 @@
 
         &:focus,
         &:hover {
-          border: 1px solid #f2f2f2;
+          border: 1px solid var(--text-primary);
           outline: none;
         }
       }
@@ -186,7 +186,7 @@
     margin-top: 2em;
 
     & > p {
-      color: #f2f2f2;
+      color: var(--text-primary);
       margin-bottom: 3.2rem;
     }
 
@@ -197,14 +197,14 @@
 
     .invest {
       & > p:last-of-type {
-        color: #f2f2f2;
+        color: var(--text-primary);
       }
     }
   }
 
   #vesting-end {
     p {
-      color: #f2f2f2;
+      color: var(--text-primary);
       margin-bottom: 3.2rem;
     }
 
@@ -261,11 +261,11 @@
     padding-right: 2.5rem;
 
     &.address {
-      color: #f2f2f266;
+      color: var(--text-primary) 66;
     }
 
     a {
-      color: #f2f2f2;
+      color: var(--text-primary);
       font-weight: 600;
       text-decoration: none;
 
@@ -288,7 +288,7 @@
 }
 
 hr {
-  background-color: #f2f2f240;
+  background-color: var(--text-primary) 40;
   border: 0;
   height: 1px;
 }

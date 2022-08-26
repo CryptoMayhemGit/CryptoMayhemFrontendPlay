@@ -14,8 +14,8 @@ fa-icon {
   }
 
   &.primary {
-    --background-color: #c23b1d;
-    --border-color: #c23b1d;
+    --background-color: var(--primary-color);
+    --border-color: var(--primary-color);
     --hover-color: var(--background-color);
     --text-color: #fff;
     --text-hover-color: #fff;

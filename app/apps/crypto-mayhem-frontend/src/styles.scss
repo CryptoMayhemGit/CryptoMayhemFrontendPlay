@@ -14,6 +14,13 @@
     url("/assets/fonts/NulshockRg-Bold.ttf") format("truetype");
 }
 
+:root {
+  --primary-color: #c23b1d;
+  --accent-color: #00d62e;
+  --component-background-color: #282828;
+  --text-primary: #f2f2f2;
+}
+
 html {
   background: #000 url("/assets/images/kosmos.jpg") no-repeat center center;
   background-size: cover;
