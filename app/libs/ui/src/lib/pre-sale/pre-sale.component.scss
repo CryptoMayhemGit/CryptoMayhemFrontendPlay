@@ -1,3 +1,5 @@
+@import 'libs/crypto-mayhem/styles/mixins';
+
 :host {
   display: flex;
   flex-direction: column;
@@ -12,8 +14,8 @@
 
 #vesting,
 #info {
-  background-color: #282828;
-  color: #f2f2f2;
+  background-color: var(--component-background-color);
+  color: var(--text-primary);
   height: auto;
   max-width: 100%;
   padding: 3.2rem;
@@ -31,12 +33,13 @@
 }
 
 #vesting {
-  backdrop-filter: blur(40px);
-  background-color: rgb(40 40 40 / 60%);
+  @include background-blur;
+  
   margin-bottom: 3.2rem;
 
   p {
-    color: #f2f2f260;
+    /* stylelint-disable-next-line function-whitespace-after */
+    color: var(--text-primary)60;
     margin: 0 0 0.8rem;
     text-align: center;
   }
@@ -51,7 +54,8 @@
     }
 
     p:first-child {
-      color: #f2f2f266;
+      /* stylelint-disable-next-line function-whitespace-after */
+      color: var(--text-primary)66;
     }
   }
 
@@ -68,7 +72,7 @@
 
   #vesting-header {
     p {
-      color: #f2f2f2;
+      color: var(--text-primary);
       font-size: 1.8rem;
       line-height: 2.1rem;
       margin-bottom: 2.6rem;
@@ -81,11 +85,11 @@
     text-transform: uppercase;
 
     .connected {
-      color: #00d62e;
+      color: var(--accent-color);
     }
 
     .disconnected {
-      color: #ff4246;
+      color: var(--error-color);
     }
   }
 
@@ -97,7 +101,7 @@
     margin-bottom: 4.3rem;
 
     p {
-      color: #f2f2f2;
+      color: var(--text-primary);
       margin-bottom: 1.6rem;
       text-align: left;
     }
@@ -122,23 +126,24 @@
 
       input {
         background: transparent;
-        border: 1px solid #f2f2f266;
-        color: #f2f2f2;
+        /* stylelint-disable-next-line function-whitespace-after */
+        border: 1px solid var(--text-primary)66;
+        color: var(--text-primary);
         margin-bottom: 1.8rem;
         padding: 1.2rem;
         transition: all 0.3s ease-out;
 
         &.ng-invalid.ng-touched {
-          border-color: #ff4246;
+          border-color: var(--error-color);
 
           &:focus {
-            border-color: #ff4246;
+            border-color: var(--error-color);
           }
         }
 
         &:focus,
         &:hover {
-          border: 1px solid #f2f2f2;
+          border: 1px solid var(--text-primary);
           outline: none;
         }
       }
@@ -186,7 +191,7 @@
     margin-top: 2em;
 
     & > p {
-      color: #f2f2f2;
+      color: var(--text-primary);
       margin-bottom: 3.2rem;
     }
 
@@ -197,14 +202,14 @@
 
     .invest {
       & > p:last-of-type {
-        color: #f2f2f2;
+        color: var(--text-primary);
       }
     }
   }
 
   #vesting-end {
     p {
-      color: #f2f2f2;
+      color: var(--text-primary);
       margin-bottom: 3.2rem;
     }
 
@@ -261,11 +266,12 @@
     padding-right: 2.5rem;
 
     &.address {
-      color: #f2f2f266;
+      /* stylelint-disable-next-line function-whitespace-after */
+      color: var(--text-primary)66;
     }
 
     a {
-      color: #f2f2f2;
+      color: var(--text-primary);
       font-weight: 600;
       text-decoration: none;
 
@@ -277,7 +283,7 @@
 }
 
 .input-error {
-  color: #ff4246 !important;
+  color: var(--error-color) !important;
   font-size: 1.2rem;
   margin-bottom: 1.6rem;
   margin-top: 0.8rem;
@@ -288,7 +294,7 @@
 }
 
 hr {
-  background-color: #f2f2f240;
+  background-color: var(--text-primary) 40;
   border: 0;
   height: 1px;
 }
