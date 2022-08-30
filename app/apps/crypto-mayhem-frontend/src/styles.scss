@@ -1,3 +1,5 @@
+/* stylelint-disable function-whitespace-after */
+/* stylelint-disable unit-no-unknown */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
 
@@ -17,6 +19,7 @@
 :root {
   --primary-color: #c23b1d;
   --accent-color: #00d62e;
+  --error-color: #ff4246;
   --component-background-color: #282828;
   --text-primary: #f2f2f2;
 }
@@ -42,7 +45,14 @@ body {
   font-size: 14px;
   font-size: 1.4rem;
   letter-spacing: 0.04rem;
-  line-height: 1.68rem;
+  line-height: 1.6rem;
+  margin: 0;
+}
+
+h1 {
+  font-family: Nulshock, Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
   margin: 0;
 }
 
@@ -51,7 +61,7 @@ img {
 }
 
 .arrow-up {
-  border-bottom: 5px solid #f2f2f2;
+  border-bottom: 5px solid var(--text-primary);
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   height: 0;
@@ -61,7 +71,7 @@ img {
 .arrow-down {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid #f2f2f2;
+  border-top: 5px solid var(--text-primary);
   height: 0;
   width: 0;
 }

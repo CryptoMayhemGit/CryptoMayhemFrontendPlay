@@ -16,6 +16,7 @@
   );
 }
 
+
 :host {
   display: block;
   margin: 0 auto;
@@ -185,7 +186,7 @@ h2 {
 
 #nav {
   align-items: center;
-  background: #282828;
+  background: var(--component-background-color);
   display: flex;
   height: 7.2rem;
   justify-content: space-between;
@@ -415,7 +416,7 @@ h2 {
   }
 
   &:hover > p {
-    color: #00d62e;
+    color: var(--accent-color);
   }
 
   @media (min-width: 768px) {

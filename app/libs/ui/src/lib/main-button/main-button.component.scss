@@ -34,7 +34,7 @@ fa-icon {
 
   &.fancy {
     --background-color: transparent;
-    --border-color: #00d62e;
+    --border-color: var(--accent-color);
     --hover-color: #1c1b1b;
     --text-color: #fff;
     --text-hover-color: #fff;

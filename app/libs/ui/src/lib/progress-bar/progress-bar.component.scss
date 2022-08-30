@@ -3,7 +3,8 @@
 }
 
 #wrapper {
-  border: 1px solid var(--text-primary) 66;
+  /* stylelint-disable-next-line function-whitespace-after */
+  border: 1px solid var(--text-primary)66;
   overflow: hidden;
   padding: 0.5rem;
 }

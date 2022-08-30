@@ -1,3 +1,5 @@
+@import 'libs/crypto-mayhem/styles/mixins';
+
 :host {
   display: flex;
   flex-direction: column;
@@ -12,7 +14,7 @@
 
 #vesting,
 #info {
-  background-color: #282828;
+  background-color: var(--component-background-color);
   color: var(--text-primary);
   height: auto;
   max-width: 100%;
@@ -31,12 +33,13 @@
 }
 
 #vesting {
-  backdrop-filter: blur(40px);
-  background-color: rgb(40 40 40 / 60%);
+  @include background-blur;
+  
   margin-bottom: 3.2rem;
 
   p {
-    color: var(--text-primary) 60;
+    /* stylelint-disable-next-line function-whitespace-after */
+    color: var(--text-primary)60;
     margin: 0 0 0.8rem;
     text-align: center;
   }
@@ -51,7 +54,8 @@
     }
 
     p:first-child {
-      color: var(--text-primary) 66;
+      /* stylelint-disable-next-line function-whitespace-after */
+      color: var(--text-primary)66;
     }
   }
 
@@ -81,11 +85,11 @@
     text-transform: uppercase;
 
     .connected {
-      color: #00d62e;
+      color: var(--accent-color);
     }
 
     .disconnected {
-      color: #ff4246;
+      color: var(--error-color);
     }
   }
 
@@ -122,17 +126,18 @@
 
       input {
         background: transparent;
-        border: 1px solid var(--text-primary) 66;
+        /* stylelint-disable-next-line function-whitespace-after */
+        border: 1px solid var(--text-primary)66;
         color: var(--text-primary);
         margin-bottom: 1.8rem;
         padding: 1.2rem;
         transition: all 0.3s ease-out;
 
         &.ng-invalid.ng-touched {
-          border-color: #ff4246;
+          border-color: var(--error-color);
 
           &:focus {
-            border-color: #ff4246;
+            border-color: var(--error-color);
           }
         }
 
@@ -261,7 +266,8 @@
     padding-right: 2.5rem;
 
     &.address {
-      color: var(--text-primary) 66;
+      /* stylelint-disable-next-line function-whitespace-after */
+      color: var(--text-primary)66;
     }
 
     a {
@@ -277,7 +283,7 @@
 }
 
 .input-error {
-  color: #ff4246 !important;
+  color: var(--error-color) !important;
   font-size: 1.2rem;
   margin-bottom: 1.6rem;
   margin-top: 0.8rem;

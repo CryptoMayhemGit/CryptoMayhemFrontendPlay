@@ -49,10 +49,10 @@ hr {
 }
 
 .body-info {
-  color: var(--text-primary) 66;
+  /* stylelint-disable-next-line function-whitespace-after */
+  color: var(--text-primary)66;
   font-size: 1.2rem;
   font-weight: 400;
-  line-height: 1.6rem;
   margin-top: 1em;
   padding: 0 1.4rem;
   text-align: center;
@@ -67,7 +67,8 @@ hr {
 
   a {
     color: inherit;
-    color: var(--text-primary) cc;
+    /* stylelint-disable-next-line function-whitespace-after */
+    color: var(--text-primary)cc;
     display: flex;
     justify-content: center;
     text-decoration: none;
