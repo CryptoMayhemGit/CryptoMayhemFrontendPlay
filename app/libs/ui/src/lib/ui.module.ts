@@ -8,15 +8,14 @@ import { ModalBaseModule } from './modal-base/modal-base.module';
 import { ModalDroneModule } from './modal-drone/modal-drone.module';
 import { ProgressBarModule } from './progress-bar/progress-bar.module';
 import { TimerModule } from './timer/timer.module';
-import { MainPageModule } from './main-page/main-page.module';
 import { VideoComponentModule } from './video-component/video-component.module';
-import { GrandStrategyModule } from './grand-strategy/grand-strategy.module';
+import { InputComponent } from './input/input.component';
+import { InputModule } from './input/input.module';
 
 @NgModule({
   imports: [CommonModule],
   exports: [
     NotificationModule,
-    MainPageModule,
     NavigationHeaderModule,
     MainButtonModule,
     GameListingModule,
@@ -25,7 +24,7 @@ import { GrandStrategyModule } from './grand-strategy/grand-strategy.module';
     ProgressBarModule,
     TimerModule,
     VideoComponentModule,
-    GrandStrategyModule,
+    InputModule
   ],
 })
 export class UiModule {}

@@ -10,7 +10,6 @@ import {
   ModalDroneModule,
   NavigationHeaderModule,
   NotificationModule,
-  PreSaleModule,
   WalletChoiceModule,
 } from '@crypto-mayhem-frontend/ui';
 import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
@@ -20,6 +19,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,8 +39,9 @@ import { RouterModule } from '@angular/router';
     WalletChoiceModule,
     NavigationHeaderModule,
     NotificationModule,
-    PreSaleModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     // {

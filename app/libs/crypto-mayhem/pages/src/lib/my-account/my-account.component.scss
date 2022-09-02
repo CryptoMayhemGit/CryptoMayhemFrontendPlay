@@ -1,0 +1,159 @@
+@import "libs/crypto-mayhem/styles/mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 8.4rem 2rem 0;
+}
+
+#sidebar {
+  box-shadow: 0 0.4rem 2.4rem rgba(0 0 0 / 60%);
+  display: flex;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+
+
+  hr {
+    background-color: var(--text-primary);
+    border: 0;
+    height: 1px;
+    margin: 0;
+    opacity: 0.4;
+    width: 100%;
+  }
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 20rem);
+  width: 100%;
+}
+
+#details {
+  display: none;
+  height: 30rem;
+  width: 100%;
+}
+
+#search {
+  height: 4.2rem;
+  margin-bottom: 2.4rem;
+}
+
+#player {
+  @include background-blur;
+
+  box-shadow: none;
+  height: 12rem;
+}
+
+#menu {
+  @include background-blur;
+  
+  box-shadow: none;
+  color: var(--text-primary);
+  padding: 3.5rem 0;
+  transition: all 0.2s ease-in-out;
+
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      cursor: pointer;
+      list-style: none;
+      padding: 1.2rem 2.6rem;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: rgb(8 9 27 / 65%);
+      }
+    }
+  }
+
+  #submenu {
+    li {
+      padding: 1.2rem 4.6rem;
+    }
+  }
+  
+}
+
+#social {
+  @include background-blur;
+
+  box-shadow: none;
+  height: 12rem;
+  transition: all 0.2s ease-in-out;
+
+}
+
+
+#nfts {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+@media screen and (min-width: 768px) {
+  :host {
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  :host {
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+  }
+
+  #sidebar {
+    flex-direction: column;
+    max-width: 27.3rem;
+  }
+
+  #content {
+    margin: 0 3.2rem;
+    max-width: 100rem;
+
+  }
+
+  #details {
+    display: flex;
+    max-width: 24.7rem;
+  }
+
+  #menu {
+    ul span {
+      // display: none;
+      // transform: translateY(10rem);
+    }
+  }
+
+  #submenu {
+    transition: all 0.2s ease-in-out;
+  }
+
+  #social {
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  :host {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  :host {
+    width: 75%;
+  }
+}
+
+  

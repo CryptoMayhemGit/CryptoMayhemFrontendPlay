@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainPageComponent } from './main-page.component';
-import { VideoComponentModule } from '../video-component/video-component.module';
 import { TranslocoModule } from '@ngneat/transloco';
+import { VideoComponentModule } from '@crypto-mayhem-frontend/ui';
 
 @NgModule({
   declarations: [MainPageComponent],
