@@ -7,3 +7,7 @@ export function isMobile(): boolean {
 export function isSmallScreen(): boolean {
   return window.innerWidth < 1240;
 }
+
+export function isFullHD(): boolean {
+  return window.innerWidth >= 1900;
+}

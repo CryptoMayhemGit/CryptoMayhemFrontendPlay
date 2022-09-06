@@ -54,8 +54,7 @@
     }
 
     p:first-child {
-      /* stylelint-disable-next-line function-whitespace-after */
-      color: var(--text-primary)66;
+      color: var(--text-secondary);
     }
   }
 
@@ -127,7 +126,7 @@
       input {
         background: transparent;
         /* stylelint-disable-next-line function-whitespace-after */
-        border: 1px solid var(--text-primary)66;
+        border: 1px solid var(--text-secondary);
         color: var(--text-primary);
         margin-bottom: 1.8rem;
         padding: 1.2rem;
@@ -267,7 +266,7 @@
 
     &.address {
       /* stylelint-disable-next-line function-whitespace-after */
-      color: var(--text-primary)66;
+      color: var(--text-secondary);
     }
 
     a {

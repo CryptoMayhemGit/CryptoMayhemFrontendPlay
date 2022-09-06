@@ -3,20 +3,24 @@
   <hr>
   <nav id="menu">
     <ul>
-      <li>Test</li>
-      <li>Test</li>
-        <ul id="submenu">
-          <li>Test</li>
-          <li>Test</li>
-          <li>Test</li>
-          <li>Test</li>
-          <li>Test</li>
-          <li>Test</li>
-          <li>Test</li>
+      <li tabindex="1">{{ 'MY_ACCOUNT.LOOT' | transloco }}</li>
+      <li tabindex="2" (click)="submenu = !submenu" [ngClass]="{'active': submenu}">
+        {{ 'MY_ACCOUNT.MY_NFT' | transloco }}
+        <fa-icon [icon]="caretUp" *ngIf="submenu"></fa-icon>
+        <fa-icon [icon]="caretDown" *ngIf="!submenu"></fa-icon>
+      </li>
+        <ul id="submenu" *ngIf="submenu" [@show]>
+          <li tabindex="3" (click)="scrollTo('avatars')" role="link">{{ 'MY_ACCOUNT.AVATARS' | transloco }}</li>
+          <li tabindex="4" (click)="scrollTo('workers')" role="link">{{ 'MY_ACCOUNT.WORKERS' | transloco }}</li>
+          <li tabindex="5" (click)="scrollTo('items')" role="link">{{ 'MY_ACCOUNT.ITEMS' | transloco }}</li>
+          <li tabindex="6" (click)="scrollTo('lands')" role="link">{{ 'MY_ACCOUNT.LANDS' | transloco }}</li>
+          <li tabindex="7" (click)="scrollTo('weapons')" role="link">{{ 'MY_ACCOUNT.WEAPONS' | transloco }}</li>
+          <li tabindex="8" (click)="scrollTo('mechs')" role="link">{{ 'MY_ACCOUNT.MECHS' | transloco }}</li>
+          <li tabindex="9" (click)="scrollTo('drones')" role="link">{{ 'MY_ACCOUNT.DRONES' | transloco }}</li>
         </ul>
       <span>
-      <li>Test</li>
-      <li>Test</li>
+      <li tabindex="10">{{ 'MY_ACCOUNT.MY_SALES' | transloco }}</li>
+      <li tabindex="11">{{ 'MY_ACCOUNT.MY_BUYING' | transloco }}</li>
       </span>
     </ul>
   </nav>
@@ -24,8 +28,32 @@
   <div id="social"></div>
 </div>
 <div id="content">
-  <div id="search"></div>
-  <div id="nfts"></div>
+  <div id="search">
+    <ui-input type="text" [iconLeft]="searchIcon" placeholder="Szukaj moich NFT"></ui-input>
+  </div>
+  <div id="nfts">
+    <div style="height: 500px" id="avatars">
+      <p>{{ 'MY_ACCOUNT.AVATARS' | transloco }}</p>
+    </div>
+    <div style="height: 500px" id="workers">
+      <p>{{ 'MY_ACCOUNT.WORKERS' | transloco }}</p>
+    </div>
+    <div style="height: 500px" id="items">
+      <p>{{ 'MY_ACCOUNT.ITEMS' | transloco }}</p>
+    </div>
+    <div style="height: 500px" id="lands">
+      <p>{{ 'MY_ACCOUNT.LANDS' | transloco }}</p>
+    </div>
+    <div style="height: 500px" id="weapons">
+      <p>{{ 'MY_ACCOUNT.WEAPONS' | transloco }}</p>
+    </div>
+    <div style="height: 500px" id="mechs">
+      <p>{{ 'MY_ACCOUNT.MECHS' | transloco }}</p>
+    </div>
+    <div style="height: 500px" id="drones">
+      <p>{{ 'MY_ACCOUNT.DRONES' | transloco }}</p>
+    </div>
+  </div>
 </div>
 <div id="details">
 </div>

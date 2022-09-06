@@ -194,5 +194,19 @@
     "ALL_TOKENS_PURCHASED": "The maximum amount of tokens from this address was purchased",
     "NOT_ENOUGH_TOKENS_LEFT": "Incorrect investment amount",
     "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Lack of communication with Smart Contract",
-    "WALLET_NOT_AUTHORIZED": "No wallet on whitelist"
+    "WALLET_NOT_AUTHORIZED": "No wallet on whitelist",
+
+    "MY_ACCOUNT": {
+        "LOOT": "Loot",
+        "MY_NFT": "My NFT",
+        "AVATARS": "Avatars",
+        "WORKERS": "Workers",
+        "ITEMS": "Items",
+        "LANDS": "Lands",
+        "WEAPONS": "Weapons",
+        "MECHS": "Mechs",
+        "DRONES": "Drones",
+        "MY_SALES": "My sales offers",
+        "MY_BUYING": "My buying offers"
+    }
 }

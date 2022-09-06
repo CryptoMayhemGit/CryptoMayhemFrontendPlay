@@ -22,6 +22,7 @@
   --error-color: #ff4246;
   --component-background-color: #282828;
   --text-primary: #f2f2f2;
+  --text-secondary: #F2F2F266;
 }
 
 html {
@@ -47,6 +48,7 @@ body {
   letter-spacing: 0.04rem;
   line-height: 1.6rem;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 h1 {

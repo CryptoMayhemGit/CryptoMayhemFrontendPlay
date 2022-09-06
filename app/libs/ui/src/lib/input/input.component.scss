@@ -1,3 +1,42 @@
-:host {
-  color: var(--text-primary);
+@import "libs/crypto-mayhem/styles/mixins";
+
+input {
+  /* stylelint-disable-next-line function-whitespace-after */
+  background: url("/assets/images/search_icon.svg") no-repeat scroll 15px 15px;
+  background-color: var(--component-background-color);
+  border: 1px solid rgb(242 242 242 / 40%);
+  color: var(--text-secondary);
+  margin-bottom: 1.8rem;
+  padding: 1.3rem 1.5rem;
+  padding-left: 4.2rem;
+  transition: all 0.3s ease-out;
+  width: 100%;
+
+  &.ng-invalid.ng-touched {
+    border-color: var(--error-color);
+
+    &:focus {
+      border-color: var(--error-color);
+    }
+  }
+
+  &:focus,
+  &:hover {
+    border: 1px solid var(--text-primary);
+    outline: none;
+  }
 }
+
+/* Hide number controls in input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  appearance: textfield;
+}
+
+  

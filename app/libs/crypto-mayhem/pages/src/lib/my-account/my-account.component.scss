@@ -55,7 +55,9 @@
   box-shadow: none;
   color: var(--text-primary);
   padding: 3.5rem 0;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  margin-top: 0.02rem;
+
 
 
   ul {
@@ -66,7 +68,15 @@
       cursor: pointer;
       list-style: none;
       padding: 1.2rem 2.6rem;
-      transition: all 0.2s ease-in-out;
+      transition: all 0.4s ease-in-out;
+
+      fa-icon {
+        margin-left: 0.9rem;
+      }
+
+      &.active {
+        color: var(--text-secondary);
+      }
 
       &:hover {
         background-color: rgb(8 9 27 / 65%);
@@ -93,21 +103,33 @@
 
 
 #nfts {
+  @include scrollbar;
+
+  color: var(--text-primary);
   height: 100%;
   overflow-y: scroll;
+
+  p {
+    border: 1px solid var(--text-secondary);
+    border-width: 0 0 0.01rem;
+    padding: 0 0 0.6rem;
+    text-transform: uppercase;
+  }
 }
 
+// TABLET
 @media screen and (min-width: 768px) {
   :host {
     margin-top: 2rem;
   }
 }
 
+// SMALL LAPTOP
 @media screen and (min-width: 1240px) {
   :host {
     flex-direction: row;
     justify-content: space-evenly;
-    margin-top: 2rem;
+    margin-top: 7.2rem;
   }
 
   #sidebar {
@@ -119,6 +141,17 @@
     margin: 0 3.2rem;
     max-width: 100rem;
 
+    #search {
+      max-width: 92%;
+    }
+  }
+
+  #nfts {
+    scroll-snap-type: y proximity;
+
+    & > div {
+      scroll-snap-align: start;
+    }
   }
 
   #details {
@@ -127,18 +160,22 @@
   }
 
   #menu {
-    ul span {
-      // display: none;
-      // transform: translateY(10rem);
-    }
+    @include scrollbar;
+
+    max-height: 21.5rem;
+    min-height: 16rem;
+    overflow-y: scroll;
   }
 
   #submenu {
+    overflow: hidden;
+    padding-bottom: 2rem !important;
     transition: all 0.2s ease-in-out;
   }
 
   #social {
     height: 100%;
+    margin-top: 0.05rem;
   }
 }
 
@@ -150,9 +187,25 @@
   }
 }
 
+// FULL HD
 @media screen and (min-width: 1920px) {
   :host {
     width: 75%;
+  }
+
+  #menu {
+    max-height: inherit;
+  }
+
+  #social {
+    height: 26%;
+    max-height: 100%;
+  }
+
+  #content {
+    #search {
+      max-width: 93%;
+    }
   }
 }
 
