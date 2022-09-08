@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin: 8.4rem 2rem 0;
+  margin: 8.4rem 0;
 }
 
 #sidebar {
@@ -17,6 +17,7 @@
   hr {
     background-color: var(--text-primary);
     border: 0;
+    display: none;
     height: 1px;
     margin: 0;
     opacity: 0.4;
@@ -46,7 +47,7 @@
   @include background-blur;
 
   box-shadow: none;
-  height: 12rem;
+  height: 6.8rem;
 }
 
 #menu {
@@ -54,10 +55,9 @@
   
   box-shadow: none;
   color: var(--text-primary);
+  margin-top: 0.02rem;
   padding: 3.5rem 0;
   transition: all 0.4s ease-in-out;
-  margin-top: 0.02rem;
-
 
 
   ul {
@@ -89,6 +89,29 @@
       padding: 1.2rem 4.6rem;
     }
   }
+
+  #menu-tablet {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .menu-tablet-combo {
+      border: 1px solid var(--text-secondary);
+      padding: 1.2rem 1.3rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+
+
+      &.combo-arrow-up {
+        background: url("/assets/images/arrow_up.svg") rgb(8 9 27 / 65%) no-repeat scroll 95% center;
+      }
+
+      &.combo-arrow-down {
+        background: url("/assets/images/arrow_down.svg") no-repeat scroll 95% center;
+      }
+    }
+  }
   
 }
 
@@ -96,7 +119,7 @@
   @include background-blur;
 
   box-shadow: none;
-  height: 12rem;
+  height: 6.8rem;
   transition: all 0.2s ease-in-out;
 
 }
@@ -118,9 +141,49 @@
 }
 
 // TABLET
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1240px) {
   :host {
     margin-top: 2rem;
+    overflow: hidden;
+  }
+
+  #sidebar {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 2.4rem;
+    box-shadow: none;
+    position: absolute;
+
+    & > div, & > nav {
+      flex-shrink: 0;
+      margin: 0 1.2rem;
+      padding: 2.4rem 2.2rem;
+      width: 27.2rem;
+
+      p {
+        margin: 0 0 1rem;
+      }
+    }
+
+    & > div:first-child {
+      margin-left: 0;
+    }
+
+    & > div:last-child {
+      margin-right: 0;
+    }
+  }
+
+  #content {
+    margin: 14rem 2rem;
+    width: auto;
+  }
+}
+
+// BIGGER TABLET
+@media screen and (min-width: 880px) and (max-width: 1240px) {
+  #sidebar {
+    justify-content: center;
   }
 }
 
@@ -129,21 +192,22 @@
   :host {
     flex-direction: row;
     justify-content: space-evenly;
-    margin-top: 7.2rem;
+    margin: 7.2rem 2rem 0;
   }
 
   #sidebar {
+    display: flex;
     flex-direction: column;
     max-width: 27.3rem;
+    
+    hr {
+      display: inline-block;
+    }
   }
 
   #content {
     margin: 0 3.2rem;
     max-width: 100rem;
-
-    #search {
-      max-width: 92%;
-    }
   }
 
   #nfts {
@@ -165,6 +229,11 @@
     max-height: 21.5rem;
     min-height: 16rem;
     overflow-y: scroll;
+
+    #menu-tablet {
+      display: none;
+    }
+
   }
 
   #submenu {

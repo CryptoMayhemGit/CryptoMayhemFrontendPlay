@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { isFullHD, scrollTo } from '@crypto-mayhem-frontend/utility/functions';
+import { isFullHD, isSmallScreen, scrollTo } from '@crypto-mayhem-frontend/utility/functions';
 import { faCaretDown, faCaretUp, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -25,20 +25,14 @@ import { faCaretDown, faCaretUp, faSearch } from '@fortawesome/free-solid-svg-ic
         style({
           height: '0px',
         }),
-        animate(
-          '300ms 0ms ease-in',
-          style({ height: '200px'})
-        ),
+        animate('300ms 0ms ease-in', style({ height: '200px' })),
       ]),
       transition(':leave', [
         style({
           height: '200px',
           opacity: 1,
         }),
-        animate(
-          '300ms 0ms ease-in',
-          style({ height: '0px', opacity: 0})
-        ),
+        animate('300ms 0ms ease-in', style({ height: '0px', opacity: 0 })),
       ]),
     ]),
   ],
@@ -48,15 +42,26 @@ export class MyAccountComponent implements OnInit {
   submenu = false;
   caretUp = faCaretUp;
   caretDown = faCaretDown;
+  comboOpened = true;
 
   constructor() {}
+
+  ngOnInit(): void {
+    if (isFullHD()) {
+      this.submenu = true;
+    }
+
+    if (isSmallScreen()) {
+      this.comboOpened = false;
+    }
+  }
 
   scrollTo(elementId: string): void {
     scrollTo(elementId);
   }
 
-  ngOnInit(): void {
-    if(isFullHD()) {
+  onScroll(event: any): void {
+    if (event.target.scrollTop > 100) {
       this.submenu = true;
     }
   }

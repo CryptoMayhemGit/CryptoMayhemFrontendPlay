@@ -206,6 +206,7 @@
         "MECHS": "Mechy",
         "DRONES": "Drony",
         "MY_SALES": "Moje oferty sprzedaży",
-        "MY_BUYING": "Moje oferty zakupu"
+        "MY_BUYING": "Moje oferty zakupu",
+        "SELECTED_CATEGORY": "Wybrana kategoria"
     }
 }

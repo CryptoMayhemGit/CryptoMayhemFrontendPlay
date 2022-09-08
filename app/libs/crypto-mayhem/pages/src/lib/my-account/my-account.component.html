@@ -2,27 +2,13 @@
   <div id="player"></div>
   <hr>
   <nav id="menu">
-    <ul>
-      <li tabindex="1">{{ 'MY_ACCOUNT.LOOT' | transloco }}</li>
-      <li tabindex="2" (click)="submenu = !submenu" [ngClass]="{'active': submenu}">
-        {{ 'MY_ACCOUNT.MY_NFT' | transloco }}
-        <fa-icon [icon]="caretUp" *ngIf="submenu"></fa-icon>
-        <fa-icon [icon]="caretDown" *ngIf="!submenu"></fa-icon>
-      </li>
-        <ul id="submenu" *ngIf="submenu" [@show]>
-          <li tabindex="3" (click)="scrollTo('avatars')" role="link">{{ 'MY_ACCOUNT.AVATARS' | transloco }}</li>
-          <li tabindex="4" (click)="scrollTo('workers')" role="link">{{ 'MY_ACCOUNT.WORKERS' | transloco }}</li>
-          <li tabindex="5" (click)="scrollTo('items')" role="link">{{ 'MY_ACCOUNT.ITEMS' | transloco }}</li>
-          <li tabindex="6" (click)="scrollTo('lands')" role="link">{{ 'MY_ACCOUNT.LANDS' | transloco }}</li>
-          <li tabindex="7" (click)="scrollTo('weapons')" role="link">{{ 'MY_ACCOUNT.WEAPONS' | transloco }}</li>
-          <li tabindex="8" (click)="scrollTo('mechs')" role="link">{{ 'MY_ACCOUNT.MECHS' | transloco }}</li>
-          <li tabindex="9" (click)="scrollTo('drones')" role="link">{{ 'MY_ACCOUNT.DRONES' | transloco }}</li>
-        </ul>
-      <span>
-      <li tabindex="10">{{ 'MY_ACCOUNT.MY_SALES' | transloco }}</li>
-      <li tabindex="11">{{ 'MY_ACCOUNT.MY_BUYING' | transloco }}</li>
-      </span>
-    </ul>
+    <div id="menu-tablet">
+      <p>{{ 'MY_ACCOUNT.SELECTED_CATEGORY' | transloco }}:</p>
+      <div class="menu-tablet-combo" [ngClass]="{' combo-arrow-down': !comboOpened, 'combo-arrow-up': comboOpened}" (click)="comboOpened = !comboOpened; submenu = true">
+        test
+      </div>
+    </div>
+    <ng-template *ngIf="comboOpened" [ngTemplateOutlet]="submenuEl"></ng-template>
   </nav>
   <hr>
   <div id="social"></div>
@@ -31,7 +17,7 @@
   <div id="search">
     <ui-input type="text" [iconLeft]="searchIcon" placeholder="Szukaj moich NFT"></ui-input>
   </div>
-  <div id="nfts">
+  <div id="nfts" (scroll)="onScroll($event)">
     <div style="height: 500px" id="avatars">
       <p>{{ 'MY_ACCOUNT.AVATARS' | transloco }}</p>
     </div>
@@ -57,3 +43,26 @@
 </div>
 <div id="details">
 </div>
+
+<ng-template #submenuEl>
+  <ul [@show]>
+      <li tabindex="1">{{ 'MY_ACCOUNT.LOOT' | transloco }}</li>
+      <li tabindex="2" (click)="submenu = !submenu" [ngClass]="{'active': submenu}">
+        {{ 'MY_ACCOUNT.MY_NFT' | transloco }}
+        <fa-icon [icon]="caretDown" *ngIf="!submenu"></fa-icon>
+      </li>
+        <ul id="submenu" *ngIf="submenu" [@show]>
+          <li tabindex="3" (click)="scrollTo('avatars')" role="link">{{ 'MY_ACCOUNT.AVATARS' | transloco }}</li>
+          <li tabindex="4" (click)="scrollTo('workers')" role="link">{{ 'MY_ACCOUNT.WORKERS' | transloco }}</li>
+          <li tabindex="5" (click)="scrollTo('items')" role="link">{{ 'MY_ACCOUNT.ITEMS' | transloco }}</li>
+          <li tabindex="6" (click)="scrollTo('lands')" role="link">{{ 'MY_ACCOUNT.LANDS' | transloco }}</li>
+          <li tabindex="7" (click)="scrollTo('weapons')" role="link">{{ 'MY_ACCOUNT.WEAPONS' | transloco }}</li>
+          <li tabindex="8" (click)="scrollTo('mechs')" role="link">{{ 'MY_ACCOUNT.MECHS' | transloco }}</li>
+          <li tabindex="9" (click)="scrollTo('drones')" role="link">{{ 'MY_ACCOUNT.DRONES' | transloco }}</li>
+        </ul>
+      <span>
+      <li tabindex="10">{{ 'MY_ACCOUNT.MY_SALES' | transloco }}</li>
+      <li tabindex="11">{{ 'MY_ACCOUNT.MY_BUYING' | transloco }}</li>
+      </span>
+  </ul>
+</ng-template>

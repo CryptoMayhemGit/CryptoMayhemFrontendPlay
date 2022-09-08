@@ -207,6 +207,7 @@
         "MECHS": "Mechs",
         "DRONES": "Drones",
         "MY_SALES": "My sales offers",
-        "MY_BUYING": "My buying offers"
+        "MY_BUYING": "My buying offers",
+        "SELECTED_CATEGORY": "Selected category"
     }
 }
