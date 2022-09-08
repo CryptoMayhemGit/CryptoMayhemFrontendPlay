@@ -43,6 +43,7 @@ export class MyAccountComponent implements OnInit {
   caretUp = faCaretUp;
   caretDown = faCaretDown;
   comboOpened = true;
+  selectedCategory: string = '';
 
   constructor() {}
 
@@ -57,12 +58,21 @@ export class MyAccountComponent implements OnInit {
   }
 
   scrollTo(elementId: string): void {
+    this.setCategory(elementId);
     scrollTo(elementId);
+
+    if(isSmallScreen()) {
+      this.comboOpened = false;
+    }
   }
 
   onScroll(event: any): void {
     if (event.target.scrollTop > 100) {
       this.submenu = true;
     }
+  }
+
+  setCategory(categoryName: string) {
+    this.selectedCategory = categoryName.toUpperCase();
   }
 }

@@ -5,7 +5,7 @@
     <div id="menu-tablet">
       <p>{{ 'MY_ACCOUNT.SELECTED_CATEGORY' | transloco }}:</p>
       <div class="menu-tablet-combo" [ngClass]="{' combo-arrow-down': !comboOpened, 'combo-arrow-up': comboOpened}" (click)="comboOpened = !comboOpened; submenu = true">
-        test
+        {{ selectedCategory ? ('MY_ACCOUNT.' + selectedCategory | transloco) : '' }}
       </div>
     </div>
     <ng-template *ngIf="comboOpened" [ngTemplateOutlet]="submenuEl"></ng-template>

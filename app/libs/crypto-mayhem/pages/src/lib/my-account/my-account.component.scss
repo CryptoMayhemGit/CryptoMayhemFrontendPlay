@@ -98,9 +98,8 @@
     .menu-tablet-combo {
       border: 1px solid var(--text-secondary);
       padding: 1.2rem 1.3rem;
-      text-transform: uppercase;
       cursor: pointer;
-      transition: all 0.2s ease-in-out;
+      transition: background-color 0.2s ease-in-out;
 
 
       &.combo-arrow-up {
