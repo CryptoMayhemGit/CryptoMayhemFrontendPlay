@@ -8,7 +8,6 @@
 }
 
 #sidebar {
-  box-shadow: 0 0.4rem 2.4rem rgba(0 0 0 / 60%);
   display: flex;
   transition: all 0.2s ease-in-out;
   width: 100%;
@@ -78,8 +77,12 @@
         color: var(--text-secondary);
       }
 
-      &:hover {
+      &:hover, &.active-section {
         background-color: rgb(8 9 27 / 65%);
+      }
+
+      &:focus {
+        outline: none;
       }
     }
   }
@@ -97,8 +100,8 @@
 
     .menu-tablet-combo {
       border: 1px solid var(--text-secondary);
-      padding: 1.2rem 1.3rem;
       cursor: pointer;
+      padding: 1.2rem 1.3rem;
       transition: background-color 0.2s ease-in-out;
 
 
@@ -107,7 +110,7 @@
       }
 
       &.combo-arrow-down {
-        background: url("/assets/images/arrow_down.svg") no-repeat scroll 95% center;
+        background: url("/assets/images/arrow_down.svg") rgb(8 9 27 / 65%) no-repeat scroll 95% center;
       }
     }
   }
@@ -137,6 +140,19 @@
     padding: 0 0 0.6rem;
     text-transform: uppercase;
   }
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  h1 {
+    align-self: center;
+    font-size: 1.8rem;
+    height: 50%;
+  }
+
 }
 
 // TABLET
@@ -147,10 +163,10 @@
   }
 
   #sidebar {
+    box-sizing: content-box;
     overflow-x: auto;
     overflow-y: hidden;
     padding-bottom: 2.4rem;
-    box-shadow: none;
     position: absolute;
 
     & > div, & > nav {
@@ -195,13 +211,35 @@
   }
 
   #sidebar {
+    @include background-blur;
+
+    clip-path: polygon(
+      10% 0,
+      100% 0,
+      100% 20%,
+      100% 97%,
+      90% 100%,
+      0 100%,
+      0% 80%,
+      0 3%
+    );
     display: flex;
     flex-direction: column;
     max-width: 27.3rem;
-    
+
     hr {
       display: inline-block;
     }
+
+    #player, #menu, #social {
+      backdrop-filter: none;
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  #player {
+    height: 12.4rem;
   }
 
   #content {
@@ -237,7 +275,6 @@
 
   #submenu {
     overflow: hidden;
-    padding-bottom: 2rem !important;
     transition: all 0.2s ease-in-out;
   }
 
@@ -263,18 +300,15 @@
 
   #menu {
     max-height: inherit;
+    overflow: hidden;
   }
 
   #social {
-    height: 26%;
+    height: 27%;
     max-height: 100%;
   }
 
-  #content {
-    #search {
-      max-width: 93%;
-    }
-  }
+
 }
 
   

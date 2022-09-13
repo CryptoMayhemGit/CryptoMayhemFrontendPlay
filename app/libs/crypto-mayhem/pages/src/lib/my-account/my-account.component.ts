@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { isFullHD, isSmallScreen, scrollTo } from '@crypto-mayhem-frontend/utility/functions';
 import { faCaretDown, faCaretUp, faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -25,11 +26,11 @@ import { faCaretDown, faCaretUp, faSearch } from '@fortawesome/free-solid-svg-ic
         style({
           height: '0px',
         }),
-        animate('300ms 0ms ease-in', style({ height: '200px' })),
+        animate('300ms 0ms ease-in', style({ height: '250px' })),
       ]),
       transition(':leave', [
         style({
-          height: '200px',
+          height: '250px',
           opacity: 1,
         }),
         animate('300ms 0ms ease-in', style({ height: '0px', opacity: 0 })),
@@ -44,6 +45,8 @@ export class MyAccountComponent implements OnInit {
   caretDown = faCaretDown;
   comboOpened = true;
   selectedCategory: string = '';
+  selectedSection!: string;
+  search = new FormControl('');
 
   constructor() {}
 
@@ -55,21 +58,39 @@ export class MyAccountComponent implements OnInit {
     if (isSmallScreen()) {
       this.comboOpened = false;
     }
+
+    this.search?.valueChanges.subscribe((selectedValue) => {
+      console.log(selectedValue);
+    });
+
   }
 
   scrollTo(elementId: string): void {
     this.setCategory(elementId);
     scrollTo(elementId);
 
-    if(isSmallScreen()) {
+    if (isSmallScreen()) {
       this.comboOpened = false;
     }
   }
 
   onScroll(event: any): void {
+    let nftSections = event.target.children;
+    for (let section of nftSections) {
+      if (section.getBoundingClientRect().top > 0) {
+        this.setNftSection(section.id);
+        break;
+      }
+    }
     if (event.target.scrollTop > 100) {
       this.submenu = true;
     }
+  }
+
+  setNftSection(sectionId: string) {
+    this.selectedSection = sectionId;
+    this.setCategory(sectionId);
+    scrollTo(`menu-${sectionId}`);
   }
 
   setCategory(categoryName: string) {

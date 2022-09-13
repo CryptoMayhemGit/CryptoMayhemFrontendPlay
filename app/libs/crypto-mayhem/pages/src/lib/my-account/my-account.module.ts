@@ -4,6 +4,7 @@ import { MyAccountComponent } from './my-account.component';
 import { TranslocoModule } from '@ngneat/transloco';
 import { InputModule } from '@crypto-mayhem-frontend/ui';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CommonModule,
     TranslocoModule,
     InputModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [MyAccountComponent],
 })

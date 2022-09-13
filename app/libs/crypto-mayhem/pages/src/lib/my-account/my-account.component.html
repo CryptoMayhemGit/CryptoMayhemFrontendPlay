@@ -1,68 +1,110 @@
 <div id="sidebar">
   <div id="player"></div>
-  <hr>
+  <hr />
   <nav id="menu">
     <div id="menu-tablet">
-      <p>{{ 'MY_ACCOUNT.SELECTED_CATEGORY' | transloco }}:</p>
-      <div class="menu-tablet-combo" [ngClass]="{' combo-arrow-down': !comboOpened, 'combo-arrow-up': comboOpened}" (click)="comboOpened = !comboOpened; submenu = true">
-        {{ selectedCategory ? ('MY_ACCOUNT.' + selectedCategory | transloco) : '' }}
+      <p>{{ "MY_ACCOUNT.SELECTED_CATEGORY" | transloco }}:</p>
+      <div
+        class="menu-tablet-combo"
+        [ngClass]="{
+          ' combo-arrow-down': !comboOpened,
+          'combo-arrow-up': comboOpened
+        }"
+        (click)="comboOpened = !comboOpened; submenu = true"
+      >
+        {{
+          selectedCategory ? ("MY_ACCOUNT." + selectedCategory | transloco) : ""
+        }}
       </div>
     </div>
-    <ng-template *ngIf="comboOpened" [ngTemplateOutlet]="submenuEl"></ng-template>
+    <ng-template
+      *ngIf="comboOpened"
+      [ngTemplateOutlet]="submenuEl"
+    ></ng-template>
   </nav>
-  <hr>
+  <hr />
   <div id="social"></div>
 </div>
 <div id="content">
   <div id="search">
-    <ui-input type="text" [iconLeft]="searchIcon" placeholder="Szukaj moich NFT"></ui-input>
+    <ui-input
+      type="text"
+      [iconLeft]="searchIcon"
+      placeholder="Szukaj moich NFT"
+      name="search"
+      [formControl]="search"
+    ></ui-input>
   </div>
   <div id="nfts" (scroll)="onScroll($event)">
-    <div style="height: 500px" id="avatars">
-      <p>{{ 'MY_ACCOUNT.AVATARS' | transloco }}</p>
+    <div style="height: 600px" id="avatars">
+      <p>{{ "MY_ACCOUNT.AVATARS" | transloco }}</p>
+      <h1>{{ "MY_ACCOUNT.NO_AVATARS" | transloco }}</h1>
     </div>
-    <div style="height: 500px" id="workers">
-      <p>{{ 'MY_ACCOUNT.WORKERS' | transloco }}</p>
+    <div style="height: 600px" id="workers">
+      <p>{{ "MY_ACCOUNT.WORKERS" | transloco }}</p>
+      <h1>{{ "MY_ACCOUNT.NO_WORKERS" | transloco }}</h1>
     </div>
-    <div style="height: 500px" id="items">
-      <p>{{ 'MY_ACCOUNT.ITEMS' | transloco }}</p>
+    <div style="height: 600px" id="items">
+      <p>{{ "MY_ACCOUNT.ITEMS" | transloco }}</p>
+      <h1>{{ "MY_ACCOUNT.NO_ITEMS" | transloco }}</h1>
     </div>
-    <div style="height: 500px" id="lands">
-      <p>{{ 'MY_ACCOUNT.LANDS' | transloco }}</p>
+    <div style="height: 600px" id="lands">
+      <p>{{ "MY_ACCOUNT.LANDS" | transloco }}</p>
+      <h1>{{ "MY_ACCOUNT.NO_LANDS" | transloco }}</h1>
     </div>
-    <div style="height: 500px" id="weapons">
-      <p>{{ 'MY_ACCOUNT.WEAPONS' | transloco }}</p>
+    <div style="height: 600px" id="weapons">
+      <p>{{ "MY_ACCOUNT.WEAPONS" | transloco }}</p>
+      <h1>{{ "MY_ACCOUNT.NO_WEAPONS" | transloco }}</h1>
     </div>
-    <div style="height: 500px" id="mechs">
-      <p>{{ 'MY_ACCOUNT.MECHS' | transloco }}</p>
+    <div style="height: 600px" id="mechs">
+      <p>{{ "MY_ACCOUNT.MECHS" | transloco }}</p>
+      <h1>{{ "MY_ACCOUNT.NO_MECHS" | transloco }}</h1>
     </div>
-    <div style="height: 500px" id="drones">
-      <p>{{ 'MY_ACCOUNT.DRONES' | transloco }}</p>
+    <div style="height: 600px" id="drones">
+      <p>{{ "MY_ACCOUNT.DRONES" | transloco }}</p>
+      <h1>{{ "MY_ACCOUNT.NO_DRONES" | transloco }}</h1>
     </div>
   </div>
 </div>
-<div id="details">
-</div>
+<div id="details"></div>
 
 <ng-template #submenuEl>
   <ul [@show]>
-      <li tabindex="1">{{ 'MY_ACCOUNT.LOOT' | transloco }}</li>
-      <li tabindex="2" (click)="submenu = !submenu" [ngClass]="{'active': submenu}">
-        {{ 'MY_ACCOUNT.MY_NFT' | transloco }}
-        <fa-icon [icon]="caretDown" *ngIf="!submenu"></fa-icon>
+    <li tabindex="1">{{ "MY_ACCOUNT.LOOT" | transloco }}</li>
+    <li
+      tabindex="2"
+      (click)="submenu = !submenu"
+      [ngClass]="{ active: submenu }"
+    >
+      {{ "MY_ACCOUNT.MY_NFT" | transloco }}
+      <fa-icon [icon]="caretDown" *ngIf="!submenu"></fa-icon>
+    </li>
+    <ul id="submenu" *ngIf="submenu" [@show]>
+      <li tabindex="3" (click)="scrollTo('avatars')" id="menu-avatars" role="link" [ngClass]="{'active-section': selectedSection === 'avatars'}">
+        {{ "MY_ACCOUNT.AVATARS" | transloco }}
       </li>
-        <ul id="submenu" *ngIf="submenu" [@show]>
-          <li tabindex="3" (click)="scrollTo('avatars')" role="link">{{ 'MY_ACCOUNT.AVATARS' | transloco }}</li>
-          <li tabindex="4" (click)="scrollTo('workers')" role="link">{{ 'MY_ACCOUNT.WORKERS' | transloco }}</li>
-          <li tabindex="5" (click)="scrollTo('items')" role="link">{{ 'MY_ACCOUNT.ITEMS' | transloco }}</li>
-          <li tabindex="6" (click)="scrollTo('lands')" role="link">{{ 'MY_ACCOUNT.LANDS' | transloco }}</li>
-          <li tabindex="7" (click)="scrollTo('weapons')" role="link">{{ 'MY_ACCOUNT.WEAPONS' | transloco }}</li>
-          <li tabindex="8" (click)="scrollTo('mechs')" role="link">{{ 'MY_ACCOUNT.MECHS' | transloco }}</li>
-          <li tabindex="9" (click)="scrollTo('drones')" role="link">{{ 'MY_ACCOUNT.DRONES' | transloco }}</li>
-        </ul>
-      <span>
-      <li tabindex="10">{{ 'MY_ACCOUNT.MY_SALES' | transloco }}</li>
-      <li tabindex="11">{{ 'MY_ACCOUNT.MY_BUYING' | transloco }}</li>
-      </span>
+      <li tabindex="4" (click)="scrollTo('workers')" id="menu-workers" role="link" [ngClass]="{'active-section': selectedSection === 'workers'}">
+        {{ "MY_ACCOUNT.WORKERS" | transloco }}
+      </li>
+      <li tabindex="5" (click)="scrollTo('items')" id="menu-items" role="link" [ngClass]="{'active-section': selectedSection === 'items'}">
+        {{ "MY_ACCOUNT.ITEMS" | transloco }}
+      </li>
+      <li tabindex="6" (click)="scrollTo('lands')" id="menu-lands" role="link" [ngClass]="{'active-section': selectedSection === 'lands'}">
+        {{ "MY_ACCOUNT.LANDS" | transloco }}
+      </li>
+      <li tabindex="7" (click)="scrollTo('weapons')" id="menu-weapons" role="link" [ngClass]="{'active-section': selectedSection === 'weapons'}">
+        {{ "MY_ACCOUNT.WEAPONS" | transloco }}
+      </li>
+      <li tabindex="8" (click)="scrollTo('mechs')" id="menu-mechs" role="link" [ngClass]="{'active-section': selectedSection === 'mechs'}">
+        {{ "MY_ACCOUNT.MECHS" | transloco }}
+      </li>
+      <li tabindex="9" (click)="scrollTo('drones')" id="menu-drones" role="link" [ngClass]="{'active-section': selectedSection === 'drones'}">
+        {{ "MY_ACCOUNT.DRONES" | transloco }}
+      </li>
+    </ul>
+    <span>
+      <li tabindex="10">{{ "MY_ACCOUNT.MY_SALES" | transloco }}</li>
+      <li tabindex="11">{{ "MY_ACCOUNT.MY_BUYING" | transloco }}</li>
+    </span>
   </ul>
 </ng-template>
