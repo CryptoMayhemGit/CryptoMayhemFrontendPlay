@@ -36,31 +36,34 @@
     ></ui-input>
   </div>
   <div id="nfts" (scroll)="onScroll($event)">
-    <div style="height: 600px" id="avatars">
+    <div style="height: 600px" id="not-found" *ngIf="(search.valueChanges | async)">
+      <h1>{{ "MY_ACCOUNT.NO_NFT" | transloco }}</h1>
+    </div>
+    <div style="height: 600px" id="avatars" *ngIf="!(search.valueChanges | async)">
       <p>{{ "MY_ACCOUNT.AVATARS" | transloco }}</p>
       <h1>{{ "MY_ACCOUNT.NO_AVATARS" | transloco }}</h1>
     </div>
-    <div style="height: 600px" id="workers">
+    <div style="height: 600px" id="workers" *ngIf="!(search.valueChanges | async)">
       <p>{{ "MY_ACCOUNT.WORKERS" | transloco }}</p>
       <h1>{{ "MY_ACCOUNT.NO_WORKERS" | transloco }}</h1>
     </div>
-    <div style="height: 600px" id="items">
+    <div style="height: 600px" id="items" *ngIf="!(search.valueChanges | async)">
       <p>{{ "MY_ACCOUNT.ITEMS" | transloco }}</p>
       <h1>{{ "MY_ACCOUNT.NO_ITEMS" | transloco }}</h1>
     </div>
-    <div style="height: 600px" id="lands">
+    <div style="height: 600px" id="lands" *ngIf="!(search.valueChanges | async)">
       <p>{{ "MY_ACCOUNT.LANDS" | transloco }}</p>
       <h1>{{ "MY_ACCOUNT.NO_LANDS" | transloco }}</h1>
     </div>
-    <div style="height: 600px" id="weapons">
+    <div style="height: 600px" id="weapons" *ngIf="!(search.valueChanges | async)">
       <p>{{ "MY_ACCOUNT.WEAPONS" | transloco }}</p>
       <h1>{{ "MY_ACCOUNT.NO_WEAPONS" | transloco }}</h1>
     </div>
-    <div style="height: 600px" id="mechs">
+    <div style="height: 600px" id="mechs" *ngIf="!(search.valueChanges | async)">
       <p>{{ "MY_ACCOUNT.MECHS" | transloco }}</p>
       <h1>{{ "MY_ACCOUNT.NO_MECHS" | transloco }}</h1>
     </div>
-    <div style="height: 600px" id="drones">
+    <div style="height: 600px" id="drones" *ngIf="!(search.valueChanges | async)">
       <p>{{ "MY_ACCOUNT.DRONES" | transloco }}</p>
       <h1>{{ "MY_ACCOUNT.NO_DRONES" | transloco }}</h1>
     </div>

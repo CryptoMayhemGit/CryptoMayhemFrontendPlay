@@ -153,6 +153,14 @@
     height: 50%;
   }
 
+  & > #not-found {
+    justify-content: center;
+
+    h1 {
+      height: auto;
+    }
+  }
+
 }
 
 // TABLET
