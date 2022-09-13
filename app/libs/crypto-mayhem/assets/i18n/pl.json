@@ -205,6 +205,13 @@
         "WEAPONS": "Bronie",
         "MECHS": "Mechy",
         "DRONES": "Drony",
+        "NO_AVATARS": "Brak avatarów",
+        "NO_WORKERS": "Brak robotników",
+        "NO_ITEMS": "Brak przedmiotów",
+        "NO_LANDS": "Brak landów",
+        "NO_WEAPONS": "Brak broni",
+        "NO_MECHS": "Brak mechów",
+        "NO_DRONES": "Brak dronów",
         "MY_SALES": "Moje oferty sprzedaży",
         "MY_BUYING": "Moje oferty zakupu",
         "SELECTED_CATEGORY": "Wybrana kategoria"

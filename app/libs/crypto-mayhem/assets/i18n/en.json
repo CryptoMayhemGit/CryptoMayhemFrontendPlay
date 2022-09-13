@@ -206,6 +206,13 @@
         "WEAPONS": "Weapons",
         "MECHS": "Mechs",
         "DRONES": "Drones",
+        "NO_AVATARS": "No avatars",
+        "NO_WORKERS": "No workers",
+        "NO_ITEMS": "No items",
+        "NO_LANDS": "No lands",
+        "NO_WEAPONS": "No weapons",
+        "NO_MECHS": "No mechs",
+        "NO_DRONES": "No drones",
         "MY_SALES": "My sales offers",
         "MY_BUYING": "My buying offers",
         "SELECTED_CATEGORY": "Selected category"
