@@ -1,6 +1,7 @@
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'ui-input',
@@ -13,6 +14,22 @@ import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
       multi: true,
     },
   ],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({
+          opacity: 0,
+        }),
+        animate('100ms 0ms ease-in', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        style({
+          opacity: 1,
+        }),
+        animate('100ms 0ms ease-out', style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() type: string = 'text';
@@ -20,6 +37,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() value: string | number | null = null;
   @Input() placeholder: string = '';
   @Input() iconLeft!: IconDefinition;
+  faTimesIcon = faTimes;
 
   public readonly inputControl = new FormControl();
 
@@ -48,5 +66,9 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   writeValue(value: string | null): void {
     this.inputControl.setValue(value);
+  }
+
+  clear() {
+    this.inputControl.setValue(null);
   }
 }

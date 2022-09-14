@@ -1,1 +1,2 @@
 <input [type]="type" [value]="value" [placeholder]="placeholder" [formControl]="inputControl" [name]="name">
+<fa-icon [icon]="faTimesIcon" (click)="clear()" *ngIf="this.inputControl.valueChanges | async" [@fadeInOut]></fa-icon>

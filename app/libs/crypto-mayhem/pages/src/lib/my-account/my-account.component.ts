@@ -58,11 +58,6 @@ export class MyAccountComponent implements OnInit {
     if (isSmallScreen()) {
       this.comboOpened = false;
     }
-
-    this.search?.valueChanges.subscribe((selectedValue) => {
-      console.log(selectedValue);
-    });
-
   }
 
   scrollTo(elementId: string): void {

@@ -3,11 +3,12 @@
 :host {
   display: flex;
   width: 100%;
+  position: relative;
 }
 
 input {
   /* stylelint-disable-next-line function-whitespace-after */
-  background: url("/assets/images/search_icon.svg") no-repeat scroll 15px 15px;
+  background: url("/assets/images/search_icon.svg") no-repeat scroll 13px 13px;
   background-color: var(--component-background-color);
   border: 1px solid var(--text-secondary);
   color: var(--text-primary);
@@ -16,6 +17,7 @@ input {
   padding: 1.3rem 1.5rem;
   padding-left: 4.2rem;
   transition: all 0.3s ease-out;
+  font-size: 1.3rem;
 
   &.ng-invalid.ng-touched {
     border-color: var(--error-color);
@@ -30,6 +32,17 @@ input {
     border: 1px solid var(--text-primary);
     outline: none;
   }
+}
+
+fa-icon {
+  position: absolute;
+  color: var(--button-secondary);
+  right: 1.5rem;
+  top: 0.2rem;
+  font-size: 2rem;
+  padding: 1rem;
+  opacity: 1;
+  cursor: pointer;
 }
 
 /* Hide number controls in input */
