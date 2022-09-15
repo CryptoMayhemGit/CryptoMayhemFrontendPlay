@@ -51,6 +51,8 @@ export class MyAccountComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+    this.setNftSection('loot');
+
     if (isFullHD()) {
       this.submenu = true;
     }

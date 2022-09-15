@@ -205,6 +205,7 @@
         "WEAPONS": "Bronie",
         "MECHS": "Mechy",
         "DRONES": "Drony",
+        "NO_LOOT": "Brak łupów",
         "NO_AVATARS": "Brak avatarów",
         "NO_WORKERS": "Brak robotników",
         "NO_ITEMS": "Brak przedmiotów",
