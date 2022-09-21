@@ -3,8 +3,13 @@
 :host {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100vh - 18.4rem);
   margin: 8.4rem 0;
+
+  @media screen and (min-width: 768px) {
+    height: 100%;
+  }
+
 }
 
 #sidebar {
@@ -38,8 +43,15 @@
 }
 
 #search {
+  background-color: var(--component-background-color);
+  border-bottom: 1px solid var(--text-secondary);
   height: 4.2rem;
   margin-bottom: 2.4rem;
+  padding: 2rem 2rem 2rem 4.2rem;
+  position: absolute;
+  top: 0;
+  width: calc(100% - 6.2rem);
+  z-index: 10000;
 }
 
 #player {
@@ -55,12 +67,14 @@
   box-shadow: none;
   color: var(--text-primary);
   margin-top: 0.02rem;
-  padding: 3.5rem 0;
+  padding: 2rem 4.7rem;
+  position:fixed;
   transition: all 0.4s ease-in-out;
-  width: 100%;
+  width: calc(100% - 9.4rem);
 
 
   ul {
+    height: 100vh;
     margin: 0;
     padding: 0;
 
@@ -88,6 +102,10 @@
     }
   }
 
+  & > ul {
+    padding: 3.5rem 0;
+  }
+
   #submenu {
     li {
       padding: 1.2rem 4.6rem;
@@ -102,6 +120,7 @@
     .menu-tablet-combo {
       border: 1px solid var(--text-secondary);
       cursor: pointer;
+      max-width: 22.8rem;
       padding: 1.2rem 1.3rem;
       transition: background-color 0.2s ease-in-out;
 
@@ -124,16 +143,23 @@
   box-shadow: none;
   height: 6.8rem;
   transition: all 0.2s ease-in-out;
-
 }
 
 
 #nfts {
-  @include scrollbar;
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
 
   color: var(--text-primary);
+  display: flex;
+  flex-direction: row;
   height: 100%;
-  overflow-y: scroll;
+  margin-top: 7rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  width: 100%;
 
   p {
     border: 1px solid var(--text-secondary);
@@ -144,14 +170,23 @@
 
   & > div {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-shrink: 0;
     justify-content: space-between;
+    scroll-snap-align: start;
+    width: 100%;
+
+    p {
+      display: none;
+    }
   }
 
   h1 {
     align-self: center;
     font-size: 1.8rem;
-    height: 50%;
+    text-align: center;
+    width: 100%;
+
   }
 
   & > #not-found {
@@ -165,6 +200,38 @@
 }
 
 // TABLET
+@media screen and (min-width: 768px) {
+  #search {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+
+  #menu {
+    position: relative;
+
+    ul {
+      height: auto;
+    }
+  }
+
+  #nfts {
+    @include scrollbar;
+
+    justify-content: center;
+    margin-top: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    h1 {
+      height: 50%;
+    }
+  }
+}
+
 @media screen and (min-width: 768px) and (max-width: 1240px) {
   :host {
     margin-top: 2rem;
@@ -199,9 +266,31 @@
     }
   }
 
+  #menu {
+    padding: 3.5rem 0;
+  }
+
+  #menu-tablet-combo {
+    max-width: 100%;
+  }
+
   #content {
     margin: 14rem 2rem;
     width: auto;
+  }
+
+  #nfts {
+    display: block;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      p {
+        display: block;
+      }
+    }
   }
 }
 
@@ -258,10 +347,15 @@
   }
 
   #nfts {
+    flex-direction: column;
+    justify-content: flex-start;
     scroll-snap-type: y proximity;
 
     & > div {
+      flex-direction: column;
       scroll-snap-align: start;
+
+      p {display: inline}
     }
   }
 
@@ -276,6 +370,8 @@
     max-height: 21.5rem;
     min-height: 16rem;
     overflow-y: scroll;
+    padding: 0;
+    width: 100%;
 
     #menu-tablet {
       display: none;

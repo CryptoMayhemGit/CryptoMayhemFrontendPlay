@@ -1,7 +1,7 @@
 <div id="sidebar">
   <div id="player"></div>
   <hr />
-  <nav id="menu">
+  <nav id="menu" #menu>
     <div id="menu-tablet">
       <p>{{ "MY_ACCOUNT.SELECTED_CATEGORY" | transloco }}:</p>
       <div
@@ -35,7 +35,7 @@
       [formControl]="search"
     ></ui-input>
   </div>
-  <div id="nfts" (scroll)="onScroll($event)">
+  <div id="nfts" #nfts (scroll)="onScroll($event)">
     <div
       style="height: 600px"
       id="not-found"
@@ -112,6 +112,8 @@
     <li
       tabindex="1"
       (click)="scrollTo('loot')"
+      id="menu-loot"
+      role="link"
       [ngClass]="{ 'active-section': selectedSection === 'loot' }"
     >
       {{ "MY_ACCOUNT.LOOT" | transloco }}

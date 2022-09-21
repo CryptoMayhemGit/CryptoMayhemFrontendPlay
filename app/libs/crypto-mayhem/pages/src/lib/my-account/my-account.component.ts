@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { isFullHD, isSmallScreen, scrollTo } from '@crypto-mayhem-frontend/utility/functions';
 import { faCaretDown, faCaretUp, faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -87,7 +87,7 @@ export class MyAccountComponent implements OnInit {
   setNftSection(sectionId: string) {
     this.selectedSection = sectionId;
     this.setCategory(sectionId);
-    scrollTo(`menu-${sectionId}`);
+    //scrollTo(`menu-${sectionId}`);
   }
 
   setCategory(categoryName: string) {
