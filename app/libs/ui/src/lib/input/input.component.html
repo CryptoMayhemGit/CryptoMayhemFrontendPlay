@@ -1,2 +1,3 @@
-<input [type]="type" [value]="value" [placeholder]="placeholder" [formControl]="inputControl" [name]="name">
-<fa-icon [icon]="faTimesIcon" (click)="clear()" *ngIf="this.inputControl.valueChanges | async" [@fadeInOut]></fa-icon>
+<span class="icon-left" (click)="clear()" *ngIf="this.inputControl.valueChanges | async"></span>
+<input #input [type]="type" [ngClass]="{'search-icon': !(this.inputControl.valueChanges | async)}" [value]="value" [placeholder]="placeholder" [formControl]="inputControl" [name]="name">
+<fa-icon class="icon-right" [icon]="faTimesIcon" (click)="clear(); focus()" *ngIf="this.inputControl.valueChanges | async" [@fadeInOut]></fa-icon>

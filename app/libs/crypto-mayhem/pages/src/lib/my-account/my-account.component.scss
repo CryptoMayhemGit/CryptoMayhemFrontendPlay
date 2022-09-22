@@ -43,15 +43,18 @@
 }
 
 #search {
-  background-color: var(--component-background-color);
+  @include background-blur;
+
   border-bottom: 1px solid var(--text-secondary);
   height: 4.2rem;
   margin-bottom: 2.4rem;
-  padding: 2rem 2rem 2rem 4.2rem;
+  padding: 2rem 2rem 2rem 0;
   position: absolute;
   top: 0;
-  width: calc(100% - 6.2rem);
+  width: calc(100% - 2rem);
   z-index: 10000;
+  display: flex;
+  align-items: center;
 }
 
 #player {
@@ -72,9 +75,11 @@
   transition: all 0.4s ease-in-out;
   width: calc(100% - 9.4rem);
 
+  & > ul {
+    height: 100vh;
+  }
 
   ul {
-    height: 100vh;
     margin: 0;
     padding: 0;
 
@@ -159,7 +164,6 @@
   overflow-x: scroll;
   overflow-y: hidden;
   scroll-snap-type: x proximity;
-  width: 100%;
 
   p {
     border: 1px solid var(--text-secondary);
@@ -174,7 +178,8 @@
     flex-shrink: 0;
     justify-content: space-between;
     scroll-snap-align: start;
-    width: 100%;
+    width: calc(100% - 4rem);
+    padding: 0 2rem;
 
     p {
       display: none;
@@ -199,10 +204,15 @@
 
 }
 
+.arrow-left {
+  background: url(/assets/images/arrow_left.svg) no-repeat center;
+  cursor: pointer;
+  padding: 2.4rem;
+}
+
 // TABLET
 @media screen and (min-width: 768px) {
   #search {
-    background-color: transparent;
     border: none;
     padding: 0;
     position: relative;
@@ -212,6 +222,7 @@
 
   #menu {
     position: relative;
+    height: auto;
 
     ul {
       height: auto;
@@ -225,10 +236,20 @@
     margin-top: 0;
     overflow-x: hidden;
     overflow-y: scroll;
+    width: 100%;
 
     h1 {
       height: 50%;
     }
+
+    & > div {
+      width: 100%;
+      padding: 0;
+    }
+  }
+
+  .arrow-left {
+    display: none;
   }
 }
 
@@ -268,6 +289,10 @@
 
   #menu {
     padding: 3.5rem 0;
+  }
+
+  #search {
+    background-color: transparent;
   }
 
   #menu-tablet-combo {

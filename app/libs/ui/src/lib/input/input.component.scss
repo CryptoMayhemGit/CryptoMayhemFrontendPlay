@@ -8,16 +8,15 @@
 
 input {
   /* stylelint-disable-next-line function-whitespace-after */
-  background: url("/assets/images/search_icon.svg") no-repeat scroll 13px 13px;
   background-color: var(--component-background-color);
   border: 1px solid var(--text-secondary);
   color: var(--text-primary);
   flex-grow: 1;
+  min-height: 1.4rem;
   font-size: 1.3rem;
-  margin-bottom: 1.8rem;
   padding: 1.3rem 1.5rem;
   padding-left: 4.2rem;
-  transition: all 0.3s ease-out;
+  transition: opacity 0.3s ease-out;
 
   &.ng-invalid.ng-touched {
     border-color: var(--error-color);
@@ -32,6 +31,10 @@ input {
     border: 1px solid var(--text-primary);
     outline: none;
   }
+
+  &.search-icon {
+    background: url("/assets/images/search_icon.svg") no-repeat scroll 13px 13px;
+  }
 }
 
 fa-icon {
@@ -41,9 +44,24 @@ fa-icon {
   opacity: 1;
   padding: 1rem;
   position: absolute;
-  right: 1.5rem;
   top: 0.2rem;
+
+  &.icon-right {
+    right: 1.5rem;
+  }
 }
+
+.icon-left {
+  background: url("/assets/images/arrow_left.svg") no-repeat scroll 13px 13px;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 2rem;
+  left: 0;
+  opacity: 1;
+  padding: 2rem;
+  position: absolute;
+}
+
 
 /* Hide number controls in input */
 input::-webkit-outer-spin-button,

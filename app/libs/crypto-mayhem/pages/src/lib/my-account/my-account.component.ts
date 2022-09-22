@@ -9,18 +9,6 @@ import { faCaretDown, faCaretUp, faSearch } from '@fortawesome/free-solid-svg-ic
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.scss'],
   animations: [
-    trigger('slideDown', [
-      transition(':enter', [
-        style({
-          transform: 'translate(0)',
-          display: 'block',
-        }),
-        animate(
-          '1000ms 500ms ease-out',
-          style({ transform: 'translateY(10rem)', display: 'none' })
-        ),
-      ]),
-    ]),
     trigger('show', [
       transition(':enter', [
         style({

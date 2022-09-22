@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, forwardRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'ui-input',
@@ -37,12 +37,16 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() value: string | number | null = null;
   @Input() placeholder: string = '';
   @Input() iconLeft!: IconDefinition;
+  class: string = '';
   faTimesIcon = faTimes;
+  faArrowLeft = faArrowLeft;
 
   public readonly inputControl = new FormControl();
 
   private _onChange = (value: string | null) => undefined;
   private _onTouched = () => undefined;
+
+  @ViewChild('input') input!: ElementRef;
 
   constructor() {}
 
@@ -70,5 +74,9 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   clear() {
     this.inputControl.setValue(null);
+  }
+
+  focus() {
+    this.input.nativeElement.focus();
   }
 }
