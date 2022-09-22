@@ -45,7 +45,9 @@
 #search {
   @include background-blur;
 
+  align-items: center;
   border-bottom: 1px solid var(--text-secondary);
+  display: flex;
   height: 4.2rem;
   margin-bottom: 2.4rem;
   padding: 2rem 2rem 2rem 0;
@@ -53,8 +55,6 @@
   top: 0;
   width: calc(100% - 2rem);
   z-index: 10000;
-  display: flex;
-  align-items: center;
 }
 
 #player {
@@ -74,10 +74,6 @@
   position:fixed;
   transition: all 0.4s ease-in-out;
   width: calc(100% - 9.4rem);
-
-  & > ul {
-    height: 100vh;
-  }
 
   ul {
     margin: 0;
@@ -108,6 +104,7 @@
   }
 
   & > ul {
+    height: 100vh;
     padding: 3.5rem 0;
   }
 
@@ -177,9 +174,9 @@
     flex-direction: row;
     flex-shrink: 0;
     justify-content: space-between;
+    padding: 0 2rem;
     scroll-snap-align: start;
     width: calc(100% - 4rem);
-    padding: 0 2rem;
 
     p {
       display: none;
@@ -205,7 +202,7 @@
 }
 
 .arrow-left {
-  background: url(/assets/images/arrow_left.svg) no-repeat center;
+  background: url("/assets/images/arrow_left.svg") no-repeat center;
   cursor: pointer;
   padding: 2.4rem;
 }
@@ -221,8 +218,8 @@
   }
 
   #menu {
-    position: relative;
     height: auto;
+    position: relative;
 
     ul {
       height: auto;
@@ -243,8 +240,8 @@
     }
 
     & > div {
-      width: 100%;
       padding: 0;
+      width: 100%;
     }
   }
 

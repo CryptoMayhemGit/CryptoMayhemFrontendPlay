@@ -1,7 +1,7 @@
 
 @mixin background-blur {
   backdrop-filter: blur(2rem);
-  background-color: rgba(40, 40, 40, 0.4);
+  background-color: rgb(40 40 40 / 40%);
   box-shadow: 0 0.4rem 2.4rem rgba(0 0 0 / 60%);
 }
 
