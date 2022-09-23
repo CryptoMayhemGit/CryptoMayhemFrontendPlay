@@ -4,6 +4,10 @@ export function isMobile(): boolean {
   );
 }
 
+export function isTablet(): boolean {
+  return window.innerWidth < 1240 && window.innerWidth > 768;
+}
+
 export function isSmallScreen(): boolean {
   return window.innerWidth < 1240;
 }

@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { isFullHD, isSmallScreen, scrollTo } from '@crypto-mayhem-frontend/utility/functions';
+import { isFullHD, isMobile, isSmallScreen, isTablet, scrollTo } from '@crypto-mayhem-frontend/utility/functions';
 import { faCaretDown, faCaretUp, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -62,9 +62,19 @@ export class MyAccountComponent implements OnInit {
   onScroll(event: any): void {
     let nftSections = event.target.children;
     for (let section of nftSections) {
-      if (section.getBoundingClientRect().top > 0) {
-        this.setNftSection(section.id);
-        break;
+      
+      let sectionPos = section.getBoundingClientRect();
+      
+      if (isMobile() && !isTablet()) {
+        if(sectionPos.x  >= 0) {
+          this.setNftSection(section.id);
+          break;
+        }
+      } else {
+        if (sectionPos.top > 100) {
+          this.setNftSection(section.id);
+          break;
+        }
       }
     }
     if (event.target.scrollTop > 100) {
@@ -74,7 +84,9 @@ export class MyAccountComponent implements OnInit {
 
   setNftSection(sectionId: string) {
     this.selectedSection = sectionId;
-    this.setCategory(sectionId);
+    if(sectionId !== 'not-found') {
+      this.setCategory(sectionId);
+    }
     //scrollTo(`menu-${sectionId}`);
   }
 
