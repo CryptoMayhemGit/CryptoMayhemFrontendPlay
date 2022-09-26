@@ -193,5 +193,29 @@
     "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
     "NOT_ENOUGH_TOKENS_LEFT": " Błędna kwota inwestycji",
     "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji z Smart Contractem",
-    "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście"
+    "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście",
+
+    "MY_ACCOUNT": {
+        "LOOT": "Łupy",
+        "MY_NFT": "Moje NFT",
+        "AVATARS": "Avatary",
+        "WORKERS": "Robotnicy",
+        "ITEMS": "Przedmioty",
+        "LANDS": "Landy",
+        "WEAPONS": "Bronie",
+        "MECHS": "Mechy",
+        "DRONES": "Drony",
+        "NO_LOOT": "Brak łupów",
+        "NO_AVATARS": "Brak avatarów",
+        "NO_WORKERS": "Brak robotników",
+        "NO_ITEMS": "Brak przedmiotów",
+        "NO_LANDS": "Brak landów",
+        "NO_WEAPONS": "Brak broni",
+        "NO_MECHS": "Brak mechów",
+        "NO_DRONES": "Brak dronów",
+        "NO_NFT": "Nie znaleziono szukanego nft",
+        "MY_SALES": "Moje oferty sprzedaży",
+        "MY_BUYING": "Moje oferty zakupu",
+        "SELECTED_CATEGORY": "Wybrana kategoria"
+    }
 }

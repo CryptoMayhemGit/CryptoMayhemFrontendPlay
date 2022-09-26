@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/crypto-mayhem/pages/src",
+  "prefix": "crypto-mayhem-frontend",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/crypto-mayhem/pages"],
+      "options": {
+        "jestConfig": "libs/crypto-mayhem/pages/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/crypto-mayhem/pages/**/*.ts",
+          "libs/crypto-mayhem/pages/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,3 +1,5 @@
+@import "libs/crypto-mayhem/styles/mixins";
+
 @mixin clip-path {
   clip-path: polygon(
     0 1.8rem,
@@ -33,14 +35,14 @@ h2 {
 }
 
 #mobile-nav {
-  backdrop-filter: blur(40px);
-  background: rgb(40 40 40 / 60%);
-  box-shadow: 0 4px 24px rgb(40 40 40 / 60%);
+  @include background-blur;
+
   min-height: calc(100vh - 17.1rem);
   overflow: hidden;
   padding: 13.7rem 2rem 3.4rem;
   position: fixed;
   top: 0;
+  width: calc(100% - 4rem);
   z-index: 10;
 
   nav {

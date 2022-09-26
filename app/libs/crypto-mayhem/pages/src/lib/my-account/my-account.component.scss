@@ -1,0 +1,442 @@
+@import "libs/crypto-mayhem/styles/mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 18.4rem);
+  margin: 8.4rem 0;
+
+  @media screen and (min-width: 768px) {
+    height: 100%;
+  }
+
+}
+
+#sidebar {
+  display: flex;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+
+
+  hr {
+    background-color: var(--text-primary);
+    border: 0;
+    display: none;
+    height: 1px;
+    margin: 0;
+    opacity: 0.4;
+    width: 100%;
+  }
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 20rem);
+  width: 100%;
+}
+
+#details {
+  display: none;
+  height: 30rem;
+  width: 100%;
+}
+
+#search {
+  @include background-blur;
+
+  align-items: center;
+  border-bottom: 1px solid var(--text-secondary);
+  display: flex;
+  height: 4.2rem;
+  margin-bottom: 2.4rem;
+  padding: 2rem 2rem 2rem 0;
+  position: absolute;
+  top: 0;
+  width: calc(100% - 2rem);
+  z-index: 10000;
+}
+
+#player {
+  @include background-blur;
+
+  box-shadow: none;
+  height: 6.8rem;
+}
+
+#menu {
+  @include background-blur;
+  
+  box-shadow: none;
+  color: var(--text-primary);
+  margin-top: 0.02rem;
+  padding: 2rem 4.7rem;
+  position:fixed;
+  transition: all 0.4s ease-in-out;
+  width: calc(100% - 9.4rem);
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      cursor: pointer;
+      list-style: none;
+      padding: 1.2rem 2.6rem;
+      transition: all 0.4s ease-in-out;
+
+      fa-icon {
+        margin-left: 0.9rem;
+      }
+
+      &.active {
+        color: var(--text-secondary);
+      }
+
+      &:hover, &.active-section {
+        background-color: rgb(8 9 27 / 65%);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  & > ul {
+    height: 100vh;
+    padding: 3.5rem 0;
+  }
+
+  #submenu {
+    li {
+      padding: 1.2rem 4.6rem;
+    }
+  }
+
+  #menu-tablet {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    .menu-tablet-combo {
+      border: 1px solid var(--text-secondary);
+      cursor: pointer;
+      max-width: 22.8rem;
+      padding: 1.2rem 1.3rem;
+      transition: background-color 0.2s ease-in-out;
+
+
+      &.combo-arrow-up {
+        background: url("/assets/images/arrow_up.svg") rgb(8 9 27 / 65%) no-repeat scroll 95% center;
+      }
+
+      &.combo-arrow-down {
+        background: url("/assets/images/arrow_down.svg") rgb(8 9 27 / 65%) no-repeat scroll 95% center;
+      }
+    }
+  }
+  
+}
+
+#social {
+  @include background-blur;
+
+  box-shadow: none;
+  height: 6.8rem;
+  transition: all 0.2s ease-in-out;
+}
+
+
+#nfts {
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin-top: 7rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+
+  p {
+    border: 1px solid var(--text-secondary);
+    border-width: 0 0 0.01rem;
+    padding: 0 0 0.6rem;
+    text-transform: uppercase;
+  }
+
+  & > div {
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    justify-content: space-between;
+    padding: 0 2rem;
+    scroll-snap-align: start;
+    width: calc(100% - 4rem);
+
+    p {
+      display: none;
+    }
+  }
+
+  h1 {
+    align-self: center;
+    font-size: 1.8rem;
+    text-align: center;
+    width: 100%;
+
+  }
+
+  & > #not-found {
+    justify-content: center;
+
+    h1 {
+      height: auto;
+    }
+  }
+
+}
+
+.arrow-left {
+  background: url("/assets/images/arrow_left.svg") no-repeat center;
+  cursor: pointer;
+  padding: 2.4rem;
+}
+
+// TABLET
+@media screen and (min-width: 768px) {
+  #search {
+    border: none;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+
+  #menu {
+    height: auto;
+    position: relative;
+
+    ul {
+      height: auto;
+    }
+  }
+
+  #nfts {
+    @include scrollbar;
+
+    justify-content: center;
+    margin-top: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+
+    h1 {
+      height: 50%;
+    }
+
+    & > div {
+      padding: 0;
+      width: 100%;
+    }
+  }
+
+  .arrow-left {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1240px) {
+  :host {
+    margin-top: 2rem;
+    overflow: hidden;
+  }
+
+  #sidebar {
+    box-sizing: content-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 2.4rem;
+    position: absolute;
+
+    & > div, & > nav {
+      flex-shrink: 0;
+      margin: 0 1.2rem;
+      padding: 2.4rem 2.2rem;
+      width: 27.2rem;
+      z-index: 10;
+
+      p {
+        margin: 0 0 1rem;
+      }
+    }
+
+    & > div:first-child {
+      margin-left: 0;
+    }
+
+    & > div:last-child {
+      margin-right: 0;
+    }
+  }
+
+  #menu {
+    padding: 3.5rem 0;
+  }
+
+  #search {
+    background-color: transparent;
+  }
+
+  #menu-tablet-combo {
+    max-width: 100%;
+  }
+
+  #content {
+    margin: 14rem 2rem;
+    width: auto;
+  }
+
+  #nfts {
+    display: block;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      p {
+        display: block;
+      }
+    }
+  }
+}
+
+// BIGGER TABLET
+@media screen and (min-width: 880px) and (max-width: 1240px) {
+  #sidebar {
+    justify-content: center;
+  }
+}
+
+// SMALL LAPTOP
+@media screen and (min-width: 1240px) {
+  :host {
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 7.2rem 2rem 0;
+  }
+
+  #sidebar {
+    @include background-blur;
+
+    clip-path: polygon(
+      10% 0,
+      100% 0,
+      100% 20%,
+      100% 97%,
+      90% 100%,
+      0 100%,
+      0% 80%,
+      0 3%
+    );
+    display: flex;
+    flex-direction: column;
+    max-width: 27.3rem;
+
+    hr {
+      display: inline-block;
+    }
+
+    #player, #menu, #social {
+      backdrop-filter: none;
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  #player {
+    height: 12.4rem;
+  }
+
+  #content {
+    margin: 0 3.2rem;
+    max-width: 100rem;
+  }
+
+  #nfts {
+    flex-direction: column;
+    justify-content: flex-start;
+    scroll-snap-type: y proximity;
+
+    & > div {
+      flex-direction: column;
+      scroll-snap-align: start;
+
+      p {display: inline}
+    }
+  }
+
+  #details {
+    display: flex;
+    max-width: 24.7rem;
+  }
+
+  #menu {
+    @include scrollbar;
+
+    max-height: 21.5rem;
+    min-height: 16rem;
+    overflow-y: scroll;
+    padding: 0;
+    width: 100%;
+
+    #menu-tablet {
+      display: none;
+    }
+
+  }
+
+  #submenu {
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+  }
+
+  #social {
+    height: 100%;
+    margin-top: 0.05rem;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  :host {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  }
+}
+
+// FULL HD
+@media screen and (min-width: 1920px) {
+  :host {
+    width: 75%;
+  }
+
+  #menu {
+    max-height: inherit;
+    overflow: hidden;
+  }
+
+  #social {
+    height: 27%;
+    max-height: 100%;
+  }
+
+
+}
+
+  
