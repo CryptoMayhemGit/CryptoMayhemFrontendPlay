@@ -217,6 +217,7 @@
         "NO_NFT": "NFT not found",
         "MY_SALES": "My sales offers",
         "MY_BUYING": "My buying offers",
-        "SELECTED_CATEGORY": "Selected category"
+        "SELECTED_CATEGORY": "Selected category",
+        "SAVE": "Save"
     }
 }

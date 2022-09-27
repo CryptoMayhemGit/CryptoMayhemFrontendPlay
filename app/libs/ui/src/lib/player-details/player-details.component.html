@@ -1,0 +1,12 @@
+<div id="player-details">
+  <img id="avatar" alt="avatar" src="https://via.placeholder.com/84">
+  <div id="player-name">
+    <p>{{ playerName }}</p>
+    <p>{{ walletNumber }}</p>
+  </div>
+  <img id="pencil" (click)="edit()" src="./assets/images/pencil.svg" alt="edit player name">
+</div>
+<div id="edit-name" *ngIf="editName">
+  <ui-input name="newName" [formControl]="newName"></ui-input>
+  <ui-main-button (btnClick)="save()">{{ 'MY_ACCOUNT.SAVE' | transloco }}</ui-main-button>
+</div>

@@ -216,6 +216,7 @@
         "NO_NFT": "Nie znaleziono szukanego nft",
         "MY_SALES": "Moje oferty sprzedaży",
         "MY_BUYING": "Moje oferty zakupu",
-        "SELECTED_CATEGORY": "Wybrana kategoria"
+        "SELECTED_CATEGORY": "Wybrana kategoria",
+        "SAVE": "Zapisz"
     }
 }
