@@ -37,6 +37,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() value: string | number | null = null;
   @Input() placeholder: string = '';
   @Input() iconLeft!: IconDefinition;
+  @Input() inputFunction: 'search' | 'normal' = 'normal';
   class: string = '';
   faTimesIcon = faTimes;
   faArrowLeft = faArrowLeft;

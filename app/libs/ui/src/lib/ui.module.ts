@@ -9,8 +9,8 @@ import { ModalDroneModule } from './modal-drone/modal-drone.module';
 import { ProgressBarModule } from './progress-bar/progress-bar.module';
 import { TimerModule } from './timer/timer.module';
 import { VideoComponentModule } from './video-component/video-component.module';
-import { InputComponent } from './input/input.component';
 import { InputModule } from './input/input.module';
+import { PlayerDetailsModule } from './player-details/player-details.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -24,7 +24,8 @@ import { InputModule } from './input/input.module';
     ProgressBarModule,
     TimerModule,
     VideoComponentModule,
-    InputModule
+    InputModule,
+    PlayerDetailsModule
   ],
 })
 export class UiModule {}

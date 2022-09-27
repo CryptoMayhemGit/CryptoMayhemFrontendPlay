@@ -8,14 +8,13 @@
 
 input {
   /* stylelint-disable-next-line function-whitespace-after */
-  background-color: var(--component-background-color);
+  background-color: transparent;
   border: 1px solid var(--text-secondary);
   color: var(--text-primary);
   flex-grow: 1;
   font-size: 1.3rem;
   min-height: 1.4rem;
   padding: 1.3rem 1.5rem;
-  padding-left: 4.2rem;
   transition: opacity 0.3s ease-out;
 
   &.ng-invalid.ng-touched {
@@ -34,6 +33,10 @@ input {
 
   &.search-icon {
     background: url("/assets/images/search_icon.svg") no-repeat scroll 13px 13px;
+  }
+
+  &.search-padding {
+    padding-left: 4.2rem;
   }
 }
 

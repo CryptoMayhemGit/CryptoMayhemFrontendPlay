@@ -1,5 +1,5 @@
 <div id="sidebar">
-  <div id="player"></div>
+  <ui-player-details id="player" playerName="John Doe"></ui-player-details>
   <hr />
   <nav id="menu" #menu>
     <div id="menu-tablet">
@@ -30,6 +30,7 @@
     <span class="arrow-left"></span>
     <ui-input
       type="text"
+      inputFunction="search"
       [iconLeft]="searchIcon"
       placeholder="Szukaj moich NFT"
       name="search"

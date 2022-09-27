@@ -23,3 +23,5 @@ export * from './lib/video-component/video-component.module';
 export * from './lib/video-component/video-component.component';
 export * from './lib/input/input.module';
 export * from './lib/input/input.component';
+export * from './lib/player-details/player-details.module';
+export * from './lib/player-details/player-details.component';
