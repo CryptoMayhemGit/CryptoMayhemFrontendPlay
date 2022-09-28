@@ -222,8 +222,8 @@
   #player {
     display: flex;
     flex-shrink: 0;
-    z-index: 10;
     width: auto;
+    z-index: 10;
   }
 
   #menu {
@@ -266,12 +266,12 @@
   }
 
   #sidebar {
+    align-items: flex-start;
     box-sizing: content-box;
     overflow-x: auto;
     overflow-y: hidden;
     padding-bottom: 2.4rem;
     position: absolute;
-    align-items: flex-start;
 
     & > div, & > nav {
       flex-shrink: 0;

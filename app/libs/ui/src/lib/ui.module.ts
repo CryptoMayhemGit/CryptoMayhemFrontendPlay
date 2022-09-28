@@ -11,6 +11,7 @@ import { TimerModule } from './timer/timer.module';
 import { VideoComponentModule } from './video-component/video-component.module';
 import { InputModule } from './input/input.module';
 import { PlayerDetailsModule } from './player-details/player-details.module';
+import { TooltipModule } from './tooltip/tooltip.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -25,7 +26,9 @@ import { PlayerDetailsModule } from './player-details/player-details.module';
     TimerModule,
     VideoComponentModule,
     InputModule,
-    PlayerDetailsModule
+    PlayerDetailsModule,
+    TooltipModule,
+    InputModule
   ],
 })
 export class UiModule {}

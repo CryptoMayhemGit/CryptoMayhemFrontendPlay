@@ -5,6 +5,7 @@ import { InputModule } from '../input/input.module';
 import { MainButtonModule } from '../main-button/main-button.module';
 import { TranslocoModule } from '@ngneat/transloco';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TooltipModule } from '../tooltip/tooltip.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     InputModule,
     MainButtonModule,
     TranslocoModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TooltipModule
   ],
   exports: [PlayerDetailsComponent]
 })

@@ -217,6 +217,7 @@
         "MY_SALES": "Moje oferty sprzedaży",
         "MY_BUYING": "Moje oferty zakupu",
         "SELECTED_CATEGORY": "Wybrana kategoria",
-        "SAVE": "Zapisz"
+        "SAVE": "Zapisz",
+        "EDIT_NAME": "Edytuj nazwę"
     }
 }
