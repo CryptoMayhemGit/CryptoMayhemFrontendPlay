@@ -27,7 +27,7 @@
     
     "NAVBAR": {
         "CONNECT": "Połącz portfel",
-        "DISCONNECT": "Rozłącz",
+        "DISCONNECT": "Rozłącz portfel",
         "CONNECT_MOBILE": "Połącz",
         "GAMES_COLLECTION": "Kolekcja gier",
         
@@ -218,6 +218,7 @@
         "MY_BUYING": "Moje oferty zakupu",
         "SELECTED_CATEGORY": "Wybrana kategoria",
         "SAVE": "Zapisz",
-        "EDIT_NAME": "Edytuj nazwę"
+        "EDIT_NAME": "Edytuj nazwę",
+        "COMING_SOON": "Dostęp wkrótce"
     }
 }

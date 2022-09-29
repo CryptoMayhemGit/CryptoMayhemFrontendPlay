@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MyAccountComponent } from './my-account.component';
 import { TranslocoModule } from '@ngneat/transloco';
-import { InputModule, PlayerDetailsModule } from '@crypto-mayhem-frontend/ui';
+import { InputModule, MainButtonModule, PlayerDetailsModule, TooltipModule } from '@crypto-mayhem-frontend/ui';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule,
     PlayerDetailsModule,
+    TooltipModule,
+    MainButtonModule
   ],
   exports: [MyAccountComponent],
 })

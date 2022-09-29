@@ -81,7 +81,7 @@ export class NavigationHeaderComponent implements OnInit {
   }
 
   disconnect(): void {
-    this.walletFacade.disconnectWalletAccount(WalletType.metamask);
+    this.walletFacade.disconnectWalletAccount();
   }
 
   isSmallScreen(): boolean {

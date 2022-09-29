@@ -23,7 +23,16 @@
     ></ng-template>
   </nav>
   <hr />
-  <div id="social"></div>
+  <div id="social">
+    <p>Pochwal się swoimi NFT</p>
+    <div id="social-icons">
+      <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco " [direction]="'right'"><img src="./assets/images/twitter.svg" alt="twitter" /></a>
+      <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/discord.svg" alt="twitter" /></a>
+      <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/telegram.svg" alt="instagram" /></a>
+    </div>
+  </div>
+  <ui-main-button class="logout" type="secondary" *ngIf="!(walletConnected$ | async)" (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
+  <ui-main-button class="logout" type="secondary" *ngIf="(walletConnected$ | async)" (btnClick)="disconnect()">{{'NAVBAR.DISCONNECT' | transloco}}</ui-main-button>
 </div>
 <div id="content">
   <div id="search">
