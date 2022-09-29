@@ -16,7 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FontAwesomeModule,
     ReactiveFormsModule,
     FormsModule,
-    PlayerDetailsModule
+    PlayerDetailsModule,
   ],
   exports: [MyAccountComponent],
 })

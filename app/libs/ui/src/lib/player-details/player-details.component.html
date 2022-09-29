@@ -4,7 +4,7 @@
     <p>{{ playerName }}</p>
     <p>{{ walletNumber }}</p>
   </div>
-  <img id="pencil" (click)="edit()" src="./assets/images/pencil.svg" alt="edit player name">
+  <span [tooltip]=" 'MY_ACCOUNT.EDIT_NAME' | transloco " [direction]="'left'"><img id="pencil" (click)="edit()" src="./assets/images/pencil.svg" alt="edit player name"></span>
 </div>
 <div id="edit-name" *ngIf="editName">
   <ui-input name="newName" [formControl]="newName"></ui-input>
