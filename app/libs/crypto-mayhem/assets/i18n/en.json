@@ -27,7 +27,7 @@
     
     "NAVBAR": {
         "CONNECT": "Connect Wallet",
-        "DISCONNECT": "Disconnect",
+        "DISCONNECT": "Disconnect Wallet",
         "CONNECT_MOBILE": "Connect",
         "GAMES_COLLECTION": "Games Collection",
         
@@ -219,6 +219,8 @@
         "MY_BUYING": "My buying offers",
         "SELECTED_CATEGORY": "Selected category",
         "SAVE": "Save",
-        "EDIT_NAME": "Edit name"
+        "EDIT_NAME": "Edit name",
+        "COMING_SOON": "Coming Soon",
+        "SHARE_NFT": "Share your NFT's"
     }
 }

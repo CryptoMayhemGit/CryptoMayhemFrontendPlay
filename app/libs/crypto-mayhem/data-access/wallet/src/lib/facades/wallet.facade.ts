@@ -55,7 +55,7 @@ export class WalletFacade {
     this.walletService.connectWallet(walletType);
   }
 
-  public disconnectWalletAccount(walletType: WalletType) {
+  public disconnectWalletAccount() {
     this.walletService.disconnectWallet();
   }
 

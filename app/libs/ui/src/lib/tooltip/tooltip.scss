@@ -10,7 +10,6 @@
   }
 
   &.bottom {
-
     &::before {
       border-bottom: 5px solid #701400;
       border-left: 5px solid transparent;
@@ -25,7 +24,7 @@
   }
 
   &.right {
-    transform: translateX(-50%);
+    transform: translateX(25%);
 
     &::before {
       border-bottom: 5px solid transparent;

@@ -17,7 +17,7 @@ export class TooltipDirective {
   onMouseEnter(): void {
     const { offsetWidth, offsetHeight } = this.elementRef.nativeElement;
     this.elementRef.nativeElement.style.position = 'relative';
-    this.elementRef.nativeElement.appendChild(this.createTooltip(this.tooltip, (offsetWidth / 4), (offsetHeight / 4),  this.direction));
+    this.elementRef.nativeElement.appendChild(this.createTooltip(this.tooltip, offsetWidth, (offsetHeight / 4),  this.direction));
   }
 
   createTooltip(text: string, x: number, y: number, direction: direction): HTMLElement {
@@ -28,10 +28,12 @@ export class TooltipDirective {
     div.classList.add('tooltip', direction);
     div.style.position = 'absolute';
     
-    if(direction === 'bottom') {
-      div.style.right = x * -1 + 'px';
-    } else if(direction === 'left') {
+    if (direction === 'bottom') {
+      div.style.left = x * -1 + 'px';
+    } else if (direction === 'left') {
       div.style.top = y + 'px';
+    } else if (direction === 'right') {
+      div.style.top = x / 2 * -1 + 'px';
     }
     return div;
   }

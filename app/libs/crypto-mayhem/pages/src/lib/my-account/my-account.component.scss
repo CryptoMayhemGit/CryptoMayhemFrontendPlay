@@ -145,10 +145,23 @@
   @include background-blur;
 
   box-shadow: none;
+  color: var(--text-primary);
   height: 6.8rem;
+  padding: 0 1.4rem;
   transition: all 0.2s ease-in-out;
+
+  p {
+    margin-top: 2.4rem 0 0.6rem;
+    padding: 0 1.2rem;
+  }
 }
 
+.logout {
+  align-self: center;
+  display: none;
+  margin: auto auto 3.2rem;
+  width: auto;
+}
 
 #nfts {
   &::-webkit-scrollbar-thumb {
@@ -235,6 +248,10 @@
     }
   }
 
+  .logout {
+    display: block;
+  }
+
   #nfts {
     @include scrollbar;
 
@@ -291,6 +308,10 @@
 
     & > div:last-child {
       margin-right: 0;
+    }
+
+    #social {
+      width: auto;
     }
   }
 
@@ -367,6 +388,10 @@
       background-color: transparent;
       box-shadow: none;
     }
+
+    #player {
+      width: auto;
+    }
   }
 
   #content {
@@ -412,10 +437,6 @@
     transition: all 0.2s ease-in-out;
   }
 
-  #social {
-    height: 100%;
-    margin-top: 0.05rem;
-  }
 }
 
 @media screen and (min-width: 1600px) {
@@ -434,14 +455,8 @@
 
   #menu {
     max-height: inherit;
-    overflow: hidden;
+    overflow: auto;
   }
-
-  #social {
-    height: 27%;
-    max-height: 100%;
-  }
-
 
 }
 
