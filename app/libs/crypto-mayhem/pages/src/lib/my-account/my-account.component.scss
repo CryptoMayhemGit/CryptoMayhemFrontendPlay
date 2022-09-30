@@ -106,7 +106,8 @@
   }
 
   & > ul {
-    height: 100vh;
+    max-height: 55vh;
+    overflow-y: auto;
     padding: 3.5rem 0;
   }
 
@@ -146,9 +147,9 @@
 
   box-shadow: none;
   color: var(--text-primary);
-  height: 6.8rem;
   padding: 0 1.4rem;
   transition: all 0.2s ease-in-out;
+  display: none;
 
   p {
     margin-top: 2.4rem 0 0.6rem;
@@ -222,6 +223,94 @@
   padding: 2.4rem;
 }
 
+// SMALLER MOBILE HORIZONTAL
+@media screen and (max-width: 767px) and (orientation: landscape) {
+  #search {
+    padding-top: 4.7rem;
+
+    ui-input {
+      width: 50%;
+    }
+  }
+
+  #menu {
+    position: relative;
+  }
+
+  nav {
+    padding: 0 4.7rem 0 !important;
+    position: absolute;
+    top: 12rem;
+  }
+
+  #sidebar {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  #menu-tablet {
+    position: absolute;
+    top: -11.2rem;
+    right: 5rem;
+    width: 30%;
+
+    .menu-tablet-combo {
+      padding: 1.3rem !important; 
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  #content {
+    height: auto !important;
+  }
+
+  #nfts {
+    margin-top: 12rem !important;
+  }
+
+  #nfts > div {
+    height: 100% !important;
+    height: 25rem !important;
+  }
+}
+
+// BIGGER MOBILE HORIZONTAL
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  :host {
+    margin-top: 0 !important;
+    position: absolute;
+    width: 100vw;
+    top: 0;
+
+    #sidebar {
+      @include background-blur;
+
+      padding-bottom: 0;
+
+      & > div,
+      & > nav,
+      & > ui-player-details {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        backdrop-filter: none;
+      }
+
+      z-index: 1000000000;
+    }
+
+    #content {
+      margin-bottom: 0;
+      height: calc(100vh - 15rem);
+    }
+  }
+
+}
+
 // TABLET
 @media screen and (min-width: 768px) {
   #search {
@@ -248,7 +337,7 @@
     }
   }
 
-  .logout {
+  #social {
     display: block;
   }
 
@@ -332,6 +421,10 @@
     width: auto;
   }
 
+  .logout {
+    display: none;
+  }
+
   #nfts {
     display: block;
 
@@ -412,6 +505,10 @@
     }
   }
 
+  .logout {
+    display: block;
+  }
+
   #details {
     display: flex;
     max-width: 24.7rem;
@@ -457,7 +554,14 @@
     max-height: inherit;
     overflow: auto;
   }
+}
 
+.mobile-menu-height {
+  height: 100%;
+}
+
+#nfts > div {
+  height: 60rem;
 }
 
   

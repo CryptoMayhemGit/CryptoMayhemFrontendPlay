@@ -1,7 +1,7 @@
 <div id="sidebar">
   <ui-player-details id="player" playerName="John Doe"></ui-player-details>
   <hr />
-  <nav id="menu" #menu>
+  <nav id="menu" #menu [ngClass]="{'mobile-menu-height': comboOpened}">
     <div id="menu-tablet">
       <p>{{ "MY_ACCOUNT.SELECTED_CATEGORY" | transloco }}:</p>
       <div
@@ -48,18 +48,16 @@
   </div>
   <div id="nfts" #nfts (scroll)="onScroll($event)">
     <div
-      style="height: 600px"
       id="not-found"
       *ngIf="search.valueChanges | async"
     >
       <h1>{{ "MY_ACCOUNT.NO_NFT" | transloco }}</h1>
     </div>
-    <div style="height: 600px" id="loot" *ngIf="!(search.valueChanges | async)">
+    <div  id="loot" *ngIf="!(search.valueChanges | async)">
       <p>{{ "MY_ACCOUNT.LOOT" | transloco }}</p>
       <h1>{{ "MY_ACCOUNT.NO_LOOT" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="avatars"
       *ngIf="!(search.valueChanges | async)"
     >
@@ -67,7 +65,6 @@
       <h1>{{ "MY_ACCOUNT.NO_AVATARS" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="workers"
       *ngIf="!(search.valueChanges | async)"
     >
@@ -75,7 +72,6 @@
       <h1>{{ "MY_ACCOUNT.NO_WORKERS" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="items"
       *ngIf="!(search.valueChanges | async)"
     >
@@ -83,7 +79,6 @@
       <h1>{{ "MY_ACCOUNT.NO_ITEMS" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="lands"
       *ngIf="!(search.valueChanges | async)"
     >
@@ -91,7 +86,6 @@
       <h1>{{ "MY_ACCOUNT.NO_LANDS" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="weapons"
       *ngIf="!(search.valueChanges | async)"
     >
@@ -99,7 +93,6 @@
       <h1>{{ "MY_ACCOUNT.NO_WEAPONS" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="mechs"
       *ngIf="!(search.valueChanges | async)"
     >
@@ -107,7 +100,6 @@
       <h1>{{ "MY_ACCOUNT.NO_MECHS" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="drones"
       *ngIf="!(search.valueChanges | async)"
     >
