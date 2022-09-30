@@ -1,59 +1,46 @@
-import { ComponentRef, Directive, ElementRef, HostListener, Input, OnInit, ViewContainerRef } from "@angular/core";
-import { TooltipComponent } from "./tooltip.component";
+import { Directive, ElementRef, HostListener, Input} from "@angular/core";
+
+type direction = 'top' | 'bottom' | 'left' | 'right';
 
 @Directive({
   selector: '[tooltip]',
 })
 export class TooltipDirective {
   @Input() tooltip = '';
-  @Input() direction: 'top' | 'bottom' | 'left' | 'right' = 'bottom';
-
-  private componentRef: ComponentRef<TooltipComponent> | undefined;
+  @Input() direction: direction = 'bottom';
 
   constructor(
     private elementRef: ElementRef,
-    private vcRef: ViewContainerRef
   ) {}
 
   @HostListener('mouseenter')
   onMouseEnter(): void {
-    if (!this.componentRef) {
-      this.componentRef = this.vcRef.createComponent(TooltipComponent);
-      this.componentRef.instance.tooltip = this.tooltip;
-      this.componentRef.instance.direction = this.direction;
-      const { offsetHeight, offsetWidth } = this.elementRef.nativeElement;
-      const { left, right, top } = this.elementRef.nativeElement.getBoundingClientRect();
-      if(this.direction === 'bottom') {
-        this.setBottom(left, right, offsetHeight);
-      } else if(this.direction === 'left') {
-        this.setLeft(left, top, offsetWidth, offsetHeight);
-      }
+    const { offsetWidth, offsetHeight } = this.elementRef.nativeElement;
+    this.elementRef.nativeElement.style.position = 'relative';
+    this.elementRef.nativeElement.appendChild(this.createTooltip(this.tooltip, (offsetWidth / 4), (offsetHeight / 4),  this.direction));
+  }
+
+  createTooltip(text: string, x: number, y: number, direction: direction): HTMLElement {
+    let div = document.createElement('div');
+    let textNode = document.createElement('p');
+    textNode.innerText = text;
+    div.appendChild(textNode);
+    div.classList.add('tooltip', direction);
+    div.style.position = 'absolute';
+    
+    if(direction === 'bottom') {
+      div.style.right = x * -1 + 'px';
+    } else if(direction === 'left') {
+      div.style.top = y + 'px';
     }
-  }
-
-  setBottom(left: number, right: number, offsetHeight: number) {
-    this.componentRef!.instance.left = (right - left) / 2 + left;
-    this.componentRef!.instance.marginTop = offsetHeight / 2;
-  }
-
-  setLeft(left: number, top: number, offsetWidth: number, offsetHeight: number) {
-    this.componentRef!.instance.left = left - (offsetWidth/2);
-    this.componentRef!.instance.top = offsetHeight / 2;
+    return div;
   }
 
   @HostListener('mouseleave')
   onMouseLeave(): void {
-    this.destroy();
-  }
-
-  destroy(): void {
-    if (this.componentRef) {
-      this.componentRef.destroy();
-      this.componentRef = undefined;
+    let tooltip = document.querySelector('.tooltip');
+    if(tooltip) {
+      tooltip.remove();
     }
-  }
-
-  ngOnDestroy(): void {
-    this.destroy();
   }
 }
