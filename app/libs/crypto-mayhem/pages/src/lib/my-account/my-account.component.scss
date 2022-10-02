@@ -147,9 +147,9 @@
 
   box-shadow: none;
   color: var(--text-primary);
+  display: none;
   padding: 0 1.4rem;
   transition: all 0.2s ease-in-out;
-  display: none;
 
   p {
     margin-top: 2.4rem 0 0.6rem;
@@ -189,6 +189,7 @@
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
+    height: 60rem;
     justify-content: space-between;
     padding: 0 2rem;
     scroll-snap-align: start;
@@ -238,21 +239,21 @@
   }
 
   nav {
-    padding: 0 4.7rem 0 !important;
+    padding: 0 4.7rem !important;
     position: absolute;
     top: 12rem;
   }
 
   #sidebar {
+    backdrop-filter: none !important;
     background-color: transparent !important;
     box-shadow: none !important;
-    backdrop-filter: none !important;
   }
 
   #menu-tablet {
     position: absolute;
-    top: -11.2rem;
     right: 5rem;
+    top: -11.2rem;
     width: 30%;
 
     .menu-tablet-combo {
@@ -271,11 +272,12 @@
 
   #nfts {
     margin-top: 12rem !important;
-  }
 
-  #nfts > div {
-    height: 100% !important;
-    height: 25rem !important;
+    & > div {
+      height: 100% !important;
+      height: 25rem !important;
+    }
+
   }
 }
 
@@ -284,28 +286,27 @@
   :host {
     margin-top: 0 !important;
     position: absolute;
-    width: 100vw;
     top: 0;
+    width: 100vw;
 
     #sidebar {
       @include background-blur;
 
       padding-bottom: 0;
+      z-index: 1000000000;
 
       & > div,
       & > nav,
       & > ui-player-details {
+        backdrop-filter: none;
         background-color: transparent !important;
         box-shadow: none !important;
-        backdrop-filter: none;
       }
-
-      z-index: 1000000000;
     }
 
     #content {
-      margin-bottom: 0;
       height: calc(100vh - 15rem);
+      margin-bottom: 0;
     }
   }
 
@@ -558,10 +559,6 @@
 
 .mobile-menu-height {
   height: 100%;
-}
-
-#nfts > div {
-  height: 60rem;
 }
 
   
