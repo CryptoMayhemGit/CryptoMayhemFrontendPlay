@@ -44,6 +44,10 @@ h2 {
   margin-right: 3.2rem;
   width: auto;
 
+  @media screen and (max-width: 768px) {
+    display: none !important;
+  }
+
   #balance-value {
     padding: 0 1em;
     position: relative;
