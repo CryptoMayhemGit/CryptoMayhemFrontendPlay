@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -20,6 +20,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
   ],
 })
 export class ModalBaseComponent implements OnInit {
+  @Input() width = '26rem';
   @Output() close = new EventEmitter<boolean>();
   faxmark = faXmark;
 

@@ -59,9 +59,8 @@ h2 {
       &:hover,
       &:hover::after,
       &.disabled {
-        border-top-color: var(--text-primary);
-        color: var(--text-primary);
-        opacity: 0.2;
+        border-top-color: var(--text-secondary);
+        color: var(--text-secondary);
       }
 
       &.disabled {
@@ -286,9 +285,8 @@ h2 {
       &:hover,
       &:hover::after,
       &.disabled {
-        border-top-color: var(--text-primary);
-        color: var(--text-primary);
-        opacity: 0.2;
+        border-top-color: var(--text-secondary);
+        color: var(--text-secondary);
       }
 
       &.disabled {

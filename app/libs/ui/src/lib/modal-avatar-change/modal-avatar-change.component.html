@@ -1,0 +1,71 @@
+<ui-modal-base *ngIf="show" width="65.7rem" (close)="close()">
+  <div class="modal">
+    <p>Wybierz NFT jako zdjęcie profilowe</p>
+    <ui-input
+      type="text"
+      inputFunction="search"
+      [iconLeft]="searchIcon"
+      placeholder="Szukaj moich NFT"
+      name="search"
+      [formControl]="search"
+    ></ui-input>
+    <div id="menu">
+      <ul>
+        <li
+          tabindex="1"
+          id="menu-avatars"
+          role="link"
+        >
+          {{ "MY_ACCOUNT.AVATARS" | transloco }}
+        </li>
+        <li
+          tabindex="2"
+          id="menu-workers"
+          role="link"
+        >
+          {{ "MY_ACCOUNT.WORKERS" | transloco }}
+        </li>
+        <li
+          tabindex="3"
+          id="menu-items"
+          role="link"
+        >
+          {{ "MY_ACCOUNT.ITEMS" | transloco }}
+        </li>
+        <li
+          tabindex="4"
+          id="menu-lands"
+          role="link"
+        >
+          {{ "MY_ACCOUNT.LANDS" | transloco }}
+        </li>
+        <li
+          tabindex="5"
+          id="menu-weapons"
+          role="link"
+        >
+          {{ "MY_ACCOUNT.WEAPONS" | transloco }}
+        </li>
+        <li
+          tabindex="6"
+          id="menu-mechs"
+          role="link"
+        >
+          {{ "MY_ACCOUNT.MECHS" | transloco }}
+        </li>
+        <li
+          tabindex="7"
+          id="menu-drones"
+          role="link"
+        >
+          {{ "MY_ACCOUNT.DRONES" | transloco }}
+        </li>
+      </ul>
+    </div>
+    <div id="nfts">
+      <div style="height: 600px" *ngIf="!(search.valueChanges | async)">
+        <p>{{ "MY_ACCOUNT.RECOMMENDED" | transloco }}</p>
+      </div>
+    </div>
+  </div>
+</ui-modal-base>

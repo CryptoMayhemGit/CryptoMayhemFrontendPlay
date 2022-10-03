@@ -27,3 +27,5 @@ export * from './lib/player-details/player-details.module';
 export * from './lib/player-details/player-details.component';
 export * from './lib/tooltip/tooltip.module';
 export * from './lib/tooltip/tooltip.directive';
+export * from './lib/modal-avatar-change/modal-avatar-change.module';
+export * from './lib/modal-avatar-change/modal-avatar-change.component';
