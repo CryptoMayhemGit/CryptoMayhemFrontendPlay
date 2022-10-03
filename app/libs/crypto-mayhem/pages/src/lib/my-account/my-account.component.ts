@@ -1,7 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { isFullHD, isMobile, isSmallLaptop, isSmallScreen, isTablet, scrollTo } from '@crypto-mayhem-frontend/utility/functions';
 import { faCaretDown, faCaretUp, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
@@ -38,6 +37,8 @@ export class MyAccountComponent implements OnInit {
   selectedCategory: string = '';
   selectedSection!: string;
   search = new FormControl('');
+  playerName = "John Doe";
+  avatarChange = false;
 
   walletConnected$: Observable<boolean> = of(false);
 

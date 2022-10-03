@@ -27,10 +27,9 @@
         }
 
         &.active {
-
           &::after {
             background: var(--text-primary);
-            background: linear-gradient(90deg, transparent 0%, rgba(242,242,242,1) 50%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, rgb(242 242 242 / 100%) 50%, transparent 100%);
             bottom: 0;
             content: '';
             height: 0.2rem;

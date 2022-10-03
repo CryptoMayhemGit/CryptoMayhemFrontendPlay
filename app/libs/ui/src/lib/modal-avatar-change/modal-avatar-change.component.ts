@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,26 +8,26 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./modal-avatar-change.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ModalAvatarChangeComponent implements OnInit {
-  @Input() show = false;
+export class ModalAvatarChangeComponent {
+  @Input() show!: boolean;
+
+  @Output() showChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   searchIcon = faSearch;
   search = new FormControl('');
-  section: string = "";
+  section: string = '';
 
   constructor() {
     this.search.valueChanges.subscribe((value) => {
-      this.section = "";
+      this.section = '';
     });
   }
-
-  ngOnInit(): void {}
 
   setSection(section: string) {
     this.section = section;
   }
 
   close() {
-    this.show = false;
+    this.showChange.emit(false);
   }
 }
