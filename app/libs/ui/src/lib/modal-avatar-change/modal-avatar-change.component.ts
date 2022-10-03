@@ -13,10 +13,19 @@ export class ModalAvatarChangeComponent implements OnInit {
 
   searchIcon = faSearch;
   search = new FormControl('');
+  section: string = "";
 
-  constructor() {}
+  constructor() {
+    this.search.valueChanges.subscribe((value) => {
+      this.section = "";
+    });
+  }
 
   ngOnInit(): void {}
+
+  setSection(section: string) {
+    this.section = section;
+  }
 
   close() {
     this.show = false;

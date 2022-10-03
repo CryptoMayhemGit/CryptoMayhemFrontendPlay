@@ -15,6 +15,8 @@
           tabindex="1"
           id="menu-avatars"
           role="link"
+          (click)="setSection('avatars')"
+          [ngClass]="{ 'active': section === 'avatars' }"
         >
           {{ "MY_ACCOUNT.AVATARS" | transloco }}
         </li>
@@ -22,6 +24,8 @@
           tabindex="2"
           id="menu-workers"
           role="link"
+          (click)="setSection('workers')"
+          [ngClass]="{ 'active': section === 'workers' }"
         >
           {{ "MY_ACCOUNT.WORKERS" | transloco }}
         </li>
@@ -29,6 +33,8 @@
           tabindex="3"
           id="menu-items"
           role="link"
+          (click)="setSection('items')"
+          [ngClass]="{ 'active': section === 'items' }"
         >
           {{ "MY_ACCOUNT.ITEMS" | transloco }}
         </li>
@@ -36,6 +42,8 @@
           tabindex="4"
           id="menu-lands"
           role="link"
+          (click)="setSection('lands')"
+          [ngClass]="{ 'active': section === 'lands' }"
         >
           {{ "MY_ACCOUNT.LANDS" | transloco }}
         </li>
@@ -43,6 +51,8 @@
           tabindex="5"
           id="menu-weapons"
           role="link"
+          (click)="setSection('weapons')"
+          [ngClass]="{ 'active': section === 'weapons' }"
         >
           {{ "MY_ACCOUNT.WEAPONS" | transloco }}
         </li>
@@ -50,6 +60,8 @@
           tabindex="6"
           id="menu-mechs"
           role="link"
+          (click)="setSection('mechs')"
+          [ngClass]="{ 'active': section === 'mechs' }"
         >
           {{ "MY_ACCOUNT.MECHS" | transloco }}
         </li>
@@ -57,14 +69,19 @@
           tabindex="7"
           id="menu-drones"
           role="link"
+          (click)="setSection('drones')"
+          [ngClass]="{ 'active': section === 'drones' }"
         >
           {{ "MY_ACCOUNT.DRONES" | transloco }}
         </li>
       </ul>
     </div>
     <div id="nfts">
-      <div style="height: 600px" *ngIf="!(search.valueChanges | async)">
+      <div *ngIf="!(search.valueChanges | async) && !section">
         <p>{{ "MY_ACCOUNT.RECOMMENDED" | transloco }}</p>
+      </div>
+      <div *ngIf="(search.valueChanges | async) || section">
+        <p></p>
       </div>
     </div>
   </div>
