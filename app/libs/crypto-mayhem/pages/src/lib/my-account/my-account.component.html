@@ -1,7 +1,7 @@
 <div id="sidebar">
   <ui-player-details id="player" playerName="John Doe"></ui-player-details>
   <hr />
-  <nav id="menu" #menu>
+  <nav id="menu" #menu [ngClass]="{'mobile-menu-height': comboOpened}">
     <div id="menu-tablet">
       <p>{{ "MY_ACCOUNT.SELECTED_CATEGORY" | transloco }}:</p>
       <div
@@ -23,7 +23,16 @@
     ></ng-template>
   </nav>
   <hr />
-  <div id="social"></div>
+  <div id="social">
+    <p>{{ 'MY_ACCOUNT.SHARE_NFT' | transloco}}</p>
+    <div id="social-icons">
+      <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco " [direction]="'right'"><img src="./assets/images/twitter.svg" alt="twitter" /></a>
+      <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/discord.svg" alt="twitter" /></a>
+      <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/telegram.svg" alt="instagram" /></a>
+    </div>
+  </div>
+  <ui-main-button class="logout" type="secondary" *ngIf="!(walletConnected$ | async)" (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
+  <ui-main-button class="logout" type="secondary" *ngIf="(walletConnected$ | async)" (btnClick)="disconnect()">{{'NAVBAR.DISCONNECT' | transloco}}</ui-main-button>
 </div>
 <div id="content">
   <div id="search">
@@ -39,18 +48,16 @@
   </div>
   <div id="nfts" #nfts (scroll)="onScroll($event)">
     <div
-      style="height: 600px"
       id="not-found"
       *ngIf="search.valueChanges | async"
     >
       <h1>{{ "MY_ACCOUNT.NO_NFT" | transloco }}</h1>
     </div>
-    <div style="height: 600px" id="loot" *ngIf="!(search.valueChanges | async)">
+    <div  id="loot" *ngIf="!(search.valueChanges | async)">
       <p>{{ "MY_ACCOUNT.LOOT" | transloco }}</p>
       <h1>{{ "MY_ACCOUNT.NO_LOOT" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="avatars"
       *ngIf="!(search.valueChanges | async)"
     >
@@ -58,7 +65,6 @@
       <h1>{{ "MY_ACCOUNT.NO_AVATARS" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="workers"
       *ngIf="!(search.valueChanges | async)"
     >
@@ -66,7 +72,6 @@
       <h1>{{ "MY_ACCOUNT.NO_WORKERS" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="items"
       *ngIf="!(search.valueChanges | async)"
     >
@@ -74,7 +79,6 @@
       <h1>{{ "MY_ACCOUNT.NO_ITEMS" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="lands"
       *ngIf="!(search.valueChanges | async)"
     >
@@ -82,7 +86,6 @@
       <h1>{{ "MY_ACCOUNT.NO_LANDS" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="weapons"
       *ngIf="!(search.valueChanges | async)"
     >
@@ -90,7 +93,6 @@
       <h1>{{ "MY_ACCOUNT.NO_WEAPONS" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="mechs"
       *ngIf="!(search.valueChanges | async)"
     >
@@ -98,7 +100,6 @@
       <h1>{{ "MY_ACCOUNT.NO_MECHS" | transloco }}</h1>
     </div>
     <div
-      style="height: 600px"
       id="drones"
       *ngIf="!(search.valueChanges | async)"
     >

@@ -25,3 +25,5 @@ export * from './lib/input/input.module';
 export * from './lib/input/input.component';
 export * from './lib/player-details/player-details.module';
 export * from './lib/player-details/player-details.component';
+export * from './lib/tooltip/tooltip.module';
+export * from './lib/tooltip/tooltip.directive';

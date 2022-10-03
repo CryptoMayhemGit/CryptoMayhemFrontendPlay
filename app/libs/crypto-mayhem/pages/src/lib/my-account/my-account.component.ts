@@ -1,8 +1,11 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { isFullHD, isMobile, isSmallScreen, isTablet, scrollTo } from '@crypto-mayhem-frontend/utility/functions';
+import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
+import { isFullHD, isMobile, isSmallLaptop, isSmallScreen, isTablet, scrollTo } from '@crypto-mayhem-frontend/utility/functions';
 import { faCaretDown, faCaretUp, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'crypto-mayhem-frontend-my-account',
@@ -36,7 +39,11 @@ export class MyAccountComponent implements OnInit {
   selectedSection!: string;
   search = new FormControl('');
 
-  constructor() {}
+  walletConnected$: Observable<boolean> = of(false);
+
+  constructor(public readonly walletFacade: WalletFacade) {
+    this.walletConnected$ = this.walletFacade.connected$;
+  }
 
   ngOnInit(): void {
     this.setNftSection('loot');
@@ -62,11 +69,10 @@ export class MyAccountComponent implements OnInit {
   onScroll(event: any): void {
     let nftSections = event.target.children;
     for (let section of nftSections) {
-      
       let sectionPos = section.getBoundingClientRect();
-      
-      if (isMobile() && !isTablet()) {
-        if(sectionPos.x  >= 0) {
+
+      if (isMobile() && !isTablet() && !isSmallLaptop()) {
+        if (sectionPos.x >= 0) {
           this.setNftSection(section.id);
           break;
         }
@@ -84,7 +90,7 @@ export class MyAccountComponent implements OnInit {
 
   setNftSection(sectionId: string) {
     this.selectedSection = sectionId;
-    if(sectionId !== 'not-found') {
+    if (sectionId !== 'not-found') {
       this.setCategory(sectionId);
     }
     //scrollTo(`menu-${sectionId}`);
@@ -92,5 +98,13 @@ export class MyAccountComponent implements OnInit {
 
   setCategory(categoryName: string) {
     this.selectedCategory = categoryName.toUpperCase();
+  }
+
+  connect(): void {
+    this.walletFacade.showWallets();
+  }
+
+  disconnect(): void {
+    this.walletFacade.disconnectWalletAccount();
   }
 }
