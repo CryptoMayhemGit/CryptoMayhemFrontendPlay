@@ -8,6 +8,8 @@ import { SubmenuModule } from '../submenu/submenu.module';
 import { GameListingModule } from '../game-listing/game-listing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { WalletEffects } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
 
 @NgModule({
   declarations: [NavigationHeaderComponent],
@@ -20,6 +22,7 @@ import { RouterModule } from '@angular/router';
     GameListingModule,
     BrowserAnimationsModule,
     RouterModule,
+    EffectsModule.forFeature([WalletEffects]),
   ],
   exports: [NavigationHeaderComponent],
 })

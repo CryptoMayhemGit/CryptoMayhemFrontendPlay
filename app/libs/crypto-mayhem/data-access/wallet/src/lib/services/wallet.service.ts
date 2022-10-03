@@ -332,4 +332,14 @@ export class WalletService {
     }
     return false;
   }
+
+  public async getBalance() {
+    if (this.provider) {
+      const address = await this.provider.getSigner().getAddress();
+      const bnb = await this.provider.getBalance(address);
+      return +ethers.utils.formatEther(bnb);
+    }
+
+    return 0;
+  }
 }

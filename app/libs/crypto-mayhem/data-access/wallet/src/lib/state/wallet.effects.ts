@@ -150,6 +150,19 @@ export class WalletEffects {
     )
   );
 
+  getBalance$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(WalletActions.connectWalletSuccess),
+      mergeMap(() =>
+        from(this.walletService.getBalance()).pipe(
+          map((balance: any) => {
+            return WalletActions.getBnbBalance({bnbBalanceOf: balance});
+          })
+        )
+      )
+    )
+  );
+
   loadingButton$ = createEffect(() =>
     this.actions$.pipe(
       ofType(WalletActions.buyAdriaSuccess),

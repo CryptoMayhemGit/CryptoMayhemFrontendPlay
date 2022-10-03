@@ -1,6 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
 import { isSmallScreen } from 'libs/utility/functions/src';
 import { Observable, of } from 'rxjs';
@@ -56,12 +55,14 @@ export class NavigationHeaderComponent implements OnInit {
 
   spinner: Observable<boolean> = of(false);
   connected$: Observable<boolean> = of(false);
+  bnbBalanceOf$: Observable<number> = of(0);
 
   constructor(public readonly walletFacade: WalletFacade) {}
 
   ngOnInit(): void {
     this.spinner = this.walletFacade.spinner$;
     this.connected$ = this.walletFacade.connected$;
+    this.bnbBalanceOf$ = this.walletFacade.bnbBalanceOf$;
   }
 
   showGames(): void {
@@ -81,7 +82,11 @@ export class NavigationHeaderComponent implements OnInit {
   }
 
   disconnect(): void {
-    this.walletFacade.disconnectWalletAccount(WalletType.metamask);
+    this.walletFacade.disconnectWalletAccount();
+  }
+
+  getBalance(): void {
+    this.walletFacade.getBalance();
   }
 
   isSmallScreen(): boolean {

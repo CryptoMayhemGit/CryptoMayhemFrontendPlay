@@ -70,3 +70,8 @@ export const getAllTokensPerStage = createSelector(
   selectWallet,
   (state) => state.maxAdriaTokenAmount
 );
+
+export const bnbBalanceOf = createSelector(
+  selectWallet,
+  (state) => state.bnbBalanceOf
+);
