@@ -2,7 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
-import { isFullHD, isMobile, isSmallScreen, isTablet, scrollTo } from '@crypto-mayhem-frontend/utility/functions';
+import { isFullHD, isMobile, isSmallLaptop, isSmallScreen, isTablet, scrollTo } from '@crypto-mayhem-frontend/utility/functions';
 import { faCaretDown, faCaretUp, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
 import { Observable, of } from 'rxjs';
@@ -71,7 +71,7 @@ export class MyAccountComponent implements OnInit {
     for (let section of nftSections) {
       let sectionPos = section.getBoundingClientRect();
 
-      if (isMobile() && !isTablet()) {
+      if (isMobile() && !isTablet() && !isSmallLaptop()) {
         if (sectionPos.x >= 0) {
           this.setNftSection(section.id);
           break;

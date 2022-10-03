@@ -5,6 +5,8 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { InputModule, MainButtonModule, ModalAvatarChangeModule, PlayerDetailsModule, TooltipModule } from '@crypto-mayhem-frontend/ui';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { WalletEffects } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
 
 
 @NgModule({

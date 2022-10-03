@@ -33,6 +33,9 @@ export class WalletFacade {
   readonly allTokensPerStage$ = this.store.select(
     WalletSelectors.getAllTokensPerStage
   );
+  readonly bnbBalanceOf$ = this.store.select(
+    WalletSelectors.bnbBalanceOf
+  );
 
   constructor(
     private readonly store: Store,
@@ -69,5 +72,9 @@ export class WalletFacade {
 
   public buyPreSaleTokens(amount: number) {
     this.store.dispatch(postSignWalletBeforeBuy({ amount }));
+  }
+
+  public getBalance() {
+    this.walletService.getBalance();
   }
 }

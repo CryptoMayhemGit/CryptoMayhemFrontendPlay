@@ -19,6 +19,7 @@ export interface WalletState {
   loading: boolean;
   tokensSoldPerStage: number;
   maxAdriaTokenAmount: number;
+  bnbBalanceOf: number;
 }
 
 export const initialState: WalletState = {
@@ -35,6 +36,7 @@ export const initialState: WalletState = {
   loading: false,
   tokensSoldPerStage: 0,
   maxAdriaTokenAmount: 0,
+  bnbBalanceOf: 0,
 };
 
 export const walletReducer = createReducer(
@@ -103,7 +105,8 @@ export const walletReducer = createReducer(
   on(WalletActions.transactionSuccess, (state) => ({
     ...state,
     loading: false,
-  }))
+  })),
+  on(WalletActions.getBnbBalance,(state, { bnbBalanceOf }) => ({...state, bnbBalanceOf }))
 );
 
 export function reducer(state: WalletState | undefined, action: Action) {

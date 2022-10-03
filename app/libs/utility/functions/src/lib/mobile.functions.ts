@@ -5,11 +5,15 @@ export function isMobile(): boolean {
 }
 
 export function isTablet(): boolean {
-  return window.innerWidth < 1240 && window.innerWidth > 768;
+  return window.innerWidth < 1240 && window.innerWidth >= 768;
 }
 
 export function isSmallScreen(): boolean {
   return window.innerWidth < 1240;
+}
+
+export function isSmallLaptop(): boolean {
+  return window.innerWidth >= 1240 && window.innerWidth < 1900;
 }
 
 export function isFullHD(): boolean {

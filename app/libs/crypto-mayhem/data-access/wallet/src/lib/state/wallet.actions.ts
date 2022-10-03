@@ -82,3 +82,8 @@ export const transaction = createAction('[Wallet] Start transaction buy Adria');
 export const transactionSuccess = createAction(
   '[Wallet] Start transaction buy Adria success'
 );
+
+export const getBnbBalance = createAction(
+  '[Wallet] Get balance of BNB',
+  props<{ bnbBalanceOf: number}>()
+);
