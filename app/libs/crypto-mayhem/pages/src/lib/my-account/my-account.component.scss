@@ -94,13 +94,20 @@
         color: var(--text-secondary);
       }
 
-      &:hover, &.active-section {
+      &.active-section {
         background-color: rgb(8 9 27 / 65%);
       }
 
       &:focus {
         outline: none;
       }
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: rgb(8 9 27 / 65%);
+        }
+      }
+      
     }
   }
 
