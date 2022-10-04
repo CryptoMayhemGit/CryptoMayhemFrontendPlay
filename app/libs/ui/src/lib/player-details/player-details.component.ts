@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -7,16 +7,18 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./player-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PlayerDetailsComponent implements OnInit {
+export class PlayerDetailsComponent {
   @Input() playerName: string = '';
   @Input() walletNumber: string = '0x12...3456';
 
+  @Output() playerNameChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() editAvatarChange: EventEmitter<void> = new EventEmitter<void>();
+
   newName = new FormControl('');
   editName = false;
+  showAvatars = false;
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   edit() {
     this.editName = !this.editName;
@@ -26,5 +28,9 @@ export class PlayerDetailsComponent implements OnInit {
   save() {
     this.playerName = this.newName.value;
     this.editName = false;
+  }
+
+  editAvatar() {
+    this.editAvatarChange.emit();
   }
 }

@@ -221,6 +221,7 @@
         "SAVE": "Save",
         "EDIT_NAME": "Edit name",
         "COMING_SOON": "Coming Soon",
-        "SHARE_NFT": "Share your NFT's"
+        "SHARE_NFT": "Share your NFT's",
+        "RECOMMENDED": "Recommended for you"
     }
 }

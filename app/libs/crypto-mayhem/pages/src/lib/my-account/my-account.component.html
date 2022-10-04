@@ -1,5 +1,6 @@
+<ui-modal-avatar-change [(show)]="avatarChange"></ui-modal-avatar-change>
 <div id="sidebar">
-  <ui-player-details id="player" playerName="John Doe"></ui-player-details>
+  <ui-player-details id="player" [(playerName)]="playerName"  (editAvatarChange)="avatarChange = true"></ui-player-details>
   <hr />
   <nav id="menu" #menu [ngClass]="{'mobile-menu-height': comboOpened}">
     <div id="menu-tablet">
