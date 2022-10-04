@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { ModalBaseComponent } from '../modal-base/modal-base.component';
 
 @Component({
   selector: 'ui-modal-avatar-change',
@@ -17,8 +25,10 @@ export class ModalAvatarChangeComponent {
   search = new FormControl('');
   section: string = '';
 
+  @ViewChild('modal') modal!: ModalBaseComponent;
+
   constructor() {
-    this.search.valueChanges.subscribe((value) => {
+    this.search.valueChanges.subscribe(() => {
       this.section = '';
     });
   }
@@ -29,5 +39,6 @@ export class ModalAvatarChangeComponent {
 
   close() {
     this.showChange.emit(false);
+    this.search.setValue('');
   }
 }

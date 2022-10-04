@@ -222,6 +222,13 @@
         "EDIT_NAME": "Edit name",
         "COMING_SOON": "Coming Soon",
         "SHARE_NFT": "Share your NFT's",
-        "RECOMMENDED": "Recommended for you"
+        "SEARCH": "Search my NFT's",
+        "AVATAR" : {
+            "SET_AVATAR": "Choose NFT as your profile picture",
+            "RECOMMENDED": "Recommended for you",
+            "NO_NFT": "No NFT",
+            "NO_NFT_MESSAGE": "You don't have any NFTs from the Crypto Mayhem project that you can use as a profile picture.",
+            "NO_ITEMS": "No items"
+        }
     }
 }

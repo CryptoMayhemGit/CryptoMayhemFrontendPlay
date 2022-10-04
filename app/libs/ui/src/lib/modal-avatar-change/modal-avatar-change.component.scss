@@ -29,9 +29,14 @@
         &.active {
           &::after {
             background: var(--text-primary);
-            background: linear-gradient(90deg, transparent 0%, rgb(242 242 242 / 100%) 50%, transparent 100%);
+            background: linear-gradient(
+              90deg,
+              transparent 0%,
+              rgb(242 242 242 / 100%) 50%,
+              transparent 100%
+            );
             bottom: 0;
-            content: '';
+            content: "";
             height: 0.2rem;
             left: 0;
             position: absolute;
@@ -45,20 +50,35 @@
   #nfts {
     margin-top: 2.4rem;
 
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 1.2rem;
+      margin-top: 10rem;
+    }
+
     p {
-      border: 1px solid var(--text-secondary);
-      border-width: 0 0 0.01rem;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: 400;
       padding: 0 0 0.6rem;
-      text-align: left;
-      text-transform: uppercase;
+      text-align: center;
+
+      &.with-line {
+        border: 1px solid var(--text-secondary);
+        border-width: 0 0 0.01rem;
+        font-size: 1.2rem;
+        text-align: left;
+        text-transform: uppercase;
+      }
+
+      &:not(.with-line) {
+        padding: 0 6rem;
+      }
     }
 
     & > div {
       height: auto;
-      min-height: 60rem; 
+      min-height: 60rem;
     }
   }
-
 }

@@ -221,6 +221,13 @@
         "EDIT_NAME": "Edytuj nazwę",
         "COMING_SOON": "Dostęp wkrótce",
         "SHARE_NFT": "Pochwal się swoimi NFT",
-        "RECOMMENDED": "Polecane dla ciebie"
+        "SEARCH": "Szukaj moich NFT",
+        "AVATAR" : {
+            "SET_AVATAR": "Wybierz NFT jako zdjęcie profilowe",
+            "RECOMMENDED": "Polecane dla ciebie",
+            "NO_NFT": "Brak NFT",
+            "NO_NFT_MESSAGE": "Aktualnie nie posiadasz żadnych NFT projektu Crypto Mayhem, które możesz użyć jako zdjęcie profilowe.",
+            "NO_ITEMS": "Brak przedmiotów"
+        }
     }
 }
