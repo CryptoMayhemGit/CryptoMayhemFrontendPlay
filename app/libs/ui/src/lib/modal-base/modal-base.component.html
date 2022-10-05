@@ -1,4 +1,4 @@
-<div id="modal" [@inOutAnimation] [ngStyle]="{'width': width}">
+<div id="modal" #modal [@inOutAnimation] [ngStyle]="{'width': width}">
     <div id="modal-close">
       <fa-icon (click)="closeModal()" [icon]="faxmark"></fa-icon>
     </div>
