@@ -52,6 +52,7 @@ export class NavigationHeaderComponent implements OnInit {
   tdsVisible = false;
   gsVisible = false;
   isMobile = false;
+  isVisible = false;
 
   spinner: Observable<boolean> = of(false);
   connected$: Observable<boolean> = of(false);
@@ -91,5 +92,11 @@ export class NavigationHeaderComponent implements OnInit {
 
   isSmallScreen(): boolean {
     return isSmallScreen();
+  }
+
+  togglePC(): void {
+    if (!isSmallScreen()) {
+      this.isVisible = !this.isVisible;
+    }
   }
 }

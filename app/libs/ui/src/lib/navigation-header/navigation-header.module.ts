@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { WalletEffects } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
+import { PipesModule } from '@crypto-mayhem-frontend/utility/pipes';
 
 @NgModule({
   declarations: [NavigationHeaderComponent],
@@ -23,6 +24,7 @@ import { WalletEffects } from '@crypto-mayhem-frontend/crypto-mayhem/data-access
     BrowserAnimationsModule,
     RouterModule,
     EffectsModule.forFeature([WalletEffects]),
+    PipesModule
   ],
   exports: [NavigationHeaderComponent],
 })
