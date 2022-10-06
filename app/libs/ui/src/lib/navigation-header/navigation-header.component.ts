@@ -86,6 +86,7 @@ export class NavigationHeaderComponent implements OnInit {
 
   disconnect(): void {
     this.walletFacade.disconnectWalletAccount();
+    this.isVisible = false;
   }
 
   getBalance(): void {

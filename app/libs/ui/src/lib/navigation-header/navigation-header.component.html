@@ -16,7 +16,7 @@
     <div *ngIf="connected$ | async" id="balance-nav" (mouseenter)="togglePC()" (mouseleave)="togglePC()">
         <div id="balance-value">
             <div>
-                <p>100 000</p>
+                <p>0</p>
                 <img src="./assets/images/adria_token.svg" alt="Adria token">
             </div>
             <div>
@@ -33,9 +33,9 @@
                     <li>
                       <p>{{walletAddress$ | async | walletShorter }}</p>
                     </li>
-                    <li>
+                    <!-- <li>
                         <p>{{'NAVBAR.OPTIONS.MY_ACCOUNT' | transloco}}</p>
-                    </li>
+                    </li> -->
                     <li>
                         <p type="button" (click)="disconnect()">{{'NAVBAR.OPTIONS.DISCONNECT_WALLET' | transloco}}</p>
                     </li>
