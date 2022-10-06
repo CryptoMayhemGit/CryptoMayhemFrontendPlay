@@ -12,7 +12,7 @@
         </div>
         <ng-template [ngTemplateOutlet]="links"></ng-template>
     </div>
-    <div *ngIf="connected$ | async" id="avatar"><img alt="avatar" src="./assets/images/avatar.svg"></div>
+    <div *ngIf="connected$ | async" id="avatar"><img alt="avatar" src="./assets/images/avatar_empty.svg"></div>
     <div *ngIf="connected$ | async" id="balance-nav" (mouseenter)="togglePC()" (mouseleave)="togglePC()">
         <div id="balance-value">
             <div>
@@ -31,7 +31,7 @@
             <ui-submenu id="balance-select">
                 <ul role="button">
                     <li>
-                      <p>{{'0xd20A336057A940BCae44554B1B5CbC2C716bED5d' | walletShorter }}</p>
+                      <p>{{walletAddress$ | async | walletShorter }}</p>
                     </li>
                     <li>
                         <p>{{'NAVBAR.OPTIONS.MY_ACCOUNT' | transloco}}</p>

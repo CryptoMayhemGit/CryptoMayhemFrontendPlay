@@ -57,6 +57,7 @@ export class NavigationHeaderComponent implements OnInit {
   spinner: Observable<boolean> = of(false);
   connected$: Observable<boolean> = of(false);
   bnbBalanceOf$: Observable<number> = of(0);
+  walletAddress$: Observable<string> = of('');
 
   constructor(public readonly walletFacade: WalletFacade) {}
 
@@ -64,6 +65,7 @@ export class NavigationHeaderComponent implements OnInit {
     this.spinner = this.walletFacade.spinner$;
     this.connected$ = this.walletFacade.connected$;
     this.bnbBalanceOf$ = this.walletFacade.bnbBalanceOf$;
+    this.walletAddress$ = this.walletFacade.account$;
   }
 
   showGames(): void {
