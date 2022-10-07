@@ -29,7 +29,7 @@
         ></div>
         <div *ngIf="isVisible" class="wrapper" [@inOutAnimation]>
             <ui-submenu id="balance-select">
-                <ul role="button">
+                <ul>
                     <li>
                       <p>{{walletAddress$ | async | walletShorter }}</p>
                     </li>
