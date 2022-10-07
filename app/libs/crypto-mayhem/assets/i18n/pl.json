@@ -38,6 +38,10 @@
             "VESTING": "Vesting",
             "NEWS": "Aktualności",
             "PRESALE": "Przedsprzedaż"
+        },
+        "OPTIONS": {
+            "MY_ACCOUNT": "Moje konto",
+            "DISCONNECT_WALLET": "Odłącz portfel"
         }
     },
     "NOTIFICATION": {

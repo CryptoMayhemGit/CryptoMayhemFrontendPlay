@@ -52,10 +52,12 @@ export class NavigationHeaderComponent implements OnInit {
   tdsVisible = false;
   gsVisible = false;
   isMobile = false;
+  isVisible = false;
 
   spinner: Observable<boolean> = of(false);
   connected$: Observable<boolean> = of(false);
   bnbBalanceOf$: Observable<number> = of(0);
+  walletAddress$: Observable<string> = of('');
 
   constructor(public readonly walletFacade: WalletFacade) {}
 
@@ -63,6 +65,7 @@ export class NavigationHeaderComponent implements OnInit {
     this.spinner = this.walletFacade.spinner$;
     this.connected$ = this.walletFacade.connected$;
     this.bnbBalanceOf$ = this.walletFacade.bnbBalanceOf$;
+    this.walletAddress$ = this.walletFacade.account$;
   }
 
   showGames(): void {
@@ -83,6 +86,7 @@ export class NavigationHeaderComponent implements OnInit {
 
   disconnect(): void {
     this.walletFacade.disconnectWalletAccount();
+    this.isVisible = false;
   }
 
   getBalance(): void {
@@ -91,5 +95,11 @@ export class NavigationHeaderComponent implements OnInit {
 
   isSmallScreen(): boolean {
     return isSmallScreen();
+  }
+
+  togglePC(): void {
+    if (!isSmallScreen()) {
+      this.isVisible = !this.isVisible;
+    }
   }
 }

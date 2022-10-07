@@ -30,7 +30,6 @@
         "DISCONNECT": "Disconnect Wallet",
         "CONNECT_MOBILE": "Connect",
         "GAMES_COLLECTION": "Games Collection",
-        
         "NAV": {
             "GAMES": "Games",
             "NFT": "NFT market",
@@ -38,6 +37,10 @@
             "VESTING": "Vesting",
             "NEWS": "News",
             "PRESALE": "Presale"
+        },
+        "OPTIONS": {
+            "MY_ACCOUNT": "My account",
+            "DISCONNECT_WALLET": "Disconnect wallet"
         }
     },
     "NOTIFICATION": {
