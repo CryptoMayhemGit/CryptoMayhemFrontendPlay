@@ -5,7 +5,7 @@
   </div>
 
 <ui-submenu id="lang-select" *ngIf="isVisible" [@inOutAnimation]>
-  <ul role="button">
+  <ul>
     <li *ngFor="let language of languages; index as i" (click)="setLang(language.symbol)">
       <img [src]="language.flag" [alt]="language.name" />
       <p>{{language.name | transloco}}</p>

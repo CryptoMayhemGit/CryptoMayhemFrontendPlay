@@ -38,12 +38,12 @@ h2 {
 }
 
 #balance-select {
+  height: auto !important;
+  margin-right: 6em;
+  min-height: 0 !important;
   right: 0;
   top: 6rem;
   width: auto !important;
-  min-height: 0 !important;
-  height: auto !important;
-  margin-right: 6em;
   z-index: 100;
 
   @media screen and (min-width: 1240px) {
@@ -67,7 +67,7 @@ h2 {
 
   li {
     &:first-child p {
-      color: rgba(242, 242, 242, 0.4);
+      color: rgb(242 242 242 / 40%);
     }
   }
 
