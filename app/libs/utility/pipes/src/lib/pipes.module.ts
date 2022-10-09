@@ -2,12 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormatTimePipe } from './format-time/format-time.pipe';
 import { WalletShorterPipe } from './wallet-shorter/wallet-shorter.pipe';
-import { FormatAdriaTokenPipe } from './format-adria-token/format-adria-token.pipe';
+import { AdriaTokenPipe } from './adria-token/adria-token.pipe';
 import { TranslocoModule } from '@ngneat/transloco';
+import { BnbTokenPipe } from './bnb-token/bnb-token.pipe';
 
 @NgModule({
   imports: [CommonModule, TranslocoModule],
-  declarations: [FormatTimePipe, FormatAdriaTokenPipe, WalletShorterPipe],
-  exports: [FormatTimePipe, FormatAdriaTokenPipe, WalletShorterPipe],
+  declarations: [
+    FormatTimePipe,
+    AdriaTokenPipe,
+    WalletShorterPipe,
+    BnbTokenPipe,
+  ],
+  exports: [FormatTimePipe, AdriaTokenPipe, WalletShorterPipe, BnbTokenPipe],
 })
 export class PipesModule {}

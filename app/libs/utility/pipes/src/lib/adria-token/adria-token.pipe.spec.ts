@@ -1,18 +1,18 @@
 import { getTranslocoModule } from '@crypto-mayhem-frontend/utility/functions';
 import { TestBed } from '@angular/core/testing';
 import { TranslocoService } from '@ngneat/transloco';
-import { FormatAdriaTokenPipe } from './format-adria-token.pipe';
+import { AdriaTokenPipe } from './adria-token.pipe';
 
-describe('FormatAdriaTokenPipe', () => {
-  let pipe: FormatAdriaTokenPipe;
+describe('AdriaTokenPipe', () => {
+  let pipe: AdriaTokenPipe;
   let transloco: TranslocoService;
 
-  beforeEach(() => {
+  beforeAll(() => {
     TestBed.configureTestingModule({
       imports: [getTranslocoModule()],
     });
     transloco = TestBed.inject(TranslocoService);
-    pipe = new FormatAdriaTokenPipe(transloco);
+    pipe = new AdriaTokenPipe(transloco);
   });
 
   it('should format token amount in English', () => {

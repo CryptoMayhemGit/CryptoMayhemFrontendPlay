@@ -2,9 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 
 @Pipe({
-  name: 'formatTokenAmount',
+  name: 'adriaToken',
 })
-export class FormatAdriaTokenPipe implements PipeTransform {
+export class AdriaTokenPipe implements PipeTransform {
   transloco: TranslocoService;
 
   constructor(translocoService: TranslocoService) {
