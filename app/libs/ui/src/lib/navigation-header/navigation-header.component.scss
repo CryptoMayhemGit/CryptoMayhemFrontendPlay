@@ -36,7 +36,7 @@ h2 {
 #avatar {
   margin-left: auto;
 
-  @media screen and (max-width: 1240px) {
+  @media screen and (max-width: 768px) {
     display: none !important;
   }
 }
@@ -53,6 +53,55 @@ h2 {
   @media screen and (min-width: 1240px) {
     padding: 1.2rem 2.45rem;
     right: 2rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    @include background-blur;
+
+    border: var(--text-primary) solid 1px;
+    border-width: 0 1px;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    margin-top: 3.5rem;
+    position: absolute;
+    width: auto;
+    padding-left: 2em;
+    padding-right: 2em;
+
+    &::before {
+      background: linear-gradient(
+        90deg,
+        var(--text-primary) 5%,
+        transparent 5%,
+        transparent 95%,
+        var(--text-primary) 95%
+      );
+      content: "";
+      height: 1px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+    }
+
+    &::after {
+      background: linear-gradient(
+        90deg,
+        var(--text-primary) 5%,
+        transparent 5%,
+        transparent 95%,
+        var(--text-primary) 95%
+      );
+      bottom: 0;
+      content: "";
+      height: 1px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      width: 100%;
+    }
   }
 
   ul,
@@ -118,7 +167,7 @@ h2 {
   margin-right: 3.2rem;
   width: auto;
 
-  @media screen and (max-width: 1240px) {
+  @media screen and (max-width: 768px) {
     display: none !important;
   }
 
