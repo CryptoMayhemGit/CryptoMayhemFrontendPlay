@@ -15,8 +15,14 @@ describe('AdriaTokenPipe', () => {
     pipe = new AdriaTokenPipe(transloco);
   });
 
+  it('should format amount given as a string', () => {
+    expect(pipe.transform('1000000')).toBe('1M');
+    expect(pipe.transform('12300500')).toBe('12.3005M');
+  });
+
   it('should format token amount in English', () => {
     transloco.setActiveLang('en');
+    expect(pipe.transform(1000000)).toBe('1M');
     expect(pipe.transform(1000000)).toBe('1M');
     expect(pipe.transform(100000000)).toBe('100M');
     expect(pipe.transform(12300500)).toBe('12.3005M');

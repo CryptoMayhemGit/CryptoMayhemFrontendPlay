@@ -11,7 +11,11 @@ export class AdriaTokenPipe implements PipeTransform {
     this.transloco = translocoService;
   }
 
-  transform(amount: number): string {
+  transform(amount: number | string): string {
+    if (typeof amount === 'string') {
+      amount = parseFloat(amount);
+    }
+
     return amount >= 1000000
       ? `${amount / 1000000}${this.transloco.translate('MILLION_ABBREVIATION')}`
       : `${amount}`;
