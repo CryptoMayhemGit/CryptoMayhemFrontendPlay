@@ -1,4 +1,4 @@
-<div *ngIf="spinner | async">TESTOWY SPINNER</div>
+<div *ngIf="spinner | async"></div>
 <div id="nav">
   <div>
     <a id="logo" routerLink=""
@@ -30,6 +30,7 @@
     id="balance-nav"
     (mouseenter)="togglePC()"
     (mouseleave)="togglePC()"
+    (click)="toggleMobile()"
   >
     <div id="balance-value">
       <div>
@@ -48,9 +49,6 @@
           <li>
             <p>{{ walletAddress$ | async | walletShorter }}</p>
           </li>
-          <!-- <li>
-                        <p>{{'NAVBAR.OPTIONS.MY_ACCOUNT' | transloco}}</p>
-                    </li> -->
           <li>
             <p role="button" (click)="disconnect()">
               {{ "NAVBAR.OPTIONS.DISCONNECT_WALLET" | transloco }}
