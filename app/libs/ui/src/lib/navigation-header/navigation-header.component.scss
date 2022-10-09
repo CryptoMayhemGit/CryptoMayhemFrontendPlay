@@ -35,6 +35,10 @@ h2 {
 
 #avatar {
   margin-left: auto;
+
+  @media screen and (max-width: 1240px) {
+    display: none !important;
+  }
 }
 
 #balance-select {
@@ -114,7 +118,7 @@ h2 {
   margin-right: 3.2rem;
   width: auto;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1240px) {
     display: none !important;
   }
 

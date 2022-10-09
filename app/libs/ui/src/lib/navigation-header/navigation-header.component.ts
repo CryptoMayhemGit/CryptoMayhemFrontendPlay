@@ -102,4 +102,10 @@ export class NavigationHeaderComponent implements OnInit {
       this.isVisible = !this.isVisible;
     }
   }
+
+  toggleMobile(): void {
+    if (isSmallScreen()) {
+      this.isVisible = !this.isVisible;
+    }
+  }
 }
