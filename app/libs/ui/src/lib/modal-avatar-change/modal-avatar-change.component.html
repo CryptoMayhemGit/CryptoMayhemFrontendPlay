@@ -19,6 +19,15 @@
       <ul>
         <li
           tabindex="1"
+          id="menu-recommended"
+          role="link"
+          (click)="setSection('recommended')"
+          [ngClass]="{ active: section === 'recommended' }"
+        >
+          {{ "MY_ACCOUNT.RECOMMENDED" | transloco }}
+        </li>
+        <li
+          tabindex="2"
           id="menu-avatars"
           role="link"
           (click)="setSection('avatars')"
@@ -27,7 +36,7 @@
           {{ "MY_ACCOUNT.AVATARS" | transloco }}
         </li>
         <li
-          tabindex="2"
+          tabindex="3"
           id="menu-workers"
           role="link"
           (click)="setSection('workers')"
@@ -36,7 +45,7 @@
           {{ "MY_ACCOUNT.WORKERS" | transloco }}
         </li>
         <li
-          tabindex="3"
+          tabindex="4"
           id="menu-items"
           role="link"
           (click)="setSection('items')"
@@ -45,16 +54,7 @@
           {{ "MY_ACCOUNT.ITEMS" | transloco }}
         </li>
         <li
-          tabindex="4"
-          id="menu-lands"
-          role="link"
-          (click)="setSection('lands')"
-          [ngClass]="{ active: section === 'lands' }"
-        >
-          {{ "MY_ACCOUNT.LANDS" | transloco }}
-        </li>
-        <li
-          tabindex="5"
+          tabindex="6"
           id="menu-weapons"
           role="link"
           (click)="setSection('weapons')"
@@ -63,7 +63,7 @@
           {{ "MY_ACCOUNT.WEAPONS" | transloco }}
         </li>
         <li
-          tabindex="6"
+          tabindex="7"
           id="menu-mechs"
           role="link"
           (click)="setSection('mechs')"
@@ -72,7 +72,7 @@
           {{ "MY_ACCOUNT.MECHS" | transloco }}
         </li>
         <li
-          tabindex="7"
+          tabindex="8"
           id="menu-drones"
           role="link"
           (click)="setSection('drones')"
@@ -83,18 +83,18 @@
       </ul>
     </div>
     <div id="nfts">
-      <div *ngIf="!(search.valueChanges | async) && !section">
+      <div *ngIf="!(search.valueChanges | async) && section === 'recommended'">
         <p class="with-line">
           {{ "MY_ACCOUNT.AVATAR.RECOMMENDED" | transloco }}
         </p>
       </div>
-      <div *ngIf="(search.valueChanges | async) && !section">
+      <div *ngIf="search.valueChanges | async">
         <p class="with-line"></p>
 
         <h1>{{ "MY_ACCOUNT.AVATAR.NO_NFT" | transloco }}</h1>
         <p>{{ "MY_ACCOUNT.AVATAR.NO_NFT_MESSAGE" | transloco }}</p>
       </div>
-      <div *ngIf="section">
+      <div *ngIf="section && section !== 'recommended'">
         <p class="with-line"></p>
         <h1>{{ "MY_ACCOUNT.AVATAR.NO_ITEMS" | transloco }}</h1>
       </div>

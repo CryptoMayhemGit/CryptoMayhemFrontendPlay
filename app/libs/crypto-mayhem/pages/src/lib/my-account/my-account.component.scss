@@ -16,7 +16,6 @@
   transition: all 0.2s ease-in-out;
   width: 100%;
 
-
   hr {
     background-color: var(--text-primary);
     border: 0;
@@ -62,17 +61,16 @@
   box-shadow: none;
   display: none;
   width: 27.2rem;
-
 }
 
 #menu {
   @include background-blur;
-  
+
   box-shadow: none;
   color: var(--text-primary);
   margin-top: 0.02rem;
   padding: 2rem 4.7rem;
-  position:fixed;
+  position: fixed;
   transition: all 0.4s ease-in-out;
   width: calc(100% - 9.4rem);
 
@@ -84,7 +82,8 @@
       cursor: pointer;
       list-style: none;
       padding: 1.2rem 2.6rem;
-      transition: all 0.4s ease-in-out;
+      position: relative;
+      transition: all 0.2s ease-in-out;
 
       fa-icon {
         margin-left: 0.9rem;
@@ -96,6 +95,22 @@
 
       &.active-section {
         background-color: rgb(8 9 27 / 65%);
+
+        &::before {
+          background: linear-gradient(
+            0deg,
+            transparent 0%,
+            rgb(242 242 242 / 100%) 50%,
+            transparent 100%
+          );
+          content: "";
+          display: block;
+          height: 100%;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 0.1rem;
+        }
       }
 
       &:focus {
@@ -104,10 +119,9 @@
 
       @media (hover: hover) {
         &:hover {
-          background-color: rgb(8 9 27 / 65%);
+          color: var(--text-secondary);
         }
       }
-      
     }
   }
 
@@ -135,17 +149,17 @@
       padding: 1.2rem 1.3rem;
       transition: background-color 0.2s ease-in-out;
 
-
       &.combo-arrow-up {
-        background: url("/assets/images/arrow_up.svg") rgb(8 9 27 / 65%) no-repeat scroll 95% center;
+        background: url("/assets/images/arrow_up.svg") rgb(8 9 27 / 65%)
+          no-repeat scroll 95% center;
       }
 
       &.combo-arrow-down {
-        background: url("/assets/images/arrow_down.svg") rgb(8 9 27 / 65%) no-repeat scroll 95% center;
+        background: url("/assets/images/arrow_down.svg") rgb(8 9 27 / 65%)
+          no-repeat scroll 95% center;
       }
     }
   }
-  
 }
 
 #social {
@@ -211,7 +225,6 @@
     font-size: 1.8rem;
     text-align: center;
     width: 100%;
-
   }
 
   & > #not-found {
@@ -221,7 +234,6 @@
       height: auto;
     }
   }
-
 }
 
 .arrow-left {
@@ -263,7 +275,7 @@
     width: 30%;
 
     .menu-tablet-combo {
-      padding: 1.3rem !important; 
+      padding: 1.3rem !important;
     }
 
     p {
@@ -283,7 +295,6 @@
       height: 100% !important;
       height: 25rem !important;
     }
-
   }
 }
 
@@ -315,7 +326,6 @@
       margin-bottom: 0;
     }
   }
-
 }
 
 // TABLET
@@ -386,7 +396,8 @@
     padding-bottom: 2.4rem;
     position: absolute;
 
-    & > div, & > nav {
+    & > div,
+    & > nav {
       flex-shrink: 0;
       margin: 0 1.2rem;
       padding: 2.4rem 2.2rem;
@@ -483,7 +494,9 @@
       display: inline-block;
     }
 
-    #player, #menu, #social {
+    #player,
+    #menu,
+    #social {
       backdrop-filter: none;
       background-color: transparent;
       box-shadow: none;
@@ -508,7 +521,9 @@
       flex-direction: column;
       scroll-snap-align: start;
 
-      p {display: inline}
+      p {
+        display: inline;
+      }
     }
   }
 
@@ -533,14 +548,12 @@
     #menu-tablet {
       display: none;
     }
-
   }
 
   #submenu {
     overflow: hidden;
     transition: all 0.2s ease-in-out;
   }
-
 }
 
 @media screen and (min-width: 1600px) {
@@ -566,5 +579,3 @@
 .mobile-menu-height {
   height: 100%;
 }
-
-  
