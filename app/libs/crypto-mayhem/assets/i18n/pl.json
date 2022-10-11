@@ -203,6 +203,7 @@
     "MY_ACCOUNT": {
         "LOOT": "Łupy",
         "MY_NFT": "Moje NFT",
+        "RECOMMENDED": "Polecane",
         "AVATARS": "Avatary",
         "WORKERS": "Robotnicy",
         "ITEMS": "Przedmioty",
@@ -228,7 +229,7 @@
         "SHARE_NFT": "Pochwal się swoimi NFT",
         "SEARCH": "Szukaj moich NFT",
         "AVATAR" : {
-            "SET_AVATAR": "Wybierz NFT jako zdjęcie profilowe",
+            "SET_AVATAR": "Ustaw profilowe NFT",
             "RECOMMENDED": "Polecane dla ciebie",
             "NO_NFT": "Brak NFT",
             "NO_NFT_MESSAGE": "Aktualnie nie posiadasz żadnych NFT projektu Crypto Mayhem, które możesz użyć jako zdjęcie profilowe.",

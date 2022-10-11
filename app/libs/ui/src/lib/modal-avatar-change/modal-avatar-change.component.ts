@@ -23,17 +23,18 @@ export class ModalAvatarChangeComponent {
 
   searchIcon = faSearch;
   search = new FormControl('');
-  section: string = '';
+  section: string = 'recommended';
 
   @ViewChild('modal') modal!: ModalBaseComponent;
 
   constructor() {
     this.search.valueChanges.subscribe(() => {
-      this.section = '';
+      this.section = 'recommended';
     });
   }
 
   setSection(section: string) {
+    this.search.reset();
     this.section = section;
   }
 
