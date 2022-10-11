@@ -201,6 +201,7 @@
     "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście",
 
     "MY_ACCOUNT": {
+        "TITLE": "Moje konto",
         "LOOT": "Łupy",
         "MY_NFT": "Moje NFT",
         "AVATARS": "Avatary",

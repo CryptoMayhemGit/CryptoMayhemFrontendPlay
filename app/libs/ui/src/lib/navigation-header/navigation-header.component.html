@@ -50,6 +50,9 @@
             <p>{{ walletAddress$ | async | walletShorter }}</p>
           </li>
           <li>
+            <p routerLink="account" role="link">{{ 'MY_ACCOUNT.TITLE' | transloco }}</p>
+          </li>
+          <li>
             <p role="button" (click)="disconnect()">
               {{ "NAVBAR.OPTIONS.DISCONNECT_WALLET" | transloco }}
             </p>
@@ -110,6 +113,7 @@
         <a
           (mouseenter)="gsVisible = true; tdsVisible = false"
           (mouseleave)="gsVisible = false; tdsVisible = false"
+          routerLink="game" role="link"
           >{{ "GAMES.GS.TITLE" | transloco }}</a
         >
         <a
