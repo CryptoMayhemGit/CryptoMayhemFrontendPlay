@@ -201,6 +201,7 @@
     "WALLET_NOT_AUTHORIZED": "No wallet on whitelist",
 
     "MY_ACCOUNT": {
+        "NFT_LIST": "My NFT's list",
         "TITLE": "My account",
         "LOOT": "Loot",
         "MY_NFT": "My NFT",

@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   height: calc(100vh - 18.4rem);
-  margin: 8.4rem 0;
+  margin: 17.1rem 0 0;
 
   @media screen and (min-width: 768px) {
     height: 100%;
@@ -44,15 +44,10 @@
   @include background-blur;
 
   align-items: center;
-  border-bottom: 1px solid var(--text-secondary);
+  box-shadow: none;
   display: flex;
   height: 4.2rem;
-  margin-bottom: 2.4rem;
-  padding: 2rem 2rem 2rem 0;
-  position: absolute;
-  top: 0;
-  width: calc(100% - 2rem);
-  z-index: 10000;
+  padding: 2rem;
 }
 
 #player {
@@ -66,13 +61,15 @@
 #menu {
   @include background-blur;
 
+  border-bottom: 1px solid var(--text-secondary);
   box-shadow: none;
   color: var(--text-primary);
-  margin-top: 0.02rem;
-  padding: 2rem 4.7rem;
+  padding: 2rem;
   position: fixed;
+  top: 0;
   transition: all 0.4s ease-in-out;
-  width: calc(100% - 9.4rem);
+  width: calc(100% - 4rem);
+  z-index: 10000;
 
   ul {
     margin: 0;
@@ -193,7 +190,6 @@
   display: flex;
   flex-direction: row;
   height: 100%;
-  margin-top: 7rem;
   overflow-x: scroll;
   overflow-y: hidden;
   scroll-snap-type: x proximity;
@@ -209,7 +205,6 @@
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
-    height: 60rem;
     justify-content: space-between;
     padding: 0 2rem;
     scroll-snap-align: start;
@@ -237,7 +232,7 @@
 }
 
 .arrow-left {
-  background: url("/assets/images/arrow_left.svg") no-repeat center;
+  background: url("/assets/images/arrow_left.svg") no-repeat left;
   cursor: pointer;
   padding: 2.4rem;
 }
@@ -325,6 +320,7 @@
       height: calc(100vh - 15rem);
       margin-bottom: 0;
     }
+    
   }
 }
 
@@ -352,6 +348,10 @@
     ul {
       height: auto;
     }
+
+    .menu-header {
+      display: none;
+    }
   }
 
   #social {
@@ -372,6 +372,7 @@
     }
 
     & > div {
+      height: 60vh;
       padding: 0;
       width: 100%;
     }
@@ -398,6 +399,7 @@
 
     & > div,
     & > nav {
+      border-bottom: none;
       flex-shrink: 0;
       margin: 0 1.2rem;
       padding: 2.4rem 2.2rem;
@@ -407,6 +409,10 @@
       p {
         margin: 0 0 1rem;
       }
+    }
+
+    & > nav {
+      padding: 2.9rem 2.2rem;
     }
 
     & > div:first-child {

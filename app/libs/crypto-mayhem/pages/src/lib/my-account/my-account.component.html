@@ -3,6 +3,7 @@
   <ui-player-details id="player" [(playerName)]="playerName"  (editAvatarChange)="avatarChange = true"></ui-player-details>
   <hr />
   <nav id="menu" #menu [ngClass]="{'mobile-menu-height': comboOpened}">
+    <p class="menu-header"><span class="arrow-left"></span>{{ 'MY_ACCOUNT.NFT_LIST' | transloco}}</p>
     <div id="menu-tablet">
       <p>{{ "MY_ACCOUNT.SELECTED_CATEGORY" | transloco }}:</p>
       <div
@@ -37,7 +38,6 @@
 </div>
 <div id="content">
   <div id="search">
-    <span class="arrow-left"></span>
     <ui-input
       type="text"
       inputFunction="search"
