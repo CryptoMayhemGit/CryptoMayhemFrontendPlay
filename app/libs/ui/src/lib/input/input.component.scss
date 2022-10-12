@@ -16,6 +16,8 @@ input {
   min-height: 1.4rem;
   padding: 1.3rem 1.5rem;
   transition: opacity 0.3s ease-out;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+
 
   &.ng-invalid.ng-touched {
     border-color: var(--error-color);
