@@ -240,7 +240,10 @@
 // SMALLER MOBILE HORIZONTAL
 @media screen and (max-width: 767px) and (orientation: landscape) {
   #search {
-    padding-top: 4.7rem;
+    position: relative;
+    z-index: 1000;
+    height: 9rem;
+    padding: 2rem 2rem 0.5rem;
 
     ui-input {
       width: 50%;
@@ -259,14 +262,14 @@
 
   #sidebar {
     backdrop-filter: none !important;
-    background-color: transparent !important;
+    background-color: var(--component-background-color);
     box-shadow: none !important;
   }
 
   #menu-tablet {
     position: absolute;
     right: 5rem;
-    top: -11.2rem;
+    top: 3.8rem;
     width: 30%;
 
     .menu-tablet-combo {
@@ -284,8 +287,6 @@
   }
 
   #nfts {
-    margin-top: 12rem !important;
-
     & > div {
       height: 100% !important;
       height: 25rem !important;
@@ -311,7 +312,7 @@
       & > nav,
       & > ui-player-details {
         backdrop-filter: none;
-        background-color: transparent !important;
+        background-color: var(--component-background-color);
         box-shadow: none !important;
       }
     }
