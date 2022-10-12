@@ -27,9 +27,9 @@ fa-icon {
   &.secondary {
     --background-color: transparent;
     --border-color: #fff;
-    --hover-color: var(--border-color);
+    --hover-color: var(--button-secondary);
     --text-color: var(--border-color);
-    --text-hover-color: #000;
+    --text-hover-color: var(--text-primary);
   }
 
   &.fancy {
