@@ -6,18 +6,22 @@
     <p class="menu-header"><span class="arrow-left"></span>{{ 'MY_ACCOUNT.NFT_LIST' | transloco}}</p>
     <div id="menu-tablet">
       <p>{{ "MY_ACCOUNT.SELECTED_CATEGORY" | transloco }}:</p>
-      <div
-        class="menu-tablet-combo"
-        [ngClass]="{
-          ' combo-arrow-down': !comboOpened,
-          'combo-arrow-up': comboOpened
-        }"
-        (click)="comboOpened = !comboOpened; submenu = true"
-      >
-        {{
-          selectedCategory ? ("MY_ACCOUNT." + selectedCategory | transloco) : ""
-        }}
+      <div class="menu-tablet-wrapper">
+        <div
+          class="menu-tablet-combo"
+          [ngClass]="{
+            ' combo-arrow-down': !comboOpened,
+            'combo-arrow-up': comboOpened
+          }"
+          (click)="comboOpened = !comboOpened; submenu = true"
+        >
+          {{
+            selectedCategory ? ("MY_ACCOUNT." + selectedCategory | transloco) : ""
+          }}
       </div>
+        <img src="./assets/images/share.svg" role="link" (click)="socialsVisible = !socialsVisible" alt="social media" />
+      </div>
+      
     </div>
     <ng-template
       *ngIf="comboOpened"
@@ -25,11 +29,11 @@
     ></ng-template>
   </nav>
   <hr />
-  <div id="social">
+  <div id="social" *ngIf="showSocial() ">
     <p>{{ 'MY_ACCOUNT.SHARE_NFT' | transloco}}</p>
     <div id="social-icons">
       <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco " [direction]="'right'"><img src="./assets/images/twitter.svg" alt="twitter" /></a>
-      <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/discord.svg" alt="twitter" /></a>
+      <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/discord.svg" alt="discord" /></a>
       <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/telegram.svg" alt="instagram" /></a>
     </div>
   </div>

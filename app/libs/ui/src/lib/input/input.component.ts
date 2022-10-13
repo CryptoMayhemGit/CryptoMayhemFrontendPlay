@@ -4,6 +4,7 @@ import {
   ElementRef,
   forwardRef,
   Input,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -95,4 +96,5 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   focus() {
     this.input.nativeElement.focus();
   }
+
 }
