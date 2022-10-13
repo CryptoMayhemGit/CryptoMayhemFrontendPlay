@@ -39,6 +39,7 @@ export class MyAccountComponent implements OnInit {
   search = new FormControl('');
   playerName = "John Doe";
   avatarChange = false;
+  socialsVisible = false;
 
   walletConnected$: Observable<boolean> = of(false);
 
@@ -99,6 +100,10 @@ export class MyAccountComponent implements OnInit {
 
   setCategory(categoryName: string) {
     this.selectedCategory = categoryName.toUpperCase();
+  }
+
+  showSocial(): boolean {
+    return (!isMobile() || isTablet()) || (isMobile() && this.socialsVisible);
   }
 
   connect(): void {
