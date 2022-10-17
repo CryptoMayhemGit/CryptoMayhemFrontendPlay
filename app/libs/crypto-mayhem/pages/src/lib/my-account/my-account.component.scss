@@ -1,6 +1,6 @@
 @import "libs/crypto-mayhem/styles/mixins";
 
-:host {
+.my-account-wrapper {
   display: flex;
   flex-direction: column;
   height: calc(100vh - 18.4rem);
@@ -156,10 +156,10 @@
     .menu-tablet-combo {
       border: 1px solid var(--text-secondary);
       cursor: pointer;
-      width: 100%;
       max-width: 22.8rem;
       padding: 1.2rem 1.3rem;
       transition: background-color 0.2s ease-in-out;
+      width: 100%;
 
       &.combo-arrow-up {
         background: url("/assets/images/arrow_up.svg") rgb(8 9 27 / 65%)
@@ -255,10 +255,10 @@
 // SMALLER MOBILE HORIZONTAL
 @media screen and (max-width: 767px) and (orientation: landscape) {
   #search {
-    position: relative;
-    z-index: 1000;
     height: 9rem;
     padding: 2rem 2rem 0.5rem;
+    position: relative;
+    z-index: 1000;
 
     ui-input {
       width: 50%;
@@ -327,7 +327,7 @@
 
 // BIGGER MOBILE HORIZONTAL
 @media screen and (max-width: 1024px) and (orientation: landscape) {
-  :host {
+  .my-account-wrapper {
     margin-top: 0 !important;
     position: absolute;
     top: 0;
@@ -358,6 +358,10 @@
 
 // TABLET
 @media screen and (min-width: 768px) {
+  ui-my-account-mobile {
+    display: none;
+  }
+
   #search {
     border: none;
     padding: 0;
@@ -422,7 +426,7 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1240px) {
-  :host {
+  .my-account-wrapper {
     margin-top: 2rem;
     overflow: hidden;
   }
@@ -511,7 +515,7 @@
 
 // SMALL LAPTOP
 @media screen and (min-width: 1240px) {
-  :host {
+  .my-account-wrapper {
     flex-direction: row;
     justify-content: space-evenly;
     margin: 7.2rem 2rem 0;
@@ -591,7 +595,7 @@
 }
 
 @media screen and (min-width: 1600px) {
-  :host {
+  .my-account-wrapper {
     margin-left: auto;
     margin-right: auto;
     width: 90%;
@@ -600,7 +604,7 @@
 
 // FULL HD
 @media screen and (min-width: 1920px) {
-  :host {
+  .my-account-wrapper {
     width: 75%;
   }
 

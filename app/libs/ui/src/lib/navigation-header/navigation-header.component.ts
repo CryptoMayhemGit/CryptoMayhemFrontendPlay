@@ -96,16 +96,4 @@ export class NavigationHeaderComponent implements OnInit {
   isSmallScreen(): boolean {
     return isSmallScreen();
   }
-
-  togglePC(): void {
-    if (!isSmallScreen()) {
-      this.isVisible = !this.isVisible;
-    }
-  }
-
-  toggleMobile(): void {
-    if (isSmallScreen()) {
-      this.isVisible = !this.isVisible;
-    }
-  }
 }

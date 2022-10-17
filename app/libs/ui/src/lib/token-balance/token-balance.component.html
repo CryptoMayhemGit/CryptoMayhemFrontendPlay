@@ -1,0 +1,35 @@
+<div
+id="balance-nav"
+(mouseenter)="togglePC()"
+(mouseleave)="togglePC()"
+(click)="toggleMobile()"
+>
+    <div id="balance-value">
+        <div>
+            <p>0</p>
+            <img src="./assets/images/adria_token.svg" alt="Adria token" />
+        </div>
+        <div>
+            <p>{{ bnbBalance | bnbToken | adriaToken }}</p>
+            <img src="./assets/images/binance_token.svg" alt="Binance token" />
+        </div>
+    </div>
+    <div id="arrow" [ngClass]="{ 'arrow-up': isVisible, 'arrow-down': !isVisible }"></div>
+    <div *ngIf="isVisible" class="wrapper" [@inOutAnimation]>
+        <ui-submenu id="balance-select">
+            <ul>
+                <li>
+                    <p>{{ walletAddress | walletShorter }}</p>
+                </li>
+                <li>
+                    <p routerLink="account" role="link">{{ 'MY_ACCOUNT.TITLE' | transloco }}</p>
+                </li>
+                <li>
+                    <p role="button" (click)="disconnectWallet()">
+                    {{ "NAVBAR.OPTIONS.DISCONNECT_WALLET" | transloco }}
+                    </p>
+                </li>
+            </ul>
+        </ui-submenu>
+    </div>
+</div>

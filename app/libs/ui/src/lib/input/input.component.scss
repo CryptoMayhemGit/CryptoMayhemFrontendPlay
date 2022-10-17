@@ -12,11 +12,11 @@ input {
   border: 1px solid var(--text-secondary);
   color: var(--text-primary);
   flex-grow: 1;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
   font-size: 1.3rem;
   min-height: 1.4rem;
   padding: 1.3rem 1.5rem;
   transition: opacity 0.3s ease-out;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
 
 
   &.ng-invalid.ng-touched {

@@ -29,3 +29,7 @@ export * from './lib/tooltip/tooltip.module';
 export * from './lib/tooltip/tooltip.directive';
 export * from './lib/modal-avatar-change/modal-avatar-change.module';
 export * from './lib/modal-avatar-change/modal-avatar-change.component';
+export * from './lib/my-account-mobile/my-account-mobile.module';
+export * from './lib/my-account-mobile/my-account-mobile.component';
+export * from './lib/token-balance/token-balance.module';
+export * from './lib/token-balance/token-balance.component';

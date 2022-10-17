@@ -1,119 +1,130 @@
 <ui-modal-avatar-change [(show)]="avatarChange"></ui-modal-avatar-change>
-<div id="sidebar">
-  <ui-player-details id="player" [(playerName)]="playerName"  (editAvatarChange)="avatarChange = true"></ui-player-details>
-  <hr />
-  <nav id="menu" #menu [ngClass]="{'mobile-menu-height': comboOpened}">
-    <p class="menu-header"><span class="arrow-left"></span>{{ 'MY_ACCOUNT.NFT_LIST' | transloco}}</p>
-    <div id="menu-tablet">
-      <p>{{ "MY_ACCOUNT.SELECTED_CATEGORY" | transloco }}:</p>
-      <div class="menu-tablet-wrapper">
-        <div
-          class="menu-tablet-combo"
-          [ngClass]="{
-            ' combo-arrow-down': !comboOpened,
-            'combo-arrow-up': comboOpened
-          }"
-          (click)="comboOpened = !comboOpened; submenu = true"
-        >
-          {{
-            selectedCategory ? ("MY_ACCOUNT." + selectedCategory | transloco) : ""
-          }}
+
+<ui-my-account-mobile
+  *ngIf="!showNfts()"
+  [(playerName)]="playerName"
+  [walletConnected]="(walletConnected$ | async)"
+  (nftListChange)="goToNftPage($event)">
+</ui-my-account-mobile>
+
+<div class="my-account-wrapper" *ngIf="showNfts()">
+  <div id="sidebar">
+    <ui-player-details id="player" [(playerName)]="playerName"  (editAvatarChange)="avatarChange = true"></ui-player-details>
+    <hr />
+    <nav id="menu" #menu [ngClass]="{'mobile-menu-height': comboOpened}">
+      <p class="menu-header"><span class="arrow-left" (click)="showPage = false"></span>{{ mobileHeader | transloco}}</p>
+      <div id="menu-tablet">
+        <p>{{ "MY_ACCOUNT.SELECTED_CATEGORY" | transloco }}:</p>
+        <div class="menu-tablet-wrapper">
+          <div
+            class="menu-tablet-combo"
+            [ngClass]="{
+              ' combo-arrow-down': !comboOpened,
+              'combo-arrow-up': comboOpened
+            }"
+            (click)="comboOpened = !comboOpened; submenu = true"
+          >
+            {{
+              selectedCategory ? ("MY_ACCOUNT." + selectedCategory | transloco) : ""
+            }}
+        </div>
+          <img src="./assets/images/share.svg" role="link" (click)="socialsVisible = !socialsVisible" alt="social media" />
+        </div>
+        
       </div>
-        <img src="./assets/images/share.svg" role="link" (click)="socialsVisible = !socialsVisible" alt="social media" />
+      <ng-template
+        *ngIf="comboOpened"
+        [ngTemplateOutlet]="submenuEl"
+      ></ng-template>
+    </nav>
+    <hr />
+    <div id="social" *ngIf="showSocial() ">
+      <p>{{ 'MY_ACCOUNT.SHARE_NFT' | transloco}}</p>
+      <div id="social-icons">
+        <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco " [direction]="'right'"><img src="./assets/images/twitter.svg" alt="twitter" /></a>
+        <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/discord.svg" alt="discord" /></a>
+        <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/telegram.svg" alt="instagram" /></a>
       </div>
-      
     </div>
-    <ng-template
-      *ngIf="comboOpened"
-      [ngTemplateOutlet]="submenuEl"
-    ></ng-template>
-  </nav>
-  <hr />
-  <div id="social" *ngIf="showSocial() ">
-    <p>{{ 'MY_ACCOUNT.SHARE_NFT' | transloco}}</p>
-    <div id="social-icons">
-      <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco " [direction]="'right'"><img src="./assets/images/twitter.svg" alt="twitter" /></a>
-      <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/discord.svg" alt="discord" /></a>
-      <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/telegram.svg" alt="instagram" /></a>
+    <ui-main-button class="logout" type="secondary" *ngIf="!(walletConnected$ | async)" (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
+    <ui-main-button class="logout" type="secondary" *ngIf="(walletConnected$ | async)" (btnClick)="disconnect()">{{'NAVBAR.DISCONNECT' | transloco}}</ui-main-button>
+  </div>
+  <div id="content">
+    <div id="search">
+      <ui-input
+        type="text"
+        inputFunction="search"
+        [iconLeft]="searchIcon"
+        [placeholder]="'MY_ACCOUNT.SEARCH' | transloco"
+        name="search"
+        [formControl]="search"
+      ></ui-input>
+    </div>
+    <div id="nfts" #nfts (scroll)="onScroll($event)">
+      <div
+        id="not-found"
+        *ngIf="search.valueChanges | async"
+      >
+        <h1>{{ "MY_ACCOUNT.NO_NFT" | transloco }}</h1>
+      </div>
+      <div  id="loot" *ngIf="!(search.valueChanges | async)">
+        <p>{{ "MY_ACCOUNT.LOOT" | transloco }}</p>
+        <h1>{{ "MY_ACCOUNT.NO_LOOT" | transloco }}</h1>
+      </div>
+      <div
+        id="avatars"
+        *ngIf="!(search.valueChanges | async)"
+      >
+        <p>{{ "MY_ACCOUNT.AVATARS" | transloco }}</p>
+        <h1>{{ "MY_ACCOUNT.NO_AVATARS" | transloco }}</h1>
+      </div>
+      <div
+        id="workers"
+        *ngIf="!(search.valueChanges | async)"
+      >
+        <p>{{ "MY_ACCOUNT.WORKERS" | transloco }}</p>
+        <h1>{{ "MY_ACCOUNT.NO_WORKERS" | transloco }}</h1>
+      </div>
+      <div
+        id="items"
+        *ngIf="!(search.valueChanges | async)"
+      >
+        <p>{{ "MY_ACCOUNT.ITEMS" | transloco }}</p>
+        <h1>{{ "MY_ACCOUNT.NO_ITEMS" | transloco }}</h1>
+      </div>
+      <div
+        id="lands"
+        *ngIf="!(search.valueChanges | async)"
+      >
+        <p>{{ "MY_ACCOUNT.LANDS" | transloco }}</p>
+        <h1>{{ "MY_ACCOUNT.NO_LANDS" | transloco }}</h1>
+      </div>
+      <div
+        id="weapons"
+        *ngIf="!(search.valueChanges | async)"
+      >
+        <p>{{ "MY_ACCOUNT.WEAPONS" | transloco }}</p>
+        <h1>{{ "MY_ACCOUNT.NO_WEAPONS" | transloco }}</h1>
+      </div>
+      <div
+        id="mechs"
+        *ngIf="!(search.valueChanges | async)"
+      >
+        <p>{{ "MY_ACCOUNT.MECHS" | transloco }}</p>
+        <h1>{{ "MY_ACCOUNT.NO_MECHS" | transloco }}</h1>
+      </div>
+      <div
+        id="drones"
+        *ngIf="!(search.valueChanges | async)"
+      >
+        <p>{{ "MY_ACCOUNT.DRONES" | transloco }}</p>
+        <h1>{{ "MY_ACCOUNT.NO_DRONES" | transloco }}</h1>
+      </div>
     </div>
   </div>
-  <ui-main-button class="logout" type="secondary" *ngIf="!(walletConnected$ | async)" (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
-  <ui-main-button class="logout" type="secondary" *ngIf="(walletConnected$ | async)" (btnClick)="disconnect()">{{'NAVBAR.DISCONNECT' | transloco}}</ui-main-button>
+  <div id="details"></div>
 </div>
-<div id="content">
-  <div id="search">
-    <ui-input
-      type="text"
-      inputFunction="search"
-      [iconLeft]="searchIcon"
-      [placeholder]="'MY_ACCOUNT.SEARCH' | transloco"
-      name="search"
-      [formControl]="search"
-    ></ui-input>
-  </div>
-  <div id="nfts" #nfts (scroll)="onScroll($event)">
-    <div
-      id="not-found"
-      *ngIf="search.valueChanges | async"
-    >
-      <h1>{{ "MY_ACCOUNT.NO_NFT" | transloco }}</h1>
-    </div>
-    <div  id="loot" *ngIf="!(search.valueChanges | async)">
-      <p>{{ "MY_ACCOUNT.LOOT" | transloco }}</p>
-      <h1>{{ "MY_ACCOUNT.NO_LOOT" | transloco }}</h1>
-    </div>
-    <div
-      id="avatars"
-      *ngIf="!(search.valueChanges | async)"
-    >
-      <p>{{ "MY_ACCOUNT.AVATARS" | transloco }}</p>
-      <h1>{{ "MY_ACCOUNT.NO_AVATARS" | transloco }}</h1>
-    </div>
-    <div
-      id="workers"
-      *ngIf="!(search.valueChanges | async)"
-    >
-      <p>{{ "MY_ACCOUNT.WORKERS" | transloco }}</p>
-      <h1>{{ "MY_ACCOUNT.NO_WORKERS" | transloco }}</h1>
-    </div>
-    <div
-      id="items"
-      *ngIf="!(search.valueChanges | async)"
-    >
-      <p>{{ "MY_ACCOUNT.ITEMS" | transloco }}</p>
-      <h1>{{ "MY_ACCOUNT.NO_ITEMS" | transloco }}</h1>
-    </div>
-    <div
-      id="lands"
-      *ngIf="!(search.valueChanges | async)"
-    >
-      <p>{{ "MY_ACCOUNT.LANDS" | transloco }}</p>
-      <h1>{{ "MY_ACCOUNT.NO_LANDS" | transloco }}</h1>
-    </div>
-    <div
-      id="weapons"
-      *ngIf="!(search.valueChanges | async)"
-    >
-      <p>{{ "MY_ACCOUNT.WEAPONS" | transloco }}</p>
-      <h1>{{ "MY_ACCOUNT.NO_WEAPONS" | transloco }}</h1>
-    </div>
-    <div
-      id="mechs"
-      *ngIf="!(search.valueChanges | async)"
-    >
-      <p>{{ "MY_ACCOUNT.MECHS" | transloco }}</p>
-      <h1>{{ "MY_ACCOUNT.NO_MECHS" | transloco }}</h1>
-    </div>
-    <div
-      id="drones"
-      *ngIf="!(search.valueChanges | async)"
-    >
-      <p>{{ "MY_ACCOUNT.DRONES" | transloco }}</p>
-      <h1>{{ "MY_ACCOUNT.NO_DRONES" | transloco }}</h1>
-    </div>
-  </div>
-</div>
-<div id="details"></div>
+
 
 <ng-template #submenuEl>
   <ul [@show]>

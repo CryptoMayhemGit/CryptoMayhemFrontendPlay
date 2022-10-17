@@ -12,8 +12,9 @@ import { VideoComponentModule } from './video-component/video-component.module';
 import { InputModule } from './input/input.module';
 import { PlayerDetailsModule } from './player-details/player-details.module';
 import { TooltipModule } from './tooltip/tooltip.module';
-import { ModalAvatarChangeComponent } from './modal-avatar-change/modal-avatar-change.component';
 import { ModalAvatarChangeModule } from './modal-avatar-change/modal-avatar-change.module';
+import { MyAccountMobileModule } from './my-account-mobile/my-account-mobile.module';
+import { TokenBalanceModule } from './token-balance/token-balance.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -31,7 +32,9 @@ import { ModalAvatarChangeModule } from './modal-avatar-change/modal-avatar-chan
     PlayerDetailsModule,
     TooltipModule,
     InputModule,
-    ModalAvatarChangeModule
+    ModalAvatarChangeModule,
+    MyAccountMobileModule,
+    TokenBalanceModule
   ],
 })
 export class UiModule {}
