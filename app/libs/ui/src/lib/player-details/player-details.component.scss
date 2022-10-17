@@ -1,8 +1,26 @@
+@import "libs/crypto-mayhem/styles/mixins";
+
 :host {
   color: var(--text-primary);
   display: flex;
   flex-direction: column;
   padding: 1.5rem 0 2.4rem 1.6rem;
+
+  &::before {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgb(242 242 242 / 100%) 50%,
+      transparent 100%
+    );
+    content: "";
+    display: block;
+    height: 0.1rem;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 
   #player-details {
     display: flex;
@@ -44,12 +62,16 @@
   }
 }
 
-#pencil {
+.pencil {
   cursor: pointer;
   height: 1.3rem;
   margin: 2px 0 0 auto;
   padding: 1.6rem;
   width: 1.3rem;
+}
+
+#pencil-mobile {
+  display: none;
 }
 
 #pencil-wrapper {
@@ -83,4 +105,46 @@ ui-input {
 ui-main-button {
   margin-top: 3rem;
   width: 50%;
+}
+
+@media screen and (max-width: 767px) {
+  :host {
+    @include background-blur;
+
+    position: absolute;
+    width: calc(100% - 7rem);
+    bottom: 0;
+    padding: 3.2rem 3.5rem;
+  }
+
+  #player-details {
+    flex-direction: column !important;
+  }
+
+  #avatar {
+    margin: -5.6rem auto 2.4rem;
+  }
+
+  #edit-name {
+    padding-right: 0;
+  }
+
+  #player-name {
+    margin-left: 0;
+    p {
+      margin: auto;
+      position: relative;
+    }
+  }
+
+  #pencil-wrapper {
+    display: none;
+  }
+
+  #pencil-mobile {
+    display: inline;
+    position: absolute;
+    top: -1.7rem;
+    margin-left: 2rem;
+  }
 }

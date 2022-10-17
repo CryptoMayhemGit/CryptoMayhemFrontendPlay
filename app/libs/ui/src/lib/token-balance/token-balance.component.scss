@@ -1,0 +1,189 @@
+
+@import "libs/crypto-mayhem/styles/mixins";
+
+:host {
+  display: flex;
+}
+
+#arrow {
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+  }
+}
+
+#balance-nav {
+    align-content: space-between;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    margin-left: 0;
+    align-items: center;
+  
+  
+    #balance-value {
+      padding: 0 1em;
+      position: relative;
+      display: flex;
+
+      & > div {
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 1.8rem;
+          height: 1.8rem;
+        }
+      }
+  
+      div:first-child {
+        margin-left: 0.3em;
+        margin-right: 0.7em;
+      }
+  
+      &::before {
+        background: url("/assets/images/balance_border_left.svg") no-repeat top left;
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 2.5rem;
+      }
+  
+      &::after {
+        background: url("/assets/images/balance_border_right.svg") no-repeat top right;
+        content: "";
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 2.5rem;
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      margin-right: 3.2rem;
+    }
+  
+  }
+
+  #balance-select {
+    height: auto !important;
+    margin-right: 6em;
+    min-height: 0 !important;
+    right: 0;
+    top: 6rem;
+    width: auto !important;
+    font-weight: 400;
+    z-index: 100;
+  
+    @media screen and (min-width: 1240px) {
+      padding: 1.2rem 2.45rem;
+      right: 2rem;
+    }
+  
+    @media screen and (min-width: 768px) {
+      @include background-blur;
+  
+      border: var(--text-primary) solid 1px;
+      border-width: 0 1px;
+      display: flex;
+      flex-direction: row;
+      height: auto;
+      margin-right: 4.5em;
+      margin-top: 3.5rem;
+      padding-left: 2em;
+      padding-right: 2em;
+      position: absolute;
+      width: auto;
+  
+      &::before {
+        background: linear-gradient(
+          90deg,
+          var(--text-primary) 5%,
+          transparent 5%,
+          transparent 95%,
+          var(--text-primary) 95%
+        );
+        content: "";
+        height: 1px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+      }
+  
+      &::after {
+        background: linear-gradient(
+          90deg,
+          var(--text-primary) 5%,
+          transparent 5%,
+          transparent 95%,
+          var(--text-primary) 95%
+        );
+        bottom: 0;
+        content: "";
+        height: 1px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        width: 100%;
+      }
+    }
+  
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+    }
+  
+    ul {
+      padding: 1rem 0;
+  
+      @media screen and (min-width: 1240px) {
+        padding: 0;
+      }
+    }
+  
+    li {
+      &:first-child p {
+        color: rgb(242 242 242 / 40%);
+      }
+    }
+  
+    ul li {
+      align-items: center;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      list-style-type: none;
+      min-width: 9rem;
+      padding: 2rem 0 1rem;
+      white-space: nowrap;
+  
+      &:hover {
+        opacity: 0.3;
+      }
+  
+      p {
+        margin: 0;
+      }
+  
+      img {
+        margin-right: 1.6rem;
+      }
+  
+      @media screen and (min-width: 1240px) {
+        padding: 1rem 2.4rem;
+  
+        &:hover {
+          background: #ffffff20;
+          opacity: 1;
+        }
+      }
+    }
+  }

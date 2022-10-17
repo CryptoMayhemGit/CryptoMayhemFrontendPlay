@@ -17,7 +17,7 @@ import { ModalBaseComponent } from '../modal-base/modal-base.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalAvatarChangeComponent {
-  @Input() show!: boolean;
+  @Input() show: boolean = true;
 
   @Output() showChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 

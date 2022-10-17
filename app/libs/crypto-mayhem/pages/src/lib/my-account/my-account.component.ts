@@ -40,6 +40,8 @@ export class MyAccountComponent implements OnInit {
   playerName = "John Doe";
   avatarChange = false;
   socialsVisible = false;
+  showPage = false;
+  mobileHeader!: string;
 
   walletConnected$: Observable<boolean> = of(false);
 
@@ -104,6 +106,15 @@ export class MyAccountComponent implements OnInit {
 
   showSocial(): boolean {
     return (!isMobile() || isTablet()) || (isMobile() && this.socialsVisible);
+  }
+
+  showNfts(): boolean {
+    return (!isMobile() && !isTablet()) || this.showPage;
+  }
+
+  goToNftPage(header: string): void {
+    this.showPage = true;
+    this.mobileHeader = header;
   }
 
   connect(): void {
