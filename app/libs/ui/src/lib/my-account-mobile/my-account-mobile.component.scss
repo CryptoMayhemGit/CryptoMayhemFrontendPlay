@@ -1,7 +1,8 @@
 :host {
-  display: block;
   color: white;
+  display: block;
 }
+
 ui-token-balance {
   justify-content: center;
   margin: 2.4rem 0 5.8rem;
@@ -9,76 +10,76 @@ ui-token-balance {
 
 button {
   background: var(--component-background-color);
-  position: relative;
-  border-style: solid;
-  border-width: 0 1px 0 1px;
   border-color: var(--text-primary);
-  padding: 2.7rem 5.5rem;
+  border-style: solid;
+  border-width: 0 1px;
+  box-shadow: 0 4px 24px rgb(0 0 0 / 60%);
   color: var(--text-primary);
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
-  text-transform: uppercase;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
-  white-space: nowrap;
   margin-bottom: 5.7rem;
-  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.6);
+  padding: 2.7rem 5.5rem;
+  position: relative;
+  text-transform: uppercase;
+  white-space: nowrap;
  
-    &::before {
-      background: linear-gradient(
-        90deg,
-        var(--text-primary) 5%,
-        transparent 5%,
-        transparent 95%,
-        var(--text-primary) 95%
-      );
-      content: "";
-      height: 1px;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 100%;
-    }
+  &::before {
+    background: linear-gradient(
+      90deg,
+      var(--text-primary) 5%,
+      transparent 5%,
+      transparent 95%,
+      var(--text-primary) 95%
+    );
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
   
-    &::after {
-      background: linear-gradient(
-        90deg,
-        var(--text-primary) 5%,
-        transparent 5%,
-        transparent 95%,
-        var(--text-primary) 95%
-      );
-      bottom: 0;
-      content: "";
-      height: 1px;
-      left: 0;
-      position: absolute;
-      right: 0;
-      width: 100%;
-    }
+  &::after {
+    background: linear-gradient(
+      90deg,
+      var(--text-primary) 5%,
+      transparent 5%,
+      transparent 95%,
+      var(--text-primary) 95%
+    );
+    bottom: 0;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+  }
 
-    &:active {
-      border-style: solid;
-      color: var(--text-secondary);
-    }
+  &:active {
+    border-style: solid;
+    color: var(--text-secondary);
+  }
 }
 
 hr {
-  border: 0;
-  width: 90vw;
-  left: -1.8rem;
-  position: relative;
-  height: 0.1rem;
-  margin: 0;
   background: var(--text-secondary);
+  border: 0;
+  height: 0.1rem;
+  left: -1.8rem;
+  margin: 0;
+  position: relative;
+  width: 90vw;
 }
 
 ui-main-button {
-  width: 50%;
   margin: 3.2rem auto 0;
+  width: 50%;
 }
 
-//EXTRA SMALL DEVICES
+// EXTRA SMALL DEVICES
 @media (max-height: 667px) {
   button {
     margin-bottom: 2.7rem;
@@ -89,14 +90,14 @@ ui-main-button {
   }
 }
 
-//EXTRA NARROW DEVICES
-@media (max-width: 300px) {
+// EXTRA NARROW DEVICES
+@media (max-width: 374px) {
   button {
-    padding: 2.7rem 1rem;
     font-size: 1.2rem;
+    padding: 2.7rem 1rem;
   }
 
   ui-main-button {
-    width: 75%;
+    width: 65%;
   }
 }

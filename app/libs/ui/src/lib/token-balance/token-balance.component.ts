@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { isSmallScreen } from '@crypto-mayhem-frontend/utility/functions';
+import { isSmallScreen, isTablet } from '@crypto-mayhem-frontend/utility/functions';
 
 @Component({
   selector: 'ui-token-balance',
@@ -40,7 +40,7 @@ export class TokenBalanceComponent implements OnInit {
   }
 
   toggleMobile(): void {
-    if (isSmallScreen()) {
+    if (isTablet()) {
       this.isVisible = !this.isVisible;
     }
   }

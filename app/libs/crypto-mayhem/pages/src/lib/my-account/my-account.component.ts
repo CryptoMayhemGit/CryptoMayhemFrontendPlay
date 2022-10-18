@@ -109,7 +109,7 @@ export class MyAccountComponent implements OnInit {
   }
 
   showNfts(): boolean {
-    return (!isMobile() || isTablet()) || this.showPage;
+    return !isMobile() || isTablet() || isFullHD() || isSmallLaptop() || this.showPage;
   }
 
   goToNftPage(header: string): void {
