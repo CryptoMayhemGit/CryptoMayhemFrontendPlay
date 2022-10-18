@@ -21,11 +21,11 @@ id="balance-nav"
                 <li>
                     <p>{{ walletAddress | walletShorter }}</p>
                 </li>
-                <li>
-                    <p routerLink="account" role="link">{{ 'MY_ACCOUNT.TITLE' | transloco }}</p>
+                <li role="link" routerLink="account" >
+                    <p>{{ 'MY_ACCOUNT.TITLE' | transloco }}</p>
                 </li>
-                <li>
-                    <p role="button" (click)="disconnectWallet()">
+                <li role="button" (click)="disconnectWallet()">
+                    <p>
                     {{ "NAVBAR.OPTIONS.DISCONNECT_WALLET" | transloco }}
                     </p>
                 </li>
