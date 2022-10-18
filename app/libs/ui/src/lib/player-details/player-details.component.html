@@ -8,6 +8,6 @@
 </div>
 <div id="edit-name" *ngIf="editName" [@slideUp]>
   <ui-input name="newName" [formControl]="newName"></ui-input>
-  <ui-main-button (btnClick)="save()">{{ 'MY_ACCOUNT.SAVE' | transloco }}</ui-main-button>
+  <ui-main-button [disabled]="!newName.value" (btnClick)="save()">{{ 'MY_ACCOUNT.SAVE' | transloco }}</ui-main-button>
 </div>
 <ng-content></ng-content>

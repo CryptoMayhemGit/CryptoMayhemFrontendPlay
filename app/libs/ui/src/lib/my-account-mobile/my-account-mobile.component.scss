@@ -88,3 +88,15 @@ ui-main-button {
     margin: 2.4rem 0 2.8rem;
   }
 }
+
+//EXTRA NARROW DEVICES
+@media (max-width: 300px) {
+  button {
+    padding: 2.7rem 1rem;
+    font-size: 1.2rem;
+  }
+
+  ui-main-button {
+    width: 75%;
+  }
+}

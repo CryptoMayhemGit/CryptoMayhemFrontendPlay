@@ -107,6 +107,14 @@ ui-main-button {
   width: 50%;
 }
 
+@media screen and (min-width: 768px) {
+  :host {
+    &::before {
+      background: none;
+    }
+  }
+}
+
 @media screen and (max-width: 767px) {
   :host {
     @include background-blur;
@@ -146,5 +154,12 @@ ui-main-button {
     position: absolute;
     top: -1.7rem;
     margin-left: 2rem;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  :host {
+    position: relative;
+    margin-top: 11rem;
   }
 }

@@ -216,6 +216,10 @@ ui-token-balance {
   #logo {
     height: 36px;
     padding-right: 1.6rem;
+
+    img {
+      min-width: 8rem;
+    }
   }
 
   .burger-wrapper {
