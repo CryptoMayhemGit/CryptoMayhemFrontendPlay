@@ -76,7 +76,7 @@ hr {
 
 ui-main-button {
   margin: 3.2rem auto 0;
-  width: 50%;
+  width: auto;
 }
 
 // EXTRA SMALL DEVICES
@@ -95,9 +95,5 @@ ui-main-button {
   button {
     font-size: 1.2rem;
     padding: 2.7rem 1rem;
-  }
-
-  ui-main-button {
-    width: auto;
   }
 }
