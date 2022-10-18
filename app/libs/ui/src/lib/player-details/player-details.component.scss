@@ -68,6 +68,10 @@
   margin: 2px 0 0 auto;
   padding: 1.6rem;
   width: 1.3rem;
+
+  &:hover, &:active {
+    opacity: 0.4;
+  }
 }
 
 #pencil-mobile {
