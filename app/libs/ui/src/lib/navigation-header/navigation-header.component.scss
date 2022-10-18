@@ -206,11 +206,11 @@ ui-token-balance {
   background: var(--component-background-color);
   display: flex;
   height: 7.2rem;
-  justify-content: space-between;
-  padding: 0 3.2rem;
+  justify-content: space-around;
+  padding: 0 0.3rem;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 100;
 
   #logo {
@@ -218,7 +218,7 @@ ui-token-balance {
     padding-right: 1.6rem;
 
     img {
-      min-width: 8rem;
+      min-width: 5rem;
     }
   }
 
@@ -227,7 +227,7 @@ ui-token-balance {
     flex-direction: column;
 
     &:not(:first-of-type) {
-      margin-left: 3rem;
+      margin-left: 1rem;
     }
 
     p {
@@ -236,6 +236,12 @@ ui-token-balance {
       line-height: 1.2rem;
       margin: 0;
       padding: 0.5rem 0 0;
+    }
+
+    @media screen and (min-width: 375px) {
+      &:not(:first-of-type) {
+        margin-left: 3.2rem;
+      }
     }
 
     @media screen and (min-width: 768px) {
@@ -360,6 +366,11 @@ ui-token-balance {
     margin: 0 3.2rem;
   }
 
+  @media screen and (min-width: 375px) {
+    justify-content: space-between;
+    padding: 0 3.2rem;
+  }
+
   @media screen and (min-width: 768px) {
     @include clip-path;
 
@@ -425,18 +436,22 @@ ui-token-balance {
 
 #connect-mobile {
   flex-direction: column;
-  min-width: 15rem;
+  margin-top: 0.5rem;
 
   p {
     color: var(--text-primary);
     font-size: 1rem;
     line-height: 1.2rem;
     margin: 0;
-    padding: 0.5rem 0 0;
+    padding: 1rem 0 0;
   }
 
   &:hover > p {
     color: var(--accent-color);
+  }
+
+  @media screen and (min-width: 375px) {
+    min-width: 15rem;
   }
 
   @media (min-width: 768px) {

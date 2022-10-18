@@ -119,10 +119,10 @@ ui-main-button {
   :host {
     @include background-blur;
 
-    position: absolute;
-    width: calc(100% - 7rem);
     bottom: 0;
     padding: 3.2rem 3.5rem;
+    position: absolute;
+    width: calc(100% - 7rem);
   }
 
   #player-details {
@@ -139,6 +139,7 @@ ui-main-button {
 
   #player-name {
     margin-left: 0;
+
     p {
       margin: auto;
       position: relative;
@@ -151,15 +152,15 @@ ui-main-button {
 
   #pencil-mobile {
     display: inline;
+    margin-left: 2rem;
     position: absolute;
     top: -1.7rem;
-    margin-left: 2rem;
   }
 }
 
 @media screen and (max-width: 768px) and (orientation: landscape) {
   :host {
-    position: relative;
     margin-top: 11rem;
+    position: relative;
   }
 }
