@@ -69,7 +69,7 @@
   padding: 1.6rem;
   width: 1.3rem;
 
-  &:hover, &:active, &.active {
+  &.active {
     cursor: pointer;
     opacity: 0.4;
   }
@@ -167,5 +167,12 @@ ui-main-button {
   :host {
     margin-top: 11rem;
     position: relative;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  .pencil:hover {
+    cursor: pointer;
+    opacity: 0.4;
   }
 }
