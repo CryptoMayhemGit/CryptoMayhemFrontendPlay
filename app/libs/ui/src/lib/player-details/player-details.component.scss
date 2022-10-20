@@ -69,7 +69,8 @@
   padding: 1.6rem;
   width: 1.3rem;
 
-  &:hover, &:active {
+  &:hover, &:active, &.active {
+    cursor: pointer;
     opacity: 0.4;
   }
 }

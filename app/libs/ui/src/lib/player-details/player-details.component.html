@@ -4,7 +4,7 @@
     <p>{{ playerName }} <img id="pencil-mobile" class="pencil" (click)="edit()" src="./assets/images/pencil.svg" alt="edit player name"></p>
     <p>{{ walletNumber }}</p>
   </div>
-  <span id="pencil-wrapper" [tooltip]=" 'MY_ACCOUNT.EDIT_NAME' | transloco " [direction]="'left'"><img class="pencil" (click)="edit()" src="./assets/images/pencil.svg" alt="edit player name"></span>
+  <span id="pencil-wrapper" [tooltip]=" 'MY_ACCOUNT.EDIT_NAME' | transloco " [direction]="'left'"><img class="pencil" [ngClass]="{'active': editName}" (click)="edit()" src="./assets/images/pencil.svg" alt="edit player name"></span>
 </div>
 <div id="edit-name" *ngIf="editName" [@slideUp]>
   <ui-input name="newName" [formControl]="newName"></ui-input>
