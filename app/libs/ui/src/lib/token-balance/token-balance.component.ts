@@ -48,4 +48,11 @@ export class TokenBalanceComponent implements OnInit {
   disconnectWallet() {
     this.disconnect.emit();
   }
+
+  redirectToBsc(walletAddress: string | null) {
+    window.open(
+      `https://bscscan.com/address/${walletAddress}`,
+      '_blank'
+    );
+  }
 }

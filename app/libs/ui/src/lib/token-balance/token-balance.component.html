@@ -18,7 +18,7 @@ id="balance-nav"
     <div *ngIf="isVisible" class="wrapper" [@inOutAnimation]>
         <ui-submenu id="balance-select">
             <ul>
-                <li>
+                <li role="link" (click)="redirectToBsc(walletAddress)">
                     <p>{{ walletAddress | walletShorter }}</p>
                 </li>
                 <li role="link" routerLink="account" >
