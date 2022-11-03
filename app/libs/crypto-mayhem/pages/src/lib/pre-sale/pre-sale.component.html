@@ -53,12 +53,12 @@
             [placeholder]="'PRESALE.INPUT.WRITE_AMOUNT' | transloco"
             formControlName="amount">
             <p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors['min']">
-                <fa-icon [icon]="circleExclamation"></fa-icon>
+                <img src="./assets/images/error_icon.png">
                 <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MIN' | transloco: {minAmount: '1 USDC'} }}</span>
             </p>
 
             <p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors['max']">
-                <fa-icon [icon]="circleExclamation"></fa-icon>
+                <img src="./assets/images/error_icon.png">
                 <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MAX' | transloco: {maxAmount: maxUsdcToBuy + ' USDC'} }}</span>
             </p>
             <p>{{ 'PRESALE.GET' | transloco }}: {{formGroup.controls['amount'].value / adriaPrice}} ADRIA</p>

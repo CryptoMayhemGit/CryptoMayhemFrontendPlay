@@ -1,0 +1,14 @@
+<div class="wrapper" [ngClass]="{'reverse': reverse}">
+    <div class="border">
+        <picture>
+            <source type="image/webp" srcset="./assets/images/{{image}}.webp">
+            <source type="image/png" srcset="./assets/images/{{image}}.png">
+            <img alt="drone" role="presentation" src="./assets/images/{{image}}.png" />
+        </picture>
+    </div>
+    
+    <div id="description">
+        <h1>{{title}}</h1>
+        <ng-content></ng-content>
+    </div>
+</div>

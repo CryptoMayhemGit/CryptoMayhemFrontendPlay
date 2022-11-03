@@ -1,0 +1,267 @@
+@import "libs/crypto-mayhem/styles/mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3.1rem;
+}
+
+#main-tds {
+  background-image: url("/assets/images/tds_main.webp");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 75vh;
+  max-width: 100%;
+  max-height: 81rem;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 2.4rem;
+    margin-bottom: 4.2rem;
+    text-align: center;
+    line-height: 2.9rem;
+  }
+}
+
+ui-header-faded {
+  margin: 6.2rem 0
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+#welcome {
+  @include background-blur;
+
+  margin-bottom: 6.5rem;
+  padding: 3.2rem 2rem;
+
+  h1 {
+    margin-bottom: 2.4rem;
+  }
+
+  p:last-of-type {
+    margin: 0;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -5.2rem;
+    right: -1rem;
+    width: 14rem;
+    height: 12.2rem;
+    background: url("/assets/images/captain_mobile.png") center no-repeat;
+    z-index: -1;
+  }
+}
+
+#objectives {
+  background-image: url("/assets/images/bugs.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 3.2rem 2rem;
+}
+
+#items-header {
+  padding: 6.2rem 0;
+
+  h1 {
+    font-size: 1.4rem;
+    padding: 0 8rem;
+    text-align: center;
+  }
+}
+
+ui-item-listing:not(:first-child) {
+  margin-bottom: 6.2rem;
+}
+
+#requirements {
+    @include background-blur;
+
+    padding: 3.2rem;
+    display: flex;
+    flex-direction: column;
+
+    p {
+        margin: 6.2rem 0 3.2rem;
+        padding:0;
+        text-align: center;
+    }
+
+    & > div:first-of-type {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .requirements-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        p:first-of-type {
+          margin: 0 0 3.2rem;
+        }
+
+        p:last-of-type {
+          margin: 1.9rem 0 0;
+        }
+    }
+
+    .table {
+        padding-bottom: 1.8rem;
+        position: relative;
+        padding-left: 3.2rem;
+        margin: 0 -3.2rem;
+        overflow-x: auto;
+
+        .table-cell {
+            display: table-cell;
+            vertical-align: middle;
+            padding: 0.8rem;
+            border: 0.01rem solid var(--text-secondary);
+            white-space: nowrap;
+
+            &:last-of-type {
+                border-right: none;
+            }
+        }
+
+        .table-row {
+            display: table-row;
+        }
+
+        .table-header {
+            background: rgb(54 250 248 / 15%);
+            color: var(--accent-secondary);
+            border-top: none;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .table-item-header {
+            border-left: none;
+            color: var(--text-secondary);
+            padding-left: 0;
+        }
+    }
+}
+
+.input-error {
+    display: flex;
+    justify-content: left;
+    margin-top: 2.45rem !important;
+}
+
+ui-main-button {
+    display: flex;
+    align-self: center;
+    font-size: 1.2rem;
+}
+
+.bottom-button {
+  margin-top: 6.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  #main-tds {
+    height: 100vh;
+    top: -8.2rem;
+  }
+
+  #welcome {
+    margin-right: 9.1rem;
+    padding: 3.2rem 20rem 3.2rem 3.2rem;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -2.6rem;
+      right: -17rem;
+      width: 32rem;
+      height: 28.7rem;
+      background: url("/assets/images/captain_big.png") center no-repeat;
+    }
+  }
+
+  #objectives {
+    padding: 6rem 9.2rem;
+  }
+
+  ui-item-listing {
+    margin: auto 9.2rem;
+  }
+
+  #requirements {
+    padding: 3.2rem;
+
+    & > div:first-of-type {
+      justify-content: center;
+
+      & > div:first-of-type {
+          margin-right: 13.8rem;
+      }
+    }
+
+    .table {
+      padding: 0;
+      margin: auto;
+
+      .table-cell {
+        white-space: break-spaces;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1240px){
+
+  #main-tds {
+    h1 {
+      font-size: 4.4rem;
+    }
+  }
+
+  #welcome, #objectives, ui-header-faded, #requirements {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
+  }
+
+  #welcome {
+    max-width: 56.4rem;
+    padding-right: 19.2rem;
+    margin-right: 0;
+    margin-left: -10rem;
+  }
+
+  #objectives, hr {
+    max-width: 129.7rem
+  }
+
+  ui-item-listing {
+    max-width: 112rem;
+  }
+
+  ui-header-faded {
+    max-width: 92.7rem;
+  }
+
+  #requirements {
+    max-width: 75.6rem;
+  }
+}

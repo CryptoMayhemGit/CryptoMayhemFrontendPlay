@@ -238,5 +238,51 @@
             "NO_NFT_MESSAGE": "You don't have any NFTs from the Crypto Mayhem project that you can use as a profile picture.",
             "NO_ITEMS": "No items"
         }
+    },
+    "TDS": {
+        "DOWNLOAD": "PC Download",
+        "OVERVIEW": "Game overview",
+        "WELCOME": {
+            "HEADER": "hello corporal!",
+            "CONTENT_FIRST": "You start the service in the elite ground team Impact Squad. As a tactical unit, you will operate in the enemy's deep hinterland.",
+            "CONTENT_SECOND": "Remember! By serving on the Impact Squad, you can gain a lot or lose everything! So don't ignore the enemy and carry out orders with the utmost care, and you won't miss honors, promotions and awards! Over time, you may get access to the full range of the latest generation of mechs and combat kits, as well as an expanded range of resources."
+        },
+        "OBJECTIVES": {
+            "HEADER": "Your tasks",
+            "CONTENT": "- Clean the surface of the planet from unwanted organic elements in the form of an insectoid living force.<br><br>- Destroy the nests of alien insectoid forms inhabiting the planet.<br><br>- Conduct the rescue of research teams and civilian workers cut off by the actions of hostile organisms.<br><br>- Direct combat operations on the surface of a planet by enabling it to be terraformed and colonized."
+        },
+        "GAME_ITEMS": {
+            "HEADER": "At your disposal will be placed",
+            "MECHS": {
+                "HEADER": "Mechs",
+                "CONTENT": "Take control of the combat mechs and traverse the planet. Use mech-enhancing technologies to increase your chances on missions. Available modules:<br><br>- supporting locomotives,<br><br>- providing combat support,<br><br>- improving defense systems,<br><br>- expanding knowledge about opponents and their places of existence,"
+            },
+            "WEAPONS": {
+                "HEADER": "Weapons",
+                "CONTENT": "Confront alien insectoid forms using a wide arsenal of weapons that will cause a lot of destruction in alien nests.<br><br>Weapon types available: cannon, ray gun, bio throwers, artillery and energy weapons."
+            },
+            "SUPPORT": {
+                "HEADER": "Support kits",
+                "CONTENT": "Use various items, so that you will create a personalized equipment that will support you during the game.<br><br>You can choose from sets:<br><br>- defensive (first aid and repair),<br><br>- offensive (different types of mines),"
+            }
+        },
+        "REQUIREMENTS": {
+            "HEADER": "Requirements",
+            "DEVICE": "Device",
+            "SYSTEM_REQ": "System requirements",
+            "OS": "System",
+            "OS_ABBR": "OS",
+            "OS_TYPE": "System type",
+            "CPU": "Processor",
+            "RAM": "RAM",
+            "GPU": "Graphics",
+            "DIRECTX": "DirectX",
+            "HDD": "Memory",
+            "SOUND": "Sound card",
+            "MIN": "Minimum",
+            "RECOMMENDED": "Recommended",
+            "FREE_SPACE": "available space",
+            "SOUND_COMPATIBILITY": "DirectX compatible sound card"
+        }
     }
 }
