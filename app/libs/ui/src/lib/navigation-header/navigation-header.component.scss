@@ -434,7 +434,7 @@ ui-token-balance {
   }
 }
 
-#connect-mobile {
+.connect-mobile {
   flex-direction: column;
   margin-top: 0.5rem;
 
@@ -456,6 +456,16 @@ ui-token-balance {
 
   @media (min-width: 768px) {
     display: none !important;
+  }
+
+  .avatar {
+    background: url("/assets/images/no_avatar_mobile.svg") no-repeat center center;
+    width: 5.2rem;
+    height: 5.2rem;
+  }
+
+  .avatar:active {
+    background: url("/assets/images/no_avatar_mobile_click.svg") no-repeat center center;
   }
 }
 

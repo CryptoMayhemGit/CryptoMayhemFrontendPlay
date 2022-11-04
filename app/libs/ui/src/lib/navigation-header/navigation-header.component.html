@@ -40,9 +40,12 @@
     >
     <ui-lang-switch></ui-lang-switch>
   </div>
-  <div id="connect-mobile" (click)="connect()">
-    <img src="./assets/images/connect.svg" />
+  <div class="connect-mobile" *ngIf="!(connected$ | async)" (click)="connect()">
+    <img src="./assets/images/connect.svg" alt="connect wallet" />
     <p>{{ "NAVBAR.CONNECT_MOBILE" | transloco }}</p>
+  </div>
+  <div class="connect-mobile" *ngIf="(connected$ | async)" role="link" (click)="goToMyAccount()" >
+    <div class="avatar"></div>
   </div>
 </div>
 <div id="mobile-nav" *ngIf="mobileVisible" [@slideUp]>
