@@ -1,0 +1,49 @@
+:host {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  h1 {
+    align-items: center;
+    color: var(--text-primary);
+    display: flex;
+    font-size: 1.4rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    width: 100%;
+
+    &::before, &::after {
+      content: "";
+      display: flex;
+      height: 0.2rem;
+      position: relative;
+      width: 90%;
+      z-index: 1;
+    }
+
+    &::before {
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgb(242 242 242 / 100%) 100%,
+      );
+      margin-right: 2.8rem;
+    }
+    
+    &::after {
+      background: linear-gradient(
+        90deg,
+        rgb(242 242 242 / 100%) 0%,
+        transparent 100%
+      );
+      margin-left: 2.8rem;
+    }
+  }
+}

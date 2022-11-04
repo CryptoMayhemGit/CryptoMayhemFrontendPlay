@@ -238,5 +238,51 @@
             "NO_NFT_MESSAGE": "Aktualnie nie posiadasz żadnych NFT projektu Crypto Mayhem, które możesz użyć jako zdjęcie profilowe.",
             "NO_ITEMS": "Brak przedmiotów"
         }
+    },
+    "TDS": {
+        "DOWNLOAD": "Pobierz na PC",
+        "OVERVIEW": "Przegląd gry",
+        "WELCOME": {
+            "HEADER": "Witaj kapralu!",
+            "CONTENT_FIRST": "Rozpoczynasz służbę w elitarnej drużynie naziemnej Impact Squad. Jako jednostka taktyczna będziesz prowadzić działania na głębokim zapleczu wroga.",
+            "CONTENT_SECOND": "Pamiętaj! Służąc w drużynie Impact Squad, możesz zyskać wiele albo stracić wszystko! Nie lekceważ więc wroga i wykonuj rozkazy z najwyższą starannością, a nie ominą Cię zaszczyty, awanse i nagrody! Z czasem może otrzymasz nawet dostęp do pełnej palety mechów i zestawów bojowych najnowszej generacji, a także poszerzonej oferty zasobów."
+        },
+        "OBJECTIVES": {
+            "HEADER": "Twoje zadania",
+            "CONTENT": "- Oczyszczaj powierzchnię planety z niepożądanych elementów organicznych w postaci insektoidalnej siły żywej.<br><br>- Niszcz gniazda obcych form insektoidalnych zasiedlających planetę.<br><br>- Prowadź akcje ratunkowe zespołów badawczych i pracowników cywilnych, odciętych przez działania wrogich organizmów<br><br>- Kieruj działaniami bojowymi na powierzchni planety, umożliwiając jej terraformację i kolonizację."
+        },
+        "GAME_ITEMS": {
+            "HEADER": "Do Twojej dyspozycji zostaną oddane",
+            "MECHS": {
+                "HEADER": "Mechy",
+                "CONTENT": "Zasiądź za sterami bojowych mechów i przemierzaj planetę. Użyj technologii podnoszących sprawność mecha, aby zwiększyć swoje szanse podczas misji. Dostępne moduły:<br><br>- wspomagające lokomotorykę,<br><br>- zapewniające wsparcie bojowe,<br><br>- ulepszające systemy obronne,<br><br>- poszerzające wiedzę o przeciwnikach i miejscach ich bytowania,"
+            },
+            "WEAPONS": {
+                "HEADER": "Bronie",
+                "CONTENT": "Zmierz się z obcymi formami insektoidalnymi używając szerokiego arsenału broni, którymi spowodujesz niemałą destrukcję w gniazdach obcych.<br><br>Dostępne typy broni: pociskowa, laserowa, miotacze, artleryjska i energetyczna."
+            },
+            "SUPPORT": {
+                "HEADER": "Zestawy wspomagające",
+                "CONTENT": "Używaj róznych przedmiotów, dzięki czemu stworzysz spersonalizowany ekwipunek, który wesprze Cię w trakcie rozgrywki.<br><br>Do wyboru masz zestawy:<br><br>- defensywne (pierwszej pomocy i naprawcze),<br><br>- ofensywne (miny różnych rodzajów),"
+            }
+        },
+        "REQUIREMENTS": {
+            "HEADER": "Wymagania",
+            "DEVICE": "Urządzenie",
+            "SYSTEM_REQ": "Wymagania systemowe",
+            "OS": "System",
+            "OS_ABBR": "OS",
+            "OS_TYPE": "Typ systemu",
+            "CPU": "Procesor",
+            "RAM": "Pamięć RAM",
+            "GPU": "Karta graficzna",
+            "DIRECTX": "DirectX",
+            "HDD": "Pamięć",
+            "SOUND": "Karta dźwiękowa",
+            "MIN": "Minimum",
+            "RECOMMENDED": "Zalecane",
+            "FREE_SPACE": "wolnego miejsca",
+            "SOUND_COMPATIBILITY": "DirectX kompatybilny z kartą dźwiękową"
+        }
     }
 }

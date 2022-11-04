@@ -33,3 +33,7 @@ export * from './lib/my-account-mobile/my-account-mobile.module';
 export * from './lib/my-account-mobile/my-account-mobile.component';
 export * from './lib/token-balance/token-balance.module';
 export * from './lib/token-balance/token-balance.component';
+export * from './lib/header-faded/header-faded.module';
+export * from './lib/header-faded/header-faded.component';
+export * from './lib/item-listing/item-listing.module';
+export * from './lib/item-listing/item-listing.component';

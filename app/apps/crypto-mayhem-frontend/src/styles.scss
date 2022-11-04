@@ -19,6 +19,7 @@
 :root {
   --primary-color: #c23b1d;
   --accent-color: #00d62e;
+  --accent-secondary: #36FAF8;
   --error-color: #ff4246;
   --component-background-color: #282828;
   --text-primary: #f2f2f2;
@@ -28,6 +29,7 @@
 
 html {
   background: #000 url("/assets/images/kosmos.jpg") no-repeat center center;
+  background-attachment: fixed;
   background-size: cover;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
   font-size: 10px;
@@ -44,6 +46,7 @@ html {
 }
 
 body {
+  color: var(--text-primary);
   font-size: 14px;
   font-size: 1.4rem;
   letter-spacing: 0.04rem;
@@ -77,4 +80,30 @@ img {
   border-top: 5px solid var(--text-primary);
   height: 0;
   width: 0;
+}
+
+.faded-line {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(242 242 242 / 100%) 50%,
+    transparent 100%
+  );
+  border: 0;
+  content: "";
+  display: block;
+  height: 0.1rem;
+  width: 100%;
+}
+
+
+.input-error {
+  color: var(--error-color) !important;
+  font-size: 1.2rem;
+  margin-bottom: 1.6rem;
+  margin-top: 0.8rem;
+
+  img {
+    margin-right: 1rem;
+  }
 }

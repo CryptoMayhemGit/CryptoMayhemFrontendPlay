@@ -5,8 +5,7 @@ import {
   APP_CONFIG,
 } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import {
-  faCaretRight,
-  faCircleExclamation,
+  faCaretRight
 } from '@fortawesome/free-solid-svg-icons';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
 import { map, Observable, of } from 'rxjs';
@@ -31,7 +30,6 @@ export class PreSaleComponent implements OnInit {
   allTokensPerStage$: Observable<number> = of(0);
   adriaPrice = 0;
   caretRight = faCaretRight;
-  circleExclamation = faCircleExclamation;
   presale!: boolean;
   sold = false;
   timeUp = false;
