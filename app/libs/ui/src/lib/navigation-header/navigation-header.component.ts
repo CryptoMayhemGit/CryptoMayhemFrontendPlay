@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
 import { isSmallScreen } from 'libs/utility/functions/src';
 import { Observable, of } from 'rxjs';
@@ -59,7 +60,7 @@ export class NavigationHeaderComponent implements OnInit {
   bnbBalanceOf$: Observable<number> = of(0);
   walletAddress$: Observable<string> = of('');
 
-  constructor(public readonly walletFacade: WalletFacade) {}
+  constructor(public readonly walletFacade: WalletFacade, private router: Router) {}
 
   ngOnInit(): void {
     this.spinner = this.walletFacade.spinner$;
@@ -95,5 +96,9 @@ export class NavigationHeaderComponent implements OnInit {
 
   isSmallScreen(): boolean {
     return isSmallScreen();
+  }
+
+  goToMyAccount() {
+    this.router.navigate(['account']);
   }
 }
