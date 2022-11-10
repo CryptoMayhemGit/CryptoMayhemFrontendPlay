@@ -1,0 +1,14 @@
+<div *ngIf="(show$ | async)" class="{{(type$ | async)}}" [@droneIn]>
+  <span class="close" role="button" (click)="close()"></span>
+  <picture class="drone">
+    <source type="image/webp" srcset="./assets/images/drone_{{(type$ | async)}}.webp">
+    <source type="image/png" srcset="./assets/images/drone_{{(type$ | async)}}.png">
+    <img alt="drone" role="presentation" src="./assets/images/drone_{{(type$ | async)}}.png" />
+  </picture>
+  <div class="header">
+    <img class="icon" alt="icon" role="presentation" src="./assets/images/{{(type$ | async)}}_icon.png" />
+    <h2 *ngIf="title$ | async">{{ title$ | async | transloco }}</h2>
+  </div>
+  <p *ngIf="message$ | async" [innerHtml]="(message$ | async) | transloco"></p>
+  <a *ngIf="(textLink$ | async)?.url" [href]="(textLink$ | async)?.url">{{(textLink$ | async)?.text | transloco}} <span class="arrow-right"></span></a>
+</div>

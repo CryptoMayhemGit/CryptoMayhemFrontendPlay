@@ -36,6 +36,7 @@ html {
   height: auto;
   margin: 0;
   min-height: 100%;
+  overflow-x: hidden;
   overflow-y: scroll;
   padding: 0;
   width: 100%;
@@ -52,6 +53,7 @@ body {
   letter-spacing: 0.04rem;
   line-height: 1.6rem;
   margin: 0;
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -80,6 +82,24 @@ img {
   border-top: 5px solid var(--text-primary);
   height: 0;
   width: 0;
+}
+
+.arrow-left {
+  background: url("/assets/images/arrow_left.svg") no-repeat left;
+  cursor: pointer;
+  padding: 2.4rem;
+}
+
+.arrow-right {
+  background: url("/assets/images/arrow_right.svg") no-repeat right;
+  padding: 1rem;
+}
+
+.close {
+  background: url("/assets/images/close.svg") no-repeat center;
+  height: 13px;
+  padding: 1.6rem;
+  width: 13px;
 }
 
 .faded-line {

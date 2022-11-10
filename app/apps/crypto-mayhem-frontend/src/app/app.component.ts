@@ -5,10 +5,9 @@ import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/faca
 @Component({
   selector: 'crypto-mayhem-app',
   template: `
-    <ui-modal-drone></ui-modal-drone>
+    <ui-notifications></ui-notifications>
     <ui-nav></ui-nav>
     <router-outlet></router-outlet>
-    <ui-notification></ui-notification>
     <ui-wallet-choice
       *ngIf="walletFacade.showWallets$ | async"
     ></ui-wallet-choice>
@@ -17,7 +16,7 @@ import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/faca
 export class AppComponent {
   constructor(
     public walletFacade: WalletFacade,
-    private translocoService: TranslocoService
+    private translocoService: TranslocoService,
   ) {}
 
   ngOnInit() {

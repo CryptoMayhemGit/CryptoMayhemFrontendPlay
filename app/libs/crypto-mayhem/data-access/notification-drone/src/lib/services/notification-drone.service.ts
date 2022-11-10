@@ -1,28 +1,45 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { error, hide, success } from '../state/notification-drone.actions';
+import { error, hide, success, info } from '../state/notification-drone.actions';
+import { url } from '../state/notification-drone.reducer';
 
 import * as NotificationDroneSelectors from '../state/notification-drone.selectors';
 
 @Injectable({ providedIn: 'root' })
-export class NotificationDroneService {
+export class NotificationsService {
   readonly show$ = this.store.select(NotificationDroneSelectors.getShow);
-  readonly error$ = this.store.select(NotificationDroneSelectors.getError);
+  readonly type$ = this.store.select(NotificationDroneSelectors.getType);
   readonly title$ = this.store.select(NotificationDroneSelectors.getTitle);
   readonly message$ = this.store.select(NotificationDroneSelectors.getMessage);
-  readonly btnText$ = this.store.select(NotificationDroneSelectors.getBtnText);
+  readonly textLink$ = this.store.select(NotificationDroneSelectors.getTextLink);
+  readonly TIMEOUT = 5000;
+  private timeout: any;
 
   constructor(private readonly store: Store) {}
 
-  public error(title: string, message?: string, btnText?: string): void {
-    this.store.dispatch(error({ title, message, btnText }));
+  public error(title: string, message?: string, textLink?: url, autoclose?: boolean,): void {
+    this.store.dispatch(error({ title, message, textLink }));
+    if(autoclose) this.close();
   }
 
-  public success(title: string, message?: string, btnText?: string): void {
-    this.store.dispatch(success({ title, message, btnText }));
+  public info(title: string, message?: string, textLink?: url, autoclose?: boolean,): void {
+    this.store.dispatch(info({ title, message, textLink }));
+    if(autoclose) this.close();
+  }
+
+  public success(title: string, message?: string, textLink?: url, autoclose?: boolean): void {
+    this.store.dispatch(success({ title, message, textLink }));
+    if(autoclose) this.close();
+  }
+
+  private close(): void {
+    this.timeout = setTimeout(() => {
+      this.hide();
+    }, this.TIMEOUT);
   }
 
   public hide(): void {
     this.store.dispatch(hide());
+    this.timeout.clearTimeout();
   }
 }
