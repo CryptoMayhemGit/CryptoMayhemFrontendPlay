@@ -31,8 +31,8 @@ import {
   AdriaVestingContractFactory,
   UsdcTokenContractFactory,
 } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model';
-import { NotificationDroneService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 import { isMobile } from 'libs/utility/functions/src';
+import { NotificationsService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 
 const ACCOUNTS_CHANGED = 'accountsChanged';
 const CHAIN_CHANGED = 'chainChanged';
@@ -45,7 +45,7 @@ export class WalletService {
   constructor(
     private readonly httpClient: HttpClient,
     private store: Store,
-    private readonly notificationDroneService: NotificationDroneService,
+    private readonly notificationsService: NotificationsService,
     @Inject(APP_CONFIG) private readonly appConfig: AppConfig
   ) {}
 
@@ -90,15 +90,14 @@ export class WalletService {
   handleChainChangedMetamask = (chainIdHex: string): void => {
     if (typeof chainIdHex === 'undefined') return;
     if (chainIdHex != this.appConfig.chainIdHexBinance) {
-      this.notificationDroneService.error(
+      this.notificationsService.error(
         'NOTIFICATIONS.BAD_NETWORK',
         'NOTIFICATIONS.BAD_NETWORK_MESSAGE',
-        'NOTIFICATIONS.CLOSE'
       );
       this.disconnectWallet();
     } else {
       this.store.dispatch(WalletActions.chainChanged({ chainId: chainIdHex }));
-      this.notificationDroneService.hide();
+      this.notificationsService.hide();
     }
   };
 
@@ -199,10 +198,10 @@ export class WalletService {
             }
           }
         } else {
-          this.notificationDroneService.error(
+          this.notificationsService.error(
             'NOTIFICATIONS.NO_WALLET',
             'NOTIFICATIONS.NO_WALLET_MESSAGE',
-            'NOTIFICATIONS.CLOSE'
+            {url: 'NOTIFICATIONS.NO_WALLET_VIDEO.URL', text: 'NOTIFICATIONS.NO_WALLET_VIDEO.MESSAGE'}
           );
         }
         break;
@@ -279,19 +278,16 @@ export class WalletService {
                   sig.s
                 )
                 .then(() => {
-                  this.notificationDroneService.success(
+                  this.notificationsService.success(
                     'NOTIFICATIONS.TRANSACTION_SUCCESS',
                     'NOTIFICATIONS.THANK_YOU',
-                    'NOTIFICATIONS.CLOSE'
                   );
                   this.store.dispatch(WalletActions.buyAdriaSuccess());
                 })
                 .catch((error) => {
                   this.store.dispatch(WalletActions.transactionSuccess());
-                  this.notificationDroneService.error(
+                  this.notificationsService.error(
                     'NOTIFICATIONS.TRANSACTION_ERROR',
-                    '',
-                    'NOTIFICATIONS.TRY_AGAIN'
                   );
                 });
           })

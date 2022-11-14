@@ -1,23 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { WalletFacade } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
 import { getBrowserLang, TranslocoService } from '@ngneat/transloco';
-import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
 
 @Component({
   selector: 'crypto-mayhem-app',
   template: `
-    <ui-modal-drone></ui-modal-drone>
+    <ui-notifications></ui-notifications>
     <ui-nav></ui-nav>
     <router-outlet></router-outlet>
-    <ui-notification></ui-notification>
     <ui-wallet-choice
       *ngIf="walletFacade.showWallets$ | async"
     ></ui-wallet-choice>
   `,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   constructor(
     public walletFacade: WalletFacade,
-    private translocoService: TranslocoService
+    private translocoService: TranslocoService,
   ) {}
 
   ngOnInit() {

@@ -185,7 +185,11 @@
         "ALL_TOKENS_PURCHASED": "The maximum amount of tokens from this address was purchased.",
         "NOT_ENOUGH_TOKENS_LEFT": "Incorrect investment amount.",
         "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Lack of communication with smart contract.",
-        "WALLET_NOT_AUTHORIZED": "No wallet on whitelist."
+        "WALLET_NOT_AUTHORIZED": "No wallet on whitelist.",
+        "NO_WALLET_VIDEO": {
+            "url": "https://www.youtube.com/watch?reload=9&v=iZXhTcb6LKY",
+            "message": "Watch the video how to set it up"
+        }
     },
     "VALIDATIONS": {
         "VESTING_AMOUNT_MAX": "Max amount you can invest is {{ maxAmount }}",

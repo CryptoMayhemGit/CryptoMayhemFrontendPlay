@@ -123,7 +123,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/crypto-mayhem-frontend"],
       "options": {
-        "jestConfig": "apps/crypto-mayhem-frontend/jest.config.js",
+        "jestConfig": "apps/crypto-mayhem-frontend/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -1,6 +1,4 @@
 export * from './lib/ui.module';
-export * from './lib/notification/notification.module';
-export * from './lib/notification/notification.component';
 export * from './lib/navigation-header/navigation-header.module';
 export * from './lib/navigation-header/navigation-header.component';
 export * from './lib/main-button/main-button.module';
@@ -37,3 +35,5 @@ export * from './lib/header-faded/header-faded.module';
 export * from './lib/header-faded/header-faded.component';
 export * from './lib/item-listing/item-listing.module';
 export * from './lib/item-listing/item-listing.component';
+export * from './lib/notifications/notifications.module';
+export * from './lib/notifications/notifications.component';

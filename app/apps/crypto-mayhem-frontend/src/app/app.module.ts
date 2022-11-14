@@ -7,9 +7,8 @@ import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import {
-  ModalDroneModule,
   NavigationHeaderModule,
-  NotificationModule,
+  NotificationsModule,
   WalletChoiceModule,
 } from '@crypto-mayhem-frontend/ui';
 import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
@@ -35,13 +34,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       logOnly: environment.production, // Restrict extension to log-only mode
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
-    ModalDroneModule,
     WalletChoiceModule,
     NavigationHeaderModule,
-    NotificationModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NotificationsModule
   ],
   providers: [
     // {

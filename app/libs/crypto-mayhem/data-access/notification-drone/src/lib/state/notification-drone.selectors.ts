@@ -11,9 +11,9 @@ export const getShow = createSelector(
   (state) => state.show
 );
 
-export const getError = createSelector(
+export const getType = createSelector(
   selectNotificationDrone,
-  (state) => state?.error
+  (state) => state?.type
 );
 
 export const getTitle = createSelector(
@@ -26,7 +26,7 @@ export const getMessage = createSelector(
   (state) => state?.message
 );
 
-export const getBtnText = createSelector(
+export const getTextLink = createSelector(
   selectNotificationDrone,
-  (state) => state?.btnText
+  (state) => state?.textLink
 );
