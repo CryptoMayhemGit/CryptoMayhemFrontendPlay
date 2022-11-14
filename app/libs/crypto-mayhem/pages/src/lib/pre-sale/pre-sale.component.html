@@ -1,7 +1,7 @@
 <div id="vesting">
     <div id="vesting-wallet">
         <p class="connected" *ngIf="walletConnected$ | async">{{ 'WALLET.CONNECTED' | transloco }}</p>
-        <p class="disconnected" *ngIf="!(walletConnected$ | async)">{{ 'WALLET.DISCONNECTED' | transloco }}</p>
+        <p class="disconnected" *ngIf="(walletConnected$ | async) === false">{{ 'WALLET.DISCONNECTED' | transloco }}</p>
     </div>
 
     <div id="vesting-timer" *ngIf="!presale && (!sold || !timeUp)">
@@ -26,7 +26,7 @@
     </div>
     <div id="vesting-sold" *ngIf="(allTokensPerStage$ | async) && presale && !timeUp && !sold">
         <p>{{ 'PRESALE.PROGRESS' | transloco}}</p>
-        <ui-progress-bar [currentValue]="(tokensSoldPerStage$ | async)" [maxValue]="(allTokensPerStage$ | async)" (complete)="onTokensSold()"></ui-progress-bar>
+        <ui-progress-bar [currentValue]="(tokensSoldPerStage$ | async)!" [maxValue]="(allTokensPerStage$ | async)!" (completeProgress)="onTokensSold()"></ui-progress-bar>
     </div>
     <!-- HIDE WHEN SUCCESS -->
     <div *ngIf="(canBuyMore$ | async) && !sold && !timeUp" id="vesting-info">
@@ -52,12 +52,12 @@
             max="1000"
             [placeholder]="'PRESALE.INPUT.WRITE_AMOUNT' | transloco"
             formControlName="amount">
-            <p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors['min']">
+            <p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors?.['min']">
                 <img src="./assets/images/error_icon.png">
                 <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MIN' | transloco: {minAmount: '1 USDC'} }}</span>
             </p>
 
-            <p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors['max']">
+            <p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors?.['max']">
                 <img src="./assets/images/error_icon.png">
                 <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MAX' | transloco: {maxAmount: maxUsdcToBuy + ' USDC'} }}</span>
             </p>
@@ -66,7 +66,7 @@
         </form>
     </div>
     <!-- SHOW WHEN DISCONNECTED -->
-    <div id="vesting-want-buy" *ngIf="!(walletConnected$ | async) && presale && !sold && !timeUp">
+    <div id="vesting-want-buy" *ngIf="(walletConnected$ | async) === false && presale && !sold && !timeUp">
         <picture>
             <source srcset="./assets/images/friendly_drone.webp">
             <source srcset="./assets/images/presale/friendly_drone.png">
