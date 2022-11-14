@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Inject, Injectable } from '@angular/core';
 import {
   AppConfig,
@@ -148,9 +149,7 @@ export class WalletEffects {
       ofType(WalletActions.connectWalletSuccess),
       mergeMap(() =>
         from(this.walletService.getBalance()).pipe(
-          map((balance: any) => {
-            return WalletActions.getBnbBalance({bnbBalanceOf: balance});
-          })
+          map((balance: any) => WalletActions.getBnbBalance({bnbBalanceOf: balance}))
         )
       )
     )
@@ -160,9 +159,7 @@ export class WalletEffects {
     this.actions$.pipe(
       ofType(WalletActions.buyAdriaSuccess),
       concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
-      map(() => {
-        return WalletActions.transactionSuccess();
-      })
+      map(() => WalletActions.transactionSuccess())
     )
   );
 
@@ -170,9 +167,7 @@ export class WalletEffects {
     this.actions$.pipe(
       ofType(WalletActions.disconnectWallet),
       concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
-      map(() => {
-        return WalletActions.hideSummary();
-      })
+      map(() => WalletActions.hideSummary())
     )
   );
 }

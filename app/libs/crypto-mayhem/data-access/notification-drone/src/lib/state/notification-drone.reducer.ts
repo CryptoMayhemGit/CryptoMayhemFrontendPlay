@@ -4,7 +4,7 @@ import * as NotificationDroneActions from './notification-drone.actions';
 
 export const notificationDroneKey = 'notificationDrone';
 
-export type url = {
+export interface Url {
   url: string;
   text: string;
 }
@@ -14,7 +14,7 @@ export interface NotificationDroneState {
   type: 'error' | 'success' | 'info';
   title: string;
   message?: string | undefined;
-  textLink?: url | undefined;
+  textLink?: Url | undefined;
 }
 
 export const initialState: NotificationDroneState = {

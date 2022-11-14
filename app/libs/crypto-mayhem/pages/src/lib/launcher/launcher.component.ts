@@ -4,7 +4,6 @@ import { Observable, tap } from 'rxjs';
 
 @Component({
   templateUrl: './launcher.component.html',
-  styleUrls: ['./launcher.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LauncherComponent implements OnInit {
