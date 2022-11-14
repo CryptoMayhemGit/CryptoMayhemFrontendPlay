@@ -20,6 +20,6 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.translocoService.setActiveLang(getBrowserLang());
+    this.translocoService.setActiveLang(getBrowserLang() as string);
   }
 }

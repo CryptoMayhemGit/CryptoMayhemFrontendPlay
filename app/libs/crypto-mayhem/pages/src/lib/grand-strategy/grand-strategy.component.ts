@@ -12,7 +12,6 @@ import {
 } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 
 @Component({
-  selector: 'ui-grand-strategy',
   templateUrl: './grand-strategy.component.html',
   styleUrls: ['./grand-strategy.component.scss'],
 })
