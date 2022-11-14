@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "cryptoMayhem",
+            "prefix": "cryptoMayhemApp",
             "style": "camelCase"
           }
         ],
@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "crypto-mayhem",
+            "prefix": "crypto-mayhem-app",
             "style": "kebab-case"
           }
         ]

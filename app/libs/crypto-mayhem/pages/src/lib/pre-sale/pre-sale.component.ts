@@ -1,4 +1,4 @@
-import { Component, Inject,  OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   AppConfig,
@@ -11,14 +11,11 @@ import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/faca
 import { map, Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'ui-pre-sale',
   templateUrl: './pre-sale.component.html',
   styleUrls: ['./pre-sale.component.scss'],
 })
-export class PreSaleComponent implements OnInit {
-  formGroup: FormGroup = new FormGroup({
-    amount: new FormControl(''),
-  });
+export class PreSaleComponent implements OnInit{
+  formGroup!: FormGroup;
   walletConnected$: Observable<boolean> = of(false);
   usdcPerStage$: Observable<string> = of('0.0');
   adriaPerStage$: Observable<number> = of(0.0);
@@ -61,19 +58,8 @@ export class PreSaleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.calcMaxNumberOfAdria();
-  }
-
-  createFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      amount: [
-        '',
-        [
-          Validators.required,
-          Validators.min(1),
-          Validators.max(this.maxUsdcToBuy),
-        ],
-      ],
+    this.formGroup = this.formBuilder.group({
+      amount: new FormControl('', [Validators.required, Validators.min(1), Validators.max(this.maxUsdcToBuy)]),
     });
   }
 
@@ -98,13 +84,10 @@ export class PreSaleComponent implements OnInit {
   calcMaxNumberOfAdria() {
     this.usdcPerStage$
       .pipe(
-        map((numberOfUsdc) => {
-          return this.appConfig.maxNumberOfUsdcPerStage - Number(numberOfUsdc);
-        })
+        map((numberOfUsdc) => this.appConfig.maxNumberOfUsdcPerStage - Number(numberOfUsdc))
       )
       .subscribe((result) => {
         this.maxUsdcToBuy = result;
-        this.formGroup = this.createFormGroup();
       });
   }
 }

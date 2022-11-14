@@ -23,15 +23,15 @@ import {
   ],
 })
 export class ProgressBarComponent implements OnChanges {
-  @Input() maxValue: number | null = 0;
-  @Input() currentValue: number | null = 0;
-  @Output() complete: EventEmitter<boolean> = new EventEmitter();
+  @Input() maxValue = 0;
+  @Input() currentValue = 0;
+  @Output() completeProgress: EventEmitter<boolean> = new EventEmitter();
 
   constructor() {}
 
   ngOnChanges(): void {
     if (this.currentValue === this.maxValue) {
-      this.complete.emit(true);
+      this.completeProgress.emit(true);
     }
   }
 }

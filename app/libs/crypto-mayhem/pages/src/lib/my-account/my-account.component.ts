@@ -7,7 +7,6 @@ import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/faca
 import { Observable, of } from 'rxjs';
 
 @Component({
-  selector: 'crypto-mayhem-frontend-my-account',
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.scss'],
   animations: [

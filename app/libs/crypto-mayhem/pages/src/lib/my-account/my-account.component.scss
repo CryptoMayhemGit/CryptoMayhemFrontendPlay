@@ -246,12 +246,6 @@
   }
 }
 
-.arrow-left {
-  background: url("/assets/images/arrow_left.svg") no-repeat left;
-  cursor: pointer;
-  padding: 2.4rem;
-}
-
 // SMALLER MOBILE HORIZONTAL
 @media screen and (max-width: 767px) and (orientation: landscape) {
   #search {

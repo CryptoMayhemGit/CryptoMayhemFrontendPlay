@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NotificationModule } from './notification/notification.module';
 import { NavigationHeaderModule } from './navigation-header/navigation-header.module';
 import { MainButtonModule } from './main-button/main-button.module';
 import { GameListingModule } from './game-listing/game-listing.module';
@@ -17,11 +16,11 @@ import { MyAccountMobileModule } from './my-account-mobile/my-account-mobile.mod
 import { TokenBalanceModule } from './token-balance/token-balance.module';
 import { HeaderFadedModule } from './header-faded/header-faded.module';
 import { ItemListingModule } from './item-listing/item-listing.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @NgModule({
   imports: [CommonModule],
   exports: [
-    NotificationModule,
     NavigationHeaderModule,
     MainButtonModule,
     GameListingModule,
@@ -38,7 +37,8 @@ import { ItemListingModule } from './item-listing/item-listing.module';
     MyAccountMobileModule,
     TokenBalanceModule,
     HeaderFadedModule,
-    ItemListingModule
+    ItemListingModule,
+    NotificationsModule
   ],
 })
 export class UiModule {}
