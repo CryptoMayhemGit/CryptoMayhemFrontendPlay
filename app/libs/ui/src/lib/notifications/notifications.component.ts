@@ -1,7 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { NotificationsService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
-import { url } from 'libs/crypto-mayhem/data-access/notification-drone/src/lib/state/notification-drone.reducer';
+import { NotificationsService, url } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -52,7 +51,7 @@ export class NotificationsComponent implements OnInit {
     this.type$ = this.notificationsService.type$;
   }
 
-  close() {
+  close(): void {
     this.notificationsService.hide();
   }
 }

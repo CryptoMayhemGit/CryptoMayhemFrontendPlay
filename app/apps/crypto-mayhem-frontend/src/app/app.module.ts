@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import {
   NavigationHeaderModule,
+  NotificationsModule,
   WalletChoiceModule,
 } from '@crypto-mayhem-frontend/ui';
 import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
@@ -18,7 +19,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NotificationsModule } from 'libs/ui/src/lib/notifications/notifications.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,7 +39,7 @@ import { NotificationsModule } from 'libs/ui/src/lib/notifications/notifications
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    NotificationsModule,
+    NotificationsModule
   ],
   providers: [
     // {

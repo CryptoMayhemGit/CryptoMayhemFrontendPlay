@@ -34,22 +34,7 @@
     {
       "files": ["*.ts"],
       "rules": {
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "app",
-            "style": "kebab-case"
-          }
-        ],
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": false,
-            "style": "camelCase"
-          }
-        ],
+
         "@angular-eslint/no-conflicting-lifecycle": "error",
         "@angular-eslint/no-host-metadata-property": "error",
         "@angular-eslint/no-input-rename": "error",
