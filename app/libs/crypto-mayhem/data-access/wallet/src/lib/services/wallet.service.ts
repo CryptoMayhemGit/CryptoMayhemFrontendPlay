@@ -272,7 +272,7 @@ export class WalletService {
           console.log(dataJson);
           const baseData = window.btoa(JSON.stringify(dataJson));
 
-          window.open(`MeyhemLauncher://?data=${baseData}`);
+          window.open(`MayhemLauncher://?data=${baseData}`);
         },
         (error) => {
           console.error(error);
