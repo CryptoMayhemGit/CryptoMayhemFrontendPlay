@@ -265,8 +265,11 @@ export class WalletService {
         const hashedMessage = ethers.utils.hashMessage(data);
         signer.signMessage(ethers.utils.arrayify(hashedMessage))
         .then((signature) => {
-          const dataJson = JSON.parse(data);
-          dataJson.signature = signature;
+          const dataJson = {
+            data,
+            signature
+          }
+          console.log(dataJson);
           const baseData = window.btoa(JSON.stringify(dataJson));
 
           window.open(`MeyhemLauncher://?data=${baseData}`);
