@@ -8,7 +8,7 @@ import { NotificationsService } from '@crypto-mayhem-frontend/crypto-mayhem/data
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { ethers } from 'ethers';
-import { catchError, from, map, mergeMap, of } from 'rxjs';
+import { catchError, from, map, mergeMap, of, tap } from 'rxjs';
 import { WalletService } from '../services/wallet.service';
 
 import * as WalletActions from '../state/wallet.actions';
@@ -27,25 +27,16 @@ export class WalletEffects {
   signMessage$ = createEffect(() =>
     this.actions$.pipe(
       ofType(WalletActions.signMessage),
-      mergeMap(({data}) => from(this.walletService.signMessage(data)).pipe(
-        map((signature) => 
-        {
-          this.store.dispatch(WalletActions.postLauncherAuth({signature, data}));
-          return WalletActions.signMessageSuccess({signature})
-        })
-      ))
+      mergeMap(({data}) => {
+        const signature = this.walletService.signMessage(data);
+        return this.walletService.postLauncherAuth({signature, data}).pipe(
+          tap(_ => {
+            of(WalletActions.postLauncherAuth({signature, data}))
+          }),
+        )
+      })
     )
   );
-
-  postLauncherAuth$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(WalletActions.postLauncherAuth),
-      mergeMap(({signature, data}) => from(this.walletService.postLauncherAuth({signature, data})).pipe(
-        map(() => WalletActions.postLauncherAuthSuccess())
-      ))
-    )
-  );
-
 
   buyPresaleTokens$ = createEffect(() =>
     this.actions$.pipe(

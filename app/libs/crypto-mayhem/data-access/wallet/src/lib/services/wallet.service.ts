@@ -31,7 +31,7 @@ declare global {
 }
 
 import * as WalletActions from '../state/wallet.actions';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { LAUNCHER_AUTH, SALE_TOKEN } from './wallet.endpoints';
 import {
   AppConfig,
@@ -258,14 +258,14 @@ export class WalletService {
     });
   }
 
-  public signMessage(data: string): Observable<string> {
+  public signMessage(data: string): string {
     if(this.provider) {
       const signer = this.provider.getSigner();
       const hashedMessage = ethers.utils.hashMessage(data);
       signer.signMessage(ethers.utils.arrayify(hashedMessage))
       .then((signature) => {
         console.log("sig", signature);
-        return of(signature)
+        return signature
       },
       (error) => {
         console.error(error);
@@ -274,7 +274,7 @@ export class WalletService {
         );
       });
     }
-    return of();
+    return '';
   }
 
   //placeholder, BE not done yet
