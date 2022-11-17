@@ -10,7 +10,7 @@ import {
   setWalletAddress,
   showSpinner,
   showWallets,
-  signMessage,
+  signMessageForLauncher,
 } from '../state/wallet.actions';
 
 import * as WalletSelectors from '../state/wallet.selectors';
@@ -80,6 +80,6 @@ export class WalletFacade {
   }
 
   public signMessage(data: string) {
-    this.store.dispatch(signMessage({ data }));
+    this.store.dispatch(signMessageForLauncher({ data }));
   }
 }

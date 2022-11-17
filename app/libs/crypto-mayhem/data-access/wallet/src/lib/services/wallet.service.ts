@@ -32,7 +32,7 @@ declare global {
 
 import * as WalletActions from '../state/wallet.actions';
 import { Observable } from 'rxjs';
-import { LAUNCHER_AUTH, SALE_TOKEN } from './wallet.endpoints';
+import { SALE_TOKEN } from './wallet.endpoints';
 import {
   AppConfig,
   APP_CONFIG,
@@ -258,29 +258,33 @@ export class WalletService {
     });
   }
 
-  public signMessage(data: string): string {
+  public async signMessageForLauncher(data: string): Promise<void>{
     if(this.provider) {
-      const signer = this.provider.getSigner();
-      const hashedMessage = ethers.utils.hashMessage(data);
-      signer.signMessage(ethers.utils.arrayify(hashedMessage))
-      .then((signature) => {
-        console.log("sig", signature);
-        return signature
-      },
-      (error) => {
+      try{
+        const signer = this.provider.getSigner();
+        const hashedMessage = ethers.utils.hashMessage(data);
+        signer.signMessage(ethers.utils.arrayify(hashedMessage))
+        .then((signature) => {
+          const dataJson = JSON.parse(data);
+          dataJson.signature = signature;
+          const baseData = window.btoa(JSON.stringify(dataJson));
+
+          window.open(`MeyhemLauncher://?data=${baseData}`);
+        },
+        (error) => {
+          console.error(error);
+          this.notificationsService.error(
+            'NOTIFICATIONS.ERROR_OCCURRED',
+          );
+        });
+      }
+      catch(error){
         console.error(error);
         this.notificationsService.error(
           'NOTIFICATIONS.ERROR_OCCURRED',
         );
-      });
+      }
     }
-    return '';
-  }
-
-  //placeholder, BE not done yet
-  public postLauncherAuth(data: SignedMessage): Observable<any> {
-    console.log("postLauncherAuth", data);
-    return this.httpClient.post<SignedMessage>(LAUNCHER_AUTH, data);
   }
 
   public async signWalletTransaction(

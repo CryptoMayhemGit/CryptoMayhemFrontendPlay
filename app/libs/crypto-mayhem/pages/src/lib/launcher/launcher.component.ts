@@ -26,7 +26,7 @@ export class LauncherComponent implements OnInit {
             wallet: account,
             signedDate: Date.now()
           }
-          if(account) { this.signMessage(window.btoa(JSON.stringify(message))) }
+          if(account) { this.signMessage(JSON.stringify(message)) }
         }
       )
     ).subscribe();
