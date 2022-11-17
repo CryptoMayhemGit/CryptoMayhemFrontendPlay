@@ -10,6 +10,7 @@ import {
   setWalletAddress,
   showSpinner,
   showWallets,
+  signMessage,
 } from '../state/wallet.actions';
 
 import * as WalletSelectors from '../state/wallet.selectors';
@@ -76,5 +77,9 @@ export class WalletFacade {
 
   public getBalance() {
     this.walletService.getBalance();
+  }
+
+  public signMessage(data: string) {
+    this.store.dispatch(signMessage({ data }));
   }
 }

@@ -13,6 +13,11 @@ interface SignedWalletWithAmount {
   maxUsdcTokenAmount: number;
 }
 
+interface SignedMessage {
+  signature: string;
+  data: string;
+}
+
 interface ProviderRpcError extends Error {
   message: string;
   code: number;
@@ -26,8 +31,8 @@ declare global {
 }
 
 import * as WalletActions from '../state/wallet.actions';
-import { Observable } from 'rxjs';
-import { SALE_TOKEN } from './wallet.endpoints';
+import { Observable, of } from 'rxjs';
+import { LAUNCHER_AUTH, SALE_TOKEN } from './wallet.endpoints';
 import {
   AppConfig,
   APP_CONFIG,
@@ -251,6 +256,31 @@ export class WalletService {
       wallet,
       usdcTokenAmount,
     });
+  }
+
+  public signMessage(data: string): Observable<string> {
+    if(this.provider) {
+      const signer = this.provider.getSigner();
+      const hashedMessage = ethers.utils.hashMessage(data);
+      signer.signMessage(ethers.utils.arrayify(hashedMessage))
+      .then((signature) => {
+        console.log("sig", signature);
+        return of(signature)
+      },
+      (error) => {
+        console.error(error);
+        this.notificationsService.error(
+          'NOTIFICATIONS.ERROR_OCCURRED',
+        );
+      });
+    }
+    return of();
+  }
+
+  //placeholder, BE not done yet
+  public postLauncherAuth(data: SignedMessage): Observable<any> {
+    console.log("postLauncherAuth", data);
+    return this.httpClient.post<SignedMessage>(LAUNCHER_AUTH, data);
   }
 
   public async signWalletTransaction(

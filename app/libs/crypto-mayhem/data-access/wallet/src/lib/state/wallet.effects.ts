@@ -24,6 +24,29 @@ export class WalletEffects {
     @Inject(APP_CONFIG) private readonly appConfig: AppConfig
   ) {}
 
+  signMessage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(WalletActions.signMessage),
+      mergeMap(({data}) => from(this.walletService.signMessage(data)).pipe(
+        map((signature) => 
+        {
+          this.store.dispatch(WalletActions.postLauncherAuth({signature, data}));
+          return WalletActions.signMessageSuccess({signature})
+        })
+      ))
+    )
+  );
+
+  postLauncherAuth$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(WalletActions.postLauncherAuth),
+      mergeMap(({signature, data}) => from(this.walletService.postLauncherAuth({signature, data})).pipe(
+        map(() => WalletActions.postLauncherAuthSuccess())
+      ))
+    )
+  );
+
+
   buyPresaleTokens$ = createEffect(() =>
     this.actions$.pipe(
       ofType(WalletActions.postSignWalletBeforeBuy),

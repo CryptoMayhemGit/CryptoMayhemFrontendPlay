@@ -41,6 +41,25 @@ export const showWallets = createAction('[Wallet] Show available wallets');
 
 export const hideWallets = createAction('[Wallet] Hide available wallets');
 
+export const signMessage = createAction(
+  '[Wallet] Sign message',
+  props<{ data: string }>()
+);
+
+export const signMessageSuccess = createAction(
+  '[Wallet] Sign message success',
+  props<{ signature: string }>()
+);
+
+export const postLauncherAuth = createAction(
+  '[Wallet] Send signed data to launcher',
+  props<{ signature: string, data: string }>()
+);
+
+export const postLauncherAuthSuccess = createAction(
+  '[Wallet] Send signed data to launcher success'
+);
+
 export const postSignWalletBeforeBuy = createAction(
   '[Wallet] Pre-sale buy',
   props<{ amount: number }>()

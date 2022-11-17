@@ -41,6 +41,6 @@ export class NotificationsService {
 
   public hide(): void {
     this.store.dispatch(hide());
-    this.timeout.clearTimeout();
+    if(this.timeout) { this.timeout.clearTimeout() };
   }
 }
