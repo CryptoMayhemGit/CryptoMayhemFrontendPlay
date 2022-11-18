@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
 import { isSmallScreen } from 'libs/utility/functions/src';
@@ -60,8 +60,19 @@ export class NavigationHeaderComponent implements OnInit {
   bnbBalanceOf$: Observable<number> = of(0);
   walletAddress$: Observable<string> = of('');
 
-  constructor(public readonly walletFacade: WalletFacade, private router: Router) {}
+  constructor(
+    public readonly walletFacade: WalletFacade,
+    private router: Router,
+    private renderer: Renderer2
+  ) {
+    this.renderer.listen('window', 'mouseover', (e: Event) => {
+      const target = e.target as HTMLElement;
 
+      if(!target.closest('.gamesMenu')){
+        this.gamesVisible = false;
+      }
+    });
+  }
   ngOnInit(): void {
     this.spinner = this.walletFacade.spinner$;
     this.connected$ = this.walletFacade.connected$;

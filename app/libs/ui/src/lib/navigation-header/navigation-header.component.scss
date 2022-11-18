@@ -469,6 +469,18 @@ ui-token-balance {
   }
 }
 
+.gamesMenu {
+  display: block !important;
+  padding-top: 3.5rem;
+  position: absolute;
+  padding-top: 3.5rem;
+  width: 100%;
+
+  ui-submenu {
+    margin-top: 0;
+  }
+}
+
 ui-game-listing {
   display: block;
   margin-bottom: 3.2rem;

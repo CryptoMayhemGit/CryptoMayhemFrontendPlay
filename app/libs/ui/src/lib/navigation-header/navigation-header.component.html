@@ -33,14 +33,14 @@
   </ui-token-balance>
   <div id="connect-pc">
     <ui-main-button
-      *ngIf="!(connected$ | async)"
+      *ngIf="(connected$ | async) === false"
       type="fancy"
       (btnClick)="connect()"
       >{{ "NAVBAR.CONNECT" | transloco }}</ui-main-button
     >
     <ui-lang-switch></ui-lang-switch>
   </div>
-  <div class="connect-mobile" *ngIf="!(connected$ | async)" (click)="connect()">
+  <div class="connect-mobile" *ngIf="(connected$ | async) === false" (click)="connect()">
     <img src="./assets/images/connect.svg" alt="connect wallet" />
     <p>{{ "NAVBAR.CONNECT_MOBILE" | transloco }}</p>
   </div>
@@ -75,35 +75,32 @@
     <a class="arrow" (click)="showGames()" *ngIf="isSmallScreen()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
-    <ui-submenu
-      *ngIf="gamesVisible"
-      (mouseenter)="showGames()"
-      (mouseleave)="gamesVisible = false"
-      [@inOutAnimation]
-    >
-      <div id="games-list">
-        <h2>{{ "NAVBAR.GAMES_COLLECTION" | transloco }}</h2>
-        <a
-          (mouseenter)="gsVisible = true; tdsVisible = false"
-          (mouseleave)="gsVisible = false; tdsVisible = false"
-          routerLink="game" role="link"
-          >{{ "GAMES.GS.TITLE" | transloco }}</a
-        >
-        <a
-          (mouseenter)="gsVisible = false; tdsVisible = true"
-          (mouseleave)="gsVisible = false; tdsVisible = false"
-          >{{ "GAMES.TDS.TITLE" | transloco }}</a
-        >
-      </div>
-      <div id="games">
-        <img
-          src="./assets/images/presale.jpg"
-          class="marketing-banner"
-          *ngIf="!tdsVisible && !gsVisible && !isSmallScreen()"
-        />
-        <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
-      </div>
-    </ui-submenu>
+      <div class="gamesMenu" *ngIf="gamesVisible" [@inOutAnimation]>
+        <ui-submenu>
+        <div id="games-list">
+          <h2>{{ "NAVBAR.GAMES_COLLECTION" | transloco }}</h2>
+          <a
+            (mouseenter)="gsVisible = true; tdsVisible = false"
+            (mouseleave)="gsVisible = false; tdsVisible = false"
+            routerLink="game" role="link"
+            >{{ "GAMES.GS.TITLE" | transloco }}</a
+          >
+          <a
+            (mouseenter)="gsVisible = false; tdsVisible = true"
+            (mouseleave)="gsVisible = false; tdsVisible = false"
+            >{{ "GAMES.TDS.TITLE" | transloco }}</a
+          >
+        </div>
+        <div id="games">
+          <img
+            src="./assets/images/presale.jpg"
+            class="marketing-banner"
+            *ngIf="!tdsVisible && !gsVisible && !isSmallScreen()"
+          />
+          <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
+        </div>
+      </ui-submenu>
+    </div>
     <a href="#" class="disabled" (click)="mobileVisible = false">{{
       "NAVBAR.NAV.NFT" | transloco
     }}</a>
