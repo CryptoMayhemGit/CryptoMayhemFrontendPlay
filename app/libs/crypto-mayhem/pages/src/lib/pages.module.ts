@@ -5,6 +5,7 @@ import { MainPageModule } from './main-page/main-page.module';
 import { PreSaleModule } from './pre-sale/pre-sale.module';
 import { MyAccountModule } from './my-account/my-account.module';
 import { TopDownShooterModule } from './top-down-shooter/top-down-shooter.module';
+import { DaoModule } from './dao/dao.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -13,7 +14,8 @@ import { TopDownShooterModule } from './top-down-shooter/top-down-shooter.module
     MainPageModule,
     PreSaleModule,
     MyAccountModule,
-    TopDownShooterModule
+    TopDownShooterModule,
+    DaoModule
   ],
   declarations: [],
 })
