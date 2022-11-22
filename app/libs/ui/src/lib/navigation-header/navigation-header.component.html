@@ -69,13 +69,13 @@
 
 <ng-template #links>
   <nav>
-    <a class="arrow" (mouseenter)="showGames()" *ngIf="!isSmallScreen()">{{
+    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup': gamesVisible, 'games-active': gamesVisible}" (mouseenter)="showGames()" *ngIf="!isSmallScreen()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
-    <a class="arrow" (click)="showGames()" *ngIf="isSmallScreen()">{{
+    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup': gamesVisible}" (click)="showGames()" *ngIf="isSmallScreen()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
-      <div class="gamesMenu" *ngIf="gamesVisible" [@inOutAnimation]>
+      <div class="games-menu" *ngIf="gamesVisible" [@inOutAnimation]>
         <ui-submenu>
         <div id="games-list">
           <h2>{{ "NAVBAR.GAMES_COLLECTION" | transloco }}</h2>
