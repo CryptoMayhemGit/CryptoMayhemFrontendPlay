@@ -262,16 +262,14 @@ export class WalletService {
     if(this.provider) {
       try{
         const signer = this.provider.getSigner();
-        const hashedMessage = ethers.utils.hashMessage(data);
-        signer.signMessage(ethers.utils.arrayify(hashedMessage))
+        signer.signMessage(data)
         .then((signature) => {
-          const dataJson = {
+          const dataJson: SignedMessage = {
             data,
             signature
           }
-          console.log(dataJson);
-          const baseData = window.btoa(JSON.stringify(dataJson));
 
+          const baseData = window.btoa(JSON.stringify(dataJson));
           window.open(`MayhemLauncher://?data=${baseData}`);
         },
         (error) => {
