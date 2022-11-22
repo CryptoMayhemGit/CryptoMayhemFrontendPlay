@@ -24,7 +24,7 @@ export class LauncherComponent implements OnInit {
         (account) => {
           const message = {
             wallet: account,
-            signedDate: Date.now()
+            nonce: Date.now()
           }
           if(account) { this.signMessage(JSON.stringify(message)) }
         }
