@@ -55,8 +55,8 @@ ui-token-balance {
 
   min-height: calc(100vh - 17.1rem);
   overflow: hidden;
-  padding: 13.7rem 2rem 3.4rem;
-  position: fixed;
+  padding: 13.7rem 2rem 40rem;
+  position: absolute;
   top: 0;
   width: calc(100% - 4rem);
   z-index: 10;
@@ -97,7 +97,7 @@ ui-token-balance {
     }
   }
 
-  nav > ui-submenu {
+  nav > .games-menu ui-submenu {
     #games-list {
       display: none;
     }
@@ -310,7 +310,7 @@ ui-token-balance {
 
       &:hover,
       &:hover::after,
-      &.disabled {
+      &.disabled{
         border-top-color: var(--text-secondary);
         color: var(--text-secondary);
       }
@@ -321,6 +321,7 @@ ui-token-balance {
     }
   }
 
+  
   ui-submenu {
     #games-list {
       display: none;
@@ -472,11 +473,16 @@ ui-token-balance {
 .games-menu {
   display: block !important;
   padding-top: 3.5rem;
-  position: absolute;
+  position: relative;
+  padding-top: 3.5rem;
   width: 100%;
 
   ui-submenu {
     margin-top: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
   }
 }
 
@@ -499,7 +505,7 @@ ui-game-listing {
   }
 }
 
-.arrow::after {
+.arrowdown::after {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 5px solid var(--text-primary);
@@ -510,6 +516,23 @@ ui-game-listing {
   position: absolute;
   transition: all 250ms ease-in-out;
   width: 0;
+}
+
+
+.arrowup::after {
+  border-bottom: 5px solid var(--text-secondary);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  content: "";
+  height: 0.7rem;
+  margin-left: 1rem;
+  position: absolute;
+  transition: all 250ms ease-in-out;
+  width: 0;
+}
+
+.games-active {
+  color: var(--text-secondary) !important;
 }
 
 .marketing-banner {

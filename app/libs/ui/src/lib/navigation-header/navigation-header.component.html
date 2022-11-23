@@ -69,10 +69,10 @@
 
 <ng-template #links>
   <nav>
-    <a class="arrow" (mouseenter)="showGames()" *ngIf="!isSmallScreen()">{{
+    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup': gamesVisible, 'games-active': gamesVisible}" (mouseenter)="showGames()" *ngIf="!isSmallScreen()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
-    <a class="arrow" (click)="showGames()" *ngIf="isSmallScreen()">{{
+    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup': gamesVisible}" (click)="showGames()" *ngIf="isSmallScreen()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
       <div class="games-menu" *ngIf="gamesVisible" [@inOutAnimation]>
