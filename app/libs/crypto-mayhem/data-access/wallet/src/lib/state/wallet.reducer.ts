@@ -15,6 +15,7 @@ export interface WalletState {
   adriaPerStage: number;
   canBuyMore: boolean;
   showWallets: boolean;
+  closeWallets: boolean | undefined;
   showSummary: boolean;
   loading: boolean;
   tokensSoldPerStage: number;
@@ -32,6 +33,7 @@ export const initialState: WalletState = {
   adriaPerStage: 0.0,
   canBuyMore: true,
   showWallets: false,
+  closeWallets: true,
   showSummary: false,
   loading: false,
   tokensSoldPerStage: 0,
@@ -92,8 +94,8 @@ export const walletReducer = createReducer(
   ),
   on(WalletActions.showSpinner, (state) => ({ ...state, spinner: true })),
   on(WalletActions.hideSpinner, (state) => ({ ...state, spinner: false })),
-  on(WalletActions.showWallets, (state) => ({ ...state, showWallets: true })),
-  on(WalletActions.hideWallets, (state) => ({ ...state, showWallets: false })),
+  on(WalletActions.showWallets, (state, { close }) => ({ ...state, showWallets: true, closeWallets: close === false ? close : true })),
+  on(WalletActions.hideWallets, (state) => ({ ...state, showWallets: false, closeWallets: true })),
   on(WalletActions.hideSummary, (state) => ({
     ...state,
     showSummary: false,

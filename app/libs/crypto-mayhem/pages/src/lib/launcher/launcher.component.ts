@@ -3,7 +3,7 @@ import { WalletFacade } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/
 import { Observable, tap } from 'rxjs';
 
 @Component({
-  templateUrl: './launcher.component.html',
+  template: ``,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LauncherComponent implements OnInit {
@@ -17,7 +17,7 @@ export class LauncherComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.walletFacade.showWallets();
+    this.walletFacade.showWallets(false);
 
     this.account$.pipe(
       tap(

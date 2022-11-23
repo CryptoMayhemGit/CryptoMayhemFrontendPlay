@@ -1,4 +1,4 @@
-<ui-modal-base (close)="hideWallets()">
+<ui-modal-base (close)="hideWallets()" [showClose]="!!(closeWallets$ | async)">
     <div id="body-header" class="body-header">{{ 'WALLET.POPUP.HEADER' | transloco }}</div>
     <div id="body-wallets" class="body-wallets">
         <div (click)="choiceWallet(walletType.metamask)" type="button" role="button" class="body-wallets_wallet">

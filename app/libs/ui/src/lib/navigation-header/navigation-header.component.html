@@ -75,7 +75,7 @@
     <a class="arrow" (click)="showGames()" *ngIf="isSmallScreen()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
-      <div class="gamesMenu" *ngIf="gamesVisible" [@inOutAnimation]>
+      <div class="games-menu" *ngIf="gamesVisible" [@inOutAnimation]>
         <ui-submenu>
         <div id="games-list">
           <h2>{{ "NAVBAR.GAMES_COLLECTION" | transloco }}</h2>
