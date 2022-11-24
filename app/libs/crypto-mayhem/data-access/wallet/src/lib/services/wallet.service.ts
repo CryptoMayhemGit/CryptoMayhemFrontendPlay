@@ -43,6 +43,7 @@ import {
 } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model';
 import { isMobile } from 'libs/utility/functions/src';
 import { NotificationsService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
+import { Router } from '@angular/router';
 
 const ACCOUNTS_CHANGED = 'accountsChanged';
 const CHAIN_CHANGED = 'chainChanged';
@@ -56,6 +57,7 @@ export class WalletService {
     private readonly httpClient: HttpClient,
     private store: Store,
     private readonly notificationsService: NotificationsService,
+    private router: Router,
     @Inject(APP_CONFIG) private readonly appConfig: AppConfig
   ) {}
 
@@ -270,7 +272,9 @@ export class WalletService {
           }
 
           const baseData = window.btoa(JSON.stringify(dataJson));
+          this.router.navigate(['']);
           window.open(`MayhemLauncher://?data=${baseData}`);
+
         },
         (error) => {
           console.error(error);

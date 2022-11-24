@@ -42,9 +42,8 @@ export class ModalBaseComponent implements OnDestroy, OnChanges {
   constructor(private renderer: Renderer2) {}
 
   ngOnChanges(): void {
-    this.renderer.destroy();
-    
     if (this.showClose) {
+      this.renderer.destroy();
       this.renderer.listen('window', 'click', (e: Event) => {
         const target = e.target as HTMLElement;
   
