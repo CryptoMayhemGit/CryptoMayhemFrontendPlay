@@ -68,7 +68,7 @@ export class NavigationHeaderComponent implements OnInit {
     this.renderer.listen('window', 'mouseover', (e: Event) => {
       const target = e.target as HTMLElement;
 
-      if(!target.closest('.gamesMenu')){
+      if(!target.closest('.games-menu')){
         this.gamesVisible = false;
       }
     });

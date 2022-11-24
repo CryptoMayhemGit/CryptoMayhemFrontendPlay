@@ -72,8 +72,7 @@ ui-token-balance {
       padding: 1.4rem 0;
       text-decoration: none;
 
-      &:hover,
-      &:hover::after,
+      &.active,
       &.disabled {
         border-top-color: var(--text-secondary);
         color: var(--text-secondary);
@@ -474,7 +473,6 @@ ui-token-balance {
   display: block !important;
   padding-top: 3.5rem;
   position: relative;
-  padding-top: 3.5rem;
   width: 100%;
 
   ui-submenu {
