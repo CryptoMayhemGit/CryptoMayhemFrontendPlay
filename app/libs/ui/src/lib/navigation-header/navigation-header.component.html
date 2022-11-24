@@ -72,7 +72,7 @@
     <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup': gamesVisible, 'games-active': gamesVisible}" (mouseenter)="showGames()" *ngIf="!isSmallScreen()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
-    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup': gamesVisible}" (click)="showGames()" *ngIf="isSmallScreen()">{{
+    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup active': gamesVisible}" (click)="showGames()" *ngIf="isSmallScreen()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
       <div class="games-menu" *ngIf="gamesVisible" [@inOutAnimation]>
