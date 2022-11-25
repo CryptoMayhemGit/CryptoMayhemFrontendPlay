@@ -1,7 +1,60 @@
+
+@import 'libs/crypto-mayhem/styles/mixins';
+
 :host {
-    display: flex;
-    flex-direction: column;
-    max-width: 110rem;
-    justify-content: center;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10.4rem auto 0;
+  max-width: 110rem;
+}
+
+#info {
+  display: flex;
+  flex-direction: column;
+  margin: 6.2rem 0;
+  gap: 3.2rem;
+
+  #img {
+    width: 100%;
+    max-width: 56rem;
+    max-height: 44rem;
+  }
+
+  #desc {
+    @include background-blur;
+
+    padding: 3.2rem 2rem;
+    max-width: 47.5rem;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.8rem;
+    line-height: 120%;
+  }
+
+  p {
+    margin: 1.2rem 0;
+    display: inline-block;
+
+    &:first-of-type {
+      margin-top: 2.4rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  :host {
+    margin: 3.2rem auto 0;
+  }
+
+  #info {
+    flex-direction: row-reverse;
+  }
+
+  #desc {
+    max-width: 50%;
+  }
 }

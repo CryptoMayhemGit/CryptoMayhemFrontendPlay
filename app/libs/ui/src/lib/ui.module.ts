@@ -17,6 +17,7 @@ import { TokenBalanceModule } from './token-balance/token-balance.module';
 import { HeaderFadedModule } from './header-faded/header-faded.module';
 import { ItemListingModule } from './item-listing/item-listing.module';
 import { NotificationsModule } from './notifications/notifications.module';
+import { TabNavigatorModule } from './tab-navigator/tab-navigator.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -38,7 +39,8 @@ import { NotificationsModule } from './notifications/notifications.module';
     TokenBalanceModule,
     HeaderFadedModule,
     ItemListingModule,
-    NotificationsModule
+    NotificationsModule,
+    TabNavigatorModule
   ],
 })
 export class UiModule {}
