@@ -12,7 +12,7 @@ pool:
 variables:
 - group: Frontend
 - name: profile
-  value: $[replace(variables['Build.SourceBranchName'], 'develop', 'development')]
+  value: $[replace(variables['Build.SourceBranchName'], 'feature/cmw-462-launcher', 'development')]
 
 steps:
 - task: NodeTool@0
@@ -24,7 +24,7 @@ steps:
     set -e
     npm install -g nx
     npm install
-    npm run build:$(profile)
+    npm run build:development
     echo $(profile)
     tree -L 4 dist/
   displayName: 'npm install and build'
