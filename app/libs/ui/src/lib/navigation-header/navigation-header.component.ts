@@ -112,4 +112,9 @@ export class NavigationHeaderComponent implements OnInit {
   goToMyAccount() {
     this.router.navigate(['account']);
   }
+
+  goToGame(game: string) {
+    this.mobileVisible = false;
+    this.router.navigate([game]);
+  }
 }
