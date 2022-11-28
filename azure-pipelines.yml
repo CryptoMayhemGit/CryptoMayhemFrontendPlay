@@ -12,7 +12,7 @@ pool:
 variables:
 - group: Frontend
 - name: profile
-  value: $[replace(variables['Build.SourceBranchName'], 'feature/cmw-462-launcher', 'development')]
+  value: $[replace(variables['Build.SourceBranchName'], 'develop', 'development')]
 
 steps:
 - task: NodeTool@0
