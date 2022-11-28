@@ -86,6 +86,7 @@
             >{{ "GAMES.GS.TITLE" | transloco }}</a
           >
           <a
+            [routerLink]="['/tds']"
             (mouseenter)="gsVisible = false; tdsVisible = true"
             (mouseleave)="gsVisible = false; tdsVisible = false"
             >{{ "GAMES.TDS.TITLE" | transloco }}</a

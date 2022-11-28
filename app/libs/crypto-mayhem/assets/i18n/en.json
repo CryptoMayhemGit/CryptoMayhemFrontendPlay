@@ -288,5 +288,16 @@
             "FREE_SPACE": "available space",
             "SOUND_COMPATIBILITY": "DirectX compatible sound card"
         }
+    },
+    "EARLY_ACCESS": {
+        "HEADER": "Your extraterrestrial adventure will begin<br>on December 13th!",
+        "INFO": {
+            "TITLE": "Dear Colonizers!",
+            "MESSAGE": "The Crypto Mayhem tech team worked hard through the last months to let you explore outer space. Soon your patience will pay off and you will be granted the Top-Down Shooter early access.<br><br>Prepare yourself for gory fights with alien critters full of highly needed biomass.",
+            "REMINDER": "<strong>Note:</strong> To play Crypto Mayhem Top-Down Shooter you have to be an $ADRIA investor or Crypto Mayhem NFT holder.<br><br>If you are not $ADRIA or Crypto Mayhem NFT holder yet, don’t worry! Soon we will give you an opportunity to become an investor and play the Top-Down Shooter.<br><br>Follow our social media not to miss any updates!"
+        },
+        "INVESTORS": "If you are $ADRIA or Crypto Mayhem NFT holder don’t forget to fill out the Top-Down Shooter beta testers form to <strong>get access to the exclusive testers group</strong>.",
+        "INVESTORS_BUTTON": "Fill out the form",
+        "ADD_TO_CALENDAR": "Add to Google calendar"
     }
 }
