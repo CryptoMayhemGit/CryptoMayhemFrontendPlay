@@ -82,7 +82,7 @@
           <a
             (mouseenter)="gsVisible = true; tdsVisible = false"
             (mouseleave)="gsVisible = false; tdsVisible = false"
-            routerLink="game" role="link"
+            role="link"
             >{{ "GAMES.GS.TITLE" | transloco }}</a
           >
           <a
@@ -125,6 +125,7 @@
 
 <ng-template #gamesMenu>
   <ui-game-listing
+    (click)="goToGame('tds')"
     *ngIf="tdsVisible"
     title="Top-down shooter"
     img="BOSS_CM_SM"
