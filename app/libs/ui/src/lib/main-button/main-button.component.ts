@@ -17,8 +17,8 @@ import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 export class MainButtonComponent {
   @Output() btnClick = new EventEmitter();
   @Input() type: 'primary' | 'secondary' | 'fancy' = 'primary';
-  @Input() disabled: boolean = false;
-  @Input() loading: boolean = false;
+  @Input() disabled = false;
+  @Input() loading = false;
 
   circleNotch = faCircleNotch;
 
