@@ -37,9 +37,22 @@ export const showSpinner = createAction('[Wallet] Show spinner');
 
 export const hideSpinner = createAction('[Wallet] Hide spinner');
 
-export const showWallets = createAction('[Wallet] Show available wallets');
+export const showWallets = createAction(
+  '[Wallet] Show available wallets',
+  props<{ close: boolean | undefined }>()
+  );
 
 export const hideWallets = createAction('[Wallet] Hide available wallets');
+
+export const signMessageForLauncher = createAction(
+  '[Wallet] Sign message for launcher',
+  props<{ data: string }>()
+);
+
+export const signMessageForLauncherSuccess = createAction(
+  '[Wallet] Send signed data to launcher',
+  props<{ data: string }>()
+);
 
 export const postSignWalletBeforeBuy = createAction(
   '[Wallet] Pre-sale buy',

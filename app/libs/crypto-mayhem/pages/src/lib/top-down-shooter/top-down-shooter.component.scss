@@ -6,6 +6,192 @@
   padding-bottom: 3.1rem;
 }
 
+// early access
+#early-access-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 7.4rem 0 0;
+
+  @media screen and (min-width: 768px) {
+    margin: 3.2rem 0;
+  }
+    
+  @media screen and (min-width: 1240px) {
+    flex-direction: row;
+  }
+
+}
+
+.details,
+.about {
+  background-color: var(--component-background-color);
+  color: var(--text-primary);
+  height: auto;
+  max-width: 100%;
+  padding: 3.2rem;
+
+  @media screen and (min-width: 768px) {
+    align-self: center;
+    max-width: 80%;
+    width: 80%;
+  }
+
+  @media screen and (min-width: 1240px) {
+    max-width: 44.3rem;
+    width: 44.3rem;
+  }
+}
+
+.details {
+  @include background-blur;
+  
+  margin-bottom: 3.2rem;
+
+  p {
+    /* stylelint-disable-next-line function-whitespace-after */
+    color: var(--text-primary)60;
+    margin: 0 0 0.8rem;
+    text-align: center;
+  }
+
+  .invest {
+    display: flex;
+    justify-content: space-between;
+
+    &:last-of-type {
+      margin-bottom: 0;
+      margin-top: 0.8rem;
+    }
+
+    p:first-child {
+      color: var(--text-secondary);
+    }
+  }
+
+  hr {
+    margin: 0;
+  }
+
+  .details-timer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.6rem;
+
+    ui-main-button {
+      margin-top: 1.6rem;
+    }
+  }
+
+  .details-header {
+    p {
+      color: var(--text-primary);
+      font-size: 1.8rem;
+      line-height: 2.1rem;
+      margin-bottom: 2.6rem;
+    }
+  }
+
+  .details-want-buy {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    & > div {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin-top: 3.5rem;
+      max-width: 75%;
+
+      p {
+        color: #fff;
+        font-size: 1.2rem;
+        line-height: 2.2rem;
+        margin-bottom: 3.2rem;
+      }
+
+      ui-main-button {
+        display: flex;
+      }
+    }
+  }
+
+
+  @media screen and (min-width: 1240px) {
+    margin-bottom: 0;
+    max-width: 40.3rem;
+    padding: 3.2rem 7.2rem;
+    width: 40.3rem;
+  }
+}
+
+.about {
+  #social-icons{
+    text-align: center;
+
+    a img {
+      width: 60px;
+    }
+  }
+
+  h2 {
+    font-family: Nulshock, Arial, Helvetica, sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 2.15rem;
+    margin: 0;
+  }
+
+  ul {
+    margin: 2.4rem 0 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+
+      &::before {
+        content: "-";
+        margin-right: 0.8rem;
+      }
+    }
+
+    li:not(:last-child) {
+      padding: 0 0 1.4rem;
+    }
+
+    li:last-child {
+      padding: 0;
+    }
+  }
+
+  hr {
+    margin: 3.2rem 0;
+  }
+
+  p {
+    padding-right: 2.5rem;
+
+    &.address {
+      /* stylelint-disable-next-line function-whitespace-after */
+      color: var(--text-secondary);
+    }
+
+    a {
+      color: var(--text-primary);
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// end of early access
+
 #main-tds {
   align-items: center;
   background-image: url("/assets/images/tds_main.webp");
@@ -178,7 +364,8 @@ ui-main-button {
 @media screen and (min-width: 768px) {
   #main-tds {
     height: 100vh;
-    top: -8.2rem;
+
+    // top: -8.2rem; uncomment after early access info will be removed
   }
 
   #welcome {

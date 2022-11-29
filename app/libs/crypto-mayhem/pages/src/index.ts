@@ -5,3 +5,5 @@ export * from './lib/pre-sale/pre-sale.component';
 export * from './lib/my-account/my-account.component';
 export * from './lib/top-down-shooter/top-down-shooter.component';
 export * from './lib/dao/dao.component';
+export * from './lib/top-down-shooter/top-down-shooter.component';
+export * from './lib/launcher/launcher.component';

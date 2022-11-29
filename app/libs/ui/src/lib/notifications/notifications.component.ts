@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { NotificationsService, url } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
+import { NotificationsService, Url } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -35,7 +35,7 @@ import { Observable, of } from 'rxjs';
 export class NotificationsComponent implements OnInit {
   public title$: Observable<string> = of('');
   public message$: Observable<string | undefined> = of('');
-  public textLink$!: Observable<url | undefined>;
+  public textLink$!: Observable<Url | undefined>;
   public show$: Observable<boolean> = of(false);
   public type$: Observable<string> = of('');
 

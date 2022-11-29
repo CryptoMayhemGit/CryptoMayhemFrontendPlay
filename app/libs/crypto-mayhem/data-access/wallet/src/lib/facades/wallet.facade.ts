@@ -10,6 +10,7 @@ import {
   setWalletAddress,
   showSpinner,
   showWallets,
+  signMessageForLauncher,
 } from '../state/wallet.actions';
 
 import * as WalletSelectors from '../state/wallet.selectors';
@@ -18,7 +19,7 @@ import * as WalletSelectors from '../state/wallet.selectors';
 export class WalletFacade {
   readonly spinner$ = this.store.select(WalletSelectors.getSpinnerState);
   readonly showWallets$ = this.store.select(WalletSelectors.getShowWallets);
-
+  readonly closeWallets$ = this.store.select(WalletSelectors.getCloseWallets);
   readonly account$ = this.store.select(WalletSelectors.getAccount);
   readonly chainId$ = this.store.select(WalletSelectors.getChainId);
   readonly connected$ = this.store.select(WalletSelectors.getWalletConnected);
@@ -62,8 +63,8 @@ export class WalletFacade {
     this.walletService.disconnectWallet();
   }
 
-  public showWallets() {
-    this.store.dispatch(showWallets());
+  public showWallets(close?: boolean) {
+    this.store.dispatch(showWallets({ close }));
   }
 
   public hideWallets() {
@@ -76,5 +77,9 @@ export class WalletFacade {
 
   public getBalance() {
     this.walletService.getBalance();
+  }
+
+  public signMessage(data: string) {
+    this.store.dispatch(signMessageForLauncher({ data }));
   }
 }

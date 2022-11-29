@@ -281,7 +281,7 @@
             "RAM": "Pamięć RAM",
             "GPU": "Karta graficzna",
             "DIRECTX": "DirectX",
-            "HDD": "Pamięć",
+            "HDD": "Miejsce na dysku",
             "SOUND": "Karta dźwiękowa",
             "MIN": "Minimum",
             "RECOMMENDED": "Zalecane",
@@ -304,5 +304,16 @@
         "VOTES_WEIGHT": {
             "TITLE": "Waga głosów"
         }
+    },
+    "EARLY_ACCESS": {
+        "HEADER": "Wasza pozaziemska przygoda<br>rozpocznie się 13&nbsp;grudnia!",
+        "INFO": {
+            "TITLE": "Drodzy Kolonizatorzy!",
+            "MESSAGE": "Zespół Crypto Mayhem pracował ciężko przez ostatnie miesiące, by dać Wam możliwość eksploracji kosmosu. Wkrótce Wasza cierpliwość zostanie nagrodzona wczesnym dostępem do warstwy Top-Down Shooter!<br><br>Przygotujcie się na krwawą walkę z kosmicznymi stworami, które posiadają wysoce niezbędną biomasę.",
+            "REMINDER": "<strong>Pamiętaj:</strong> Aby zagrać w Crypto Mayhem Top-Down Shooter trzeba być inwestorem tokena $ADRIA bądź posiadaczem NFT Crypto Mayhem.<br><br>Jeżeli nie posiadasz tokenów $ADRIA, bądź NFT Crypto Mayhem, wkrótce damy Ci możliwość inwestycji w&nbsp;$ADRIA.<br><br>Zaobserwuj nasze social media, by nie ominęła Cię żadna informacja!"
+        },
+        "INVESTORS": "Jeżeli jesteś inwestorem $ADRIA, bądź posiadaczem NFT Crypto Mayhem wypełnij formularz dla beta testerów gry, <strong>by mieć dostęp do ekskluzywnej grupy testerów</strong>.",
+        "INVESTORS_BUTTON": "Wypełnij formularz",
+        "ADD_TO_CALENDAR": "Dodaj do kalendarza Google"
     }
 }
