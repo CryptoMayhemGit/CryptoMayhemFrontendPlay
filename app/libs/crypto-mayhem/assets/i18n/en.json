@@ -281,7 +281,7 @@
             "RAM": "RAM",
             "GPU": "Graphics",
             "DIRECTX": "DirectX",
-            "HDD": "Memory",
+            "HDD": "Disk space",
             "SOUND": "Sound card",
             "MIN": "Minimum",
             "RECOMMENDED": "Recommended",
