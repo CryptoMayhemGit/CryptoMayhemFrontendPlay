@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Inject, Injectable } from '@angular/core';
 import {
   AppConfig,
   APP_CONFIG,
 } from '@crypto-mayhem-frontend/crypto-mayhem/config';
-import { NotificationDroneService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
+import { NotificationsService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { ethers } from 'ethers';
@@ -19,9 +20,18 @@ export class WalletEffects {
     private readonly actions$: Actions,
     private readonly store: Store,
     private readonly walletService: WalletService,
-    private readonly notificationDroneService: NotificationDroneService,
+    private readonly notificationsService: NotificationsService,
     @Inject(APP_CONFIG) private readonly appConfig: AppConfig
   ) {}
+
+  signMessage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(WalletActions.signMessageForLauncher),
+      mergeMap(({data}) => from(this.walletService.signMessageForLauncher(data)).pipe(
+          map(() => WalletActions.signMessageForLauncherSuccess({ data })),
+        ))
+    )
+  );
 
   buyPresaleTokens$ = createEffect(() =>
     this.actions$.pipe(
@@ -38,52 +48,45 @@ export class WalletEffects {
           catchError((error) => {
             switch (error.error.code) {
               case ResponseErrorCodes.TOKEN_ZERO_AMOUNT:
-                this.notificationDroneService.error(
+                this.notificationsService.error(
                   'NOTIFICATIONS.ERROR_OCCURRED',
                   'NOTIFICATIONS.TOKEN_ZERO_AMOUNT',
-                  'NOTIFICATIONS.TRY_AGAIN'
                 );
                 break;
               case ResponseErrorCodes.TOKENS_GREATER_THAN_MAX:
-                this.notificationDroneService.error(
+                this.notificationsService.error(
                   'NOTIFICATIONS.ERROR_OCCURRED',
                   'NOTIFICATIONS.TOKENS_GREATER_THAN_MAX',
-                  'NOTIFICATIONS.TRY_AGAIN'
                 );
                 break;
               case ResponseErrorCodes.WALLET_WRONG_STRUCTURE:
-                this.notificationDroneService.error(
+                this.notificationsService.error(
                   'NOTIFICATIONS.ERROR_OCCURRED',
                   'NOTIFICATIONS.WALLET_WRONG_STRUCTURE',
-                  'NOTIFICATIONS.TRY_AGAIN'
                 );
                 break;
               case ResponseErrorCodes.ALL_TOKENS_PURCHASED:
-                this.notificationDroneService.error(
+                this.notificationsService.error(
                   'NOTIFICATIONS.ERROR_OCCURRED',
                   'NOTIFICATIONS.ALL_TOKENS_PURCHASED',
-                  'NOTIFICATIONS.TRY_AGAIN'
                 );
                 break;
               case ResponseErrorCodes.NOT_ENOUGH_TOKENS_LEFT:
-                this.notificationDroneService.error(
+                this.notificationsService.error(
                   'NOTIFICATIONS.ERROR_OCCURRED',
                   'NOTIFICATIONS.NOT_ENOUGH_TOKENS_LEFT',
-                  'NOTIFICATIONS.TRY_AGAIN'
                 );
                 break;
               case ResponseErrorCodes.CANT_COMMUNICATE_WITH_SMART_CONTRACT:
-                this.notificationDroneService.error(
+                this.notificationsService.error(
                   'NOTIFICATIONS.ERROR_OCCURRED',
                   'NOTIFICATIONS.CANT_COMMUNICATE_WITH_SMART_CONTRACT',
-                  'NOTIFICATIONS.TRY_AGAIN'
                 );
                 break;
               case ResponseErrorCodes.WALLET_NOT_AUTHORIZED:
-                this.notificationDroneService.error(
+                this.notificationsService.error(
                   'NOTIFICATIONS.ERROR_OCCURRED',
                   'NOTIFICATIONS.WALLET_NOT_AUTHORIZED',
-                  'NOTIFICATIONS.TRY_AGAIN'
                 );
                 break;
               default:
@@ -150,13 +153,22 @@ export class WalletEffects {
     )
   );
 
+  getBalance$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(WalletActions.connectWalletSuccess),
+      mergeMap(() =>
+        from(this.walletService.getBalance()).pipe(
+          map((balance: any) => WalletActions.getBnbBalance({bnbBalanceOf: balance}))
+        )
+      )
+    )
+  );
+
   loadingButton$ = createEffect(() =>
     this.actions$.pipe(
       ofType(WalletActions.buyAdriaSuccess),
       concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
-      map(() => {
-        return WalletActions.transactionSuccess();
-      })
+      map(() => WalletActions.transactionSuccess())
     )
   );
 
@@ -164,9 +176,7 @@ export class WalletEffects {
     this.actions$.pipe(
       ofType(WalletActions.disconnectWallet),
       concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
-      map(() => {
-        return WalletActions.hideSummary();
-      })
+      map(() => WalletActions.hideSummary())
     )
   );
 }

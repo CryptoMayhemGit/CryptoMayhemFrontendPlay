@@ -22,7 +22,7 @@
     padding: 0.5rem;
 
     &:hover {
-      outline: 1px solid #f2f2f2;
+      outline: 1px solid var(--text-primary);
     }
 
     &:active {
@@ -49,10 +49,10 @@ hr {
 }
 
 .body-info {
-  color: #f2f2f266;
+  /* stylelint-disable-next-line function-whitespace-after */
+  color: var(--text-secondary);
   font-size: 1.2rem;
   font-weight: 400;
-  line-height: 1.6rem;
   margin-top: 1em;
   padding: 0 1.4rem;
   text-align: center;
@@ -67,7 +67,8 @@ hr {
 
   a {
     color: inherit;
-    color: #f2f2f2cc;
+    /* stylelint-disable-next-line function-whitespace-after */
+    color: var(--text-primary)cc;
     display: flex;
     justify-content: center;
     text-decoration: none;

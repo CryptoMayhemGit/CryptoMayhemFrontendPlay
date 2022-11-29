@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'ui-wallet-choice',
@@ -10,8 +11,11 @@ import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/faca
 })
 export class WalletChoiceComponent {
   caretRight = faCaretRight;
+  closeWallets$: Observable<boolean | undefined> = of(true);
 
-  constructor(private readonly walletFacade: WalletFacade) {}
+  constructor(private readonly walletFacade: WalletFacade) {
+    this.closeWallets$ = this.walletFacade.closeWallets$
+  }
 
   public hideWallets() {
     this.walletFacade.hideWallets();

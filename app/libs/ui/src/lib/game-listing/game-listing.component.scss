@@ -1,11 +1,8 @@
 :host {
-  color: #f2f2f2;
+  color: var(--text-primary);
 }
 
 h1 {
-  font-family: Nulshock, sans-serif;
-  font-size: 1.4rem;
-  font-weight: 700;
   margin: 0 0 1.4rem;
   text-transform: uppercase;
   width: 50%;

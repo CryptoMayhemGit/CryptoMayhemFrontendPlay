@@ -1,0 +1,83 @@
+@import "libs/crypto-mayhem/styles/mixins";
+
+:host {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+input {
+  /* stylelint-disable-next-line function-whitespace-after */
+  background-color: transparent;
+  border: 1px solid var(--text-secondary);
+  color: var(--text-primary);
+  flex-grow: 1;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 1.3rem;
+  min-height: 1.4rem;
+  padding: 1.3rem 1.5rem;
+  transition: opacity 0.3s ease-out;
+
+
+  &.ng-invalid.ng-touched {
+    border-color: var(--error-color);
+
+    &:focus {
+      border-color: var(--error-color);
+    }
+  }
+
+  &:focus,
+  &:hover {
+    border: 1px solid var(--text-primary);
+    outline: none;
+  }
+
+  &.search-icon {
+    background: url("/assets/images/search_icon.svg") no-repeat scroll 13px 13px;
+  }
+
+  &.search-padding {
+    padding-left: 4.2rem;
+  }
+}
+
+fa-icon {
+  color: var(--button-secondary);
+  cursor: pointer;
+  font-size: 2rem;
+  opacity: 1;
+  padding: 1rem;
+  position: absolute;
+  top: 0.2rem;
+
+  &.icon-right {
+    right: 1.5rem;
+  }
+}
+
+.icon-left {
+  background: url("/assets/images/arrow_left.svg") no-repeat scroll 13px 13px;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 2rem;
+  left: 0;
+  opacity: 1;
+  padding: 2rem;
+  position: absolute;
+}
+
+
+/* Hide number controls in input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  appearance: textfield;
+}
+
+  

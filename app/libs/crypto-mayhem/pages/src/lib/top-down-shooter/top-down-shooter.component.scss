@@ -1,0 +1,452 @@
+@import "libs/crypto-mayhem/styles/mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3.1rem;
+}
+
+// early access
+#early-access-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 7.4rem 0 0;
+
+  @media screen and (min-width: 768px) {
+    margin: 3.2rem 0;
+  }
+    
+  @media screen and (min-width: 1240px) {
+    flex-direction: row;
+  }
+
+}
+
+.details,
+.about {
+  background-color: var(--component-background-color);
+  color: var(--text-primary);
+  height: auto;
+  max-width: 100%;
+  padding: 3.2rem;
+
+  @media screen and (min-width: 768px) {
+    align-self: center;
+    max-width: 80%;
+    width: 80%;
+  }
+
+  @media screen and (min-width: 1240px) {
+    max-width: 44.3rem;
+    width: 44.3rem;
+  }
+}
+
+.details {
+  @include background-blur;
+  
+  margin-bottom: 3.2rem;
+
+  p {
+    /* stylelint-disable-next-line function-whitespace-after */
+    color: var(--text-primary)60;
+    margin: 0 0 0.8rem;
+    text-align: center;
+  }
+
+  .invest {
+    display: flex;
+    justify-content: space-between;
+
+    &:last-of-type {
+      margin-bottom: 0;
+      margin-top: 0.8rem;
+    }
+
+    p:first-child {
+      color: var(--text-secondary);
+    }
+  }
+
+  hr {
+    margin: 0;
+  }
+
+  .details-timer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.6rem;
+
+    ui-main-button {
+      margin-top: 1.6rem;
+    }
+  }
+
+  .details-header {
+    p {
+      color: var(--text-primary);
+      font-size: 1.8rem;
+      line-height: 2.1rem;
+      margin-bottom: 2.6rem;
+    }
+  }
+
+  .details-want-buy {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    & > div {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin-top: 3.5rem;
+      max-width: 75%;
+
+      p {
+        color: #fff;
+        font-size: 1.2rem;
+        line-height: 2.2rem;
+        margin-bottom: 3.2rem;
+      }
+
+      ui-main-button {
+        display: flex;
+      }
+    }
+  }
+
+
+  @media screen and (min-width: 1240px) {
+    margin-bottom: 0;
+    max-width: 40.3rem;
+    padding: 3.2rem 7.2rem;
+    width: 40.3rem;
+  }
+}
+
+.about {
+  #social-icons{
+    text-align: center;
+    a img {
+      width: 60px;
+    }
+  }
+
+  h2 {
+    font-family: Nulshock, Arial, Helvetica, sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 2.15rem;
+    margin: 0;
+  }
+
+  ul {
+    margin: 2.4rem 0 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+
+      &::before {
+        content: "-";
+        margin-right: 0.8rem;
+      }
+    }
+
+    li:not(:last-child) {
+      padding: 0 0 1.4rem;
+    }
+
+    li:last-child {
+      padding: 0;
+    }
+  }
+
+  hr {
+    margin: 3.2rem 0;
+  }
+
+  p {
+    padding-right: 2.5rem;
+
+    &.address {
+      /* stylelint-disable-next-line function-whitespace-after */
+      color: var(--text-secondary);
+    }
+
+    a {
+      color: var(--text-primary);
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// end of early access
+
+#main-tds {
+  align-items: center;
+  background-image: url("/assets/images/tds_main.webp");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  justify-content: center;
+  max-height: 81rem;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  width: 100vw;
+
+  h1 {
+    font-size: 2.4rem;
+    line-height: 2.9rem;
+    margin-bottom: 4.2rem;
+    text-align: center;
+  }
+}
+
+ui-header-faded {
+  margin: 6.2rem 0
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+#welcome {
+  @include background-blur;
+
+  margin-bottom: 6.5rem;
+  padding: 3.2rem 2rem;
+
+  h1 {
+    margin-bottom: 2.4rem;
+  }
+
+  p:last-of-type {
+    margin: 0;
+  }
+
+  &::after {
+    background: url("/assets/images/captain_mobile.png") center no-repeat;
+    content: "";
+    height: 12.2rem;
+    position: absolute;
+    right: -1rem;
+    top: -5.2rem;
+    width: 14rem;
+    z-index: -1;
+  }
+}
+
+#objectives {
+  background-image: url("/assets/images/bugs.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 3.2rem 2rem;
+}
+
+#items-header {
+  padding: 6.2rem 0;
+
+  h1 {
+    font-size: 1.4rem;
+    padding: 0 8rem;
+    text-align: center;
+  }
+}
+
+ui-item-listing:not(:first-child) {
+  margin-bottom: 6.2rem;
+}
+
+#requirements {
+  @include background-blur;
+
+  display: flex;
+  flex-direction: column;
+  padding: 3.2rem;
+
+  p {
+    margin: 6.2rem 0 3.2rem;
+    padding:0;
+    text-align: center;
+  }
+
+  & > div:first-of-type {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .requirements-item {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    p:first-of-type {
+      margin: 0 0 3.2rem;
+    }
+
+    p:last-of-type {
+      margin: 1.9rem 0 0;
+    }
+  }
+
+  .table {
+    margin: 0 -3.2rem;
+    overflow-x: auto;
+    padding-bottom: 1.8rem;
+    padding-left: 3.2rem;
+    position: relative;
+
+    .table-cell {
+      border: 0.01rem solid var(--text-secondary);
+      display: table-cell;
+      padding: 0.8rem;
+      vertical-align: middle;
+      white-space: nowrap;
+
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+
+    .table-row {
+      display: table-row;
+    }
+
+    .table-header {
+      background: rgb(54 250 248 / 15%);
+      border-top: none;
+      color: var(--accent-secondary);
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .table-item-header {
+      border-left: none;
+      color: var(--text-secondary);
+      padding-left: 0;
+    }
+  }
+}
+
+.input-error {
+  display: flex;
+  justify-content: left;
+  margin-top: 2.45rem !important;
+}
+
+ui-main-button {
+  align-self: center;
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.bottom-button {
+  margin-top: 6.2rem;
+}
+
+@media screen and (min-width: 768px) {
+  #main-tds {
+    height: 100vh;
+
+    // top: -8.2rem; uncomment after early access info will be removed
+  }
+
+  #welcome {
+    margin-right: 9.1rem;
+    padding: 3.2rem 20rem 3.2rem 3.2rem;
+    position: relative;
+
+    &::after {
+      background: url("/assets/images/captain_big.png") center no-repeat;
+      content: "";
+      height: 28.7rem;
+      position: absolute;
+      right: -17rem;
+      top: -2.6rem;
+      width: 32rem;
+    }
+  }
+
+  #objectives {
+    padding: 6rem 9.2rem;
+  }
+
+  ui-item-listing {
+    margin: auto 9.2rem;
+  }
+
+  #requirements {
+    padding: 3.2rem;
+
+    & > div:first-of-type {
+      justify-content: center;
+
+      & > div:first-of-type {
+        margin-right: 13.8rem;
+      }
+    }
+
+    .table {
+      margin: auto;
+      padding: 0;
+
+      .table-cell {
+        white-space: break-spaces;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1240px){
+  #main-tds {
+    h1 {
+      font-size: 4.4rem;
+    }
+  }
+
+  #welcome, #objectives, ui-header-faded, #requirements {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+  }
+
+  #welcome {
+    margin-left: -10rem;
+    margin-right: 0;
+    max-width: 56.4rem;
+    padding-right: 19.2rem;
+  }
+
+  #objectives, hr {
+    max-width: 129.7rem
+  }
+
+  ui-item-listing {
+    max-width: 112rem;
+  }
+
+  ui-header-faded {
+    max-width: 92.7rem;
+  }
+
+  #requirements {
+    max-width: 75.6rem;
+  }
+}

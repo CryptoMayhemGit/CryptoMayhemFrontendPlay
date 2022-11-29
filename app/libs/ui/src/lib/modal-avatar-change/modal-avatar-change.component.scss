@@ -1,0 +1,85 @@
+.modal {
+  padding: 1.6rem 2.2rem;
+
+  p {
+    font-weight: 600;
+    margin: 0 0 2.4rem;
+    text-align: center;
+  }
+
+  #menu {
+    margin-top: 2.4rem;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 0 0 -1.4rem;
+      padding: 0;
+
+      li {
+        cursor: pointer;
+        font-size: 1.2rem;
+        list-style-type: none;
+        padding: 1rem;
+        position: relative;
+
+        &:hover {
+          color: var(--text-secondary);
+        }
+
+        &.active {
+          &::after {
+            background: var(--text-primary);
+            background: linear-gradient(
+              90deg,
+              transparent 0%,
+              rgb(242 242 242 / 100%) 50%,
+              transparent 100%
+            );
+            bottom: 0;
+            content: "";
+            height: 0.2rem;
+            left: 0;
+            position: absolute;
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  #nfts {
+    margin-top: 2.4rem;
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1.2rem;
+      margin-top: 10rem;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.4rem;
+      font-weight: 400;
+      padding: 0 0 0.6rem;
+      text-align: center;
+
+      &.with-line {
+        border: 1px solid var(--text-secondary);
+        border-width: 0 0 0.01rem;
+        font-size: 1.2rem;
+        text-align: left;
+        text-transform: uppercase;
+      }
+
+      &:not(.with-line) {
+        padding: 0 6rem;
+      }
+    }
+
+    & > div {
+      height: auto;
+      min-height: 60rem;
+    }
+  }
+}

@@ -1,73 +1,147 @@
-<div *ngIf="spinner | async"> TESTOWY SPINNER</div>
+<div *ngIf="spinner | async"></div>
 <div id="nav">
-    <div>
-        <a id="logo" routerLink=""><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"></a>
-        <div class="burger-wrapper"  (click)="mobileVisible = !mobileVisible; tdsVisible = false; gsVisible = false;">
-            <div class="burger-menu" [ngClass]="{'closed': !mobileVisible, 'open': mobileVisible}"></div>
-            <p>{{ 'MENU' | transloco }}</p>
-        </div>
-        <div class="burger-wrapper" routerLink="presale" routerLinkActive="active">
-            <div class="adria-token"></div>
-            <p>{{ 'BUY' | transloco }}</p>
-        </div>
-        <ng-template [ngTemplateOutlet]="links"></ng-template>
+  <div>
+    <a id="logo" routerLink=""
+      ><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"
+    /></a>
+    <div
+      class="burger-wrapper"
+      (click)="
+        mobileVisible = !mobileVisible; tdsVisible = false; gsVisible = false
+      "
+    >
+      <div
+        class="burger-menu"
+        [ngClass]="{ closed: !mobileVisible, open: mobileVisible }"
+      ></div>
+      <p>{{ "MENU" | transloco }}</p>
     </div>
-    <div id="connect-pc">
-        <ui-main-button *ngIf="!(connected$ | async)" type="fancy" (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
-        <ui-main-button *ngIf="connected$ | async" type="fancy" (btnClick)="disconnect()">{{'NAVBAR.DISCONNECT' | transloco}}</ui-main-button>
-        <ui-lang-switch></ui-lang-switch>
+    <div class="burger-wrapper" routerLink="presale" routerLinkActive="active">
+      <div class="adria-token"></div>
+      <p>{{ "BUY" | transloco }}</p>
     </div>
-    <div id="connect-mobile" (click)="connect()" >
-        <img src="./assets/images/connect.svg">
-        <p>{{'NAVBAR.CONNECT_MOBILE' | transloco}}</p>
-    </div>
+    <ng-template [ngTemplateOutlet]="links"></ng-template>
+  </div>
+  <div *ngIf="connected$ | async" id="avatar">
+    <img alt="avatar" src="./assets/images/avatar_empty.svg" />
+  </div>
+  <ui-token-balance 
+    *ngIf="connected$ | async"
+    [bnbBalance]="bnbBalanceOf$ | async"
+    [walletAddress]="walletAddress$ | async"
+    (disconnect)="disconnect()">
+  </ui-token-balance>
+  <div id="connect-pc">
+    <ui-main-button
+      *ngIf="(connected$ | async) === false"
+      type="fancy"
+      (btnClick)="connect()"
+      >{{ "NAVBAR.CONNECT" | transloco }}</ui-main-button
+    >
+    <ui-lang-switch></ui-lang-switch>
+  </div>
+  <div class="connect-mobile" *ngIf="(connected$ | async) === false" (click)="connect()">
+    <img src="./assets/images/connect.svg" alt="connect wallet" />
+    <p>{{ "NAVBAR.CONNECT_MOBILE" | transloco }}</p>
+  </div>
+  <div class="connect-mobile" *ngIf="(connected$ | async)" role="link" (click)="goToMyAccount()" >
+    <div class="avatar"></div>
+  </div>
 </div>
-<div id="mobile-nav" *ngIf="mobileVisible"  [@slideUp]>
-    <div>
-        <ng-template [ngTemplateOutlet]="links"></ng-template>
+<div id="mobile-nav" *ngIf="mobileVisible" [@slideUp]>
+  <div>
+    <ng-template [ngTemplateOutlet]="links"></ng-template>
+  </div>
+  <div id="tablet-marketing">
+    <ui-lang-switch></ui-lang-switch>
+    <img
+      class="marketing-banner"
+      *ngIf="!gamesVisible"
+      src="./assets/images/presale.jpg"
+    />
+    <div id="mobile-submenu" *ngIf="gamesVisible">
+      <ui-submenu>
+        <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
+      </ui-submenu>
     </div>
-    <div id="tablet-marketing">
-        <ui-lang-switch></ui-lang-switch>
-        <img class="marketing-banner" *ngIf="!gamesVisible" src="./assets/images/presale.jpg" />
-        <div id="mobile-submenu" *ngIf="gamesVisible">
-            <ui-submenu>
-                <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
-            </ui-submenu>
-        </div>
-    </div>
+  </div>
 </div>
 
 <ng-template #links>
-    <nav>
-        <a class="arrow" (mouseenter)="showGames()" *ngIf="!isSmallScreen()">{{'NAVBAR.NAV.GAMES' | transloco}}</a>
-        <a class="arrow" (click)="showGames()" *ngIf="isSmallScreen()">{{'NAVBAR.NAV.GAMES' | transloco}}</a>
-        <ui-submenu *ngIf="gamesVisible" (mouseenter)="showGames()" (mouseleave)="gamesVisible = false" [@inOutAnimation]>
-            <div id="games-list">
-                <h2>{{'NAVBAR.GAMES_COLLECTION' | transloco}}</h2>
-                <a  (mouseenter)="gsVisible = true; tdsVisible = false" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.GS.TITLE' | transloco}}</a>
-                <a  (mouseenter)="gsVisible = false; tdsVisible = true" (mouseleave)="gsVisible = false; tdsVisible = false">{{'GAMES.TDS.TITLE' | transloco}}</a>
-            </div>
-            <div id="games">
-                <img src="./assets/images/presale.jpg" class="marketing-banner" *ngIf="!tdsVisible && !gsVisible && !isSmallScreen()" />
-                <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
-            </div>
-        </ui-submenu>
-        <a href="#" class="disabled" (click)="mobileVisible = false">{{'NAVBAR.NAV.NFT' | transloco}}</a>
-        <a href="#" class="disabled" (click)="mobileVisible = false">{{'NAVBAR.NAV.STAKING' | transloco}}</a>
-        <a href="#" class="disabled" (click)="mobileVisible = false">{{'NAVBAR.NAV.VESTING' | transloco}}</a>
-        <a href="#" class="disabled" (click)="mobileVisible = false">{{'NAVBAR.NAV.NEWS' | transloco}}</a>
-        <a  routerLink="presale" routerLinkActive="active" (click)="mobileVisible = false">{{'NAVBAR.NAV.PRESALE' | transloco}}</a>
-    </nav>
+  <nav>
+    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup': gamesVisible, 'games-active': gamesVisible}" (mouseenter)="showGames()" *ngIf="!isSmallScreen()">{{
+      "NAVBAR.NAV.GAMES" | transloco
+    }}</a>
+    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup active': gamesVisible}" (click)="showGames()" *ngIf="isSmallScreen()">{{
+      "NAVBAR.NAV.GAMES" | transloco
+    }}</a>
+      <div class="games-menu" *ngIf="gamesVisible" [@inOutAnimation]>
+        <ui-submenu>
+        <div id="games-list">
+          <h2>{{ "NAVBAR.GAMES_COLLECTION" | transloco }}</h2>
+          <a
+            (mouseenter)="gsVisible = true; tdsVisible = false"
+            (mouseleave)="gsVisible = false; tdsVisible = false"
+            role="link"
+            >{{ "GAMES.GS.TITLE" | transloco }}</a
+          >
+          <a
+            [routerLink]="['/tds']"
+            (mouseenter)="gsVisible = false; tdsVisible = true"
+            (mouseleave)="gsVisible = false; tdsVisible = false"
+            >{{ "GAMES.TDS.TITLE" | transloco }}</a
+          >
+        </div>
+        <div id="games">
+          <img
+            src="./assets/images/presale.jpg"
+            class="marketing-banner"
+            *ngIf="!tdsVisible && !gsVisible && !isSmallScreen()"
+          />
+          <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
+        </div>
+      </ui-submenu>
+    </div>
+    <a href="#" class="disabled" (click)="mobileVisible = false">{{
+      "NAVBAR.NAV.NFT" | transloco
+    }}</a>
+    <a href="#" class="disabled" (click)="mobileVisible = false">{{
+      "NAVBAR.NAV.STAKING" | transloco
+    }}</a>
+    <a href="#" class="disabled" (click)="mobileVisible = false">{{
+      "NAVBAR.NAV.VESTING" | transloco
+    }}</a>
+    <a href="#" class="disabled" (click)="mobileVisible = false">{{
+      "NAVBAR.NAV.NEWS" | transloco
+    }}</a>
+    <a
+      routerLink="presale"
+      routerLinkActive="active"
+      (click)="mobileVisible = false"
+      >{{ "NAVBAR.NAV.PRESALE" | transloco }}</a
+    >
+  </nav>
 </ng-template>
 
 <ng-template #gamesMenu>
-    <ui-game-listing  *ngIf="tdsVisible" title="Top-down shooter" img="BOSS_CM_SM" color="#309F8B">
-        <p>{{'GAMES.TDS.DESCRIPTION' | transloco}}</p>
-        <p>{{'GAMES.TDS.CTA' | transloco}}</p>
-    </ui-game-listing>
+  <ui-game-listing
+    (click)="goToGame('tds')"
+    *ngIf="tdsVisible"
+    title="Top-down shooter"
+    img="BOSS_CM_SM"
+    color="#309F8B"
+  >
+    <p>{{ "GAMES.TDS.DESCRIPTION" | transloco }}</p>
+    <p>{{ "GAMES.TDS.CTA" | transloco }}</p>
+  </ui-game-listing>
 
-    <ui-game-listing *ngIf="gsVisible" title="Grand Strategy" img="planeta" color="#0B3F90">
-        <p>{{'GAMES.GS.DESCRIPTION' | transloco}}</p>
-        <p>{{'GAMES.GS.CTA' | transloco}}</p>
-    </ui-game-listing>
+  <ui-game-listing
+    *ngIf="gsVisible"
+    title="Grand Strategy"
+    img="planeta"
+    color="#0B3F90"
+  >
+    <p>{{ "GAMES.GS.DESCRIPTION" | transloco }}</p>
+    <p>{{ "GAMES.GS.CTA" | transloco }}</p>
+  </ui-game-listing>
 </ng-template>

@@ -10,6 +10,7 @@ import {
   setWalletAddress,
   showSpinner,
   showWallets,
+  signMessageForLauncher,
 } from '../state/wallet.actions';
 
 import * as WalletSelectors from '../state/wallet.selectors';
@@ -18,7 +19,7 @@ import * as WalletSelectors from '../state/wallet.selectors';
 export class WalletFacade {
   readonly spinner$ = this.store.select(WalletSelectors.getSpinnerState);
   readonly showWallets$ = this.store.select(WalletSelectors.getShowWallets);
-
+  readonly closeWallets$ = this.store.select(WalletSelectors.getCloseWallets);
   readonly account$ = this.store.select(WalletSelectors.getAccount);
   readonly chainId$ = this.store.select(WalletSelectors.getChainId);
   readonly connected$ = this.store.select(WalletSelectors.getWalletConnected);
@@ -32,6 +33,9 @@ export class WalletFacade {
   );
   readonly allTokensPerStage$ = this.store.select(
     WalletSelectors.getAllTokensPerStage
+  );
+  readonly bnbBalanceOf$ = this.store.select(
+    WalletSelectors.bnbBalanceOf
   );
 
   constructor(
@@ -55,12 +59,12 @@ export class WalletFacade {
     this.walletService.connectWallet(walletType);
   }
 
-  public disconnectWalletAccount(walletType: WalletType) {
+  public disconnectWalletAccount() {
     this.walletService.disconnectWallet();
   }
 
-  public showWallets() {
-    this.store.dispatch(showWallets());
+  public showWallets(close?: boolean) {
+    this.store.dispatch(showWallets({ close }));
   }
 
   public hideWallets() {
@@ -69,5 +73,13 @@ export class WalletFacade {
 
   public buyPreSaleTokens(amount: number) {
     this.store.dispatch(postSignWalletBeforeBuy({ amount }));
+  }
+
+  public getBalance() {
+    this.walletService.getBalance();
+  }
+
+  public signMessage(data: string) {
+    this.store.dispatch(signMessageForLauncher({ data }));
   }
 }

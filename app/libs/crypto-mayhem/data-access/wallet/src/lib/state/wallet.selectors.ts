@@ -16,6 +16,11 @@ export const getShowWallets = createSelector(
   (state) => state.showWallets
 );
 
+export const getCloseWallets = createSelector(
+  selectWallet,
+  (state) => state.closeWallets
+);
+
 export const getAccount = createSelector(
   selectWallet,
   (state) => state.account
@@ -69,4 +74,9 @@ export const getTokensSoldPerStage = createSelector(
 export const getAllTokensPerStage = createSelector(
   selectWallet,
   (state) => state.maxAdriaTokenAmount
+);
+
+export const bnbBalanceOf = createSelector(
+  selectWallet,
+  (state) => state.bnbBalanceOf
 );

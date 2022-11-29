@@ -37,9 +37,22 @@ export const showSpinner = createAction('[Wallet] Show spinner');
 
 export const hideSpinner = createAction('[Wallet] Hide spinner');
 
-export const showWallets = createAction('[Wallet] Show available wallets');
+export const showWallets = createAction(
+  '[Wallet] Show available wallets',
+  props<{ close: boolean | undefined }>()
+  );
 
 export const hideWallets = createAction('[Wallet] Hide available wallets');
+
+export const signMessageForLauncher = createAction(
+  '[Wallet] Sign message for launcher',
+  props<{ data: string }>()
+);
+
+export const signMessageForLauncherSuccess = createAction(
+  '[Wallet] Send signed data to launcher',
+  props<{ data: string }>()
+);
 
 export const postSignWalletBeforeBuy = createAction(
   '[Wallet] Pre-sale buy',
@@ -81,4 +94,9 @@ export const transaction = createAction('[Wallet] Start transaction buy Adria');
 
 export const transactionSuccess = createAction(
   '[Wallet] Start transaction buy Adria success'
+);
+
+export const getBnbBalance = createAction(
+  '[Wallet] Get balance of BNB',
+  props<{ bnbBalanceOf: number}>()
 );

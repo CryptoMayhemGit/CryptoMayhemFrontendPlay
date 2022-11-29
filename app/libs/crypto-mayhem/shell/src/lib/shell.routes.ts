@@ -1,9 +1,5 @@
 import { Routes } from '@angular/router';
-import {
-  MainPageComponent,
-  PreSaleComponent,
-} from '@crypto-mayhem-frontend/ui';
-import { GrandStrategyComponent } from 'libs/ui/src/lib/grand-strategy/grand-strategy.component';
+import { LauncherComponent, MainPageComponent, MyAccountComponent, PreSaleComponent, TopDownShooterComponent } from '@crypto-mayhem-frontend/crypto-mayhem/pages';
 import { LanguageGuard } from './guards/language.guard';
 
 export const cryptoMayhemShellRoutes: Routes = [
@@ -15,6 +11,9 @@ export const cryptoMayhemShellRoutes: Routes = [
       { path: '', component: MainPageComponent, pathMatch: 'full' },
       { path: 'presale', component: PreSaleComponent, pathMatch: 'full' },
       //{ path: 'game', component: GrandStrategyComponent, pathMatch: 'full' },
+      { path: 'account', component: MyAccountComponent, pathMatch: 'full' },
+      { path: 'tds', component: TopDownShooterComponent, pathMatch: 'full' },
+      { path: 'launcher', component: LauncherComponent, pathMatch: 'full' },
     ],
   },
   { path: '**', component: MainPageComponent },

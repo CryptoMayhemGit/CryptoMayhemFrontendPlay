@@ -1,0 +1,11 @@
+<ui-player-details id="player" [(playerName)]="playerName"  (editAvatarChange)="goToNft('MY_ACCOUNT.AVATAR.SET_AVATAR')">
+    <ui-token-balance
+    [bnbBalance]="bnbBalanceOf$ | async"
+    [walletAddress]="walletAddress$ | async"
+    (disconnect)="disconnect()"
+    ></ui-token-balance>
+    <button (click)="goToNft('MY_ACCOUNT.NFT_LIST')">{{ 'MY_ACCOUNT.GO_TO_NFT' | transloco}}</button>
+    <hr>
+    <ui-main-button class="logout" type="secondary" *ngIf="!walletConnected" (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
+    <ui-main-button class="logout" type="secondary" *ngIf="walletConnected" (btnClick)="disconnect()">{{'NAVBAR.DISCONNECT' | transloco}}</ui-main-button>
+</ui-player-details>

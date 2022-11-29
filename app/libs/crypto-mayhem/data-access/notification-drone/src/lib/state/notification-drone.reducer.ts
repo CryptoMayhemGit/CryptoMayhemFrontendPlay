@@ -4,42 +4,55 @@ import * as NotificationDroneActions from './notification-drone.actions';
 
 export const notificationDroneKey = 'notificationDrone';
 
+export interface Url {
+  url: string;
+  text: string;
+}
+
 export interface NotificationDroneState {
   show: boolean;
-  error: boolean;
+  type: 'error' | 'success' | 'info';
   title: string;
   message?: string | undefined;
-  btnText?: string | undefined;
+  textLink?: Url | undefined;
 }
 
 export const initialState: NotificationDroneState = {
   show: false,
-  error: false,
+  type: 'info',
   title: '',
   message: undefined,
-  btnText: undefined,
+  textLink: undefined,
 };
 
 export const notificationDroneReducer = createReducer(
   initialState,
   on(
     NotificationDroneActions.success,
-    (state, { title, message, btnText }) => ({
+    (state, { title, message, textLink }) => ({
       ...state,
-      error: false,
+      type: 'success',
       show: true,
       title: title,
       message: message,
-      btnText: btnText,
+      textLink: textLink,
     })
   ),
-  on(NotificationDroneActions.error, (state, { title, message, btnText }) => ({
+  on(NotificationDroneActions.error, (state, { title, message, textLink }) => ({
     ...state,
-    error: true,
+    type: 'error',
     show: true,
     title: title,
     message: message,
-    btnText: btnText,
+    textLink: textLink,
+  })),
+  on(NotificationDroneActions.info, (state, { title, message, textLink }) => ({
+    ...state,
+    type: 'info',
+    show: true,
+    title: title,
+    message: message,
+    textLink: textLink,
   })),
   on(NotificationDroneActions.hide, (state) => ({
     ...state,

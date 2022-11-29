@@ -3,13 +3,14 @@
 }
 
 #wrapper {
-  border: 1px solid #f2f2f266;
+  /* stylelint-disable-next-line function-whitespace-after */
+  border: 1px solid var(--text-secondary);
   overflow: hidden;
   padding: 0.5rem;
 }
 
 #bar {
-  background-color: #f2f2f2;
+  background-color: var(--text-primary);
   height: 0.7rem;
 }
 

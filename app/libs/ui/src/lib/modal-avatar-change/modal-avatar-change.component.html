@@ -1,0 +1,103 @@
+<ui-modal-base
+  *ngIf="show"
+  [show]="show"
+  #modal
+  width="65.7rem"
+  (close)="close()"
+>
+  <div class="modal">
+    <p>{{ "MY_ACCOUNT.AVATAR.SET_AVATAR" | transloco }}</p>
+    <ui-input
+      type="text"
+      inputFunction="search"
+      [iconLeft]="searchIcon"
+      [placeholder]="'MY_ACCOUNT.SEARCH' | transloco"
+      name="search"
+      [formControl]="search"
+    ></ui-input>
+    <div id="menu">
+      <ul>
+        <li
+          tabindex="1"
+          id="menu-recommended"
+          role="link"
+          (click)="setSection('recommended')"
+          [ngClass]="{ active: section === 'recommended' }"
+        >
+          {{ "MY_ACCOUNT.RECOMMENDED" | transloco }}
+        </li>
+        <li
+          tabindex="2"
+          id="menu-avatars"
+          role="link"
+          (click)="setSection('avatars')"
+          [ngClass]="{ active: section === 'avatars' }"
+        >
+          {{ "MY_ACCOUNT.AVATARS" | transloco }}
+        </li>
+        <li
+          tabindex="3"
+          id="menu-workers"
+          role="link"
+          (click)="setSection('workers')"
+          [ngClass]="{ active: section === 'workers' }"
+        >
+          {{ "MY_ACCOUNT.WORKERS" | transloco }}
+        </li>
+        <li
+          tabindex="4"
+          id="menu-items"
+          role="link"
+          (click)="setSection('items')"
+          [ngClass]="{ active: section === 'items' }"
+        >
+          {{ "MY_ACCOUNT.ITEMS" | transloco }}
+        </li>
+        <li
+          tabindex="6"
+          id="menu-weapons"
+          role="link"
+          (click)="setSection('weapons')"
+          [ngClass]="{ active: section === 'weapons' }"
+        >
+          {{ "MY_ACCOUNT.WEAPONS" | transloco }}
+        </li>
+        <li
+          tabindex="7"
+          id="menu-mechs"
+          role="link"
+          (click)="setSection('mechs')"
+          [ngClass]="{ active: section === 'mechs' }"
+        >
+          {{ "MY_ACCOUNT.MECHS" | transloco }}
+        </li>
+        <li
+          tabindex="8"
+          id="menu-drones"
+          role="link"
+          (click)="setSection('drones')"
+          [ngClass]="{ active: section === 'drones' }"
+        >
+          {{ "MY_ACCOUNT.DRONES" | transloco }}
+        </li>
+      </ul>
+    </div>
+    <div id="nfts">
+      <div *ngIf="!(search.valueChanges | async) && section === 'recommended'">
+        <p class="with-line">
+          {{ "MY_ACCOUNT.AVATAR.RECOMMENDED" | transloco }}
+        </p>
+      </div>
+      <div *ngIf="search.valueChanges | async">
+        <p class="with-line"></p>
+
+        <h1>{{ "MY_ACCOUNT.AVATAR.NO_NFT" | transloco }}</h1>
+        <p>{{ "MY_ACCOUNT.AVATAR.NO_NFT_MESSAGE" | transloco }}</p>
+      </div>
+      <div *ngIf="section && section !== 'recommended'">
+        <p class="with-line"></p>
+        <h1>{{ "MY_ACCOUNT.AVATAR.NO_ITEMS" | transloco }}</h1>
+      </div>
+    </div>
+  </div>
+</ui-modal-base>

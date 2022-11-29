@@ -3,6 +3,7 @@
     "ENGLISH": "English",
     "MENU": "Menu",
     "BUY": "Kup",
+    "MILLION_ABBREVIATION": " mln",
 
     "WELCOME": {
         "TITLE": "Cześć! 👋",
@@ -27,7 +28,7 @@
     
     "NAVBAR": {
         "CONNECT": "Połącz portfel",
-        "DISCONNECT": "Rozłącz",
+        "DISCONNECT": "Rozłącz portfel",
         "CONNECT_MOBILE": "Połącz",
         "GAMES_COLLECTION": "Kolekcja gier",
         
@@ -38,6 +39,10 @@
             "VESTING": "Vesting",
             "NEWS": "Aktualności",
             "PRESALE": "Przedsprzedaż"
+        },
+        "OPTIONS": {
+            "MY_ACCOUNT": "Moje konto",
+            "DISCONNECT_WALLET": "Odłącz portfel"
         }
     },
     "NOTIFICATION": {
@@ -180,7 +185,11 @@
         "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
         "NOT_ENOUGH_TOKENS_LEFT": "Błędna kwota inwestycji",
         "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji ze Smart Contractem",
-        "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście"
+        "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście",
+        "NO_WALLET_VIDEO": {
+            "url": "https://www.youtube.com/watch?reload=9&v=iZXhTcb6LKY",
+            "message": "Obejrzyj video jak go założyć"
+        }
     },
     "VALIDATIONS": {
         "VESTING_AMOUNT_MAX": "Możesz zainwestować maks. {{ maxAmount }}",
@@ -193,5 +202,102 @@
     "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
     "NOT_ENOUGH_TOKENS_LEFT": " Błędna kwota inwestycji",
     "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji z Smart Contractem",
-    "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście"
+    "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście",
+
+    "MY_ACCOUNT": {
+        "NFT_LIST": "Lista moich NFT",
+        "TITLE": "Moje konto",
+        "LOOT": "Łupy",
+        "MY_NFT": "Moje NFT",
+        "RECOMMENDED": "Polecane",
+        "AVATARS": "Avatary",
+        "WORKERS": "Robotnicy",
+        "ITEMS": "Przedmioty",
+        "LANDS": "Landy",
+        "WEAPONS": "Bronie",
+        "MECHS": "Mechy",
+        "DRONES": "Drony",
+        "NO_LOOT": "Brak łupów",
+        "NO_AVATARS": "Brak avatarów",
+        "NO_WORKERS": "Brak robotników",
+        "NO_ITEMS": "Brak przedmiotów",
+        "NO_LANDS": "Brak landów",
+        "NO_WEAPONS": "Brak broni",
+        "NO_MECHS": "Brak mechów",
+        "NO_DRONES": "Brak dronów",
+        "NO_NFT": "Nie znaleziono szukanego nft",
+        "MY_SALES": "Moje oferty sprzedaży",
+        "MY_BUYING": "Moje oferty zakupu",
+        "SELECTED_CATEGORY": "Wybrana kategoria",
+        "SAVE": "Zapisz",
+        "EDIT_NAME": "Edytuj nazwę",
+        "COMING_SOON": "Dostęp wkrótce",
+        "SHARE_NFT": "Pochwal się swoimi NFT",
+        "SEARCH": "Szukaj moich NFT",
+        "GO_TO_NFT": "Przejdź do swoich NFT",
+        "AVATAR" : {
+            "SET_AVATAR": "Ustaw profilowe NFT",
+            "RECOMMENDED": "Polecane dla ciebie",
+            "NO_NFT": "Brak NFT",
+            "NO_NFT_MESSAGE": "Aktualnie nie posiadasz żadnych NFT projektu Crypto Mayhem, które możesz użyć jako zdjęcie profilowe.",
+            "NO_ITEMS": "Brak przedmiotów"
+        }
+    },
+    "TDS": {
+        "DOWNLOAD": "Pobierz na PC",
+        "OVERVIEW": "Przegląd gry",
+        "WELCOME": {
+            "HEADER": "Witaj kapralu!",
+            "CONTENT_FIRST": "Rozpoczynasz służbę w elitarnej drużynie naziemnej Impact Squad. Jako jednostka taktyczna będziesz prowadzić działania na głębokim zapleczu wroga.",
+            "CONTENT_SECOND": "Pamiętaj! Służąc w drużynie Impact Squad, możesz zyskać wiele albo stracić wszystko! Nie lekceważ więc wroga i wykonuj rozkazy z najwyższą starannością, a nie ominą Cię zaszczyty, awanse i nagrody! Z czasem może otrzymasz nawet dostęp do pełnej palety mechów i zestawów bojowych najnowszej generacji, a także poszerzonej oferty zasobów."
+        },
+        "OBJECTIVES": {
+            "HEADER": "Twoje zadania",
+            "CONTENT": "- Oczyszczaj powierzchnię planety z niepożądanych elementów organicznych w postaci insektoidalnej siły żywej.<br><br>- Niszcz gniazda obcych form insektoidalnych zasiedlających planetę.<br><br>- Prowadź akcje ratunkowe zespołów badawczych i pracowników cywilnych, odciętych przez działania wrogich organizmów<br><br>- Kieruj działaniami bojowymi na powierzchni planety, umożliwiając jej terraformację i kolonizację."
+        },
+        "GAME_ITEMS": {
+            "HEADER": "Do Twojej dyspozycji zostaną oddane",
+            "MECHS": {
+                "HEADER": "Mechy",
+                "CONTENT": "Zasiądź za sterami bojowych mechów i przemierzaj planetę. Użyj technologii podnoszących sprawność mecha, aby zwiększyć swoje szanse podczas misji. Dostępne moduły:<br><br>- wspomagające lokomotorykę,<br><br>- zapewniające wsparcie bojowe,<br><br>- ulepszające systemy obronne,<br><br>- poszerzające wiedzę o przeciwnikach i miejscach ich bytowania,"
+            },
+            "WEAPONS": {
+                "HEADER": "Bronie",
+                "CONTENT": "Zmierz się z obcymi formami insektoidalnymi używając szerokiego arsenału broni, którymi spowodujesz niemałą destrukcję w gniazdach obcych.<br><br>Dostępne typy broni: pociskowa, laserowa, miotacze, artleryjska i energetyczna."
+            },
+            "SUPPORT": {
+                "HEADER": "Zestawy wspomagające",
+                "CONTENT": "Używaj róznych przedmiotów, dzięki czemu stworzysz spersonalizowany ekwipunek, który wesprze Cię w trakcie rozgrywki.<br><br>Do wyboru masz zestawy:<br><br>- defensywne (pierwszej pomocy i naprawcze),<br><br>- ofensywne (miny różnych rodzajów),"
+            }
+        },
+        "REQUIREMENTS": {
+            "HEADER": "Wymagania",
+            "DEVICE": "Urządzenie",
+            "SYSTEM_REQ": "Wymagania systemowe",
+            "OS": "System",
+            "OS_ABBR": "OS",
+            "OS_TYPE": "Typ systemu",
+            "CPU": "Procesor",
+            "RAM": "Pamięć RAM",
+            "GPU": "Karta graficzna",
+            "DIRECTX": "DirectX",
+            "HDD": "Pamięć",
+            "SOUND": "Karta dźwiękowa",
+            "MIN": "Minimum",
+            "RECOMMENDED": "Zalecane",
+            "FREE_SPACE": "wolnego miejsca",
+            "SOUND_COMPATIBILITY": "DirectX kompatybilny z kartą dźwiękową"
+        }
+    },
+    "EARLY_ACCESS": {
+        "HEADER": "Wasza pozaziemska przygoda<br>rozpocznie się 13&nbsp;grudnia!",
+        "INFO": {
+            "TITLE": "Drodzy Kolonizatorzy!",
+            "MESSAGE": "Zespół Crypto Mayhem pracował ciężko przez ostatnie miesiące, by dać Wam możliwość eksploracji kosmosu. Wkrótce Wasza cierpliwość zostanie nagrodzona wczesnym dostępem do warstwy Top-Down Shooter!<br><br>Przygotujcie się na krwawą walkę z kosmicznymi stworami, które posiadają wysoce niezbędną biomasę.",
+            "REMINDER": "<strong>Pamiętaj:</strong> Aby zagrać w Crypto Mayhem Top-Down Shooter trzeba być inwestorem tokena $ADRIA bądź posiadaczem NFT Crypto Mayhem.<br><br>Jeżeli nie posiadasz tokenów $ADRIA, bądź NFT Crypto Mayhem, wkrótce damy Ci możliwość inwestycji w&nbsp;$ADRIA.<br><br>Zaobserwuj nasze social media, by nie ominęła Cię żadna informacja!"
+        },
+        "INVESTORS": "Jeżeli jesteś inwestorem $ADRIA, bądź posiadaczem NFT Crypto Mayhem wypełnij formularz dla beta testerów gry, <strong>by mieć dostęp do ekskluzywnej grupy testerów</strong>.",
+        "INVESTORS_BUTTON": "Wypełnij formularz",
+        "ADD_TO_CALENDAR": "Dodaj do kalendarza Google"
+    }
 }

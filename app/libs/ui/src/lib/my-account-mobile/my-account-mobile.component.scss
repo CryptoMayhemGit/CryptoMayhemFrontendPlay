@@ -1,0 +1,99 @@
+:host {
+  color: white;
+  display: block;
+}
+
+ui-token-balance {
+  justify-content: center;
+  margin: 2.4rem 0 5.8rem;
+}
+
+button {
+  background: var(--component-background-color);
+  border-color: var(--text-primary);
+  border-style: solid;
+  border-width: 0 1px;
+  box-shadow: 0 4px 24px rgb(0 0 0 / 60%);
+  color: var(--text-primary);
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 5.7rem;
+  padding: 2.7rem 5.5rem;
+  position: relative;
+  text-transform: uppercase;
+  white-space: nowrap;
+ 
+  &::before {
+    background: linear-gradient(
+      90deg,
+      var(--text-primary) 5%,
+      transparent 5%,
+      transparent 95%,
+      var(--text-primary) 95%
+    );
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+  
+  &::after {
+    background: linear-gradient(
+      90deg,
+      var(--text-primary) 5%,
+      transparent 5%,
+      transparent 95%,
+      var(--text-primary) 95%
+    );
+    bottom: 0;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    width: 100%;
+  }
+
+  &:active {
+    border-style: solid;
+    color: var(--text-secondary);
+  }
+}
+
+hr {
+  background: var(--text-secondary);
+  border: 0;
+  height: 0.1rem;
+  left: -1.8rem;
+  margin: 0;
+  position: relative;
+  width: 90vw;
+}
+
+ui-main-button {
+  margin: 3.2rem auto 0;
+  width: auto;
+}
+
+// EXTRA SMALL DEVICES
+@media (max-height: 667px) {
+  button {
+    margin-bottom: 2.7rem;
+  }
+
+  ui-token-balance {
+    margin: 2.4rem 0 2.8rem;
+  }
+}
+
+// EXTRA NARROW DEVICES
+@media (max-width: 374px) {
+  button {
+    font-size: 1.2rem;
+    padding: 2.7rem 1rem;
+  }
+}

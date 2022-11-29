@@ -7,8 +7,6 @@ import {
 } from '@angular/core';
 
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
-import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
-import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'ui-main-button',
@@ -19,8 +17,8 @@ import { Observable, of } from 'rxjs';
 export class MainButtonComponent {
   @Output() btnClick = new EventEmitter();
   @Input() type: 'primary' | 'secondary' | 'fancy' = 'primary';
-  @Input() disabled: boolean = false;
-  @Input() loading: boolean = false;
+  @Input() disabled = false;
+  @Input() loading = false;
 
   circleNotch = faCircleNotch;
 

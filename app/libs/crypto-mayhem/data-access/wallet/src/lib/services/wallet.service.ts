@@ -1,8 +1,7 @@
-import { Inject, Injectable, OnDestroy } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Web3Provider, ExternalProvider } from '@ethersproject/providers';
+import { Web3Provider } from '@ethersproject/providers';
 import { providers, ethers } from 'ethers';
-import detectEthereumProvider from '@metamask/detect-provider';
 import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { Store } from '@ngrx/store';
 import WalletConnectProvider from '@walletconnect/web3-provider';
@@ -14,10 +13,21 @@ interface SignedWalletWithAmount {
   maxUsdcTokenAmount: number;
 }
 
+interface SignedMessage {
+  signature: string;
+  data: string;
+}
+
 interface ProviderRpcError extends Error {
   message: string;
   code: number;
   data?: unknown;
+}
+
+declare global {
+  interface Window {
+    ethereum: any;
+  }
 }
 
 import * as WalletActions from '../state/wallet.actions';
@@ -31,8 +41,9 @@ import {
   AdriaVestingContractFactory,
   UsdcTokenContractFactory,
 } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model';
-import { NotificationDroneService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 import { isMobile } from 'libs/utility/functions/src';
+import { NotificationsService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
+import { Router } from '@angular/router';
 
 const ACCOUNTS_CHANGED = 'accountsChanged';
 const CHAIN_CHANGED = 'chainChanged';
@@ -45,11 +56,13 @@ export class WalletService {
   constructor(
     private readonly httpClient: HttpClient,
     private store: Store,
-    private readonly notificationDroneService: NotificationDroneService,
+    private readonly notificationsService: NotificationsService,
+    private router: Router,
     @Inject(APP_CONFIG) private readonly appConfig: AppConfig
   ) {}
 
   private loggingInDevelopMode(where: string, message: any): void {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !this.appConfig.production && console.log(where, message);
   }
 
@@ -89,16 +102,15 @@ export class WalletService {
 
   handleChainChangedMetamask = (chainIdHex: string): void => {
     if (typeof chainIdHex === 'undefined') return;
-    if (chainIdHex != this.appConfig.chainIdHexBinance) {
-      this.notificationDroneService.error(
+    if (chainIdHex !== this.appConfig.chainIdHexBinance) {
+      this.notificationsService.error(
         'NOTIFICATIONS.BAD_NETWORK',
         'NOTIFICATIONS.BAD_NETWORK_MESSAGE',
-        'NOTIFICATIONS.CLOSE'
       );
       this.disconnectWallet();
     } else {
       this.store.dispatch(WalletActions.chainChanged({ chainId: chainIdHex }));
-      this.notificationDroneService.hide();
+      this.notificationsService.hide();
     }
   };
 
@@ -115,7 +127,7 @@ export class WalletService {
     provider.on(DISCONNECT, this.handleDisconnectMetamask);
   }
 
-  private removeMetamaskProviderHooks(provider: any): void {
+  private removeMetamaskProviderHooks(): void {
     (this.provider?.provider as any).removeListener(
       ACCOUNTS_CHANGED,
       this.handleAccountsChangedMetamask
@@ -199,21 +211,23 @@ export class WalletService {
             }
           }
         } else {
-          this.notificationDroneService.error(
+          this.notificationsService.error(
             'NOTIFICATIONS.NO_WALLET',
             'NOTIFICATIONS.NO_WALLET_MESSAGE',
-            'NOTIFICATIONS.CLOSE'
+            {url: 'NOTIFICATIONS.NO_WALLET_VIDEO.URL', text: 'NOTIFICATIONS.NO_WALLET_VIDEO.MESSAGE'}
           );
         }
         break;
       }
       case WalletType.walletConnect: {
-        let provider = new WalletConnectProvider({
+        const provider = new WalletConnectProvider({
           qrcode: true,
           bridge: 'https://polygon.bridge.walletconnect.org',
           chainId: this.appConfig.chainIdNumberBinance,
           rpc: {
+            // eslint-disable-next-line @typescript-eslint/naming-convention
             56: 'https://bsc-dataseed.binance.org/',
+            // eslint-disable-next-line @typescript-eslint/naming-convention
             97: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
           },
         });
@@ -230,7 +244,7 @@ export class WalletService {
   public disconnectWallet(): void {
     if (this.provider) {
       this.provider?.removeAllListeners();
-      this.removeMetamaskProviderHooks(this.provider);
+      this.removeMetamaskProviderHooks();
       this.provider = undefined;
       this.store.dispatch(WalletActions.disconnectWallet());
     }
@@ -244,6 +258,38 @@ export class WalletService {
       wallet,
       usdcTokenAmount,
     });
+  }
+
+  public async signMessageForLauncher(data: string): Promise<void>{
+    if(this.provider) {
+      try{
+        const signer = this.provider.getSigner();
+        signer.signMessage(data)
+        .then((signature) => {
+          const dataJson: SignedMessage = {
+            data,
+            signature
+          }
+
+          const baseData = window.btoa(JSON.stringify(dataJson));
+          this.router.navigate(['']);
+          window.open(`MayhemLauncher://?data=${baseData}`);
+
+        },
+        (error) => {
+          console.error(error);
+          this.notificationsService.error(
+            'NOTIFICATIONS.ERROR_OCCURRED',
+          );
+        });
+      }
+      catch(error){
+        console.error(error);
+        this.notificationsService.error(
+          'NOTIFICATIONS.ERROR_OCCURRED',
+        );
+      }
+    }
   }
 
   public async signWalletTransaction(
@@ -279,19 +325,16 @@ export class WalletService {
                   sig.s
                 )
                 .then(() => {
-                  this.notificationDroneService.success(
+                  this.notificationsService.success(
                     'NOTIFICATIONS.TRANSACTION_SUCCESS',
                     'NOTIFICATIONS.THANK_YOU',
-                    'NOTIFICATIONS.CLOSE'
                   );
                   this.store.dispatch(WalletActions.buyAdriaSuccess());
                 })
                 .catch((error) => {
                   this.store.dispatch(WalletActions.transactionSuccess());
-                  this.notificationDroneService.error(
+                  this.notificationsService.error(
                     'NOTIFICATIONS.TRANSACTION_ERROR',
-                    '',
-                    'NOTIFICATIONS.TRY_AGAIN'
                   );
                 });
           })
@@ -331,5 +374,15 @@ export class WalletService {
       return result;
     }
     return false;
+  }
+
+  public async getBalance() {
+    if (this.provider) {
+      const address = await this.provider.getSigner().getAddress();
+      const bnb = await this.provider.getBalance(address);
+      return +ethers.utils.formatEther(bnb);
+    }
+
+    return 0;
   }
 }

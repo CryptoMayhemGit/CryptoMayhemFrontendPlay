@@ -1,0 +1,142 @@
+<div id="early-access-info">
+  <div class="details">
+    <div class="details-timer">
+      <p [innerHtml]="'EARLY_ACCESS.HEADER' | transloco "></p>
+      <ui-timer [startTime]="earlyAccessTime" ></ui-timer>
+      <ui-main-button role="button" type="secondary" (btnClick)="addToCal()">{{'EARLY_ACCESS.ADD_TO_CALENDAR' | transloco}}</ui-main-button>
+    </div>
+    <div class="details-want-buy">
+      <picture>
+          <source srcset="./assets/images/friendly_drone.webp">
+          <source srcset="./assets/images/presale/friendly_drone.png">
+          <img alt="friendly drone" role="presentation" src="./assets/images/presale/friendly_drone.png">
+      </picture>
+      <div>
+          <p [innerHTML]=" 'EARLY_ACCESS.INVESTORS' | transloco "></p>
+          <ui-main-button role="button" (btnClick)="openBetaForm()">{{'EARLY_ACCESS.INVESTORS_BUTTON' | transloco}}</ui-main-button>
+      </div>
+  </div>
+  </div>
+  <div class="about">
+    <h2>{{ 'EARLY_ACCESS.INFO.TITLE' | transloco }}</h2>
+    <p [innerHTML]="'EARLY_ACCESS.INFO.MESSAGE' | transloco"></p>
+    <hr>
+    <p [innerHtml]=" 'EARLY_ACCESS.INFO.REMINDER' | transloco"></p>
+    <div id="social-icons">
+      <a href="https://twitter.com/CryptoMayhem_io" target="_blank"><img src="./assets/images/twitter.svg" alt="twitter" /></a>
+      <a href="https://discord.gg/kx46zxYAmN" target="_blank"><img src="./assets/images/discord.svg" alt="discord" /></a>
+      <a href="https://t.me/CryptoMayhemOfficial" target="_blank"><img src="./assets/images/telegram.svg" alt="instagram" /></a>
+    </div>
+  </div>
+</div>
+
+<div id="main-tds">
+  <h1>Top-down shooter</h1>
+  <ui-main-button>{{ 'TDS.DOWNLOAD' | transloco }}</ui-main-button>
+</div>
+<ui-header-faded [value]="'TDS.OVERVIEW' | transloco"></ui-header-faded>
+
+<div style="overflow: hidden; padding-top: 4rem; display: flex; justify-content: center;">
+  <div id="welcome">
+    <h1>{{ 'TDS.WELCOME.HEADER' | transloco }}</h1>
+    <p [innerHtml]="'TDS.WELCOME.CONTENT_FIRST' | transloco"></p>
+    <p [innerHtml]="'TDS.WELCOME.CONTENT_SECOND' | transloco"></p>
+  </div>
+</div>
+
+<hr class="faded-line" />
+<div id="objectives">
+  <h1>{{ 'TDS.OBJECTIVES.HEADER' | transloco }}</h1>
+  <p [innerHtml]="'TDS.OBJECTIVES.CONTENT' | transloco"></p>
+</div>
+<hr class="faded-line" />
+
+<div id="items-header">
+  <h1>{{ 'TDS.GAME_ITEMS.HEADER' | transloco }}</h1>
+</div>
+
+<ui-item-listing [title]="'TDS.GAME_ITEMS.MECHS.HEADER' | transloco" image="mechs_item">
+  <p [innerHtml]="'TDS.GAME_ITEMS.MECHS.CONTENT' | transloco"></p>
+</ui-item-listing>
+
+<ui-item-listing [reverse]="true" [title]="'TDS.GAME_ITEMS.WEAPONS.HEADER' | transloco" image="weapon_item">
+  <p [innerHtml]="'TDS.GAME_ITEMS.WEAPONS.CONTENT' | transloco"></p>
+</ui-item-listing>
+
+<ui-item-listing [title]="'TDS.GAME_ITEMS.SUPPORT.HEADER' | transloco" image="support_item">
+  <p [innerHtml]="'TDS.GAME_ITEMS.SUPPORT.CONTENT' | transloco"></p>
+</ui-item-listing>
+
+<ui-header-faded [value]="'TDS.REQUIREMENTS.HEADER' | transloco"></ui-header-faded>
+
+<div id="requirements">
+  <div>
+    <div class="requirements-item">
+      <p>{{ 'TDS.REQUIREMENTS.DEVICE' | transloco }}</p>
+      <img src="./assets/images/computer_icon.png" alt="pc" />
+      <p>PC</p>
+    </div>
+    <div class="requirements-item">
+      <p>{{ 'TDS.REQUIREMENTS.OS' | transloco }}</p>
+      <img src="./assets/images/windows_icon.png" alt="windows" />
+      <p>Windows</p>
+    </div>
+  </div>
+
+  <p>{{ 'TDS.REQUIREMENTS.SYSTEM_REQ' | transloco }}</p>
+
+  <div class="table">
+    <div class="table-row">
+      <div class="table-cell table-header table-item-header"></div>
+      <div class="table-cell table-header">{{ 'TDS.REQUIREMENTS.MIN' | transloco }}</div>
+      <div class="table-cell table-header">{{ 'TDS.REQUIREMENTS.RECOMMENDED' | transloco }}</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell table-item-header">{{ 'TDS.REQUIREMENTS.OS_ABBR' | transloco }}</div>
+      <div class="table-cell">Windows 8.1</div>
+      <div class="table-cell">Windows 10</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell table-item-header">{{ 'TDS.REQUIREMENTS.OS_TYPE' | transloco }}</div>
+      <div class="table-cell" style="border-right: none">x64</div>
+      <div class="table-cell" style="border-left: none"></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell table-item-header">{{ 'TDS.REQUIREMENTS.CPU' | transloco }}</div>
+      <div class="table-cell">Intel i5 gen 2 / AMD Bulldozer (4 cores)</div>
+      <div class="table-cell">Intel i7 gen 2 / AMD Ryzen (4 cores)</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell table-item-header">{{ 'TDS.REQUIREMENTS.RAM' | transloco }}</div>
+      <div class="table-cell">8 GB RAM</div>
+      <div class="table-cell">12 GB RAM</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell table-item-header">{{ 'TDS.REQUIREMENTS.GPU' | transloco }}</div>
+      <div class="table-cell">Nivida GTX 750 2GB / AMD R7 265 2GB</div>
+      <div class="table-cell">Nivida RTX 2080 6GB / AMD Radeon 6800</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell table-item-header">{{ 'TDS.REQUIREMENTS.DIRECTX' | transloco }}</div>
+      <div class="table-cell" style="border-right: none">11</div>
+      <div class="table-cell" style="border-left: none"></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell table-item-header">{{ 'TDS.REQUIREMENTS.HDD' | transloco }}</div>
+      <div class="table-cell" style="border-right: none">8GB {{ 'TDS.REQUIREMENTS.FREE_SPACE' | transloco }}</div>
+      <div class="table-cell" style="border-left: none"></div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell table-item-header">{{ 'TDS.REQUIREMENTS.SOUND' | transloco }}</div>
+      <div class="table-cell" style="border-right: none">{{ 'TDS.REQUIREMENTS.SOUND_COMPATIBILITY' | transloco }}</div>
+      <div class="table-cell" style="border-left: none"></div>
+    </div>
+  </div>
+
+  <!--<p class="input-error">
+    <img src="./assets/images/error_icon.png">
+    <span></span>
+  </p>-->
+
+  <ui-main-button class="bottom-button">{{ 'TDS.DOWNLOAD' | transloco }}</ui-main-button>
+</div>

@@ -29,10 +29,8 @@
             "output": "assets"
           }
         ],
-        "styles": ["apps/crypto-mayhem-frontend/src/styles.scss"],
-        "scripts": [
-          "libs/crypto-mayhem/assets/unity/Build/build.loader.js"
-        ]
+        "styles": ["apps/crypto-mayhem-frontend/src/styles.scss", "libs/ui/src/lib/tooltip/tooltip.scss"],
+        "scripts": ["libs/crypto-mayhem/assets/unity/Build/build.loader.js"]
       },
       "configurations": {
         "production": {
@@ -125,7 +123,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/crypto-mayhem-frontend"],
       "options": {
-        "jestConfig": "apps/crypto-mayhem-frontend/jest.config.js",
+        "jestConfig": "apps/crypto-mayhem-frontend/jest.config.ts",
         "passWithNoTests": true
       }
     }

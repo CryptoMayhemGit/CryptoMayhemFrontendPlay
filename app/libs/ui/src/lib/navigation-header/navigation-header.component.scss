@@ -1,3 +1,5 @@
+@import "libs/crypto-mayhem/styles/mixins";
+
 @mixin clip-path {
   clip-path: polygon(
     0 1.8rem,
@@ -23,7 +25,7 @@
 }
 
 h2 {
-  color: #f2f2f2;
+  color: var(--text-primary);
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: 1.4rem;
   font-weight: 600;
@@ -31,15 +33,32 @@ h2 {
   padding-bottom: 1.3rem;
 }
 
+ui-token-balance {
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+    
+}
+
+#avatar {
+  margin-left: auto;
+
+  @media screen and (max-width: 768px) {
+    display: none !important;
+  }
+}
+
 #mobile-nav {
-  backdrop-filter: blur(40px);
-  background: rgb(40 40 40 / 60%);
-  box-shadow: 0 4px 24px rgb(40 40 40 / 60%);
+  @include background-blur;
+
   min-height: calc(100vh - 17.1rem);
   overflow: hidden;
-  padding: 13.7rem 2rem 3.4rem;
-  position: fixed;
+  padding: 13.7rem 2rem 40rem;
+  position: absolute;
   top: 0;
+  width: calc(100% - 4rem);
   z-index: 10;
 
   nav {
@@ -47,17 +66,16 @@ h2 {
     flex-direction: column;
 
     a {
-      color: #f2f2f2;
+      color: var(--text-primary);
       font-size: 1.4rem;
       line-height: 1.6rem;
       padding: 1.4rem 0;
       text-decoration: none;
 
-      &:hover,
-      &:hover::after,
+      &.active,
       &.disabled {
-        border-top-color: #f2f2f230;
-        color: #f2f2f230;
+        border-top-color: var(--text-secondary);
+        color: var(--text-secondary);
       }
 
       &.disabled {
@@ -78,7 +96,7 @@ h2 {
     }
   }
 
-  nav > ui-submenu {
+  nav > .games-menu ui-submenu {
     #games-list {
       display: none;
     }
@@ -184,19 +202,23 @@ h2 {
 
 #nav {
   align-items: center;
-  background: #282828;
+  background: var(--component-background-color);
   display: flex;
   height: 7.2rem;
-  justify-content: space-between;
-  padding: 0 3.2rem;
+  justify-content: space-around;
+  padding: 0 0.3rem;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 100;
 
   #logo {
     height: 36px;
     padding-right: 1.6rem;
+
+    img {
+      min-width: 5rem;
+    }
   }
 
   .burger-wrapper {
@@ -204,15 +226,21 @@ h2 {
     flex-direction: column;
 
     &:not(:first-of-type) {
-      margin-left: 3rem;
+      margin-left: 1rem;
     }
 
     p {
-      color: #f2f2f2;
+      color: var(--text-primary);
       font-size: 1rem;
       line-height: 1.2rem;
       margin: 0;
       padding: 0.5rem 0 0;
+    }
+
+    @media screen and (min-width: 375px) {
+      &:not(:first-of-type) {
+        margin-left: 3.2rem;
+      }
     }
 
     @media screen and (min-width: 768px) {
@@ -260,11 +288,15 @@ h2 {
     position: relative;
 
     a {
-      background-image: linear-gradient(90deg, #f2f2f2 50%, transparent 100%);
+      background-image: linear-gradient(
+        90deg,
+        var(--text-primary) 50%,
+        transparent 100%
+      );
       background-position: bottom left;
       background-repeat: no-repeat;
       background-size: 0% 1px;
-      color: #f2f2f2;
+      color: var(--text-primary);
       font-size: 1.4rem;
       margin: 0 1.6rem;
       padding: 0.8rem;
@@ -277,9 +309,9 @@ h2 {
 
       &:hover,
       &:hover::after,
-      &.disabled {
-        border-top-color: #f2f2f230;
-        color: #f2f2f230;
+      &.disabled{
+        border-top-color: var(--text-secondary);
+        color: var(--text-secondary);
       }
 
       &.disabled {
@@ -288,6 +320,7 @@ h2 {
     }
   }
 
+  
   ui-submenu {
     #games-list {
       display: none;
@@ -331,6 +364,11 @@ h2 {
 
   ui-main-button {
     margin: 0 3.2rem;
+  }
+
+  @media screen and (min-width: 375px) {
+    justify-content: space-between;
+    padding: 0 3.2rem;
   }
 
   @media screen and (min-width: 768px) {
@@ -396,24 +434,53 @@ h2 {
   }
 }
 
-#connect-mobile {
+.connect-mobile {
   flex-direction: column;
-  min-width: 15rem;
+  margin-top: 0.5rem;
 
   p {
-    color: #f2f2f2;
+    color: var(--text-primary);
     font-size: 1rem;
     line-height: 1.2rem;
     margin: 0;
-    padding: 0.5rem 0 0;
+    padding: 1rem 0 0;
   }
 
   &:hover > p {
-    color: #00d62e;
+    color: var(--accent-color);
+  }
+
+  @media screen and (min-width: 375px) {
+    min-width: 15rem;
   }
 
   @media (min-width: 768px) {
     display: none !important;
+  }
+
+  .avatar {
+    background: url("/assets/images/no_avatar_mobile.svg") no-repeat center center;
+    height: 5.2rem;
+    width: 5.2rem;
+  }
+
+  .avatar:active {
+    background: url("/assets/images/no_avatar_mobile_click.svg") no-repeat center center;
+  }
+}
+
+.games-menu {
+  display: block !important;
+  padding-top: 3.5rem;
+  position: relative;
+  width: 100%;
+
+  ui-submenu {
+    margin-top: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    position: absolute;
   }
 }
 
@@ -436,10 +503,10 @@ ui-game-listing {
   }
 }
 
-.arrow::after {
+.arrowdown::after {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid #f2f2f2;
+  border-top: 5px solid var(--text-primary);
   content: "";
   height: 0.7rem;
   margin-left: 1rem;
@@ -447,6 +514,23 @@ ui-game-listing {
   position: absolute;
   transition: all 250ms ease-in-out;
   width: 0;
+}
+
+
+.arrowup::after {
+  border-bottom: 5px solid var(--text-secondary);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  content: "";
+  height: 0.7rem;
+  margin-left: 1rem;
+  position: absolute;
+  transition: all 250ms ease-in-out;
+  width: 0;
+}
+
+.games-active {
+  color: var(--text-secondary) !important;
 }
 
 .marketing-banner {

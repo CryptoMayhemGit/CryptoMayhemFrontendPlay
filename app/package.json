@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "nx",
     "start": "npm run fix:styles && npx nx serve",
-    "test": "npx nx test",
+    "test": "nx run-many --target=test --all --colors=true",
     "lint": "ng lint && npm run lint:styles",
     "lint:styles": "npx stylelint **/*.scss",
     "fix:code": "prettier-eslint --write 'src/**/*.{js,jsx}' ",

@@ -14,8 +14,8 @@ fa-icon {
   }
 
   &.primary {
-    --background-color: #c23b1d;
-    --border-color: #c23b1d;
+    --background-color: var(--primary-color);
+    --border-color: var(--primary-color);
     --hover-color: var(--background-color);
     --text-color: #fff;
     --text-hover-color: #fff;
@@ -27,14 +27,14 @@ fa-icon {
   &.secondary {
     --background-color: transparent;
     --border-color: #fff;
-    --hover-color: var(--border-color);
+    --hover-color: var(--button-secondary);
     --text-color: var(--border-color);
-    --text-hover-color: #000;
+    --text-hover-color: var(--text-primary);
   }
 
   &.fancy {
     --background-color: transparent;
-    --border-color: #00d62e;
+    --border-color: var(--accent-color);
     --hover-color: #1c1b1b;
     --text-color: #fff;
     --text-hover-color: #fff;

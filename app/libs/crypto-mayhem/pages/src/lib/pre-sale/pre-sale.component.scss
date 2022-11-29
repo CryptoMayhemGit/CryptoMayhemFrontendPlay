@@ -1,0 +1,288 @@
+@import 'libs/crypto-mayhem/styles/mixins';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 10.4rem;
+
+  @media screen and (min-width: 1240px) {
+    flex-direction: row;
+    margin-top: 3.2rem;
+  }
+}
+
+#vesting,
+#info {
+  background-color: var(--component-background-color);
+  color: var(--text-primary);
+  height: auto;
+  max-width: 100%;
+  padding: 3.2rem;
+
+  @media screen and (min-width: 768px) {
+    align-self: center;
+    max-width: 80%;
+    width: 80%;
+  }
+
+  @media screen and (min-width: 1240px) {
+    max-width: 44.3rem;
+    width: 44.3rem;
+  }
+}
+
+#vesting {
+  @include background-blur;
+  
+  margin-bottom: 3.2rem;
+
+  p {
+    /* stylelint-disable-next-line function-whitespace-after */
+    color: var(--text-primary)60;
+    margin: 0 0 0.8rem;
+    text-align: center;
+  }
+
+  .invest {
+    display: flex;
+    justify-content: space-between;
+
+    &:last-of-type {
+      margin-bottom: 0;
+      margin-top: 0.8rem;
+    }
+
+    p:first-child {
+      color: var(--text-secondary);
+    }
+  }
+
+  hr {
+    margin: 0;
+  }
+
+  #vesting-timer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.6rem;
+  }
+
+  #vesting-header {
+    p {
+      color: var(--text-primary);
+      font-size: 1.8rem;
+      line-height: 2.1rem;
+      margin-bottom: 2.6rem;
+    }
+  }
+
+  #vesting-wallet {
+    margin-bottom: 3.2rem;
+    text-align: center;
+    text-transform: uppercase;
+
+    .connected {
+      color: var(--accent-color);
+    }
+
+    .disconnected {
+      color: var(--error-color);
+    }
+  }
+
+  #vesting-sold {
+    margin-bottom: 3.8rem;
+  }
+
+  #vesting-info {
+    margin-bottom: 4.3rem;
+
+    p {
+      color: var(--text-primary);
+      margin-bottom: 1.6rem;
+      text-align: left;
+    }
+  }
+
+  #vesting-form {
+    form {
+      display: flex;
+      flex-direction: column;
+
+      p {
+        text-align: left;
+      }
+
+      p:last-of-type {
+        margin-bottom: 4rem;
+      }
+
+      label {
+        margin-bottom: 1.2rem;
+      }
+
+      input {
+        background: transparent;
+        /* stylelint-disable-next-line function-whitespace-after */
+        border: 1px solid var(--text-secondary);
+        color: var(--text-primary);
+        margin-bottom: 1.8rem;
+        padding: 1.2rem;
+        transition: all 0.3s ease-out;
+
+        &.ng-invalid.ng-touched {
+          border-color: var(--error-color);
+
+          &:focus {
+            border-color: var(--error-color);
+          }
+        }
+
+        &:focus,
+        &:hover {
+          border: 1px solid var(--text-primary);
+          outline: none;
+        }
+      }
+
+      /* Hide number controls in input */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        appearance: textfield;
+      }
+    }
+  }
+
+  #vesting-want-buy {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    & > div {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin-top: 3.5rem;
+
+      p {
+        color: #fff;
+        font-size: 1.8rem;
+        line-height: 2.2rem;
+        margin-bottom: 3.2rem;
+      }
+
+      ui-main-button {
+        display: flex;
+        width: 60%;
+      }
+    }
+  }
+
+  #vesting-success {
+    margin-top: 2em;
+
+    & > p {
+      color: var(--text-primary);
+      margin-bottom: 3.2rem;
+    }
+
+    & > p:first-of-type {
+      font-size: 1.8rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .invest {
+      & > p:last-of-type {
+        color: var(--text-primary);
+      }
+    }
+  }
+
+  #vesting-end {
+    p {
+      color: var(--text-primary);
+      margin-bottom: 3.2rem;
+    }
+
+    ui-main-button {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  @media screen and (min-width: 1240px) {
+    margin-bottom: 0;
+    max-width: 40.3rem;
+    padding: 3.2rem 7.2rem;
+    width: 40.3rem;
+  }
+}
+
+#info {
+  h2 {
+    font-family: Nulshock, Arial, Helvetica, sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 2.15rem;
+    margin: 0;
+  }
+
+  ul {
+    margin: 2.4rem 0 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+
+      &::before {
+        content: "-";
+        margin-right: 0.8rem;
+      }
+    }
+
+    li:not(:last-child) {
+      padding: 0 0 1.4rem;
+    }
+
+    li:last-child {
+      padding: 0;
+    }
+  }
+
+  hr {
+    margin: 3.2rem 0;
+  }
+
+  p {
+    padding-right: 2.5rem;
+
+    &.address {
+      /* stylelint-disable-next-line function-whitespace-after */
+      color: var(--text-secondary);
+    }
+
+    a {
+      color: var(--text-primary);
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+hr {
+  background-color: var(--text-secondary);
+  border: 0;
+  height: 1px;
+}

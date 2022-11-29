@@ -1,0 +1,18 @@
+
+@mixin background-blur {
+  backdrop-filter: blur(2rem);
+  background-color: rgb(40 40 40 / 40%);
+  box-shadow: 0 0.4rem 2.4rem rgba(0 0 0 / 60%);
+}
+
+@mixin scrollbar {
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #313131;
+  }
+
+}
