@@ -40,7 +40,7 @@ import { TabNavigatorModule } from './tab-navigator/tab-navigator.module';
     HeaderFadedModule,
     ItemListingModule,
     NotificationsModule,
-    TabNavigatorModule
+    TabNavigatorModule,
   ],
 })
 export class UiModule {}
