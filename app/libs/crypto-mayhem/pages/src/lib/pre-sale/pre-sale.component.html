@@ -24,43 +24,42 @@
         <p *ngIf="sold">{{ 'PRESALE.SOLD.HEADER' | transloco }}</p>
 
     </div>
-    <div id="vesting-sold" *ngIf="(allTokensPerStage$ | async) && presale && !timeUp && !sold">
+    <!--<div id="vesting-sold" *ngIf="(allTokensPerStage$ | async) && presale && !timeUp && !sold">
         <p>{{ 'PRESALE.PROGRESS' | transloco}}</p>
         <ui-progress-bar [currentValue]="(tokensSoldPerStage$ | async)!" [maxValue]="(allTokensPerStage$ | async)!" (completeProgress)="onTokensSold()"></ui-progress-bar>
-    </div>
+    </div> -->
     <!-- HIDE WHEN SUCCESS -->
-    <div *ngIf="(canBuyMore$ | async) && !sold && !timeUp" id="vesting-info">
+    <div *ngIf="sold && !timeUp" id="vesting-info">
         <p>{{ 'PRESALE.INVEST' | transloco }}</p>
         <div class="invest">
             <p>{{ 'PRESALE.AMOUNT.MIN' | transloco }}</p>
-            <p>1 USDC</p>
+            <p>50 USDC</p>
         </div>
         <hr>
         <div class="invest">
             <p>{{ 'PRESALE.AMOUNT.MAX' | transloco }}</p>
-            <p>{{maxUsdcToBuy}} USDC</p>
+            <p>{{maxUsdcToBuy === 0 ? ('PRESALE_NO_LIMIT' | transloco) : maxUsdcToBuy + " USDC"}}</p>
         </div>
     </div>
     <!-- SHOW WHEN CONNECTED HIDE WHEN SUCCESS -->
-    <div id="vesting-form" *ngIf="(walletConnected$ | async) && (canBuyMore$ | async) && presale && !sold && !timeUp">
+    <div id="vesting-form" *ngIf="(walletConnected$ | async) && presale && !sold && !timeUp">
         <form [formGroup]="formGroup">
             <label for="amount">{{ 'PRESALE.AMOUNT.AMOUNT_TO_BUY' | transloco }}</label>
             <input
             name="amount"
             type="number"
-            min="1"
-            max="1000"
+            min="50"
             [placeholder]="'PRESALE.INPUT.WRITE_AMOUNT' | transloco"
             formControlName="amount">
             <p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors?.['min']">
                 <img src="./assets/images/error_icon.png">
-                <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MIN' | transloco: {minAmount: '1 USDC'} }}</span>
+                <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MIN' | transloco: {minAmount: '50 USDC'} }}</span>
             </p>
 
-            <p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors?.['max']">
+            <!--<p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors?.['max']">
                 <img src="./assets/images/error_icon.png">
                 <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MAX' | transloco: {maxAmount: maxUsdcToBuy + ' USDC'} }}</span>
-            </p>
+            </p>-->
             <p>{{ 'PRESALE.GET' | transloco }}: {{formGroup.controls['amount'].value / adriaPrice}} ADRIA</p>
             <ui-main-button [loading]="!!(loadingButton$ | async)" (btnClick)="onBuy()" [disabled]="!formGroup.valid || !!(walletFacade.showWallets$ | async)">{{ 'PRESALE.BUY_ADRIA' | transloco | uppercase}}</ui-main-button>
         </form>
