@@ -10,10 +10,10 @@
     </div>
 
     <!-- HIDE WHEN PRESALE HAS ENDED -->
-    <div id="vesting-timer" *ngIf="presale && !sold && !timeUp">
+    <!--<div id="vesting-timer" *ngIf="presale && !sold && !timeUp">
         <p>{{ 'PRESALE.TIME_LEFT' | transloco }}</p>
         <ui-timer [startTime]="presaleEndTime" (complete)="presale = false; timeUp = true"></ui-timer>
-    </div>
+    </div>-->
     <!-- SHOW WHEN PRESALE HAS ENDED OR HAS SOLD OUT-->
     <div id="vesting-header" *ngIf="sold || timeUp">
         <!-- SHOW WHEN PRESALE HAS ENDED -->
