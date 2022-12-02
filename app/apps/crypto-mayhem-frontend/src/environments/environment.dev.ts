@@ -11,7 +11,7 @@ export const environment = {
   chainIdHexBinance: '0x61', //Binance Smart Chain
   networkId: '', //Binance Smart Chain
   stage: 7,
-  maxNumberOfUsdcPerStage: 400,
+  maxNumberOfUsdcPerStage: 0,
   usdcContractAddress: '0x1bf5f3dc3e45f6db312f206bed38e1225d9fe9f8',
   adriaContractAddress: '0xe6482247cfe9a9eb23fb84ff002674f7d8cba33c',
   adriaVestingContractAddress: '0x4dd7f9b6b5f2f2078d6bd79a1624ec89bf0374b2',

@@ -105,11 +105,10 @@
         "INFO": {
             "DETAILS": {
                 "HEADER": "Szczegóły oficjalnej przedsprzedaży tokena ADRIA",
-                "1": "Prywatna sprzedaż trwa przez 2 dni do 31.08.2022 at 02:00 AM CET",
-                "2": "Cena w przedsprzedaży 0.002 USDC",
-                "3": "Maksymalny zakup to 400 USDC (bep-20)",
-                "4": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy",
-                "5": "Niesprzedane tokeny z przedsprzedaży ulegną spaleniu! (W ostatniej rundzie wyprzedaży ogłosimy ile tokenów zostanie spalonych)"
+                "1": "Prywatna sprzedaż trwa od piątku 02.12.2022",
+                "2": "Minimalna kwota zakupu: 50 USDC",
+                "3": "Cena w przedsprzedaży 0.002 USDC",
+                "4": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy"
             },
             "REMEMBER": "Pamiętaj, że musisz mieć BNB (bep-20) w portfelu, aby pokryć opłaty sieciowe za każdym razem kiedy inwestujesz USDC lub odbierasz swoje tokeny ADRIA.",
             "CLAIM": {
@@ -152,7 +151,8 @@
         },
         "SOLD": {
             "HEADER": "Token został wyprzedany!"
-        }
+        },
+        "NO_LIMIT": "Brak limitu"
     },
     "WALLET": {
         "CONNECTED": "Portfel podłączony",
