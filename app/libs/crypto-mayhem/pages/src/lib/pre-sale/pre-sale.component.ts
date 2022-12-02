@@ -21,7 +21,7 @@ export class PreSaleComponent implements OnInit{
   adriaPerStage$: Observable<number> = of(0.0);
   showSummary$: Observable<boolean> = of(false);
   canBuyMore$: Observable<boolean> = of(true);
-  presaleEndTime = new Date(Date.UTC(2022, 11, 28, 10, 0, 0)).getTime();
+  //presaleEndTime = new Date(Date.UTC(2022, 11, 28, 10, 0, 0)).getTime();
   presaleStartTime = new Date(Date.UTC(2022, 11, 2, 6, 0, 0)).getTime();
   tokensSoldPerStage$: Observable<number> = of(0);
   allTokensPerStage$: Observable<number> = of(0);
