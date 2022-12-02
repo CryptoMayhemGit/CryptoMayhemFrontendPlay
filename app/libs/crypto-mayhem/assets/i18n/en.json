@@ -301,7 +301,11 @@
             "IMPORTANT": "<strong>Ważne:</strong> Każdy portfel może zagłosować tylko raz na pytanie."
         },
         "VOTES_WEIGHT": {
-            "TITLE": "Votes weight"
+            "TITLE": "Votes weight",
+            "YOUR": "Your vote weight"
+        },
+        "VOTES": {
+            "INFO": "The voting power is determined by a 4-level scale. The weight of your votes is influenced by:<br><br>- the number of tokens hold,<br><br>- the time of the storage of tokens in the wallet,"
         }
     },
     "EARLY_ACCESS": {

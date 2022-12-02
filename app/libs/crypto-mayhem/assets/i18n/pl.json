@@ -302,7 +302,11 @@
             "IMPORTANT": "<strong>Ważne:</strong> Każdy portfel może zagłosować tylko raz na pytanie."
         },
         "VOTES_WEIGHT": {
-            "TITLE": "Waga głosów"
+            "TITLE": "Waga głosów",
+            "YOUR": "Waga twoich głosów"
+        },
+        "VOTES": {
+            "INFO": "Siłę głosów określa 4-stopniowa skala.<br>Na wagę twoich głosów wpływają:<br><br>- ilość posiadanych tokenów,<br><br>- czas przechowywania tokenów na portfelu"
         }
     },
     "EARLY_ACCESS": {

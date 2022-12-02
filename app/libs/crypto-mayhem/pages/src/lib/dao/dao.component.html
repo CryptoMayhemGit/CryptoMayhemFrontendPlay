@@ -21,8 +21,20 @@
     <ui-header-faded [value]="'DAO.VOTES_WEIGHT.TITLE' | transloco"></ui-header-faded>
     <div id="votes">
         <div id="votes-info">
-            <p></p>
+            <p [innerHTML]=" 'DAO.VOTES.INFO' | transloco"></p>
+            <p><span class="blue-dot"></span> Waga twoich głosów</p>
         </div>
-        <div id="votes-weight"></div>
+        <div id="votes-weight">
+            <div id="votes-weight-images">
+                <img width="100%" class="active" src="./assets/images/votes/4.svg" />
+                <img width="80%" src="./assets/images/votes/3.svg" />
+                <img width="60%" src="./assets/images/votes/2.svg" />
+                <img width="40%" src="./assets/images/votes/1.svg" />
+
+            </div>
+            <div id="votes-weight-period">
+
+            </div>
+        </div>
     </div>
 </div>
