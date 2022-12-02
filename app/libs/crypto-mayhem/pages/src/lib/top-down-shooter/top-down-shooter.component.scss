@@ -12,6 +12,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   margin: 7.4rem 0 0;
+  z-index: 10000;
 
   @media screen and (min-width: 768px) {
     margin: 3.2rem 0;
@@ -194,7 +195,7 @@
 
 #main-tds {
   align-items: center;
-  background-image: url("/assets/images/tds_main.webp");
+  background-image: url("/assets/images/tds_main.png");
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -205,7 +206,7 @@
   max-height: 81rem;
   max-width: 100%;
   overflow: hidden;
-  position: relative;
+  //position: relative;
   top: 0;
   width: 100vw;
 
@@ -416,6 +417,8 @@ ui-main-button {
 
 @media screen and (min-width: 1240px){
   #main-tds {
+    margin-top: -20rem;
+
     h1 {
       font-size: 4.4rem;
     }
