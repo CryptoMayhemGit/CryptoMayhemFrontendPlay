@@ -1,8 +1,8 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { WalletFacade } from 'libs/crypto-mayhem/data-access/wallet/src/lib/facades/wallet.facade';
-import { isSmallScreen } from 'libs/utility/functions/src';
+import { WalletFacade } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
+import { isSmallScreen } from '@crypto-mayhem-frontend/utility/functions';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -54,6 +54,7 @@ export class NavigationHeaderComponent implements OnInit {
   gsVisible = false;
   isMobile = false;
   isVisible = false;
+  activePage!: string;
 
   spinner: Observable<boolean> = of(false);
   connected$: Observable<boolean> = of(false);
@@ -65,6 +66,7 @@ export class NavigationHeaderComponent implements OnInit {
     private router: Router,
     private renderer: Renderer2
   ) {
+
     this.renderer.listen('window', 'mouseover', (e: Event) => {
       const target = e.target as HTMLElement;
 
@@ -78,6 +80,11 @@ export class NavigationHeaderComponent implements OnInit {
     this.connected$ = this.walletFacade.connected$;
     this.bnbBalanceOf$ = this.walletFacade.bnbBalanceOf$;
     this.walletAddress$ = this.walletFacade.account$;
+    this.activePage = this.getActivePage();
+  }
+
+  getActivePage(): string {
+    return window.location.pathname.split('/')[2];
   }
 
   showGames(): void {

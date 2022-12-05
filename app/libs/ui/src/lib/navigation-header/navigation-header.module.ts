@@ -26,7 +26,7 @@ import { TokenBalanceModule } from '../token-balance/token-balance.module';
     RouterModule,
     EffectsModule.forFeature([WalletEffects]),
     PipesModule,
-    TokenBalanceModule
+    TokenBalanceModule,
   ],
   exports: [NavigationHeaderComponent],
 })
