@@ -79,20 +79,30 @@
     gap: 1rem;
     max-width: 20.6rem;
 
+    .img-wrapper {
+      width: 100%;
+      align-self: flex-end;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+
     img {
       align-self: self-end;
       height: 4.4rem;
     }
 
-    img.active::before {
+    .img-wrapper.active::before {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 7% 100%);
       background-color: var(--accent-secondary);
       content: '';
-      height: 100%;
+      height: 4.4rem;
       left: 0;
       opacity: 0.5;
       position: absolute;
       top: 0;
-      width: 100%;
+      width: 250%;
     }
   }
 }
