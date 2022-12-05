@@ -50,34 +50,34 @@
 
   display: flex;
   flex-direction: column;
+  gap: 6.2rem;
   margin: 7rem auto;
   max-width: 88.8rem;
-  width: 100%;
   padding: 3.2rem;
-  gap: 6.2rem;
+  width: 100%;
 
   p {
-    display: flex;
     align-items: center;
-    padding: 0;
+    display: flex;
     margin: 0 0 3.2rem;
+    padding: 0;
   }
 
   .blue-dot {
     background-color: var(--accent-secondary);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 20%, 100% 70%, 80% 100%, 30% 100%, 0 80%, 0 20%);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 20%, 100% 70%, 80% 100%, 30% 100%, 0 80%, 0 20%);
     display: inline-block;
     height: 1.2rem;
     margin-right: 1.2rem;
     width: 1.2rem;
-    -webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 20%, 100% 70%, 80% 100%, 30% 100%, 0 80%, 0 20%);
-    clip-path: polygon(30% 0%, 70% 0%, 100% 20%, 100% 70%, 80% 100%, 30% 100%, 0 80%, 0 20%);
   }
 
   &-weight-images {
     display: flex;
     flex-direction: column;
-    max-width: 20.6rem;
     gap: 1rem;
+    max-width: 20.6rem;
 
     img {
       align-self: self-end;
@@ -85,14 +85,14 @@
     }
 
     img.active::before {
+      background-color: var(--accent-secondary);
       content: '';
+      height: 100%;
+      left: 0;
+      opacity: 0.5;
       position: absolute;
       top: 0;
-      left: 0;
       width: 100%;
-      height: 100%;
-      background-color: var(--accent-secondary);
-      opacity: 0.5;
     }
   }
 }
