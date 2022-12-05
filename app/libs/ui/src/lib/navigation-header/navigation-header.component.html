@@ -55,7 +55,7 @@
     <img
       class="marketing-banner"
       *ngIf="!gamesVisible"
-      src="./assets/images/presale.jpg"
+      src="./assets/images/presale3.jpg"
     />
     <div id="mobile-submenu" *ngIf="gamesVisible">
       <ui-submenu>
@@ -85,6 +85,7 @@
           >
           <a
             [routerLink]="['/tds']"
+            (click)="activePage = ''"
             (mouseenter)="gsVisible = false; tdsVisible = true"
             (mouseleave)="gsVisible = false; tdsVisible = false"
             >{{ "GAMES.TDS.TITLE" | transloco }}</a
@@ -92,7 +93,7 @@
         </div>
         <div id="games">
           <img
-            src="./assets/images/presale.jpg"
+            src="./assets/images/presale3.jpg"
             class="marketing-banner"
             *ngIf="!tdsVisible && !gsVisible && !isSmallScreen()"
           />
@@ -114,7 +115,7 @@
     }}</a>
     <a
       routerLink="presale"
-      [ngClass]="{'active': activePage === 'presale'}"
+      [ngClass]="{'active-item': activePage === 'presale'}"
       (click)="mobileVisible = false; activePage = 'presale'"
       >{{ "NAVBAR.NAV.PRESALE" | transloco }}</a
     >
@@ -123,7 +124,7 @@
 
 <ng-template #gamesMenu>
   <ui-game-listing
-    (click)="goToGame('tds'); activePage = ''"
+    (click)="goToGame('tds')"
     *ngIf="tdsVisible"
     title="Top-down shooter"
     img="BOSS_CM_SM"
