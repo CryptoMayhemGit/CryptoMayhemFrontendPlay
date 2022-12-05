@@ -32,9 +32,9 @@
   }
 }
 
-#vesting {
+#vesting {  
   @include background-blur;
-  
+
   margin-bottom: 3.2rem;
 
   p {
@@ -227,6 +227,8 @@
 }
 
 #info {
+  @include background-blur;
+  
   h2 {
     font-family: Nulshock, Arial, Helvetica, sans-serif;
     font-size: 1.8rem;

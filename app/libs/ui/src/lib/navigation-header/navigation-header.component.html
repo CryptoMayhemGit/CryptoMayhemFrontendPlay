@@ -1,9 +1,7 @@
 <div *ngIf="spinner | async"></div>
 <div id="nav">
   <div>
-    <a id="logo" routerLink=""
-      ><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"
-    /></a>
+    <a id="logo" routerLink="/" (click)="activePage = ''"><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"/></a>
     <div
       class="burger-wrapper"
       (click)="
@@ -116,8 +114,8 @@
     }}</a>
     <a
       routerLink="presale"
-      routerLinkActive="active"
-      (click)="mobileVisible = false"
+      [ngClass]="{'active': activePage === 'presale'}"
+      (click)="mobileVisible = false; activePage = 'presale'"
       >{{ "NAVBAR.NAV.PRESALE" | transloco }}</a
     >
   </nav>
@@ -125,7 +123,7 @@
 
 <ng-template #gamesMenu>
   <ui-game-listing
-    (click)="goToGame('tds')"
+    (click)="goToGame('tds'); activePage = ''"
     *ngIf="tdsVisible"
     title="Top-down shooter"
     img="BOSS_CM_SM"
