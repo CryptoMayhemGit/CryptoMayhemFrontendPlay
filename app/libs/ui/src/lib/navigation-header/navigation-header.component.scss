@@ -58,7 +58,6 @@ ui-token-balance {
   padding: 13.7rem 2rem 40rem;
   position: absolute;
   top: 0;
-  width: calc(100% - 4rem);
   z-index: 10;
 
   nav {
@@ -90,10 +89,6 @@ ui-token-balance {
     height: 20rem;
     justify-content: space-between;
     padding: 0 0 1.4rem;
-
-    img {
-      max-width: 35.5rem;
-    }
   }
 
   nav > .games-menu ui-submenu {
@@ -115,7 +110,7 @@ ui-token-balance {
   }
 
   #mobile-submenu {
-    align-items: flex-start;
+    align-items: flex-start;   
     display: none;
     flex-direction: column;
     width: 100%;
@@ -303,7 +298,7 @@ ui-token-balance {
       text-decoration: none;
       transition: all 250ms ease-in-out;
 
-      &.active {
+      &.active-item {
         background-size: 100% 1px;
       }
 

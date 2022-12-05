@@ -89,10 +89,12 @@ export class NavigationHeaderComponent implements OnInit {
 
   showGames(): void {
     if (isSmallScreen()) {
+      console.log("small screen");
       this.gamesVisible = !this.gamesVisible;
       this.tdsVisible = true;
       this.gsVisible = true;
     } else {
+      console.log("else");
       this.gamesVisible = true;
       this.tdsVisible = false;
       this.gsVisible = false;
@@ -122,6 +124,7 @@ export class NavigationHeaderComponent implements OnInit {
 
   goToGame(game: string) {
     this.mobileVisible = false;
+    this.activePage = '';
     this.router.navigate([game]);
   }
 }
