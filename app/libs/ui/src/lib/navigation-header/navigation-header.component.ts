@@ -2,7 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { WalletFacade } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
-import { isSmallScreen } from '@crypto-mayhem-frontend/utility/functions';
+import { isSmallScreen, isTablet } from '@crypto-mayhem-frontend/utility/functions';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -66,14 +66,15 @@ export class NavigationHeaderComponent implements OnInit {
     private router: Router,
     private renderer: Renderer2
   ) {
-
-    this.renderer.listen('window', 'mouseover', (e: Event) => {
-      const target = e.target as HTMLElement;
-
-      if(!target.closest('.games-menu')){
-        this.gamesVisible = false;
-      }
-    });
+     if(!isTablet()) {
+      this.renderer.listen('window', 'mouseover', (e: Event) => {
+        const target = e.target as HTMLElement;
+  
+        if(!target.closest('.games-menu')){
+          this.gamesVisible = false;
+        }
+      });
+    }
   }
   ngOnInit(): void {
     this.spinner = this.walletFacade.spinner$;
@@ -89,12 +90,10 @@ export class NavigationHeaderComponent implements OnInit {
 
   showGames(): void {
     if (isSmallScreen()) {
-      console.log("small screen");
       this.gamesVisible = !this.gamesVisible;
       this.tdsVisible = true;
       this.gsVisible = true;
     } else {
-      console.log("else");
       this.gamesVisible = true;
       this.tdsVisible = false;
       this.gsVisible = false;
@@ -118,11 +117,16 @@ export class NavigationHeaderComponent implements OnInit {
     return isSmallScreen();
   }
 
+  isTablet(): boolean {
+    return isTablet();
+  }
+
   goToMyAccount() {
     this.router.navigate(['account']);
   }
 
   goToGame(game: string) {
+    console.log("test");
     this.mobileVisible = false;
     this.activePage = '';
     this.router.navigate([game]);

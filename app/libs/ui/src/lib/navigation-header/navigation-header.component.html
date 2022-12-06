@@ -73,7 +73,7 @@
     <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup active': gamesVisible}" (click)="showGames()" *ngIf="isSmallScreen()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
-      <div class="games-menu" *ngIf="gamesVisible" [@inOutAnimation]>
+      <div class="games-menu" *ngIf="gamesVisible && !isSmallScreen() && !isTablet()" [@inOutAnimation]>
         <ui-submenu>
         <div id="games-list">
           <h2>{{ "NAVBAR.GAMES_COLLECTION" | transloco }}</h2>
@@ -129,6 +129,7 @@
     title="Top-down shooter"
     img="BOSS_CM_SM"
     color="#309F8B"
+    style="z-index: 1000;"
   >
     <p>{{ "GAMES.TDS.DESCRIPTION" | transloco }}</p>
     <p>{{ "GAMES.TDS.CTA" | transloco }}</p>
