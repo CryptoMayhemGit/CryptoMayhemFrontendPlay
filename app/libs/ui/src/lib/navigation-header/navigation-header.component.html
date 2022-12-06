@@ -1,9 +1,7 @@
 <div *ngIf="spinner | async"></div>
 <div id="nav">
   <div>
-    <a id="logo" routerLink=""
-      ><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"
-    /></a>
+    <a id="logo" routerLink="/" (click)="activePage = ''"><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"/></a>
     <div
       class="burger-wrapper"
       (click)="
@@ -57,7 +55,7 @@
     <img
       class="marketing-banner"
       *ngIf="!gamesVisible"
-      src="./assets/images/presale.jpg"
+      src="./assets/images/presale3.jpg"
     />
     <div id="mobile-submenu" *ngIf="gamesVisible">
       <ui-submenu>
@@ -75,7 +73,7 @@
     <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup active': gamesVisible}" (click)="showGames()" *ngIf="isSmallScreen()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
-      <div class="games-menu" *ngIf="gamesVisible" [@inOutAnimation]>
+      <div class="games-menu" *ngIf="gamesVisible && !isSmallScreen() && !isTablet()" [@inOutAnimation]>
         <ui-submenu>
         <div id="games-list">
           <h2>{{ "NAVBAR.GAMES_COLLECTION" | transloco }}</h2>
@@ -87,6 +85,7 @@
           >
           <a
             [routerLink]="['/tds']"
+            (click)="activePage = ''"
             (mouseenter)="gsVisible = false; tdsVisible = true"
             (mouseleave)="gsVisible = false; tdsVisible = false"
             >{{ "GAMES.TDS.TITLE" | transloco }}</a
@@ -94,7 +93,7 @@
         </div>
         <div id="games">
           <img
-            src="./assets/images/presale.jpg"
+            src="./assets/images/presale3.jpg"
             class="marketing-banner"
             *ngIf="!tdsVisible && !gsVisible && !isSmallScreen()"
           />
@@ -116,8 +115,8 @@
     }}</a>
     <a
       routerLink="presale"
-      routerLinkActive="active"
-      (click)="mobileVisible = false"
+      [ngClass]="{'active-item': activePage === 'presale'}"
+      (click)="mobileVisible = false; activePage = 'presale'"
       >{{ "NAVBAR.NAV.PRESALE" | transloco }}</a
     >
   </nav>
@@ -130,6 +129,7 @@
     title="Top-down shooter"
     img="BOSS_CM_SM"
     color="#309F8B"
+    style="z-index: 1000;"
   >
     <p>{{ "GAMES.TDS.DESCRIPTION" | transloco }}</p>
     <p>{{ "GAMES.TDS.CTA" | transloco }}</p>

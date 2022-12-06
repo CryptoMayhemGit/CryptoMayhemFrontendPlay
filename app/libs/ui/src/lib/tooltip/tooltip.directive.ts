@@ -1,13 +1,14 @@
 import { Directive, ElementRef, HostListener, Input} from "@angular/core";
 
-type direction = 'top' | 'bottom' | 'left' | 'right';
+type Direction = 'top' | 'bottom' | 'left' | 'right';
 
 @Directive({
+  // eslint-disable-next-line @angular-eslint/directive-selector
   selector: '[tooltip]',
 })
 export class TooltipDirective {
   @Input() tooltip = '';
-  @Input() direction: direction = 'bottom';
+  @Input() direction: Direction = 'bottom';
 
   constructor(
     private elementRef: ElementRef,
@@ -20,9 +21,9 @@ export class TooltipDirective {
     this.elementRef.nativeElement.appendChild(this.createTooltip(this.tooltip, offsetWidth, (offsetHeight / 4),  this.direction));
   }
 
-  createTooltip(text: string, x: number, y: number, direction: direction): HTMLElement {
-    let div = document.createElement('div');
-    let textNode = document.createElement('p');
+  createTooltip(text: string, x: number, y: number, direction: Direction): HTMLElement {
+    const div = document.createElement('div');
+    const textNode = document.createElement('p');
     textNode.innerText = text;
     div.appendChild(textNode);
     div.classList.add('tooltip', direction);
@@ -40,7 +41,7 @@ export class TooltipDirective {
 
   @HostListener('mouseleave')
   onMouseLeave(): void {
-    let tooltip = document.querySelector('.tooltip');
+    const tooltip = document.querySelector('.tooltip');
     if(tooltip) {
       tooltip.remove();
     }
