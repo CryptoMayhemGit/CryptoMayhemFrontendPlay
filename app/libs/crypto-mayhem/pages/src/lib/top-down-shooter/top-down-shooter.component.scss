@@ -128,6 +128,8 @@
 }
 
 .about {
+  @include background-blur;
+
   #social-icons{
     text-align: center;
 
@@ -197,7 +199,6 @@
   background-image: url("/assets/images/tds_main.png");
   background-position: top;
   background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   flex-direction: column;
   height: 75vh;
@@ -205,9 +206,11 @@
   max-height: 81rem;
   max-width: 100%;
   overflow: hidden;
-  //position: relative;
+
+  // position: relative;
   top: 0;
   width: 100vw;
+  z-index: 1;
 
   h1 {
     font-size: 2.4rem;
@@ -416,7 +419,7 @@ ui-main-button {
 
 @media screen and (min-width: 1240px){
   #main-tds {
-    margin-top: -20rem;
+    margin-top: -9rem;
 
     h1 {
       font-size: 4.4rem;

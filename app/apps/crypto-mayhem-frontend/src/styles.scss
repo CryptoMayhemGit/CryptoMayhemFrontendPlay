@@ -32,7 +32,7 @@ html {
   background: #000 url("/assets/images/kosmos.jpg") no-repeat center center;
   background-attachment: fixed;
   background-size: cover;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-family: Montserrat, Arial, Helvetica, sans-serif !important;
   font-size: 10px;
   height: auto;
   margin: 0;
@@ -56,6 +56,10 @@ body {
   margin: 0;
   overflow-x: hidden;
   scroll-behavior: smooth;
+}
+
+input {
+  font-family: Montserrat, Arial, Helvetica, sans-serif !important;
 }
 
 h1 {
@@ -114,6 +118,8 @@ img {
   content: "";
   display: block;
   height: 0.1rem;
+  margin-bottom: 0;
+  margin-top: 0;
   width: 100%;
 }
 

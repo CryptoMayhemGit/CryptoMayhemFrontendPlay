@@ -77,7 +77,7 @@
         </div>
     </div>
     <!-- SHOW WHEN SUCCESS -->
-    <!-- <div *ngIf="(showSummary$ | async)" id="vesting-success">
+    <div *ngIf="(showSummary$ | async)" id="vesting-success">
         <p>{{ 'PRESALE.SUCCESS.HEADER' | transloco }}</p>
         <p>{{ 'PRESALE.SUCCESS.MESSAGE' | transloco }}</p>
         <div class="invest">
@@ -89,7 +89,7 @@
             <p>{{ 'PRESALE.AMOUNT.BUY' | transloco }}</p>
             <p>{{adriaPerStage$ | async}} ADRIA</p>
         </div>
-    </div> -->
+    </div>
     <!-- SHOW WHEN PRESALE HAS ENDED OR HAS SOLD OUT-->
     <!-- <div id="vesting-end" *ngIf="!(walletConnected$ | async)  && (!(canBuyMore$ | async) || (sold || timeUp))">
         <p>{{ 'PRESALE.END.MESSAGE' | transloco }}</p>
