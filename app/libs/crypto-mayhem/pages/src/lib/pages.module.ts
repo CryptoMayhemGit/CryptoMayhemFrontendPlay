@@ -5,6 +5,7 @@ import { MainPageModule } from './main-page/main-page.module';
 import { PreSaleModule } from './pre-sale/pre-sale.module';
 import { MyAccountModule } from './my-account/my-account.module';
 import { TopDownShooterModule } from './top-down-shooter/top-down-shooter.module';
+import { DaoModule } from './dao/dao.module';
 import { LauncherModule } from './launcher/launcher.module';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { LauncherModule } from './launcher/launcher.module';
     PreSaleModule,
     MyAccountModule,
     TopDownShooterModule,
+    DaoModule,
     LauncherModule
   ],
   declarations: [],
