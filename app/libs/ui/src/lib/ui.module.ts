@@ -18,6 +18,8 @@ import { HeaderFadedModule } from './header-faded/header-faded.module';
 import { ItemListingModule } from './item-listing/item-listing.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { TabNavigatorModule } from './tab-navigator/tab-navigator.module';
+import { OrderHighlightModule } from './order-highlight/order-highlight.module';
+import { AdriaTokenModule } from './adria-token/adria-token.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -41,6 +43,8 @@ import { TabNavigatorModule } from './tab-navigator/tab-navigator.module';
     ItemListingModule,
     NotificationsModule,
     TabNavigatorModule,
+    OrderHighlightModule,
+    AdriaTokenModule
   ],
 })
 export class UiModule {}

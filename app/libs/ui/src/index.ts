@@ -39,3 +39,7 @@ export * from './lib/notifications/notifications.module';
 export * from './lib/notifications/notifications.component';
 export * from './lib/tab-navigator/tab-navigator.module';
 export * from './lib/tab-navigator/tab-navigator.component';
+export * from './lib/order-highlight/order-highlight.module';
+export * from './lib/order-highlight/order-highlight.component';
+export * from './lib/adria-token/adria-token.module';
+export * from './lib/adria-token/adria-token.component';

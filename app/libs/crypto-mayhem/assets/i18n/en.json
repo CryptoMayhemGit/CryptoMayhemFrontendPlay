@@ -4,6 +4,8 @@
     "MENU": "Menu",
     "BUY": "Buy",
     "MILLION_ABBREVIATION": "M",
+    "MONTH": "month",
+    "MONTHS": "months",
 
     "WELCOME": {
         "TITLE": "Hi! 👋",
@@ -302,10 +304,14 @@
         },
         "VOTES_WEIGHT": {
             "TITLE": "Votes weight",
-            "YOUR": "Your vote weight"
+            "YOUR": "Your vote weight",
+            "CHECK": "Check the strength of your votes!",
+            "ADRIA_AMOUNT": "Your ADRIA",
+            "MINIMUM": "The minimum voting power wasn’t reached",
+            "MINIMUM_TEXT": "To be able to vote, you have to own at least the first level of voting power."
         },
         "VOTES": {
-            "INFO": "The voting power is determined by a 4-level scale. The weight of your votes is influenced by:<br><br>- the number of tokens hold,<br><br>- the time of the storage of tokens in the wallet,"
+            "INFO": "The voting power is determined by a 4-level scale. The weight of your votes is influenced by:<br><br>- the number of tokens hold,<br>- the time of the storage of tokens in the wallet"
         }
     },
     "EARLY_ACCESS": {

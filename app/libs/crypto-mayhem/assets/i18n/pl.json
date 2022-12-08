@@ -4,6 +4,8 @@
     "MENU": "Menu",
     "BUY": "Kup",
     "MILLION_ABBREVIATION": " mln",
+    "MONTH": "miesiąc",
+    "MONTHS": "miesięcy",
 
     "WELCOME": {
         "TITLE": "Cześć! 👋",
@@ -303,10 +305,14 @@
         },
         "VOTES_WEIGHT": {
             "TITLE": "Waga głosów",
-            "YOUR": "Waga twoich głosów"
+            "YOUR": "Waga twoich głosów",
+            "CHECK": "Sprawdź siłę swoich głosów!",
+            "ADRIA_AMOUNT": "Twoje ADRIA",
+            "MINIMUM": "Nie osiągnięto minimalnej siły głosów",
+            "MINIMUM_TEXT": "Aby móc głosować musisz posiadać przynajmniej pierwszy stopień siły głosów."
         },
         "VOTES": {
-            "INFO": "Siłę głosów określa 4-stopniowa skala.<br>Na wagę twoich głosów wpływają:<br><br>- ilość posiadanych tokenów,<br><br>- czas przechowywania tokenów na portfelu"
+            "INFO": "Siłę głosów określa 4-stopniowa skala.<br>Na wagę twoich głosów wpływają:<br><br>- ilość posiadanych tokenów,<br>- czas przechowywania tokenów na portfelu"
         }
     },
     "EARLY_ACCESS": {

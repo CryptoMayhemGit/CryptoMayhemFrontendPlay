@@ -7,7 +7,9 @@
             <picture>
                 <source type="image/webp" srcset="./assets/images/dao_people.webp">
                 <source type="image/png" srcset="./assets/images/dao_people.png">
-                <img src="./assets/images/dao_people.png" alt="people smiling" role="presentation" />
+                <ui-submenu style="margin: 0;">
+                    <img src="./assets/images/dao_people.png" alt="people smiling" role="presentation" />
+                </ui-submenu>
             </picture>
         </div>
         <div id="desc">
@@ -22,11 +24,21 @@
     <div id="votes">
         <div id="votes-info">
             <p [innerHTML]=" 'DAO.VOTES.INFO' | transloco"></p>
-            <p><span class="blue-dot"></span> Waga twoich głosów</p>
+            <p *ngIf="(walletConnected$ | async)"><span class="blue-dot"></span>{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
+            <div *ngIf="(walletConnected$ | async) === false">
+                <p class="bigger-text">{{ 'DAO.VOTES_WEIGHT.CHECK' | transloco }}</p>
+                <ui-main-button class="connect" type="primary" (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
+            </div>
+            <!-- IMPLEMENT LOGIC WITH BE LATER -->
+            <!--<ng-container>
+                <p class="accent-text">{{ 'DAO.VOTES_WEIGHT.MINIMUM' | transloco }}</p>
+                <p>{{ 'DAO.VOTES_WEIGHT.MINIMUM_TEXT' | transloco }}</p>
+            </ng-container>-->
+            <!-- END -->
         </div>
         <div id="votes-weight">
             <div id="votes-weight-images">
-                <div class="img-wrapper active">
+                <div class="img-wrapper">
                     <img width="100%" src="./assets/images/votes/4.svg" />
                 </div>
                 <div class="img-wrapper">
@@ -40,8 +52,35 @@
                 </div>
             </div>
             <div id="votes-weight-period">
-
+                <div>
+                    <ui-order-highlight>4</ui-order-highlight>
+                    <ui-adria-token>1000</ui-adria-token>
+                    <span class="vertical-line"></span>
+                    <span>12 {{ 'MONTHS' | transloco }}</span>
+                </div>
+                <div class="active">
+                    <ui-order-highlight>3</ui-order-highlight>
+                    <ui-adria-token>750</ui-adria-token>
+                    <span class="vertical-line"></span>
+                    <span>8 {{ 'MONTHS' | transloco }}</span>
+                </div>
+                <div>
+                    <ui-order-highlight>2</ui-order-highlight>
+                    <ui-adria-token>500</ui-adria-token>
+                    <span class="vertical-line"></span>
+                    <span>3 {{ 'MONTHS' | transloco }}</span>
+                </div>
+                <div>
+                    <ui-order-highlight>1</ui-order-highlight>
+                    <ui-adria-token>100</ui-adria-token>
+                    <span class="vertical-line"></span>
+                    <span>1 {{ 'MONTH' | transloco }}</span>
+                </div>
             </div>
+        </div>
+        <div id="votes-weight-adria" *ngIf="(walletConnected$ | async)">
+            <p>{{ 'DAO.VOTES_WEIGHT.ADRIA_AMOUNT' | transloco }}</p>
+            <ui-adria-token>1000</ui-adria-token>
         </div>
     </div>
 </div>
