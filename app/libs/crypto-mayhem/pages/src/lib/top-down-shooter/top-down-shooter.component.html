@@ -32,7 +32,7 @@
 
 <div id="main-tds">
   <h1>Top-down shooter</h1>
-  <ui-main-button [disabled]="true" [tooltip]="'MY_ACCOUNT.COMING_SOON' | transloco" [direction]="'left'">{{ 'TDS.DOWNLOAD' | transloco }}</ui-main-button>
+  <ui-main-button (click)="downloadLauncher()">{{ 'TDS.DOWNLOAD' | transloco }}</ui-main-button>
 </div>
 <ui-header-faded [value]="'TDS.OVERVIEW' | transloco"></ui-header-faded>
 
@@ -138,5 +138,5 @@
     <span></span>
   </p>-->
 
-  <ui-main-button [disabled]="true" class="bottom-button" [tooltip]="'MY_ACCOUNT.COMING_SOON' | transloco" [direction]="'left'">{{ 'TDS.DOWNLOAD' | transloco }}</ui-main-button>
+  <ui-main-button class="bottom-button" (click)="downloadLauncher()">{{ 'TDS.DOWNLOAD' | transloco }}</ui-main-button>
 </div>

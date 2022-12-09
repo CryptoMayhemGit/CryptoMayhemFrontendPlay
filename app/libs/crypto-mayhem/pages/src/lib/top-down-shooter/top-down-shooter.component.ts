@@ -16,5 +16,11 @@ export class TopDownShooterComponent {
   }
 
   addToCal() {
-    window.open('https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=N2UyNzNyNGo4anM4amIxdGhkZGFsbjJlbWsgZW1rYWNmQG0&tmsrc=emkacf%40gmail.com', '_blank');  }
+    window.open('https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=N2UyNzNyNGo4anM4amIxdGhkZGFsbjJlbWsgZW1rYWNmQG0&tmsrc=emkacf%40gmail.com', '_blank');
+  }
+
+  downloadLauncher() {
+    window.open('https://github.com/AdriaGames/CryptoMayhemLauncher/releases/latest/download/Install.Crypto.Mayhem.Launcher.exe', '_blank');
+  }
+
 }
