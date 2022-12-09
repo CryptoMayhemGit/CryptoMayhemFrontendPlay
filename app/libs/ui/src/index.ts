@@ -43,3 +43,5 @@ export * from './lib/order-highlight/order-highlight.module';
 export * from './lib/order-highlight/order-highlight.component';
 export * from './lib/adria-token/adria-token.module';
 export * from './lib/adria-token/adria-token.component';
+export * from './lib/dao-info/dao-info.module';
+export * from './lib/dao-info/dao-info.component';
