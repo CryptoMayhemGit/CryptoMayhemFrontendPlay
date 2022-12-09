@@ -1,7 +1,6 @@
 @import 'libs/crypto-mayhem/styles/mixins';
 
 :host {
-  margin: 0 auto;
   max-width: 100%;
 }
 
@@ -202,10 +201,6 @@ hr {
 }
 
 @media screen and (min-width: 1240px) {
-  :host {
-    margin: 3.2rem auto 0;
-  }
-
   .wrapper {
     margin: 0;
   }
