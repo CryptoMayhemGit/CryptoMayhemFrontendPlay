@@ -21,6 +21,8 @@ import { TabNavigatorModule } from './tab-navigator/tab-navigator.module';
 import { OrderHighlightModule } from './order-highlight/order-highlight.module';
 import { AdriaTokenModule } from './adria-token/adria-token.module';
 import { DaoInfoModule } from './dao-info/dao-info.module';
+import { DaoVotingModule } from './dao-voting/dao-voting.module';
+import { HeaderGradientModule } from '../header-gradient/header-gradient.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -46,7 +48,9 @@ import { DaoInfoModule } from './dao-info/dao-info.module';
     TabNavigatorModule,
     OrderHighlightModule,
     AdriaTokenModule,
-    DaoInfoModule
+    DaoInfoModule,
+    DaoVotingModule,
+    HeaderGradientModule
   ],
 })
 export class UiModule {}

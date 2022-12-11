@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DaoComponent } from './dao.component';
 import {
   DaoInfoModule,
+  DaoVotingModule,
   TabNavigatorModule,
 } from '@crypto-mayhem-frontend/ui';
 
@@ -12,7 +13,8 @@ import {
   imports: [
     CommonModule,
     TabNavigatorModule,
-    DaoInfoModule
+    DaoInfoModule,
+    DaoVotingModule
   ],
   exports: [DaoComponent],
 })

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'ui-header-faded',
@@ -8,10 +8,8 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
     <h1>{{value}}</h1>
   `
 })
-export class HeaderFadedComponent implements OnInit {
+export class HeaderFadedComponent {
   @Input() value!: string;
   
   constructor() {}
-
-  ngOnInit(): void {}
 }
