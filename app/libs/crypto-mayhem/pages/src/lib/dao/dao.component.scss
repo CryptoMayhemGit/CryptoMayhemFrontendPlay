@@ -1,4 +1,6 @@
 
+@import 'libs/crypto-mayhem/styles/mixins';
+
 :host {
   display: flex;
   flex-direction: column;
@@ -218,6 +220,7 @@ hr {
     box-sizing: unset;
     flex-direction: row;
     justify-content: space-between;
+    align-items: flex-start;
 
     &-info {
       justify-content: flex-start;
