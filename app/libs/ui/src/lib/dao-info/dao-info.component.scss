@@ -1,14 +1,6 @@
+@import 'libs/crypto-mayhem/styles/mixins';
 
 :host {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 10.4rem auto 0;
-  max-width: 110rem;
-}
-
-.wrapper {
-  margin: 0 auto;
   max-width: 100%;
 }
 
@@ -80,7 +72,16 @@
 
   .blue-dot {
     background-color: var(--accent-secondary);
-    clip-path: polygon(30% 0%, 70% 0%, 100% 20%, 100% 70%, 80% 100%, 30% 100%, 0 80%, 0 20%);
+    clip-path: polygon(
+      30% 0%,
+      70% 0%,
+      100% 20%,
+      100% 70%,
+      80% 100%,
+      30% 100%,
+      0 80%,
+      0 20%
+    );
     display: inline-block;
     height: 1.2rem;
     margin-right: 1.2rem;
@@ -145,8 +146,12 @@
 
 #votes-weight-period > div.active::before,
 .img-wrapper.active::before {
-  background: linear-gradient(90deg, var(--accent-secondary) 10%, transparent 100%);
-  content: '';
+  background: linear-gradient(
+    90deg,
+    var(--accent-secondary) 10%,
+    transparent 100%
+  );
+  content: "";
   height: 4.4rem;
   left: 0;
   opacity: 0.5;
@@ -169,7 +174,6 @@ ui-adria-token {
   margin: 0 1.3rem;
   width: 0.01rem;
 }
-
 
 .bigger-text {
   font-size: 1.8rem;
@@ -197,10 +201,6 @@ hr {
 }
 
 @media screen and (min-width: 1240px) {
-  :host {
-    margin: 3.2rem auto 0;
-  }
-
   .wrapper {
     margin: 0;
   }
@@ -222,7 +222,7 @@ hr {
     &-info {
       justify-content: flex-start;
       text-align: left;
-  
+
       p {
         display: inline-block;
       }

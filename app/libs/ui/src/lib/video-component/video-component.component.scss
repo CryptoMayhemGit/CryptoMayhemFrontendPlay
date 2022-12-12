@@ -51,23 +51,11 @@
     margin: auto;
     position: absolute;
     right: 0;
-    top: 0.4rem;
+    top: -2.5rem;
     width: 90%;
 
-    @media screen and (min-width: 590px) {
-      top: 1rem;
-    }
-
     @media screen and (min-width: 768px) {
-      top: 0.4rem;
-    }
-
-    @media screen and (min-width: 1024px) {
-      top: 1rem;
-    }
-
-    @media screen and (min-width: 1240px) {
-      top: 0.4rem;
+      top: -2rem;
     }
   }
 }
