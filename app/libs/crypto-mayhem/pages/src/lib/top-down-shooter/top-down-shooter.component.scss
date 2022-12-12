@@ -20,7 +20,6 @@
   @media screen and (min-width: 1240px) {
     flex-direction: row;
   }
-
 }
 
 .details,
@@ -201,7 +200,7 @@
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
-  height: 75vh;
+  height: 60rem;
   justify-content: center;
   max-height: 81rem;
   max-width: 100%;
@@ -365,12 +364,6 @@ ui-main-button {
 }
 
 @media screen and (min-width: 768px) {
-  #main-tds {
-    height: 100vh;
-
-    // top: -8.2rem; uncomment after early access info will be removed
-  }
-
   #welcome {
     margin-right: 9.1rem;
     padding: 3.2rem 20rem 3.2rem 3.2rem;
@@ -419,7 +412,7 @@ ui-main-button {
 
 @media screen and (min-width: 1240px){
   #main-tds {
-    margin-top: -9rem;
+    margin-top: 5rem;
 
     h1 {
       font-size: 4.4rem;

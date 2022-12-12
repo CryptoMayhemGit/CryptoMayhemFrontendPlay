@@ -73,8 +73,8 @@
     <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup active': gamesVisible}" (click)="showGames()" *ngIf="isSmallScreen()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
-      <div class="games-menu" *ngIf="gamesVisible && !isSmallScreen() && !isTablet()" [@inOutAnimation]>
-        <ui-submenu>
+      <div class="games-menu"  *ngIf="gamesVisible">
+        <ui-submenu  [@inOutAnimation]>
         <div id="games-list">
           <h2>{{ "NAVBAR.GAMES_COLLECTION" | transloco }}</h2>
           <a
