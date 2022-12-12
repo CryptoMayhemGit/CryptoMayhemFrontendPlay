@@ -29,9 +29,8 @@
     [walletAddress]="walletAddress$ | async"
     (disconnect)="disconnect()">
   </ui-token-balance>
-  <div id="connect-pc">
+  <div id="connect-pc" *ngIf="(connected$ | async) === false">
     <ui-main-button
-      *ngIf="(connected$ | async) === false"
       type="fancy"
       (btnClick)="connect()"
       >{{ "NAVBAR.CONNECT" | transloco }}</ui-main-button
