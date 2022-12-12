@@ -316,6 +316,7 @@
     },
     "EARLY_ACCESS": {
         "HEADER": "Your extraterrestrial adventure will begin<br>on December 13th!",
+        "START": "Extraterrestrial adventure has started!",
         "INFO": {
             "TITLE": "Dear Colonizers!",
             "MESSAGE": "The Crypto Mayhem tech team worked hard through the last months to let you explore outer space. Soon your patience will pay off and you will be granted the Top-Down Shooter early access.<br><br>Prepare yourself for gory fights with alien critters full of highly needed biomass.",

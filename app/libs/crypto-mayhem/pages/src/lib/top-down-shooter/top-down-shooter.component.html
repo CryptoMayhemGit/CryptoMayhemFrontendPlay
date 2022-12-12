@@ -1,9 +1,12 @@
 <div id="early-access-info">
   <div class="details">
-    <div class="details-timer">
+    <div *ngIf="!earlyAccess" class="details-timer">
       <p [innerHtml]="'EARLY_ACCESS.HEADER' | transloco "></p>
-      <ui-timer [startTime]="earlyAccessTime" ></ui-timer>
+      <ui-timer [startTime]="earlyAccessTime" (complete)="earlyAccess = true" ></ui-timer>
       <ui-main-button role="button" type="secondary" (btnClick)="addToCal()">{{'EARLY_ACCESS.ADD_TO_CALENDAR' | transloco}}</ui-main-button>
+    </div>
+    <div *ngIf="earlyAccess" class="details-timer">
+      <p [innerHtml]="'EARLY_ACCESS.START' | transloco "></p>
     </div>
     <div class="details-want-buy">
       <picture>

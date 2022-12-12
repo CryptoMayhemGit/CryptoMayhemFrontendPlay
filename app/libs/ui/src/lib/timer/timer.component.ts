@@ -1,12 +1,9 @@
 import {
-  AfterContentChecked,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
-  NgZone,
-  OnDestroy,
   OnInit,
   Output,
 } from '@angular/core';
@@ -19,8 +16,9 @@ import { scan, takeWhile, timer } from 'rxjs';
   styleUrls: ['./timer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimerComponent implements OnInit, OnDestroy {
-  @Input() startTime: number = 0;
+export class TimerComponent implements OnInit {
+  @Input() startTime = 0;
+  // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() complete = new EventEmitter<void>();
 
   private now = Date.now();
@@ -39,5 +37,4 @@ export class TimerComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {}
 }
