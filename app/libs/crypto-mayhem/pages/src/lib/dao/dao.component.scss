@@ -217,10 +217,10 @@ hr {
   }
 
   #votes {
+    align-items: flex-start;
     box-sizing: unset;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
 
     &-info {
       justify-content: flex-start;
