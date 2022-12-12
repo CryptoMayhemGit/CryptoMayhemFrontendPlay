@@ -8,11 +8,19 @@
 <div class="trailers" [@slideUp]>
   <ui-video-component
   title="Grand Strategy"
-  videoId="TPOamZBoLBk">
+  videoId="TPOamZBoLBk"
+  [disabled]="true"
+  [btnSecondaryTxt]=" 'GAMES.ABOUT' | transloco "
+  [btnPrimaryTxt]=" 'GAMES.DOWNLOAD' | transloco ">
   </ui-video-component>
   
   <ui-video-component
   title="Top-Down Shooter"
-  videoId="TNfrTuSQM9U">
+  videoId="TNfrTuSQM9U"
+  [disabled]="true"
+  (secondaryClickEvent)="goToTds()"
+  (primaryClickEvent)="downloadLauncher()"
+  [btnSecondaryTxt]=" 'GAMES.ABOUT' | transloco "
+  [btnPrimaryTxt]=" 'GAMES.DOWNLOAD' | transloco ">
   </ui-video-component>
 </div>

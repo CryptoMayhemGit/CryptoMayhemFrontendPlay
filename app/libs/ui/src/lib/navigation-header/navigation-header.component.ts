@@ -2,7 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { WalletFacade } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
-import { isSmallScreen, isTablet } from '@crypto-mayhem-frontend/utility/functions';
+import { isMobile, isSmallScreen, isTablet } from '@crypto-mayhem-frontend/utility/functions';
 import { Observable, of } from 'rxjs';
 
 @Component({
@@ -89,12 +89,12 @@ export class NavigationHeaderComponent implements OnInit {
   }
 
   showGames(): void {
+    this.gamesVisible = !this.gamesVisible;
+    
     if (isSmallScreen()) {
-      this.gamesVisible = !this.gamesVisible;
       this.tdsVisible = true;
       this.gsVisible = true;
     } else {
-      this.gamesVisible = true;
       this.tdsVisible = false;
       this.gsVisible = false;
     }
@@ -119,6 +119,10 @@ export class NavigationHeaderComponent implements OnInit {
 
   isTablet(): boolean {
     return isTablet();
+  }
+
+  isMobileDevice(): boolean {
+    return isMobile();
   }
 
   goToMyAccount() {

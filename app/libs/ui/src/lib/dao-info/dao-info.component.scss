@@ -1,0 +1,259 @@
+@import 'libs/crypto-mayhem/styles/mixins';
+
+:host {
+  max-width: 100%;
+}
+
+#info {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  margin: 6.2rem 0;
+
+  #img {
+    max-height: 44rem;
+    max-width: 56rem;
+    width: 100%;
+  }
+
+  #desc {
+    @include background-blur;
+
+    max-width: 43.5rem;
+    padding: 3.2rem 2rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    display: inline-block;
+    margin: 1.2rem 0;
+
+    &:first-of-type {
+      margin-top: 2.4rem;
+    }
+  }
+}
+
+#votes {
+  @include background-blur;
+
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 7rem auto;
+  max-width: 88.8rem;
+  padding: 3.2rem;
+  width: 100%;
+
+  p {
+    align-items: center;
+    display: flex;
+    margin: 0 0 3.2rem;
+    padding: 0;
+  }
+
+  &-info {
+    justify-content: center;
+    max-width: 34rem;
+    text-align: center;
+
+    p {
+      display: inline-block;
+    }
+  }
+
+  .blue-dot {
+    background-color: var(--accent-secondary);
+    clip-path: polygon(
+      30% 0%,
+      70% 0%,
+      100% 20%,
+      100% 70%,
+      80% 100%,
+      30% 100%,
+      0 80%,
+      0 20%
+    );
+    display: inline-block;
+    height: 1.2rem;
+    margin-right: 1.2rem;
+    width: 1.2rem;
+  }
+
+  &-weight {
+    display: flex;
+    margin-top: 3.6rem;
+  }
+
+  &-weight-images {
+    clip-path: polygon(5% 0, 500% 0, 500% 100%, 78.5% 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 20.6rem;
+
+    .img-wrapper {
+      align-self: flex-end;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      width: 100%;
+
+      &.active {
+        & > img {
+          visibility: hidden;
+        }
+      }
+    }
+
+    img {
+      align-self: self-end;
+      display: none;
+      height: 4.4rem;
+    }
+  }
+
+  &-weight-period {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-left: 3.6rem;
+
+    & > div {
+      align-items: center;
+      display: flex;
+      position: relative;
+    }
+  }
+
+  &-weight-adria {
+    margin: 4.4rem auto 0;
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+#votes-weight-period > div.active::before,
+.img-wrapper.active::before {
+  background: linear-gradient(
+    90deg,
+    var(--accent-secondary) 10%,
+    transparent 100%
+  );
+  content: "";
+  height: 4.4rem;
+  left: 0;
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  width: 250%;
+}
+
+#votes-weight-period > div.active::before {
+  left: -10rem;
+}
+
+ui-adria-token {
+  margin-left: 1.8rem;
+}
+
+.vertical-line {
+  background-color: var(--text-secondary);
+  height: 70%;
+  margin: 0 1.3rem;
+  width: 0.01rem;
+}
+
+.bigger-text {
+  font-size: 1.8rem;
+  line-height: 120%;
+}
+
+.connect {
+  display: flex;
+  justify-content: center;
+}
+
+.accent-text {
+  color: var(--accent-secondary);
+  margin: 0 0 1.4rem !important;
+}
+
+hr {
+  margin: 1.45rem 0;
+}
+
+@media screen and (min-width: 768px) {
+  #votes-weight-period > div.active::before {
+    left: -18rem;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  .wrapper {
+    margin: 0;
+  }
+
+  #info {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  #desc {
+    max-width: 50%;
+  }
+
+  #votes {
+    box-sizing: unset;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-info {
+      justify-content: flex-start;
+      text-align: left;
+
+      p {
+        display: inline-block;
+      }
+
+      & > div {
+        max-width: 27rem;
+      }
+    }
+
+    &-weight {
+      justify-content: flex-end;
+      margin-top: 0;
+      width: 60%;
+    }
+
+    &-weight-images {
+      clip-path: polygon(0 0, 500% 0, 500% 100%, 78.5% 100%);
+    }
+
+    &-weight-period > div.active::before {
+      content: none;
+    }
+
+    &-weight-adria {
+      display: none;
+    }
+
+    .img-wrapper {
+      img {
+        display: inline-block;
+      }
+    }
+  }
+}

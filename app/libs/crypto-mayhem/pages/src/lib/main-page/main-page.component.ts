@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './main-page.component.html',
@@ -44,8 +45,14 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
     ]),
   ],
 })
-export class MainPageComponent implements OnInit {
-  constructor() {}
+export class MainPageComponent {
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  downloadLauncher() {
+    window.open('https://github.com/AdriaGames/CryptoMayhemLauncher/releases/latest/download/Install.Crypto.Mayhem.Launcher.exe', '_blank');
+  }
+
+  goToTds() {
+    this.router.navigate(['tds']);
+  }
 }

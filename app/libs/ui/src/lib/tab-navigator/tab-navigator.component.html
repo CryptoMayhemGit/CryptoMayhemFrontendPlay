@@ -1,0 +1,11 @@
+<nav>
+    <ul>
+        <li
+            *ngFor="let tab of tabs; index as i"
+            [ngClass]="{ 'active': i === activeTab }"
+            role="button"
+            (click)="onTabClick(i)">
+            {{ tab | transloco }}
+        </li>
+    </ul>
+</nav>

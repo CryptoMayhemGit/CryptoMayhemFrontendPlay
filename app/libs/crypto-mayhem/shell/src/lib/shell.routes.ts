@@ -13,6 +13,7 @@ export const cryptoMayhemShellRoutes: Routes = [
       //{ path: 'game', component: GrandStrategyComponent, pathMatch: 'full' },
       { path: 'account', component: MyAccountComponent, pathMatch: 'full' },
       { path: 'tds', component: TopDownShooterComponent, pathMatch: 'full' },
+      //{ path: 'dao', component: DaoComponent, pathMatch: 'full' },
       { path: 'launcher', component: LauncherComponent, pathMatch: 'full' },
     ],
   },

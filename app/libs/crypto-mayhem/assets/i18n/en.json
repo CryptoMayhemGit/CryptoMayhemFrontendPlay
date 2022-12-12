@@ -4,6 +4,8 @@
     "MENU": "Menu",
     "BUY": "Buy",
     "MILLION_ABBREVIATION": "M",
+    "MONTH": "month",
+    "MONTHS": "months",
 
     "WELCOME": {
         "TITLE": "Hi! 👋",
@@ -288,8 +290,33 @@
             "SOUND_COMPATIBILITY": "DirectX compatible sound card"
         }
     },
+    "DAO": {
+        "TABS": {
+            "INFO": "Information",
+            "VOTING": "Vote",
+            "HISTORY": "Results"
+        },
+        "INFO": {
+            "TITLE": "Dao - zarządzaj projektem Crypto&nbsp;Mayhem",
+            "WHO": "Posiadacze tokenów ADRIA mogą brać udział w procesie decyzyjnym i wpływać na przyszły kierunek projektu.",
+            "DECISION": "<strong>Na co masz wpływ?</strong><br><br>- Decyduj o dalszym rozwoju gry podczas jej tworzenia.<br><br>- Zaproponuj własne zmiany w grze, które zweryfikuje nasz zespół.<br><br>- Decyduj co Adria Corp ma zrobić z zebraną pulą $ADRIA w grze (pula pobrana z opłat transakcyjnych).",
+            "IMPORTANT": "<strong>Ważne:</strong> Każdy portfel może zagłosować tylko raz na pytanie."
+        },
+        "VOTES_WEIGHT": {
+            "TITLE": "Votes weight",
+            "YOUR": "Your vote weight",
+            "CHECK": "Check the strength of your votes!",
+            "ADRIA_AMOUNT": "Your ADRIA",
+            "MINIMUM": "The minimum voting power wasn’t reached",
+            "MINIMUM_TEXT": "To be able to vote, you have to own at least the first level of voting power."
+        },
+        "VOTES": {
+            "INFO": "The voting power is determined by a 4-level scale. The weight of your votes is influenced by:<br><br>- the number of tokens hold,<br>- the time of the storage of tokens in the wallet"
+        }
+    },
     "EARLY_ACCESS": {
         "HEADER": "Your extraterrestrial adventure will begin<br>on December 13th!",
+        "START": "Extraterrestrial adventure has started!",
         "INFO": {
             "TITLE": "Dear Colonizers!",
             "MESSAGE": "The Crypto Mayhem tech team worked hard through the last months to let you explore outer space. Soon your patience will pay off and you will be granted the Top-Down Shooter early access.<br><br>Prepare yourself for gory fights with alien critters full of highly needed biomass.",

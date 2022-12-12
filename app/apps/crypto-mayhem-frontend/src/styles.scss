@@ -25,6 +25,7 @@
   --text-primary: #f2f2f2;
   --text-secondary: #F2F2F266;
   --button-secondary: #575757;
+  --box-shadow: 0 0.4rem 2.4rem rgba(0 0 0 / 60%);
 }
 
 html {
@@ -51,7 +52,7 @@ body {
   font-size: 14px;
   font-size: 1.4rem;
   letter-spacing: 0.04rem;
-  line-height: 1.6rem;
+  line-height: 1.68rem;
   margin: 0;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -132,4 +133,10 @@ img {
   img {
     margin-right: 1rem;
   }
+}
+
+hr {
+  background-color: var(--text-secondary);
+  border: 0;
+  height: 1px;
 }

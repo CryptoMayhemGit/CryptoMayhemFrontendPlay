@@ -1,0 +1,82 @@
+:host {
+  align-items: center;
+  display: flex;
+  font-family: Nulshock, Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 2.2rem;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+
+  &::before {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgb(242 242 242 / 40%) 75%
+    );
+    bottom: 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top:0;
+    width: 50%;
+  }
+
+  &::after {
+    background: linear-gradient(
+      90deg,
+      rgb(242 242 242 / 40%) 25%,
+      transparent 100%
+    );
+    bottom: 0;
+    content: "";
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+  }
+
+}
+
+div {
+  border: 1px solid rgb(242 242 242 / 40%);
+  border-width: 0 1px;
+  position: relative;
+
+  &::before {
+    background: linear-gradient(
+      90deg,
+      rgb(242 242 242 / 40%) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgb(242 242 242 / 40%) 75%
+    );
+    content: "";
+    height: 1px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &::after {
+    background: linear-gradient(
+      90deg,
+      rgb(242 242 242 / 40%) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgb(242 242 242 / 40%) 75%
+    );
+    bottom: 0;
+    content: "";
+    height: 1px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+  }
+}

@@ -4,6 +4,8 @@
     "MENU": "Menu",
     "BUY": "Kup",
     "MILLION_ABBREVIATION": " mln",
+    "MONTH": "miesiąc",
+    "MONTHS": "miesięcy",
 
     "WELCOME": {
         "TITLE": "Cześć! 👋",
@@ -289,8 +291,33 @@
             "SOUND_COMPATIBILITY": "DirectX kompatybilny z kartą dźwiękową"
         }
     },
+    "DAO": {
+        "TABS": {
+            "INFO": "Informacje",
+            "VOTING": "Głosowanie",
+            "HISTORY": "Historia"
+        },
+        "INFO": {
+            "TITLE": "Dao - zarządzaj projektem Crypto&nbsp;Mayhem",
+            "WHO": "Posiadacze tokenów ADRIA mogą brać udział w procesie decyzyjnym i wpływać na przyszły kierunek projektu.",
+            "DECISION": "<strong>Na co masz wpływ?</strong><br><br>-Decyduj o dalszym rozwoju gry podczas jej tworzenia.<br><br>-Zaproponuj własne zmiany w grze, które zweryfikuje nasz zespół.<br><br>-Decyduj co Adria Corp ma zrobić z zebraną pulą $ADRIA w grze (pula pobrana z opłat transakcyjnych).",
+            "IMPORTANT": "<strong>Ważne:</strong> Każdy portfel może zagłosować tylko raz na pytanie."
+        },
+        "VOTES_WEIGHT": {
+            "TITLE": "Waga głosów",
+            "YOUR": "Waga twoich głosów",
+            "CHECK": "Sprawdź siłę swoich głosów!",
+            "ADRIA_AMOUNT": "Twoje ADRIA",
+            "MINIMUM": "Nie osiągnięto minimalnej siły głosów",
+            "MINIMUM_TEXT": "Aby móc głosować musisz posiadać przynajmniej pierwszy stopień siły głosów."
+        },
+        "VOTES": {
+            "INFO": "Siłę głosów określa 4-stopniowa skala.<br>Na wagę twoich głosów wpływają:<br><br>- ilość posiadanych tokenów,<br>- czas przechowywania tokenów na portfelu"
+        }
+    },
     "EARLY_ACCESS": {
         "HEADER": "Wasza pozaziemska przygoda<br>rozpocznie się 13&nbsp;grudnia!",
+        "START": "Rozpoczęła się pozaziemska przygoda!",
         "INFO": {
             "TITLE": "Drodzy Kolonizatorzy!",
             "MESSAGE": "Zespół Crypto Mayhem pracował ciężko przez ostatnie miesiące, by dać Wam możliwość eksploracji kosmosu. Wkrótce Wasza cierpliwość zostanie nagrodzona wczesnym dostępem do warstwy Top-Down Shooter!<br><br>Przygotujcie się na krwawą walkę z kosmicznymi stworami, które posiadają wysoce niezbędną biomasę.",
