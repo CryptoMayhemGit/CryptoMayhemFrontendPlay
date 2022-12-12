@@ -25,6 +25,8 @@ export class MainButtonComponent {
   constructor() {}
 
   public onClick() {
-    this.btnClick.emit();
+    if(!this.disabled) {
+      this.btnClick.emit();
+    }
   }
 }
