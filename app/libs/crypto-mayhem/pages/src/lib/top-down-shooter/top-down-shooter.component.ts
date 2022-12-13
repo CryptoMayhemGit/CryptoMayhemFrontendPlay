@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class TopDownShooterComponent {
 
-  earlyAccessTime = new Date(Date.UTC(2022, 11, 13, 11, 0, 0)).getTime();
+  earlyAccessTime = new Date(Date.UTC(2022, 11, 13, 15, 0, 0)).getTime();
   earlyAccess = false;
 
   constructor() {}
