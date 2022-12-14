@@ -2,13 +2,14 @@
 
 :host {
   max-width: 100%;
+  margin: 0 auto;
 }
 
 #info {
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
-  margin: 6.2rem 0;
+  margin: 6.2rem auto;
 
   #img {
     max-height: 44rem;
@@ -21,6 +22,7 @@
 
     max-width: 43.5rem;
     padding: 3.2rem 2rem;
+    margin: 0 auto;
   }
 
   h1 {
@@ -52,6 +54,7 @@
   max-width: 88.8rem;
   padding: 3.2rem;
   width: 100%;
+  margin: 6.3rem auto;
 
   p {
     align-items: center;
@@ -198,9 +201,29 @@ hr {
   #votes-weight-period > div.active::before {
     left: -18rem;
   }
+
+  #votes {
+    &-weight-period > div.active::before {
+      content: none;
+    }
+    
+    &-weight-images {
+      clip-path: polygon(0 0, 500% 0, 500% 100%, 78.5% 100%);
+    }
+
+    .img-wrapper {
+      img {
+        display: inline-block;
+      }
+    }
+  }
 }
 
 @media screen and (min-width: 1240px) {
+  :host {
+    margin: 0;
+  }
+
   .wrapper {
     margin: 0;
   }
@@ -212,6 +235,7 @@ hr {
 
   #desc {
     max-width: 50%;
+    margin: 0;
   }
 
   #votes {
@@ -248,12 +272,6 @@ hr {
 
     &-weight-adria {
       display: none;
-    }
-
-    .img-wrapper {
-      img {
-        display: inline-block;
-      }
     }
   }
 }

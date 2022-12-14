@@ -297,10 +297,10 @@
             "HISTORY": "Results"
         },
         "INFO": {
-            "TITLE": "Dao - zarządzaj projektem Crypto&nbsp;Mayhem",
-            "WHO": "Posiadacze tokenów ADRIA mogą brać udział w procesie decyzyjnym i wpływać na przyszły kierunek projektu.",
-            "DECISION": "<strong>Na co masz wpływ?</strong><br><br>- Decyduj o dalszym rozwoju gry podczas jej tworzenia.<br><br>- Zaproponuj własne zmiany w grze, które zweryfikuje nasz zespół.<br><br>- Decyduj co Adria Corp ma zrobić z zebraną pulą $ADRIA w grze (pula pobrana z opłat transakcyjnych).",
-            "IMPORTANT": "<strong>Ważne:</strong> Każdy portfel może zagłosować tylko raz na pytanie."
+            "TITLE": "DAO - manage Crypto Mayhem project",
+            "WHO": "ADRIA token holders can take part in the decision-making process and influence the future direction of the project.",
+            "DECISION": "<strong>What do you influence?</strong><br><br>- Decision what to make in the game (during game development).<br><br>- Possibility to propose your own changes in game, which team will verify.<br><br>- Decision what Adria Corp should do with collected pool $ADRIA in game (collected pool from fee transaction).",
+            "IMPORTANT": "<strong>Important:</strong> Each wallet can vote once per question."
         },
         "VOTES_WEIGHT": {
             "TITLE": "Votes weight",
