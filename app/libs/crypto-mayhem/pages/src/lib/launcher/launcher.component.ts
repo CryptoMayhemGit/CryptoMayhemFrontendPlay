@@ -3,7 +3,12 @@ import { WalletFacade } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/
 import { Observable, tap } from 'rxjs';
 
 @Component({
-  template: ``,
+  template: `<div></div>`,
+  styles: [`
+    div {
+      height: 300px;
+    }
+  `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LauncherComponent implements OnInit {

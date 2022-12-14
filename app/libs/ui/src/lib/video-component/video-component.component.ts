@@ -15,10 +15,11 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VideoComponentComponent implements OnInit {
-  @Input() title: string = '';
+  @Input() title!: string;
   @Input() btnSecondaryTxt!: string;
   @Input() btnPrimaryTxt!: string;
   @Input() videoId!: string;
+  @Input() disabled = false;
 
   @Output() primaryClickEvent = new EventEmitter();
   @Output() secondaryClickEvent = new EventEmitter();

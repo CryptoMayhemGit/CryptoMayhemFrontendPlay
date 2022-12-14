@@ -2,8 +2,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LanguageService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services';
 import { Language } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/models';
+import { isSmallScreen } from '@crypto-mayhem-frontend/utility/functions';
 import { TranslocoService } from '@ngneat/transloco';
-import { isSmallScreen } from 'libs/utility/functions/src';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -63,7 +63,7 @@ export class LangSwitchComponent implements OnInit, OnDestroy {
   }
 
   togglePC(): void {
-    if (!isSmallScreen()) {
+    if (!isSmallScreen ()) {
       this.isVisible = !this.isVisible;
     }
   }

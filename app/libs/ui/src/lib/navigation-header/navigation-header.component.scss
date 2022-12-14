@@ -292,6 +292,7 @@ ui-token-balance {
       background-repeat: no-repeat;
       background-size: 0% 1px;
       color: var(--text-primary);
+      cursor: pointer;
       font-size: 1.4rem;
       margin: 0 1.6rem;
       padding: 0.8rem;
@@ -466,7 +467,6 @@ ui-token-balance {
   display: block !important;
   padding-top: 3.5rem;
   position: relative;
-  width: 100%;
 
   ui-submenu {
     margin-top: 0;
@@ -474,6 +474,10 @@ ui-token-balance {
 
   @media screen and (min-width: 768px) {
     position: absolute;
+  }
+
+  @media screen and (min-width: 1240px) {
+    width: 100%;
   }
 }
 

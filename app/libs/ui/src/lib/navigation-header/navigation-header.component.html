@@ -5,7 +5,7 @@
     <div
       class="burger-wrapper"
       (click)="
-        mobileVisible = !mobileVisible; tdsVisible = false; gsVisible = false
+        mobileVisible = !mobileVisible; gamesVisible = false; tdsVisible = false; gsVisible = false
       "
     >
       <div
@@ -29,9 +29,8 @@
     [walletAddress]="walletAddress$ | async"
     (disconnect)="disconnect()">
   </ui-token-balance>
-  <div id="connect-pc">
+  <div id="connect-pc" *ngIf="(connected$ | async) === false">
     <ui-main-button
-      *ngIf="(connected$ | async) === false"
       type="fancy"
       (btnClick)="connect()"
       >{{ "NAVBAR.CONNECT" | transloco }}</ui-main-button
@@ -67,14 +66,17 @@
 
 <ng-template #links>
   <nav>
-    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup': gamesVisible, 'games-active': gamesVisible}" (mouseenter)="showGames()" *ngIf="!isSmallScreen()">{{
+    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup': gamesVisible, 'games-active': gamesVisible}" (mouseenter)="showGames()" *ngIf="!isSmallScreen() && !isMobileDevice()">{{
+      "NAVBAR.NAV.GAMES" | transloco
+    }}</a>
+    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup': gamesVisible, 'games-active': gamesVisible}" (click)="showGames()" *ngIf="!isSmallScreen() && isMobileDevice()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
     <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup active': gamesVisible}" (click)="showGames()" *ngIf="isSmallScreen()">{{
       "NAVBAR.NAV.GAMES" | transloco
     }}</a>
-      <div class="games-menu" *ngIf="gamesVisible && !isSmallScreen() && !isTablet()" [@inOutAnimation]>
-        <ui-submenu>
+      <div class="games-menu"  *ngIf="gamesVisible">
+        <ui-submenu  [@inOutAnimation]>
         <div id="games-list">
           <h2>{{ "NAVBAR.GAMES_COLLECTION" | transloco }}</h2>
           <a
@@ -85,7 +87,7 @@
           >
           <a
             [routerLink]="['/tds']"
-            (click)="activePage = ''"
+            (click)="activePage = ''; gamesVisible = false"
             (mouseenter)="gsVisible = false; tdsVisible = true"
             (mouseleave)="gsVisible = false; tdsVisible = false"
             >{{ "GAMES.TDS.TITLE" | transloco }}</a

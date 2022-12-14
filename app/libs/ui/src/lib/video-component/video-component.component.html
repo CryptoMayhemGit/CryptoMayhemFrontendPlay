@@ -7,6 +7,6 @@
 </div>
 <h1>{{ title | uppercase }}</h1>
 <div class="actions" *ngIf="btnPrimaryTxt || btnSecondaryTxt">
-  <ui-main-button *ngIf="btnSecondaryTxt" type="secondary" (btnClick)="secondaryClick()">{{ btnSecondaryTxt }}</ui-main-button>
-  <ui-main-button *ngIf="btnPrimaryTxt" (btnClick)="primaryClick()">{{ btnPrimaryTxt }}</ui-main-button>
+  <ui-main-button *ngIf="btnSecondaryTxt" [disabled]="disabled" type="secondary" (btnClick)="secondaryClick()">{{ btnSecondaryTxt }}</ui-main-button>
+  <ui-main-button *ngIf="btnPrimaryTxt" [disabled]="disabled" (btnClick)="primaryClick()">{{ btnPrimaryTxt }}</ui-main-button>
 </div>
