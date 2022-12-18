@@ -316,7 +316,8 @@
         "VOTING": {
             "VOTING_ENDS": "Voting ends in",
             "VOTES": "{votesCount, plural, =0 {0 votes} one {1 vote} other {# votes}}",
-            "PARTICIPANTS": "Participants"
+            "PARTICIPANTS": "Participants",
+            "WANT": "Do you want to vote?"
         }
     },
     "EARLY_ACCESS": {

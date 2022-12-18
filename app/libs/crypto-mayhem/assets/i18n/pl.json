@@ -317,7 +317,8 @@
         "VOTING": {
             "VOTING_ENDS": "Koniec głosowania za",
             "VOTES": "{votesCount, plural, =0 {0 głosów} one {1 głos} few {# głosy} many {# głosów} other {# głosów}}",
-            "PARTICIPANTS": "Uczestnicy"
+            "PARTICIPANTS": "Uczestnicy",
+            "WANT": "Chcesz zagłosować?"
         }
     },
     "EARLY_ACCESS": {

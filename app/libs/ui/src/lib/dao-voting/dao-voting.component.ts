@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { WalletFacade } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'ui-dao-voting',
@@ -11,12 +13,18 @@ export class DaoVotingComponent{
   votingTime = new Date(Date.UTC(2022, 11, 24, 15, 0, 0)).getTime();
   form!: FormGroup;
   
-  constructor(private fb: FormBuilder){}
+  walletConnected$: Observable<boolean> = of(false);
 
-  ngOnInit() {
+  constructor(public readonly walletFacade: WalletFacade, private fb: FormBuilder) {
+    this.walletConnected$ = this.walletFacade.connected$;
+
     this.form = this.fb.group({
       answer: ['']
     });
+  }
+
+  connect() {
+    this.walletFacade.showWallets();
   }
 
   onSubmit() {

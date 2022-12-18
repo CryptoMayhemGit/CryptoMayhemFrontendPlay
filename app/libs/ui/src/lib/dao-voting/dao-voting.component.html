@@ -33,14 +33,25 @@
     </div>
     <div id="voting">
         <p class="small-header"><img src="./assets/images/vote_icon.svg" alt="star" role="presentation" style="margin-top: -0.3rem" />Głosowanie</p>
-        <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
-        <ui-header-gradient>2</ui-header-gradient>
-        
-        <form [formGroup]="form">
-            <ui-radio-button [value]="1" formControlName="answer">돈벌자 - @herokorea (Korea)</ui-radio-button>
-            <ui-radio-button [value]="2" formControlName="answer" >@キャラ (Japan)</ui-radio-button>
-            <ui-radio-button [value]="3" formControlName="answer" >GOLD (Japan)</ui-radio-button>
-            <ui-main-button (btnClick)="onSubmit()">Submit</ui-main-button>
-        </form>
+        <ng-container *ngIf="(walletConnected$ | async) === false">
+            <picture>
+                <source srcset="./assets/images/friendly_drone.webp">
+                <source srcset="./assets/images/presale/friendly_drone.png">
+                <img alt="friendly drone" role="presentation" src="./assets/images/presale/friendly_drone.png">
+            </picture>
+            <p id="voting-want">{{ 'DAO.VOTING.WANT' | transloco }}</p>
+            <ui-main-button (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
+        </ng-container>
+        <ng-container *ngIf="walletConnected$ | async">
+            <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
+            <ui-header-gradient>2</ui-header-gradient>
+            
+            <form [formGroup]="form">
+                <ui-radio-button [value]="1" formControlName="answer">돈벌자 - @herokorea (Korea)</ui-radio-button>
+                <ui-radio-button [value]="2" formControlName="answer" >@キャラ (Japan)</ui-radio-button>
+                <ui-radio-button [value]="3" formControlName="answer" >GOLD (Japan)</ui-radio-button>
+                <ui-main-button (btnClick)="onSubmit()">Submit</ui-main-button>
+            </form>
+        </ng-container>
     </div>
 </div>
