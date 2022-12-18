@@ -33,6 +33,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.0",
     "@metamask/detect-provider": "^1.2.0",
     "@ngneat/transloco": "^4.1.0",
+    "@ngneat/transloco-messageformat": "^4.1.0",
     "@ngrx/effects": "^13.2.0",
     "@ngrx/store": "^13.2.0",
     "@ngrx/store-devtools": "^13.2.0",

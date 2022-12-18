@@ -1,0 +1,15 @@
+<div class="wrapper" [ngClass]="{'active': active}">
+    <ui-order-highlight [ngClass]="{'active' : active}">
+        {{index}}
+    </ui-order-highlight>
+    <div class="column">
+        <div class="row">
+            <p>{{answer}}</p>
+            <div>
+                <span class="vertical-line"></span>
+                <p>{{ 'DAO.VOTING.VOTES' | transloco: {votesCount: votes} }}</p>
+            </div>
+        </div>
+        <div class="progress"></div>
+    </div>
+</div>

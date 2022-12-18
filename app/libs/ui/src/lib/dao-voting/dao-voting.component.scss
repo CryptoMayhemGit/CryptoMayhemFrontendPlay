@@ -4,7 +4,9 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  max-width: 100%;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 88.3rem;
 }
 
 #info {
@@ -15,23 +17,149 @@
   margin-top: 6.3rem;
   padding: 3.2rem 2rem;
   width: 100%;
+
+  h1 {
+    line-height: 2.2rem;
+    margin: 4.2rem 0 0;
+  }
+
+  hr {
+    margin: 2.4rem 0;
+  }
 }
 
 #results, #voting {
   @include background-blur;
 
   align-items: center;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   margin: 6.4rem 0 3.2rem;
-  max-width: 39.5rem;
   padding: 3.2rem 4.2rem;
+  width: 100%;
+
+  .small-header {
+    align-items: center;
+    display: inline-flex;
+    margin: 0 0 3.6rem;
+    text-transform: uppercase;
+
+    img {
+      margin-right: 1.2rem;
+      width: 2rem;
+    }
+  }
+}
+
+#results > div:first-of-type {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   width: 100%;
 }
 
-.row {
+#results-total {
+  align-items: center;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  margin-top: 4.5rem;
+
+  img {
+    margin-right: 3rem;
+    max-width: 10rem;
+  }
+
+  p {
+    margin: 0;
+    text-align: left;
+  }
+
+  p:first-of-type {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  p:last-of-type {
+    color: var(--text-primary);
+    font-size: 2.4rem;
+  }
+}
+
+.small-text {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  margin: 0 0 0.8rem;
+}
+
+#voting {
+  .small-text {
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+  }
+}
+
+.row {
+  box-sizing: border-box;
   width: 100%;
+}
+
+ui-header-gradient {
+  margin-bottom: 3.7rem;
+}
+
+form {
+  display: grid;
+  gap: 3.6rem;
+  margin-left: 1.7rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  #info{
+    width: 95%;
+  }
+
+  #results, #voting {
+    max-width: 40rem;
+  }
+
+  .row {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  .row {
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #info {
+    padding: 3.2rem;
+    width: 100%;
+  }
+
+  .info-timer {
+    flex-direction: row-reverse;
+
+    p {
+      text-align: right;
+    }
+
+    h1, ui-timer {
+      margin: 0 !important;
+    }
+
+    h1 {
+      max-width: 48rem;
+    }
+  }
 }

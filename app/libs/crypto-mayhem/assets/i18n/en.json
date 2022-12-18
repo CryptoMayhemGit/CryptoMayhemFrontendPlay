@@ -312,6 +312,11 @@
         },
         "VOTES": {
             "INFO": "The voting power is determined by a 4-level scale. The weight of your votes is influenced by:<br><br>- the number of tokens hold,<br>- the time of the storage of tokens in the wallet"
+        },
+        "VOTING": {
+            "VOTING_ENDS": "Voting ends in",
+            "VOTES": "{votesCount, plural, =0 {0 votes} one {1 vote} other {# votes}}",
+            "PARTICIPANTS": "Participants"
         }
     },
     "EARLY_ACCESS": {

@@ -313,6 +313,11 @@
         },
         "VOTES": {
             "INFO": "Siłę głosów określa 4-stopniowa skala.<br>Na wagę twoich głosów wpływają:<br><br>- ilość posiadanych tokenów,<br>- czas przechowywania tokenów na portfelu"
+        },
+        "VOTING": {
+            "VOTING_ENDS": "Koniec głosowania za",
+            "VOTES": "{votesCount, plural, =0 {0 głosów} one {1 głos} few {# głosy} many {# głosów} other {# głosów}}",
+            "PARTICIPANTS": "Uczestnicy"
         }
     },
     "EARLY_ACCESS": {

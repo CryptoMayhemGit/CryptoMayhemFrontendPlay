@@ -4,7 +4,6 @@ import {
   ElementRef,
   forwardRef,
   Input,
-  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -48,13 +47,15 @@ import {
   ],
 })
 export class InputComponent implements OnInit, ControlValueAccessor {
-  @Input() type: string = 'text';
-  @Input() name: string = '';
+  @ViewChild('input') input!: ElementRef;
+
+  @Input() type = 'text';
+  @Input() name = '';
   @Input() value: string | number | null = null;
-  @Input() placeholder: string = '';
+  @Input() placeholder = '';
   @Input() iconLeft!: IconDefinition;
   @Input() inputFunction: 'search' | 'normal' = 'normal';
-  class: string = '';
+  class = '';
   faTimesIcon = faTimes;
   faArrowLeft = faArrowLeft;
 
@@ -62,8 +63,6 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   private _onChange = (value: string | null) => undefined;
   private _onTouched = () => undefined;
-
-  @ViewChild('input') input!: ElementRef;
 
   constructor() {}
 

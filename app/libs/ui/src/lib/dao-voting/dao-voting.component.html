@@ -1,9 +1,46 @@
 <div id="info">
-
+    <div>
+        <div class="row info-timer">
+            <div>
+                <p class="small-text">{{ 'DAO.VOTING.VOTING_ENDS' | transloco }}</p>
+                <ui-timer [startTime]="votingTime"></ui-timer>
+            </div>
+            <h1>Który członek społeczności crypto mayhem powinien wygrać rolexa?</h1>
+        </div>
+        
+        <hr>
+        <p class="info-content">
+            Aby uczcić udaną przedsprzedaż naszego tokena ADRIA kilka tygodni temu, jednego szczęśliwego członka społeczności nagrodzimy zegarkiem ROLEX!<br><br>
+            Nominowani z każdej z naszych grup społecznych zostali wybrani na podstawie aktywności i ogólnego wkładu w ducha Crypto Mayhem. W Polsce zgłoszono 2 kandydatów, aby zwiększyć szanse głosowania dla innych narodowości, ponieważ mają największą społeczność Crypto Mayhem.<br><br>
+            Od teraz posiadacze tokenów ADRIA mogą decydować, kto powinien wygrać Rolexa! Która społeczność okaże się silniejsza i wesprze swojego kolegę?
+        </p>
+    </div>
 </div>
 <div class="row">
-    <div id="results"></div>
+    <div id="results">
+        <p class="small-header"><img src="./assets/images/star_icon.svg" alt="star" role="presentation" />Ranking</p>
+        <div>
+            <ui-voting-result-item index="1" answer="Test answer" [votes]="254" [active]="true"></ui-voting-result-item>
+            <ui-voting-result-item index="2" answer="Test answer 222" [votes]="69"></ui-voting-result-item>
+        </div>
+        <div id="results-total">
+            <img src="./assets/images/votes_people_icon.svg" alt="people" role="presentation" />
+            <div class="column">
+                <p>{{ 'DAO.VOTING.PARTICIPANTS' | transloco }}</p>
+                <p>323</p>
+            </div>
+        </div>
+    </div>
     <div id="voting">
+        <p class="small-header"><img src="./assets/images/vote_icon.svg" alt="star" role="presentation" style="margin-top: -0.3rem" />Głosowanie</p>
+        <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
         <ui-header-gradient>2</ui-header-gradient>
+        
+        <form [formGroup]="form">
+            <ui-radio-button [value]="1" formControlName="answer">돈벌자 - @herokorea (Korea)</ui-radio-button>
+            <ui-radio-button [value]="2" formControlName="answer" >@キャラ (Japan)</ui-radio-button>
+            <ui-radio-button [value]="3" formControlName="answer" >GOLD (Japan)</ui-radio-button>
+            <ui-main-button (btnClick)="onSubmit()">Submit</ui-main-button>
+        </form>
     </div>
 </div>
