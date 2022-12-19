@@ -104,6 +104,34 @@
   &-want {
     margin: 1.8rem 0 4.2rem;
   }
+
+  .success {
+    color: var(--accent-color);
+  }
+
+  .info {
+    color: var(--accent-secondary);
+  }
+
+  .after-vote-header {
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin: 3.1rem 0 1.4rem;
+  }
+
+  .text-after {
+    text-align: center;
+    margin: 0;
+  }
+
+  .voting-power {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    margin-top: 4.2rem;
+  }
 }
 
 .row {
@@ -120,6 +148,13 @@ form {
   gap: 3.6rem;
   margin-left: 1.7rem;
   width: 100%;
+}
+
+.vertical-line {
+  background-color: var(--text-secondary);
+  height: 2.3rem;
+  margin: 0 1.3rem;
+  width: 0.01rem;
 }
 
 @media screen and (min-width: 768px) {

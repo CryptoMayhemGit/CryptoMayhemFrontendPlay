@@ -8,6 +8,8 @@ import { RadioButtonModule } from '../radio-button/radio-button.module';
 import { TranslocoModule } from '@ngneat/transloco';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainButtonModule } from '../main-button/main-button.module';
+import { OrderHighlightModule } from '../order-highlight/order-highlight.module';
+import { AdriaTokenModule } from '../adria-token/adria-token.module';
 
 @NgModule({
   declarations: [DaoVotingComponent],
@@ -20,7 +22,9 @@ import { MainButtonModule } from '../main-button/main-button.module';
     TranslocoModule,
     FormsModule,
     ReactiveFormsModule,
-    MainButtonModule
+    MainButtonModule,
+    OrderHighlightModule,
+    AdriaTokenModule
   ],
   exports: [DaoVotingComponent],
 })

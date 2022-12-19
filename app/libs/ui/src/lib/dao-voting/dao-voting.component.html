@@ -53,5 +53,25 @@
                 <ui-main-button (btnClick)="onSubmit()">Submit</ui-main-button>
             </form>
         </ng-container>
+        <!-- show on success -->
+        <!--<ng-container>
+            <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
+            <ui-header-gradient>2</ui-header-gradient>
+            <img src="./assets/images/success_glow.svg" alt="success" role="presentation" />
+            <h2 class="after-vote-header success">{{ 'DAO.VOTING.SUCCESS' | transloco}}</h2>
+            <p class="text-after">D{{ 'DAO.VOTING.THANKS_SUPPORT' | transloco}}</p>
+        </ng-container>-->
+        <!-- show when voting power was not reached -->
+        <!--<ng-container>
+            <img src="./assets/images/info_glow.svg" alt="info" role="presentation" />
+            <h2 class="after-vote-header info">{{ 'DAO.VOTING.MIN_VOTE_POWER' | transloco}}</h2>
+            <p class="text-after">{{ 'DAO.VOTING.MIN_VOTE_POWER_TEXT' | transloco}}</p>
+            <div class="voting-power">
+                <ui-order-highlight>2</ui-order-highlight>
+                <ui-adria-token>500</ui-adria-token>
+                <span class="vertical-line"></span>
+                <span>3 {{ "MONTHS" | transloco }}</span>
+        </div>
+        </ng-container>-->
     </div>
 </div>
