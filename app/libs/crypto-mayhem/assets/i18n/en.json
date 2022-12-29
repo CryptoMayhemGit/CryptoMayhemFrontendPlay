@@ -322,7 +322,8 @@
             "THANKS_SUPPORT": "Thank you for supporting the project and influencing its development.",
             "MIN_VOTE_POWER": "The minimum voting power wasn’t reached",
             "MIN_VOTE_POWER_TEXT": "To be able to vote, you have to own at least the first level of voting power."
-        }
+        },
+        "QUESTION_LIST": "Questions"
     },
     "EARLY_ACCESS": {
         "HEADER": "Your extraterrestrial adventure will begin<br>on December 13th!",

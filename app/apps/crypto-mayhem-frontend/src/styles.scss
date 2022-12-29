@@ -2,6 +2,8 @@
 /* stylelint-disable unit-no-unknown */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+@import 'libs/crypto-mayhem/styles/mixins';
+
 
 @font-face {
   font-display: swap;
@@ -26,6 +28,14 @@
   --text-secondary: #F2F2F266;
   --button-secondary: #575757;
   --box-shadow: 0 0.4rem 2.4rem rgba(0 0 0 / 60%);
+}
+
+* {
+  @include scrollbar;
+
+  @media screen and (max-width: 767px) {
+    box-sizing: border-box;
+  }
 }
 
 html {

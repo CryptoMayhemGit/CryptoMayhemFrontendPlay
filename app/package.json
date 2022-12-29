@@ -46,6 +46,7 @@
     "cipher-base": "^1.0.4",
     "ethers": "^5.6.8",
     "https-browserify": "^1.0.0",
+    "ngx-infinite-scroll": "^13.1.0",
     "os-browserify": "^0.3.0",
     "rxjs": "^7.5.5",
     "stream-browserify": "3.0.0",
