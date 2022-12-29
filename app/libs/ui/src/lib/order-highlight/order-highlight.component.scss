@@ -5,9 +5,9 @@
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 2.2rem;
-  min-width: 3.6rem;
   padding: 1.1rem 0;
   position: relative;
+  width: 3.2rem;
 
   &::before {
     background: linear-gradient(
@@ -37,5 +37,25 @@
     position: absolute;
     right: 0;
     width: 100%;
+  }
+
+  &.active {
+    border-color: var(--accent-secondary);
+
+    &::before {
+      background: linear-gradient(
+        90deg,
+        transparent 75%,
+        var(--accent-secondary) 75%
+      );
+    }
+
+    &::after {
+      background: linear-gradient(
+        90deg,
+        transparent 75%,
+        var(--accent-secondary) 75%
+      );
+    }
   }
 }

@@ -1,8 +1,8 @@
 @import 'libs/crypto-mayhem/styles/mixins';
 
 :host {
-  max-width: 100%;
   margin: 0 auto;
+  max-width: 100%;
 }
 
 #info {
@@ -20,9 +20,9 @@
   #desc {
     @include background-blur;
 
+    margin: 0 auto;
     max-width: 43.5rem;
     padding: 3.2rem 2rem;
-    margin: 0 auto;
   }
 
   h1 {
@@ -51,10 +51,10 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 7rem auto;
+  margin: 6.3rem auto;
   max-width: 88.8rem;
   padding: 3.2rem;
   width: 100%;
-  margin: 6.3rem auto;
 
   p {
     align-items: center;
@@ -198,13 +198,10 @@ hr {
 }
 
 @media screen and (min-width: 768px) {
-  #votes-weight-period > div.active::before {
-    left: -18rem;
-  }
-
   #votes {
     &-weight-period > div.active::before {
       content: none;
+      left: -18rem;
     }
     
     &-weight-images {
@@ -234,8 +231,8 @@ hr {
   }
 
   #desc {
-    max-width: 50%;
     margin: 0;
+    max-width: 50%;
   }
 
   #votes {

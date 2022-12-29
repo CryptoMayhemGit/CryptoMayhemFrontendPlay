@@ -1,0 +1,76 @@
+:host {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.wrapper {
+  align-items: center;
+  display: flex;
+  width: 100%;
+
+  &.active::before {
+    background: linear-gradient(90deg, rgb(54 250 248 / 60%) -135.59%, rgb(54 250 248 / 0%) 100%);
+    content: "";
+    height: 100%;
+    left: 2.8rem;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.row {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+  width: 100%;
+
+  p:first-of-type {
+    justify-self: flex-start;
+  }
+
+  p {
+    line-height: 1.8rem;
+    margin: 0;
+  }
+
+
+  & > div {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 40%;
+  }
+}
+
+.column {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.progress {
+  background-color: white;
+  height: 0.2rem;
+  width: 100%;
+}
+
+ui-order-highlight {
+  margin-right: 1.8rem;
+}
+
+.vertical-line {
+  background-color: var(--text-secondary);
+  display: inline-block;
+  height: 100%;
+  margin: 0 1.3rem;
+  width: 0.01rem;
+}
+  

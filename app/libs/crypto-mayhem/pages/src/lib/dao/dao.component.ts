@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 })
 export class DaoComponent{
   tabs: string[] = ['DAO.TABS.INFO', 'DAO.TABS.VOTING', 'DAO.TABS.HISTORY'];
-  activeTab = 0;
+  activeTab = 1;
 
   constructor() {}
 
