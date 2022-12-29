@@ -114,23 +114,23 @@
   }
 
   .after-vote-header {
-    font-weight: 600;
     font-size: 1.4rem;
+    font-weight: 600;
     margin: 3.1rem 0 1.4rem;
   }
 
   .text-after {
-    text-align: center;
     margin: 0;
+    text-align: center;
   }
 
   .voting-power {
-    display: flex;
     align-items: center;
+    display: flex;
     justify-content: center;
-    width: 100%;
-    position: relative;
     margin-top: 4.2rem;
+    position: relative;
+    width: 100%;
   }
 }
 
@@ -145,8 +145,7 @@ ui-header-gradient {
 
 form {
   display: grid;
-  gap: 3.6rem;
-  margin-left: 1.7rem;
+  gap: 2.6rem;
   width: 100%;
 }
 

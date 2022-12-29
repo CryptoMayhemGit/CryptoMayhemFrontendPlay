@@ -16,10 +16,12 @@
         </p>
     </div>
 </div>
+<!-- ANSWERS QUESTIONS AND TEXT DESCRIPTION ARE MOCKED, NEED TO BE REPLACED WITH BE DATA -->
 <div class="row">
     <div id="results">
         <p class="small-header"><img src="./assets/images/star_icon.svg" alt="star" role="presentation" />Ranking</p>
         <div>
+            <!-- These need to be changed to ngFor with BE DATA -->
             <ui-voting-result-item index="1" answer="Test answer" [votes]="254" [active]="true"></ui-voting-result-item>
             <ui-voting-result-item index="2" answer="Test answer 222" [votes]="69"></ui-voting-result-item>
         </div>
@@ -45,7 +47,7 @@
         <ng-container *ngIf="walletConnected$ | async">
             <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
             <ui-header-gradient>2</ui-header-gradient>
-            
+            <!-- These need to be changed to ngFor with BE DATA -->
             <form [formGroup]="form">
                 <ui-radio-button [value]="1" formControlName="answer">돈벌자 - @herokorea (Korea)</ui-radio-button>
                 <ui-radio-button [value]="2" formControlName="answer" >@キャラ (Japan)</ui-radio-button>
@@ -68,7 +70,7 @@
             <p class="text-after">{{ 'DAO.VOTING.MIN_VOTE_POWER_TEXT' | transloco}}</p>
             <div class="voting-power">
                 <ui-order-highlight>2</ui-order-highlight>
-                <ui-adria-token>500</ui-adria-token>
+                <ui-adria-token>500</ui-adria-token> // replace value with BE data
                 <span class="vertical-line"></span>
                 <span>3 {{ "MONTHS" | transloco }}</span>
         </div>

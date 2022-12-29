@@ -323,7 +323,8 @@
             "THANKS_SUPPORT": "Dziękujemy, że wspierasz projekt i wpływasz na jego rozwój.",
             "MIN_VOTE_POWER": "Nie osiągnięto minimalnej siły głosów",
             "MIN_VOTE_POWER_TEXT": "Aby móc głosować musisz posiadać przynajmniej pierwszy stopień siły głosów."
-        }
+        },
+        "QUESTION_LIST": "Lista pytań"
     },
     "EARLY_ACCESS": {
         "HEADER": "Wasza pozaziemska przygoda<br>rozpocznie się 13&nbsp;grudnia!",

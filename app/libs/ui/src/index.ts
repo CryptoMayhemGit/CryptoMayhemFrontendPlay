@@ -51,3 +51,5 @@ export * from './lib/header-gradient/header-gradient.module';
 export * from './lib/header-gradient/header-gradient.component';
 export * from './lib/voting-result-item/voting-result-item.module';
 export * from './lib/voting-result-item/voting-result-item.component';
+export * from './lib/dao-history/dao-history.module';
+export * from './lib/dao-history/dao-history.component';

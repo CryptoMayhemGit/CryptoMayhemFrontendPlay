@@ -1,6 +1,8 @@
 :host {
   align-items: center;
   display: flex;
+  height: 2.5rem;
+  margin-left: 1rem;
 }
 
 .form-control {
@@ -15,7 +17,6 @@
 }
 
 input[type="radio"] {
-  appearance: none;
   appearance: none;
   border: 0.1rem solid var(--text-primary);
   border-radius: 50%;

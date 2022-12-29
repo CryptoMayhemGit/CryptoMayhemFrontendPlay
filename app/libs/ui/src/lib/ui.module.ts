@@ -22,9 +22,10 @@ import { OrderHighlightModule } from './order-highlight/order-highlight.module';
 import { AdriaTokenModule } from './adria-token/adria-token.module';
 import { DaoInfoModule } from './dao-info/dao-info.module';
 import { DaoVotingModule } from './dao-voting/dao-voting.module';
+import { VotingResultItemModule } from './voting-result-item/voting-result-item.module';
+import { DaoHistoryModule } from './dao-history/dao-history.module';
 import { HeaderGradientModule } from './header-gradient/header-gradient.module';
 import { RadioButtonModule } from './radio-button/radio-button.module';
-import { VotingResultItemModule } from './voting-result-item/voting-result-item.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -54,7 +55,8 @@ import { VotingResultItemModule } from './voting-result-item/voting-result-item.
     DaoVotingModule,
     HeaderGradientModule,
     RadioButtonModule,
-    VotingResultItemModule
+    VotingResultItemModule,
+    DaoHistoryModule
   ],
 })
 export class UiModule {}

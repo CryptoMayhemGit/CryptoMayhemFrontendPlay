@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DaoComponent } from './dao.component';
 import {
+  DaoHistoryModule,
   DaoInfoModule,
   DaoVotingModule,
   TabNavigatorModule,
@@ -14,7 +15,8 @@ import {
     CommonModule,
     TabNavigatorModule,
     DaoInfoModule,
-    DaoVotingModule
+    DaoVotingModule,
+    DaoHistoryModule,
   ],
   exports: [DaoComponent],
 })
