@@ -7,6 +7,8 @@ import {
   DaoVotingModule,
   TabNavigatorModule,
 } from '@crypto-mayhem-frontend/ui';
+import { EffectsModule } from '@ngrx/effects';
+import { CryptoMayhemDataAccessDaoModule, DAOEffects } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/dao';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import {
     DaoInfoModule,
     DaoVotingModule,
     DaoHistoryModule,
+    EffectsModule.forFeature([DAOEffects]),
+    CryptoMayhemDataAccessDaoModule
   ],
   exports: [DaoComponent],
 })

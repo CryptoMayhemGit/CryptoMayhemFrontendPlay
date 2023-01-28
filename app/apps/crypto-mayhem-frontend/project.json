@@ -29,7 +29,10 @@
             "output": "assets"
           }
         ],
-        "styles": ["apps/crypto-mayhem-frontend/src/styles.scss", "libs/ui/src/lib/tooltip/tooltip.scss"],
+        "styles": [
+          "apps/crypto-mayhem-frontend/src/styles.scss",
+          "libs/ui/src/lib/tooltip/tooltip.scss"
+        ],
         "scripts": ["libs/crypto-mayhem/assets/unity/Build/build.loader.js"]
       },
       "configurations": {

@@ -9,5 +9,4 @@ export class DaoComponent{
   activeTab = 2;
 
   constructor() {}
-
 }
