@@ -20,7 +20,7 @@
         <div id="results">
             <p class="small-header"><img src="./assets/images/star_icon.svg" alt="star" role="presentation" />Ranking</p>
             <div>
-                <ng-container *ngFor="let answer of dao.answerRankings">
+                <ng-container *ngFor="let answer of dao.answerRankings | sort: 'orderId'">
                     <ui-voting-result-item answer="{{answer.answerName}}" [votes]="answer.voteCount"></ui-voting-result-item>
                 </ng-container>
             </div>
@@ -49,7 +49,7 @@
                 <!-- <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
                 <ui-header-gradient>2</ui-header-gradient> -->
                 <form [formGroup]="form">
-                    <ng-container *ngFor="let answer of dao.answerRankings">
+                    <ng-container *ngFor="let answer of dao.answerRankings | sort: 'orderId'">
                         <ui-radio-button [value]="answer.answerName" formControlName="answer">{{answer.answerName}}</ui-radio-button>
                     </ng-container>
                     <ui-main-button (btnClick)="onSubmit()">Submit</ui-main-button>

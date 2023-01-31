@@ -5,10 +5,11 @@ import { Pipe, PipeTransform } from "@angular/core";
 })
 export class ArraySortPipe  implements PipeTransform {
   transform(array: any, field: string): any[] {
+    const arraySort = [...array];
     if (!Array.isArray(array)) {
       return [];
     }
-    array.sort((a: any, b: any) => {
+    arraySort.sort((a: any, b: any) => {
       if (a[field] < b[field]) {
         return -1;
       } else if (a[field] > b[field]) {
@@ -17,6 +18,6 @@ export class ArraySortPipe  implements PipeTransform {
         return 0;
       }
     });
-    return array;
+    return arraySort;
   }
 }
