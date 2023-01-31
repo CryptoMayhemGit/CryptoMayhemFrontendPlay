@@ -1,7 +1,12 @@
 @import 'libs/crypto-mayhem/styles/mixins';
 
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .tabs-center-without-background {
-  
   ul {
     display: flex;
     margin: 0;
@@ -15,7 +20,6 @@
       position: relative;
 
       &.active {
-
         &::after {
           background: linear-gradient(
             90deg,
@@ -55,6 +59,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
+
   ul {
     display: flex;
     margin: 0;

@@ -9,8 +9,8 @@ import { DaoTopic, SetVoteRequest } from "@crypto-mayhem-frontend/crypto-mayhem/
 import { Observable } from "rxjs";
 
 export const DAO_BASE = `https://mayhemdaoapi.azurewebsites.net`;
-export const DAO_TOPIC_ALL_ACTIVE = (localization: string) => `${DAO_BASE}/Topic/GetAllActiveTopics?localizationTag=${localization}`;
-export const DAO_TOPIC_ALL_HISTORIC = (skip:number, take: number, localization: string) => `${DAO_BASE}/Topic/GetAllHistoricTopics?Skip=${skip}&Take=${take}&localizationTag=${localization}`;
+export const DAO_TOPIC_ALL_ACTIVE = (wallet: string,localization: string) => `${DAO_BASE}/Topic/GetAllActiveTopics/${wallet}/${localization}`;
+export const DAO_TOPIC_ALL_HISTORIC = (skip:number, take: number, localization: string) => `${DAO_BASE}/Topic/GetAllHistoricTopics/${skip}/${take}/${localization}`;
 
 @Injectable({ providedIn: "root" })
 export class DAOService {
@@ -22,12 +22,12 @@ export class DAOService {
         @Inject(APP_CONFIG) private readonly appConfig: AppConfig
     ) {}
 
-    getDaoAllActiveTopics(): Observable<{topics: DaoTopic[]}> {
-        return this.httpClient.get<{topics: DaoTopic[]}>(DAO_TOPIC_ALL_ACTIVE('PL'));
+    getDaoAllActiveTopics(wallet: string): Observable<{topics: DaoTopic[]}> {
+        return this.httpClient.get<{topics: DaoTopic[]}>(DAO_TOPIC_ALL_ACTIVE(wallet, 'PL'));
     }
 
     getAllHistoricTopics(skip: number, take: number): Observable<{topics: DaoTopic[]}> {
-        return this.httpClient.get<{topics: DaoTopic[]}>(DAO_TOPIC_ALL_HISTORIC(skip, take, 'polish'));
+        return this.httpClient.get<{topics: DaoTopic[]}>(DAO_TOPIC_ALL_HISTORIC(skip, take, 'PL'));
     }
 
     postDaoVoteWithSignature(setVoteRequest: SetVoteRequest): Observable<any> {

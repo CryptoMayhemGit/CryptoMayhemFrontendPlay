@@ -6,7 +6,7 @@
                 <div class="row info-timer">
                     <div>
                         <p class="small-text">{{ 'DAO.VOTING.VOTING_ENDS' | transloco }}</p>
-                        <ui-timer [startTime]="dao.endDate.getTime()"></ui-timer>
+                        <ui-timer [startTime]="getTimeFromDate(dao.stopDate)"></ui-timer>
                     </div>
                     <h1>{{dao.name}}</h1>
                 </div>
@@ -16,13 +16,12 @@
                 </p>
             </div>
         </div>
-    <!-- ANSWERS QUESTIONS AND TEXT DESCRIPTION ARE MOCKED, NEED TO BE REPLACED WITH BE DATA -->
         <div class="row">
         <div id="results">
             <p class="small-header"><img src="./assets/images/star_icon.svg" alt="star" role="presentation" />Ranking</p>
             <div>
                 <ng-container *ngFor="let answer of dao.answerRankings">
-                    <ui-voting-result-item answer="{{answer.answerName}}" [votes]="answer.voteCount" [active]="true"></ui-voting-result-item>
+                    <ui-voting-result-item answer="{{answer.answerName}}" [votes]="answer.voteCount"></ui-voting-result-item>
                 </ng-container>
             </div>
             <div id="results-total">
@@ -45,12 +44,12 @@
                 <ui-main-button (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
             </ng-container>
             <ng-container *ngIf="walletConnected$ | async">
-                <!-- Uncomment when we set vote weight -->
+                <!-- UNCOMMENT WHEN WE SET VOTE WEIGHT -->
                 <!-- <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
                 <ui-header-gradient>2</ui-header-gradient> -->
                 <form [formGroup]="form">
                     <ng-container *ngFor="let answer of dao.answerRankings">
-                        <ui-radio-button [value]="1" formControlName="answer">{{answer.answerName}}</ui-radio-button>
+                        <ui-radio-button [value]="answer.answerName" formControlName="answer">{{answer.answerName}}</ui-radio-button>
                     </ng-container>
                     <ui-main-button (btnClick)="onSubmit()">Submit</ui-main-button>
                 </form>

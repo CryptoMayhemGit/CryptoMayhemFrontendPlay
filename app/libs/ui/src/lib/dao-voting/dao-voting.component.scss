@@ -220,3 +220,42 @@ form {
     }
   }
 }
+
+#vesting-wallet {
+  margin-bottom: 3.2rem;
+  text-align: center;
+  text-transform: uppercase;
+
+  .connected {
+    color: var(--accent-color);
+  }
+
+  .disconnected {
+    color: var(--error-color);
+  }
+}
+
+#vesting-want-buy {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  & > div {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3.5rem;
+
+    p {
+      color: #fff;
+      font-size: 1.8rem;
+      line-height: 2.2rem;
+      margin-bottom: 3.2rem;
+    }
+
+    ui-main-button {
+      display: flex;
+      width: 60%;
+    }
+  }
+}

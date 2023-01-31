@@ -25,8 +25,9 @@ export class DAOEffects {
     getAllActiveTopics$ = createEffect(() =>
         this.actions$.pipe(
             ofType(DAOActions.getAllActiveTopics),
-            switchMap(() =>
-                this.daoService.getDaoAllActiveTopics().pipe(
+            concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
+            switchMap(([,wallet]) =>
+                this.daoService.getDaoAllActiveTopics(wallet).pipe(
                     map((response) => response.topics),
                     map((topics) => DAOActions.getAllActiveTopicsSuccess({ topics })),
                     catchError((error) => of(DAOActions.getAllActiveTopicsFailure({ error })))

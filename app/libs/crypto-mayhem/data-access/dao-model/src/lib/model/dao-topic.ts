@@ -5,8 +5,9 @@ export interface DaoTopic {
     description: string;
     name: string;
     startDate: Date;
-    endDate: Date;
+    stopDate: Date;
     votesCount: number;
+    canVote: boolean;
 
     answerRankings: DaoAnswer[];
 }
