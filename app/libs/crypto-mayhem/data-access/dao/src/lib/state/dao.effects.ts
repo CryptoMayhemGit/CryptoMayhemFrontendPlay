@@ -25,9 +25,12 @@ export class DAOEffects {
     getAllActiveTopics$ = createEffect(() =>
         this.actions$.pipe(
             ofType(DAOActions.getAllActiveTopics),
-            concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
-            switchMap(([,wallet]) =>
-                this.daoService.getDaoAllActiveTopics(wallet).pipe(
+            concatLatestFrom(() => [
+                this.store.select(WalletSelectors.getAccount),
+                this.store.select(WalletSelectors.getLanguage),
+            ]),
+            switchMap(([,wallet, lang]) =>
+                this.daoService.getDaoAllActiveTopics(wallet, lang).pipe(
                     map((response) => response.topics),
                     map((topics) => DAOActions.getAllActiveTopicsSuccess({ topics })),
                     catchError((error) => of(DAOActions.getAllActiveTopicsFailure({ error })))
@@ -39,8 +42,9 @@ export class DAOEffects {
     getAllHistoricTopics$ = createEffect(() =>
         this.actions$.pipe(
             ofType(DAOActions.getAllHistoricTopics),
-            switchMap(({skip, take}) =>
-                this.daoService.getAllHistoricTopics(skip, take).pipe(
+            concatLatestFrom(() => this.store.select(WalletSelectors.getLanguage)),
+            switchMap(([{skip, take}, localization]) =>
+                this.daoService.getAllHistoricTopics(skip, take, localization).pipe(
                     map((response) => response.topics),
                     map((topics) => DAOActions.getAllHistoricTopicsSuccess({ topics })),
                     catchError((error) => of(DAOActions.getAllHistoricTopicsFailure({ error })))

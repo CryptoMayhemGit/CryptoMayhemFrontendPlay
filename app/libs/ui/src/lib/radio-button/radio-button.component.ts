@@ -31,7 +31,7 @@ export class RadioButtonComponent implements OnInit, ControlValueAccessor {
     this.inputControl.valueChanges.subscribe((val) => {
       const fieldsAreValid = this.inputControl.valid;
       const value = fieldsAreValid ? val : null;
-
+      console.log(val);
       this._onChange(value);
       this._onTouched();
     });

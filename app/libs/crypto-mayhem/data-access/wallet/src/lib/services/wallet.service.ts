@@ -263,7 +263,7 @@ export class WalletService {
   public async signMessageForLauncher(data: string): Promise<void>{
     if(this.provider) {
       try{
-        const signer = this.provider.getSigner();
+        const signer = await this.provider.getSigner();
         signer.signMessage(data)
         .then((signature) => {
           const dataJson: SignedMessage = {
@@ -295,15 +295,14 @@ export class WalletService {
   public async signMessage(message: string[]): Promise<string[]> {
     if (this.provider) {
       const data = message.join(' ');
-      const dataWithSignedMessage = message;
+
       try {
-        const signer = this.provider.getSigner();
-        const signedMessage = await signer.signMessage(data);
-        dataWithSignedMessage.push(signedMessage);
-        return dataWithSignedMessage;
+        const signer = await this.provider.getSigner();
+        const signature = await signer.signMessage(data);
+        return [...message, signature];
       }
       catch (error) {
-        console.error(error);
+        console.error('signMessage: ',error);
         this.notificationsService.error(
           'NOTIFICATIONS.ERROR_OCCURRED',
         );

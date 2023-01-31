@@ -12,6 +12,7 @@ import { OrderHighlightModule } from '../order-highlight/order-highlight.module'
 import { AdriaTokenModule } from '../adria-token/adria-token.module';
 import { TabNavigatorModule } from '../tab-navigator/tab-navigator.module';
 import { PipesModule } from '@crypto-mayhem-frontend/utility/pipes';
+import { DaoVotingDetailModule } from '../dao-voting-detail/dao-voting-detail.module';
 
 @NgModule({
   declarations: [DaoVotingComponent],
@@ -28,7 +29,8 @@ import { PipesModule } from '@crypto-mayhem-frontend/utility/pipes';
     OrderHighlightModule,
     AdriaTokenModule,
     TabNavigatorModule,
-    PipesModule
+    PipesModule,
+    DaoVotingDetailModule
   ],
   exports: [DaoVotingComponent],
 })

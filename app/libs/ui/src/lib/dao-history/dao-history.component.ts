@@ -26,67 +26,6 @@ export class DaoHistoryComponent {
     ));
   }
 
-  //DUMMY DATA TO BE REPLACED BY BE
-  questions: any[] = [
-    {
-      "id": 1,
-      "title": "Question 1"
-    },
-    {
-      "id": 2,
-      "title": "Question 2"
-    },
-    {
-      "id": 3,
-      "title": "Q3"
-    }, 
-    {
-      "id": 4,
-      "title": "Question 4"
-    },
-    {
-      "id": 5,
-      "title": "Question 5"
-    },
-    {
-      "id": 6,
-      "title": "Question 6"
-    },
-    {
-      "id": 7,
-      "title": "Q7"
-    },
-    {
-      "id": 8,
-      "title": "Question 8"
-    },
-    {
-      "id": 9,
-      "title": "Question 9"
-    },
-    {
-      "id": 10,
-      "title": "Q10"
-    },
-    {
-      "id": 11,
-      "title": "Question 11"
-    },
-    {
-      "id": 12,
-      "title": "Question 12"
-    },
-    {
-      "id": 13,
-      "title": "Q13"
-    },
-    {
-      "id": 14,
-      "title": "Question 14"
-    },
-
-  ];
-
   trackById(index:number, el:any): number {
     return el.id;
   }
@@ -108,7 +47,7 @@ export class DaoHistoryComponent {
       }
     ]
     console.log('scrolled down!!');
-    this.questions.push(...newQuestions);
+    //this.questions.push(...newQuestions);
   }
 
   onQuestionClick(id: number) {

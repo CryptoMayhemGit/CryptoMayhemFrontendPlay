@@ -28,11 +28,10 @@
     </div>
 
     <div id="answers">
-        <!-- MOCKED CONTENT, IT WILL COME FROM BE -->
         <h1>{{choiceDaoHistoryTopic?.name}}</h1>
         <p>{{choiceDaoHistoryTopic?.description}}</p>
-        <ng-container *ngFor="let historyTopic of choiceDaoHistoryTopic?.answerRankings">
-            <ui-voting-result-item index="1" answer="Test answer" [votes]="254" [active]="true"></ui-voting-result-item>
+        <ng-container *ngFor="let historyTopic of choiceDaoHistoryTopic?.answerRankings | sort: 'voteCount';  let indefOf = index">
+            <ui-voting-result-item index="1" [answer]="historyTopic.answerName" [votes]="historyTopic.voteCount" [active]="indefOf === 0"></ui-voting-result-item>
         </ng-container>
         <div id="results-total">
             <img src="./assets/images/votes_people_icon.svg" alt="people" role="presentation" />
