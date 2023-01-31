@@ -33,7 +33,8 @@
             </div>
         </div>
         <div id="voting">
-            <p class="small-header"><img src="./assets/images/vote_icon.svg" alt="star" role="presentation" style="margin-top: -0.3rem" />Głosowanie</p>
+            <p class="small-header"><img src="./assets/images/vote_icon.svg" alt="star" role="presentation" style="margin-top: -0.3rem" />
+            {{'DAO.TABS.VOTING' | transloco}}</p>
             <ng-container *ngIf="(walletConnected$ | async) === false">
                 <picture>
                     <source srcset="./assets/images/friendly_drone.webp">

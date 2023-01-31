@@ -23,6 +23,9 @@ export class DAOService {
     ) {}
 
     getDaoAllActiveTopics(wallet: string): Observable<{topics: DaoTopic[]}> {
+        if (wallet === null || wallet === undefined || wallet === "") {
+            wallet = '0x0000000000000000000000000000000000000000';
+        }
         return this.httpClient.get<{topics: DaoTopic[]}>(DAO_TOPIC_ALL_ACTIVE(wallet, 'PL'));
     }
 

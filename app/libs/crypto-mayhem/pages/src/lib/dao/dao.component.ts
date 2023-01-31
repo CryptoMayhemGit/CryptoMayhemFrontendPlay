@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { DAOFacade } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/dao';
-import { DaoTopic } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/dao-model';
-import { Observable, of } from 'rxjs';
 
 @Component({
   templateUrl: './dao.component.html',
@@ -9,12 +6,7 @@ import { Observable, of } from 'rxjs';
 })
 export class DaoComponent {
   tabs: string[] = ['DAO.TABS.INFO', 'DAO.TABS.VOTING', 'DAO.TABS.HISTORY'];
-  activeTab = 2;
-  allHistoricTopics$: Observable<DaoTopic[]> = of([]);
+  activeTab = 0;
 
-  constructor(
-    private readonly daoFacade: DAOFacade,
-  ) {
-    this.allHistoricTopics$ = this.daoFacade.daoAllHistoricTopics$;
-  }
+  constructor() {}
 }

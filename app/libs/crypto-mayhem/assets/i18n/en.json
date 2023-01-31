@@ -322,7 +322,12 @@
       "SUCCESS": "You voted",
       "THANKS_SUPPORT": "Thank you for supporting the project and influencing its development.",
       "MIN_VOTE_POWER": "The minimum voting power wasn’t reached",
-      "MIN_VOTE_POWER_TEXT": "To be able to vote, you have to own at least the first level of voting power."
+      "MIN_VOTE_POWER_TEXT": "To be able to vote, you have to own at least the first level of voting power.",
+      "CONNECT_TO_VOTE": "Connect your wallet to vote"
+    },
+    "HISTORY": {
+      "NO_QUESTION": "No questions yet",
+      "NO_QUESTION_TEXT": "Here will be available all questions and results of voting after their end."
     },
     "QUESTION_LIST": "Questions"
   },

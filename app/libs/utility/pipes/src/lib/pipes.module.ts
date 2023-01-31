@@ -5,6 +5,7 @@ import { WalletShorterPipe } from './wallet-shorter/wallet-shorter.pipe';
 import { AdriaTokenPipe } from './adria-token/adria-token.pipe';
 import { TranslocoModule } from '@ngneat/transloco';
 import { BnbTokenPipe } from './bnb-token/bnb-token.pipe';
+import { ArraySortPipe } from './arraySort/array-sort.pipe';
 
 @NgModule({
   imports: [CommonModule, TranslocoModule],
@@ -13,7 +14,14 @@ import { BnbTokenPipe } from './bnb-token/bnb-token.pipe';
     AdriaTokenPipe,
     WalletShorterPipe,
     BnbTokenPipe,
+    ArraySortPipe
   ],
-  exports: [FormatTimePipe, AdriaTokenPipe, WalletShorterPipe, BnbTokenPipe],
+  exports: [
+    FormatTimePipe,
+    AdriaTokenPipe,
+    WalletShorterPipe,
+    BnbTokenPipe,
+    ArraySortPipe
+  ],
 })
 export class PipesModule {}

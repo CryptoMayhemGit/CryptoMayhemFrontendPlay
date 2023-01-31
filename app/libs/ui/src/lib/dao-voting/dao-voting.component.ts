@@ -62,6 +62,10 @@ export class DaoVotingComponent{
     }
   }
 
+  public checkIfHighestVoteCount(answers: DaoAnswer[]): boolean {
+    return answers[0].voteCount > answers[1].voteCount;
+  }
+
   public countTab(index: number): number {
     index++;
     return index--;

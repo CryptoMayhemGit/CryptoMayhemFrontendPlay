@@ -325,6 +325,10 @@
       "MIN_VOTE_POWER": "Nie osiągnięto minimalnej siły głosów",
       "MIN_VOTE_POWER_TEXT": "Aby móc głosować musisz posiadać przynajmniej pierwszy stopień siły głosów."
     },
+    "HISTORY": {
+      "NO_QUESTION": "Brak pytań",
+      "NO_QUESTION_TEXT": "Tutaj będą pojawiać się wyniki wszystkich przeprowadzonych głosowań po ich zakończeniu."
+    },
     "QUESTION_LIST": "Lista pytań"
   },
   "EARLY_ACCESS": {
