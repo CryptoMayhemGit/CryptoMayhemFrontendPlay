@@ -1,55 +1,103 @@
 @import 'libs/crypto-mayhem/styles/mixins';
 
-:host {
+.tabs-center-without-background {
+  
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    li {
+      cursor: pointer;
+      display: flex;
+      list-style-type: none;
+      padding: 1rem 0.6rem;
+      position: relative;
+
+      &.active {
+
+        &::after {
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            var(--text-primary) 50%,
+            transparent 100%
+          );
+          bottom: 0;
+          content: '';
+          height: 0.2rem;
+          left: 0;
+          position: absolute;
+          width: 100%;
+        }
+      }
+    }
+  }
+  
+  @media screen and (min-width: 320px) {
+    ul li {
+      padding: 1rem 2.4rem;
+    }
+  }
+    
+  
+  @media screen and (min-width: 1240px) {
+    :host {
+      justify-content: flex-start;
+    }
+  }
+  
+}
+
+.tabs-start-left-with-background {
   @include background-blur;
 
   display: flex;
   justify-content: center;
   width: 100%;
-}
-
-ul {
-  display: flex;
-  margin: 0;
-  padding: 0;
-
-  li {
-    cursor: pointer;
+  ul {
     display: flex;
-    list-style-type: none;
-    padding: 1rem 0.6rem;
-    position: relative;
-
-    &.active {
-      background: rgb(17 12 29 / 80%);
-            
-      &::after {
-        background: linear-gradient(
-          90deg,
-          transparent 0%,
-          var(--text-primary) 50%,
-          transparent 100%
-        );
-        bottom: 0;
-        content: '';
-        height: 0.2rem;
-        left: 0;
-        position: absolute;
-        width: 100%;
+    margin: 0;
+    padding: 0;
+  
+    li {
+      cursor: pointer;
+      display: flex;
+      list-style-type: none;
+      padding: 1rem 0.6rem;
+      position: relative;
+  
+      &.active {
+        background: rgb(17 12 29 / 80%);
+  
+        &::after {
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            var(--text-primary) 50%,
+            transparent 100%
+          );
+          bottom: 0;
+          content: '';
+          height: 0.2rem;
+          left: 0;
+          position: absolute;
+          width: 100%;
+        }
       }
     }
   }
-}
-
-@media screen and (min-width: 320px) {
-  ul li {
-    padding: 1rem 2.4rem;
-  }
-}
   
-
-@media screen and (min-width: 1240px) {
-  :host {
-    justify-content: flex-start;
+  @media screen and (min-width: 320px) {
+    ul li {
+      padding: 1rem 2.4rem;
+    }
+  }
+    
+  
+  @media screen and (min-width: 1240px) {
+    :host {
+      justify-content: flex-start;
+    }
   }
 }

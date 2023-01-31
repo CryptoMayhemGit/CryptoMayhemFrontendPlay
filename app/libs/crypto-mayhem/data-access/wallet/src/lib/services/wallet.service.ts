@@ -292,6 +292,27 @@ export class WalletService {
     }
   }
 
+  public async signMessage(message: string[]): Promise<string[]> {
+    if (this.provider) {
+      const data = message.join(' ');
+      const dataWithSignedMessage = message;
+      try {
+        const signer = this.provider.getSigner();
+        const signedMessage = await signer.signMessage(data);
+        dataWithSignedMessage.push(signedMessage);
+        return dataWithSignedMessage;
+      }
+      catch (error) {
+        console.error(error);
+        this.notificationsService.error(
+          'NOTIFICATIONS.ERROR_OCCURRED',
+        );
+      }
+    }
+
+    return new Promise(() => ['']);
+  }
+
   public async signWalletTransaction(
     signedWalletWithAmount: SignedWalletWithAmount
   ): Promise<void> {

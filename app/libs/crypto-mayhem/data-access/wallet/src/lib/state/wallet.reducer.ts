@@ -21,6 +21,7 @@ export interface WalletState {
   tokensSoldPerStage: number;
   maxAdriaTokenAmount: number;
   bnbBalanceOf: number;
+  language: string;
 }
 
 export const initialState: WalletState = {
@@ -39,6 +40,7 @@ export const initialState: WalletState = {
   tokensSoldPerStage: 0,
   maxAdriaTokenAmount: 0,
   bnbBalanceOf: 0,
+  language: 'en',
 };
 
 export const walletReducer = createReducer(
@@ -108,7 +110,8 @@ export const walletReducer = createReducer(
     ...state,
     loading: false,
   })),
-  on(WalletActions.getBnbBalance,(state, { bnbBalanceOf }) => ({...state, bnbBalanceOf }))
+  on(WalletActions.getBnbBalance,(state, { bnbBalanceOf }) => ({...state, bnbBalanceOf })),
+  on(WalletActions.setLanguage, (state, { language }) => ({ ...state, language }))
 );
 
 export function reducer(state: WalletState | undefined, action: Action) {

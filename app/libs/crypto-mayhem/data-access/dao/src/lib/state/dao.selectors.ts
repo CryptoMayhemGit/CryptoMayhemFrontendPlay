@@ -11,3 +11,8 @@ export const selectAllHistoricTopics = createSelector(
     selectDao,
     (state) => state.daoTopicHistory
 );
+
+export const selectDaoHistoryTopicById = (id: number) => createSelector(
+    selectDao,
+    (state) => state.daoTopicHistory.find(topic => topic.id === id)
+);

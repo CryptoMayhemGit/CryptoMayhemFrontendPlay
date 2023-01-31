@@ -100,3 +100,8 @@ export const getBnbBalance = createAction(
   '[Wallet] Get balance of BNB',
   props<{ bnbBalanceOf: number}>()
 );
+
+export const setLanguage = createAction(
+  '[Wallet] Set language',
+  props<{ language: string }>()
+);

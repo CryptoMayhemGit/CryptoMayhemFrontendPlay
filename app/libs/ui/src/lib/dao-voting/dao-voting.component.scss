@@ -7,6 +7,25 @@
   justify-content: center;
   margin: 0 auto;
   max-width: 88.3rem;
+  width: 100%;
+}
+
+.dao-voting-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 88.3rem;
+  width: 100%;
+}
+
+.dao-voting-info {
+  width: 100%;
+}
+
+#tab {
+  margin-top: 3.2rem;
 }
 
 #info {
