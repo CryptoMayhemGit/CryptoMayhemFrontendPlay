@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { DAOFacade } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/dao";
 import { DaoTopic } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/dao-model';
-import { map, Observable } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 
 @Component({
   selector: 'ui-dao-history',
@@ -9,7 +9,7 @@ import { map, Observable } from 'rxjs';
   styleUrls: ['./dao-history.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DaoHistoryComponent {
+export class DaoHistoryComponent implements OnInit {
 
   daoHistoryTopics$!: Observable<DaoTopic[]>;
   daoShortHistoryTopics$!: Observable<{id: number, name: string}[]>;
@@ -28,6 +28,15 @@ export class DaoHistoryComponent {
     .pipe(
       map((topics) => topics.map((topic) => ({id: topic.id, name: topic.name}))
     ));
+  }
+
+  ngOnInit(): void {
+    this.daoFacade.daoAllHistoricTopics$
+    .pipe(
+      take(1)
+    ).subscribe((topics) => {
+      this.choiceDaoHistoryTopic = topics[0];
+    });
   }
 
   trackById(index:number, el:any): number {
