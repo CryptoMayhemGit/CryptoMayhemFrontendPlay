@@ -11,8 +11,8 @@
         <div
             id="questions-items"
             infiniteScroll
-            [infiniteScrollDistance]="2"
-            [infiniteScrollThrottle]="50"
+            [infiniteScrollDistance]="scrollDistance"
+            [infiniteScrollThrottle]="scrollThrottle"
             (scrolled)="onScroll()"
             [infiniteScrollContainer]="'#questions-items'"
             [fromRoot]="true"

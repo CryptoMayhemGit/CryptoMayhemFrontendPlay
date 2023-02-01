@@ -12,7 +12,7 @@ export class DaoResolver implements Resolve<void> {
 
   resolve(route: ActivatedRouteSnapshot) {
     this.daoFacade.getDaoAllActiveTopics();
-    this.daoFacade.getDaoAllHistoricTopics(0, 50);
+    this.daoFacade.getDaoAllHistoricTopics(0, 20);
   }
 
 }

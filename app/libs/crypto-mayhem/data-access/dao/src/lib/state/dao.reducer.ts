@@ -8,11 +8,13 @@ export const daoKey = 'dao';
 export interface DaoState {
     daoTopics: DaoTopic[];
     daoTopicHistory: DaoTopic[];
+    spinner: boolean;
 }
 
 export const initialState: DaoState = {
     daoTopics: [],
-    daoTopicHistory: []
+    daoTopicHistory: [],
+    spinner: false
 };
 
 export const daoReducer = createReducer(
@@ -23,7 +25,7 @@ export const daoReducer = createReducer(
     })),
     on(DaoActions.getAllHistoricTopicsSuccess, (state, { topics }) => ({
         ...state,
-        daoTopicHistory: topics
+        daoTopicHistory: [...topics]
     })));
 
 export function reducer(state: DaoState | undefined, action: Action) {

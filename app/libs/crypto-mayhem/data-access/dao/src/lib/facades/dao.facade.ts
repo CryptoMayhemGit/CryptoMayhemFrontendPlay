@@ -8,6 +8,7 @@ import * as DaoSelectors from '../state/dao.selectors';
 export class DAOFacade {
     readonly daoAllActiveTopics$ = this.store.select(DaoSelectors.selectAllActiveTopics);
     readonly daoAllHistoricTopics$ = this.store.select(DaoSelectors.selectAllHistoricTopics);
+    readonly daoSpinner$ = this.store.select(DaoSelectors.selectDaoSpinner);
     readonly daoHistoryTopicById$ = (id: number) => this.store.select(DaoSelectors.selectDaoHistoryTopicById(id));
 
     constructor(

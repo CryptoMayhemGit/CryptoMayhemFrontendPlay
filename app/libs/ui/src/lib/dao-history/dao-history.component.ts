@@ -15,6 +15,10 @@ export class DaoHistoryComponent {
   daoShortHistoryTopics$!: Observable<{id: number, name: string}[]>;
   choiceDaoHistoryTopicId = 1;
   choiceDaoHistoryTopic: DaoTopic | undefined = undefined;
+  scrollDistance = 2;
+  scrollThrottle = 50;
+  skip = 0;
+  take = 20;
 
   constructor(
     private readonly daoFacade: DAOFacade,
@@ -30,30 +34,15 @@ export class DaoHistoryComponent {
     return el.id;
   }
 
-  // Dummy implementation of infinite scroll
   onScroll() {
-    const newQuestions = [
-      {
-        "id": Math.random(),
-        "title": "Question 5"
-      },
-      {
-        "id": Math.random(),
-        "title": "Question 6"
-      },
-      {
-        "id": Math.random(),
-        "title": "Q7"
-      }
-    ]
-    console.log('scrolled down!!');
-    //this.questions.push(...newQuestions);
+    this.skip += this.take;
+    this.take += this.take;
+    this.daoFacade.getDaoAllHistoricTopics(this.skip, this.take);
   }
 
   onQuestionClick(id: number) {
     this.daoFacade.getDaoHistoryTopicById(id)
     .subscribe((dao) => {
-      console.log(dao);
       this.choiceDaoHistoryTopic = dao;
     })
   }
