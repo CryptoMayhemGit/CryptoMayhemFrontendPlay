@@ -13,6 +13,7 @@ import { AdriaTokenModule } from '../adria-token/adria-token.module';
 import { TabNavigatorModule } from '../tab-navigator/tab-navigator.module';
 import { PipesModule } from '@crypto-mayhem-frontend/utility/pipes';
 import { DaoVotingDetailModule } from '../dao-voting-detail/dao-voting-detail.module';
+import { SpinnerModule } from '../spinner/spinner.module';
 
 @NgModule({
   declarations: [DaoVotingComponent],
@@ -30,7 +31,8 @@ import { DaoVotingDetailModule } from '../dao-voting-detail/dao-voting-detail.mo
     AdriaTokenModule,
     TabNavigatorModule,
     PipesModule,
-    DaoVotingDetailModule
+    DaoVotingDetailModule,
+    SpinnerModule
   ],
   exports: [DaoVotingComponent],
 })

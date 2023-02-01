@@ -16,7 +16,7 @@ export class MyAccountMobileComponent implements OnInit {
   @Output() playerNameChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() nftListChange: EventEmitter<string> = new EventEmitter<string>();
 
-  avatarChange: boolean = false;
+  avatarChange = false;
   bnbBalanceOf$: Observable<number> = of(0);
   walletAddress$: Observable<string> = of('');
 

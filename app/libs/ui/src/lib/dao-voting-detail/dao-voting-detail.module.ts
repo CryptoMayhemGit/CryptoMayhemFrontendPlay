@@ -8,6 +8,7 @@ import { HeaderGradientModule } from "../header-gradient/header-gradient.module"
 import { MainButtonModule } from "../main-button/main-button.module";
 import { OrderHighlightModule } from "../order-highlight/order-highlight.module";
 import { RadioButtonModule } from "../radio-button/radio-button.module";
+import { SpinnerModule } from "../spinner/spinner.module";
 import { TabNavigatorModule } from "../tab-navigator/tab-navigator.module";
 import { TimerModule } from "../timer/timer.module";
 import { VotingResultItemModule } from "../voting-result-item/voting-result-item.module";
@@ -28,7 +29,8 @@ import { DaoVotingDetailComponent } from "./dao-voting-detail.component";
         OrderHighlightModule,
         AdriaTokenModule,
         TabNavigatorModule,
-        PipesModule
+        PipesModule,
+        SpinnerModule
     ],
     exports: [DaoVotingDetailComponent]
 })

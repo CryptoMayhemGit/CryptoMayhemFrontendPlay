@@ -16,6 +16,8 @@ export class DaoVotingDetailComponent {
 
     form!: FormGroup;
     walletConnected$: Observable<boolean> = of(false);
+    spinnerSmall$: Observable<boolean> = of(false);
+
     myAnswer = 0;
 
     constructor(
@@ -24,6 +26,7 @@ export class DaoVotingDetailComponent {
         private fb: FormBuilder
     ) {
         this.walletConnected$ = this.walletFacade.connected$;
+        this.spinnerSmall$ = this.daoFacade.daoSmallSpinner$;
         this.form = this.fb.group({
             answer: [0]
         });

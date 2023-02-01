@@ -97,6 +97,16 @@
       "DENIED_BY_USER": "User denied message signature!",
       "SWITCH_CHAIN_ERROR": "Unable to switch chain!",
       "ADD_CHAIN_ERROR": "Unable to add chain!"
+    },
+    "DAO": {
+      "WALLET_NOT_EXIST_IN_SNAPSHOT_TITLE": "Twój portfel nie istnieje w snapshot!",
+      "WALLET_NOT_EXIST_IN_SNAPSHOT_MESSAGE": "Nie możesz głosować na tą propozycję, ponieważ Twój portfel nie istnieje w snapshot.",
+      "WALLET_NOT_EXIST_TITLE": "Twój portfel nie istnieje!",
+      "WALLET_NOT_EXIST_MESSAGE": "Nie możesz głosować na tą propozycję, ponieważ Twój portfel nie istnieje.",
+      "VOTING_IS_NOT_ACTIVE_TITLE": "Głosowanie nie jest aktywne!",
+      "VOTING_IS_NOT_ACTIVE_MESSAGE": "Nie możesz głosować na tą propozycję, ponieważ głosowanie nie jest aktywne.",
+      "WALLET_ALREADY_VOTED_TITLE": "Twój portfel już głosował!",
+      "WALLET_ALREADY_VOTED_MESSAGE": "Nie możesz głosować na tą propozycję, ponieważ Twój portfel już głosował."
     }
   },
   "AUTH": {
@@ -302,7 +312,7 @@
       "TITLE": "Dao - zarządzaj projektem Crypto&nbsp;Mayhem",
       "WHO": "Posiadacze tokenów ADRIA mogą brać udział w procesie decyzyjnym i wpływać na przyszły kierunek projektu.",
       "DECISION": "<strong>Na co masz wpływ?</strong><br><br>- Decyduj o dalszym rozwoju gry podczas jej tworzenia.<br><br>- Zaproponuj własne zmiany w grze, które zweryfikuje nasz zespół.<br><br>- Decyduj co Adria Corp ma zrobić z zebraną pulą $ADRIA w grze (pula pobrana z opłat transakcyjnych).",
-      "IMPORTANT": "<strong>Ważne:</strong> Każdy portfel może zagłosować tylko raz na pytanie."
+      "IMPORTANT": "<strong>Ważne:</strong> Każdy portfel może zagłosować tylko raz na pytanie, a moc głosu ustawiona jest na jeden"
     },
     "VOTES_WEIGHT": {
       "TITLE": "Waga głosów",
@@ -332,7 +342,9 @@
       "NO_QUESTION_TEXT": "Tutaj będą pojawiać się wyniki wszystkich przeprowadzonych głosowań po ich zakończeniu."
     },
     "QUESTION_LIST": "Lista pytań",
-    "QUESTION": "Pytanie"
+    "QUESTION": "Pytanie",
+    "VOTE_SUCCESS": "Głos oddany",
+    "VOTE_SUCCESS_DESCRIPTION": "Dziękujemy, że wspierasz projekt i wpływasz na jego rozwój."
   },
   "EARLY_ACCESS": {
     "HEADER": "Wasza pozaziemska przygoda<br>rozpocznie się 13&nbsp;grudnia!",

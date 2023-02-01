@@ -6,6 +6,7 @@ import { VotingResultItemModule } from '../voting-result-item/voting-result-item
 import { TranslocoModule } from '@ngneat/transloco';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { PipesModule } from '@crypto-mayhem-frontend/utility/pipes';
+import { SpinnerModule } from '../spinner/spinner.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { PipesModule } from '@crypto-mayhem-frontend/utility/pipes';
     VotingResultItemModule,
     TranslocoModule,
     InfiniteScrollModule,
-    PipesModule
+    PipesModule,
+    SpinnerModule
   ],
   exports: [DaoHistoryComponent],
 })
