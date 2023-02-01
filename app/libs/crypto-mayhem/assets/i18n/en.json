@@ -329,7 +329,8 @@
       "NO_QUESTION": "No questions yet",
       "NO_QUESTION_TEXT": "Here will be available all questions and results of voting after their end."
     },
-    "QUESTION_LIST": "Questions"
+    "QUESTION_LIST": "Questions",
+    "QUESTION": "Question"
   },
   "EARLY_ACCESS": {
     "HEADER": "Your extraterrestrial adventure will begin<br>on December 13th!",

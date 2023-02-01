@@ -10,6 +10,7 @@ export class TabNavigatorComponent{
   @Input() tabs!: string[];
   @Input() activeTab = 0;
   @Input() styleType = 'center-without-background';
+  @Input() showTabNumbers = false;
   @Output() activeTabChange: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() {}

@@ -329,7 +329,8 @@
       "NO_QUESTION": "Brak pytań",
       "NO_QUESTION_TEXT": "Tutaj będą pojawiać się wyniki wszystkich przeprowadzonych głosowań po ich zakończeniu."
     },
-    "QUESTION_LIST": "Lista pytań"
+    "QUESTION_LIST": "Lista pytań",
+    "QUESTION": "Pytanie"
   },
   "EARLY_ACCESS": {
     "HEADER": "Wasza pozaziemska przygoda<br>rozpocznie się 13&nbsp;grudnia!",

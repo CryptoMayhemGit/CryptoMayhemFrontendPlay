@@ -9,7 +9,7 @@
             [ngClass]="{ 'active': i === activeTab }"
             role="button"
             (click)="onTabClick(i)">
-            {{ tab | transloco }}
+            {{ tab | transloco }} {{ showTabNumbers === true ? i+1 : '' }}
         </li>
     </ul>
 </nav>

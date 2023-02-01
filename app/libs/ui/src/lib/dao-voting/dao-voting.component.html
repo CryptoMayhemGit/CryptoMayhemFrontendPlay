@@ -1,4 +1,10 @@
-<ui-tab-navigator [styleType]="'center-without-background'" id="tab" [tabs]="tabs" [(activeTab)]="activeTab"></ui-tab-navigator>
+<ui-tab-navigator
+[styleType]="'center-without-background'"
+id="tab"
+[tabs]="tabs"
+[(activeTab)]="activeTab"
+[showTabNumbers]="true"
+></ui-tab-navigator>
 <ng-container *ngFor="let dao of (daoTopics$ | async); let indexOf=index">
     <div class="dao-voting-container" *ngIf="activeTab === indexOf">
         <ui-dao-voting-detail [topic]="dao"></ui-dao-voting-detail>

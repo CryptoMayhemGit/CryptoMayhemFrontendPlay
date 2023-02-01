@@ -31,7 +31,7 @@ export class DaoVotingComponent{
   public setTabs(length: number): void {
     this.numberOfTabs = length;
     for (let i = 1; i <= length; i++) {
-      this.tabs.push('Question ' + i);
+      this.tabs.push('DAO.QUESTION');
     }
   }
 
