@@ -41,7 +41,8 @@ export class DaoVotingDetailComponent {
         this.daoFacade.postDaoVoteWithSignature(this.topic.id, this.form.value['answer'], new Date().getTime());
     }
 
-    onQuestionClick(answerId: number): void {
+    public onQuestionClick(answerId: number): void {
+        this.myAnswer = answerId;
         this.form.patchValue({ answer: answerId });
     }
 }
