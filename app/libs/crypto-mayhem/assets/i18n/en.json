@@ -96,6 +96,16 @@
       "DENIED_BY_USER": "User denied message signature!",
       "SWITCH_CHAIN_ERROR": "Unable to switch chain!",
       "ADD_CHAIN_ERROR": "Unable to add chain!"
+    },
+    "DAO": {
+      "WALLET_NOT_EXIST_IN_SNAPSHOT_TITLE": "Wallet not exist in snapshot!",
+      "WALLET_NOT_EXIST_IN_SNAPSHOT_MESSAGE": "You can't vote for this proposal because your wallet is not exist in snapshot.",
+      "WALLET_NOT_EXIST_TITLE": "Wallet not exist!",
+      "WALLET_NOT_EXIST_MESSAGE": "You can't vote for this proposal because your wallet is not exist.",
+      "VOTING_IS_NOT_ACTIVE": "Voting is not active!",
+      "VOTING_IS_NOT_ACTIVE_MESSAGE": "You can't vote for this proposal because voting is not active.",
+      "WALLET_ALREADY_VOTED_TITLE": "Wallet already voted!",
+      "WALLET_ALREADY_VOTED_MESSAGE": "You can't vote for this proposal because your wallet already voted."
     }
   },
   "AUTH": {

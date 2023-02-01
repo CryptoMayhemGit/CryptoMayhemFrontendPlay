@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Inject, Injectable } from '@angular/core';
 import { AppConfig, APP_CONFIG } from '@crypto-mayhem-frontend/crypto-mayhem/config';
 import { NotificationsService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
@@ -129,11 +130,49 @@ export class DAOEffects {
                         return DAOActions.postDaoVoteWithSignatureSuccess()
                     }),
                     catchError((error) => {
-                        console.log(error);
-                        return of();
+                        switch (error.error.code) {
+                            case DaoResponseErrorCodes.WALLET_NOT_EXIST_IN_SNAPSHOT:
+                                this.notificationsService.error(
+                                'NOTIFICATIONS.DAO.WALLET_NOT_EXIST_IN_SNAPSHOT_TITLE',
+                                'NOTIFICATIONS.DAO.WALLET_NOT_EXIST_IN_SNAPSHOT_MESSAGE',
+                                );
+                                break;
+                            case DaoResponseErrorCodes.WALLET_NOT_EXIST:
+                                this.notificationsService.error(
+                                    'NOTIFICATIONS.DAO.WALLET_NOT_EXIST_TITLE',
+                                    'NOTIFICATIONS.DAO.WALLET_NOT_EXIST_MESSAGE',
+                                );
+                                break;
+                            case DaoResponseErrorCodes.VOTING_IS_NOT_ACTIVE:
+                                this.notificationsService.error(
+                                    'NOTIFICATIONS.DAO.VOTING_IS_NOT_ACTIVE_TITLE',
+                                    'NOTIFICATIONS.DAO.VOTING_IS_NOT_ACTIVE_MESSAGE',
+                                );
+                                break;
+                            case DaoResponseErrorCodes.WALLET_ALREADY_VOTED:
+                                this.notificationsService.error(
+                                    'NOTIFICATIONS.DAO.WALLET_ALREADY_VOTED_TITLE',
+                                    'NOTIFICATIONS.DAO.WALLET_ALREADY_VOTED_MESSAGE',
+                                );
+                                break;
+                            default:
+                                this.notificationsService.error(
+                                    'NOTIFICATIONS.ERROR.UNKNOWN_ERROR',
+                                    '',
+                                );
+                              break;
+                          }
+                          return of();
                     })
                 )
             )
         )
     );
+}
+
+export enum DaoResponseErrorCodes {
+    WALLET_NOT_EXIST_IN_SNAPSHOT = 'WALLET_NOT_EXIST_IN_SNAPSHOT',
+    WALLET_NOT_EXIST = 'WALLET_NOT_EXIST',
+    VOTING_IS_NOT_ACTIVE = 'VOTING_IS_NOT_ACTIVE',
+    WALLET_ALREADY_VOTED = 'WALLET_ALREADY_VOTED'
 }

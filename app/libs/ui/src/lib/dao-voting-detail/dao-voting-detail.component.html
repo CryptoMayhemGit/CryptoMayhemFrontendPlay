@@ -44,7 +44,7 @@
             </ng-container>
             <ng-container *ngIf="(walletConnected$ | async) && topic.canVote">
                 <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
-                <ui-header-gradient>1</ui-header-gradient>
+                <ui-header-gradient>{{topic.userVotePower}}</ui-header-gradient>
                 <form [formGroup]="form">
                     <ng-container *ngFor="let answer of topic.answerRankings | sort: 'orderId'">
                         <ui-radio-button
