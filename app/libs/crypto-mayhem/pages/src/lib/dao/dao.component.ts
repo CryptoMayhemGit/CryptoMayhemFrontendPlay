@@ -4,10 +4,9 @@ import { Component } from '@angular/core';
   templateUrl: './dao.component.html',
   styleUrls: ['./dao.component.scss'],
 })
-export class DaoComponent{
+export class DaoComponent {
   tabs: string[] = ['DAO.TABS.INFO', 'DAO.TABS.VOTING', 'DAO.TABS.HISTORY'];
-  activeTab = 2;
+  activeTab = 0;
 
   constructor() {}
-
 }

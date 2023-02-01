@@ -10,6 +10,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainButtonModule } from '../main-button/main-button.module';
 import { OrderHighlightModule } from '../order-highlight/order-highlight.module';
 import { AdriaTokenModule } from '../adria-token/adria-token.module';
+import { TabNavigatorModule } from '../tab-navigator/tab-navigator.module';
+import { PipesModule } from '@crypto-mayhem-frontend/utility/pipes';
+import { DaoVotingDetailModule } from '../dao-voting-detail/dao-voting-detail.module';
 
 @NgModule({
   declarations: [DaoVotingComponent],
@@ -24,7 +27,10 @@ import { AdriaTokenModule } from '../adria-token/adria-token.module';
     ReactiveFormsModule,
     MainButtonModule,
     OrderHighlightModule,
-    AdriaTokenModule
+    AdriaTokenModule,
+    TabNavigatorModule,
+    PipesModule,
+    DaoVotingDetailModule
   ],
   exports: [DaoVotingComponent],
 })

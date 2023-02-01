@@ -2,6 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LanguageService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services';
 import { Language } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/models';
+import { WalletFacade } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
 import { isSmallScreen } from '@crypto-mayhem-frontend/utility/functions';
 import { TranslocoService } from '@ngneat/transloco';
 import { Subscription } from 'rxjs';
@@ -32,7 +33,8 @@ export class LangSwitchComponent implements OnInit, OnDestroy {
 
   constructor(
     private translocoService: TranslocoService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private readonly walletFacade: WalletFacade
   ) {
     const subs = translocoService.langChanges$.subscribe({
       next: (_) => {
@@ -49,6 +51,7 @@ export class LangSwitchComponent implements OnInit, OnDestroy {
   }
 
   setLang(languageSymbol: string): void {
+    this.walletFacade.setLanguage(languageSymbol);
     this.translocoService.setActiveLang(languageSymbol);
   }
 

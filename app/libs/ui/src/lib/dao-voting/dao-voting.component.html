@@ -1,79 +1,21 @@
-<div id="info">
-    <div>
-        <div class="row info-timer">
-            <div>
-                <p class="small-text">{{ 'DAO.VOTING.VOTING_ENDS' | transloco }}</p>
-                <ui-timer [startTime]="votingTime"></ui-timer>
-            </div>
-            <h1>Który członek społeczności crypto mayhem powinien wygrać rolexa?</h1>
-        </div>
-        
-        <hr>
-        <p class="info-content">
-            Aby uczcić udaną przedsprzedaż naszego tokena ADRIA kilka tygodni temu, jednego szczęśliwego członka społeczności nagrodzimy zegarkiem ROLEX!<br><br>
-            Nominowani z każdej z naszych grup społecznych zostali wybrani na podstawie aktywności i ogólnego wkładu w ducha Crypto Mayhem. W Polsce zgłoszono 2 kandydatów, aby zwiększyć szanse głosowania dla innych narodowości, ponieważ mają największą społeczność Crypto Mayhem.<br><br>
-            Od teraz posiadacze tokenów ADRIA mogą decydować, kto powinien wygrać Rolexa! Która społeczność okaże się silniejsza i wesprze swojego kolegę?
-        </p>
+<div id="no-active-votes" *ngIf="(daoTopics$ | async)?.length === 0">
+    <h1>{{'DAO.VOTING.NO_ACTIVE_VOTING' | transloco}}</h1>
+    <div id="questions-items">
+        {{'DAO.VOTING.NO_ACTIVE_VOTING_TEXT' | transloco}}
     </div>
 </div>
-<!-- ANSWERS QUESTIONS AND TEXT DESCRIPTION ARE MOCKED, NEED TO BE REPLACED WITH BE DATA -->
-<div class="row">
-    <div id="results">
-        <p class="small-header"><img src="./assets/images/star_icon.svg" alt="star" role="presentation" />Ranking</p>
-        <div>
-            <!-- These need to be changed to ngFor with BE DATA -->
-            <ui-voting-result-item index="1" answer="Test answer" [votes]="254" [active]="true"></ui-voting-result-item>
-            <ui-voting-result-item index="2" answer="Test answer 222" [votes]="69"></ui-voting-result-item>
+
+<ng-container *ngIf="(daoTopics$ | async)?.length !== 0">
+    <ui-tab-navigator
+    [styleType]="'center-without-background'"
+    id="tab"
+    [tabs]="tabs"
+    [(activeTab)]="activeTab"
+    [showTabNumbers]="true"
+    ></ui-tab-navigator>
+    <ng-container *ngFor="let dao of (daoTopics$ | async); let indexOf=index">
+        <div class="dao-voting-container" *ngIf="activeTab === indexOf">
+            <ui-dao-voting-detail [topic]="dao"></ui-dao-voting-detail>
         </div>
-        <div id="results-total">
-            <img src="./assets/images/votes_people_icon.svg" alt="people" role="presentation" />
-            <div class="column">
-                <p>{{ 'DAO.VOTING.PARTICIPANTS' | transloco }}</p>
-                <p>323</p>
-            </div>
-        </div>
-    </div>
-    <div id="voting">
-        <p class="small-header"><img src="./assets/images/vote_icon.svg" alt="star" role="presentation" style="margin-top: -0.3rem" />Głosowanie</p>
-        <ng-container *ngIf="(walletConnected$ | async) === false">
-            <picture>
-                <source srcset="./assets/images/friendly_drone.webp">
-                <source srcset="./assets/images/presale/friendly_drone.png">
-                <img alt="friendly drone" role="presentation" src="./assets/images/presale/friendly_drone.png">
-            </picture>
-            <p id="voting-want">{{ 'DAO.VOTING.WANT' | transloco }}</p>
-            <ui-main-button (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
-        </ng-container>
-        <ng-container *ngIf="walletConnected$ | async">
-            <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
-            <ui-header-gradient>2</ui-header-gradient>
-            <!-- These need to be changed to ngFor with BE DATA -->
-            <form [formGroup]="form">
-                <ui-radio-button [value]="1" formControlName="answer">돈벌자 - @herokorea (Korea)</ui-radio-button>
-                <ui-radio-button [value]="2" formControlName="answer" >@キャラ (Japan)</ui-radio-button>
-                <ui-radio-button [value]="3" formControlName="answer" >GOLD (Japan)</ui-radio-button>
-                <ui-main-button (btnClick)="onSubmit()">Submit</ui-main-button>
-            </form>
-        </ng-container>
-        <!-- show on success -->
-        <!--<ng-container>
-            <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
-            <ui-header-gradient>2</ui-header-gradient>
-            <img src="./assets/images/success_glow.svg" alt="success" role="presentation" />
-            <h2 class="after-vote-header success">{{ 'DAO.VOTING.SUCCESS' | transloco}}</h2>
-            <p class="text-after">D{{ 'DAO.VOTING.THANKS_SUPPORT' | transloco}}</p>
-        </ng-container>-->
-        <!-- show when voting power was not reached -->
-        <!--<ng-container>
-            <img src="./assets/images/info_glow.svg" alt="info" role="presentation" />
-            <h2 class="after-vote-header info">{{ 'DAO.VOTING.MIN_VOTE_POWER' | transloco}}</h2>
-            <p class="text-after">{{ 'DAO.VOTING.MIN_VOTE_POWER_TEXT' | transloco}}</p>
-            <div class="voting-power">
-                <ui-order-highlight>2</ui-order-highlight>
-                <ui-adria-token>500</ui-adria-token> // replace value with BE data
-                <span class="vertical-line"></span>
-                <span>3 {{ "MONTHS" | transloco }}</span>
-        </div>
-        </ng-container>-->
-    </div>
-</div>
+    </ng-container>
+</ng-container>

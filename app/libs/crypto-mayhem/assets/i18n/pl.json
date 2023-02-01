@@ -1,341 +1,349 @@
 {
-    "POLISH": "Polski",
-    "ENGLISH": "English",
-    "MENU": "Menu",
-    "BUY": "Kup",
-    "MILLION_ABBREVIATION": " mln",
-    "MONTH": "miesiąc",
-    "MONTHS": "miesięcy",
+  "POLISH": "Polski",
+  "ENGLISH": "English",
+  "MENU": "Menu",
+  "BUY": "Kup",
+  "MILLION_ABBREVIATION": " mln",
+  "MONTH": "miesiąc",
+  "MONTHS": "miesięcy",
 
-    "WELCOME": {
-        "TITLE": "Cześć! 👋",
-        "TEXT": "Wkrótce możesz dołaczyć do naszego Galaktycznego Świata.<br>Tymczasem obejrzyj zapowiedzi. <br><br>Do zobaczenia 😄"
+  "WELCOME": {
+    "TITLE": "Cześć! 👋",
+    "TEXT": "Wkrótce możesz dołaczyć do naszego Galaktycznego Świata.<br>Tymczasem obejrzyj zapowiedzi. <br><br>Do zobaczenia 😄"
+  },
+
+  "GAMES": {
+    "GS": {
+      "TITLE": "Grand Strategy",
+      "DESCRIPTION": "Odkrywaj, eksploruj, zdobywaj surowce oraz buduj obiekty na obcych planetach.",
+      "CTA": "Zacznij rozwijać swoją kolonię!"
     },
-
-    "GAMES": {
-        "GS": {
-            "TITLE": "Grand Strategy",
-            "DESCRIPTION": "Odkrywaj, eksploruj, zdobywaj surowce oraz buduj obiekty na obcych planetach.",
-            "CTA": "Zacznij rozwijać swoją kolonię!"
-        },
-        "TDS": {
-            "TITLE": "Top-Down Shooter",
-            "DESCRIPTION": "Twórz własne Mechy i walcz o przetrwanie niszcząc hordy obcych.",
-            "CTA": "Czy zdołasz obronić planetę?"
-        },
-        "ABOUT": "O grze",
-        "PLAY_ONLINE": "Graj online",
-        "DOWNLOAD": "Pobierz na PC"
+    "TDS": {
+      "TITLE": "Top-Down Shooter",
+      "DESCRIPTION": "Twórz własne Mechy i walcz o przetrwanie niszcząc hordy obcych.",
+      "CTA": "Czy zdołasz obronić planetę?"
     },
-    
-    "NAVBAR": {
-        "CONNECT": "Połącz portfel",
-        "DISCONNECT": "Rozłącz portfel",
-        "CONNECT_MOBILE": "Połącz",
-        "GAMES_COLLECTION": "Kolekcja gier",
-        
-        "NAV": {
-            "GAMES": "Gry",
-            "NFT": "Handel NFT",
-            "STAKING": "Staking",
-            "VESTING": "Vesting",
-            "NEWS": "Aktualności",
-            "PRESALE": "Przedsprzedaż"
-        },
-        "OPTIONS": {
-            "MY_ACCOUNT": "Moje konto",
-            "DISCONNECT_WALLET": "Odłącz portfel"
-        }
+    "ABOUT": "O grze",
+    "PLAY_ONLINE": "Graj online",
+    "DOWNLOAD": "Pobierz na PC"
+  },
+
+  "NAVBAR": {
+    "CONNECT": "Połącz portfel",
+    "DISCONNECT": "Rozłącz portfel",
+    "CONNECT_MOBILE": "Połącz",
+    "GAMES_COLLECTION": "Kolekcja gier",
+
+    "NAV": {
+      "GAMES": "Gry",
+      "NFT": "Handel NFT",
+      "STAKING": "Staking",
+      "VESTING": "Vesting",
+      "NEWS": "Aktualności",
+      "PRESALE": "Przedsprzedaż",
+      "DAO": "DAO"
     },
-    "NOTIFICATION": {
-        "AUTH": {
-            "REGISTER_ERROR": "Registration failed!",
-            "LOGIN_ERROR": "Unable to login! Maybe unregistered?"   
-        },
-        "ERROR": {
-            "UNKNOWN_ERROR": "Unknown error!"  
-        },
-        "METAMASK": {
-            "PROVIDER_NOT_FOUND": "Metamask not found!",
-
-            "USER_REJECTED_CONNECTION": "Connection request rejected by user!",
-            "PENDING_CONNECTION": "Connection request is pending!",
-
-            "UNSUPPORTED_CHAIN": "Unsupported chain!",
-            "UNRECOGNIZED_CHAIN": "Unrecognized chain!",
-            "USER_REJECTED_CHAIN": "Chain request rejected by user!"
-        },
-        "NAVBAR": {
-            "CONNECT_SUCCESS": "Successfully connected!",
-            "CONNECT_PROCESS": "Connecting...",
-            "CONNECT_ACCEPT": "Accept connection!",
-
-            "DISCONNECT_SUCCESS": "Successfully disconnected!",
-            "DISCONNECT_PROCESS": "Disconnecting...",
-
-            "REGISTER_SUCCESS": "Registration successfull!",
-            "REGISTER_PROCESS": "Registering...",
-
-            "LOGIN_SUCCESS": "Successfully logged in!",
-            "LOGIN_PROCESS": "Logging in...",
-
-            "LOGOUT_SUCCESS": "Successfully logged out!",
-            "LOGOUT_PROCESS": "Logging out...",
-
-            "SWITCH_CHAIN_SUCCESS": "Successfully switched chain!",
-            "SWITCH_CHAIN_PROCESS": "Switching chain...",
-            "SWITCH_CHAIN_ADD": "Add chain!",
-
-            "ADD_CHAIN_SUCCESS": "Successfully added chain!",
-            "ADD_CHAIN_PROCESS": "Adding chain..."
-        },
-        "WALLET": {
-            "CONNECT_ERROR": "Unable to connect!",
-            "DISCONNECT_ERROR": "Unable to disconnect!",
-            "SIGN_MESSAGE_ERROR": "Unable to sign message!",
-            "DENIED_BY_USER": "User denied message signature!",
-            "SWITCH_CHAIN_ERROR": "Unable to switch chain!",
-            "ADD_CHAIN_ERROR": "Unable to add chain!"
-        }
-    },
+    "OPTIONS": {
+      "MY_ACCOUNT": "Moje konto",
+      "DISCONNECT_WALLET": "Odłącz portfel"
+    }
+  },
+  "NOTIFICATION": {
     "AUTH": {
-        "REGISTER_MESSAGE": "Register attempt",
-        "LOGIN_MESSAGE": "Login attempt"
+      "REGISTER_ERROR": "Registration failed!",
+      "LOGIN_ERROR": "Unable to login! Maybe unregistered?"
     },
-    "PRESALE": {
-        "PROGRESS": "Ilość sprzedanego tokena ADRIA",
-        "INFO": {
-            "DETAILS": {
-                "HEADER": "Szczegóły oficjalnej przedsprzedaży tokena ADRIA",
-                "1": "Prywatna sprzedaż trwa od piątku 02.12.2022",
-                "2": "Minimalna kwota zakupu: 50 USDC",
-                "3": "Cena w przedsprzedaży 0.002 USDC",
-                "4": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy"
-            },
-            "REMEMBER": "Pamiętaj, że musisz mieć BNB (bep-20) w portfelu, aby pokryć opłaty sieciowe za każdym razem kiedy inwestujesz USDC lub odbierasz swoje tokeny ADRIA.",
-            "CLAIM": {
-                "HEADER": "Jak odebrać zakupione tokeny?",
-                "MESSAGE": "Możesz przenosić zakupione tokeny ADRIA do swojego portfela w zakładce Vesting, która wkrótce będzie dostępna."
-            },
-            "ADRIA_TOKEN": {
-                "HEADER": "Token Adria",
-                "ADDRESS_MESSAGE": "Oficjalny adres inteligentnej umowy dla tokena ADRIA:",
-                "USABILITY": "Możesz przeczytać pełną użyteczność tokena ADRIA",
-                "WHITELIST": "Odnośnik do whitelist",
-                "HERE": "tutaj"
-            }
-        },
-        "TIME_LEFT": "Koniec przedsprzedaży za",
-        "TIME_TO": "Start przedsprzedaży za",
-        "INVEST": "Ile możesz zainwestować w token ADRIA?",
-        "AMOUNT": {
-            "MIN": "Minimalna kwota",
-            "MAX": "Maksymalna kwota",
-            "AMOUNT_TO_BUY": "Za ile chcesz kupić token ADRIA?",
-            "INVEST": "Zainwestowałeś",
-            "BUY": "Kupiłeś"
-        },
-        "GET": "Otrzymasz",
-        "BUY_ADRIA": "Kup ADRIA",
-        "WANT_BUY": {
-            "MESSAGE": "Chcesz kupić token ADRIA?"
-        },
-        "SUCCESS": {
-            "HEADER": "Gratulacje!",
-            "MESSAGE": "Zostałeś właścicielem tokena ADRIA. Dziękujemy za twój wkład w rozwój projektu Crypto Mayhem."
-        },
-        "INPUT": {
-            "WRITE_AMOUNT": "Wpisz kwotę"
-        },
-        "END": {
-            "HEADER": "Przedsprzedaż zakończona!",
-            "MESSAGE": "Jeżeli kupiłeś token, możesz zobaczyć swoją inwestycję po połaczeniu portfela."
-        },
-        "SOLD": {
-            "HEADER": "Token został wyprzedany!"
-        },
-        "NO_LIMIT": "Brak limitu"
+    "ERROR": {
+      "UNKNOWN_ERROR": "Unknown error!"
+    },
+    "METAMASK": {
+      "PROVIDER_NOT_FOUND": "Metamask not found!",
+
+      "USER_REJECTED_CONNECTION": "Connection request rejected by user!",
+      "PENDING_CONNECTION": "Connection request is pending!",
+
+      "UNSUPPORTED_CHAIN": "Unsupported chain!",
+      "UNRECOGNIZED_CHAIN": "Unrecognized chain!",
+      "USER_REJECTED_CHAIN": "Chain request rejected by user!"
+    },
+    "NAVBAR": {
+      "CONNECT_SUCCESS": "Successfully connected!",
+      "CONNECT_PROCESS": "Connecting...",
+      "CONNECT_ACCEPT": "Accept connection!",
+
+      "DISCONNECT_SUCCESS": "Successfully disconnected!",
+      "DISCONNECT_PROCESS": "Disconnecting...",
+
+      "REGISTER_SUCCESS": "Registration successfull!",
+      "REGISTER_PROCESS": "Registering...",
+
+      "LOGIN_SUCCESS": "Successfully logged in!",
+      "LOGIN_PROCESS": "Logging in...",
+
+      "LOGOUT_SUCCESS": "Successfully logged out!",
+      "LOGOUT_PROCESS": "Logging out...",
+
+      "SWITCH_CHAIN_SUCCESS": "Successfully switched chain!",
+      "SWITCH_CHAIN_PROCESS": "Switching chain...",
+      "SWITCH_CHAIN_ADD": "Add chain!",
+
+      "ADD_CHAIN_SUCCESS": "Successfully added chain!",
+      "ADD_CHAIN_PROCESS": "Adding chain..."
     },
     "WALLET": {
-        "CONNECTED": "Portfel podłączony",
-        "DISCONNECTED": "Portfel rozłączony",
-        "POPUP": {
-            "HEADER": "Wybierz portfel",
-            "NO_ACCOUNT": "Nie posiadasz jeszcze swojego portfela dla kryptowalut i nie wiesz jak go założyć?",
-            "WATCH": "Obejrzyj wideo"
-        }
+      "CONNECT_ERROR": "Unable to connect!",
+      "DISCONNECT_ERROR": "Unable to disconnect!",
+      "SIGN_MESSAGE_ERROR": "Unable to sign message!",
+      "DENIED_BY_USER": "User denied message signature!",
+      "SWITCH_CHAIN_ERROR": "Unable to switch chain!",
+      "ADD_CHAIN_ERROR": "Unable to add chain!"
+    }
+  },
+  "AUTH": {
+    "REGISTER_MESSAGE": "Register attempt",
+    "LOGIN_MESSAGE": "Login attempt"
+  },
+  "PRESALE": {
+    "PROGRESS": "Ilość sprzedanego tokena ADRIA",
+    "INFO": {
+      "DETAILS": {
+        "HEADER": "Szczegóły oficjalnej przedsprzedaży tokena ADRIA",
+        "1": "Prywatna sprzedaż trwa od piątku 02.12.2022",
+        "2": "Minimalna kwota zakupu: 50 USDC",
+        "3": "Cena w przedsprzedaży 0.002 USDC",
+        "4": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy"
+      },
+      "REMEMBER": "Pamiętaj, że musisz mieć BNB (bep-20) w portfelu, aby pokryć opłaty sieciowe za każdym razem kiedy inwestujesz USDC lub odbierasz swoje tokeny ADRIA.",
+      "CLAIM": {
+        "HEADER": "Jak odebrać zakupione tokeny?",
+        "MESSAGE": "Możesz przenosić zakupione tokeny ADRIA do swojego portfela w zakładce Vesting, która wkrótce będzie dostępna."
+      },
+      "ADRIA_TOKEN": {
+        "HEADER": "Token Adria",
+        "ADDRESS_MESSAGE": "Oficjalny adres inteligentnej umowy dla tokena ADRIA:",
+        "USABILITY": "Możesz przeczytać pełną użyteczność tokena ADRIA",
+        "WHITELIST": "Odnośnik do whitelist",
+        "HERE": "tutaj"
+      }
     },
-    "NOTIFICATIONS": {
-        "TRANSACTION_SUCCESS": "Transakcja powiodła się",
-        "TRANSACTION_ACCEPTED": "Transakcja zaakceptowana",
-        "TRANSACTION_ERROR": "Transakcja nie powiodła się",
-        "WALLET_NOT_CONNECTED": "Połączenie z portfelem nie powiodło się",
-        "NO_WALLET": "Nie wykryto portfela",
-        "BAD_NETWORK": "Połączyłeś się ze złą siecią",
-        "TRANSACTION_CANCELLED": "Transakcja anulowana",
-        "CANNOT BUY": "Nie możesz kupić tokenu",
-        "THANK_YOU": "Dziękujemy, że wspierasz projekt Crypto Mayhem.",
-        "NO_WALLET_MESSAGE": "Nie posiadasz jeszcze portfela dla kryptowalut.",
-        "BAD_NETWORK_MESSAGE": "Powinieneś połączyć się z siecią <strong>Binance Smart Chain (BSC)</strong> w twoim portfelu.",
-        "CANNOT_BUY_MESSAGE": "Token w przedsprzedaży mogą kupić tylko osoby, które zapisały się wcześniej na whitelist.",
-        "CLOSE": "Zamknij",
-        "TRY_AGAIN": "Ponów",
-        "ERROR_OCCURRED": "Wystąpił błąd",
-        "TOKEN_ZERO_AMOUNT": "Błędna kwota inwestycji",
-        "TOKENS_GREATER_THAN_MAX": "Kwota inwestycji jest większa niż maksymalna",
-        "WALLET_WRONG_STRUCTURE": "Błędna struktura portfela",
-        "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
-        "NOT_ENOUGH_TOKENS_LEFT": "Błędna kwota inwestycji",
-        "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji ze Smart Contractem",
-        "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście",
-        "NO_WALLET_VIDEO": {
-            "url": "https://www.youtube.com/watch?reload=9&v=iZXhTcb6LKY",
-            "message": "Obejrzyj video jak go założyć"
-        }
+    "TIME_LEFT": "Koniec przedsprzedaży za",
+    "TIME_TO": "Start przedsprzedaży za",
+    "INVEST": "Ile możesz zainwestować w token ADRIA?",
+    "AMOUNT": {
+      "MIN": "Minimalna kwota",
+      "MAX": "Maksymalna kwota",
+      "AMOUNT_TO_BUY": "Za ile chcesz kupić token ADRIA?",
+      "INVEST": "Zainwestowałeś",
+      "BUY": "Kupiłeś"
     },
-    "VALIDATIONS": {
-        "VESTING_AMOUNT_MAX": "Możesz zainwestować maks. {{ maxAmount }}",
-        "VESTING_AMOUNT_MIN": "Możesz zainwestować min. {{ minAmount }}",
-        "VESTING_TOKENS_LEFT": "W sprzedaży pozostało tylko {{ tokensLeft }} tokenów."
+    "GET": "Otrzymasz",
+    "BUY_ADRIA": "Kup ADRIA",
+    "WANT_BUY": {
+      "MESSAGE": "Chcesz kupić token ADRIA?"
     },
+    "SUCCESS": {
+      "HEADER": "Gratulacje!",
+      "MESSAGE": "Zostałeś właścicielem tokena ADRIA. Dziękujemy za twój wkład w rozwój projektu Crypto Mayhem."
+    },
+    "INPUT": {
+      "WRITE_AMOUNT": "Wpisz kwotę"
+    },
+    "END": {
+      "HEADER": "Przedsprzedaż zakończona!",
+      "MESSAGE": "Jeżeli kupiłeś token, możesz zobaczyć swoją inwestycję po połaczeniu portfela."
+    },
+    "SOLD": {
+      "HEADER": "Token został wyprzedany!"
+    },
+    "NO_LIMIT": "Brak limitu"
+  },
+  "WALLET": {
+    "CONNECTED": "Portfel podłączony",
+    "DISCONNECTED": "Portfel rozłączony",
+    "POPUP": {
+      "HEADER": "Wybierz portfel",
+      "NO_ACCOUNT": "Nie posiadasz jeszcze swojego portfela dla kryptowalut i nie wiesz jak go założyć?",
+      "WATCH": "Obejrzyj wideo"
+    }
+  },
+  "NOTIFICATIONS": {
+    "TRANSACTION_SUCCESS": "Transakcja powiodła się",
+    "TRANSACTION_ACCEPTED": "Transakcja zaakceptowana",
+    "TRANSACTION_ERROR": "Transakcja nie powiodła się",
+    "WALLET_NOT_CONNECTED": "Połączenie z portfelem nie powiodło się",
+    "NO_WALLET": "Nie wykryto portfela",
+    "BAD_NETWORK": "Połączyłeś się ze złą siecią",
+    "TRANSACTION_CANCELLED": "Transakcja anulowana",
+    "CANNOT BUY": "Nie możesz kupić tokenu",
+    "THANK_YOU": "Dziękujemy, że wspierasz projekt Crypto Mayhem.",
+    "NO_WALLET_MESSAGE": "Nie posiadasz jeszcze portfela dla kryptowalut.",
+    "BAD_NETWORK_MESSAGE": "Powinieneś połączyć się z siecią <strong>Binance Smart Chain (BSC)</strong> w twoim portfelu.",
+    "CANNOT_BUY_MESSAGE": "Token w przedsprzedaży mogą kupić tylko osoby, które zapisały się wcześniej na whitelist.",
+    "CLOSE": "Zamknij",
+    "TRY_AGAIN": "Ponów",
+    "ERROR_OCCURRED": "Wystąpił błąd",
     "TOKEN_ZERO_AMOUNT": "Błędna kwota inwestycji",
     "TOKENS_GREATER_THAN_MAX": "Kwota inwestycji jest większa niż maksymalna",
     "WALLET_WRONG_STRUCTURE": "Błędna struktura portfela",
     "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
-    "NOT_ENOUGH_TOKENS_LEFT": " Błędna kwota inwestycji",
-    "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji z Smart Contractem",
+    "NOT_ENOUGH_TOKENS_LEFT": "Błędna kwota inwestycji",
+    "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji ze Smart Contractem",
     "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście",
-
-    "MY_ACCOUNT": {
-        "NFT_LIST": "Lista moich NFT",
-        "TITLE": "Moje konto",
-        "LOOT": "Łupy",
-        "MY_NFT": "Moje NFT",
-        "RECOMMENDED": "Polecane",
-        "AVATARS": "Avatary",
-        "WORKERS": "Robotnicy",
-        "ITEMS": "Przedmioty",
-        "LANDS": "Landy",
-        "WEAPONS": "Bronie",
-        "MECHS": "Mechy",
-        "DRONES": "Drony",
-        "NO_LOOT": "Brak łupów",
-        "NO_AVATARS": "Brak avatarów",
-        "NO_WORKERS": "Brak robotników",
-        "NO_ITEMS": "Brak przedmiotów",
-        "NO_LANDS": "Brak landów",
-        "NO_WEAPONS": "Brak broni",
-        "NO_MECHS": "Brak mechów",
-        "NO_DRONES": "Brak dronów",
-        "NO_NFT": "Nie znaleziono szukanego nft",
-        "MY_SALES": "Moje oferty sprzedaży",
-        "MY_BUYING": "Moje oferty zakupu",
-        "SELECTED_CATEGORY": "Wybrana kategoria",
-        "SAVE": "Zapisz",
-        "EDIT_NAME": "Edytuj nazwę",
-        "COMING_SOON": "Dostęp wkrótce",
-        "SHARE_NFT": "Pochwal się swoimi NFT",
-        "SEARCH": "Szukaj moich NFT",
-        "GO_TO_NFT": "Przejdź do swoich NFT",
-        "AVATAR" : {
-            "SET_AVATAR": "Ustaw profilowe NFT",
-            "RECOMMENDED": "Polecane dla ciebie",
-            "NO_NFT": "Brak NFT",
-            "NO_NFT_MESSAGE": "Aktualnie nie posiadasz żadnych NFT projektu Crypto Mayhem, które możesz użyć jako zdjęcie profilowe.",
-            "NO_ITEMS": "Brak przedmiotów"
-        }
-    },
-    "TDS": {
-        "DOWNLOAD": "Pobierz na PC",
-        "OVERVIEW": "Przegląd gry",
-        "WELCOME": {
-            "HEADER": "Witaj kapralu!",
-            "CONTENT_FIRST": "Rozpoczynasz służbę w elitarnej drużynie naziemnej Impact Squad. Jako jednostka taktyczna będziesz prowadzić działania na głębokim zapleczu wroga.",
-            "CONTENT_SECOND": "Pamiętaj! Służąc w drużynie Impact Squad, możesz zyskać wiele albo stracić wszystko! Nie lekceważ więc wroga i wykonuj rozkazy z najwyższą starannością, a nie ominą Cię zaszczyty, awanse i nagrody! Z czasem może otrzymasz nawet dostęp do pełnej palety mechów i zestawów bojowych najnowszej generacji, a także poszerzonej oferty zasobów."
-        },
-        "OBJECTIVES": {
-            "HEADER": "Twoje zadania",
-            "CONTENT": "- Oczyszczaj powierzchnię planety z niepożądanych elementów organicznych w postaci insektoidalnej siły żywej.<br><br>- Niszcz gniazda obcych form insektoidalnych zasiedlających planetę.<br><br>- Prowadź akcje ratunkowe zespołów badawczych i pracowników cywilnych, odciętych przez działania wrogich organizmów<br><br>- Kieruj działaniami bojowymi na powierzchni planety, umożliwiając jej terraformację i kolonizację."
-        },
-        "GAME_ITEMS": {
-            "HEADER": "Do Twojej dyspozycji zostaną oddane",
-            "MECHS": {
-                "HEADER": "Mechy",
-                "CONTENT": "Zasiądź za sterami bojowych mechów i przemierzaj planetę. Użyj technologii podnoszących sprawność mecha, aby zwiększyć swoje szanse podczas misji. Dostępne moduły:<br><br>- wspomagające lokomotorykę,<br><br>- zapewniające wsparcie bojowe,<br><br>- ulepszające systemy obronne,<br><br>- poszerzające wiedzę o przeciwnikach i miejscach ich bytowania,"
-            },
-            "WEAPONS": {
-                "HEADER": "Bronie",
-                "CONTENT": "Zmierz się z obcymi formami insektoidalnymi używając szerokiego arsenału broni, którymi spowodujesz niemałą destrukcję w gniazdach obcych.<br><br>Dostępne typy broni: pociskowa, laserowa, miotacze, artleryjska i energetyczna."
-            },
-            "SUPPORT": {
-                "HEADER": "Zestawy wspomagające",
-                "CONTENT": "Używaj róznych przedmiotów, dzięki czemu stworzysz spersonalizowany ekwipunek, który wesprze Cię w trakcie rozgrywki.<br><br>Do wyboru masz zestawy:<br><br>- defensywne (pierwszej pomocy i naprawcze),<br><br>- ofensywne (miny różnych rodzajów),"
-            }
-        },
-        "REQUIREMENTS": {
-            "HEADER": "Wymagania",
-            "DEVICE": "Urządzenie",
-            "SYSTEM_REQ": "Wymagania systemowe",
-            "OS": "System",
-            "OS_ABBR": "OS",
-            "OS_TYPE": "Typ systemu",
-            "CPU": "Procesor",
-            "RAM": "Pamięć RAM",
-            "GPU": "Karta graficzna",
-            "DIRECTX": "DirectX",
-            "HDD": "Miejsce na dysku",
-            "SOUND": "Karta dźwiękowa",
-            "MIN": "Minimum",
-            "RECOMMENDED": "Zalecane",
-            "FREE_SPACE": "wolnego miejsca",
-            "SOUND_COMPATIBILITY": "DirectX kompatybilny z kartą dźwiękową"
-        }
-    },
-    "DAO": {
-        "TABS": {
-            "INFO": "Informacje",
-            "VOTING": "Głosowanie",
-            "HISTORY": "Historia"
-        },
-        "INFO": {
-            "TITLE": "Dao - zarządzaj projektem Crypto&nbsp;Mayhem",
-            "WHO": "Posiadacze tokenów ADRIA mogą brać udział w procesie decyzyjnym i wpływać na przyszły kierunek projektu.",
-            "DECISION": "<strong>Na co masz wpływ?</strong><br><br>- Decyduj o dalszym rozwoju gry podczas jej tworzenia.<br><br>- Zaproponuj własne zmiany w grze, które zweryfikuje nasz zespół.<br><br>- Decyduj co Adria Corp ma zrobić z zebraną pulą $ADRIA w grze (pula pobrana z opłat transakcyjnych).",
-            "IMPORTANT": "<strong>Ważne:</strong> Każdy portfel może zagłosować tylko raz na pytanie."
-        },
-        "VOTES_WEIGHT": {
-            "TITLE": "Waga głosów",
-            "YOUR": "Waga twoich głosów",
-            "CHECK": "Sprawdź siłę swoich głosów!",
-            "ADRIA_AMOUNT": "Twoje ADRIA",
-            "MINIMUM": "Nie osiągnięto minimalnej siły głosów",
-            "MINIMUM_TEXT": "Aby móc głosować musisz posiadać przynajmniej pierwszy stopień siły głosów."
-        },
-        "VOTES": {
-            "INFO": "Siłę głosów określa 4-stopniowa skala.<br>Na wagę twoich głosów wpływają:<br><br>- ilość posiadanych tokenów,<br>- czas przechowywania tokenów na portfelu"
-        },
-        "VOTING": {
-            "VOTING_ENDS": "Koniec głosowania za",
-            "VOTES": "{votesCount, plural, =0 {0 głosów} one {1 głos} few {# głosy} many {# głosów} other {# głosów}}",
-            "PARTICIPANTS": "Uczestnicy",
-            "WANT": "Chcesz zagłosować?",
-            "SUCCESS": "Głos oddany",
-            "THANKS_SUPPORT": "Dziękujemy, że wspierasz projekt i wpływasz na jego rozwój.",
-            "MIN_VOTE_POWER": "Nie osiągnięto minimalnej siły głosów",
-            "MIN_VOTE_POWER_TEXT": "Aby móc głosować musisz posiadać przynajmniej pierwszy stopień siły głosów."
-        },
-        "QUESTION_LIST": "Lista pytań"
-    },
-    "EARLY_ACCESS": {
-        "HEADER": "Wasza pozaziemska przygoda<br>rozpocznie się 13&nbsp;grudnia!",
-        "START": "Rozpoczęła się pozaziemska przygoda!",
-        "INFO": {
-            "TITLE": "Drodzy Kolonizatorzy!",
-            "MESSAGE": "Zespół Crypto Mayhem pracował ciężko przez ostatnie miesiące, by dać Wam możliwość eksploracji kosmosu. Wkrótce Wasza cierpliwość zostanie nagrodzona wczesnym dostępem do warstwy Top-Down Shooter!<br><br>Przygotujcie się na krwawą walkę z kosmicznymi stworami, które posiadają wysoce niezbędną biomasę.",
-            "REMINDER": "<strong>Pamiętaj:</strong> Aby zagrać w Crypto Mayhem Top-Down Shooter trzeba być inwestorem tokena $ADRIA bądź posiadaczem NFT Crypto Mayhem.<br><br>Jeżeli nie posiadasz tokenów $ADRIA, bądź NFT Crypto Mayhem, wkrótce damy Ci możliwość inwestycji w&nbsp;$ADRIA.<br><br>Zaobserwuj nasze social media, by nie ominęła Cię żadna informacja!"
-        },
-        "INVESTORS": "Jeżeli jesteś inwestorem $ADRIA, bądź posiadaczem NFT Crypto Mayhem wypełnij formularz dla beta testerów gry, <strong>by mieć dostęp do ekskluzywnej grupy testerów</strong>.",
-        "INVESTORS_BUTTON": "Wypełnij formularz",
-        "ADD_TO_CALENDAR": "Dodaj do kalendarza Google"
+    "NO_WALLET_VIDEO": {
+      "url": "https://www.youtube.com/watch?reload=9&v=iZXhTcb6LKY",
+      "message": "Obejrzyj video jak go założyć"
     }
+  },
+  "VALIDATIONS": {
+    "VESTING_AMOUNT_MAX": "Możesz zainwestować maks. {{ maxAmount }}",
+    "VESTING_AMOUNT_MIN": "Możesz zainwestować min. {{ minAmount }}",
+    "VESTING_TOKENS_LEFT": "W sprzedaży pozostało tylko {{ tokensLeft }} tokenów."
+  },
+  "TOKEN_ZERO_AMOUNT": "Błędna kwota inwestycji",
+  "TOKENS_GREATER_THAN_MAX": "Kwota inwestycji jest większa niż maksymalna",
+  "WALLET_WRONG_STRUCTURE": "Błędna struktura portfela",
+  "ALL_TOKENS_PURCHASED": "Zakupiono maksymalną ilość tokenów z tego adresu",
+  "NOT_ENOUGH_TOKENS_LEFT": " Błędna kwota inwestycji",
+  "CANT_COMMUNICATE_WITH_SMART_CONTRACT": "Brak komunikacji z Smart Contractem",
+  "WALLET_NOT_AUTHORIZED": "Brak portfela na whiteliście",
+
+  "MY_ACCOUNT": {
+    "NFT_LIST": "Lista moich NFT",
+    "TITLE": "Moje konto",
+    "LOOT": "Łupy",
+    "MY_NFT": "Moje NFT",
+    "RECOMMENDED": "Polecane",
+    "AVATARS": "Avatary",
+    "WORKERS": "Robotnicy",
+    "ITEMS": "Przedmioty",
+    "LANDS": "Landy",
+    "WEAPONS": "Bronie",
+    "MECHS": "Mechy",
+    "DRONES": "Drony",
+    "NO_LOOT": "Brak łupów",
+    "NO_AVATARS": "Brak avatarów",
+    "NO_WORKERS": "Brak robotników",
+    "NO_ITEMS": "Brak przedmiotów",
+    "NO_LANDS": "Brak landów",
+    "NO_WEAPONS": "Brak broni",
+    "NO_MECHS": "Brak mechów",
+    "NO_DRONES": "Brak dronów",
+    "NO_NFT": "Nie znaleziono szukanego nft",
+    "MY_SALES": "Moje oferty sprzedaży",
+    "MY_BUYING": "Moje oferty zakupu",
+    "SELECTED_CATEGORY": "Wybrana kategoria",
+    "SAVE": "Zapisz",
+    "EDIT_NAME": "Edytuj nazwę",
+    "COMING_SOON": "Dostęp wkrótce",
+    "SHARE_NFT": "Pochwal się swoimi NFT",
+    "SEARCH": "Szukaj moich NFT",
+    "GO_TO_NFT": "Przejdź do swoich NFT",
+    "AVATAR": {
+      "SET_AVATAR": "Ustaw profilowe NFT",
+      "RECOMMENDED": "Polecane dla ciebie",
+      "NO_NFT": "Brak NFT",
+      "NO_NFT_MESSAGE": "Aktualnie nie posiadasz żadnych NFT projektu Crypto Mayhem, które możesz użyć jako zdjęcie profilowe.",
+      "NO_ITEMS": "Brak przedmiotów"
+    }
+  },
+  "TDS": {
+    "DOWNLOAD": "Pobierz na PC",
+    "OVERVIEW": "Przegląd gry",
+    "WELCOME": {
+      "HEADER": "Witaj kapralu!",
+      "CONTENT_FIRST": "Rozpoczynasz służbę w elitarnej drużynie naziemnej Impact Squad. Jako jednostka taktyczna będziesz prowadzić działania na głębokim zapleczu wroga.",
+      "CONTENT_SECOND": "Pamiętaj! Służąc w drużynie Impact Squad, możesz zyskać wiele albo stracić wszystko! Nie lekceważ więc wroga i wykonuj rozkazy z najwyższą starannością, a nie ominą Cię zaszczyty, awanse i nagrody! Z czasem może otrzymasz nawet dostęp do pełnej palety mechów i zestawów bojowych najnowszej generacji, a także poszerzonej oferty zasobów."
+    },
+    "OBJECTIVES": {
+      "HEADER": "Twoje zadania",
+      "CONTENT": "- Oczyszczaj powierzchnię planety z niepożądanych elementów organicznych w postaci insektoidalnej siły żywej.<br><br>- Niszcz gniazda obcych form insektoidalnych zasiedlających planetę.<br><br>- Prowadź akcje ratunkowe zespołów badawczych i pracowników cywilnych, odciętych przez działania wrogich organizmów<br><br>- Kieruj działaniami bojowymi na powierzchni planety, umożliwiając jej terraformację i kolonizację."
+    },
+    "GAME_ITEMS": {
+      "HEADER": "Do Twojej dyspozycji zostaną oddane",
+      "MECHS": {
+        "HEADER": "Mechy",
+        "CONTENT": "Zasiądź za sterami bojowych mechów i przemierzaj planetę. Użyj technologii podnoszących sprawność mecha, aby zwiększyć swoje szanse podczas misji. Dostępne moduły:<br><br>- wspomagające lokomotorykę,<br><br>- zapewniające wsparcie bojowe,<br><br>- ulepszające systemy obronne,<br><br>- poszerzające wiedzę o przeciwnikach i miejscach ich bytowania,"
+      },
+      "WEAPONS": {
+        "HEADER": "Bronie",
+        "CONTENT": "Zmierz się z obcymi formami insektoidalnymi używając szerokiego arsenału broni, którymi spowodujesz niemałą destrukcję w gniazdach obcych.<br><br>Dostępne typy broni: pociskowa, laserowa, miotacze, artleryjska i energetyczna."
+      },
+      "SUPPORT": {
+        "HEADER": "Zestawy wspomagające",
+        "CONTENT": "Używaj róznych przedmiotów, dzięki czemu stworzysz spersonalizowany ekwipunek, który wesprze Cię w trakcie rozgrywki.<br><br>Do wyboru masz zestawy:<br><br>- defensywne (pierwszej pomocy i naprawcze),<br><br>- ofensywne (miny różnych rodzajów),"
+      }
+    },
+    "REQUIREMENTS": {
+      "HEADER": "Wymagania",
+      "DEVICE": "Urządzenie",
+      "SYSTEM_REQ": "Wymagania systemowe",
+      "OS": "System",
+      "OS_ABBR": "OS",
+      "OS_TYPE": "Typ systemu",
+      "CPU": "Procesor",
+      "RAM": "Pamięć RAM",
+      "GPU": "Karta graficzna",
+      "DIRECTX": "DirectX",
+      "HDD": "Miejsce na dysku",
+      "SOUND": "Karta dźwiękowa",
+      "MIN": "Minimum",
+      "RECOMMENDED": "Zalecane",
+      "FREE_SPACE": "wolnego miejsca",
+      "SOUND_COMPATIBILITY": "DirectX kompatybilny z kartą dźwiękową"
+    }
+  },
+  "DAO": {
+    "TABS": {
+      "INFO": "Informacje",
+      "VOTING": "Głosowanie",
+      "HISTORY": "Historia"
+    },
+    "INFO": {
+      "TITLE": "Dao - zarządzaj projektem Crypto&nbsp;Mayhem",
+      "WHO": "Posiadacze tokenów ADRIA mogą brać udział w procesie decyzyjnym i wpływać na przyszły kierunek projektu.",
+      "DECISION": "<strong>Na co masz wpływ?</strong><br><br>- Decyduj o dalszym rozwoju gry podczas jej tworzenia.<br><br>- Zaproponuj własne zmiany w grze, które zweryfikuje nasz zespół.<br><br>- Decyduj co Adria Corp ma zrobić z zebraną pulą $ADRIA w grze (pula pobrana z opłat transakcyjnych).",
+      "IMPORTANT": "<strong>Ważne:</strong> Każdy portfel może zagłosować tylko raz na pytanie."
+    },
+    "VOTES_WEIGHT": {
+      "TITLE": "Waga głosów",
+      "YOUR": "Waga twoich głosów",
+      "CHECK": "Sprawdź siłę swoich głosów!",
+      "ADRIA_AMOUNT": "Twoje ADRIA",
+      "MINIMUM": "Nie osiągnięto minimalnej siły głosów",
+      "MINIMUM_TEXT": "Aby móc głosować musisz posiadać przynajmniej pierwszy stopień siły głosów."
+    },
+    "VOTES": {
+      "INFO": "Siłę głosów określa 4-stopniowa skala.<br>Na wagę twoich głosów wpływają:<br><br>- ilość posiadanych tokenów,<br>- czas przechowywania tokenów na portfelu"
+    },
+    "VOTING": {
+      "VOTING_ENDS": "Koniec głosowania za",
+      "VOTES": "{votesCount, plural, =0 {0 głosów} one {1 głos} few {# głosy} many {# głosów} other {# głosów}}",
+      "PARTICIPANTS": "Uczestnicy",
+      "WANT": "Chcesz zagłosować?",
+      "SUCCESS": "Głos oddany",
+      "THANKS_SUPPORT": "Dziękujemy, że wspierasz projekt i wpływasz na jego rozwój.",
+      "MIN_VOTE_POWER": "Nie osiągnięto minimalnej siły głosów",
+      "MIN_VOTE_POWER_TEXT": "Aby móc głosować musisz posiadać przynajmniej pierwszy stopień siły głosów.",
+      "NO_ACTIVE_VOTING": "Brak aktywnych głosowań",
+      "NO_ACTIVE_VOTING_TEXT": "Nie ma żadnych aktywnych głosowań. Sprawdź później."
+    },
+    "HISTORY": {
+      "NO_QUESTION": "Brak pytań",
+      "NO_QUESTION_TEXT": "Tutaj będą pojawiać się wyniki wszystkich przeprowadzonych głosowań po ich zakończeniu."
+    },
+    "QUESTION_LIST": "Lista pytań",
+    "QUESTION": "Pytanie"
+  },
+  "EARLY_ACCESS": {
+    "HEADER": "Wasza pozaziemska przygoda<br>rozpocznie się 13&nbsp;grudnia!",
+    "START": "Rozpoczęła się pozaziemska przygoda!",
+    "INFO": {
+      "TITLE": "Drodzy Kolonizatorzy!",
+      "MESSAGE": "Zespół Crypto Mayhem pracował ciężko przez ostatnie miesiące, by dać Wam możliwość eksploracji kosmosu. Wkrótce Wasza cierpliwość zostanie nagrodzona wczesnym dostępem do warstwy Top-Down Shooter!<br><br>Przygotujcie się na krwawą walkę z kosmicznymi stworami, które posiadają wysoce niezbędną biomasę.",
+      "REMINDER": "<strong>Pamiętaj:</strong> Aby zagrać w Crypto Mayhem Top-Down Shooter trzeba być inwestorem tokena $ADRIA bądź posiadaczem NFT Crypto Mayhem.<br><br>Jeżeli nie posiadasz tokenów $ADRIA, bądź NFT Crypto Mayhem, wkrótce damy Ci możliwość inwestycji w&nbsp;$ADRIA.<br><br>Zaobserwuj nasze social media, by nie ominęła Cię żadna informacja!"
+    },
+    "INVESTORS": "Jeżeli jesteś inwestorem $ADRIA, bądź posiadaczem NFT Crypto Mayhem wypełnij formularz dla beta testerów gry, <strong>by mieć dostęp do ekskluzywnej grupy testerów</strong>.",
+    "INVESTORS_BUTTON": "Wypełnij formularz",
+    "ADD_TO_CALENDAR": "Dodaj do kalendarza Google"
+  }
 }

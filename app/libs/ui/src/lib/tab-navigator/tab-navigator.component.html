@@ -1,11 +1,15 @@
-<nav>
+<nav [ngClass]="
+{
+    'tabs-center-without-background': styleType === 'center-without-background',
+    'tabs-start-left-with-background': styleType === 'left-with-background'
+}">
     <ul>
         <li
             *ngFor="let tab of tabs; index as i"
             [ngClass]="{ 'active': i === activeTab }"
             role="button"
             (click)="onTabClick(i)">
-            {{ tab | transloco }}
+            {{ tab | transloco }} {{ showTabNumbers === true ? i+1 : '' }}
         </li>
     </ul>
 </nav>

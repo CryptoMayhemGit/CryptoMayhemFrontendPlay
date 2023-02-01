@@ -1,39 +1,44 @@
-<div id="questions">
-    <p>{{ 'DAO.QUESTION_LIST' | transloco | uppercase }}</p>
-    <!-- These need to be changed to BE DATA -->
-    <div
-        id="questions-items" 
-        infiniteScroll
-        [infiniteScrollDistance]="2"
-        [infiniteScrollThrottle]="50"
-        (scrolled)="onScroll()"
-        [infiniteScrollContainer]="'#questions-items'"
-        [fromRoot]="true"
-    >
-        <ui-radio-button *ngFor="let question of questions; index as i; trackBy: trackById" [value]="i" formControlName="answer">{{question.title}}</ui-radio-button>
+<div id="questions" *ngIf="(daoHistoryTopics$ | async)?.length === 0">
+    <p>{{'DAO.HISTORY.NO_QUESTION' | transloco}}</p>
+    <div id="questions-items">
+        {{'DAO.HISTORY.NO_QUESTION_TEXT' | transloco}}
     </div>
 </div>
 
-<div id="answers">
-    <!-- MOCKED CONTENT, IT WILL COME FROM BE -->
-    <h1>Chcesz wziąć udział w publicznej przedsprzedaży Metahero?</h1>
-    <p>Jeśli chcesz dołączyć do Metahero Global Presale, po prostu odpowiedz „Tak, chcę wziąć udział”.
-        <br><br>
-        - Rejestracja trwa 72 godziny, od 10 rano 28 czerwca do 10 rano 1 lipca.
-        <br><br>
-        - Każdy uczestnik musi posiadać 1000 zestawów/3 głosy, aby rejestracja była ważna.
-        <br><br>
-        - Każdy uczestnik może podłączyć tylko jeden portfel.
-        <br><br>
-        - Wszystkie przesłane adresy zostaną dodane do białej listy; system jest automatyczny
-    </p>
-    <ui-voting-result-item index="1" answer="Test answer" [votes]="254" [active]="true"></ui-voting-result-item>
-    <ui-voting-result-item index="2" answer="Test answer 222" [votes]="69"></ui-voting-result-item>
-    <div id="results-total">
-        <img src="./assets/images/votes_people_icon.svg" alt="people" role="presentation" />
-        <div class="column">
-            <p>{{ 'DAO.VOTING.PARTICIPANTS' | transloco }}</p>
-            <p>323</p>
+<ng-container *ngIf="(daoHistoryTopics$ | async)?.length !== 0">
+    <div id="questions">
+        <p>{{ 'DAO.QUESTION_LIST' | transloco | uppercase }}</p>
+        <div
+            id="questions-items"
+            infiniteScroll
+            [infiniteScrollDistance]="scrollDistance"
+            [infiniteScrollThrottle]="scrollThrottle"
+            (scrolled)="onScroll()"
+            [infiniteScrollContainer]="'#questions-items'"
+            [fromRoot]="true"
+        >
+            <ui-radio-button
+            *ngFor="let question of daoShortHistoryTopics$ | async;
+            index as i;
+            trackBy: trackById"
+            [value]="question.id"
+            (click)="onQuestionClick(question.id)"
+            formControlName="answer">{{question.name}}</ui-radio-button>
         </div>
     </div>
-</div>
+
+    <div id="answers">
+        <h1>{{choiceDaoHistoryTopic?.name}}</h1>
+        <p>{{choiceDaoHistoryTopic?.description}}</p>
+        <ng-container *ngFor="let historyTopic of choiceDaoHistoryTopic?.answerRankings | sort: 'voteCount';  let indefOf = index">
+            <ui-voting-result-item index="1" [answer]="historyTopic.answerName" [votes]="historyTopic.voteCount" [active]="indefOf === 0"></ui-voting-result-item>
+        </ng-container>
+        <div id="results-total">
+            <img src="./assets/images/votes_people_icon.svg" alt="people" role="presentation" />
+            <div class="column">
+                <p>{{ 'DAO.VOTING.PARTICIPANTS' | transloco }}</p>
+                <p>{{choiceDaoHistoryTopic?.votesCount}}</p>
+            </div>
+        </div>
+    </div>
+</ng-container>
