@@ -323,7 +323,9 @@
       "SUCCESS": "Głos oddany",
       "THANKS_SUPPORT": "Dziękujemy, że wspierasz projekt i wpływasz na jego rozwój.",
       "MIN_VOTE_POWER": "Nie osiągnięto minimalnej siły głosów",
-      "MIN_VOTE_POWER_TEXT": "Aby móc głosować musisz posiadać przynajmniej pierwszy stopień siły głosów."
+      "MIN_VOTE_POWER_TEXT": "Aby móc głosować musisz posiadać przynajmniej pierwszy stopień siły głosów.",
+      "NO_ACTIVE_VOTING": "Brak aktywnych głosowań",
+      "NO_ACTIVE_VOTING_TEXT": "Nie ma żadnych aktywnych głosowań. Sprawdź później."
     },
     "HISTORY": {
       "NO_QUESTION": "Brak pytań",
