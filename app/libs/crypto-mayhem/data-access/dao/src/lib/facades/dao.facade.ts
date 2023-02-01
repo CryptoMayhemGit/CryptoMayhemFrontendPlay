@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import { getAllActiveTopics, getAllHistoricTopics, signMessageForDao } from '../state/dao.actions';
+import {
+    getAllActiveTopics,
+    getAllHistoricTopics,
+    signMessageForDao } from '../state/dao.actions';
 import * as DaoSelectors from '../state/dao.selectors';
 
 @Injectable({ providedIn: 'root' })
 export class DAOFacade {
     readonly daoAllActiveTopics$ = this.store.select(DaoSelectors.selectAllActiveTopics);
     readonly daoAllHistoricTopics$ = this.store.select(DaoSelectors.selectAllHistoricTopics);
-    readonly daoSpinner$ = this.store.select(DaoSelectors.selectDaoSpinner);
+    readonly daoSmallSpinner$ = this.store.select(DaoSelectors.selectDaoSmallSpinner);
+    readonly daoLargeSpinner$ = this.store.select(DaoSelectors.selectDaoLargeSpinner);
     readonly daoHistoryTopicById$ = (id: number) => this.store.select(DaoSelectors.selectDaoHistoryTopicById(id));
 
     constructor(

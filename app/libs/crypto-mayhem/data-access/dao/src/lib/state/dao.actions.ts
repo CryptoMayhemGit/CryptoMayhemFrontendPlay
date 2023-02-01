@@ -58,3 +58,19 @@ export const postDaoVoteWithSignatureFailure = createAction(
     '[Dao] Post Dao Vote With Signature Failure',
     props<{ error: any }>()
 );
+
+export const showDaoSmallSpinner = createAction(
+    '[Dao] Show Small Spinner'
+);
+
+export const hideDaoSmallSpinner = createAction(
+    '[Dao] Hide Small Spinner'
+);
+
+export const showDaoLargeSpinner = createAction(
+    '[Dao] Show Large Spinner'
+);
+
+export const hideDaoLargeSpinner = createAction(
+    '[Dao] Hide Large Spinner'
+);

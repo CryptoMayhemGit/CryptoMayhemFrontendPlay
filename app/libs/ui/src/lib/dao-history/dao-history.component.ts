@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { DAOFacade } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/dao";
 import { DaoTopic } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/dao-model';
-import { map, Observable, take } from 'rxjs';
+import { map, Observable, of, take } from 'rxjs';
 
 @Component({
   selector: 'ui-dao-history',
@@ -11,6 +11,8 @@ import { map, Observable, take } from 'rxjs';
 })
 export class DaoHistoryComponent implements OnInit {
 
+  spinnerSmall$: Observable<boolean> = of(false);
+  spinnerLarge$: Observable<boolean> = of(true);
   daoHistoryTopics$!: Observable<DaoTopic[]>;
   daoShortHistoryTopics$!: Observable<{id: number, name: string}[]>;
   choiceDaoHistoryTopicId = 1;
@@ -24,6 +26,8 @@ export class DaoHistoryComponent implements OnInit {
     private readonly daoFacade: DAOFacade,
   ) {
     this.daoHistoryTopics$ = this.daoFacade.daoAllHistoricTopics$;
+    this.spinnerSmall$ = this.daoFacade.daoSmallSpinner$;
+    this.spinnerLarge$ = this.daoFacade.daoLargeSpinner$;
     this.daoShortHistoryTopics$ = this.daoFacade.daoAllHistoricTopics$
     .pipe(
       map((topics) => topics.map((topic) => ({id: topic.id, name: topic.name}))

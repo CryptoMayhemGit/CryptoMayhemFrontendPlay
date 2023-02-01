@@ -8,7 +8,7 @@
             <h1>{{topic.name}}</h1>
         </div>
         <hr>
-        <p class="info-content">
+        <p style="word-break: break-all;" class="info-content">
             {{topic.description}}
         </p>
     </div>
@@ -30,39 +30,44 @@
     </div>
 </div>
 <div id="voting">
-    <p class="small-header"><img src="./assets/images/vote_icon.svg" alt="star" role="presentation" style="margin-top: -0.3rem" />
-    {{'DAO.TABS.VOTING' | transloco}}</p>
-        <ng-container *ngIf="(walletConnected$ | async) === false">
-            <picture>
-                <source srcset="./assets/images/friendly_drone.webp">
-                <source srcset="./assets/images/presale/friendly_drone.png">
-                <img alt="friendly drone" role="presentation" src="./assets/images/presale/friendly_drone.png">
-            </picture>
-            <p id="voting-want">{{ 'DAO.VOTING.WANT' | transloco }}</p>
-            <ui-main-button (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
-        </ng-container>
-        <ng-container *ngIf="(walletConnected$ | async) && topic.canVote">
+    <ng-container *ngIf="(spinnerSmall$ | async) === false">
+        <p class="small-header"><img src="./assets/images/vote_icon.svg" alt="star" role="presentation" style="margin-top: -0.3rem" />
+        {{'DAO.TABS.VOTING' | transloco}}</p>
+            <ng-container *ngIf="(walletConnected$ | async) === false">
+                <picture>
+                    <source srcset="./assets/images/friendly_drone.webp">
+                    <source srcset="./assets/images/presale/friendly_drone.png">
+                    <img alt="friendly drone" role="presentation" src="./assets/images/presale/friendly_drone.png">
+                </picture>
+                <p id="voting-want">{{ 'DAO.VOTING.WANT' | transloco }}</p>
+                <ui-main-button (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
+            </ng-container>
+            <ng-container *ngIf="(walletConnected$ | async) && topic.canVote">
+                <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
+                <ui-header-gradient>1</ui-header-gradient>
+                <form [formGroup]="form">
+                    <ng-container *ngFor="let answer of topic.answerRankings | sort: 'orderId'">
+                        <ui-radio-button
+                        [value]="answer.answerName"
+                        [name]="'answer'"
+                        formControlName="answer"
+                        (click)="onQuestionClick(answer.id)"
+                        >{{answer.answerName}}</ui-radio-button>
+                    </ng-container>
+                    <ui-main-button [disabled]="myAnswer === 0" (btnClick)="onSubmit()">Submit</ui-main-button>
+                </form>
+            </ng-container>
+        <!-- show on success -->
+        <ng-container *ngIf="!topic.canVote && (walletConnected$ | async) === true">
             <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
             <ui-header-gradient>1</ui-header-gradient>
-            <form [formGroup]="form">
-                <ng-container *ngFor="let answer of topic.answerRankings | sort: 'orderId'">
-                    <ui-radio-button
-                    [value]="answer.answerName"
-                    [name]="'answer'"
-                    formControlName="answer"
-                    (click)="onQuestionClick(answer.id)"
-                    >{{answer.answerName}}</ui-radio-button>
-                </ng-container>
-                <ui-main-button [disabled]="myAnswer === 0" (btnClick)="onSubmit()">Submit</ui-main-button>
-            </form>
+            <img src="./assets/images/success_glow.svg" alt="success" role="presentation" />
+            <h2 class="after-vote-header success">{{ 'DAO.VOTING.SUCCESS' | transloco}}</h2>
+            <p class="text-after">{{ 'DAO.VOTING.THANKS_SUPPORT' | transloco}}</p>
         </ng-container>
-    <!-- show on success -->
-    <ng-container *ngIf="!topic.canVote && (walletConnected$ | async) === true">
-        <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
-        <ui-header-gradient>1</ui-header-gradient>
-        <img src="./assets/images/success_glow.svg" alt="success" role="presentation" />
-        <h2 class="after-vote-header success">{{ 'DAO.VOTING.SUCCESS' | transloco}}</h2>
-        <p class="text-after">{{ 'DAO.VOTING.THANKS_SUPPORT' | transloco}}</p>
+    </ng-container>
+    <ng-container *ngIf="(spinnerSmall$ | async) === true">
+        <ui-spinner [marginTop]="6"></ui-spinner>
     </ng-container>
     <!-- show when voting power was not reached -->
     <!--<ng-container>

@@ -1,21 +1,27 @@
-<div id="no-active-votes" *ngIf="(daoTopics$ | async)?.length === 0">
-    <h1>{{'DAO.VOTING.NO_ACTIVE_VOTING' | transloco}}</h1>
-    <div id="questions-items">
-        {{'DAO.VOTING.NO_ACTIVE_VOTING_TEXT' | transloco}}
-    </div>
-</div>
+<ng-container *ngIf="(spinnerLarge$ | async) === true">
+    <ui-spinner [marginTop]="20"></ui-spinner>
+</ng-container>
 
-<ng-container *ngIf="(daoTopics$ | async)?.length !== 0">
-    <ui-tab-navigator
-    [styleType]="'center-without-background'"
-    id="tab"
-    [tabs]="tabs"
-    [(activeTab)]="activeTab"
-    [showTabNumbers]="true"
-    ></ui-tab-navigator>
-    <ng-container *ngFor="let dao of (daoTopics$ | async); let indexOf=index">
-        <div class="dao-voting-container" *ngIf="activeTab === indexOf">
-            <ui-dao-voting-detail [topic]="dao"></ui-dao-voting-detail>
+<ng-container *ngIf="(spinnerLarge$ | async) === false">
+    <div id="no-active-votes" *ngIf="(daoTopics$ | async)?.length === 0">
+        <h1>{{'DAO.VOTING.NO_ACTIVE_VOTING' | transloco}}</h1>
+        <div id="questions-items">
+            {{'DAO.VOTING.NO_ACTIVE_VOTING_TEXT' | transloco}}
         </div>
+    </div>
+
+    <ng-container *ngIf="(daoTopics$ | async)?.length !== 0">
+        <ui-tab-navigator
+        [styleType]="'center-without-background'"
+        id="tab"
+        [tabs]="tabs"
+        [(activeTab)]="activeTab"
+        [showTabNumbers]="true"
+        ></ui-tab-navigator>
+        <ng-container *ngFor="let dao of (daoTopics$ | async); let indexOf=index">
+            <div class="dao-voting-container" *ngIf="activeTab === indexOf">
+                <ui-dao-voting-detail [topic]="dao"></ui-dao-voting-detail>
+            </div>
+        </ng-container>
     </ng-container>
 </ng-container>

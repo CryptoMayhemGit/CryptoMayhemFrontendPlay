@@ -23,12 +23,48 @@ export class DAOEffects {
         @Inject(APP_CONFIG) private readonly appConfig: AppConfig
     ) {}
 
+    showDaoSmallSpinner$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(
+                WalletActions.connectWallet,
+            ),
+            map(() => DAOActions.showDaoSmallSpinner())
+        ));
+
+    hideDaoSmallSpinner$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(
+                DAOActions.getAllActiveTopicsSuccess,
+            ),
+            map(() => DAOActions.hideDaoSmallSpinner())
+        ));
+
+    showDaoLargeSpinner$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(
+                DAOActions.getAllActiveTopics,
+                DAOActions.postDaoVoteWithSignature,
+                WalletActions.setLanguage
+            ),
+            map(() => DAOActions.showDaoLargeSpinner())
+        ));
+
+    hideDaoLargeSpinner$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(
+                DAOActions.getAllActiveTopicsSuccess,
+                DAOActions.postDaoVoteWithSignatureSuccess,
+            ),
+            map(() => DAOActions.hideDaoLargeSpinner())
+        ));
+
     getAllActiveTopics$ = createEffect(() =>
         this.actions$.pipe(
             ofType(
                 DAOActions.getAllActiveTopics,
                 WalletActions.connectWalletSuccess,
-                DAOActions.postDaoVoteWithSignatureSuccess
+                DAOActions.postDaoVoteWithSignatureSuccess,
+                WalletActions.setLanguage
                 ),
             concatLatestFrom(() => [
                 this.store.select(WalletSelectors.getAccount),
@@ -88,7 +124,10 @@ export class DAOEffects {
             }),
             switchMap((setVoteRequest) =>
                 this.daoService.postDaoVoteWithSignature(setVoteRequest).pipe(
-                    map(() => DAOActions.postDaoVoteWithSignatureSuccess()),
+                    map(() => {
+                        this.notificationsService.success('DAO.VOTE_SUCCESS', 'DAO.VOTE_SUCCESS_DESCRIPTION')
+                        return DAOActions.postDaoVoteWithSignatureSuccess()
+                    }),
                     catchError((error) => {
                         console.log(error);
                         return of();

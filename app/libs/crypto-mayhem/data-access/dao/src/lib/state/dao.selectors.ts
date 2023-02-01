@@ -17,7 +17,12 @@ export const selectDaoHistoryTopicById = (id: number) => createSelector(
     (state) => state.daoTopicHistory.find(topic => topic.id === id)
 );
 
-export const selectDaoSpinner = createSelector(
+export const selectDaoSmallSpinner = createSelector(
     selectDao,
-    (state) => state.spinner
+    (state) => state.spinnerSmall
+);
+
+export const selectDaoLargeSpinner = createSelector(
+    selectDao,
+    (state) => state.spinnerLarge
 );

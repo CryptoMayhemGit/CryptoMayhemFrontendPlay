@@ -8,6 +8,7 @@ import { TranslocoService } from '@ngneat/transloco';
 })
 export class LanguageGuard implements CanActivate {
   availableLangs: string[] = ['en', 'pl'];
+  currentLang = 'en';
 
   constructor(
     private router: Router,
@@ -18,10 +19,18 @@ export class LanguageGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot): boolean {
     if (this.availableLangs.includes(route.params['lang'])) {
       this.translocoService.setActiveLang(route.params['lang']);
-      this.walletFacade.setLanguage(route.params['lang']);
+
+      if (this.currentLang !== route.params['lang']) {
+        this.walletFacade.setLanguage(route.params['lang']);
+        this.currentLang = route.params['lang'] as 'en' | 'pl';
+      }
+
       return true;
     } else {
-      this.walletFacade.setLanguage(this.translocoService.getActiveLang());
+      if (this.currentLang !== this.translocoService.getActiveLang()) {
+        this.walletFacade.setLanguage(this.translocoService.getActiveLang());
+        this.currentLang = this.translocoService.getActiveLang();
+      }
       this.router.navigate([
         this.translocoService.getActiveLang(),
         route.params['lang'],
