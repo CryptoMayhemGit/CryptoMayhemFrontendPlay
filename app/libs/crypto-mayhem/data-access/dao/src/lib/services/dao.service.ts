@@ -31,7 +31,7 @@ export class DAOService {
     }
 
     public getAllHistoricTopics(skip: number, take: number, localization: string): Observable<{topics: DaoTopic[]}> {
-        return this.httpClient.get<{topics: DaoTopic[]}>(DAO_TOPIC_ALL_HISTORIC(skip, take, localization));
+        return this.httpClient.get<{topics: DaoTopic[]}>(DAO_TOPIC_ALL_HISTORIC(skip, take, localization.toUpperCase()));
     }
 
     public postDaoVoteWithSignature(setVoteRequest: SetVoteRequest): Observable<any> {

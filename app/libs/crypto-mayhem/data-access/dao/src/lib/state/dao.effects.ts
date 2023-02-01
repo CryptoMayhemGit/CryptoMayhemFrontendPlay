@@ -10,6 +10,7 @@ import { SetVoteRequest, SignData } from '@crypto-mayhem-frontend/crypto-mayhem/
 
 import * as DAOActions from './dao.actions';
 import * as WalletSelectors from '../../../../wallet/src/lib/state/wallet.selectors';
+import * as WalletActions from '../../../../wallet/src/lib/state/wallet.actions';
 
 @Injectable({ providedIn: 'root' })
 export class DAOEffects {
@@ -24,7 +25,11 @@ export class DAOEffects {
 
     getAllActiveTopics$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(DAOActions.getAllActiveTopics),
+            ofType(
+                DAOActions.getAllActiveTopics,
+                WalletActions.connectWalletSuccess,
+                DAOActions.postDaoVoteWithSignatureSuccess
+                ),
             concatLatestFrom(() => [
                 this.store.select(WalletSelectors.getAccount),
                 this.store.select(WalletSelectors.getLanguage),
@@ -84,7 +89,10 @@ export class DAOEffects {
             switchMap((setVoteRequest) =>
                 this.daoService.postDaoVoteWithSignature(setVoteRequest).pipe(
                     map(() => DAOActions.postDaoVoteWithSignatureSuccess()),
-                    catchError((error) => of(DAOActions.postDaoVoteWithSignatureFailure({ error })))
+                    catchError((error) => {
+                        console.log(error);
+                        return of();
+                    })
                 )
             )
         )

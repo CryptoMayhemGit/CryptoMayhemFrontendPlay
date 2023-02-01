@@ -16,11 +16,12 @@ export class LanguageGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    this.walletFacade.setLanguage(route.params['lang']);
     if (this.availableLangs.includes(route.params['lang'])) {
       this.translocoService.setActiveLang(route.params['lang']);
+      this.walletFacade.setLanguage(route.params['lang']);
       return true;
     } else {
+      this.walletFacade.setLanguage(this.translocoService.getActiveLang());
       this.router.navigate([
         this.translocoService.getActiveLang(),
         route.params['lang'],
