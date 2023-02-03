@@ -311,7 +311,7 @@
     "INFO": {
       "TITLE": "Dao - zarządzaj Crypto&nbsp;Mayhem",
       "WHO": "Posiadacze tokenów ADRIA mogą brać udział w procesie decyzyjnym i wpływać na przyszły kierunek projektu.",
-      "DECISION": "<strong>Na co masz wpływ?</strong><br><br>- Decyduj o dalszym rozwoju gry podczas jej tworzenia.<br><br>- Zaproponuj własne zmiany w grze, które zweryfikuje nasz zespół.<br><br>- Decyduj co Adria Corp ma zrobić z zebraną pulą $ADRIA w grze (pula pobrana z opłat transakcyjnych).",
+      "DECISION": "<strong>Na co masz wpływ?</strong><br><br>- Decyduj o dalszym rozwoju gry podczas jej tworzenia.<br><br>- Zaproponuj własne zmiany w grze, które zweryfikuje nasz zespół.<br><br>- Decyduj co Adria Corp ma zrobić z zebraną pulą ADRIA w grze (pula pobrana z opłat transakcyjnych).",
       "IMPORTANT": "<strong>Ważne:</strong> Każdy portfel może zagłosować tylko raz na pytanie, a moc głosu ustawiona jest na jeden."
     },
     "VOTES_WEIGHT": {
@@ -352,9 +352,9 @@
     "INFO": {
       "TITLE": "Drodzy Kolonizatorzy!",
       "MESSAGE": "Zespół Crypto Mayhem pracował ciężko przez ostatnie miesiące, by dać Wam możliwość eksploracji kosmosu. Wkrótce Wasza cierpliwość zostanie nagrodzona wczesnym dostępem do warstwy Top-Down Shooter!<br><br>Przygotujcie się na krwawą walkę z kosmicznymi stworami, które posiadają wysoce niezbędną biomasę.",
-      "REMINDER": "<strong>Pamiętaj:</strong> Aby zagrać w Crypto Mayhem Top-Down Shooter trzeba być inwestorem tokena $ADRIA bądź posiadaczem NFT Crypto Mayhem.<br><br>Jeżeli nie posiadasz tokenów $ADRIA, bądź NFT Crypto Mayhem, wkrótce damy Ci możliwość inwestycji w&nbsp;$ADRIA.<br><br>Zaobserwuj nasze social media, by nie ominęła Cię żadna informacja!"
+      "REMINDER": "<strong>Pamiętaj:</strong> Aby zagrać w Crypto Mayhem Top-Down Shooter trzeba być posiadaczem tokena ADRIA lub NFT Crypto Mayhem.<br><br>Jeżeli nie posiadasz tokenów ADRIA, bądź NFT Crypto Mayhem, wkrótce damy Ci możliwość zdobycia w&nbsp;ADRIA.<br><br>Zaobserwuj nasze social media, by nie ominęła Cię żadna informacja!"
     },
-    "INVESTORS": "Jeżeli jesteś inwestorem $ADRIA, bądź posiadaczem NFT Crypto Mayhem wypełnij formularz dla beta testerów gry, <strong>by mieć dostęp do ekskluzywnej grupy testerów</strong>.",
+    "INVESTORS": "Jeżeli jesteś posiadaczem ADRIA lub NFT Crypto Mayhem wypełnij formularz dla beta testerów gry, <strong>by mieć dostęp do ekskluzywnej grupy testerów</strong>.",
     "INVESTORS_BUTTON": "Wypełnij formularz",
     "ADD_TO_CALENDAR": "Dodaj do kalendarza Google"
   }
