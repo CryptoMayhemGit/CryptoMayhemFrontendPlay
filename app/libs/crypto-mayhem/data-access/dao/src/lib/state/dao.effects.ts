@@ -10,6 +10,7 @@ import { WalletService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access
 import { SetVoteRequest, SignData } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/dao-model';
 
 import * as DAOActions from './dao.actions';
+import * as DAOSelectors from './dao.selectors';
 import * as WalletSelectors from '../../../../wallet/src/lib/state/wallet.selectors';
 import * as WalletActions from '../../../../wallet/src/lib/state/wallet.actions';
 
@@ -84,11 +85,21 @@ export class DAOEffects {
     getAllHistoricTopics$ = createEffect(() =>
         this.actions$.pipe(
             ofType(DAOActions.getAllHistoricTopics),
-            concatLatestFrom(() => this.store.select(WalletSelectors.getLanguage)),
-            switchMap(([{skip, take}, localization]) =>
+            concatLatestFrom(() =>
+            [
+                this.store.select(WalletSelectors.getLanguage),
+                this.store.select(DAOSelectors.selectAllHistoricTopics)
+            ]),
+            switchMap(([{skip, take}, localization, storeTopic]) =>
                 this.daoService.getAllHistoricTopics(skip, take, localization).pipe(
                     map((response) => response.topics),
-                    map((topics) => DAOActions.getAllHistoricTopicsSuccess({ topics })),
+                    map((topics) =>
+                    {
+                        return topics.length === 0 ?
+                        DAOActions.getAllHistoricTopicsSuccess({ topics: storeTopic }) :
+                        DAOActions.getAllHistoricTopicsSuccess({ topics })
+
+                    }),
                     catchError((error) => of(DAOActions.getAllHistoricTopicsFailure({ error })))
                 )
             )
