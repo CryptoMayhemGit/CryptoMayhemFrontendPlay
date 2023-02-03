@@ -1,3 +1,27 @@
-<span class="icon-left" (click)="clear()" *ngIf="(this.inputControl.valueChanges | async) && inputFunction === 'search'"></span>
-<input #input autocomplete="randomstringhack" [type]="type" [ngClass]="{'search-icon': !(this.inputControl.valueChanges | async) && inputFunction === 'search', 'search-padding': inputFunction === 'search'}" [value]="value" [placeholder]="placeholder" [formControl]="inputControl" [name]="name">
-<fa-icon class="icon-right" [icon]="faTimesIcon" (click)="clear(); focus()" *ngIf="this.inputControl.valueChanges | async" [@fadeInOut]></fa-icon>
+<span
+  class="icon-left"
+  (click)="clear()"
+  *ngIf="(this.inputControl.valueChanges | async) && inputFunction === 'search'"
+></span>
+<input
+  #input
+  autocomplete="randomstringhack"
+  [type]="type"
+  [ngClass]="{
+    'search-icon':
+      (this.inputControl.valueChanges | async) === false &&
+      inputFunction === 'search',
+    'search-padding': inputFunction === 'search'
+  }"
+  [value]="value"
+  [placeholder]="placeholder"
+  [formControl]="inputControl"
+  [name]="name"
+/>
+<fa-icon
+  class="icon-right"
+  [icon]="faTimesIcon"
+  (click)="clear(); focus()"
+  *ngIf="this.inputControl.valueChanges | async"
+  [@fadeInOut]
+></fa-icon>

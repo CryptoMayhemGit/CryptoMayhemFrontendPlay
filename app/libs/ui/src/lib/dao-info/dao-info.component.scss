@@ -1,6 +1,7 @@
 @import 'libs/crypto-mayhem/styles/mixins';
 
 :host {
+  margin: 0 auto;
   max-width: 100%;
 }
 
@@ -8,7 +9,7 @@
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
-  margin: 6.2rem 0;
+  margin: 6.2rem auto;
 
   #img {
     max-height: 44rem;
@@ -19,6 +20,7 @@
   #desc {
     @include background-blur;
 
+    margin: 0 auto;
     max-width: 43.5rem;
     padding: 3.2rem 2rem;
   }
@@ -49,6 +51,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 7rem auto;
+  margin: 6.3rem auto;
   max-width: 88.8rem;
   padding: 3.2rem;
   width: 100%;
@@ -195,12 +198,29 @@ hr {
 }
 
 @media screen and (min-width: 768px) {
-  #votes-weight-period > div.active::before {
-    left: -18rem;
+  #votes {
+    &-weight-period > div.active::before {
+      content: none;
+      left: -18rem;
+    }
+    
+    &-weight-images {
+      clip-path: polygon(0 0, 500% 0, 500% 100%, 78.5% 100%);
+    }
+
+    .img-wrapper {
+      img {
+        display: inline-block;
+      }
+    }
   }
 }
 
 @media screen and (min-width: 1240px) {
+  :host {
+    margin: 0;
+  }
+
   .wrapper {
     margin: 0;
   }
@@ -211,6 +231,7 @@ hr {
   }
 
   #desc {
+    margin: 0;
     max-width: 50%;
   }
 
@@ -248,12 +269,6 @@ hr {
 
     &-weight-adria {
       display: none;
-    }
-
-    .img-wrapper {
-      img {
-        display: inline-block;
-      }
     }
   }
 }

@@ -7,6 +7,7 @@ import {
   hideSpinner,
   hideWallets,
   postSignWalletBeforeBuy,
+  setLanguage,
   setWalletAddress,
   showSpinner,
   showWallets,
@@ -59,27 +60,31 @@ export class WalletFacade {
     this.walletService.connectWallet(walletType);
   }
 
-  public disconnectWalletAccount() {
+  public disconnectWalletAccount(): void {
     this.walletService.disconnectWallet();
   }
 
-  public showWallets(close?: boolean) {
+  public showWallets(close?: boolean): void {
     this.store.dispatch(showWallets({ close }));
   }
 
-  public hideWallets() {
+  public hideWallets(): void {
     this.store.dispatch(hideWallets());
   }
 
-  public buyPreSaleTokens(amount: number) {
+  public buyPreSaleTokens(amount: number): void {
     this.store.dispatch(postSignWalletBeforeBuy({ amount }));
   }
 
-  public getBalance() {
+  public getBalance(): void {
     this.walletService.getBalance();
   }
 
-  public signMessage(data: string) {
+  public signMessage(data: string): void {
     this.store.dispatch(signMessageForLauncher({ data }));
+  }
+
+  public setLanguage(language: string): void {
+    this.store.dispatch(setLanguage({ language }));
   }
 }

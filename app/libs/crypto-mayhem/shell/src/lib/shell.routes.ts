@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
-import { LauncherComponent, MainPageComponent, MyAccountComponent, PreSaleComponent, TopDownShooterComponent } from '@crypto-mayhem-frontend/crypto-mayhem/pages';
+import { DaoComponent, LauncherComponent, MainPageComponent, MyAccountComponent, PreSaleComponent, TopDownShooterComponent } from '@crypto-mayhem-frontend/crypto-mayhem/pages';
 import { LanguageGuard } from './guards/language.guard';
+import { DaoResolver } from './resolvers/dao.resolver';
 
 export const cryptoMayhemShellRoutes: Routes = [
   {
@@ -13,7 +14,9 @@ export const cryptoMayhemShellRoutes: Routes = [
       //{ path: 'game', component: GrandStrategyComponent, pathMatch: 'full' },
       { path: 'account', component: MyAccountComponent, pathMatch: 'full' },
       { path: 'tds', component: TopDownShooterComponent, pathMatch: 'full' },
-      //{ path: 'dao', component: DaoComponent, pathMatch: 'full' },
+      { path: 'dao', component: DaoComponent, resolve: {
+        dao: DaoResolver
+      }, pathMatch: 'full' },
       { path: 'launcher', component: LauncherComponent, pathMatch: 'full' },
     ],
   },

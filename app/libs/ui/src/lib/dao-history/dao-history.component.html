@@ -1,0 +1,50 @@
+<ng-container *ngIf="(spinnerLarge$ | async) === true">
+    <ui-spinner [marginTop]="20"></ui-spinner>
+</ng-container>
+
+<ng-container *ngIf="(spinnerLarge$ | async) === false">
+    <div id="questions" *ngIf="(daoHistoryTopics$ | async)?.length === 0">
+        <p>{{'DAO.HISTORY.NO_QUESTION' | transloco}}</p>
+        <div id="questions-items">
+            {{'DAO.HISTORY.NO_QUESTION_TEXT' | transloco}}
+        </div>
+    </div>
+
+    <ng-container *ngIf="(daoHistoryTopics$ | async)?.length !== 0">
+        <div id="questions">
+            <p>{{ 'DAO.QUESTION_LIST' | transloco | uppercase }}</p>
+            <div
+                id="questions-items"
+                infiniteScroll
+                [infiniteScrollDistance]="scrollDistance"
+                [infiniteScrollThrottle]="scrollThrottle"
+                (scrolled)="onScroll()"
+                [infiniteScrollContainer]="'#questions-items'"
+                [fromRoot]="true"
+            >
+                <ui-radio-button
+                *ngFor="let question of daoShortHistoryTopics$ | async;
+                index as i;
+                trackBy: trackById"
+                [value]="question.id"
+                (click)="onQuestionClick(question.id)"
+                formControlName="answer">{{question.name}}</ui-radio-button>
+            </div>
+        </div>
+
+        <div id="answers">
+            <h1>{{choiceDaoHistoryTopic?.name}}</h1>
+            <p style="word-break: 'break-all'">{{choiceDaoHistoryTopic?.description}}</p>
+            <ng-container *ngFor="let historyTopic of choiceDaoHistoryTopic?.answerRankings | sort: 'voteCount';  let indefOf = index">
+                <ui-voting-result-item index="1" [answer]="historyTopic.answerName" [votes]="historyTopic.voteCount" [active]="indefOf === 0"></ui-voting-result-item>
+            </ng-container>
+            <div id="results-total">
+                <img src="./assets/images/votes_people_icon.svg" alt="people" role="presentation" />
+                <div class="column">
+                    <p>{{ 'DAO.VOTING.PARTICIPANTS' | transloco }}</p>
+                    <p>{{choiceDaoHistoryTopic?.votesCount}}</p>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>

@@ -80,3 +80,8 @@ export const bnbBalanceOf = createSelector(
   selectWallet,
   (state) => state.bnbBalanceOf
 );
+
+export const getLanguage = createSelector(
+  selectWallet,
+  (state) => state.language
+);

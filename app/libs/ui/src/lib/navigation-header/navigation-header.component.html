@@ -23,14 +23,15 @@
   <div *ngIf="connected$ | async" id="avatar">
     <img alt="avatar" src="./assets/images/avatar_empty.svg" />
   </div>
-  <ui-token-balance 
+  <ui-token-balance
     *ngIf="connected$ | async"
     [bnbBalance]="bnbBalanceOf$ | async"
     [walletAddress]="walletAddress$ | async"
     (disconnect)="disconnect()">
   </ui-token-balance>
-  <div id="connect-pc" *ngIf="(connected$ | async) === false">
+  <div id="connect-pc">
     <ui-main-button
+      *ngIf="(connected$ | async) === false"
       type="fancy"
       (btnClick)="connect()"
       >{{ "NAVBAR.CONNECT" | transloco }}</ui-main-button
@@ -106,6 +107,12 @@
     <a href="#" class="disabled" (click)="mobileVisible = false">{{
       "NAVBAR.NAV.NFT" | transloco
     }}</a>
+    <a
+      routerLink="dao"
+      [ngClass]="{'active-item': activePage === 'dao'}"
+      (click)="mobileVisible = false; activePage = 'dao'"
+      >{{ "NAVBAR.NAV.DAO" | transloco }}</a
+    >
     <a href="#" class="disabled" (click)="mobileVisible = false">{{
       "NAVBAR.NAV.STAKING" | transloco
     }}</a>

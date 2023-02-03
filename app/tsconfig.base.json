@@ -33,6 +33,12 @@
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model": [
         "libs/crypto-mayhem/data-access/contract-model/src/index.ts"
       ],
+      "@crypto-mayhem-frontend/crypto-mayhem/data-access/dao": [
+        "libs/crypto-mayhem/data-access/dao/src/index.ts"
+      ],
+      "@crypto-mayhem-frontend/crypto-mayhem/data-access/dao-model": [
+        "libs/crypto-mayhem/data-access/dao-model/src/index.ts"
+      ],
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors": [
         "libs/crypto-mayhem/data-access/interceptors/src/index.ts"
       ],
