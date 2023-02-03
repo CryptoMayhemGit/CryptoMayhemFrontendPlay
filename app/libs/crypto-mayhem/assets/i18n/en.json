@@ -335,11 +335,12 @@
       "MIN_VOTE_POWER_TEXT": "To be able to vote, you have to own at least the first level of voting power.",
       "CONNECT_TO_VOTE": "Connect your wallet to vote",
       "NO_ACTIVE_VOTING": "No active voting",
-      "NO_ACTIVE_VOTING_TEXT": "There are no active voting at the moment. Check back later."
+      "NO_ACTIVE_VOTING_TEXT": "There are no active voting at the moment.",
+      "ACTIVE_DATE": "First voting will be available on 15.02.2023."
     },
     "HISTORY": {
-      "NO_QUESTION": "No questions yet",
-      "NO_QUESTION_TEXT": "Here will be available all questions and results of voting after their end."
+      "NO_QUESTION": "No results yet",
+      "NO_QUESTION_TEXT": "No voting results yet."
     },
     "QUESTION_LIST": "Questions",
     "QUESTION": "Question",

@@ -306,7 +306,7 @@
     "TABS": {
       "INFO": "Informacje",
       "VOTING": "Głosowanie",
-      "HISTORY": "Historia"
+      "HISTORY": "Wyniki"
     },
     "INFO": {
       "TITLE": "Dao - zarządzaj Crypto&nbsp;Mayhem",
@@ -335,11 +335,12 @@
       "MIN_VOTE_POWER": "Nie osiągnięto minimalnej siły głosów",
       "MIN_VOTE_POWER_TEXT": "Aby móc głosować musisz posiadać przynajmniej pierwszy stopień siły głosów.",
       "NO_ACTIVE_VOTING": "Brak aktywnych głosowań",
-      "NO_ACTIVE_VOTING_TEXT": "Nie ma żadnych aktywnych głosowań. Sprawdź później."
+      "NO_ACTIVE_VOTING_TEXT": "Nie ma żadnych aktywnych głosowań.",
+      "ACTIVE_DATE": "Pierwsze głosowanie będzie dostępne 15.02.2023."
     },
     "HISTORY": {
-      "NO_QUESTION": "Brak pytań",
-      "NO_QUESTION_TEXT": "Tutaj będą pojawiać się wyniki wszystkich przeprowadzonych głosowań po ich zakończeniu."
+      "NO_QUESTION": "Brak wyników głosowań",
+      "NO_QUESTION_TEXT": "Nie ma żadnych zakończonych głosowań."
     },
     "QUESTION_LIST": "Lista pytań",
     "QUESTION": "Pytanie",
