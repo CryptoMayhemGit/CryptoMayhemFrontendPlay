@@ -43,20 +43,24 @@ export class DaoHistoryComponent implements OnInit {
     });
   }
 
-  trackById(index:number, el:any): number {
+  public trackById(index:number, el:any): number {
     return el.id;
   }
 
-  onScroll() {
+  public onScroll() {
     this.skip += this.take;
     this.take += this.take;
     this.daoFacade.getDaoAllHistoricTopics(this.skip, this.take);
   }
 
-  onQuestionClick(id: number) {
+  public onQuestionClick(id: number): void {
     this.daoFacade.getDaoHistoryTopicById(id)
     .subscribe((dao) => {
       this.choiceDaoHistoryTopic = dao;
     })
+  }
+
+  public makeShorterAnswer(answer: string): string {
+    return answer.length > 18 ? answer.slice(0, 18) + '...' : answer;
   }
 }

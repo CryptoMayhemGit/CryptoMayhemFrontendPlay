@@ -36,7 +36,7 @@
             <h1>{{choiceDaoHistoryTopic?.name}}</h1>
             <p style="word-break: 'break-all'">{{choiceDaoHistoryTopic?.description}}</p>
             <ng-container *ngFor="let historyTopic of choiceDaoHistoryTopic?.answerRankings | sort: 'voteCount';  let indefOf = index">
-                <ui-voting-result-item index="1" [answer]="historyTopic.answerName" [votes]="historyTopic.voteCount" [active]="indefOf === 0"></ui-voting-result-item>
+                <ui-voting-result-item index="1" [answer]="makeShorterAnswer(historyTopic.answerName)" [votes]="historyTopic.voteCount" [active]="indefOf === 0"></ui-voting-result-item>
             </ng-container>
             <div id="results-total">
                 <img src="./assets/images/votes_people_icon.svg" alt="people" role="presentation" />

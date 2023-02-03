@@ -308,10 +308,10 @@
       "HISTORY": "Results"
     },
     "INFO": {
-      "TITLE": "DAO - manage Crypto Mayhem project",
+      "TITLE": "DAO - manage Crypto Mayhem",
       "WHO": "ADRIA token holders can take part in the decision-making process and influence the future direction of the project.",
       "DECISION": "<strong>What do you influence?</strong><br><br>- Decision what to make in the game (during game development).<br><br>- Possibility to propose your own changes in game, which team will verify.<br><br>- Decision what Adria Corp should do with collected pool $ADRIA in game (collected pool from fee transaction).",
-      "IMPORTANT": "<strong>Important:</strong> Each wallet can vote once per question and your vote power is set to one"
+      "IMPORTANT": "<strong>Important:</strong> Each wallet can vote once per question and your vote power is set to one."
     },
     "VOTES_WEIGHT": {
       "TITLE": "Votes weight",
