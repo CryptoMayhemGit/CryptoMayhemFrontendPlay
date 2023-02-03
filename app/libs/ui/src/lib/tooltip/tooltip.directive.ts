@@ -28,7 +28,7 @@ export class TooltipDirective {
     div.appendChild(textNode);
     div.classList.add('tooltip', direction);
     div.style.position = 'absolute';
-    
+
     if (direction === 'bottom') {
       div.style.left = x * -1 + 'px';
     } else if (direction === 'left') {

@@ -7,6 +7,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { PipesModule } from '@crypto-mayhem-frontend/utility/pipes';
 import { SpinnerModule } from '../spinner/spinner.module';
+import { TooltipModule } from '../tooltip/tooltip.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { SpinnerModule } from '../spinner/spinner.module';
     TranslocoModule,
     InfiniteScrollModule,
     PipesModule,
-    SpinnerModule
+    SpinnerModule,
+    TooltipModule
   ],
   exports: [DaoHistoryComponent],
 })
