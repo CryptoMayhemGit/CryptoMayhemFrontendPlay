@@ -9,7 +9,11 @@
 
   "WELCOME": {
     "TITLE": "Hi! 👋",
-    "TEXT": "You can join our Galactic World soon. Meanwhile, watch the trailers.<br><br>See you later 😄"
+    "TEXT": "Welcome to our gaming ecosystem</br></br>Explore our Metaverse using the information below.</br></br>See you in the games!"
+  },
+
+  "NFT_MAIN": {
+    "TITLE": "NFT Collection"
   },
 
   "GAMES": {
