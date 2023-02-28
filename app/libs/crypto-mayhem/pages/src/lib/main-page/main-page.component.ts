@@ -55,4 +55,8 @@ export class MainPageComponent {
   goToTds() {
     this.router.navigate(['tds']);
   }
+
+  goToTglp() {
+    window.open('https://opensea.io/collection/tglp-mayhem', '_blank')
+  }
 }
