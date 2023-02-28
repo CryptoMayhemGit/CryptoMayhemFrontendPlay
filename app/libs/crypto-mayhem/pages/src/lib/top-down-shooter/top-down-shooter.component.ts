@@ -7,11 +7,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class TopDownShooterComponent {
 
-  earlyAccessTime = new Date(Date.UTC(2022, 11, 13, 15, 0, 0)).getTime();
-  earlyAccess = false;
-
-  constructor() {}
-
   openBetaForm() {
     window.open('https://forms.gle/W2b6Q8n8VrN76nir5', '_blank');
   }
