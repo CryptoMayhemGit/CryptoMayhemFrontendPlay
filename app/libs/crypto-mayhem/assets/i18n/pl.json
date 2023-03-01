@@ -263,6 +263,7 @@
   "TDS": {
     "DOWNLOAD": "Pobierz na PC",
     "OVERVIEW": "Przegląd gry",
+    "NOT_SUPPORTED": "Windows 7 nie jest wspierany",
     "WELCOME": {
       "HEADER": "Witaj kapralu!",
       "CONTENT_FIRST": "Rozpoczynasz służbę w elitarnej drużynie naziemnej Impact Squad. Jako jednostka taktyczna będziesz prowadzić działania na głębokim zapleczu wroga.",

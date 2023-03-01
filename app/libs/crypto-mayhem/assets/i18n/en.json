@@ -262,6 +262,7 @@
   "TDS": {
     "DOWNLOAD": "PC Download",
     "OVERVIEW": "Game overview",
+    "NOT_SUPPORTED": "Windows 7 is not supported",
     "WELCOME": {
       "HEADER": "Hello corporal!",
       "CONTENT_FIRST": "You start the service in the elite ground team Impact Squad. As a tactical unit, you will operate in the enemy's deep hinterland.",
