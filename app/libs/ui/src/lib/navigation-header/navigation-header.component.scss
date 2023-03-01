@@ -325,7 +325,7 @@ ui-token-balance {
     @media screen and (min-width: 1240px) {
       min-height: 21rem;
       padding: 2.4rem;
-      width: 100%;
+      min-width: 69rem;
 
       & > div {
         align-items: flex-start;
