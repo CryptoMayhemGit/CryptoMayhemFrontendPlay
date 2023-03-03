@@ -372,12 +372,12 @@ ui-token-balance {
 
     // backdrop-filter: blur(40px);
     background: rgb(40 40 40 / 60%);
+    box-sizing: border-box;
     justify-content: space-between;
     margin: 1rem auto;
     margin: 1rem 2rem 0;
-    width: calc(100vw - 4rem);
     max-width: 172rem;
-    box-sizing: border-box;
+    width: calc(100vw - 4rem);
 
     &::before {
       background: url("/assets/images/menu_left.svg") no-repeat top left;

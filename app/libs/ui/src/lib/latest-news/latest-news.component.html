@@ -1,0 +1,11 @@
+<ng-container [@inOutAnimation]>
+    <h3>{{ 'LATEST_TITLE' | transloco }}</h3>
+    <div class="news">
+        <div class="info">
+            <span>{{ latest.pubDate | date: 'MMM yy' }}</span>
+            <h4>{{ latest.title }}</h4>
+            <span [innerHTML]="latest.content | shortText:235"></span>
+        </div>
+        <img [src]="latest.thumbnail" [alt]="latest.title">
+    </div>
+</ng-container>

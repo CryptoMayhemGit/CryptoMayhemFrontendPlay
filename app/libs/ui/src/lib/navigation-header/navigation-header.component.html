@@ -1,11 +1,16 @@
 <div *ngIf="spinner | async"></div>
 <div id="nav">
   <div>
-    <a id="logo" routerLink="/" (click)="activePage = ''"><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"/></a>
+    <a id="logo" routerLink="/" (click)="activePage = ''"
+      ><img alt="logo" src="./assets/images/CryptoMayhemLogo.svg"
+    /></a>
     <div
       class="burger-wrapper"
       (click)="
-        mobileVisible = !mobileVisible; gamesVisible = false; tdsVisible = false; gsVisible = false
+        mobileVisible = !mobileVisible;
+        gamesVisible = false;
+        tdsVisible = false;
+        gsVisible = false
       "
     >
       <div
@@ -27,7 +32,8 @@
     *ngIf="connected$ | async"
     [bnbBalance]="bnbBalanceOf$ | async"
     [walletAddress]="walletAddress$ | async"
-    (disconnect)="disconnect()">
+    (disconnect)="disconnect()"
+  >
   </ui-token-balance>
   <div id="connect-pc">
     <ui-main-button
@@ -38,11 +44,20 @@
     >
     <ui-lang-switch></ui-lang-switch>
   </div>
-  <div class="connect-mobile" *ngIf="(connected$ | async) === false" (click)="connect()">
+  <div
+    class="connect-mobile"
+    *ngIf="(connected$ | async) === false"
+    (click)="connect()"
+  >
     <img src="./assets/images/connect.svg" alt="connect wallet" />
     <p>{{ "NAVBAR.CONNECT_MOBILE" | transloco }}</p>
   </div>
-  <div class="connect-mobile" *ngIf="(connected$ | async)" role="link" (click)="goToMyAccount()" >
+  <div
+    class="connect-mobile"
+    *ngIf="connected$ | async"
+    role="link"
+    (click)="goToMyAccount()"
+  >
     <div class="avatar"></div>
   </div>
 </div>
@@ -52,11 +67,11 @@
   </div>
   <div id="tablet-marketing">
     <ui-lang-switch></ui-lang-switch>
-    <img
+    <ui-latest-news
+      [latest]="news.items[0]"
       class="marketing-banner"
       *ngIf="!gamesVisible"
-      src="./assets/images/presale3.jpg"
-    />
+    ></ui-latest-news>
     <div id="mobile-submenu" *ngIf="gamesVisible">
       <ui-submenu>
         <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
@@ -67,17 +82,34 @@
 
 <ng-template #links>
   <nav>
-    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup': gamesVisible, 'games-active': gamesVisible}" (mouseenter)="showGames()" *ngIf="!isSmallScreen() && !isMobileDevice()">{{
-      "NAVBAR.NAV.GAMES" | transloco
-    }}</a>
-    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup': gamesVisible, 'games-active': gamesVisible}" (click)="showGames()" *ngIf="!isSmallScreen() && isMobileDevice()">{{
-      "NAVBAR.NAV.GAMES" | transloco
-    }}</a>
-    <a [ngClass]="{'arrowdown': !gamesVisible, 'arrowup active': gamesVisible}" (click)="showGames()" *ngIf="isSmallScreen()">{{
-      "NAVBAR.NAV.GAMES" | transloco
-    }}</a>
-      <div class="games-menu"  *ngIf="gamesVisible">
-        <ui-submenu  [@inOutAnimation]>
+    <a
+      [ngClass]="{
+        arrowdown: !gamesVisible,
+        arrowup: gamesVisible,
+        'games-active': gamesVisible
+      }"
+      (mouseenter)="showGames()"
+      *ngIf="!isSmallScreen() && !isMobileDevice()"
+      >{{ "NAVBAR.NAV.GAMES" | transloco }}</a
+    >
+    <a
+      [ngClass]="{
+        arrowdown: !gamesVisible,
+        arrowup: gamesVisible,
+        'games-active': gamesVisible
+      }"
+      (click)="showGames()"
+      *ngIf="!isSmallScreen() && isMobileDevice()"
+      >{{ "NAVBAR.NAV.GAMES" | transloco }}</a
+    >
+    <a
+      [ngClass]="{ arrowdown: !gamesVisible, 'arrowup active': gamesVisible }"
+      (click)="showGames()"
+      *ngIf="isSmallScreen()"
+      >{{ "NAVBAR.NAV.GAMES" | transloco }}</a
+    >
+    <div class="games-menu" *ngIf="gamesVisible">
+      <ui-submenu [@inOutAnimation]>
         <div id="games-list">
           <h2>{{ "NAVBAR.GAMES_COLLECTION" | transloco }}</h2>
           <a
@@ -95,11 +127,10 @@
           >
         </div>
         <div id="games">
-          <img
-            src="./assets/images/presale3.jpg"
-            class="marketing-banner"
+          <ui-latest-news
+            [latest]="news.items[0]"
             *ngIf="!tdsVisible && !gsVisible && !isSmallScreen()"
-          />
+          ></ui-latest-news>
           <ng-template [ngTemplateOutlet]="gamesMenu"></ng-template>
         </div>
       </ui-submenu>
@@ -109,7 +140,7 @@
     }}</a>
     <a
       routerLink="dao"
-      [ngClass]="{'active-item': activePage === 'dao'}"
+      [ngClass]="{ 'active-item': activePage === 'dao' }"
       (click)="mobileVisible = false; activePage = 'dao'"
       >{{ "NAVBAR.NAV.DAO" | transloco }}</a
     >
@@ -124,7 +155,7 @@
     }}</a>
     <a
       routerLink="presale"
-      [ngClass]="{'active-item': activePage === 'presale'}"
+      [ngClass]="{ 'active-item': activePage === 'presale' }"
       (click)="mobileVisible = false; activePage = 'presale'"
       >{{ "NAVBAR.NAV.PRESALE" | transloco }}</a
     >
@@ -138,7 +169,7 @@
     title="Top-down shooter"
     img="BOSS_CM_SM"
     color="#309F8B"
-    style="z-index: 1000;"
+    style="z-index: 1000"
   >
     <p>{{ "GAMES.TDS.DESCRIPTION" | transloco }}</p>
     <p>{{ "GAMES.TDS.CTA" | transloco }}</p>

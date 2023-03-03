@@ -53,3 +53,6 @@ export * from './lib/voting-result-item/voting-result-item.module';
 export * from './lib/voting-result-item/voting-result-item.component';
 export * from './lib/dao-history/dao-history.module';
 export * from './lib/dao-history/dao-history.component';
+export * from './lib/latest-news/latest-news.component';
+export * from './lib/latest-news/latest-news.module';
+export * from './lib/latest-news/latest-news.component';
