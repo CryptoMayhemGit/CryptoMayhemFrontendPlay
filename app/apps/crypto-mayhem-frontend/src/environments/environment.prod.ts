@@ -21,4 +21,6 @@ export const environment = {
   webGlLocation: '',
   metamaskDeepLink:
     'https://metamask.app.link/dapp/play.cryptomayhem.io/presale',
+  domain: 'cryptomayhem.io',
+  cyberConnectUrl: 'https://api.cyberconnect.dev/'
 };

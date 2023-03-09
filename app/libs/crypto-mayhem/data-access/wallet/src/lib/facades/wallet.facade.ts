@@ -41,7 +41,7 @@ export class WalletFacade {
 
   constructor(
     private readonly store: Store,
-    private readonly walletService: WalletService
+    private readonly walletService: WalletService,
   ) {}
 
   public setWalletAddress(walletAddress: string): void {
@@ -80,8 +80,8 @@ export class WalletFacade {
     this.walletService.getBalance();
   }
 
-  public signMessage(data: string): void {
-    this.store.dispatch(signMessageForLauncher({ data }));
+  public signMessage(data: {wallet: string, nonce: number}): void {
+    this.store.dispatch(signMessageForLauncher({ wallet: data.wallet, nonce: data.nonce }));
   }
 
   public setLanguage(language: string): void {
