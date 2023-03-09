@@ -39,14 +39,14 @@ export const hideSpinner = createAction('[Wallet] Hide spinner');
 
 export const showWallets = createAction(
   '[Wallet] Show available wallets',
-  props<{ close: boolean | undefined }>()
+  props<{ close: boolean | undefined, showCcProfile: boolean | undefined }>()
   );
 
 export const hideWallets = createAction('[Wallet] Hide available wallets');
 
 export const signMessageForLauncher = createAction(
   '[Wallet] Sign message for launcher',
-  props<{wallet: string, nonce: number}>()
+  props<{wallet: string, nonce: number, handle?: string}>()
 );
 
 export const signMessageForLauncherSuccess = createAction(

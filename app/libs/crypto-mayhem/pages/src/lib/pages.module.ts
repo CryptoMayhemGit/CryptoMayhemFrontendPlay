@@ -7,6 +7,7 @@ import { MyAccountModule } from './my-account/my-account.module';
 import { TopDownShooterModule } from './top-down-shooter/top-down-shooter.module';
 import { DaoModule } from './dao/dao.module';
 import { LauncherModule } from './launcher/launcher.module';
+import { CcProfileModule } from './cc-profile/ccProfile.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -17,7 +18,8 @@ import { LauncherModule } from './launcher/launcher.module';
     MyAccountModule,
     TopDownShooterModule,
     DaoModule,
-    LauncherModule
+    LauncherModule,
+    CcProfileModule
   ],
   declarations: [],
 })

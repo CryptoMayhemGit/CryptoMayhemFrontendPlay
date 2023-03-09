@@ -43,7 +43,7 @@ import { InMemoryCache } from '@apollo/client';
     FormsModule,
     ReactiveFormsModule,
     NotificationsModule,
-    ApolloModule
+    ApolloModule,
   ],
   providers: [
     // {
