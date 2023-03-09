@@ -27,17 +27,17 @@ export class LauncherComponent implements OnInit {
     this.account$.pipe(
       tap(
         (account) => {
-          const message = {
+          const message: {wallet: string, nonce: number} = {
             wallet: account,
             nonce: Date.now()
           }
-          if(account) { this.signMessage(JSON.stringify(message)) }
+          if(account) { this.signMessage(message) }
         }
       )
     ).subscribe();
   }
 
-  signMessage(message: string) {
+  signMessage(message:  {wallet: string, nonce: number}) {
     this.walletFacade.signMessage(message);
   }
 

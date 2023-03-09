@@ -30,6 +30,14 @@ declare global {
   }
 }
 
+export const LOGIN_GET_MESSAGE = gql`
+  mutation LoginGetMessage($input: LoginGetMessageInput!) {
+    loginGetMessage(input: $input) {
+      message
+    }
+  }
+`;
+
 import * as WalletActions from '../state/wallet.actions';
 import { Observable } from 'rxjs';
 import { SALE_TOKEN } from './wallet.endpoints';
@@ -44,6 +52,8 @@ import {
 import { isMobile } from 'libs/utility/functions/src';
 import { NotificationsService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 import { Router } from '@angular/router';
+import { Apollo, gql } from 'apollo-angular';
+import { FetchResult } from '@apollo/client';
 
 const ACCOUNTS_CHANGED = 'accountsChanged';
 const CHAIN_CHANGED = 'chainChanged';
@@ -55,6 +65,7 @@ export class WalletService {
 
   constructor(
     private readonly httpClient: HttpClient,
+    private readonly apollo: Apollo,
     private store: Store,
     private readonly notificationsService: NotificationsService,
     private router: Router,
@@ -260,14 +271,40 @@ export class WalletService {
     });
   }
 
-  public async signMessageForLauncher(data: string): Promise<void>{
+  public async getCyberConnectLoginMessage(address: string): Promise<string> {
+    const result = await this.apollo.mutate({
+      mutation: LOGIN_GET_MESSAGE,
+      variables: {
+        input: {
+          domain: this.appConfig.domain,
+          address: address
+        }
+      }
+    }).toPromise();
+
+    const fetchResult = result as FetchResult<{ loginGetMessage: { message: string } }>;
+
+    return fetchResult?.data?.loginGetMessage?.message || '';
+  }
+
+  public async signMessageForLauncher(wallet: string, nonce: number): Promise<void>{
     if(this.provider) {
       try{
+        const message  = await this.getCyberConnectLoginMessage(wallet);
+
+        if (message === '') {
+          this.notificationsService.error(
+            'NOTIFICATIONS.ERROR_OCCURRED',
+          );
+          return;
+        }
+
+        const data = {wallet, nonce};
         const signer = await this.provider.getSigner();
-        signer.signMessage(data)
+        signer.signMessage(message)
         .then((signature) => {
           const dataJson: SignedMessage = {
-            data,
+            data: JSON.stringify(data),
             signature
           }
 

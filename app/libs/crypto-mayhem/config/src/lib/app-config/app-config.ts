@@ -17,4 +17,5 @@ export interface AppConfig {
   adriaPrice: number;
   webGlLocation: string;
   metamaskDeepLink: string;
+  domain: string;
 }

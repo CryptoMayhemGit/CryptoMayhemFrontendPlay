@@ -19,4 +19,6 @@ export const environment = {
   webGlLocation: 'assets/unity/',
   metamaskDeepLink:
     'https://metamask.app.link/dapp/black-mushroom-0ae7fe803-develop.westeurope.1.azurestaticapps.net/presale',
+  domain: 'cryptomayhem.io',
+  cyberConnectUrl: 'https://api.cyberconnect.dev/'
 };
