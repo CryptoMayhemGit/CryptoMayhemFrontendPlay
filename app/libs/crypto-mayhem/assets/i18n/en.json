@@ -6,10 +6,15 @@
   "MILLION_ABBREVIATION": "M",
   "MONTH": "month",
   "MONTHS": "months",
+  "LATEST_TITLE": "Latest news",
 
   "WELCOME": {
     "TITLE": "Hi! 👋",
-    "TEXT": "You can join our Galactic World soon. Meanwhile, watch the trailers.<br><br>See you later 😄"
+    "TEXT": "Welcome to our gaming ecosystem</br></br>Explore our Metaverse using the information below.</br></br>See you in the games!"
+  },
+
+  "NFT_MAIN": {
+    "TITLE": "NFT Collection"
   },
 
   "GAMES": {
@@ -258,6 +263,7 @@
   "TDS": {
     "DOWNLOAD": "PC Download",
     "OVERVIEW": "Game overview",
+    "NOT_SUPPORTED": "Versions below Windows 8.1 are not supported",
     "WELCOME": {
       "HEADER": "Hello corporal!",
       "CONTENT_FIRST": "You start the service in the elite ground team Impact Squad. As a tactical unit, you will operate in the enemy's deep hinterland.",

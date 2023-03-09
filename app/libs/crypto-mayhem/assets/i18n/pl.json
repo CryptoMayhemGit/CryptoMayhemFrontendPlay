@@ -6,10 +6,15 @@
   "MILLION_ABBREVIATION": " mln",
   "MONTH": "miesiąc",
   "MONTHS": "miesięcy",
+  "LATEST_TITLE": "Ostatnia aktualizacja",
 
   "WELCOME": {
     "TITLE": "Cześć! 👋",
-    "TEXT": "Wkrótce możesz dołaczyć do naszego Galaktycznego Świata.<br>Tymczasem obejrzyj zapowiedzi. <br><br>Do zobaczenia 😄"
+    "TEXT": "Witaj w naszym ekosystemie gier</br></br>Zapoznaj się z naszym Metaversem korzystając z poniższych informacji.</br></br>Do zobaczenia w grach!"
+  },
+
+  "NFT_MAIN": {
+    "TITLE": "Kolekcja NFT"
   },
 
   "GAMES": {
@@ -259,6 +264,7 @@
   "TDS": {
     "DOWNLOAD": "Pobierz na PC",
     "OVERVIEW": "Przegląd gry",
+    "NOT_SUPPORTED": "Wersje poniżej Windows 8.1 nie są wspierane",
     "WELCOME": {
       "HEADER": "Witaj kapralu!",
       "CONTENT_FIRST": "Rozpoczynasz służbę w elitarnej drużynie naziemnej Impact Squad. Jako jednostka taktyczna będziesz prowadzić działania na głębokim zapleczu wroga.",

@@ -46,12 +46,11 @@ export const hideWallets = createAction('[Wallet] Hide available wallets');
 
 export const signMessageForLauncher = createAction(
   '[Wallet] Sign message for launcher',
-  props<{ data: string }>()
+  props<{wallet: string, nonce: number}>()
 );
 
 export const signMessageForLauncherSuccess = createAction(
-  '[Wallet] Send signed data to launcher',
-  props<{ data: string }>()
+  '[Wallet] Send signed data to launcher'
 );
 
 export const postSignWalletBeforeBuy = createAction(

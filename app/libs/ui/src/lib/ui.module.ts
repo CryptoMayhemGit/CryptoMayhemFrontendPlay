@@ -26,6 +26,8 @@ import { VotingResultItemModule } from './voting-result-item/voting-result-item.
 import { DaoHistoryModule } from './dao-history/dao-history.module';
 import { HeaderGradientModule } from './header-gradient/header-gradient.module';
 import { RadioButtonModule } from './radio-button/radio-button.module';
+import { LatestNewsComponent } from './latest-news/latest-news.component';
+import { LatestNewsModule } from './latest-news/latest-news.module';
 
 @NgModule({
   imports: [CommonModule],
@@ -56,7 +58,9 @@ import { RadioButtonModule } from './radio-button/radio-button.module';
     HeaderGradientModule,
     RadioButtonModule,
     VotingResultItemModule,
-    DaoHistoryModule
+    DaoHistoryModule,
+    LatestNewsModule,
   ],
+  declarations: [],
 })
 export class UiModule {}

@@ -1,9 +1,20 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, OnInit, Renderer2 } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import { NewsService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services';
 import { WalletFacade } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
-import { isMobile, isSmallScreen, isTablet } from '@crypto-mayhem-frontend/utility/functions';
-import { Observable, of } from 'rxjs';
+import {
+  isMobile,
+  isSmallScreen,
+  isTablet,
+} from '@crypto-mayhem-frontend/utility/functions';
+import { News } from 'libs/crypto-mayhem/data-access/cm-services/src/lib/news/news.model';
+import { Observable, of, take } from 'rxjs';
 
 @Component({
   selector: 'ui-nav',
@@ -55,6 +66,7 @@ export class NavigationHeaderComponent implements OnInit {
   isMobile = false;
   isVisible = false;
   activePage!: string;
+  news!: News;
 
   spinner: Observable<boolean> = of(false);
   connected$: Observable<boolean> = of(false);
@@ -64,13 +76,14 @@ export class NavigationHeaderComponent implements OnInit {
   constructor(
     public readonly walletFacade: WalletFacade,
     private router: Router,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    public newsService: NewsService
   ) {
-     if(!isTablet()) {
+    if (!isTablet()) {
       this.renderer.listen('window', 'mouseover', (e: Event) => {
         const target = e.target as HTMLElement;
-  
-        if(!target.closest('.games-menu')){
+
+        if (!target.closest('.games-menu')) {
           this.gamesVisible = false;
         }
       });
@@ -82,6 +95,7 @@ export class NavigationHeaderComponent implements OnInit {
     this.bnbBalanceOf$ = this.walletFacade.bnbBalanceOf$;
     this.walletAddress$ = this.walletFacade.account$;
     this.activePage = this.getActivePage();
+    this.getNews();
   }
 
   getActivePage(): string {
@@ -90,7 +104,7 @@ export class NavigationHeaderComponent implements OnInit {
 
   showGames(): void {
     this.gamesVisible = !this.gamesVisible;
-    
+
     if (isSmallScreen()) {
       this.tdsVisible = true;
       this.gsVisible = true;
@@ -98,6 +112,15 @@ export class NavigationHeaderComponent implements OnInit {
       this.tdsVisible = false;
       this.gsVisible = false;
     }
+  }
+
+  getNews(): void {
+    this.newsService
+      .getMediumFeed()
+      .pipe(take(1))
+      .subscribe((news) => {
+        this.news = news;
+      });
   }
 
   connect(): void {
@@ -130,7 +153,7 @@ export class NavigationHeaderComponent implements OnInit {
   }
 
   goToGame(game: string) {
-    console.log("test");
+    console.log('test');
     this.mobileVisible = false;
     this.activePage = '';
     this.router.navigate([game]);

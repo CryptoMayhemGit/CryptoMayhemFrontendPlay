@@ -19,6 +19,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
+import { HttpLink } from 'apollo-angular/http';
+import { InMemoryCache } from '@apollo/client';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +43,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     NotificationsModule,
+    ApolloModule
   ],
   providers: [
     // {
@@ -54,6 +58,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     {
       provide: APP_CONFIG,
       useValue: environment,
+    },
+    {
+      provide: APOLLO_OPTIONS,
+      useFactory(httpLink: HttpLink) {
+        return {
+          cache: new InMemoryCache(),
+          link: httpLink.create({
+            uri: 'https://api.cyberconnect.dev/',
+          }),
+        };
+      },
+      deps: [HttpLink],
     },
   ],
   bootstrap: [AppComponent],

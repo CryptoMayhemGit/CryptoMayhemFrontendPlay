@@ -11,5 +11,7 @@ export const environment = {
   chainIdNumberBinance: 97, //Binance Smart Chain
   chainIdHexBinance: '0x61', //Binance Smart Chain
   networkId: '',
-  stage: 0 //Binance Smart Chain
+  stage: 0, //Binance Smart Chain
+  domain: 'cryptomayhem.io',
+  cyberConnectUrl: 'https://api.cyberconnect.dev/'
 };

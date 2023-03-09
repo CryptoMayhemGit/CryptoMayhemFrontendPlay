@@ -324,8 +324,8 @@ ui-token-balance {
 
     @media screen and (min-width: 1240px) {
       min-height: 21rem;
+      min-width: 69rem;
       padding: 2.4rem;
-      width: 100%;
 
       & > div {
         align-items: flex-start;
@@ -372,11 +372,12 @@ ui-token-balance {
 
     // backdrop-filter: blur(40px);
     background: rgb(40 40 40 / 60%);
+    box-sizing: border-box;
     justify-content: space-between;
     margin: 1rem auto;
     margin: 1rem 2rem 0;
-    position: relative;
-    width: auto;
+    max-width: 172rem;
+    width: calc(100vw - 4rem);
 
     &::before {
       background: url("/assets/images/menu_left.svg") no-repeat top left;
