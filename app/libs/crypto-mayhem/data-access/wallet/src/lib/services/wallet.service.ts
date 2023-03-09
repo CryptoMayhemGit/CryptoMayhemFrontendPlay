@@ -299,7 +299,7 @@ export class WalletService {
           return;
         }
 
-        const data = {wallet, nonce};
+        const data = {wallet, nonce, message};
         const signer = await this.provider.getSigner();
         signer.signMessage(message)
         .then((signature) => {
