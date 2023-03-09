@@ -52,8 +52,8 @@ export class CcProfileComponent implements OnInit, OnDestroy {
     }
 
     public onSubmit() {
-        if (this.formGroup.valid){
-            this.handle = this.formGroup.value.handle;
+        if (this.formGroup.valid) {
+            this.handle = this.formGroup.value.handle.replace('@', '');
             this.show = false;
             this.walletFacade.showWallets(false, false);
         }
