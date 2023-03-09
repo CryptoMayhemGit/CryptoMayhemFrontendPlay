@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CryptoMayhemDataAccessWalletModule } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslocoModule } from '@ngneat/transloco';
@@ -15,6 +16,7 @@ import { WalletChoiceComponent } from './wallet-choice.component';
     FontAwesomeModule,
     CryptoMayhemDataAccessWalletModule,
     TranslocoModule,
+    FormsModule
   ],
   exports: [WalletChoiceComponent],
 })
