@@ -4,37 +4,37 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- test
+  - test
 
 pool:
   vmImage: ubuntu-latest
 
 variables:
-- group: Frontend
-- name: profile
-  value: $[replace(variables['Build.SourceBranchName'], 'develop', 'development')]
+  - group: Frontend
+  - name: profile
+    value: $[replace(variables['Build.SourceBranchName'], 'main', 'production')]
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '16.x'
-  displayName: 'Install Node.js'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "16.x"
+    displayName: "Install Node.js"
 
-- script: |
-    set -e
-    npm install -g nx
-    npm install
-    npm run build:development
-    echo $(profile)
-    tree -L 4 dist/
-  displayName: 'npm install and build'
-  workingDirectory: app
+  - script: |
+      set -e
+      npm install -g nx
+      npm install
+      npm run build:development
+      echo $(profile)
+      tree -L 4 dist/
+    displayName: "npm install and build"
+    workingDirectory: app
 
-- task: AzureStaticWebApp@0
-  inputs:
-    app_location: 'app/dist/apps/crypto-mayhem-frontend'
-    azure_static_web_apps_api_token: $(deployment_token)
-    skip_app_build: true
-    skip_api_build: true
-    is_static_export: true
-    production_branch: 'main'
+  - task: AzureStaticWebApp@0
+    inputs:
+      app_location: "app/dist/apps/crypto-mayhem-frontend"
+      azure_static_web_apps_api_token: $(deployment_token)
+      skip_app_build: true
+      skip_api_build: true
+      is_static_export: true
+      production_branch: "main"
