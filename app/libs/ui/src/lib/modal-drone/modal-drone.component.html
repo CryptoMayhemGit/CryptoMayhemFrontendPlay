@@ -18,6 +18,7 @@
     <div class="modal-content" *ngIf="message">
       <p [innerHtml]="message | transloco"></p>
     </div>
+    <ng-content></ng-content>
     <div class="modal-actions" *ngIf="btnText">
       <ui-main-button (click)="close()" type="secondary">{{btnText | transloco}}</ui-main-button>
       <!--<ui-main-button *ngIf="primaryButtonText" (click)="onButtonClick('primary')" type="primary">{{primaryButtonText}}</ui-main-button>-->

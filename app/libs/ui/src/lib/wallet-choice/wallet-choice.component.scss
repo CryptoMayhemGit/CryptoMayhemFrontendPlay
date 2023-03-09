@@ -1,8 +1,67 @@
+.handle {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+}
+
+.handle-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  input {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+  }
+}
+
 .body-header {
   font-size: 1.4rem;
   font-weight: 600;
   margin-top: 1.6rem;
   text-align: center;
+}
+
+#ccprofile {
+  height: 6em;
+  width: 6em;
+}
+
+.body-wallet-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 2.4rem 0;
+
+  &_wallet {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 9.6rem;
+    min-width: 9.6rem;
+    padding: 0.5rem;
+
+    &:hover {
+      outline: 1px solid var(--text-primary);
+    }
+
+    &:active {
+      background-color: rgb(242 242 242 / 40%);
+    }
+  }
+
+  span {
+    margin-top: 1.7rem;
+  }
+
+  img {
+    height: 3.1rem;
+    width: 3.4rem;
+  }
 }
 
 .body-wallets {

@@ -21,6 +21,11 @@ export const getCloseWallets = createSelector(
   (state) => state.closeWallets
 );
 
+export const getShowCcProfile = createSelector(
+  selectWallet,
+  (state) => state.showCcProfile
+)
+
 export const getAccount = createSelector(
   selectWallet,
   (state) => state.account

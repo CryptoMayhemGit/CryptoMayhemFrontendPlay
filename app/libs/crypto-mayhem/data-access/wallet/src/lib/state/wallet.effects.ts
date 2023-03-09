@@ -28,7 +28,7 @@ export class WalletEffects {
     this.actions$.pipe(
       ofType(WalletActions.signMessageForLauncher),
       concatLatestFrom(() => this.store.select(WalletSelectors.getAccount)),
-      mergeMap(([{wallet, nonce}, account]) => from(this.walletService.signMessageForLauncher(wallet, nonce)).pipe(
+      mergeMap(([{wallet, nonce, handle}, account]) => from(this.walletService.signMessageForLauncher(wallet, nonce, handle)).pipe(
           map(() => WalletActions.signMessageForLauncherSuccess()),
         ))
     )

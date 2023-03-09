@@ -7,12 +7,12 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalDroneComponent {
-  @Input() title: string = '';
-  @Input() message: string = '';
-  @Input() btnText: string = '';
-  @Input() show: boolean = false;
-  @Input() error: boolean = false;
-  
+  @Input() title = '';
+  @Input() message = '';
+  @Input() btnText = '';
+  @Input() show = false;
+  @Input() error = false;
+
   constructor() {}
 
   close() {

@@ -287,11 +287,11 @@ export class WalletService {
     return fetchResult?.data?.loginGetMessage?.message || '';
   }
 
-  public async signMessageForLauncher(wallet: string, nonce: number): Promise<void>{
+  public async signMessageForLauncher(wallet: string, nonce: number, handle?: string): Promise<void>{
     if(this.provider) {
       try{
         const message  = await this.getCyberConnectLoginMessage(wallet);
-
+        console.log('message', message, 'nonce', nonce, 'wallet', wallet, 'handle', handle, '');
         if (message === '') {
           this.notificationsService.error(
             'NOTIFICATIONS.ERROR_OCCURRED',
@@ -299,7 +299,7 @@ export class WalletService {
           return;
         }
 
-        const data = {wallet, nonce, message};
+        const data = {wallet, nonce, message, handle};
         const signer = await this.provider.getSigner();
         signer.signMessage(message)
         .then((signature) => {
