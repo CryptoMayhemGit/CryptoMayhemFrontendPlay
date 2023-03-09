@@ -24,7 +24,7 @@ steps:
       set -e
       npm install -g nx
       npm install
-      npm run build:development
+      npm run build:$(profile)
       echo $(profile)
       tree -L 4 dist/
     displayName: "npm install and build"
