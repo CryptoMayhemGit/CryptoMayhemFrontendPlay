@@ -290,35 +290,66 @@ export class WalletService {
   public async signMessageForLauncher(wallet: string, nonce: number, handle?: string): Promise<void>{
     if(this.provider) {
       try{
-        const message  = await this.getCyberConnectLoginMessage(wallet);
-        console.log('message', message, 'nonce', nonce, 'wallet', wallet, 'handle', handle, '');
-        if (message === '') {
-          this.notificationsService.error(
-            'NOTIFICATIONS.ERROR_OCCURRED',
-          );
-          return;
+        let message = '';
+        let data: any = '';
+
+        if (handle !== '' && handle !== undefined && handle !== 'undefined') {
+          try {
+            message  = await this.getCyberConnectLoginMessage(wallet);
+          }
+          catch(error) {
+            console.error(error);
+            this.notificationsService.error(
+              'ccProfile is not available. Try different provider.',
+            );
+            return;
+          }
         }
 
-        const data = {wallet, nonce, message, handle};
-        const signer = await this.provider.getSigner();
-        signer.signMessage(message)
-        .then((signature) => {
-          const dataJson: SignedMessage = {
-            data: JSON.stringify(data),
-            signature
-          }
+        if (message) {
+          data = {wallet, nonce, message, handle};
+          const signer = await this.provider.getSigner();
+          signer.signMessage(message)
+          .then((signature) => {
+            const dataJson: SignedMessage = {
+              data: JSON.stringify(data),
+              signature
+            }
 
-          const baseData = window.btoa(JSON.stringify(dataJson));
-          this.router.navigate(['']);
-          window.open(`MayhemLauncher://?data=${baseData}`);
+            const baseData = window.btoa(JSON.stringify(dataJson));
+            this.router.navigate(['']);
+            window.open(`MayhemLauncher://?data=${baseData}`);
 
-        },
-        (error) => {
-          console.error(error);
-          this.notificationsService.error(
-            'NOTIFICATIONS.ERROR_OCCURRED',
-          );
-        });
+          },
+          (error) => {
+            console.error(error);
+            this.notificationsService.error(
+              'NOTIFICATIONS.ERROR_OCCURRED',
+            );
+          });
+        } else {
+          data = {wallet, nonce};
+          const signer = await this.provider.getSigner();
+          signer.signMessage(JSON.stringify(data))
+          .then((signature) => {
+            const dataJson: SignedMessage = {
+              data: JSON.stringify(data),
+              signature
+            }
+  
+            const baseData = window.btoa(JSON.stringify(dataJson));
+            this.router.navigate(['']);
+            window.open(`MayhemLauncher://?data=${baseData}`);
+  
+          },
+          (error) => {
+            console.error(error);
+            this.notificationsService.error(
+              'NOTIFICATIONS.ERROR_OCCURRED',
+            );
+          });
+        }
+
       }
       catch(error){
         console.error(error);
