@@ -26,3 +26,8 @@ export const selectDaoLargeSpinner = createSelector(
     selectDao,
     (state) => state.spinnerLarge
 );
+
+export const selectDaoVotingSuccess = createSelector(
+    selectDao,
+    (state) => state.votingSuccess
+);

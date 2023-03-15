@@ -144,8 +144,8 @@ export class DAOEffects {
                         switch (error.error.code) {
                             case DaoResponseErrorCodes.WALLET_NOT_EXIST_IN_SNAPSHOT:
                                 this.notificationsService.error(
-                                'NOTIFICATIONS.DAO.WALLET_NOT_EXIST_IN_SNAPSHOT_TITLE',
-                                'NOTIFICATIONS.DAO.WALLET_NOT_EXIST_IN_SNAPSHOT_MESSAGE',
+                                    'NOTIFICATIONS.DAO.WALLET_NOT_EXIST_IN_SNAPSHOT_TITLE',
+                                    'NOTIFICATIONS.DAO.WALLET_NOT_EXIST_IN_SNAPSHOT_MESSAGE',
                                 );
                                 break;
                             case DaoResponseErrorCodes.WALLET_NOT_EXIST:
@@ -168,7 +168,7 @@ export class DAOEffects {
                                 break;
                             default:
                                 this.notificationsService.error(
-                                    'NOTIFICATIONS.ERROR.UNKNOWN_ERROR',
+                                    'NOTIFICATION.ERROR.UNKNOWN_ERROR',
                                     '',
                                 );
                               break;

@@ -8,7 +8,7 @@
             <h1>{{topic.name}}</h1>
         </div>
         <hr>
-        <p style="word-break: break-all;" class="info-content">
+        <p class="info-content">
             {{topic.description}}
         </p>
     </div>
@@ -42,7 +42,7 @@
                 <p id="voting-want">{{ 'DAO.VOTING.WANT' | transloco }}</p>
                 <ui-main-button (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
             </ng-container>
-            <ng-container *ngIf="(walletConnected$ | async) && topic.canVote">
+            <ng-container *ngIf="(walletConnected$ | async) && (votingSuccess$ | async) === false">
                 <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
                 <ui-header-gradient>{{topic.userVotePower}}</ui-header-gradient>
                 <form [formGroup]="form">
@@ -58,9 +58,9 @@
                 </form>
             </ng-container>
         <!-- show on success -->
-        <ng-container *ngIf="!topic.canVote && (walletConnected$ | async) === true">
+        <ng-container *ngIf="(votingSuccess$ | async) && (walletConnected$ | async) === true">
             <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
-            <ui-header-gradient>1</ui-header-gradient>
+            <ui-header-gradient>{{topic.userVotePower}}</ui-header-gradient>
             <img src="./assets/images/success_glow.svg" alt="success" role="presentation" />
             <h2 class="after-vote-header success">{{ 'DAO.VOTING.SUCCESS' | transloco}}</h2>
             <p class="text-after">{{ 'DAO.VOTING.THANKS_SUPPORT' | transloco}}</p>

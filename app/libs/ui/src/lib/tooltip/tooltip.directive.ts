@@ -7,7 +7,7 @@ type Direction = 'top' | 'bottom' | 'left' | 'right';
   selector: '[tooltip]',
 })
 export class TooltipDirective {
-  @Input() tooltip = '';
+  @Input() tooltip: string | undefined;
   @Input() direction: Direction = 'bottom';
 
   constructor(
@@ -16,9 +16,11 @@ export class TooltipDirective {
 
   @HostListener('mouseenter')
   onMouseEnter(): void {
-    const { offsetWidth, offsetHeight } = this.elementRef.nativeElement;
-    this.elementRef.nativeElement.style.position = 'relative';
-    this.elementRef.nativeElement.appendChild(this.createTooltip(this.tooltip, offsetWidth, (offsetHeight / 4),  this.direction));
+    if(this.tooltip) {
+      const { offsetWidth, offsetHeight } = this.elementRef.nativeElement;
+      this.elementRef.nativeElement.style.position = 'relative';
+      this.elementRef.nativeElement.appendChild(this.createTooltip(this.tooltip as string, offsetWidth, (offsetHeight / 4),  this.direction));
+    }
   }
 
   createTooltip(text: string, x: number, y: number, direction: Direction): HTMLElement {

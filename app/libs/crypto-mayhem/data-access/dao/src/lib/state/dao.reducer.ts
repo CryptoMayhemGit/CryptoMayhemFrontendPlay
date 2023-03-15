@@ -10,13 +10,15 @@ export interface DaoState {
     daoTopicHistory: DaoTopic[];
     spinnerSmall: boolean;
     spinnerLarge: boolean;
+    votingSuccess: boolean;
 }
 
 export const initialState: DaoState = {
     daoTopics: [],
     daoTopicHistory: [],
     spinnerSmall: false,
-    spinnerLarge: false
+    spinnerLarge: false,
+    votingSuccess: false
 };
 
 export const daoReducer = createReducer(
@@ -44,7 +46,11 @@ export const daoReducer = createReducer(
     on(DaoActions.hideDaoLargeSpinner, (state) => ({
         ...state,
         spinnerLarge: false
-    }))
+    })),
+    on(DaoActions.postDaoVoteWithSignatureSuccess, (state) => ({
+        ...state,
+        votingSuccess: true
+    })),
     );
 
 export function reducer(state: DaoState | undefined, action: Action) {

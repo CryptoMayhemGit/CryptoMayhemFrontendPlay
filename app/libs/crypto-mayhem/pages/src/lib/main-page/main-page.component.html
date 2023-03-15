@@ -6,23 +6,7 @@
   </div>
 </div>
 <div class="trailers" [@slideUp]>
-  <ui-video-component
-  title="Grand Strategy"
-  videoId="TPOamZBoLBk"
-  [disabled]="true"
-  [btnSecondaryTxt]=" 'GAMES.ABOUT' | transloco "
-  [btnPrimaryTxt]=" 'GAMES.DOWNLOAD' | transloco ">
-  </ui-video-component>
 
-  <ui-video-component
-  [title]="'NFT_MAIN.TITLE' | transloco"
-  videoId="lU7DxajhpyA"
-  (secondaryClickEvent)="null"
-  (primaryClickEvent)="goToTglp()"
-  btnSecondaryTxt="MECH"
-  btnPrimaryTxt="TGLP MECH">
-  </ui-video-component>
-  
   <ui-video-component
   title="Top-Down Shooter"
   videoId="TNfrTuSQM9U"
@@ -31,4 +15,26 @@
   [btnSecondaryTxt]=" 'GAMES.ABOUT' | transloco "
   [btnPrimaryTxt]=" 'GAMES.DOWNLOAD' | transloco ">
   </ui-video-component>
+
+  <ui-video-component
+  [title]="'NFT_MAIN.TITLE' | transloco"
+  videoId="lU7DxajhpyA"
+  [secondaryTooltip]="'MY_ACCOUNT.COMING_SOON' | transloco"
+  [secondaryDisabled]="true"
+  (secondaryClickEvent)="null"
+  (primaryClickEvent)="goToTglp()"
+  btnSecondaryTxt="GENESIS MECH"
+  btnPrimaryTxt="TGLP MECH">
+  </ui-video-component>
+  
+
+  <ui-video-component
+  title="Grand Strategy"
+  videoId="TPOamZBoLBk"
+  [primaryDisabled]="true"
+  [secondaryDisabled]="true"
+  [btnSecondaryTxt]=" 'GAMES.ABOUT' | transloco "
+  [btnPrimaryTxt]=" 'GAMES.DOWNLOAD' | transloco ">
+  </ui-video-component>
+
 </div>
