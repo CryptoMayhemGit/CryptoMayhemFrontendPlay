@@ -10,7 +10,7 @@
 
   "WELCOME": {
     "TITLE": "Hi! 👋",
-    "TEXT": "Welcome to our gaming ecosystem</br></br>Explore our Metaverse using the information below.</br></br>See you in the games!"
+    "TEXT": "Welcome to our gaming ecosystem.</br></br>Explore our Metaverse using the information below.</br></br>See you in the games!"
   },
 
   "NFT_MAIN": {
@@ -277,7 +277,7 @@
       "HEADER": "At your disposal will be placed",
       "MECHS": {
         "HEADER": "Mechs",
-        "CONTENT": "Take control of the combat mechs and traverse the planet. Use mech-enhancing technologies to increase your chances on missions. Available modules:<br><br>- supporting locomotives,<br><br>- providing combat support,<br><br>- improving defense systems,<br><br>- expanding knowledge about opponents and their places of existence,"
+        "CONTENT": "Take control of the combat mechs and traverse the planet. Use mech-enhancing technologies to increase your chances on missions. Available modules:<br><br>- supporting locomotives,<br><br>- providing combat support,<br><br>- improving defense systems,<br><br>- expanding knowledge about opponents and their places of existence."
       },
       "WEAPONS": {
         "HEADER": "Weapons",
@@ -285,7 +285,7 @@
       },
       "SUPPORT": {
         "HEADER": "Support kits",
-        "CONTENT": "Use various items, so that you will create a personalized equipment that will support you during the game.<br><br>You can choose from sets:<br><br>- defensive (first aid and repair),<br><br>- offensive (different types of mines),"
+        "CONTENT": "Use various items, so that you will create a personalized equipment that will support you during the game.<br><br>You can choose from sets:<br><br>- defensive (first aid and repair),<br><br>- offensive (different types of mines)."
       }
     },
     "REQUIREMENTS": {

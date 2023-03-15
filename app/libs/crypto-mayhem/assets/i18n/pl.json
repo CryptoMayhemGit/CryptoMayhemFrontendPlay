@@ -10,7 +10,7 @@
 
   "WELCOME": {
     "TITLE": "Cześć! 👋",
-    "TEXT": "Witaj w naszym ekosystemie gier</br></br>Zapoznaj się z naszym Metaversem korzystając z poniższych informacji.</br></br>Do zobaczenia w grach!"
+    "TEXT": "Witaj w naszym ekosystemie gier.</br></br>Zapoznaj się z naszym Metaversem korzystając z poniższych informacji.</br></br>Do zobaczenia w grach!"
   },
 
   "NFT_MAIN": {
@@ -59,7 +59,7 @@
       "LOGIN_ERROR": "Unable to login! Maybe unregistered?"
     },
     "ERROR": {
-      "UNKNOWN_ERROR": "Unknown error!"
+      "UNKNOWN_ERROR": "Nieznany błąd!"
     },
     "METAMASK": {
       "PROVIDER_NOT_FOUND": "Metamask not found!",
@@ -272,13 +272,13 @@
     },
     "OBJECTIVES": {
       "HEADER": "Twoje zadania",
-      "CONTENT": "- Oczyszczaj powierzchnię planety z niepożądanych elementów organicznych w postaci insektoidalnej siły żywej.<br><br>- Niszcz gniazda obcych form insektoidalnych zasiedlających planetę.<br><br>- Prowadź akcje ratunkowe zespołów badawczych i pracowników cywilnych, odciętych przez działania wrogich organizmów<br><br>- Kieruj działaniami bojowymi na powierzchni planety, umożliwiając jej terraformację i kolonizację."
+      "CONTENT": "- Oczyszczaj powierzchnię planety z niepożądanych elementów organicznych w postaci insektoidalnej siły żywej,<br><br>- Niszcz gniazda obcych form insektoidalnych zasiedlających planetę,<br><br>- Prowadź akcje ratunkowe zespołów badawczych i pracowników cywilnych, odciętych przez działania wrogich organizmów,<br><br>- Kieruj działaniami bojowymi na powierzchni planety, umożliwiając jej terraformację i kolonizację."
     },
     "GAME_ITEMS": {
       "HEADER": "Do Twojej dyspozycji zostaną oddane",
       "MECHS": {
         "HEADER": "Mechy",
-        "CONTENT": "Zasiądź za sterami bojowych mechów i przemierzaj planetę. Użyj technologii podnoszących sprawność mecha, aby zwiększyć swoje szanse podczas misji. Dostępne moduły:<br><br>- wspomagające lokomotorykę,<br><br>- zapewniające wsparcie bojowe,<br><br>- ulepszające systemy obronne,<br><br>- poszerzające wiedzę o przeciwnikach i miejscach ich bytowania,"
+        "CONTENT": "Zasiądź za sterami bojowych mechów i przemierzaj planetę. Użyj technologii podnoszących sprawność mecha, aby zwiększyć swoje szanse podczas misji. Dostępne moduły:<br><br>- wspomagające lokomotorykę,<br><br>- zapewniające wsparcie bojowe,<br><br>- ulepszające systemy obronne,<br><br>- poszerzające wiedzę o przeciwnikach i miejscach ich bytowania."
       },
       "WEAPONS": {
         "HEADER": "Bronie",
@@ -286,7 +286,7 @@
       },
       "SUPPORT": {
         "HEADER": "Zestawy wspomagające",
-        "CONTENT": "Używaj róznych przedmiotów, dzięki czemu stworzysz spersonalizowany ekwipunek, który wesprze Cię w trakcie rozgrywki.<br><br>Do wyboru masz zestawy:<br><br>- defensywne (pierwszej pomocy i naprawcze),<br><br>- ofensywne (miny różnych rodzajów),"
+        "CONTENT": "Używaj róznych przedmiotów, dzięki czemu stworzysz spersonalizowany ekwipunek, który wesprze Cię w trakcie rozgrywki.<br><br>Do wyboru masz zestawy:<br><br>- defensywne (pierwszej pomocy i naprawcze),<br><br>- ofensywne (miny różnych rodzajów)."
       }
     },
     "REQUIREMENTS": {

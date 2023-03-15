@@ -14,6 +14,7 @@ export class DAOFacade {
     readonly daoSmallSpinner$ = this.store.select(DaoSelectors.selectDaoSmallSpinner);
     readonly daoLargeSpinner$ = this.store.select(DaoSelectors.selectDaoLargeSpinner);
     readonly daoHistoryTopicById$ = (id: number) => this.store.select(DaoSelectors.selectDaoHistoryTopicById(id));
+    readonly daoVotingSuccess$ = this.store.select(DaoSelectors.selectDaoVotingSuccess);
 
     constructor(
         private readonly store: Store,
