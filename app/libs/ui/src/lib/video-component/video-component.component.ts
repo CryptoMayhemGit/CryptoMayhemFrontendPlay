@@ -19,7 +19,10 @@ export class VideoComponentComponent implements OnInit {
   @Input() btnSecondaryTxt!: string;
   @Input() btnPrimaryTxt!: string;
   @Input() videoId!: string;
-  @Input() disabled = false;
+  @Input() primaryDisabled = false;
+  @Input() secondaryDisabled = false;
+  @Input() primaryTooltip?: string;
+  @Input() secondaryTooltip?: string;
 
   @Output() primaryClickEvent = new EventEmitter();
   @Output() secondaryClickEvent = new EventEmitter();
