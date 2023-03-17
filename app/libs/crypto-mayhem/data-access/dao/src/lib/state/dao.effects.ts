@@ -141,29 +141,30 @@ export class DAOEffects {
                         return DAOActions.postDaoVoteWithSignatureSuccess()
                     }),
                     catchError((error) => {
-                        switch (error.error.code) {
+                        console.log('error:', error)
+                        switch (error.error) {
                             case DaoResponseErrorCodes.WALLET_NOT_EXIST_IN_SNAPSHOT:
                                 this.notificationsService.error(
-                                    'NOTIFICATIONS.DAO.WALLET_NOT_EXIST_IN_SNAPSHOT_TITLE',
-                                    'NOTIFICATIONS.DAO.WALLET_NOT_EXIST_IN_SNAPSHOT_MESSAGE',
+                                    'NOTIFICATION.DAO.WALLET_NOT_EXIST_IN_SNAPSHOT_TITLE',
+                                    'NOTIFICATION.DAO.WALLET_NOT_EXIST_IN_SNAPSHOT_MESSAGE',
                                 );
                                 break;
                             case DaoResponseErrorCodes.WALLET_NOT_EXIST:
                                 this.notificationsService.error(
-                                    'NOTIFICATIONS.DAO.WALLET_NOT_EXIST_TITLE',
-                                    'NOTIFICATIONS.DAO.WALLET_NOT_EXIST_MESSAGE',
+                                    'NOTIFICATION.DAO.WALLET_NOT_EXIST_TITLE',
+                                    'NOTIFICATION.DAO.WALLET_NOT_EXIST_MESSAGE',
                                 );
                                 break;
                             case DaoResponseErrorCodes.VOTING_IS_NOT_ACTIVE:
                                 this.notificationsService.error(
-                                    'NOTIFICATIONS.DAO.VOTING_IS_NOT_ACTIVE_TITLE',
-                                    'NOTIFICATIONS.DAO.VOTING_IS_NOT_ACTIVE_MESSAGE',
+                                    'NOTIFICATION.DAO.VOTING_IS_NOT_ACTIVE_TITLE',
+                                    'NOTIFICATION.DAO.VOTING_IS_NOT_ACTIVE_MESSAGE',
                                 );
                                 break;
                             case DaoResponseErrorCodes.WALLET_ALREADY_VOTED:
                                 this.notificationsService.error(
-                                    'NOTIFICATIONS.DAO.WALLET_ALREADY_VOTED_TITLE',
-                                    'NOTIFICATIONS.DAO.WALLET_ALREADY_VOTED_MESSAGE',
+                                    'NOTIFICATION.DAO.WALLET_ALREADY_VOTED_TITLE',
+                                    'NOTIFICATION.DAO.WALLET_ALREADY_VOTED_MESSAGE',
                                 );
                                 break;
                             default:

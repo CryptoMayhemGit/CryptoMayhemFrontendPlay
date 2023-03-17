@@ -42,7 +42,7 @@
                 <p id="voting-want">{{ 'DAO.VOTING.WANT' | transloco }}</p>
                 <ui-main-button (btnClick)="connect()">{{'NAVBAR.CONNECT' | transloco}}</ui-main-button>
             </ng-container>
-            <ng-container *ngIf="(walletConnected$ | async) && (votingSuccess$ | async) === false">
+            <ng-container *ngIf="(walletConnected$ | async) && ((votingSuccess$ | async) === false) && topic.canVote">
                 <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
                 <ui-header-gradient>{{topic.userVotePower}}</ui-header-gradient>
                 <form [formGroup]="form">
@@ -58,7 +58,7 @@
                 </form>
             </ng-container>
         <!-- show on success -->
-        <ng-container *ngIf="(votingSuccess$ | async) && (walletConnected$ | async) === true">
+        <ng-container *ngIf="((votingSuccess$ | async) || !topic.canVote) && (walletConnected$ | async) === true">
             <p class="small-text">{{ 'DAO.VOTES_WEIGHT.YOUR' | transloco }}</p>
             <ui-header-gradient>{{topic.userVotePower}}</ui-header-gradient>
             <img src="./assets/images/success_glow.svg" alt="success" role="presentation" />
