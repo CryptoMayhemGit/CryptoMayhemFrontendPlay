@@ -43,10 +43,9 @@ export class ModalBaseComponent implements OnDestroy, OnChanges {
 
   ngOnChanges(): void {
     if (this.showClose) {
-      this.renderer.destroy();
       this.renderer.listen('window', 'click', (e: Event) => {
         const target = e.target as HTMLElement;
-  
+
         if (
           !this.modal.nativeElement.contains(e.target) &&
           target.tagName === 'UI-MODAL-BASE'
@@ -56,7 +55,7 @@ export class ModalBaseComponent implements OnDestroy, OnChanges {
       });
     }
   }
-  
+
 
   closeModal() {
     this.close.emit(true);
