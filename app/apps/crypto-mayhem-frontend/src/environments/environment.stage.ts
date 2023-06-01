@@ -13,5 +13,6 @@ export const environment = {
   networkId: '',
   stage: 0, //Binance Smart Chain
   domain: 'cryptomayhem.io',
-  cyberConnectUrl: 'https://api.cyberconnect.dev/'
+  cyberConnectUrl: 'https://api.cyberconnect.dev/',
+  faceWalletAPIKey: '',
 };
