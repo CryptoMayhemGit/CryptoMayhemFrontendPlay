@@ -32,6 +32,8 @@
     "@fortawesome/angular-fontawesome": "^0.10.2",
     "@fortawesome/fontawesome-svg-core": "^6.1.0",
     "@fortawesome/free-solid-svg-icons": "^6.1.0",
+    "@haechi-labs/face-sdk": "^1.10.0",
+    "@haechi-labs/face-types": "^1.10.0",
     "@metamask/detect-provider": "^1.2.0",
     "@ngneat/transloco": "^4.1.0",
     "@ngneat/transloco-messageformat": "^4.1.0",

@@ -18,4 +18,5 @@ export interface AppConfig {
   webGlLocation: string;
   metamaskDeepLink: string;
   domain: string;
+  faceWalletAPIKey: string;
 }
