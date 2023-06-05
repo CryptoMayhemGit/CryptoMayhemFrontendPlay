@@ -30,7 +30,6 @@
         </div>
           <img src="./assets/images/share.svg" role="link" (click)="socialsVisible = !socialsVisible" alt="social media" />
         </div>
-        
       </div>
       <ng-template
         *ngIf="comboOpened"
@@ -41,7 +40,7 @@
     <div id="social" *ngIf="showSocial() ">
       <p>{{ 'MY_ACCOUNT.SHARE_NFT' | transloco}}</p>
       <div id="social-icons">
-        <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco " [direction]="'right'"><img src="./assets/images/twitter.svg" alt="twitter" /></a>
+        <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/twitter.svg" alt="twitter" /></a>
         <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/discord.svg" alt="discord" /></a>
         <a href="#" [tooltip]=" 'MY_ACCOUNT.COMING_SOON' | transloco "><img src="./assets/images/telegram.svg" alt="instagram" /></a>
       </div>

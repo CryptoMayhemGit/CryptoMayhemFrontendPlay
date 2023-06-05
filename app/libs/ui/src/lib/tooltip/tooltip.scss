@@ -10,6 +10,8 @@
   }
 
   &.bottom {
+    transform: translateX(-50%);
+
     &::before {
       border-bottom: 5px solid #701400;
       border-left: 5px solid transparent;

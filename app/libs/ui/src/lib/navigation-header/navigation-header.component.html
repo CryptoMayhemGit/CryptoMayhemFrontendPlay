@@ -136,7 +136,7 @@
         </div>
       </ui-submenu>
     </div>
-    <a href="#" class="disabled" (click)="mobileVisible = false">{{
+    <a href="#" [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco" class="disabled" (click)="mobileVisible = false">{{
       "NAVBAR.NAV.NFT" | transloco
     }}</a>
     <a
@@ -145,13 +145,13 @@
       (click)="mobileVisible = false; activePage = 'dao'"
       >{{ "NAVBAR.NAV.DAO" | transloco }}</a
     >
-    <a href="#" class="disabled" (click)="mobileVisible = false">{{
+    <a href="#" [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco" class="disabled" (click)="mobileVisible = false">{{
       "NAVBAR.NAV.STAKING" | transloco
     }}</a>
-    <a href="#" class="disabled" (click)="mobileVisible = false">{{
+    <a href="#" [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco" class="disabled" (click)="mobileVisible = false">{{
       "NAVBAR.NAV.VESTING" | transloco
     }}</a>
-    <a href="#" class="disabled" (click)="mobileVisible = false">{{
+    <a href="#" [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco" class="disabled" (click)="mobileVisible = false">{{
       "NAVBAR.NAV.NEWS" | transloco
     }}</a>
     <a
