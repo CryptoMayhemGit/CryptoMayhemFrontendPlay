@@ -153,7 +153,6 @@ export class NavigationHeaderComponent implements OnInit {
   }
 
   goToGame(game: string) {
-    console.log('test');
     this.mobileVisible = false;
     this.activePage = '';
     this.router.navigate([game]);

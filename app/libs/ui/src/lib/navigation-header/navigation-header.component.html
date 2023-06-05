@@ -113,6 +113,7 @@
         <div id="games-list">
           <h2>{{ "NAVBAR.GAMES_COLLECTION" | transloco }}</h2>
           <a
+            [routerLink]="['/gs']"
             (mouseenter)="gsVisible = true; tdsVisible = false"
             (mouseleave)="gsVisible = false; tdsVisible = false"
             role="link"
@@ -176,6 +177,7 @@
   </ui-game-listing>
 
   <ui-game-listing
+    (click)="goToGame('gs')"
     *ngIf="gsVisible"
     title="Grand Strategy"
     img="planeta"
