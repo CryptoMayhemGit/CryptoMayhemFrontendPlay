@@ -50,4 +50,20 @@ export class DaoVotingDetailComponent {
         this.myAnswer = answerId;
         this.form.patchValue({ answer: answerId });
     }
+
+    public newLineParser(text: string | undefined): string[] {
+        if (!text) {
+          return [];
+        }
+
+        if (text.includes('\n')) {
+          return text.split('\n');
+        }
+
+        if (text.includes('<br>')) {
+          return text.split('<br>');
+        }
+
+        return [text];
+      }
 }

@@ -30,7 +30,8 @@
     },
     "ABOUT": "Read More",
     "PLAY_ONLINE": "Play Online",
-    "DOWNLOAD": "Download"
+    "DOWNLOAD": "Download",
+    "PLAY": "Play"
   },
 
   "NAVBAR": {
@@ -45,7 +46,8 @@
       "VESTING": "Vesting",
       "NEWS": "News",
       "PRESALE": "Presale",
-      "DAO": "DAO"
+      "DAO": "DAO",
+      "COMING_SOON": "Available soon"
     },
     "OPTIONS": {
       "MY_ACCOUNT": "My account",
@@ -271,7 +273,7 @@
     },
     "OBJECTIVES": {
       "HEADER": "Your tasks",
-      "CONTENT": "- Clean the surface of the planet from unwanted organic elements in the form of an insectoid living force.<br><br>- Destroy the nests of alien insectoid forms inhabiting the planet.<br><br>- Conduct the rescue of research teams and civilian workers cut off by the actions of hostile organisms.<br><br>- Direct combat operations on the surface of a planet by enabling it to be terraformed and colonized."
+      "CONTENT": "- Clean the surface of the planet from unwanted organic elements in the form of an insectoid living force,<br><br>- Destroy the nests of alien insectoid forms inhabiting the planet,<br><br>- Conduct the rescue of research teams and civilian workers cut off by the actions of hostile organisms,<br><br>- Direct combat operations on the surface of a planet by enabling it to be terraformed and colonized."
     },
     "GAME_ITEMS": {
       "HEADER": "At your disposal will be placed",

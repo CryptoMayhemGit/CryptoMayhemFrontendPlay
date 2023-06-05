@@ -19,7 +19,7 @@ export class TooltipDirective {
     if(this.tooltip) {
       const { offsetWidth, offsetHeight } = this.elementRef.nativeElement;
       this.elementRef.nativeElement.style.position = 'relative';
-      this.elementRef.nativeElement.appendChild(this.createTooltip(this.tooltip as string, offsetWidth, (offsetHeight / 4),  this.direction));
+      this.elementRef.nativeElement.appendChild(this.createTooltip(this.tooltip as string, offsetWidth, offsetHeight,  this.direction));
     }
   }
 
@@ -32,7 +32,8 @@ export class TooltipDirective {
     div.style.position = 'absolute';
 
     if (direction === 'bottom') {
-      div.style.left = x * -1 + 'px';
+      div.style.top = y + 'px';
+      div.style.left = (x / 2) + 'px';
     } else if (direction === 'left') {
       div.style.top = y + 'px';
     } else if (direction === 'right') {

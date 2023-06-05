@@ -113,6 +113,7 @@
         <div id="games-list">
           <h2>{{ "NAVBAR.GAMES_COLLECTION" | transloco }}</h2>
           <a
+            [routerLink]="['/gs']"
             (mouseenter)="gsVisible = true; tdsVisible = false"
             (mouseleave)="gsVisible = false; tdsVisible = false"
             role="link"
@@ -135,7 +136,7 @@
         </div>
       </ui-submenu>
     </div>
-    <a href="#" class="disabled" (click)="mobileVisible = false">{{
+    <a href="#" [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco" class="disabled" (click)="mobileVisible = false">{{
       "NAVBAR.NAV.NFT" | transloco
     }}</a>
     <a
@@ -144,13 +145,13 @@
       (click)="mobileVisible = false; activePage = 'dao'"
       >{{ "NAVBAR.NAV.DAO" | transloco }}</a
     >
-    <a href="#" class="disabled" (click)="mobileVisible = false">{{
+    <a href="#" [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco" class="disabled" (click)="mobileVisible = false">{{
       "NAVBAR.NAV.STAKING" | transloco
     }}</a>
-    <a href="#" class="disabled" (click)="mobileVisible = false">{{
+    <a href="#" [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco" class="disabled" (click)="mobileVisible = false">{{
       "NAVBAR.NAV.VESTING" | transloco
     }}</a>
-    <a href="#" class="disabled" (click)="mobileVisible = false">{{
+    <a href="#" [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco" class="disabled" (click)="mobileVisible = false">{{
       "NAVBAR.NAV.NEWS" | transloco
     }}</a>
     <a
@@ -176,6 +177,7 @@
   </ui-game-listing>
 
   <ui-game-listing
+    (click)="goToGame('gs')"
     *ngIf="gsVisible"
     title="Grand Strategy"
     img="planeta"

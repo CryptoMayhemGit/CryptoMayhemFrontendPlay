@@ -30,7 +30,8 @@
     },
     "ABOUT": "O grze",
     "PLAY_ONLINE": "Graj online",
-    "DOWNLOAD": "Pobierz na PC"
+    "DOWNLOAD": "Pobierz na PC",
+    "PLAY": "Zagraj"
   },
 
   "NAVBAR": {
@@ -46,7 +47,8 @@
       "VESTING": "Vesting",
       "NEWS": "Aktualności",
       "PRESALE": "Przedsprzedaż",
-      "DAO": "DAO"
+      "DAO": "DAO",
+      "COMING_SOON": "Dostępne wkrótce"
     },
     "OPTIONS": {
       "MY_ACCOUNT": "Moje konto",
@@ -249,7 +251,7 @@
     "SELECTED_CATEGORY": "Wybrana kategoria",
     "SAVE": "Zapisz",
     "EDIT_NAME": "Edytuj nazwę",
-    "COMING_SOON": "Dostęp wkrótce",
+    "COMING_SOON": "Dostępne wkrótce",
     "SHARE_NFT": "Pochwal się swoimi NFT",
     "SEARCH": "Szukaj moich NFT",
     "GO_TO_NFT": "Przejdź do swoich NFT",

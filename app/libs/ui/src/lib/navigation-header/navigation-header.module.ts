@@ -13,6 +13,7 @@ import { WalletEffects } from '@crypto-mayhem-frontend/crypto-mayhem/data-access
 import { PipesModule } from '@crypto-mayhem-frontend/utility/pipes';
 import { TokenBalanceModule } from '../token-balance/token-balance.module';
 import { LatestNewsModule } from '../latest-news/latest-news.module';
+import { TooltipModule } from '../tooltip/tooltip.module';
 
 @NgModule({
   declarations: [NavigationHeaderComponent],
@@ -28,7 +29,8 @@ import { LatestNewsModule } from '../latest-news/latest-news.module';
     EffectsModule.forFeature([WalletEffects]),
     PipesModule,
     TokenBalanceModule,
-    LatestNewsModule
+    LatestNewsModule,
+    TooltipModule
   ],
   exports: [NavigationHeaderComponent],
 })
