@@ -56,10 +56,6 @@
     margin: 0;
     padding: 0 0 2.4rem;
   }
-
-  p {
-    padding-top: 2.4rem;
-  }
 }
 
 ui-voting-result-item {
@@ -113,5 +109,13 @@ ui-voting-result-item {
   #answers {
     height: 65vh;
     overflow-y: auto;
+  }
+}
+
+.description {
+  margin-bottom: 0;
+  &:not(:first-of-type) {
+    margin: 0;
+    padding: 0;
   }
 }
