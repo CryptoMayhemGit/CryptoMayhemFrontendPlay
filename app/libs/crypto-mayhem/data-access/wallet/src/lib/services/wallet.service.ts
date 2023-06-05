@@ -258,6 +258,9 @@ export class WalletService {
             network: Network.BNB_SMART_CHAIN_TESTNET,
             apiKey: this.appConfig.faceWalletAPIKey,
           });
+        }
+
+        if (this.face) {
           this.provider = new ethers.providers.Web3Provider(this.face.getEthLikeProvider());
           this.createProviderHooks(this.provider);
 
