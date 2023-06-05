@@ -5,6 +5,7 @@ import { providers, ethers } from 'ethers';
 import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { Store } from '@ngrx/store';
 import WalletConnectProvider from '@walletconnect/web3-provider';
+import { Face, Network } from '@haechi-labs/face-sdk';
 
 interface SignedWalletWithAmount {
   signature: string;
@@ -62,6 +63,7 @@ const DISCONNECT = 'disconnect';
 @Injectable({ providedIn: 'root' })
 export class WalletService {
   private provider: Web3Provider | undefined = undefined;
+  private face: Face | undefined = undefined;
 
   constructor(
     private readonly httpClient: HttpClient,
@@ -248,6 +250,36 @@ export class WalletService {
         await (this.provider.provider as any).enable().then(() => {
           console.log('Done');
         });
+        break;
+      }
+      case WalletType.faceWallet: {
+        if (!this.face) {
+          this.face = new Face({
+            network: Network.BNB_SMART_CHAIN_TESTNET,
+            apiKey: this.appConfig.faceWalletAPIKey,
+          });
+          this.provider = new ethers.providers.Web3Provider(this.face.getEthLikeProvider());
+          this.createProviderHooks(this.provider);
+
+          try {
+            const faceResponse = await this.face.auth.login();
+            if (faceResponse?.wallet?.address) {
+              this.store.dispatch(
+                WalletActions.accountsChanged({
+                  account: faceResponse?.wallet.address,
+                })
+              );
+              this.store.dispatch(
+                WalletActions.connectWalletSuccess({
+                  walletType: WalletType.faceWallet,
+                })
+              );
+            }
+          } catch(error) {
+            this.store.dispatch(WalletActions.connectWalletError());
+            console.error(error);
+          }
+        }
       }
     }
   }
@@ -255,8 +287,9 @@ export class WalletService {
   public disconnectWallet(): void {
     if (this.provider) {
       this.provider?.removeAllListeners();
-      this.removeMetamaskProviderHooks();
+      if (!this.face) this.removeMetamaskProviderHooks();
       this.provider = undefined;
+      this.face = undefined;
       this.store.dispatch(WalletActions.disconnectWallet());
     }
   }

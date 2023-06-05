@@ -1,18 +1,22 @@
-<ui-modal-base (close)="hideWallets()" [showClose]="!!(closeWallets$ | async)">
+<ui-modal-base [width]="'35rem'" (close)="hideWallets()" [showClose]="!!(closeWallets$ | async)">
     <div id="body-header" class="body-header">{{ 'WALLET.POPUP.HEADER' | transloco }}</div>
     <div class="body-wallets-wrapper">
         <div id="body-wallets" class="body-wallets">
+            <div (click)="choiceWallet(walletType.faceWallet)" type="button" role="button" class="body-wallets_wallet">
+                <img src="./assets/images/face-wallet.png" alt="face wallet">
+                <span>FaceWallet</span>
+            </div>
             <div (click)="choiceWallet(walletType.metamask)" type="button" role="button" class="body-wallets_wallet">
-                <img src="./assets/images/metamask_icon.svg" />
+                <img src="./assets/images/metamask_icon.svg" alt="metamask" />
                 <span>Metamask</span>
             </div>
             <div (click)="choiceWallet(walletType.walletConnect)" type="button" role="button" class="body-wallets_wallet">
-                <img src="./assets/images/wallet_connect_icon.svg" />
+                <img src="./assets/images/wallet_connect_icon.svg" alt="wallet connet" />
                 <span>WalletConnect</span>
             </div>
         </div>
         <div (click)="ccProfileConnect()" type="button" role="button" class="body-wallets_wallet" *ngIf="(showCcProfile$ | async)">
-            <img src="./assets/images/ccprofile.png" id="ccprofile"/>
+            <img src="./assets/images/ccprofile.png" id="ccprofile" alt="ccprofile"/>
             <span>ccProfie</span>
         </div>
     </div>
