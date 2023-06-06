@@ -255,7 +255,7 @@ export class WalletService {
       case WalletType.faceWallet: {
         if (!this.face) {
           this.face = new Face({
-            network: Network.BNB_SMART_CHAIN_TESTNET,
+            network: this.appConfig.faceWalletMainnet ? Network.BNB_SMART_CHAIN : Network.BNB_SMART_CHAIN_TESTNET,
             apiKey: this.appConfig.faceWalletAPIKey,
           });
         }
