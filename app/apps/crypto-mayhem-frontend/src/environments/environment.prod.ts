@@ -23,5 +23,5 @@ export const environment = {
     'https://metamask.app.link/dapp/play.cryptomayhem.io/presale',
   domain: 'cryptomayhem.io',
   cyberConnectUrl: 'https://api.cyberconnect.dev/',
-  faceWalletAPIKey: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCjI-z36LF-P2v9MgjNAjV75QEwOTKshmIfIJ5cQfRWXJSZY6dvDphv9AJIT5axikomB9G7ACZqLW84R7mHuq9K4IgXAj0j_dKMp19RiCnjiF-XuKV0uRocW3albDvA5bZ8JU_M7wdNZS2GdfEHBcP7OLSs6CmANKywTqOaL-08fwIDAQAB',
+  faceWalletAPIKey: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCgcRqVN5IAyPfP6gd_Qs0tMYjqjFi08bsa2_76Ai80exJfB0A9PrtHCEmQ52w2YIFJHWlt2y1BpZH01lNTSoYMtz5UVVGbUqyHMXTeWnsNY0IcbqQw_x4YpMDeZtB--U7Zo9FMSq7zEXmrj6HdnzyLWJNLzPBnS9lnGEOdo4FNcwIDAQAB',
 };
