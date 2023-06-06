@@ -27,8 +27,8 @@ export const environment = {
     'https://metamask.app.link/dapp/black-mushroom-0ae7fe803-develop.westeurope.1.azurestaticapps.net/presale',
   domain: 'cryptomayhem.io',
   cyberConnectUrl: 'https://api.cyberconnect.dev/',
-  faceWalletAPIKey: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCOGEUJcfCOfQ5ggmVKRuH-7nkl7GT0I7Zpi_pXDbyfEIRW12Z26mPZLrFC0cUlKGzDg7XY2iiFSqNoaTSnbIs7-l_RF5TxvWWZTisgCmHcwVZzRYWALnk4PVi4SirfQl76AxySFOCkzZxApTWiIdzJX3S2Odvny-2UyFau_BeY_wIDAQAB',
-  faceWalletNetwork: false,
+  faceWalletAPIKey: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCeafz-WGBvFmbe_DL456Q-HWNMD4yUnc7Ah2t9uOSajGTdbo23DRR7t9yHWk4pd8nytDWK8j77SVFN8S2orXJGyIa94-N0xaeJAwRjyBwm0mDJcZcjKALn5pQAI37h9W4_W0WYLPa6KpJpVfCLyd89qps-0qEu7NvqAuN0yxxMqQIDAQAB',
+  faceWalletMainnet: false,
 };
 
 /*
