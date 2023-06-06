@@ -63,4 +63,20 @@ export class DaoHistoryComponent implements OnInit {
   public makeShorterAnswer(answer: string): string {
     return answer.length > 18 ? answer.slice(0, 18) + '...' : answer;
   }
+
+  public newLineParser(text: string | undefined): string[] {
+    if (!text) {
+      return [];
+    }
+
+    if (text.includes('\n')) {
+      return text.split('\n');
+    }
+
+    if (text.includes('<br>')) {
+      return text.split('<br>');
+    }
+
+    return [text];
+  }
 }

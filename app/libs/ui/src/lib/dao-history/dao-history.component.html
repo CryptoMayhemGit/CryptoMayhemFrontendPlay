@@ -34,7 +34,9 @@
 
         <div id="answers">
             <h1>{{choiceDaoHistoryTopic?.name}}</h1>
-            <p>{{choiceDaoHistoryTopic?.description}}</p>
+            <ng-container *ngFor="let line of newLineParser(choiceDaoHistoryTopic?.description)">
+                <p class="description">{{line}}</p><br />
+            </ng-container>
             <ng-container *ngFor="let historyTopic of choiceDaoHistoryTopic?.answerRankings | sort: 'voteCount';  let indefOf = index">
                 <ui-voting-result-item index="1" [answer]="historyTopic.answerName" [votes]="historyTopic.voteCount" [active]="indefOf === 0"></ui-voting-result-item>
             </ng-container>
