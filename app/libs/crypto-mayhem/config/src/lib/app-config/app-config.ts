@@ -19,4 +19,5 @@ export interface AppConfig {
   metamaskDeepLink: string;
   domain: string;
   faceWalletAPIKey: string;
+  faceWalletMainnet: boolean;
 }

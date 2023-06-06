@@ -16,4 +16,5 @@ export const environment = {
   webGlLocation: 'assets/unity/',
   cyberConnectUrl: 'https://api.cyberconnect.dev/',
   faceWalletAPIKey: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCOGEUJcfCOfQ5ggmVKRuH-7nkl7GT0I7Zpi_pXDbyfEIRW12Z26mPZLrFC0cUlKGzDg7XY2iiFSqNoaTSnbIs7-l_RF5TxvWWZTisgCmHcwVZzRYWALnk4PVi4SirfQl76AxySFOCkzZxApTWiIdzJX3S2Odvny-2UyFau_BeY_wIDAQAB',
+  faceWalletNetwork: false,
 };
