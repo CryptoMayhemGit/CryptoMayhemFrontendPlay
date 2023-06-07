@@ -254,6 +254,7 @@ export class WalletService {
       }
       case WalletType.faceWallet: {
         if (!this.face) {
+          // solution assume that CM working only on bnb chain
           this.face = new Face({
             network: this.appConfig.faceWalletMainnet ? Network.BNB_SMART_CHAIN : Network.BNB_SMART_CHAIN_TESTNET,
             apiKey: this.appConfig.faceWalletAPIKey,
@@ -292,7 +293,6 @@ export class WalletService {
       this.provider?.removeAllListeners();
       if (!this.face) this.removeMetamaskProviderHooks();
       this.provider = undefined;
-      this.face = undefined;
       this.store.dispatch(WalletActions.disconnectWallet());
     }
   }
