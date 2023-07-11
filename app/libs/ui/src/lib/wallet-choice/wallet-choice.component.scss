@@ -68,7 +68,7 @@
 
 .body-wallets {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   margin: 2.4rem 0;
 
@@ -137,6 +137,45 @@ hr {
     fa-icon {
       font-size: 1.6rem;
       padding-left: 5px;
+    }
+  }
+}
+
+.social-wrapper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  min-height: 5rem;
+
+  &__icon {
+    border: 1px solid var(--text-primary);
+    position: absolute;
+    padding: 0.5rem;
+    padding-bottom: 0.2rem;
+    border-radius: 100%;
+    background-color: white;
+
+    img {
+      height: 38px;
+      width: 38px;
+    }
+
+    &:first-of-type {
+      left: 30%;
+      top: 0;
+    }
+    &:nth-of-type(2) {
+      left: 40%;
+      top: 0;
+    }
+    &:nth-of-type(3) {
+      left: 50%;
+      top: 0;
+    }
+    &:nth-of-type(4) {
+      left: 60%;
+      top: 0;
     }
   }
 }

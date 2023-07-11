@@ -3,8 +3,13 @@
     <div class="body-wallets-wrapper">
         <div id="body-wallets" class="body-wallets">
             <div (click)="choiceWallet(walletType.faceWallet)" type="button" role="button" class="body-wallets_wallet">
-                <img src="./assets/images/face-wallet.png" alt="face wallet">
-                <span>FaceWallet</span>
+                <div class="social-wrapper">
+                    <div class="social-wrapper__icon"><img src="./assets/images/google-logo.svg" alt="discord" /></div>
+                    <div class="social-wrapper__icon"><img src="./assets/images/facebook-logo.svg" alt="telegram" /></div>
+                    <div class="social-wrapper__icon"><img src="./assets/images/discord-logo.svg" alt="twitter" /></div>
+                    <div class="social-wrapper__icon"><img src="./assets/images/ellipsis.svg" alt="ellipsis" /></div>
+                </div>
+                <span>Social Login (via Face Wallet)</span>
             </div>
             <div (click)="choiceWallet(walletType.metamask)" type="button" role="button" class="body-wallets_wallet">
                 <img src="./assets/images/metamask_icon.svg" alt="metamask" />

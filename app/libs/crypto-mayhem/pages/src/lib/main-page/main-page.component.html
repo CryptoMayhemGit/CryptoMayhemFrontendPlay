@@ -8,7 +8,7 @@
 <div class="trailers" [@slideUp]>
 
   <ui-video-component
-  title="Top-Down Shooter"
+  [title]="'GAMES.TDS.TITLE' | transloco"
   videoId="TNfrTuSQM9U"
   (secondaryClickEvent)="goToTds()"
   (primaryClickEvent)="downloadLauncher()"
@@ -28,7 +28,7 @@
   </ui-video-component>
 
   <ui-video-component
-  title="Grand Strategy"
+  [title]="'GAMES.GS.TITLE' | transloco"
   videoId="TPOamZBoLBk"
   [primaryDisabled]="true"
   [secondaryDisabled]="true"
