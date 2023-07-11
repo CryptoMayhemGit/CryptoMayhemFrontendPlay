@@ -13,7 +13,7 @@
       <p class="date-info secondary">{{ "VESTING.CLAIM.END" | transloco }}</p>
     </div>
   </div>
-  <hr />
+  <hr class="faded-line" />
   <div id="token-amount">
     <p>{{ "VESTING.CLAIM.BOUGHT_TOKEN" | transloco }}</p>
     <div id="token-amount__symbol">
@@ -23,8 +23,10 @@
     <br />
     {{ "VESTING.CLAIM.AMOUNT" | transloco }}
   </div>
-  <ui-progress-bar [currentValue]="0" [maxValue]="250002"></ui-progress-bar>
-  <hr />
+  <div id="progress">
+    <ui-progress-bar [currentValue]="0" [maxValue]="250002"></ui-progress-bar>
+  </div>
+  <hr class="faded-line" />
   <div id="claim-token">
     <h3>{{ "VESTING.CLAIM.CLAIM_TOKEN" | transloco }}</h3>
     <div class="table">
@@ -34,7 +36,7 @@
       </div>
       <div class="t-item">
         <div class="t-name">{{ "VESTING.CLAIM.PICK" | transloco }}</div>
-        <div class="t-value">20</div>
+        <div class="t-value text-green">20</div>
       </div>
       <div class="t-item">
         <div class="t-name">{{ "VESTING.CLAIM.BLOCK" | transloco }}</div>
@@ -54,9 +56,17 @@
 <div id="info">
   <h2>{{ "PRESALE.INFO.DETAILS.HEADER" | transloco }}</h2>
   <ul>
-    <li *ngFor="let detail of details; index as i">{{ detail | transloco }}</li>
+    <li class="detail" *ngFor="let detail of details; index as i">
+      {{ detail | transloco }}
+    </li>
   </ul>
   <hr />
-  <p>{{ "VESTING.INFO.WARRING" | transloco }}</p>
-  <p>{{ "VESTING.INFO.ATTENTION" | transloco }}</p>
+  <p>
+    <b>{{ "VESTING.INFO.WARNING" | transloco }}</b
+    >{{ "VESTING.INFO.WARNING_TEXT" | transloco }}
+  </p>
+  <p>
+    <b>{{ "VESTING.INFO.ATTENTION" | transloco }}</b>
+    {{ "VESTING.INFO.ATTENTION_TEXT" | transloco }}
+  </p>
 </div>

@@ -128,8 +128,10 @@
         "3": "After claiming your tokens will be sent to your wallet",
         "4": "You can come back every day to claim your newly acquired tokens (until the entire balance is claimed)."
       },
-      "WARRING": "You can not claim your tokens without clicking the 'Claim Adria' button",
-      "ATTENTION": "Please remember that you must have BNB (bep-20) in your wallet to cover network fees each time you claim your ADRIA token"
+      "WARNING": "Warning: ",
+      "WARNING_TEXT": "You can not claim your tokens without clicking the 'Claim Adria' button",
+      "ATTENTION": "Attention: ",
+      "ATTENTION_TEXT": "Please remember that you must have BNB (bep-20) in your wallet to cover network fees each time you claim your ADRIA token"
     },
     "CLAIM": {
       "START": "Start vesting",
