@@ -144,17 +144,17 @@ hr {
 .social-wrapper {
   display: flex;
   justify-content: space-between;
+  min-height: 5rem;
   position: relative;
   width: 100%;
-  min-height: 5rem;
 
   &__icon {
+    background-color: white;
     border: 1px solid var(--text-primary);
-    position: absolute;
+    border-radius: 100%;
     padding: 0.5rem;
     padding-bottom: 0.2rem;
-    border-radius: 100%;
-    background-color: white;
+    position: absolute;
 
     img {
       height: 38px;
@@ -165,14 +165,17 @@ hr {
       left: 30%;
       top: 0;
     }
+
     &:nth-of-type(2) {
       left: 40%;
       top: 0;
     }
+
     &:nth-of-type(3) {
       left: 50%;
       top: 0;
     }
+
     &:nth-of-type(4) {
       left: 60%;
       top: 0;

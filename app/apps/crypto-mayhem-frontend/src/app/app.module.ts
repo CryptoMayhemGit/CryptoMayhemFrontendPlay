@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import {
   NavigationHeaderModule,
   NotificationsModule,
+  VestingModule,
   WalletChoiceModule,
 } from '@crypto-mayhem-frontend/ui';
 import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
@@ -38,6 +39,7 @@ import { InMemoryCache } from '@apollo/client';
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
     WalletChoiceModule,
+    VestingModule,
     NavigationHeaderModule,
     RouterModule,
     FormsModule,
