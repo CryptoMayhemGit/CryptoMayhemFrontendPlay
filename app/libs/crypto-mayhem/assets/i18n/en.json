@@ -119,6 +119,34 @@
     "REGISTER_MESSAGE": "Register attempt",
     "LOGIN_MESSAGE": "Login attempt"
   },
+  "VESTING": {
+    "HEADER": "Vesting - taking your tokens in every block",
+    "INFO": {
+      "DETAILS": {
+        "1": "Plan vesting your ADRIA in every block",
+        "2": "You can apply for the available token amount at any time by clicking the 'Claim Adria' button",
+        "3": "After claiming your tokens will be sent to your wallet",
+        "4": "You can come back every day to claim your newly acquired tokens (until the entire balance is claimed)."
+      },
+      "WARNING": "Warning: ",
+      "WARNING_TEXT": "You can not claim your tokens without clicking the 'Claim Adria' button",
+      "ATTENTION": "Attention: ",
+      "ATTENTION_TEXT": "Please remember that you must have BNB (bep-20) in your wallet to cover network fees each time you claim your ADRIA token"
+    },
+    "CLAIM": {
+      "START": "Start vesting",
+      "END": "End vesting",
+      "MONTH": "Month",
+      "BOUGHT_TOKEN": "Bought tokens",
+      "AMOUNT": "Amount of ADRIA token which you can claim",
+      "CLAIM_TOKEN": "Claim token",
+      "GET": "Received",
+      "PICK": "To pick up",
+      "BLOCK": "Block",
+      "BOUGHT": "Bought",
+      "CLAIM_ADRIA": "Claim Adria"
+    }
+  },
   "PRESALE": {
     "PROGRESS": "Amount of ADRIA token sold",
     "INFO": {
