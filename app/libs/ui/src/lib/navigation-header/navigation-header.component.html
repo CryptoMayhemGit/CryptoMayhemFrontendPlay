@@ -150,10 +150,9 @@
       >{{ "NAVBAR.NAV.DAO" | transloco }}</a
     >
     <a
-      href="#"
-      [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco"
-      class="disabled"
-      (click)="mobileVisible = false"
+      routerLink="staking"
+      [ngClass]="{ 'active-item': activePage === 'staking' }"
+      (click)="mobileVisible = false; activePage = 'staking'"
       >{{ "NAVBAR.NAV.STAKING" | transloco }}</a
     >
     <a

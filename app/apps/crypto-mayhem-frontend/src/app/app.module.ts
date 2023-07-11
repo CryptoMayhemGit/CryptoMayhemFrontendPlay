@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import {
   NavigationHeaderModule,
   NotificationsModule,
+  StakingModule,
   VestingModule,
   WalletChoiceModule,
 } from '@crypto-mayhem-frontend/ui';
@@ -40,6 +41,7 @@ import { InMemoryCache } from '@apollo/client';
     }),
     WalletChoiceModule,
     VestingModule,
+    StakingModule,
     NavigationHeaderModule,
     RouterModule,
     FormsModule,

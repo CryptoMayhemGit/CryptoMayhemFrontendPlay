@@ -1,0 +1,159 @@
+<div class="staking-wrapper">
+  <ui-header-faded [value]="'Staking'"></ui-header-faded>
+  <div class="staking-row" id="staking">
+    <div class="staking-row__item">
+      <div class="item-header">
+        <img src="/assets/images/dolar_icon.svg" alt="Dolar icon" />
+        <span>ADRIA STAKED</span>
+      </div>
+      <div class="item-center">
+        <p class="date-info">APY: 62%</p>
+      </div>
+      <div class="item-table">
+        <div class="t-item">
+          <div class="t-name">Staked</div>
+          <div class="t-value">385</div>
+        </div>
+        <hr class="faded-line" />
+        <div class="t-item">
+          <div class="t-name">Wartość</div>
+          <div class="t-value">43$</div>
+        </div>
+      </div>
+      <div class="item-buttons">
+        <ui-main-button
+          class="cm-w-full cm-mr-2"
+          [type]="'secondary'"
+          [disabled]="true"
+          >Odblokuj</ui-main-button
+        >
+        <ui-main-button class="cm-w-full" [disabled]="true"
+          >Stake</ui-main-button
+        >
+      </div>
+    </div>
+    <div class="staking-row__item">
+      <div class="item-header">
+        <img src="/assets/images/gift_icon.svg" alt="Gift icon" />
+        <span>ZDOBYTE NAGRODY</span>
+      </div>
+      <div class="item-center">
+        <div class="item-center__token">
+          <p class="date-info">239</p>
+          <img src="/assets/images/adria_token.svg" alt="Adria token" />
+        </div>
+        <p class="date-info">Wartość 27$</p>
+      </div>
+      <div class="item-table">
+        <div class="t-item">
+          <div class="t-name">Do odbioru</div>
+          <div class="t-value">56</div>
+        </div>
+        <hr class="faded-line" />
+        <div class="t-item">
+          <div class="t-name">Kolejne uwolnienie</div>
+          <div class="t-value">XX.XX.XXXX, 00:00</div>
+        </div>
+      </div>
+      <div class="item-buttons">
+        <ui-main-button class="cm-w-full" [disabled]="true"
+          >Odbierz Adria</ui-main-button
+        >
+      </div>
+    </div>
+    <div class="staking-row__item">
+      <div class="item-header">
+        <img src="/assets/images/wallet_icon.svg" alt="Wallet icon" />
+        <span>GOTOWE DO WYPŁATY</span>
+      </div>
+      <div class="item-info">
+        <p class="date-info">Wypłać swoje Adria</p>
+        <div class="item-info__token">
+          <p class="date-info">239</p>
+          <img src="/assets/images/adria_token.svg" alt="Adria token" />
+        </div>
+      </div>
+      <div class="item-timer">
+        <p>Czas do uwolnienia</p>
+        <ui-timer [startTime]="presaleEndTime"></ui-timer>
+      </div>
+      <div class="item-buttons">
+        <ui-main-button class="cm-w-full" [disabled]="true"
+          >Odbierz Adria</ui-main-button
+        >
+      </div>
+    </div>
+  </div>
+  <ui-header-faded [value]="'Farming'"></ui-header-faded>
+  <div class="staking-row" id="farming">
+    <div class="staking-row__item">
+      <div class="item-header">
+        <img src="/assets/images/add_icon.svg" alt="Add icon" />
+        <span>TOKENY LP</span>
+      </div>
+      <div class="item-center">
+        <p class="date-info">APY: 35.50%</p>
+      </div>
+      <div class="item-buttons mb-standard mt-standard">
+        <ui-main-button class="cm-w-full" type="secondary" [disabled]="true"
+          >Zdobądź tokeny lp</ui-main-button
+        >
+      </div>
+      <hr class="faded-line" />
+      <div class="item-info">
+        <p class="date-info">Twoje ADRIA/BNB</p>
+        <div class="item-info__token">
+          <p class="date-info">50</p>
+        </div>
+      </div>
+      <div class="item-input">
+        <span class="input-label">Ile LP chcesz zainwestować?</span>
+        <input type="text" placeholder="Wpisz kwotę" />
+      </div>
+      <div class="item-buttons">
+        <ui-main-button class="cm-w-full" [disabled]="true"
+          >Stake LP</ui-main-button
+        >
+      </div>
+    </div>
+    <div class="staking-row__item">
+      <div class="item-header">
+        <img src="/assets/images/dolar_icon.svg" alt="Dolar icon" />
+        <span>LP STAKED</span>
+      </div>
+      <div class="item-info">
+        <p class="date-info">Staked ADRIA/BNB</p>
+        <div class="item-info__token">
+          <p class="date-info">50</p>
+        </div>
+      </div>
+      <div class="item-input">
+        <span class="input-label">Ile LP chcesz zainwestować?</span>
+        <input type="text" placeholder="Wpisz kwotę" />
+      </div>
+      <div class="item-buttons">
+        <ui-main-button class="cm-w-full" [disabled]="true"
+          >Odblokuj LP</ui-main-button
+        >
+      </div>
+    </div>
+    <div class="staking-row__item">
+      <div class="item-header">
+        <img src="/assets/images/gift_icon.svg" alt="Gift icon" />
+        <span>ZDOBYTE NAGRODY</span>
+      </div>
+      <div class="item-center">
+        <div class="item-center__token">
+          <p class="date-info">200</p>
+          <img src="/assets/images/adria_token.svg" alt="Adria token" />
+        </div>
+        <p class="date-info">Wartość 25$</p>
+      </div>
+      <div class="item-buttons">
+        <ui-main-button class="cm-w-full" [disabled]="true"
+          >Odbierz Adria</ui-main-button
+        >
+      </div>
+    </div>
+  </div>
+</div>

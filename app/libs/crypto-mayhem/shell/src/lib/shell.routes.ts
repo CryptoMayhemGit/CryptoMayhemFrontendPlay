@@ -3,6 +3,7 @@ import { CcProfileComponent, DaoComponent, GrandStrategyComponent, LauncherCompo
 import { LanguageGuard } from './guards/language.guard';
 import { DaoResolver } from './resolvers/dao.resolver';
 import { VestingComponent } from 'libs/ui/src/lib/vesting/vesting.component';
+import { StakingComponent } from '@crypto-mayhem-frontend/ui';
 
 export const cryptoMayhemShellRoutes: Routes = [
   {
@@ -20,7 +21,8 @@ export const cryptoMayhemShellRoutes: Routes = [
       }, pathMatch: 'full' },
       { path: 'launcher', component: LauncherComponent, pathMatch: 'full' },
       { path: 'ccprofile', component: CcProfileComponent, pathMatch: 'full'},
-      { path: 'vesting', component: VestingComponent }
+      { path: 'vesting', component: VestingComponent },
+      { path: 'staking', component: StakingComponent }
     ],
   },
   { path: '**', component: MainPageComponent },

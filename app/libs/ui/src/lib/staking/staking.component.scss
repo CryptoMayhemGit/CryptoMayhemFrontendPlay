@@ -1,0 +1,265 @@
+@import 'libs/crypto-mayhem/styles/mixins';
+
+:host {
+    --faded-space: 5rem;
+    --item-header-space: 2.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3.875rem;
+  justify-content: center;
+  margin-top: 10.4rem;
+
+  @media screen and (min-width: 1240px) {
+    flex-direction: row;
+    margin-top: 3.2rem;
+  }
+}
+
+@mixin component {
+  clip-path: polygon(7% 0, 100% 0, 100% 20%, 100% 94%, 94% 100%, 0 100%, 0 6%);
+}
+
+.staking-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    max-width: 175rem;
+}
+
+.staking-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+
+    &__item {
+        @include background-blur;
+        @include component;
+
+        background-color: var(--component-background-color);
+        color: var(--text-primary);
+        height: auto;
+        max-width: 100%;
+        padding: 3.2rem;
+
+        @media screen and (min-width: 768px) {
+            align-self: center;
+            max-width: 80%;
+            width: 80%;
+        }
+
+        @media screen and (min-width: 1240px) {
+            max-width: 44.3rem;
+            width: 44.3rem;
+        }
+
+        .item {
+            &-header {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: var(--item-header-space);
+
+                span {
+                    margin-left: 0.5rem;
+                }
+            }
+
+            &-center {
+                margin-left: auto;
+                margin-right: auto;
+
+                padding-left: 2.5rem;
+                padding-right: 2.5rem;
+                position: relative;
+                text-align: center;
+                width: fit-content;
+                min-height: 4rem;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                margin-bottom: var(--item-header-space);
+
+                &::before {
+                    background: url("/assets/images/center_left.svg") no-repeat top left;
+                    content: "";
+                    height: 100%;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    width: 2.5rem;
+                }
+
+                &::after {
+                    background: url("/assets/images/center_right.svg") no-repeat top right;
+                    content: "";
+                    height: 100%;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: 2.5rem;
+                }
+
+                &__token {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            &-table {
+                align-items: flex-start;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                width: 100%;
+                margin-bottom: var(--item-header-space);
+
+                .t-name {
+                color: var(--text-text-secondary, rgb(242 242 242 / 40%));
+
+                /* Montserrat/Regular/M 14px */
+                font-family: "Montserrat Arial", Helvetica, sans-serif;
+                font-size: 1.4rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 120%;
+                }
+
+                .t-item {
+                align-items: center;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                margin: 0.5rem 0;
+                }
+
+                .t-value {
+                color: var(--text-text-primary, #F2F2F2);
+
+                /* Montserrat/Regular/M 14px */
+                font-family: Montserrat, Arial, Helvetica, sans-serif;
+                font-size: 1.4rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 120%;
+                text-align: right;
+                }
+            }
+
+            &-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: var(--item-header-space) 0;
+
+                &__token {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            &-timer {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-top: var(--item-header-space);
+                p {
+                    display: block;
+                    margin: 0;
+                }
+            }
+
+            &-input {
+                .input-label {
+                    display: inline-block;
+                    margin-bottom: 1rem;
+                }
+                input {
+                    background: transparent;
+                    /* stylelint-disable-next-line function-whitespace-after */
+                    border: 1px solid var(--text-secondary);
+                    color: var(--text-primary);
+                    margin-bottom: 1.8rem;
+                    padding: 1.2rem;
+                    transition: all 0.3s ease-out;
+                    width: 95%;
+                
+                    &.ng-invalid.ng-touched {
+                      border-color: var(--error-color);
+                
+                      &:focus {
+                        border-color: var(--error-color);
+                      }
+                    }
+                
+                    &:focus,
+                    &:hover {
+                      border: 1px solid var(--text-primary);
+                      outline: none;
+                    }
+                  }
+            }
+
+            &-buttons {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+            }
+        }
+    }
+}
+
+#staking, #farming {
+    margin-top: var(--faded-space);
+}
+
+#staking {
+    margin-bottom: var(--faded-space);
+}
+
+.date-info {
+    display: inline-block;
+    margin: 0;
+
+    color: #F2F2F2;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    align-items: center;
+}
+
+.mb-standard {
+    margin-bottom: var(--item-header-space);
+}
+
+.mt-standard {
+    margin-top: var(--item-header-space);
+}
+
+.cm-w-full {
+    width: 100%;
+}
+
+.cm-mr-2 {
+    margin-right: 2rem;
+}
