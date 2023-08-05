@@ -163,6 +163,10 @@
         "HEADER": "Jak odebrać zakupione tokeny?",
         "MESSAGE": "Możesz przenosić zakupione tokeny ADRIA do swojego portfela w zakładce Vesting, która wkrótce będzie dostępna."
       },
+      "PLAY_NEW_MISSION": {
+        "HEADER": "DODATKOWA ZAWARTOŚĆ",
+        "MESSAGE": "Crypto Mayhem: Top-Down Shooter dostępny w pełni tylko poprzez Launcher Mayhem"
+      },
       "ADRIA_TOKEN": {
         "HEADER": "Token Adria",
         "ADDRESS_MESSAGE": "Oficjalny adres inteligentnej umowy dla tokena ADRIA:",
