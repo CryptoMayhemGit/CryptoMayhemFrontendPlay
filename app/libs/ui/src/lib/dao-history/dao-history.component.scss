@@ -64,11 +64,14 @@ ui-voting-result-item {
   flex-direction: row;
   justify-content: center;
   width: 70%;
+}
 
-  &:first-of-type {
-    margin-bottom: 2rem;
-    margin-top: 4.3rem;
-  }
+#answers > div:first-of-type {
+  margin-top: 3.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
 }
 
 #results-total {
@@ -118,5 +121,11 @@ ui-voting-result-item {
   &:not(:first-of-type) {
     margin: 0;
     padding: 0;
+  }
+}
+  
+@media screen and (max-width: 767px) {
+  ui-voting-result-item {
+    width: 100%;
   }
 }

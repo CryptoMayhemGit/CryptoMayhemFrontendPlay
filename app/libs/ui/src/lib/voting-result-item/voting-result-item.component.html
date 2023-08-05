@@ -4,10 +4,12 @@
     </ui-order-highlight>
     <div class="column">
         <div class="row">
-            <p>{{answer}}</p>
-            <div>
+            <p class="content-description">{{answer}}</p>
+            <div class="row-height">
                 <span class="vertical-line"></span>
-                <p>{{ 'DAO.VOTING.VOTES' | transloco: {votesCount: votes} }}</p>
+            </div>
+            <div>
+                <p class="votes-count">{{ 'DAO.VOTING.VOTES' | transloco: {votesCount: votes} }}</p>
             </div>
         </div>
         <div class="progress"></div>

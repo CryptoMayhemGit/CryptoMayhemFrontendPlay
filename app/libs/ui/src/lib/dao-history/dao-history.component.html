@@ -37,9 +37,11 @@
             <ng-container *ngFor="let line of newLineParser(choiceDaoHistoryTopic?.description)">
                 <p class="description">{{line}}</p><br />
             </ng-container>
-            <ng-container *ngFor="let historyTopic of choiceDaoHistoryTopic?.answerRankings | sort: 'voteCount';  let indefOf = index">
-                <ui-voting-result-item index="1" [answer]="historyTopic.answerName" [votes]="historyTopic.voteCount" [active]="indefOf === 0"></ui-voting-result-item>
-            </ng-container>
+            <div>
+                <ng-container *ngFor="let historyTopic of choiceDaoHistoryTopic?.answerRankings | sort: 'voteCount';  let indexOf = index">
+                    <ui-voting-result-item index="{{indexOf+1}}" [answer]="historyTopic.answerName" [votes]="historyTopic.voteCount" [active]="choiceDaoHistoryTopic?.votedAnswerId === historyTopic.id"></ui-voting-result-item>
+                </ng-container>
+            </div>
             <div id="results-total">
                 <img src="./assets/images/votes_people_icon.svg" alt="people" role="presentation" />
                 <div class="column">

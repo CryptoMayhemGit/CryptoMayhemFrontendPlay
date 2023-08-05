@@ -162,6 +162,10 @@
         "HEADER": "How to claim bought tokens?",
         "MESSAGE": "You can transfer the bought ADRIA tokens to your wallet in the Vesting tab, which will be available soon."
       },
+      "PLAY_NEW_MISSION": {
+        "HEADER": "EXTRA OPTIONS",
+        "MESSAGE": "Crypto Mayhem: Top-Down Shooter available in full only through the Mayhem Launcher"
+      },
       "ADRIA_TOKEN": {
         "HEADER": "Adria token",
         "ADDRESS_MESSAGE": "Offical smart contract address for ADRIA token:",
