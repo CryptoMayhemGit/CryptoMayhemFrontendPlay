@@ -20,7 +20,7 @@
     <p class="small-header"><img src="./assets/images/star_icon.svg" alt="star" role="presentation" />Ranking</p>
     <div>
         <ng-container *ngFor="let answer of topic.answerRankings | sort: 'voteCount'; let indexOf = index">
-            <ui-voting-result-item answer="{{answer.answerName}}" [votes]="answer.voteCount" [active]="indexOf === 0 && answer.votesCount !== 0"></ui-voting-result-item>
+            <ui-voting-result-item index="{{indexOf+1}}" answer="{{answer.answerName}}" [votes]="answer.voteCount" [active]="topic.votedAnswerId === answer.id"></ui-voting-result-item>
         </ng-container>
     </div>
     <div id="results-total">

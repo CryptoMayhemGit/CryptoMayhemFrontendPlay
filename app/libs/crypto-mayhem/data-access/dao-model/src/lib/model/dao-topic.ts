@@ -8,6 +8,7 @@ export interface DaoTopic {
     stopDate: Date;
     votesCount: number;
     canVote: boolean;
+    votedAnswerId: number;
     userVotePower: number;
 
     answerRankings: DaoAnswer[];

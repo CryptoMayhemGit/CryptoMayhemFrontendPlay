@@ -63,10 +63,10 @@ export class DAOEffects {
     getAllActiveTopics$ = createEffect(() =>
         this.actions$.pipe(
             ofType(
-                DAOActions.getAllActiveTopics,
-                WalletActions.connectWalletSuccess,
-                DAOActions.postDaoVoteWithSignatureSuccess,
-                WalletActions.setLanguage
+                    DAOActions.getAllActiveTopics,
+                    WalletActions.connectWalletSuccess,
+                    DAOActions.postDaoVoteWithSignatureSuccess,
+                    WalletActions.setLanguage
                 ),
             concatLatestFrom(() => [
                 this.store.select(WalletSelectors.getAccount),
@@ -84,14 +84,20 @@ export class DAOEffects {
 
     getAllHistoricTopics$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(DAOActions.getAllHistoricTopics),
+            ofType(
+                    WalletActions.connectWalletSuccess,
+                    DAOActions.getAllHistoricTopics,
+                    DAOActions.postDaoVoteWithSignatureSuccess,
+                    WalletActions.setLanguage
+                ),
             concatLatestFrom(() =>
             [
+                this.store.select(WalletSelectors.getAccount),
                 this.store.select(WalletSelectors.getLanguage),
                 this.store.select(DAOSelectors.selectAllHistoricTopics)
             ]),
-            switchMap(([{skip, take}, localization, storeTopic]) =>
-                this.daoService.getAllHistoricTopics(skip, take, localization).pipe(
+            switchMap(([action, wallet, localization, storeTopic]) => //TODO SKIP AND TAKE to improve for pagination - 0 - 20 per page.
+                this.daoService.getAllHistoricTopics(wallet, 0, 25, localization).pipe( //TODO SKIP AND TAKE to improve for pagination - 0 - 20 per page.
                     map((response) => response.topics),
                     map((topics) =>
                     {
