@@ -11,8 +11,10 @@ import * as DaoSelectors from '../state/dao.selectors';
 export class DAOFacade {
     readonly daoAllActiveTopics$ = this.store.select(DaoSelectors.selectAllActiveTopics);
     readonly daoAllHistoricTopics$ = this.store.select(DaoSelectors.selectAllHistoricTopics);
-    readonly daoSmallSpinner$ = this.store.select(DaoSelectors.selectDaoSmallSpinner);
-    readonly daoLargeSpinner$ = this.store.select(DaoSelectors.selectDaoLargeSpinner);
+    readonly daoSmallSpinnerActive$ = this.store.select(DaoSelectors.selectDaoSmallSpinnerActive);
+    readonly daoLargeSpinnerActive$ = this.store.select(DaoSelectors.selectDaoLargeSpinnerActive);
+    readonly daoSmallSpinnerHistoric$ = this.store.select(DaoSelectors.selectDaoSmallSpinnerHistoric);
+    readonly daoLargeSpinnerHistoric$ = this.store.select(DaoSelectors.selectDaoLargeSpinnerHistoric);
     readonly daoHistoryTopicById$ = (id: number) => this.store.select(DaoSelectors.selectDaoHistoryTopicById(id));
     readonly daoVotingSuccess$ = this.store.select(DaoSelectors.selectDaoVotingSuccess);
 

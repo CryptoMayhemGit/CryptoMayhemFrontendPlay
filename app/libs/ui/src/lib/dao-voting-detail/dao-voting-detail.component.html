@@ -32,7 +32,7 @@
     </div>
 </div>
 <div id="voting">
-    <ng-container *ngIf="(spinnerSmall$ | async) === false">
+    <ng-container *ngIf="(spinnerSmallActive$ | async) === false">
         <p class="small-header"><img src="./assets/images/vote_icon.svg" alt="star" role="presentation" style="margin-top: -0.3rem" />
         {{'DAO.TABS.VOTING' | transloco}}</p>
             <ng-container *ngIf="(walletConnected$ | async) === false">
@@ -68,7 +68,7 @@
             <p class="text-after">{{ 'DAO.VOTING.THANKS_SUPPORT' | transloco}}</p>
         </ng-container>
     </ng-container>
-    <ng-container *ngIf="(spinnerSmall$ | async) === true">
+    <ng-container *ngIf="(spinnerSmallActive$ | async) === true">
         <ui-spinner [marginTop]="6"></ui-spinner>
     </ng-container>
     <!-- show when voting power was not reached -->

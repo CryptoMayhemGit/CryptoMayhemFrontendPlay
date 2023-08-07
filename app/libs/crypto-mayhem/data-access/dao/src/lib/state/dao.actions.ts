@@ -59,18 +59,34 @@ export const postDaoVoteWithSignatureFailure = createAction(
     props<{ error: any }>()
 );
 
-export const showDaoSmallSpinner = createAction(
-    '[Dao] Show Small Spinner'
+export const showDaoSmallSpinnerActive = createAction(
+    '[Dao] Show Small Spinner Active'
 );
 
-export const hideDaoSmallSpinner = createAction(
-    '[Dao] Hide Small Spinner'
+export const hideDaoSmallSpinnerActive = createAction(
+    '[Dao] Hide Small Spinner Active'
 );
 
-export const showDaoLargeSpinner = createAction(
-    '[Dao] Show Large Spinner'
+export const showDaoLargeSpinnerActive = createAction(
+    '[Dao] Show Large Spinner Active'
 );
 
-export const hideDaoLargeSpinner = createAction(
-    '[Dao] Hide Large Spinner'
+export const hideDaoLargeSpinnerActive = createAction(
+    '[Dao] Hide Large Spinner Active'
+);
+
+export const showDaoSmallSpinnerHistoric = createAction(
+    '[Dao] Show Small Spinner Historic'
+);
+
+export const hideDaoSmallSpinnerHistoric = createAction(
+    '[Dao] Hide Small Spinner Historic'
+);
+
+export const showDaoLargeSpinnerHistoric = createAction(
+    '[Dao] Show Large Spinner Historic'
+);
+
+export const hideDaoLargeSpinnerHistoric = createAction(
+    '[Dao] Hide Large Spinner Historic'
 );
