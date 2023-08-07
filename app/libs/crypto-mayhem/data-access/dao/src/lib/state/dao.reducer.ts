@@ -8,16 +8,20 @@ export const daoKey = 'dao';
 export interface DaoState {
     daoTopics: DaoTopic[];
     daoTopicHistory: DaoTopic[];
-    spinnerSmall: boolean;
-    spinnerLarge: boolean;
+    spinnerSmallActive: boolean;
+    spinnerLargeActive: boolean;
+    spinnerSmallHistoric: boolean;
+    spinnerLargeHistoric: boolean;
     votingSuccess: boolean;
 }
 
 export const initialState: DaoState = {
     daoTopics: [],
     daoTopicHistory: [],
-    spinnerSmall: false,
-    spinnerLarge: false,
+    spinnerSmallActive: false,
+    spinnerLargeActive: false,
+    spinnerSmallHistoric: false,
+    spinnerLargeHistoric: false,
     votingSuccess: false
 };
 
@@ -31,21 +35,37 @@ export const daoReducer = createReducer(
         ...state,
         daoTopicHistory: [...topics]
     })),
-    on(DaoActions.showDaoSmallSpinner, (state) => ({
+    on(DaoActions.showDaoSmallSpinnerActive, (state) => ({
         ...state,
-        spinnerSmall: true
+        spinnerSmallActive: true
     })),
-    on(DaoActions.hideDaoSmallSpinner, (state) => ({
+    on(DaoActions.hideDaoSmallSpinnerActive, (state) => ({
         ...state,
-        spinnerSmall: false
+        spinnerSmallActive: false
     })),
-    on(DaoActions.showDaoLargeSpinner, (state) => ({
+    on(DaoActions.showDaoLargeSpinnerActive, (state) => ({
         ...state,
-        spinnerLarge: true
+        spinnerLargeActive: true
     })),
-    on(DaoActions.hideDaoLargeSpinner, (state) => ({
+    on(DaoActions.hideDaoLargeSpinnerActive, (state) => ({
         ...state,
-        spinnerLarge: false
+        spinnerLargeActive: false
+    })),
+    on(DaoActions.showDaoSmallSpinnerHistoric, (state) => ({
+        ...state,
+        spinnerSmallHistoric: true
+    })),
+    on(DaoActions.hideDaoSmallSpinnerHistoric, (state) => ({
+        ...state,
+        spinnerSmallHistoric: false
+    })),
+    on(DaoActions.showDaoLargeSpinnerHistoric, (state) => ({
+        ...state,
+        spinnerLargeHistoric: true
+    })),
+    on(DaoActions.hideDaoLargeSpinnerHistoric, (state) => ({
+        ...state,
+        spinnerLargeHistoric: false
     })),
     on(DaoActions.postDaoVoteWithSignatureSuccess, (state) => ({
         ...state,
