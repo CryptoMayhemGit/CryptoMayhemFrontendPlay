@@ -153,7 +153,7 @@
     "INFO": {
       "DETAILS": {
         "HEADER": "Szczegóły oficjalnej przedsprzedaży tokena ADRIA",
-        "1": "Prywatna sprzedaż trwa od piątku 02.12.2022",
+        "1": "Prywatna sprzedaż",
         "2": "Minimalna kwota zakupu: 50 USDC",
         "3": "Cena w przedsprzedaży 0.002 USDC",
         "4": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy"
@@ -289,10 +289,9 @@
     "GO_TO_NFT": "Przejdź do swoich NFT",
     "AVATAR": {
       "SET_AVATAR": "Ustaw profilowe NFT",
-      "RECOMMENDED": "Polecane dla ciebie",
       "NO_NFT": "Brak NFT",
       "NO_NFT_MESSAGE": "Aktualnie nie posiadasz żadnych NFT projektu Crypto Mayhem, które możesz użyć jako zdjęcie profilowe.",
-      "NO_ITEMS": "Brak przedmiotów"
+      "NO_NFT_HEADER": "Brak NFT"
     }
   },
   "TDS": {
