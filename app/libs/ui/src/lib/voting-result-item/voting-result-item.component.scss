@@ -40,8 +40,8 @@
   
   
   .content-description {
-    width: 200px;
     min-width: 200px;
+    width: 200px;
   }
 
   .votes-count {
@@ -99,8 +99,8 @@ ui-order-highlight {
     width: calc(100% - 4rem);
 
     .content-description {
-      width: calc(100% - 4rem);
       min-width: calc(100% - 4rem);
+      width: calc(100% - 4rem);
     }
   }
 }

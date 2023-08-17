@@ -149,13 +149,11 @@ export class DAOEffects {
             .pipe(
               //TODO SKIP AND TAKE to improve for pagination - 0 - 20 per page.
               map((response) => response.topics),
-              map((topics) => {
-                return topics.length === 0
+              map((topics) => topics.length === 0
                   ? DAOActions.getAllHistoricTopicsSuccess({
                       topics: storeTopic,
                     })
-                  : DAOActions.getAllHistoricTopicsSuccess({ topics });
-              }),
+                  : DAOActions.getAllHistoricTopicsSuccess({ topics })),
               catchError((error) =>
                 of(DAOActions.getAllHistoricTopicsFailure({ error }))
               )

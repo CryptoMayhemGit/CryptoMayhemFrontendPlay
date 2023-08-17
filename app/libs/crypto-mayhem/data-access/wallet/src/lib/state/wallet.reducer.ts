@@ -18,6 +18,7 @@ export interface WalletState {
   closeWallets: boolean | undefined;
   showCcProfile: boolean | undefined;
   showSummary: boolean;
+  showMetaproQr: boolean;
   loading: boolean;
   tokensSoldPerStage: number;
   maxAdriaTokenAmount: number;
@@ -38,6 +39,7 @@ export const initialState: WalletState = {
   closeWallets: true,
   showCcProfile: false,
   showSummary: false,
+  showMetaproQr: false,
   loading: false,
   tokensSoldPerStage: 0,
   maxAdriaTokenAmount: 0,
@@ -53,6 +55,14 @@ export const walletReducer = createReducer(
     spinner: false,
     connected: true,
     walletType,
+  })),
+  on(WalletActions.changeWalletType, (state, { walletType }) => ({
+    ...state,
+    walletType,
+  })),
+  on(WalletActions.showMetaproQr, (state, { showMetaproQr }) => ({
+    ...state,
+    showMetaproQr,
   })),
   on(WalletActions.connectWalletError, (state) => ({
     ...state,

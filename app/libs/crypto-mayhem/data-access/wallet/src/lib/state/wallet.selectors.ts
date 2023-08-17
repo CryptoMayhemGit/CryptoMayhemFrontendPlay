@@ -71,6 +71,11 @@ export const getLoadingButton = createSelector(
   (state) => state.loading
 );
 
+export const getShowMetaproQr = createSelector(
+  selectWallet,
+  (state) => state.showMetaproQr
+);
+
 export const getTokensSoldPerStage = createSelector(
   selectWallet,
   (state) => state.tokensSoldPerStage

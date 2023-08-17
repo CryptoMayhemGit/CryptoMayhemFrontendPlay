@@ -24,6 +24,16 @@ export const connectWalletSuccess = createAction(
   props<{ walletType: WalletType }>()
 );
 
+export const changeWalletType = createAction(
+  '[Wallet] Change wallet type',
+  props<{ walletType: WalletType }>()
+);
+
+export const showMetaproQr = createAction(
+  '[Wallet] Show metapro qr code',
+  props<{ showMetaproQr: boolean }>()
+);
+
 export const connectWalletError = createAction(
   '[Wallet] Connect wallet action'
 );

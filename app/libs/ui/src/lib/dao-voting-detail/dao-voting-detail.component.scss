@@ -54,8 +54,8 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 100%;
   margin: 6.4rem 0 3.2rem;
+  width: 100%;
 
   .small-header {
     align-items: center;
@@ -117,7 +117,6 @@
 }
 
 #voting {
-
   padding: 3.2rem 4.2rem;
 
   .small-text {

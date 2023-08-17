@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { Store } from '@ngrx/store';
 import { WalletService } from '../services/wallet.service';
+import WalletConnect from '@walletconnect/client';
 
 import {
   hideSpinner,
@@ -12,6 +13,7 @@ import {
   showSpinner,
   showWallets,
   signMessageForLauncher,
+  showMetaproQr,
 } from '../state/wallet.actions';
 
 import * as WalletSelectors from '../state/wallet.selectors';
@@ -39,11 +41,15 @@ export class WalletFacade {
   readonly bnbBalanceOf$ = this.store.select(
     WalletSelectors.bnbBalanceOf
   );
+  readonly walletType$ = this.store.select(WalletSelectors.getWalletType);
+  readonly showMetaproQr$ = this.store.select(WalletSelectors.getShowMetaproQr);
+  readonly metaproConnector: WalletConnect | undefined = undefined;
 
   constructor(
     private readonly store: Store,
     private readonly walletService: WalletService,
-  ) {}
+  ) {
+  }
 
   public setWalletAddress(walletAddress: string): void {
     this.store.dispatch(setWalletAddress({ walletAddress }));
@@ -87,5 +93,17 @@ export class WalletFacade {
 
   public setLanguage(language: string): void {
     this.store.dispatch(setLanguage({ language }));
+  }
+
+  public getQRCodeUrl(): string {
+    return this.walletService.getQRCodeURl();
+  }
+
+  public connectMetaPro(): void {
+    this.walletService.connectMetaProWallet();
+  }
+
+  public showMetaproQr(show: boolean): void {
+    this.store.dispatch(showMetaproQr({ showMetaproQr: show }));
   }
 }

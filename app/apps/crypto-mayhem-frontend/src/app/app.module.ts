@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client';
+import { MetaproQrModule } from 'libs/ui/src/lib/metapro-qr/metapro-qr.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -46,6 +47,7 @@ import { InMemoryCache } from '@apollo/client';
     ReactiveFormsModule,
     NotificationsModule,
     ApolloModule,
+    MetaproQrModule
   ],
   providers: [
     // {
