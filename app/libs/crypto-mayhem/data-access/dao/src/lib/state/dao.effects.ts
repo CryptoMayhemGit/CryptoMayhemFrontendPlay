@@ -85,7 +85,7 @@ export class DAOEffects {
     this.actions$.pipe(
       ofType(
         WalletActions.connectWalletSuccess,
-        DAOActions.getAllHistoricTopicsSuccess,
+        DAOActions.getAllHistoricTopics,
         DAOActions.postDaoVoteWithSignature,
         WalletActions.setLanguage
       ),
@@ -130,8 +130,8 @@ export class DAOEffects {
   getAllHistoricTopics$ = createEffect(() =>
     this.actions$.pipe(
       ofType(
-        WalletActions.connectWalletSuccess,
         DAOActions.getAllHistoricTopics,
+        WalletActions.connectWalletSuccess,
         DAOActions.postDaoVoteWithSignatureSuccess,
         WalletActions.setLanguage
       ),
