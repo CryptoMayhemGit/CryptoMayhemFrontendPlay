@@ -9,36 +9,6 @@
   position: relative;
   width: 3.2rem;
 
-  &::before {
-    background: linear-gradient(
-      90deg,
-      transparent 75%,
-      rgb(242 242 242 / 40%) 75%
-    );
-    content: "";
-    height: 1px;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100%;
-  }
-
-  &::after {
-    background: linear-gradient(
-      90deg,
-      transparent 75%,
-      rgb(242 242 242 / 40%) 75%
-    );
-    bottom: 0;
-    content: "";
-    height: 1px;
-    left: 0;
-    position: absolute;
-    right: 0;
-    width: 100%;
-  }
-
   &.active {
     border-color: var(--accent-secondary);
 
