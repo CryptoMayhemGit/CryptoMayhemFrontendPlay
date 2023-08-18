@@ -58,16 +58,11 @@
 }
 
 .column {
+  border-bottom: 1px solid #F2F2F266;
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: center;
-  width: 100%;
-}
-
-.progress {
-  background-color: white;
-  height: 0.2rem;
   width: 100%;
 }
 
@@ -80,7 +75,7 @@ ui-order-highlight {
   display: inline-block;
   height: 100%;
   margin: 0 1.3rem;
-  width: 0.01rem;
+  width: 1px;
 }
 
 @media screen and (max-width: 767px) {
