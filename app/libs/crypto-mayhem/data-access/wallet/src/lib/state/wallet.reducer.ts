@@ -16,7 +16,6 @@ export interface WalletState {
   canBuyMore: boolean;
   showWallets: boolean;
   closeWallets: boolean | undefined;
-  showCcProfile: boolean | undefined;
   showSummary: boolean;
   showMetaproQr: boolean;
   loading: boolean;
@@ -37,7 +36,6 @@ export const initialState: WalletState = {
   canBuyMore: true,
   showWallets: false,
   closeWallets: true,
-  showCcProfile: false,
   showSummary: false,
   showMetaproQr: false,
   loading: false,
@@ -108,7 +106,7 @@ export const walletReducer = createReducer(
   ),
   on(WalletActions.showSpinner, (state) => ({ ...state, spinner: true })),
   on(WalletActions.hideSpinner, (state) => ({ ...state, spinner: false })),
-  on(WalletActions.showWallets, (state, { close, showCcProfile }) => ({ ...state, showWallets: true, closeWallets: close === false ? close : true, showCcProfile: showCcProfile === true ? showCcProfile : false })),
+  on(WalletActions.showWallets, (state, { close }) => ({ ...state, showWallets: true, closeWallets: close === false ? close : true })),
   on(WalletActions.hideWallets, (state) => ({ ...state, showWallets: false, closeWallets: true })),
   on(WalletActions.hideSummary, (state) => ({
     ...state,

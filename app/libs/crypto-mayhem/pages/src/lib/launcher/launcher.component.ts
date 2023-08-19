@@ -28,7 +28,7 @@ export class LauncherComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.walletFacade.showWallets(false, true);
+    this.walletFacade.showWallets(false);
 
     this.account$.pipe(
       takeUntil(this.destroyed$),

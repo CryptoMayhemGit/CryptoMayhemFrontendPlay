@@ -14,7 +14,6 @@ export const environment = {
   stage: 0, //Binance Smart Chain
   domain: 'cryptomayhem.io',
   webGlLocation: 'assets/unity/',
-  cyberConnectUrl: 'https://api.cyberconnect.dev/',
   faceWalletAPIKey: 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCeafz-WGBvFmbe_DL456Q-HWNMD4yUnc7Ah2t9uOSajGTdbo23DRR7t9yHWk4pd8nytDWK8j77SVFN8S2orXJGyIa94-N0xaeJAwRjyBwm0mDJcZcjKALn5pQAI37h9W4_W0WYLPa6KpJpVfCLyd89qps-0qEu7NvqAuN0yxxMqQIDAQAB',
   faceWalletMainnet: false,
 };
