@@ -54,9 +54,9 @@ export class DaoHistoryComponent implements OnInit {
   }
 
   public onScroll() {
-    this.skip += this.take;
-    this.take += this.take;
-    this.daoFacade.getDaoAllHistoricTopics(this.skip, this.take);
+    //this.skip += this.take; //TODO SKIP AND TAKE to improve for pagination - 0 - 20 per page.
+    //this.take += this.take; //TODO SKIP AND TAKE to improve for pagination - 0 - 20 per page.
+    //this.daoFacade.getDaoAllHistoricTopics(this.skip, this.take);  //TODO SKIP AND TAKE to improve for pagination - 0 - 20 per page.
   }
 
   public onQuestionClick(id: number): void {
