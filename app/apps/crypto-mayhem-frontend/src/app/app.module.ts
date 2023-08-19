@@ -20,9 +20,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
-import { HttpLink } from 'apollo-angular/http';
-import { InMemoryCache } from '@apollo/client';
 import { MetaproQrModule } from 'libs/ui/src/lib/metapro-qr/metapro-qr.module';
 
 @NgModule({
@@ -46,7 +43,6 @@ import { MetaproQrModule } from 'libs/ui/src/lib/metapro-qr/metapro-qr.module';
     FormsModule,
     ReactiveFormsModule,
     NotificationsModule,
-    ApolloModule,
     MetaproQrModule
   ],
   providers: [
@@ -62,19 +58,7 @@ import { MetaproQrModule } from 'libs/ui/src/lib/metapro-qr/metapro-qr.module';
     {
       provide: APP_CONFIG,
       useValue: environment,
-    },
-    {
-      provide: APOLLO_OPTIONS,
-      useFactory(httpLink: HttpLink) {
-        return {
-          cache: new InMemoryCache(),
-          link: httpLink.create({
-            uri: 'https://api.cyberconnect.dev/',
-          }),
-        };
-      },
-      deps: [HttpLink],
-    },
+    }
   ],
   bootstrap: [AppComponent],
 })

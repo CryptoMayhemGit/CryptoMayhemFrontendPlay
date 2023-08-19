@@ -32,14 +32,6 @@ declare global {
   }
 }
 
-export const LOGIN_GET_MESSAGE = gql`
-  mutation LoginGetMessage($input: LoginGetMessageInput!) {
-    loginGetMessage(input: $input) {
-      message
-    }
-  }
-`;
-
 import * as WalletActions from '../state/wallet.actions';
 import { Observable } from 'rxjs';
 import { SALE_TOKEN } from './wallet.endpoints';
@@ -55,8 +47,6 @@ import {
 import { isMobile } from 'libs/utility/functions/src';
 import { NotificationsService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 import { Router } from '@angular/router';
-import { Apollo, gql } from 'apollo-angular';
-import { FetchResult } from '@apollo/client';
 
 const ACCOUNTS_CHANGED = 'accountsChanged';
 const CHAIN_CHANGED = 'chainChanged';
@@ -70,7 +60,6 @@ export class WalletService {
 
   constructor(
     private readonly httpClient: HttpClient,
-    private readonly apollo: Apollo,
     private store: Store,
     private readonly notificationsService: NotificationsService,
     private router: Router,
@@ -385,84 +374,31 @@ export class WalletService {
     });
   }
 
-  public async getCyberConnectLoginMessage(address: string): Promise<string> {
-    const result = await this.apollo.mutate({
-      mutation: LOGIN_GET_MESSAGE,
-      variables: {
-        input: {
-          domain: this.appConfig.domain,
-          address: address
-        }
-      }
-    }).toPromise();
-
-    const fetchResult = result as FetchResult<{ loginGetMessage: { message: string } }>;
-
-    return fetchResult?.data?.loginGetMessage?.message || '';
-  }
-
-  public async signMessageForLauncher(wallet: string, nonce: number, handle?: string): Promise<void>{
+  public async signMessageForLauncher(wallet: string, nonce: number): Promise<void>{
     if(this.provider) {
       try{
-        let message = '';
         let data: any = '';
 
-        if (handle !== '' && handle !== undefined && handle !== 'undefined') {
-          try {
-            message  = await this.getCyberConnectLoginMessage(wallet);
+        data = {wallet, nonce};
+        const signer = await this.provider.getSigner();
+        signer.signMessage(JSON.stringify(data))
+        .then((signature) => {
+          const dataJson: SignedMessage = {
+            data: JSON.stringify(data),
+            signature
           }
-          catch(error) {
-            console.error(error);
-            this.notificationsService.error(
-              'ccProfile is not available. Try different provider.',
-            );
-            return;
-          }
-        }
 
-        if (message) {
-          data = {wallet, nonce, message, handle};
-          const signer = await this.provider.getSigner();
-          signer.signMessage(message)
-          .then((signature) => {
-            const dataJson: SignedMessage = {
-              data: JSON.stringify(data),
-              signature
-            }
+          const baseData = window.btoa(JSON.stringify(dataJson));
+          this.router.navigate(['']);
+          window.open(`MayhemLauncher://?data=${baseData}`);
 
-            const baseData = window.btoa(JSON.stringify(dataJson));
-            this.router.navigate(['']);
-            window.open(`MayhemLauncher://?data=${baseData}`);
-
-          },
-          (error) => {
-            console.error(error);
-            this.notificationsService.error(
-              'NOTIFICATIONS.ERROR_OCCURRED',
-            );
-          });
-        } else {
-          data = {wallet, nonce};
-          const signer = await this.provider.getSigner();
-          signer.signMessage(JSON.stringify(data))
-          .then((signature) => {
-            const dataJson: SignedMessage = {
-              data: JSON.stringify(data),
-              signature
-            }
-
-            const baseData = window.btoa(JSON.stringify(dataJson));
-            this.router.navigate(['']);
-            window.open(`MayhemLauncher://?data=${baseData}`);
-
-          },
-          (error) => {
-            console.error(error);
-            this.notificationsService.error(
-              'NOTIFICATIONS.ERROR_OCCURRED',
-            );
-          });
-        }
+        },
+        (error) => {
+          console.error(error);
+          this.notificationsService.error(
+            'NOTIFICATIONS.ERROR_OCCURRED',
+          );
+        });
 
       }
       catch(error){

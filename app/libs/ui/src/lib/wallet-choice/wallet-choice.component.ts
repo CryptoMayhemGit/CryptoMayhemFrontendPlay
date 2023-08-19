@@ -14,7 +14,6 @@ import { Observable, of } from 'rxjs';
 export class WalletChoiceComponent {
   caretRight = faCaretRight;
   closeWallets$: Observable<boolean | undefined> = of(true);
-  showCcProfile$: Observable<boolean | undefined> = of(false);
   public closeHandlerPrompt = false;
   public handle = '';
   account$!: Observable<string>
@@ -26,7 +25,6 @@ export class WalletChoiceComponent {
     private router: Router
     ) {
     this.closeWallets$ = this.walletFacade.closeWallets$
-    this.showCcProfile$ = this.walletFacade.showCcProfile$
   }
 
   public hideWallets() {
@@ -41,10 +39,5 @@ export class WalletChoiceComponent {
 
   public get walletType(): typeof WalletType {
     return WalletType;
-  }
-
-  public ccProfileConnect() {
-    this.hideWallets();
-    this.router.navigate(['/ccprofile']);
   }
 }
