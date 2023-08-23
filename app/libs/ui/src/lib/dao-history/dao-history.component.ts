@@ -11,8 +11,9 @@ import { map, Observable, of, take } from 'rxjs';
 })
 export class DaoHistoryComponent implements OnInit {
 
-  spinnerSmall$: Observable<boolean> = of(false);
-  spinnerLarge$: Observable<boolean> = of(true);
+  isFirstClickDone = false;
+  spinnerSmallHistoric$: Observable<boolean> = of(false);
+  spinnerLargeHistoric$: Observable<boolean> = of(true);
   daoHistoryTopics$!: Observable<DaoTopic[]>;
   daoShortHistoryTopics$!: Observable<{id: number, name: string}[]>;
   choiceDaoHistoryTopicId = 1;
@@ -26,12 +27,17 @@ export class DaoHistoryComponent implements OnInit {
     private readonly daoFacade: DAOFacade,
   ) {
     this.daoHistoryTopics$ = this.daoFacade.daoAllHistoricTopics$;
-    this.spinnerSmall$ = this.daoFacade.daoSmallSpinner$;
-    this.spinnerLarge$ = this.daoFacade.daoLargeSpinner$;
+    this.spinnerSmallHistoric$ = this.daoFacade.daoSmallSpinnerHistoric$;
+    this.spinnerLargeHistoric$ = this.daoFacade.daoLargeSpinnerHistoric$;
     this.daoShortHistoryTopics$ = this.daoFacade.daoAllHistoricTopics$
     .pipe(
       map((topics) => topics.map((topic) => ({id: topic.id, name: topic.name}))
     ));
+
+    this.spinnerLargeHistoric$.subscribe(() => 
+    {
+      this.isFirstClickDone = false;
+    });
   }
 
   ngOnInit(): void {
@@ -48,14 +54,15 @@ export class DaoHistoryComponent implements OnInit {
   }
 
   public onScroll() {
-    this.skip += this.take;
-    this.take += this.take;
-    this.daoFacade.getDaoAllHistoricTopics(this.skip, this.take);
+    //this.skip += this.take; //TODO SKIP AND TAKE to improve for pagination - 0 - 20 per page.
+    //this.take += this.take; //TODO SKIP AND TAKE to improve for pagination - 0 - 20 per page.
+    //this.daoFacade.getDaoAllHistoricTopics(this.skip, this.take);  //TODO SKIP AND TAKE to improve for pagination - 0 - 20 per page.
   }
 
   public onQuestionClick(id: number): void {
     this.daoFacade.getDaoHistoryTopicById(id)
     .subscribe((dao) => {
+      this.isFirstClickDone = true;
       this.choiceDaoHistoryTopic = dao;
     })
   }

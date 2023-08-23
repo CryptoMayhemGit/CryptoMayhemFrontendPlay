@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import {
   NavigationHeaderModule,
   NotificationsModule,
+  VestingModule,
   WalletChoiceModule,
 } from '@crypto-mayhem-frontend/ui';
 import { AuthInterceptor } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors';
@@ -19,9 +20,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
-import { HttpLink } from 'apollo-angular/http';
-import { InMemoryCache } from '@apollo/client';
+import { MetaproQrModule } from 'libs/ui/src/lib/metapro-qr/metapro-qr.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,12 +37,13 @@ import { InMemoryCache } from '@apollo/client';
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
     WalletChoiceModule,
+    VestingModule,
     NavigationHeaderModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
     NotificationsModule,
-    ApolloModule,
+    MetaproQrModule
   ],
   providers: [
     // {
@@ -58,19 +58,7 @@ import { InMemoryCache } from '@apollo/client';
     {
       provide: APP_CONFIG,
       useValue: environment,
-    },
-    {
-      provide: APOLLO_OPTIONS,
-      useFactory(httpLink: HttpLink) {
-        return {
-          cache: new InMemoryCache(),
-          link: httpLink.create({
-            uri: 'https://api.cyberconnect.dev/',
-          }),
-        };
-      },
-      deps: [HttpLink],
-    },
+    }
   ],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,12 @@
+<ui-modal-base [width]="'20rem'" (close)="closeMetaproQr()" [showClose]="true">
+  <div class="body-wrapper">
+    <div class="body-header">
+      <img
+        src="./assets/images/Metapro.png"
+        alt="metapro"
+        role="presentation"
+      />
+    </div>
+    <img [src]="walletFacade.getQRCodeUrl()" alt="QR Code" />
+  </div>
+</ui-modal-base>

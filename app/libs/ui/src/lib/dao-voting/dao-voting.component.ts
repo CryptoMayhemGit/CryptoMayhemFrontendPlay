@@ -12,8 +12,8 @@ import { DaoTopic } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/dao-
 })
 export class DaoVotingComponent{
 
-  spinnerSmall$: Observable<boolean> = of(false);
-  spinnerLarge$: Observable<boolean> = of(true);
+  spinnerSmallActive$: Observable<boolean> = of(false);
+  spinnerLargeActive$: Observable<boolean> = of(true);
   daoTopics$!: Observable<DaoTopic[]>;
   tabs: string[] = [];
   activeTab = 0;
@@ -24,8 +24,9 @@ export class DaoVotingComponent{
     public readonly walletFacade: WalletFacade,
     public readonly daoFacade: DAOFacade) {
     this.daoTopics$ = this.daoFacade.daoAllActiveTopics$;
-    this.spinnerSmall$ = this.daoFacade.daoSmallSpinner$;
-    this.spinnerLarge$ = this.daoFacade.daoLargeSpinner$;
+    this.spinnerSmallActive$ = this.daoFacade.daoSmallSpinnerActive$;
+    this.spinnerLargeActive$ = this.daoFacade.daoLargeSpinnerActive$;
+    this.spinnerLargeActive$.subscribe((data) => { console.log(data); });
     this.daoTopics$.pipe(
       take(1),
       ).subscribe(

@@ -84,19 +84,19 @@
     </div>
     <div id="nfts">
       <div *ngIf="!(search.valueChanges | async) && section === 'recommended'">
-        <p class="with-line">
-          {{ "MY_ACCOUNT.AVATAR.RECOMMENDED" | transloco }}
-        </p>
+        <p class="with-line"></p>
+        <h1>{{ "MY_ACCOUNT.AVATAR.NO_NFT_HEADER" | transloco }}</h1>
+        <p>{{ "MY_ACCOUNT.AVATAR.NO_NFT_MESSAGE" | transloco }}</p>
       </div>
       <div *ngIf="search.valueChanges | async">
         <p class="with-line"></p>
-
         <h1>{{ "MY_ACCOUNT.AVATAR.NO_NFT" | transloco }}</h1>
         <p>{{ "MY_ACCOUNT.AVATAR.NO_NFT_MESSAGE" | transloco }}</p>
       </div>
       <div *ngIf="section && section !== 'recommended'">
         <p class="with-line"></p>
-        <h1>{{ "MY_ACCOUNT.AVATAR.NO_ITEMS" | transloco }}</h1>
+        <h1>{{ "MY_ACCOUNT.AVATAR.NO_NFT_HEADER" | transloco }}</h1>
+        <p>{{ "MY_ACCOUNT.AVATAR.NO_NFT_MESSAGE" | transloco }}</p>
       </div>
     </div>
   </div>

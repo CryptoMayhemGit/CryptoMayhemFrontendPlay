@@ -21,11 +21,6 @@ export const getCloseWallets = createSelector(
   (state) => state.closeWallets
 );
 
-export const getShowCcProfile = createSelector(
-  selectWallet,
-  (state) => state.showCcProfile
-)
-
 export const getAccount = createSelector(
   selectWallet,
   (state) => state.account
@@ -69,6 +64,11 @@ export const getCanBuyMore = createSelector(
 export const getLoadingButton = createSelector(
   selectWallet,
   (state) => state.loading
+);
+
+export const getShowMetaproQr = createSelector(
+  selectWallet,
+  (state) => state.showMetaproQr
 );
 
 export const getTokensSoldPerStage = createSelector(

@@ -24,6 +24,16 @@ export const connectWalletSuccess = createAction(
   props<{ walletType: WalletType }>()
 );
 
+export const changeWalletType = createAction(
+  '[Wallet] Change wallet type',
+  props<{ walletType: WalletType }>()
+);
+
+export const showMetaproQr = createAction(
+  '[Wallet] Show metapro qr code',
+  props<{ showMetaproQr: boolean }>()
+);
+
 export const connectWalletError = createAction(
   '[Wallet] Connect wallet action'
 );
@@ -39,7 +49,7 @@ export const hideSpinner = createAction('[Wallet] Hide spinner');
 
 export const showWallets = createAction(
   '[Wallet] Show available wallets',
-  props<{ close: boolean | undefined, showCcProfile: boolean | undefined }>()
+  props<{ close: boolean | undefined}>()
   );
 
 export const hideWallets = createAction('[Wallet] Hide available wallets');

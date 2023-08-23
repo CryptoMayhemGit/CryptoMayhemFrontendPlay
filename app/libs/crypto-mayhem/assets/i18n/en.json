@@ -119,12 +119,40 @@
     "REGISTER_MESSAGE": "Register attempt",
     "LOGIN_MESSAGE": "Login attempt"
   },
+  "VESTING": {
+    "HEADER": "Vesting - taking your tokens in every block",
+    "INFO": {
+      "DETAILS": {
+        "1": "Plan vesting your ADRIA in every block",
+        "2": "You can apply for the available token amount at any time by clicking the 'Claim Adria' button",
+        "3": "After claiming your tokens will be sent to your wallet",
+        "4": "You can come back every day to claim your newly acquired tokens (until the entire balance is claimed)."
+      },
+      "WARNING": "Warning: ",
+      "WARNING_TEXT": "You can not claim your tokens without clicking the 'Claim Adria' button",
+      "ATTENTION": "Attention: ",
+      "ATTENTION_TEXT": "Please remember that you must have BNB (bep-20) in your wallet to cover network fees each time you claim your ADRIA token"
+    },
+    "CLAIM": {
+      "START": "Start vesting",
+      "END": "End vesting",
+      "MONTH": "Month",
+      "BOUGHT_TOKEN": "Bought tokens",
+      "AMOUNT": "Amount of ADRIA token which you can claim",
+      "CLAIM_TOKEN": "Claim token",
+      "GET": "Received",
+      "PICK": "To pick up",
+      "BLOCK": "Block",
+      "BOUGHT": "Bought",
+      "CLAIM_ADRIA": "Claim Adria"
+    }
+  },
   "PRESALE": {
     "PROGRESS": "Amount of ADRIA token sold",
     "INFO": {
       "DETAILS": {
         "HEADER": "Official presale of ADRIA token details",
-        "1": "Private Sale will be open from Friday, 02.12.2022",
+        "1": "Private Sale",
         "2": "Minimum purchase amount: 50 USDC",
         "3": "Price in sale 0.002 USDC",
         "4": "10% at TGE, rest unblocked every block for 9 months"
@@ -133,6 +161,10 @@
       "CLAIM": {
         "HEADER": "How to claim bought tokens?",
         "MESSAGE": "You can transfer the bought ADRIA tokens to your wallet in the Vesting tab, which will be available soon."
+      },
+      "PLAY_NEW_MISSION": {
+        "HEADER": "EXTRA OPTIONS",
+        "MESSAGE": "Crypto Mayhem: Top-Down Shooter available in full only through the Mayhem Launcher"
       },
       "ADRIA_TOKEN": {
         "HEADER": "Adria token",
@@ -256,10 +288,9 @@
     "GO_TO_NFT": "Go to your NFT's",
     "AVATAR": {
       "SET_AVATAR": "Choose NFT as your profile picture",
-      "RECOMMENDED": "Recommended for you",
       "NO_NFT": "No NFT",
       "NO_NFT_MESSAGE": "You don't have any NFTs from the Crypto Mayhem project that you can use as a profile picture.",
-      "NO_ITEMS": "No items"
+      "NO_NFT_HEADER": "No NFT"
     }
   },
   "TDS": {

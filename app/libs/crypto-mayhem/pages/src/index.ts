@@ -7,4 +7,3 @@ export * from './lib/top-down-shooter/top-down-shooter.component';
 export * from './lib/dao/dao.component';
 export * from './lib/top-down-shooter/top-down-shooter.component';
 export * from './lib/launcher/launcher.component';
-export * from './lib/cc-profile/ccProfile.component';

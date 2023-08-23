@@ -136,24 +136,40 @@
         </div>
       </ui-submenu>
     </div>
-    <a href="#" [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco" class="disabled" (click)="mobileVisible = false">{{
-      "NAVBAR.NAV.NFT" | transloco
-    }}</a>
+    <a
+      href="#"
+      [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco"
+      class="disabled"
+      (click)="mobileVisible = false"
+      >{{ "NAVBAR.NAV.NFT" | transloco }}</a
+    >
     <a
       routerLink="dao"
       [ngClass]="{ 'active-item': activePage === 'dao' }"
       (click)="mobileVisible = false; activePage = 'dao'"
       >{{ "NAVBAR.NAV.DAO" | transloco }}</a
     >
-    <a href="#" [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco" class="disabled" (click)="mobileVisible = false">{{
-      "NAVBAR.NAV.STAKING" | transloco
-    }}</a>
-    <a href="#" [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco" class="disabled" (click)="mobileVisible = false">{{
-      "NAVBAR.NAV.VESTING" | transloco
-    }}</a>
-    <a href="#" [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco" class="disabled" (click)="mobileVisible = false">{{
-      "NAVBAR.NAV.NEWS" | transloco
-    }}</a>
+    <a
+      href="#"
+      [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco"
+      class="disabled"
+      (click)="mobileVisible = false"
+      >{{ "NAVBAR.NAV.STAKING" | transloco }}</a
+    >
+    <a
+      href="#"
+      [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco"
+      class="disabled"
+      (click)="mobileVisible = false"
+      >{{ "NAVBAR.NAV.VESTING" | transloco }}</a
+    >
+    <a
+      href="#"
+      [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco"
+      class="disabled"
+      (click)="mobileVisible = false"
+      >{{ "NAVBAR.NAV.NEWS" | transloco }}</a
+    >
     <a
       routerLink="presale"
       [ngClass]="{ 'active-item': activePage === 'presale' }"

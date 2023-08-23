@@ -1,7 +1,4 @@
 :host {
-  align-items: center;
-  display: flex;
-  height: 2.5rem;
   margin-left: 1rem;
 }
 
@@ -22,7 +19,6 @@ input[type="radio"] {
   border-radius: 50%;
   display: grid;
   height: 1.1rem;
-  margin: 0;
   opacity: 0.8;
   place-content: center;
   position: relative;
@@ -52,7 +48,7 @@ input[type="radio"]::before {
   height: 2.7rem;
   left: -0.85rem;
   position: absolute;
-  top: -0.82rem;
+  top: -0.93rem;
   transition: all 0.2s ease-in-out;
   width: 2.6rem;
 }

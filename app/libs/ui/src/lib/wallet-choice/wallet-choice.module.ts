@@ -6,6 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslocoModule } from '@ngneat/transloco';
 import { ModalBaseModule } from '../modal-base/modal-base.module';
 import { WalletChoiceComponent } from './wallet-choice.component';
+import { MetaproQrModule } from '../metapro-qr/metapro-qr.module';
 
 @NgModule({
   declarations: [WalletChoiceComponent],
@@ -16,7 +17,8 @@ import { WalletChoiceComponent } from './wallet-choice.component';
     FontAwesomeModule,
     CryptoMayhemDataAccessWalletModule,
     TranslocoModule,
-    FormsModule
+    FormsModule,
+    MetaproQrModule
   ],
   exports: [WalletChoiceComponent],
 })

@@ -6,6 +6,7 @@ import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wa
 import { Store } from '@ngrx/store';
 import WalletConnectProvider from '@walletconnect/web3-provider';
 import { Face, Network } from '@haechi-labs/face-sdk';
+import WalletConnect from '@walletconnect/client';
 
 interface SignedWalletWithAmount {
   signature: string;
@@ -31,14 +32,6 @@ declare global {
   }
 }
 
-export const LOGIN_GET_MESSAGE = gql`
-  mutation LoginGetMessage($input: LoginGetMessageInput!) {
-    loginGetMessage(input: $input) {
-      message
-    }
-  }
-`;
-
 import * as WalletActions from '../state/wallet.actions';
 import { Observable } from 'rxjs';
 import { SALE_TOKEN } from './wallet.endpoints';
@@ -50,11 +43,10 @@ import {
   AdriaVestingContractFactory,
   UsdcTokenContractFactory,
 } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/contract-model';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { isMobile } from 'libs/utility/functions/src';
 import { NotificationsService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone';
 import { Router } from '@angular/router';
-import { Apollo, gql } from 'apollo-angular';
-import { FetchResult } from '@apollo/client';
 
 const ACCOUNTS_CHANGED = 'accountsChanged';
 const CHAIN_CHANGED = 'chainChanged';
@@ -64,10 +56,10 @@ const DISCONNECT = 'disconnect';
 export class WalletService {
   private provider: Web3Provider | undefined = undefined;
   private face: Face | undefined = undefined;
+  public connector: WalletConnect | undefined = undefined;
 
   constructor(
     private readonly httpClient: HttpClient,
-    private readonly apollo: Apollo,
     private store: Store,
     private readonly notificationsService: NotificationsService,
     private router: Router,
@@ -284,8 +276,83 @@ export class WalletService {
             console.error(error);
           }
         }
+        break;
+      }
+      case WalletType.metapro: {
+        if (!this.connector) {
+          const connector: WalletConnect | null = new WalletConnect({
+            bridge: 'https://tst-bridge.metaprotocol.one',
+            qrcodeModal: {
+              open(uri) {},
+              close() {},
+            },
+          });
+
+          this.store.dispatch(WalletActions.changeWalletType({ walletType }));
+          this.connector = connector;
+          this.connectMetaProWallet().then(() => {
+            console.log('connectMetaProWallet');
+          });
+        }
+        this.store.dispatch(WalletActions.showMetaproQr({ showMetaproQr: true }));
+        break;
       }
     }
+  }
+
+  public async connectMetaProWallet(): Promise<void> {
+    if (this.connector) {
+      await this.connector.connect();
+      this.connector.on('connect', (error, payload) => {
+        this.provider = new ethers.providers.Web3Provider(this.connector as any);
+      });
+
+      this.connector.on('session_update', (error, payload) => {
+        const account = payload.params[0].accounts[0];
+
+        this.store.dispatch(
+          WalletActions.accountsChanged({
+            account,
+          })
+        );
+
+        const provider = new WalletConnectProvider({
+          bridge: 'https://tst-bridge.metaprotocol.one',
+          chainId: this.appConfig.chainIdNumberBinance,
+          rpc: {
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            56: 'https://bsc-dataseed.binance.org/',
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            97: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
+          },
+        });
+        this.provider = new ethers.providers.Web3Provider(provider as any);
+
+        (this.provider.provider as any).enable().then(() => {
+          this.store.dispatch(
+            WalletActions.connectWalletSuccess({
+              walletType: WalletType.metapro,
+            })
+          );
+          this.store.dispatch(WalletActions.showMetaproQr({ showMetaproQr: false }));
+          this.createProviderHooks(provider);
+        });
+      });
+
+      this.connector.on('disconnect', (error, payload) => {
+        this.connector = undefined;
+      });
+    }
+  }
+
+  public getQRCodeURl(): string {
+    if (this.connector && this.connector.uri) {
+      const encodedUri = encodeURIComponent(
+        `metapro://wc?uri=${this.connector.uri}`
+      );
+      return `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodedUri}`;
+    }
+    return '';
   }
 
   public disconnectWallet(): void {
@@ -307,84 +374,31 @@ export class WalletService {
     });
   }
 
-  public async getCyberConnectLoginMessage(address: string): Promise<string> {
-    const result = await this.apollo.mutate({
-      mutation: LOGIN_GET_MESSAGE,
-      variables: {
-        input: {
-          domain: this.appConfig.domain,
-          address: address
-        }
-      }
-    }).toPromise();
-
-    const fetchResult = result as FetchResult<{ loginGetMessage: { message: string } }>;
-
-    return fetchResult?.data?.loginGetMessage?.message || '';
-  }
-
-  public async signMessageForLauncher(wallet: string, nonce: number, handle?: string): Promise<void>{
+  public async signMessageForLauncher(wallet: string, nonce: number): Promise<void>{
     if(this.provider) {
       try{
-        let message = '';
         let data: any = '';
 
-        if (handle !== '' && handle !== undefined && handle !== 'undefined') {
-          try {
-            message  = await this.getCyberConnectLoginMessage(wallet);
+        data = {wallet, nonce};
+        const signer = await this.provider.getSigner();
+        signer.signMessage(JSON.stringify(data))
+        .then((signature) => {
+          const dataJson: SignedMessage = {
+            data: JSON.stringify(data),
+            signature
           }
-          catch(error) {
-            console.error(error);
-            this.notificationsService.error(
-              'ccProfile is not available. Try different provider.',
-            );
-            return;
-          }
-        }
 
-        if (message) {
-          data = {wallet, nonce, message, handle};
-          const signer = await this.provider.getSigner();
-          signer.signMessage(message)
-          .then((signature) => {
-            const dataJson: SignedMessage = {
-              data: JSON.stringify(data),
-              signature
-            }
+          const baseData = window.btoa(JSON.stringify(dataJson));
+          this.router.navigate(['']);
+          window.open(`MayhemLauncher://?data=${baseData}`);
 
-            const baseData = window.btoa(JSON.stringify(dataJson));
-            this.router.navigate(['']);
-            window.open(`MayhemLauncher://?data=${baseData}`);
-
-          },
-          (error) => {
-            console.error(error);
-            this.notificationsService.error(
-              'NOTIFICATIONS.ERROR_OCCURRED',
-            );
-          });
-        } else {
-          data = {wallet, nonce};
-          const signer = await this.provider.getSigner();
-          signer.signMessage(JSON.stringify(data))
-          .then((signature) => {
-            const dataJson: SignedMessage = {
-              data: JSON.stringify(data),
-              signature
-            }
-  
-            const baseData = window.btoa(JSON.stringify(dataJson));
-            this.router.navigate(['']);
-            window.open(`MayhemLauncher://?data=${baseData}`);
-  
-          },
-          (error) => {
-            console.error(error);
-            this.notificationsService.error(
-              'NOTIFICATIONS.ERROR_OCCURRED',
-            );
-          });
-        }
+        },
+        (error) => {
+          console.error(error);
+          this.notificationsService.error(
+            'NOTIFICATIONS.ERROR_OCCURRED',
+          );
+        });
 
       }
       catch(error){
