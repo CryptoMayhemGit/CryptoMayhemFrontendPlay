@@ -157,9 +157,10 @@
       >{{ "NAVBAR.NAV.STAKING" | transloco }}</a
     >
     <a
-      routerLink="vesting"
-      [ngClass]="{ 'active-item': activePage === 'vesting' }"
-      (click)="mobileVisible = false; activePage = 'vesting'"
+      href="#"
+      [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco"
+      class="disabled"
+      (click)="mobileVisible = false"
       >{{ "NAVBAR.NAV.VESTING" | transloco }}</a
     >
     <a
