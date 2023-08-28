@@ -137,10 +137,10 @@
       </ui-submenu>
     </div>
     <a
-      href="#"
-      [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco"
-      class="disabled"
-      (click)="mobileVisible = false"
+      href="https://market.cryptomayhem.io/"
+      class="enable"
+      [ngClass]="{ 'active-item': activePage === 'market' }"
+      (click)="mobileVisible = false; activePage = 'market'"
       >{{ "NAVBAR.NAV.NFT" | transloco }}</a
     >
     <a
