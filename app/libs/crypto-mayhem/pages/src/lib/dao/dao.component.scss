@@ -1,6 +1,10 @@
 
 @import 'libs/crypto-mayhem/styles/mixins';
 
+ui-dao-history {
+  align-items: center;
+}
+
 :host {
   display: flex;
   flex-direction: column;
@@ -199,6 +203,10 @@ hr {
 }
 
 @media screen and (min-width: 1240px) {
+  ui-dao-history {
+    align-items: flex-start;
+  }
+
   :host {
     margin: 3.2rem auto 0;
   }
