@@ -28,7 +28,6 @@ export class DaoVotingComponent{
     this.spinnerLargeActive$.subscribe((data) => { console.log(data); });
     this.daoTopics$.subscribe(
         (topics) => {
-          console.log(topics);
           this.setTabs(topics.length);
         }
       );
