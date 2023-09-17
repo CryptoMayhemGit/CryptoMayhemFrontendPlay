@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { WalletFacade } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
-import { Observable, filter, of, take } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { DAOFacade } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/dao";
 import { DaoTopic } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/dao-model';
 
