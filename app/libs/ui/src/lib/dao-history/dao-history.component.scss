@@ -128,3 +128,9 @@ ui-voting-result-item {
     width: 100%;
   }
 }
+
+@media screen and (max-width: 500px) {
+  ui-voting-result-item {
+    justify-content: flex-start;
+  }
+}
