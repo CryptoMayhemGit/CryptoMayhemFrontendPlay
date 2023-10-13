@@ -9,6 +9,7 @@ import {
 } from '@crypto-mayhem-frontend/ui';
 import { EffectsModule } from '@ngrx/effects';
 import { CryptoMayhemDataAccessDaoModule, DAOEffects } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/dao';
+import { CryptoMayhemDataAccessVestingModule, VestingEffects } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/vesting';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { CryptoMayhemDataAccessDaoModule, DAOEffects } from '@crypto-mayhem-fron
     DaoVotingModule,
     DaoHistoryModule,
     EffectsModule.forFeature([DAOEffects]),
-    CryptoMayhemDataAccessDaoModule
+    CryptoMayhemDataAccessDaoModule,
+    EffectsModule.forFeature([VestingEffects]),
+    CryptoMayhemDataAccessVestingModule
   ],
   exports: [DaoComponent],
 })

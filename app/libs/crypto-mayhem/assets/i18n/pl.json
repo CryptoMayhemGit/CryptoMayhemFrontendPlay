@@ -124,13 +124,10 @@
     "HEADER": "Vesting - odbieraj swoje tokeny w każdym bloku",
     "INFO": {
       "DETAILS": {
-        "1": "Zaplanuj vesting swoich ADRIA w każdym bloku",
-        "2": "Możesz ubiegać się o dostępną ilość tokena w dowolnym momencie, klikając 'Odbierz Adria'",
-        "3": "Po odebraniu, Twoje tokeny ADRIA zostaną przeniesione na Twój portfel",
-        "4": "Możesz wracać każdego dnia, aby odebrać nowo nabyte tokeny (do czasu, aż całe saldo zostanie odebrane)"
+        "1": "Możesz ubiegać się o dostępną ilość tokena w dowolnym momencie, klikając 'Odbierz Adria'",
+        "2": "Po odebraniu, Twoje tokeny ADRIA zostaną przeniesione na Twój portfel",
+        "3": "Możesz wracać każdego dnia, aby odebrać nowo nabyte tokeny (do czasu, aż całe saldo zostanie odebrane)"
       },
-      "WARNING": "Ważne: ",
-      "WARNING_TEXT": "Nie będziesz w stanie odebrać swoich tokenów bez kliknięcia przycisku 'Odbierz Adria'",
       "ATTENTION": "Uwaga: ",
       "ATTENTION_TEXT": "Pamiętaj, że musisz posiadać token BNB (BEP20) w swoim portfelu, aby pokryć opłaty sieciowe za każdy odbiór ADRIA"
     },
@@ -152,8 +149,8 @@
     "PROGRESS": "Ilość sprzedanego tokena ADRIA",
     "INFO": {
       "DETAILS": {
-        "HEADER": "Szczegóły oficjalnej przedsprzedaży tokena ADRIA",
-        "1": "Prywatna sprzedaż",
+        "HEADER": "Szczegóły vestingu tokena ADRIA",
+        "1": "Prywatna sprzedaż: Pre-seed",
         "2": "Minimalna kwota zakupu: 50 USDC",
         "3": "Cena w przedsprzedaży 0.002 USDC",
         "4": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy"

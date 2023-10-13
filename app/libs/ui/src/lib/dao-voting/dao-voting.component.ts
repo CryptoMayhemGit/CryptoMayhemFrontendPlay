@@ -25,7 +25,6 @@ export class DaoVotingComponent{
     this.daoTopics$ = this.daoFacade.daoAllActiveTopics$;
     this.spinnerSmallActive$ = this.daoFacade.daoSmallSpinnerActive$;
     this.spinnerLargeActive$ = this.daoFacade.daoLargeSpinnerActive$;
-    this.spinnerLargeActive$.subscribe((data) => { console.log(data); });
     this.daoTopics$.subscribe(
         (topics) => {
           this.setTabs(topics.length);
