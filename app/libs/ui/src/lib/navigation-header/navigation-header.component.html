@@ -157,17 +157,16 @@
       >{{ "NAVBAR.NAV.STAKING" | transloco }}</a
     >
     <a
-      href="#"
-      [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco"
-      class="disabled"
-      (click)="mobileVisible = false"
+      routerLink="vesting"
+      [ngClass]="{ 'active-item': activePage === 'vesting' }"
+      (click)="mobileVisible = false; activePage = 'vesting'"
       >{{ "NAVBAR.NAV.VESTING" | transloco }}</a
     >
     <a
-      href="#"
-      [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco"
-      class="disabled"
-      (click)="mobileVisible = false"
+      href="https://medium.com/@crypto_mayhem/"
+      class="enable"
+      [ngClass]="{ 'active-item': activePage === 'news' }"
+      (click)="mobileVisible = false; activePage = 'news'"
       >{{ "NAVBAR.NAV.NEWS" | transloco }}</a
     >
     <a

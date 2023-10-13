@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { cryptoMayhemShellRoutes } from './shell.routes';
 import { EffectsModule } from '@ngrx/effects';
 import { CryptoMayhemDataAccessDaoModule, DAOEffects } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/dao';
+import { CryptoMayhemDataAccessVestingModule, VestingEffects } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/vesting';
 
 @NgModule({
   imports: [
@@ -14,7 +15,9 @@ import { CryptoMayhemDataAccessDaoModule, DAOEffects } from '@crypto-mayhem-fron
       anchorScrolling: 'enabled'
     }),
     EffectsModule.forFeature([DAOEffects]),
-    CryptoMayhemDataAccessDaoModule
+    CryptoMayhemDataAccessDaoModule,
+    EffectsModule.forFeature([VestingEffects]),
+    CryptoMayhemDataAccessVestingModule
   ],
   exports: [RouterModule],
 })

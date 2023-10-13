@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/crypto-mayhem/data-access/vesting-model/src",
+  "prefix": "crypto-mayhem-frontend",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/crypto-mayhem/data-access/vesting-model"],
+      "options": {
+        "jestConfig": "libs/crypto-mayhem/data-access/vesting-model/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/crypto-mayhem/data-access/vesting-model/**/*.ts",
+          "libs/crypto-mayhem/data-access/vesting-model/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

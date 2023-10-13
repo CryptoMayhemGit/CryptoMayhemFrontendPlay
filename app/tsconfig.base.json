@@ -39,6 +39,12 @@
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/dao-model": [
         "libs/crypto-mayhem/data-access/dao-model/src/index.ts"
       ],
+      "@crypto-mayhem-frontend/crypto-mayhem/data-access/vesting": [
+        "libs/crypto-mayhem/data-access/vesting/src/index.ts"
+      ],
+      "@crypto-mayhem-frontend/crypto-mayhem/data-access/vesting-model": [
+        "libs/crypto-mayhem/data-access/vesting-model/src/index.ts"
+      ],
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors": [
         "libs/crypto-mayhem/data-access/interceptors/src/index.ts"
       ],
