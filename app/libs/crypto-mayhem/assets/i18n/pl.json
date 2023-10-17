@@ -152,13 +152,13 @@
         "HEADER": "SZCZEGÓŁY OFICJALNEJ PRZEDSPRZEDAŻY TOKENA ADRIA",
         "1": "Prywatna sprzedaż: Pre-seed",
         "2": "Minimalna kwota zakupu: 50 USDC",
-        "3": "Cena w przedsprzedaży 0.002 USDC",
+        "3": "Cena w przedsprzedaży 0.0016 USDC",
         "4": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy"
       },
       "REMEMBER": "Pamiętaj, że musisz mieć BNB (bep-20) w portfelu, aby pokryć opłaty sieciowe za każdym razem kiedy inwestujesz USDC lub odbierasz swoje tokeny ADRIA.",
       "CLAIM": {
         "HEADER": "Jak odebrać zakupione tokeny?",
-        "MESSAGE": "Możesz przenosić zakupione tokeny ADRIA do swojego portfela w zakładce Vesting, która wkrótce będzie dostępna."
+        "MESSAGE": "Możesz przenosić zakupione tokeny ADRIA do swojego portfela w zakładce Vesting"
       },
       "PLAY_NEW_MISSION": {
         "HEADER": "DODATKOWA ZAWARTOŚĆ",
