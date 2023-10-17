@@ -1,72 +1,74 @@
-<div id="vesting" class="vesting">
-  <div class="header">
-    <div class="left">
-      <p class="date-info">XX.XX.XXXX</p>
-      <p class="date-info secondary">{{ "VESTING.CLAIM.START" | transloco }}</p>
-    </div>
-    <div class="center">
-      <p class="date-info">X/X</p>
-      <p class="date-info secondary">{{ "VESTING.CLAIM.MONTH" | transloco }}</p>
-    </div>
-    <div class="right">
-      <p class="date-info">XX.XX.XXXX</p>
-      <p class="date-info secondary">{{ "VESTING.CLAIM.END" | transloco }}</p>
-    </div>
-  </div>
-  <hr class="faded-line" />
-  <div id="token-amount">
-    <p>{{ "VESTING.CLAIM.BOUGHT_TOKEN" | transloco }}</p>
-    <div id="token-amount__symbol">
-      <p>250 002</p>
-      <img src="/assets/images/adria_token.svg" alt="Adria token" />
-    </div>
-    <br />
-    {{ "VESTING.CLAIM.AMOUNT" | transloco }}
-  </div>
-  <div id="progress">
-    <ui-progress-bar [currentValue]="0" [maxValue]="250002"></ui-progress-bar>
-  </div>
-  <hr class="faded-line" />
-  <div id="claim-token">
-    <h3>{{ "VESTING.CLAIM.CLAIM_TOKEN" | transloco }}</h3>
-    <div class="table">
-      <div class="t-item">
-        <div class="t-name">{{ "VESTING.CLAIM.GET" | transloco }}</div>
-        <div class="t-value">0</div>
+<ng-container *ngIf="(spinnerLargeActive$ | async) === true">
+  <ui-spinner [marginTop]="20"></ui-spinner>
+</ng-container>
+
+<ng-container *ngIf="(spinnerLargeActive$ | async) === false">
+  <div id="vesting" class="vesting">
+    <div class="header">
+      <div class="left">
+        <p class="date-info">--.--.----</p>
+        <p class="date-info secondary">{{ "VESTING.CLAIM.START" | transloco }}</p>
       </div>
-      <div class="t-item">
-        <div class="t-name">{{ "VESTING.CLAIM.PICK" | transloco }}</div>
-        <div class="t-value text-green">20</div>
+      <div class="center">
+        <p class="date-info">-/-</p>
+        <p class="date-info secondary">{{ "VESTING.CLAIM.MONTH" | transloco }}</p>
       </div>
-      <div class="t-item">
-        <div class="t-name">{{ "VESTING.CLAIM.BLOCK" | transloco }}</div>
-        <div class="t-value">249 982</div>
-      </div>
-      <hr />
-      <div class="t-item">
-        <div class="t-name">{{ "VESTING.CLAIM.BOUGHT" | transloco }}</div>
-        <div class="t-value">250 002</div>
+      <div class="right">
+        <p class="date-info">--.--.----</p>
+        <p class="date-info secondary">{{ "VESTING.CLAIM.END" | transloco }}</p>
       </div>
     </div>
+    <hr class="faded-line" />
+    <div id="token-amount">
+      <p>{{ "VESTING.CLAIM.BOUGHT_TOKEN" | transloco }}</p>
+      <div id="token-amount__symbol">
+        <p>{{ tokenCount$ | async }}</p>
+        <img src="/assets/images/adria_token.svg" alt="Adria token" />
+      </div>
+      <br />
+      {{ "VESTING.CLAIM.AMOUNT" | transloco }}
+    </div>
+    <div id="progress">
+      <ui-progress-bar [currentValue]="0" [maxValue]="isPositive(tokenCount$ | async)"></ui-progress-bar>
+    </div>
+    <hr class="faded-line" />
+    <div id="claim-token">
+      <h3>{{ "VESTING.CLAIM.CLAIM_TOKEN" | transloco }}</h3>
+      <div class="table">
+        <div class="t-item">
+          <div class="t-name">{{ "VESTING.CLAIM.GET" | transloco }}</div>
+          <div class="t-value">0</div>
+        </div>
+        <div class="t-item">
+          <div class="t-name">{{ "VESTING.CLAIM.PICK" | transloco }}</div>
+          <div class="t-value text-green">0</div>
+        </div>
+        <div class="t-item">
+          <div class="t-name">{{ "VESTING.CLAIM.BLOCK" | transloco }}</div>
+          <div class="t-value" >{{ tokenCount$ | async }}</div>
+        </div>
+        <hr />
+        <div class="t-item">
+          <div class="t-name">{{ "VESTING.CLAIM.BOUGHT" | transloco }}</div>
+          <div class="t-value">{{ tokenCount$ | async }}</div>
+        </div>
+      </div>
+    </div>
+    <ui-main-button [disabled]="true">{{
+      "VESTING.CLAIM.CLAIM_ADRIA" | transloco
+    }}</ui-main-button>
   </div>
-  <ui-main-button [disabled]="true">{{
-    "VESTING.CLAIM.CLAIM_ADRIA" | transloco
-  }}</ui-main-button>
-</div>
-<div id="info">
-  <h2>{{ "PRESALE.INFO.DETAILS.HEADER" | transloco }}</h2>
-  <ul>
-    <li class="detail" *ngFor="let detail of details; index as i">
-      {{ detail | transloco }}
-    </li>
-  </ul>
-  <hr />
-  <p>
-    <b>{{ "VESTING.INFO.WARNING" | transloco }}</b
-    >{{ "VESTING.INFO.WARNING_TEXT" | transloco }}
-  </p>
-  <p>
-    <b>{{ "VESTING.INFO.ATTENTION" | transloco }}</b>
-    {{ "VESTING.INFO.ATTENTION_TEXT" | transloco }}
-  </p>
-</div>
+  <div id="info">
+    <h2>{{ "PRESALE.INFO.DETAILS.HEADER" | transloco }}</h2>
+    <ul>
+      <li class="detail" *ngFor="let detail of details; index as i">
+        {{ detail | transloco }}
+      </li>
+    </ul>
+    <hr />
+    <p>
+      <b>{{ "VESTING.INFO.ATTENTION" | transloco }}</b>
+      {{ "VESTING.INFO.ATTENTION_TEXT" | transloco }}
+    </p>
+  </div>
+</ng-container>

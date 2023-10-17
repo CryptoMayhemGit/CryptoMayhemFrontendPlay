@@ -8,7 +8,9 @@
 
   @media screen and (min-width: 1240px) {
     flex-direction: row;
+    justify-content: center;
     margin-top: 3.2rem;
+    gap: 5.2rem;
   }
 }
 

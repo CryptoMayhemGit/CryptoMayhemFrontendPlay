@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { WalletFacade } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet';
-import { Observable, of, take } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { DAOFacade } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/dao";
 import { DaoTopic } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/dao-model';
 
@@ -17,7 +17,6 @@ export class DaoVotingComponent{
   daoTopics$!: Observable<DaoTopic[]>;
   tabs: string[] = [];
   activeTab = 0;
-  numberOfTabs = 0;
   index = 0;
 
   constructor(
@@ -26,19 +25,14 @@ export class DaoVotingComponent{
     this.daoTopics$ = this.daoFacade.daoAllActiveTopics$;
     this.spinnerSmallActive$ = this.daoFacade.daoSmallSpinnerActive$;
     this.spinnerLargeActive$ = this.daoFacade.daoLargeSpinnerActive$;
-    this.spinnerLargeActive$.subscribe((data) => { console.log(data); });
-    this.daoTopics$.pipe(
-      take(1),
-      ).subscribe(
+    this.daoTopics$.subscribe(
         (topics) => {
           this.setTabs(topics.length);
         }
       );
-
   }
 
   public setTabs(length: number): void {
-    this.numberOfTabs = length;
     for (let i = 1; i <= length; i++) {
       this.tabs.push('DAO.QUESTION');
     }
