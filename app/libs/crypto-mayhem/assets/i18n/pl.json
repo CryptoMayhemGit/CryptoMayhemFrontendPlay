@@ -121,7 +121,7 @@
     "LOGIN_MESSAGE": "Login attempt"
   },
   "VESTING": {
-    "HEADER": "Vesting - odbieraj swoje tokeny w każdym bloku",
+    "HEADER": "Szczegóły vestingu tokena ADRIA",
     "INFO": {
       "DETAILS": {
         "1": "Możesz ubiegać się o dostępną ilość tokena w dowolnym momencie, klikając 'Odbierz Adria'",
