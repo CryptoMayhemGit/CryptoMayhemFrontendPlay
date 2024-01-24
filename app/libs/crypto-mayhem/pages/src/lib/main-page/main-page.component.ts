@@ -57,6 +57,6 @@ export class MainPageComponent {
   }
 
   goToTglp() {
-    window.open('https://opensea.io/collection/tglp-mayhem', '_blank')
+    window.open('https://www.okx.com/pl/web3/marketplace/nft/collection/bsc/tenset-tglp-mayhem', '_blank')
   }
 }
