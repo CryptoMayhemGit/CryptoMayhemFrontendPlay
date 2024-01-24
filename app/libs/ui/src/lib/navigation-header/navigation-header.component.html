@@ -137,7 +137,7 @@
       </ui-submenu>
     </div>
     <a
-      href="https://market.cryptomayhem.io/"
+      href="https://opensea.io/collection/mayhem-genesis-zapper"
       class="enable"
       [ngClass]="{ 'active-item': activePage === 'market' }"
       (click)="mobileVisible = false; activePage = 'market'"
@@ -170,9 +170,10 @@
       >{{ "NAVBAR.NAV.NEWS" | transloco }}</a
     >
     <a
-      routerLink="presale"
-      [ngClass]="{ 'active-item': activePage === 'presale' }"
-      (click)="mobileVisible = false; activePage = 'presale'"
+      href="#"
+      [tooltip]="'NAVBAR.NAV.COMING_SOON' | transloco"
+      class="disabled"
+      (click)="mobileVisible = false"
       >{{ "NAVBAR.NAV.PRESALE" | transloco }}</a
     >
   </nav>
