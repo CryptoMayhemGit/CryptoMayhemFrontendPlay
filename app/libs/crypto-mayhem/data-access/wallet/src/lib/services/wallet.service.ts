@@ -4,9 +4,8 @@ import { Web3Provider } from '@ethersproject/providers';
 import { providers, ethers } from 'ethers';
 import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { Store } from '@ngrx/store';
-import WalletConnectProvider from '@walletconnect/web3-provider';
 import { Face, Network } from '@haechi-labs/face-sdk';
-import WalletConnect from '@walletconnect/client';
+import { EthereumProvider } from "@walletconnect/ethereum-provider";
 
 interface SignedWalletWithAmount {
   signature: string;
@@ -56,7 +55,7 @@ const DISCONNECT = 'disconnect';
 export class WalletService {
   private provider: Web3Provider | undefined = undefined;
   private face: Face | undefined = undefined;
-  public connector: WalletConnect | undefined = undefined;
+  //public connector: WalletConnect | undefined = undefined;
 
   constructor(
     private readonly httpClient: HttpClient,
@@ -225,23 +224,36 @@ export class WalletService {
         break;
       }
       case WalletType.walletConnect: {
-        const provider = new WalletConnectProvider({
-          qrcode: true,
-          bridge: 'https://polygon.bridge.walletconnect.org',
-          chainId: this.appConfig.chainIdNumberBinance,
-          rpc: {
-            // eslint-disable-next-line @typescript-eslint/naming-convention
-            56: 'https://bsc-dataseed.binance.org/',
-            // eslint-disable-next-line @typescript-eslint/naming-convention
-            97: 'https://data-seed-prebsc-1-s1.binance.org:8545/',
-          },
+        const provider = await EthereumProvider.init({
+          projectId: "93b83ef6d70b914c068ddf8b026689c2",
+          chains: [1],
+          showQrModal: true
         });
 
+        await provider.connect({
+          //chains, // OPTIONAL chain ids
+          //rpcMap, // OPTIONAL rpc urls
+         // pairingTopic, // OPTIONAL pairing topic
+        });
+        
         this.provider = new providers.Web3Provider(provider, 'any');
         this.createProviderHooks(provider);
-        await (this.provider.provider as any).enable().then(() => {
-          console.log('Done');
-        });
+        await provider.enable();
+
+        const accounts = (await provider.request({ method: "eth_accounts" })) as string[];
+
+        this.store.dispatch(
+          WalletActions.accountsChanged({
+            account: accounts[0],
+          })
+        );
+
+        this.store.dispatch(
+          WalletActions.connectWalletSuccess({
+            walletType: WalletType.walletConnect,
+          })
+        );
+
         break;
       }
       case WalletType.faceWallet: {
@@ -279,35 +291,23 @@ export class WalletService {
         break;
       }
       case WalletType.metapro: {
-        if (!this.connector) {
-          const connector: WalletConnect | null = new WalletConnect({
-            bridge: 'https://tst-bridge.metaprotocol.one',
-            qrcodeModal: {
-              open(uri) {},
-              close() {},
-            },
-          });
 
-          this.store.dispatch(WalletActions.changeWalletType({ walletType }));
-          this.connector = connector;
-          this.connectMetaProWallet().then(() => {
-            console.log('connectMetaProWallet');
-          });
-        }
-        this.store.dispatch(WalletActions.showMetaproQr({ showMetaproQr: true }));
+        
+
         break;
+
       }
     }
   }
 
   public async connectMetaProWallet(): Promise<void> {
-    if (this.connector) {
-      await this.connector.connect();
-      this.connector.on('connect', (error, payload) => {
+    //if (this.connector) {
+    //  await this.connector.connect();
+      /*this.connector.on('connect', (error, payload) => {
         this.provider = new ethers.providers.Web3Provider(this.connector as any);
-      });
+      });*/
 
-      this.connector.on('session_update', (error, payload) => {
+      /*this.connector.on('session_update', (error, payload) => {
         const account = payload.params[0].accounts[0];
 
         this.store.dispatch(
@@ -337,21 +337,21 @@ export class WalletService {
           this.store.dispatch(WalletActions.showMetaproQr({ showMetaproQr: false }));
           this.createProviderHooks(provider);
         });
-      });
+      });*/
 
-      this.connector.on('disconnect', (error, payload) => {
+      /*this.connector.on('disconnect', (error, payload) => {
         this.connector = undefined;
-      });
-    }
+      });*/
+    //}
   }
 
   public getQRCodeURl(): string {
-    if (this.connector && this.connector.uri) {
+    /*if (this.connector && this.connector.uri) {
       const encodedUri = encodeURIComponent(
         `metapro://wc?uri=${this.connector.uri}`
       );
       return `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodedUri}`;
-    }
+    }*/
     return '';
   }
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { Store } from '@ngrx/store';
 import { WalletService } from '../services/wallet.service';
-import WalletConnect from '@walletconnect/client';
+//import WalletConnect from '@walletconnect/client';
 
 import {
   hideSpinner,
@@ -42,7 +42,7 @@ export class WalletFacade {
   );
   readonly walletType$ = this.store.select(WalletSelectors.getWalletType);
   readonly showMetaproQr$ = this.store.select(WalletSelectors.getShowMetaproQr);
-  readonly metaproConnector: WalletConnect | undefined = undefined;
+  //readonly metaproConnector: WalletConnect | undefined = undefined;
 
   constructor(
     private readonly store: Store,
