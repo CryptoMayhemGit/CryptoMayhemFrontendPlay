@@ -291,11 +291,37 @@ export class WalletService {
         break;
       }
       case WalletType.metapro: {
+        const provider = await EthereumProvider.init({
+          projectId: "93b83ef6d70b914c068ddf8b026689c2",
+          chains: [1],
+          showQrModal: true
+        });
 
+        await provider.connect({
+          //chains, // OPTIONAL chain ids
+          //rpcMap, // OPTIONAL rpc urls
+         // pairingTopic, // OPTIONAL pairing topic
+        });
         
+        this.provider = new providers.Web3Provider(provider, 'any');
+        this.createProviderHooks(provider);
+        await provider.enable();
+
+        const accounts = (await provider.request({ method: "eth_accounts" })) as string[];
+
+        this.store.dispatch(
+          WalletActions.accountsChanged({
+            account: accounts[0],
+          })
+        );
+
+        this.store.dispatch(
+          WalletActions.connectWalletSuccess({
+            walletType: WalletType.walletConnect,
+          })
+        );
 
         break;
-
       }
     }
   }
