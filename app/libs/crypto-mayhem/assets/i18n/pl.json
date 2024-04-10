@@ -150,9 +150,9 @@
     "INFO": {
       "DETAILS": {
         "HEADER": "SZCZEGÓŁY OFICJALNEJ PRZEDSPRZEDAŻY TOKENA ADRIA",
-        "1": "Prywatna sprzedaż: Pre-seed",
-        "2": "Minimalna kwota zakupu: 50 USDC",
-        "3": "Cena w przedsprzedaży 0.0016 USDC",
+        "1": "Prywatna sprzedaż: Runda seed",
+        "2": "Minimalna kwota zakupu: 5000 USDC",
+        "3": "Cena w przedsprzedaży 0.0017 USDC",
         "4": "10% na TGE, reszta odblokowana co blok przez 9 miesięcy"
       },
       "REMEMBER": "Pamiętaj, że musisz mieć BNB (bep-20) w portfelu, aby pokryć opłaty sieciowe za każdym razem kiedy inwestujesz USDC lub odbierasz swoje tokeny ADRIA.",

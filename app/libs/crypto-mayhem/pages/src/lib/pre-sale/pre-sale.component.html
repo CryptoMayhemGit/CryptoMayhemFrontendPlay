@@ -33,7 +33,7 @@
         <p>{{ 'PRESALE.INVEST' | transloco }}</p>
         <div class="invest">
             <p>{{ 'PRESALE.AMOUNT.MIN' | transloco }}</p>
-            <p>50 USDC</p>
+            <p>5000 USDC</p>
         </div>
         <hr>
         <div class="invest">
@@ -53,7 +53,7 @@
             formControlName="amount">
             <p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors?.['min']">
                 <img src="./assets/images/error_icon.png">
-                <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MIN' | transloco: {minAmount: '50 USDC'} }}</span>
+                <span>{{ 'VALIDATIONS.VESTING_AMOUNT_MIN' | transloco: {minAmount: '5000 USDC'} }}</span>
             </p>
 
             <!--<p id="password-help" class="input-error" *ngIf="formGroup.controls['amount']?.errors && formGroup.controls['amount'].errors?.['max']">
