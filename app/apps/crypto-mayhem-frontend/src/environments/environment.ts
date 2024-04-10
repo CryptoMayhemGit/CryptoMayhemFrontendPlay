@@ -21,7 +21,7 @@ export const environment = {
   usdcContractAddress: '0x86b2A0AFA563cB23fFcA25EB796438A8Eb43FDcF',
   adriaContractAddress: '0x88DF935B3B545C52EdFcb12cf3770e05AF954461',
   adriaVestingContractAddress: '0xccC71c500754A49D1F565e04393f747408ba5B0D',
-  adriaPrice: 0.0016,
+  adriaPrice: 0.0017,
   webGlLocation: 'assets/unity/',
   metamaskDeepLink:
     'https://metamask.app.link/dapp/black-mushroom-0ae7fe803-develop.westeurope.1.azurestaticapps.net/presale',
