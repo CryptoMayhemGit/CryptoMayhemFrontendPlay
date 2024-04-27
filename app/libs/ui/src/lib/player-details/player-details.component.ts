@@ -35,7 +35,7 @@ import { FormControl } from '@angular/forms';
   ]
 })
 export class PlayerDetailsComponent {
-  @Input() playerName: string = '';
+  @Input() playerName: string | null = '';
   @Input() walletNumber: string = '0x12...3456';
 
   @Output() playerNameChange: EventEmitter<string> = new EventEmitter<string>();
