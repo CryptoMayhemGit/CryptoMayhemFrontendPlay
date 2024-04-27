@@ -11,7 +11,7 @@ export interface Url {
 
 export interface NotificationDroneState {
   show: boolean;
-  type: 'error' | 'success' | 'info';
+  type: 'error' | 'success' | 'info' | string;
   title: string;
   message?: string | undefined;
   textLink?: Url | undefined;
@@ -31,8 +31,8 @@ export const notificationDroneReducer = createReducer(
     NotificationDroneActions.success,
     (state, { title, message, textLink }) => ({
       ...state,
-      type: 'success',
       show: true,
+      type: 'success',
       title: title,
       message: message,
       textLink: textLink,

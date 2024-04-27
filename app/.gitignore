@@ -48,3 +48,6 @@ libs/crypto-mayhem/assets/contracts
 libs/crypto-mayhem/assets/unity
 
 .angular
+
+
+.nx/cache
