@@ -12,7 +12,7 @@
   ],
   "compilerOptions": {
     "target": "ES2022",
-    "useDefineForClassFields": true,
+    "useDefineForClassFields": false,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
