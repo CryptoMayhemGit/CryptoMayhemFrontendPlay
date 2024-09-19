@@ -9,7 +9,7 @@ export class AnalyticsService {
 
   constructor() {
     this.analytics = cookie3Analytics({
-      siteId: 1548,
+      siteId: 1550,
       autoDetectWalletAddresses: true,
       autoDetectWalletExtensions: true,
     });
