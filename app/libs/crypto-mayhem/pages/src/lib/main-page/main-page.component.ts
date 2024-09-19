@@ -1,5 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { AnalyticsService } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/cm-services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -45,8 +46,17 @@ import { Router } from '@angular/router';
     ]),
   ],
 })
-export class MainPageComponent {
-  constructor(private router: Router) {}
+export class MainPageComponent implements OnInit {
+  constructor(private router: Router, private analyticsService: AnalyticsService) {}
+
+  ngOnInit(): void {
+    this.SendAnalyticsData();
+  }
+
+  private SendAnalyticsData() {
+    this.analyticsService.trackPageView();
+    this.analyticsService.trackEvent('GiercowatyTypAndrzeja', 'AndrzejZrobilKlik', 777);
+  }
 
   downloadLauncher() {
     window.open('https://github.com/AdriaGames/CryptoMayhemLauncher/releases/latest/download/Install.Crypto.Mayhem.Launcher.exe', '_blank');

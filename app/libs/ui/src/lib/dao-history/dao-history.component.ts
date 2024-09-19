@@ -24,7 +24,7 @@ export class DaoHistoryComponent implements OnInit {
   take = 20;
 
   constructor(
-    private readonly daoFacade: DAOFacade,
+    private readonly daoFacade: DAOFacade
   ) {
     this.daoHistoryTopics$ = this.daoFacade.daoAllHistoricTopics$;
     this.spinnerSmallHistoric$ = this.daoFacade.daoSmallSpinnerHistoric$;
