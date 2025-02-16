@@ -8,7 +8,7 @@ import { Store } from "@ngrx/store";
 import { DaoTopic, SetVoteRequest } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/dao-model";
 import { Observable } from "rxjs";
 
-export const DAO_BASE = `https://mayhemdaoapi.azurewebsites.net`;
+export const DAO_BASE = `https://adriagames-mayhemdao-api.azurewebsites.net`;
 export const DAO_TOPIC_ALL_ACTIVE = (wallet: string, localization: string) => `${DAO_BASE}/Topic/GetAllActiveTopics/${wallet}/${localization}`;
 export const DAO_TOPIC_ALL_HISTORIC = (wallet: string, skip:number, take: number, localization: string) => `${DAO_BASE}/Topic/GetAllHistoricTopics/${wallet}/${skip}/${take}/${localization}`;
 export const DAO_SET_VOTE = () => `${DAO_BASE}/Vote/SetVote`;

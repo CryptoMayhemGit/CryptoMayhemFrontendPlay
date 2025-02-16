@@ -5,7 +5,7 @@ import { AppConfig, APP_CONFIG } from "@crypto-mayhem-frontend/crypto-mayhem/con
 import { VestingTokens } from "@crypto-mayhem-frontend/crypto-mayhem/data-access/vesting-model";
 import { Observable } from "rxjs";
 
-export const VESTING_BASE = `https://mayhemtdsauthorizationapi.azurewebsites.net`;
+export const VESTING_BASE = `https://adriagames-mayhemtdsauthorization-api.azurewebsites.net`;
 export const VESTING_TOPIC_ALL_ACTIVE = (wallet: string, localization: string) => `${VESTING_BASE}/api/Vesting/GetBlockedTokens?walletAddress=${wallet}`;
 //export const DAO_TOPIC_ALL_HISTORIC = (wallet: string, skip:number, take: number, localization: string) => `${VESTING_BASE}/Topic/GetAllHistoricTopics/${wallet}/${skip}/${take}/${localization}`;
 //export const DAO_SET_VOTE = () => `${VESTING_BASE}/Vote/SetVote`;
