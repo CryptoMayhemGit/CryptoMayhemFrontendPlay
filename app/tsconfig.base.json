@@ -39,12 +39,6 @@
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/dao-model": [
         "libs/crypto-mayhem/data-access/dao-model/src/index.ts"
       ],
-      "@crypto-mayhem-frontend/crypto-mayhem/data-access/vesting": [
-        "libs/crypto-mayhem/data-access/vesting/src/index.ts"
-      ],
-      "@crypto-mayhem-frontend/crypto-mayhem/data-access/vesting-model": [
-        "libs/crypto-mayhem/data-access/vesting-model/src/index.ts"
-      ],
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/interceptors": [
         "libs/crypto-mayhem/data-access/interceptors/src/index.ts"
       ],
@@ -53,6 +47,12 @@
       ],
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/notification-drone": [
         "libs/crypto-mayhem/data-access/notification-drone/src/index.ts"
+      ],
+      "@crypto-mayhem-frontend/crypto-mayhem/data-access/vesting": [
+        "libs/crypto-mayhem/data-access/vesting/src/index.ts"
+      ],
+      "@crypto-mayhem-frontend/crypto-mayhem/data-access/vesting-model": [
+        "libs/crypto-mayhem/data-access/vesting-model/src/index.ts"
       ],
       "@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet": [
         "libs/crypto-mayhem/data-access/wallet/src/index.ts"

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, inject } from '@angular/core';
 import {
   AppConfig,
   APP_CONFIG,
@@ -22,8 +22,9 @@ import * as WalletActions from '../../../../wallet/src/lib/state/wallet.actions'
 
 @Injectable({ providedIn: 'root' })
 export class DAOEffects {
+  private actions$ = inject(Actions);
+  
   constructor(
-    private readonly actions$: Actions,
     private readonly store: Store,
     private readonly daoService: DAOService,
     private readonly walletService: WalletService,

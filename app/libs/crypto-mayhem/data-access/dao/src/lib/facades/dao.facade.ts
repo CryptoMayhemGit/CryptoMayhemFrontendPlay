@@ -6,21 +6,33 @@ import {
     getAllHistoricTopics,
     signMessageForDao } from '../state/dao.actions';
 import * as DaoSelectors from '../state/dao.selectors';
+import { Observable } from 'rxjs';
+import { DaoTopic } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/dao-model';
 
 @Injectable({ providedIn: 'root' })
 export class DAOFacade {
-    readonly daoAllActiveTopics$ = this.store.select(DaoSelectors.selectAllActiveTopics);
-    readonly daoAllHistoricTopics$ = this.store.select(DaoSelectors.selectAllHistoricTopics);
-    readonly daoSmallSpinnerActive$ = this.store.select(DaoSelectors.selectDaoSmallSpinnerActive);
-    readonly daoLargeSpinnerActive$ = this.store.select(DaoSelectors.selectDaoLargeSpinnerActive);
-    readonly daoSmallSpinnerHistoric$ = this.store.select(DaoSelectors.selectDaoSmallSpinnerHistoric);
-    readonly daoLargeSpinnerHistoric$ = this.store.select(DaoSelectors.selectDaoLargeSpinnerHistoric);
-    readonly daoHistoryTopicById$ = (id: number) => this.store.select(DaoSelectors.selectDaoHistoryTopicById(id));
-    readonly daoVotingSuccess$ = this.store.select(DaoSelectors.selectDaoVotingSuccess);
+    public daoAllActiveTopics$: Observable<DaoTopic[]>;
+    public daoAllHistoricTopics$: Observable<DaoTopic[]>;
+    public daoSmallSpinnerActive$: Observable<boolean>;
+    public daoLargeSpinnerActive$: Observable<boolean>;
+    public daoSmallSpinnerHistoric$: Observable<boolean>;
+    public daoLargeSpinnerHistoric$: Observable<boolean>;
+    public daoHistoryTopicById$: (id: number) => Observable<DaoTopic | undefined>;
+    public daoVotingSuccess$: Observable<boolean>;
 
     constructor(
         private readonly store: Store,
-    ) {}
+    ) 
+    {
+        this.daoAllActiveTopics$ = this.store.select(DaoSelectors.selectAllActiveTopics);
+        this.daoAllHistoricTopics$ = this.store.select(DaoSelectors.selectAllHistoricTopics);
+        this.daoSmallSpinnerActive$ = this.store.select(DaoSelectors.selectDaoSmallSpinnerActive);
+        this.daoLargeSpinnerActive$ = this.store.select(DaoSelectors.selectDaoLargeSpinnerActive);
+        this.daoSmallSpinnerHistoric$ = this.store.select(DaoSelectors.selectDaoSmallSpinnerHistoric);
+        this.daoLargeSpinnerHistoric$ = this.store.select(DaoSelectors.selectDaoLargeSpinnerHistoric);
+        this.daoHistoryTopicById$ = (id: number) => this.store.select(DaoSelectors.selectDaoHistoryTopicById(id));
+        this.daoVotingSuccess$ = this.store.select(DaoSelectors.selectDaoVotingSuccess);
+    }
 
     public getDaoAllActiveTopics() {
         this.store.dispatch(getAllActiveTopics());

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { WalletType } from '@crypto-mayhem-frontend/crypto-mayhem/data-access/wallet-model';
 import { Store } from '@ngrx/store';
 import { WalletService } from '../services/wallet.service';
-//import WalletConnect from '@walletconnect/client';
 
 import {
   hideSpinner,
@@ -17,37 +16,48 @@ import {
 } from '../state/wallet.actions';
 
 import * as WalletSelectors from '../state/wallet.selectors';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class WalletFacade {
-  readonly spinner$ = this.store.select(WalletSelectors.getSpinnerState);
-  readonly showWallets$ = this.store.select(WalletSelectors.getShowWallets);
-  readonly closeWallets$ = this.store.select(WalletSelectors.getCloseWallets);
-  readonly account$ = this.store.select(WalletSelectors.getAccount);
-  readonly chainId$ = this.store.select(WalletSelectors.getChainId);
-  readonly connected$ = this.store.select(WalletSelectors.getWalletConnected);
-  readonly usdcPerStage$ = this.store.select(WalletSelectors.getUsdcPerStage);
-  readonly adriaPerStage$ = this.store.select(WalletSelectors.getAdriaPerStage);
-  readonly showSummary$ = this.store.select(WalletSelectors.getShowSummary);
-  readonly canBuyMore$ = this.store.select(WalletSelectors.getCanBuyMore);
-  readonly loadingButton$ = this.store.select(WalletSelectors.getLoadingButton);
-  readonly tokensSoldPerStage$ = this.store.select(
-    WalletSelectors.getTokensSoldPerStage
-  );
-  readonly allTokensPerStage$ = this.store.select(
-    WalletSelectors.getAllTokensPerStage
-  );
-  readonly bnbBalanceOf$ = this.store.select(
-    WalletSelectors.bnbBalanceOf
-  );
-  readonly walletType$ = this.store.select(WalletSelectors.getWalletType);
-  readonly showMetaproQr$ = this.store.select(WalletSelectors.getShowMetaproQr);
-  //readonly metaproConnector: WalletConnect | undefined = undefined;
+  public spinner$: Observable<boolean>;
+  public showWallets$: Observable<boolean>;
+  public closeWallets$: Observable<boolean | undefined>;
+  public account$: Observable<string>;
+  public chainId$: Observable<string | undefined>;
+  public connected$: Observable<boolean>;
+  public usdcPerStage$: Observable<string>;
+  public adriaPerStage$: Observable<number>;
+  public showSummary$: Observable<boolean>;
+  public canBuyMore$: Observable<boolean>;
+  public loadingButton$: Observable<boolean>;
+  public tokensSoldPerStage$: Observable<number>;
+  public allTokensPerStage$: Observable<number>;
+  public bnbBalanceOf$: Observable<number>;
+  public walletType$: Observable<WalletType>;
+  public showMetaproQr$: Observable<boolean>;
 
   constructor(
     private readonly store: Store,
     private readonly walletService: WalletService,
-  ) {
+  ) 
+  {
+    this.spinner$ = this.store.select(WalletSelectors.getSpinnerState);
+    this.showWallets$ = this.store.select(WalletSelectors.getShowWallets);
+    this.closeWallets$ = this.store.select(WalletSelectors.getCloseWallets);
+    this.account$ = this.store.select(WalletSelectors.getAccount);
+    this.chainId$ = this.store.select(WalletSelectors.getChainId);
+    this.connected$ = this.store.select(WalletSelectors.getWalletConnected);
+    this.usdcPerStage$ = this.store.select(WalletSelectors.getUsdcPerStage);
+    this.adriaPerStage$ = this.store.select(WalletSelectors.getAdriaPerStage);
+    this.showSummary$ = this.store.select(WalletSelectors.getShowSummary);
+    this.canBuyMore$ = this.store.select(WalletSelectors.getCanBuyMore);
+    this.loadingButton$ = this.store.select(WalletSelectors.getLoadingButton);
+    this.tokensSoldPerStage$ = this.store.select( WalletSelectors.getTokensSoldPerStage );
+    this.allTokensPerStage$ = this.store.select( WalletSelectors.getAllTokensPerStage );
+    this.bnbBalanceOf$ = this.store.select( WalletSelectors.bnbBalanceOf );
+    this.walletType$ = this.store.select(WalletSelectors.getWalletType);
+    this.showMetaproQr$ = this.store.select(WalletSelectors.getShowMetaproQr);
   }
 
   public setWalletAddress(walletAddress: string): void {
